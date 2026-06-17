@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import ClientCursor from "@/components/layout/ClientCursor";
+import GlobalSceneWrapper from "@/components/sections/GlobalSceneWrapper";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import ErpOsSection from "@/components/sections/ErpOsSection";
@@ -21,6 +22,7 @@ import {
 export default function Home() {
   return (
     <>
+      <GlobalSceneWrapper />
       <ClientCursor />
       <div className="grain" aria-hidden />
       <Navbar />

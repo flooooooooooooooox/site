@@ -234,7 +234,7 @@ const LAYOUT = [2, 2, 1, 1, 1, 1, 2, 2];
 
 export default function Services() {
   return (
-    <section id="services" style={{ background: "#0F1923", padding: "7rem 0" }}>
+    <section id="services" style={{ background: "rgba(15,25,35,0.82)", padding: "7rem 0" }}>
       <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 6vw" }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

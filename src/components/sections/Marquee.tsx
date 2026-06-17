@@ -13,7 +13,7 @@ export default function Marquee() {
     ));
 
   return (
-    <div style={{ background: "#0A1520", padding: "2.5rem 0", overflow: "hidden", userSelect: "none" }}>
+    <div style={{ background: "rgba(10,21,32,0.82)", padding: "2.5rem 0", overflow: "hidden", userSelect: "none" }}>
       {/* Row 1 — scrolls left */}
       <div style={{ display: "flex", gap: "1.2rem", marginBottom: "1.4rem", overflow: "hidden" }}>
         <div style={{ display: "flex", gap: "1.2rem", animation: "marqueeLeft 24s linear infinite", willChange: "transform" }}>

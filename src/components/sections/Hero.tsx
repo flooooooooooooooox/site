@@ -1,9 +1,8 @@
 "use client";
-import { useEffect, useState, useRef, useCallback, lazy, Suspense } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 
-const HeroScene = lazy(() => import("./HeroScene"));
 
 const MORPH_WORDS = ["Automatisée", "Intelligente", "Connectée", "Souveraine", "Libérée"];
 const TYPED = [
@@ -151,12 +150,8 @@ export default function Hero() {
     >
       <style>{HERO_STYLES}</style>
 
-      {/* 3D Three.js scene */}
-      <Suspense fallback={null}>
-        <HeroScene />
-      </Suspense>
       {/* Bottom fade */}
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "18rem", background: "linear-gradient(to top, #0F1923 20%, transparent)", zIndex: 2 }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "18rem", background: "linear-gradient(to top, rgba(15,25,35,0.95) 20%, transparent)", zIndex: 2 }} />
 
       {/* Grid overlay */}
       <div className="hero-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }} />
