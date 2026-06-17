@@ -70,3 +70,4 @@ body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: rgba(2
   body { cursor: auto; }
   .cursor-dot, .cursor-ring, .cursor-glow { display: none; }
 }
+ 
