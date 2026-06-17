@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -78,6 +79,7 @@ export default function Navbar() {
             {l}
           </a>
         ))}
+        <ThemeToggle />
         <a
           href="https://calendly.com/afele1845/30min"
           target="_blank"
