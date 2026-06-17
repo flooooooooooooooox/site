@@ -148,8 +148,8 @@ export default function Hero() {
     >
       <style>{HERO_STYLES}</style>
 
-      <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/image.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,15,20,0.92) 0%, rgba(10,15,20,0.75) 50%, rgba(10,15,20,0.88) 100%)", zIndex: 1 }} />
+      {/* background handled by GlobalScene */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(5,10,16,0.45) 0%, rgba(5,10,16,0.2) 50%, rgba(5,10,16,0.4) 100%)", zIndex: 1 }} />
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "16rem", background: "linear-gradient(to top, #0F1923, transparent)", zIndex: 2 }} />
       <div className="hero-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }} />
       <div className="hero-aurora" style={{ position: "absolute", left: "50%", top: "45%", width: "70vw", height: "55vh", borderRadius: "50%", filter: "blur(80px)", animation: "hero-breathe 9s ease-in-out infinite alternate", zIndex: 2, pointerEvents: "none" }} />
