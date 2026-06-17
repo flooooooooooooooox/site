@@ -10,6 +10,7 @@ import Pricing from "@/components/sections/Pricing";
 import Faq from "@/components/sections/Faq";
 import CtaBand from "@/components/sections/CtaBand";
 import Footer from "@/components/sections/Footer";
+import { LiquidWave, GoldParticleLine, DiagonalSlash, FogBlend } from "@/components/ui/SectionTransitions";
 
 export default function Home() {
   return (
@@ -20,11 +21,21 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-<ErpOsSection />
+        {/* #0F1923 → #0A1520 */}
+        <LiquidWave topColor="#0F1923" bottomColor="#0A1520" />
+        <ErpOsSection />
+        {/* #0A1520 → #0F1923 */}
+        <DiagonalSlash topColor="#0A1520" bottomColor="#0F1923" />
         <StorySection />
         <RoiCalculator />
+        {/* #0F1923 → #0A1520 */}
+        <FogBlend topColor="#0F1923" bottomColor="#0A1520" />
         <Comparatif />
+        {/* #0A1520 → #0F1923 */}
+        <LiquidWave topColor="#0A1520" bottomColor="#0F1923" />
         <Pricing />
+        {/* #0F1923 → #0A1520 */}
+        <GoldParticleLine topColor="#0F1923" bottomColor="#0A1520" />
         <Faq />
         <CtaBand />
       </main>
