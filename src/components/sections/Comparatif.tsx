@@ -35,7 +35,6 @@ const SECTIONS = [
     rows: [
       { feature: "CRM clients & historique complet",        floxia: true,       obat: true,       sage: true,       ebp: true  },
       { feature: "Planning équipes temps réel",             floxia: true,       obat: "partial",  sage: false,      ebp: "partial" },
-      { feature: "Rentabilité réelle par chantier",         floxia: true,       obat: true,       sage: false,      ebp: false },
       { feature: "Collecte photos chantier WhatsApp",       floxia: true,       obat: false,      sage: false,      ebp: false },
       { feature: "Dashboard CA & trésorerie",               floxia: true,       obat: true,       sage: true,       ebp: true  },
       { feature: "Export comptabilité 1 clic",              floxia: true,       obat: true,       sage: true,       ebp: true  },
@@ -47,7 +46,6 @@ const SECTIONS = [
       { feature: "Hébergement 100% France / RGPD natif",   floxia: true,       obat: true,       sage: false,      ebp: false },
       { feature: "Temps de formation",                      floxia: "0h",       obat: "10h+",     sage: "30h+",     ebp: "20h+" },
       { feature: "Prix mensuel",                            floxia: "dès 99€",  obat: "dès 59€",  sage: "dès 29€*", ebp: "dès 25€*" },
-      { feature: "Support dédié bâtiment",                  floxia: true,       obat: true,       sage: false,      ebp: false },
     ],
   },
 ];
