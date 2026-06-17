@@ -117,7 +117,7 @@ export default function RoiCalculator() {
           </div>
         </motion.div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start" }}>
+        <div className="roi-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start" }}>
 
           {/* Left panel */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
@@ -231,6 +231,11 @@ export default function RoiCalculator() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .roi-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }
