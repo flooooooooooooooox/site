@@ -39,6 +39,7 @@ function getPlan(devis: number, salarie: boolean) {
 export default function RoiCalculator() {
   const [devis, setDevis] = useState(20);
   const [salarie, setSalarie] = useState(false);
+  const [periode, setPeriode] = useState<"mois" | "an">("mois");
 
   const plan = getPlan(devis, salarie);
 
@@ -61,8 +62,13 @@ export default function RoiCalculator() {
   const totalMin = gainDevisMin + gainReceptionnisteMin + gainRelancesMin + gainComptaMin + gainConformiteMin;
   const totalH = Math.round(totalMin / 60);
   const tauxH = 45;
-  const gainFinancier = Math.round(totalH * tauxH);
-  const roi = gainFinancier - plan.price;
+  const gainFinancierMois = Math.round(totalH * tauxH);
+  const roiMois = gainFinancierMois - plan.price;
+
+  const mult = periode === "an" ? 12 : 1;
+  const gainFinancier = gainFinancierMois * mult;
+  const roi = roiMois * mult;
+  const totalHDisplay = periode === "an" ? totalH * 12 : totalH;
 
   const breakdown = [
     { icon: FileText, label: "Devis + factures + PV auto", min: gainDevisMin, color: "#F5C842" },
@@ -97,6 +103,18 @@ export default function RoiCalculator() {
           <p style={{ marginTop: "0.75rem", color: "rgba(232,237,244,0.6)", fontSize: "1.05rem" }}>
             Floxia élimine <strong style={{ color: "#F5C842" }}>~80% de votre temps administratif</strong> — devis, facturation, appels, relances, comptabilité
           </p>
+          {/* Toggle mois / an */}
+          <div style={{ display: "inline-flex", marginTop: "1.5rem", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "999px", padding: "4px" }}>
+            {(["mois", "an"] as const).map(p => (
+              <button key={p} onClick={() => setPeriode(p)}
+                style={{ padding: "6px 22px", borderRadius: "999px", border: "none", cursor: "pointer", fontWeight: 700, fontSize: ".82rem", transition: "all 0.2s",
+                  background: periode === p ? "#F5C842" : "transparent",
+                  color: periode === p ? "#0F1923" : "rgba(232,237,244,0.5)" }}>
+                {p === "mois" ? "Par mois" : "Par an"}
+                {p === "an" && <span style={{ marginLeft: "0.35rem", fontSize: ".7rem", background: "rgba(74,222,128,0.2)", color: "#4ADE80", padding: "1px 6px", borderRadius: "999px" }}>-2 mois offerts</span>}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "start" }}>
@@ -189,9 +207,9 @@ export default function RoiCalculator() {
 
             {/* Big metrics */}
             {[
-              { icon: Clock, label: "Temps admin récupéré / mois", value: totalH, suffix: "h", color: "#F5C842", sub: `${totalMin} min sur 5 postes automatisés` },
-              { icon: Euro, label: "Gain financier estimé", value: gainFinancier, suffix: "€", color: "#4ADE80", sub: `à ${tauxH} €/h — taux artisan moyen` },
-              { icon: TrendingUp, label: "ROI net vs Floxia", value: roi, suffix: "€", color: roi >= 0 ? "#4ADE80" : "#F87171", sub: `après abonnement ${plan.name} ${plan.price}€/mois` },
+              { icon: Clock, label: `Temps admin récupéré / ${periode}`, value: totalHDisplay, suffix: "h", color: "#F5C842", sub: periode === "an" ? `${totalH * 12 * 60} min récupérées sur l'année` : `${totalMin} min sur 5 postes automatisés` },
+              { icon: Euro, label: `Gain financier / ${periode}`, value: gainFinancier, suffix: "€", color: "#4ADE80", sub: `à ${tauxH} €/h — taux artisan moyen` },
+              { icon: TrendingUp, label: `ROI net vs Floxia / ${periode}`, value: roi, suffix: "€", color: roi >= 0 ? "#4ADE80" : "#F87171", sub: periode === "an" ? `abonnement ${plan.name} ${plan.price * 12}€/an` : `après abonnement ${plan.name} ${plan.price}€/mois` },
             ].map((m, i) => {
               const Icon = m.icon;
               return (
