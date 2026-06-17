@@ -10,6 +10,7 @@ import Pricing from "@/components/sections/Pricing";
 import Faq from "@/components/sections/Faq";
 import CtaBand from "@/components/sections/CtaBand";
 import { CinematicFooter } from "@/components/ui/motion-footer";
+import PartnersBand from "@/components/sections/PartnersBand";
 import {
   Perspective3DFloor,
   CubeEdge,
@@ -26,7 +27,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Perspective3DFloor />
+        <PartnersBand />
         <Services />
         <DepthFade />
         <ErpOsSection />
