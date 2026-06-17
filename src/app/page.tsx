@@ -2,7 +2,6 @@ import Navbar from "@/components/layout/Navbar";
 import ClientCursor from "@/components/layout/ClientCursor";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
-import Marquee from "@/components/sections/Marquee";
 import ErpOsSection from "@/components/sections/ErpOsSection";
 import StorySection from "@/components/sections/StorySection";
 import RoiCalculator from "@/components/sections/RoiCalculator";
@@ -21,8 +20,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <Marquee />
-        <ErpOsSection />
+<ErpOsSection />
         <StorySection />
         <RoiCalculator />
         <Comparatif />
