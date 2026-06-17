@@ -49,7 +49,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col items-start justify-center px-[6vw] pt-32 pb-24 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-[6vw] pt-32 pb-24 overflow-hidden text-center"
       style={{ background: "#0F1923" }}
       onMouseMove={handleMouseMove}
     >
@@ -110,13 +110,13 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .35 }}
-          className="text-[clamp(1rem,2.2vw,1.25rem)] font-light max-w-[520px] mb-9 leading-relaxed" style={{ color: "rgba(232,237,244,.75)" }}>
+          className="text-[clamp(1rem,2.2vw,1.25rem)] font-light max-w-[620px] mb-9 leading-relaxed" style={{ color: "rgba(232,237,244,.75)" }}>
           <span className="block min-h-[1.7em]">{typed}<span className="inline-block w-px h-[1em] bg-yellow-400 mx-px align-middle animate-pulse" /></span>
           <span>Un vocal suffit — Floxia s&apos;occupe du reste.</span>
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .5 }}
-          className="flex gap-4 flex-wrap">
+          className="flex gap-4 flex-wrap justify-center">
           <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener"
             className="px-8 py-3 rounded-full font-extrabold text-[.88rem] no-underline transition-all hover:-translate-y-1"
             style={{ background: "#F5C842", color: "#1E2B45", boxShadow: "0 0 0 rgba(245,200,66,0)" }}
