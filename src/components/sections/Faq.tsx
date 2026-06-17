@@ -34,7 +34,7 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section style={{ background: "rgba(10,21,32,0.82)", padding: "6rem 0" }}>
+    <section style={{ background: "transparent", padding: "6rem 0" }}>
       <div style={{ maxWidth: "48rem", margin: "0 auto", padding: "0 6vw" }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}

@@ -88,7 +88,7 @@ export default function RoiCalculator() {
   }
 
   return (
-    <section style={{ background: "rgba(15,25,35,0.82)", padding: "6rem 0" }}>
+    <section style={{ background: "transparent", padding: "6rem 0" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }}>
 
         {/* Header */}

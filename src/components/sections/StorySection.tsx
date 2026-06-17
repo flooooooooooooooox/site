@@ -50,7 +50,7 @@ export default function StorySection() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={sectionRef} style={{ background: "rgba(15,25,35,0.82)", padding: "7rem 0" }}>
+    <section ref={sectionRef} style={{ background: "transparent", padding: "7rem 0" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 6vw" }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

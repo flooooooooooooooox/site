@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0F1923;
-  --bg-alt: #0A1520;
+  --bg: #05080D;
+  --bg-alt: #05080D;
   --gold: #F5C842;
   --text: #E8EDF4;
   --text-muted: rgba(232,237,244,0.6);

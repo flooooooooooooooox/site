@@ -24,7 +24,7 @@ const PARTNERS = [
 
 export default function PartnersBand() {
   return (
-    <section style={{ background: "rgba(10,21,32,0.82)", padding: "2rem 0", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+    <section style={{ background: "transparent", padding: "2rem 0", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 6vw", display: "flex", flexDirection: "column", alignItems: "center", gap: "1.25rem" }}>
         <motion.p
           initial={{ opacity: 0 }}

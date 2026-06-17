@@ -10,7 +10,7 @@ export default function GlobalScene() {
   };
 
   return (
-    <div style={{ position: "fixed", inset: 0, width: "100%", height: "100%", zIndex: 0, pointerEvents: "none", overflow: "hidden", background: "#05080D" }}>
+    <div style={{ position: "fixed", inset: 0, width: "100%", height: "100%", zIndex: -1, pointerEvents: "none", overflow: "hidden", background: "#05080D" }}>
       {/* Gold spotlight 1 */}
       <motion.div
         style={{ ...base, width: 600, height: 600, background: "radial-gradient(circle, rgba(245,200,66,0.12) 0%, transparent 70%)", top: "10%", left: "5%" }}

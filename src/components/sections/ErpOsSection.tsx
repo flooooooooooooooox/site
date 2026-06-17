@@ -3,7 +3,7 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export default function ErpOsSection() {
   return (
-    <section id="ecosysteme" style={{ background: "rgba(10,21,32,0.82)", overflow: "hidden" }}>
+    <section id="ecosysteme" style={{ background: "transparent", overflow: "hidden" }}>
       <ContainerScroll
         titleComponent={
           <div style={{ textAlign: "center", marginBottom: "1rem" }}>

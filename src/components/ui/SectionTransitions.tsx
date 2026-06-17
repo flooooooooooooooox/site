@@ -17,7 +17,7 @@ function useTheme() {
 export function Perspective3DFloor() {
   const mode = useTheme();
   const isDark = mode === "dark";
-  const bg = isDark ? "#0F1923" : "#F8F9FC";
+  const bg = isDark ? "transparent" : "#F8F9FC";
   const grid = isDark ? "rgba(232,237,244,0.07)" : "rgba(15,25,35,0.07)";
   return (
     <div style={{ width: "100%", height: "140px", perspective: "800px", overflow: "hidden", position: "relative", background: bg }}>
@@ -38,9 +38,9 @@ export function Perspective3DFloor() {
 export function CubeEdge() {
   const mode = useTheme();
   const isDark = mode === "dark";
-  const top = isDark ? "#162030" : "#EFEFEF";
-  const edge = isDark ? "#1E2D40" : "#E0E0E0";
-  const bottom = isDark ? "#0A1520" : "#FFFFFF";
+  const top = isDark ? "transparent" : "#EFEFEF";
+  const edge = isDark ? "transparent" : "#E0E0E0";
+  const bottom = isDark ? "transparent" : "#FFFFFF";
   return (
     <div style={{ width: "100%", height: "80px", display: "flex", flexDirection: "column" }}>
       <div style={{ flex: 1, background: `linear-gradient(to bottom, ${top}, ${edge})` }} />
@@ -54,7 +54,7 @@ export function CubeEdge() {
 export function RippleDepth() {
   const mode = useTheme();
   const isDark = mode === "dark";
-  const bg = isDark ? "#0A1520" : "#FFFFFF";
+  const bg = isDark ? "transparent" : "#FFFFFF";
   const ring = isDark ? "#E8EDF4" : "#0F1923";
   const rings = [
     { rx: 440, ry: 88, op: 0.06 },
@@ -97,9 +97,9 @@ export function PrismSlice() {
 export function DepthFade() {
   const mode = useTheme();
   const isDark = mode === "dark";
-  const bg = isDark ? "#0F1923" : "#F8F9FC";
+  const bg = isDark ? "transparent" : "#F8F9FC";
   const grid = isDark ? "rgba(232,237,244,0.06)" : "rgba(15,25,35,0.06)";
-  const vignette = isDark ? "rgba(15,25,35,0.92)" : "rgba(248,249,252,0.92)";
+  const vignette = isDark ? "transparent" : "rgba(248,249,252,0.92)";
   return (
     <div style={{ width: "100%", height: "200px", position: "relative", background: bg, overflow: "hidden" }}>
       <div style={{ position: "absolute", width: "130%", height: "300%", top: "-100%", left: "-15%",

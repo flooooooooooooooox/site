@@ -152,7 +152,7 @@ export default function Hero() {
       <img src="/chantier1.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", zIndex: 0 }} />
       {/* Dark overlay */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(5,10,16,0.78) 0%, rgba(5,10,16,0.55) 60%, rgba(5,10,16,0.72) 100%)", zIndex: 1 }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "16rem", background: "linear-gradient(to top, #0F1923, transparent)", zIndex: 2 }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "16rem", background: "linear-gradient(to top, #05080D, transparent)", zIndex: 2 }} />
       <div className="hero-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }} />
       <div className="hero-aurora" style={{ position: "absolute", left: "50%", top: "45%", width: "70vw", height: "55vh", borderRadius: "50%", filter: "blur(80px)", animation: "hero-breathe 9s ease-in-out infinite alternate", zIndex: 2, pointerEvents: "none" }} />
       <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none", background: `radial-gradient(700px circle at ${mouseX}px ${mouseY}px, rgba(245,200,66,0.07), transparent 42%)`, transition: "background 0.1s" }} />
