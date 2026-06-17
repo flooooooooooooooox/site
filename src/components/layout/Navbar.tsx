@@ -53,8 +53,7 @@ export default function Navbar() {
     >
       <a
         href="#"
-        className="flex items-center gap-2 no-underline"
-        style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.15rem", color: "#E8EDF4" }}
+        style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none", fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.15rem", color: "#E8EDF4" }}
       >
         <div
           style={{
@@ -66,7 +65,7 @@ export default function Navbar() {
         />
         Floxia
       </a>
-      <div className="hidden md:flex items-center gap-9">
+      <div style={{ display: "flex", alignItems: "center", gap: "2.25rem" }}>
         {["Services", "Ecosystème", "Comparatif", "ROI", "Tarifs"].map((l) => (
           <a
             key={l}

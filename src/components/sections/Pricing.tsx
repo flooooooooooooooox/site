@@ -56,7 +56,7 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          style={{ textAlign: "center", marginBottom: "4rem" }}
         >
           <span
             style={{
@@ -82,12 +82,12 @@ export default function Pricing() {
             Des offres simples,{" "}
             <span style={{ color: "#F5C842" }}>sans surprise</span>
           </h2>
-          <p className="mt-3 text-lg" style={{ color: "rgba(232,237,244,0.6)" }}>
+          <p style={{ marginTop: "0.75rem", color: "rgba(232,237,244,0.6)" }}>
             Résiliable à tout moment après 3 mois · 14 jours d&apos;essai gratuit
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 items-start">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem", alignItems: "start" }}>
           {PLANS.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -176,7 +176,7 @@ export default function Pricing() {
                   </div>
                 )}
 
-                <div className="mb-6">
+                <div style={{ marginBottom: "1.5rem" }}>
                   <h3
                     style={{
                       fontFamily: "var(--font-nunito)",

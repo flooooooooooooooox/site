@@ -41,7 +41,7 @@ export default function Faq() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          style={{ textAlign: "center", marginBottom: "3.5rem" }}
         >
           <span
             style={{

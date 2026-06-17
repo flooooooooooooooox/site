@@ -37,7 +37,7 @@ export default function Comparatif() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          style={{ textAlign: "center", marginBottom: "3.5rem" }}
         >
           <span
             style={{
@@ -63,7 +63,7 @@ export default function Comparatif() {
             Floxia vs la{" "}
             <span style={{ color: "#F5C842" }}>concurrence</span>
           </h2>
-          <p className="mt-3 text-lg" style={{ color: "rgba(232,237,244,0.6)" }}>
+          <p style={{ marginTop: "0.75rem", color: "rgba(232,237,244,0.6)" }}>
             Pourquoi les artisans nous choisissent
           </p>
         </motion.div>
@@ -160,7 +160,7 @@ export default function Comparatif() {
           ))}
         </motion.div>
 
-        <p className="mt-4 text-center" style={{ color: "rgba(232,237,244,0.3)", fontSize: ".75rem" }}>
+        <p style={{ marginTop: "1rem", textAlign: "center", color: "rgba(232,237,244,0.3)", fontSize: ".75rem" }}>
           * Excel gratuit mais coût caché en temps : 5h+ de formation + risque d&apos;erreurs humaines
         </p>
       </div>

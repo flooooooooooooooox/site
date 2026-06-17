@@ -49,14 +49,13 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center px-[6vw] pt-32 pb-24 overflow-hidden text-center"
-      style={{ background: "#0F1923" }}
+      style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8rem 6vw 6rem", overflow: "hidden", textAlign: "center", background: "#0F1923" }}
       onMouseMove={handleMouseMove}
     >
       {/* bg image */}
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/image.png')", zIndex: 0 }} />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(to right,rgba(10,15,20,.88) 0%,rgba(10,15,20,.65) 45%,rgba(10,15,20,.2) 100%)", zIndex: 1 }} />
-      <div className="absolute bottom-0 left-0 right-0 h-56" style={{ background: "linear-gradient(to top,rgba(10,15,20,.7),transparent)", zIndex: 1 }} />
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/image.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right,rgba(10,15,20,.88) 0%,rgba(10,15,20,.65) 45%,rgba(10,15,20,.2) 100%)", zIndex: 1 }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "14rem", background: "linear-gradient(to top,rgba(10,15,20,.7),transparent)", zIndex: 1 }} />
 
       {/* Spotlight overlay */}
       <div
@@ -72,7 +71,7 @@ export default function Hero() {
       />
 
       {/* Floating geo shapes */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 1 }} aria-hidden>
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden", zIndex: 1 }} aria-hidden>
         {[
           { cls: "top-[12%] right-[8%]", size: 80, anim: "floatA 14s ease-in-out infinite" },
           { cls: "top-[55%] right-[20%]", size: 60, anim: "floatB 18s ease-in-out infinite" },
@@ -89,14 +88,14 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10">
+      <div style={{ position: "relative", zIndex: 10 }}>
         <motion.h1
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .2 }}
-          className="font-black leading-none tracking-tight mb-6"
-          style={{ fontFamily: "var(--font-nunito)", fontSize: "clamp(3rem,8vw,7.5rem)", letterSpacing: "-.04em",
+          className="font-black leading-none tracking-tight"
+          style={{ marginBottom: "1.5rem", fontFamily: "var(--font-nunito)", fontSize: "clamp(3rem,8vw,7.5rem)", letterSpacing: "-.04em",
             textShadow: "0 2px 30px rgba(0,0,0,.5),1px 1px 0 rgba(245,200,66,.08),2px 2px 0 rgba(245,200,66,.06),3px 3px 0 rgba(245,200,66,.04),4px 4px 0 rgba(245,200,66,.03),5px 5px 12px rgba(0,0,0,.4)" }}>
           <span style={{ color: "#F5C842", textShadow: "1px 1px 0 rgba(200,150,0,.5),2px 2px 0 rgba(180,130,0,.4),3px 3px 0 rgba(160,110,0,.3),4px 4px 0 rgba(140,90,0,.2),5px 5px 14px rgba(0,0,0,.5)" }}>Floxia</span>
-          <span className="inline-flex items-center ml-3 px-2 py-0 rounded align-middle text-[#1E2B45] font-black" style={{ background: "#F5C842", fontSize: "clamp(1rem,2vw,1.8rem)", letterSpacing: ".08em", verticalAlign: "middle", position: "relative", top: "-.1em", boxShadow: "0 4px 20px rgba(245,200,66,.4)" }}>OS</span>
+          <span className="text-[#1E2B45] font-black" style={{ display: "inline-flex", alignItems: "center", marginLeft: "0.75rem", padding: "0 0.5rem", borderRadius: "0.25rem", background: "#F5C842", fontSize: "clamp(1rem,2vw,1.8rem)", letterSpacing: ".08em", verticalAlign: "middle", position: "relative", top: "-.1em", boxShadow: "0 4px 20px rgba(245,200,66,.4)" }}>OS</span>
           <br />
           <AnimatePresence mode="wait">
             <motion.span key={wordIdx}
@@ -110,13 +109,13 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .35 }}
-          className="text-[clamp(1rem,2.2vw,1.25rem)] font-light max-w-[620px] mb-9 leading-relaxed" style={{ color: "rgba(232,237,244,.75)" }}>
-          <span className="block min-h-[1.7em]">{typed}<span className="inline-block w-px h-[1em] bg-yellow-400 mx-px align-middle animate-pulse" /></span>
+          className="text-[clamp(1rem,2.2vw,1.25rem)] font-light max-w-[620px] leading-relaxed" style={{ marginBottom: "2.25rem", color: "rgba(232,237,244,.75)" }}>
+          <span style={{ display: "block", minHeight: "1.7em" }}>{typed}<span className="bg-yellow-400 animate-pulse" style={{ display: "inline-block", width: "1px", height: "1em", margin: "0 1px", verticalAlign: "middle" }} /></span>
           <span>Un vocal suffit — Floxia s&apos;occupe du reste.</span>
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, delay: .5 }}
-          className="flex gap-4 flex-wrap justify-center">
+          style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
           <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener"
             className="px-8 py-3 rounded-full font-extrabold text-[.88rem] no-underline transition-all hover:-translate-y-1"
             style={{ background: "#F5C842", color: "#1E2B45", boxShadow: "0 0 0 rgba(245,200,66,0)" }}

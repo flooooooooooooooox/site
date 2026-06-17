@@ -77,7 +77,7 @@ export default function RoiCalculator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          style={{ textAlign: "center", marginBottom: "3.5rem" }}
         >
           <span
             style={{
@@ -103,12 +103,12 @@ export default function RoiCalculator() {
             Calculez votre{" "}
             <span style={{ color: "#F5C842" }}>ROI</span>
           </h2>
-          <p className="mt-3 text-lg" style={{ color: "rgba(232,237,244,0.6)" }}>
+          <p style={{ marginTop: "0.75rem", color: "rgba(232,237,244,0.6)" }}>
             Voyez combien Floxia vous rapporte chaque mois
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10 items-start">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "2.5rem", alignItems: "start" }}>
           {/* Sliders */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -123,8 +123,8 @@ export default function RoiCalculator() {
               backdropFilter: "blur(12px)",
             }}
           >
-            <div className="mb-8">
-              <div className="flex justify-between mb-3">
+            <div style={{ marginBottom: "2rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.75rem" }}>
                 <label
                   htmlFor="devis-slider"
                   style={{ color: "#E8EDF4", fontWeight: 600, fontSize: ".95rem" }}
@@ -147,13 +147,13 @@ export default function RoiCalculator() {
                   height: "6px",
                 }}
               />
-              <div className="flex justify-between mt-1" style={{ color: "rgba(232,237,244,0.35)", fontSize: ".75rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: "0.25rem", color: "rgba(232,237,244,0.35)", fontSize: ".75rem" }}>
                 <span>5</span><span>100</span>
               </div>
             </div>
 
             <div>
-              <div className="flex justify-between mb-3">
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.75rem" }}>
                 <label
                   htmlFor="temps-slider"
                   style={{ color: "#E8EDF4", fontWeight: 600, fontSize: ".95rem" }}
@@ -176,14 +176,13 @@ export default function RoiCalculator() {
                   height: "6px",
                 }}
               />
-              <div className="flex justify-between mt-1" style={{ color: "rgba(232,237,244,0.35)", fontSize: ".75rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: "0.25rem", color: "rgba(232,237,244,0.35)", fontSize: ".75rem" }}>
                 <span>30 min</span><span>3h</span>
               </div>
             </div>
 
             <div
-              className="mt-8 p-4 rounded-xl"
-              style={{ background: "rgba(245,200,66,0.05)", border: "1px solid rgba(245,200,66,0.12)" }}
+              style={{ marginTop: "2rem", padding: "1rem", borderRadius: "0.75rem", background: "rgba(245,200,66,0.05)", border: "1px solid rgba(245,200,66,0.12)" }}
             >
               <p style={{ color: "rgba(232,237,244,0.6)", fontSize: ".82rem", lineHeight: 1.6 }}>
                 Avec Floxia, chaque devis prend <strong style={{ color: "#F5C842" }}>8 minutes</strong> au lieu de {tempsParDevis} minutes.
@@ -193,7 +192,7 @@ export default function RoiCalculator() {
           </motion.div>
 
           {/* Metrics */}
-          <div className="flex flex-col gap-4">
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             {metrics.map((m, i) => {
               const Icon = m.icon;
               return (
