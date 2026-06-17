@@ -156,24 +156,6 @@ export default function Hero() {
       <div className="hero-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }} />
       <div className="hero-aurora" style={{ position: "absolute", left: "50%", top: "45%", width: "70vw", height: "55vh", borderRadius: "50%", filter: "blur(80px)", animation: "hero-breathe 9s ease-in-out infinite alternate", zIndex: 2, pointerEvents: "none" }} />
       <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none", background: `radial-gradient(700px circle at ${mouseX}px ${mouseY}px, rgba(245,200,66,0.07), transparent 42%)`, transition: "background 0.1s" }} />
-      <div ref={giantRef} className="hero-giant-text" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", whiteSpace: "nowrap", zIndex: 2 }}>FLOXIA</div>
-
-      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden", zIndex: 3 }} aria-hidden>
-        {[
-          { top: "12%", right: "8%", size: 80, anim: "floatA 14s ease-in-out infinite" },
-          { top: "58%", right: "20%", size: 60, anim: "floatB 18s ease-in-out infinite" },
-          { top: "32%", right: "38%", size: 44, anim: "floatC 11s ease-in-out infinite" },
-        ].map((g, i) => (
-          <div key={i} style={{ position: "absolute", top: g.top, right: g.right, animation: g.anim, opacity: 0.6 }}>
-            <svg width={g.size} height={g.size} viewBox={`0 0 ${g.size} ${g.size}`} fill="none" stroke="rgba(245,200,66,0.18)" strokeWidth="1">
-              {i === 0 && <><rect x="10" y="10" width="60" height="60" rx="4"/><rect x="22" y="22" width="36" height="36" rx="2"/><line x1="10" y1="10" x2="22" y2="22"/><line x1="70" y1="10" x2="58" y2="22"/><line x1="10" y1="70" x2="22" y2="58"/><line x1="70" y1="70" x2="58" y2="58"/></>}
-              {i === 1 && <><polygon points="30,4 56,20 56,44 30,58 4,44 4,20"/><polygon points="30,14 46,23 46,38 30,47 14,38 14,23"/></>}
-              {i === 2 && <><circle cx="22" cy="22" r="18"/><circle cx="22" cy="22" r="10"/><line x1="4" y1="22" x2="40" y2="22"/><line x1="22" y1="4" x2="22" y2="40"/></>}
-            </svg>
-          </div>
-        ))}
-      </div>
-
       <div style={{ position: "relative", zIndex: 10 }}>
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
           style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "6px 18px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.06)", backdropFilter: "blur(8px)", marginBottom: "1.8rem" }}>
