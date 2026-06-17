@@ -1,320 +1,362 @@
 "use client";
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-const STYLES = `
-  .hero-wa-bubble-in {
-    background: #1F2C34; border-radius: 12px 12px 12px 4px;
-    font-size: 11px; color: #e9e9e9; padding: 7px 10px;
-    max-width: 90%; align-self: flex-start;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.4); line-height: 1.5;
-  }
-  .hero-wa-voice {
-    background: #025C4C; border-radius: 24px; padding: 8px 12px;
-    display: flex; align-items: center; gap: 8px; align-self: flex-end;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.4);
-  }
-  .hero-devis-card {
-    background: linear-gradient(135deg, #1a2744 0%, #0f1a2e 100%);
-    border: 1px solid rgba(245,200,66,0.2); border-radius: 10px;
-    padding: 10px; font-size: 10px; align-self: flex-start;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  }
-  .hero-iphone {
-    background-color: #0a0a0a;
-    box-shadow: inset 0 0 0 2px #3a3a3a, inset 0 0 0 7px #000,
-      0 40px 80px -15px rgba(0,0,0,0.95), 0 15px 25px -5px rgba(0,0,0,0.8);
-  }
-  .hero-hw-btn {
-    background: linear-gradient(90deg, #3a3a3a 0%, #111 100%);
-    box-shadow: -2px 0 5px rgba(0,0,0,0.9);
-  }
-  .hero-badge {
-    background: linear-gradient(135deg, rgba(245,200,66,0.08) 0%, rgba(255,255,255,0.01) 100%);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 0 0 1px rgba(245,200,66,0.15), 0 20px 40px -8px rgba(0,0,0,0.7),
-      inset 0 1px 1px rgba(245,200,66,0.1);
-  }
+const MORPH_WORDS = ["Automatisée", "Intelligente", "Connectée", "Souveraine", "Libérée"];
+const TYPED = [
+  "Générez vos devis et factures depuis WhatsApp en 3 minutes.",
+  "Un message vocal suffit pour créer un devis PDF complet.",
+  "Votre agent IA répond aux clients pendant que vous travaillez.",
+  "Relances automatiques, signature électronique, zéro ressaisie.",
+];
+
+const MESSAGES = [
+  { from: "user", text: "🎤 Message vocal reçu…", time: "09:41" },
+  { from: "bot",  text: "✅ Devis #247 généré — Terrassement 3 500 €", time: "09:41" },
+  { from: "bot",  text: "📄 PDF signé et envoyé au client.", time: "09:42" },
+  { from: "user", text: "Parfait, merci !", time: "09:42" },
+  { from: "bot",  text: "💶 Facture programmée à réception.", time: "09:42" },
+];
+
+const HERO_STYLES = `
+@keyframes hero-breathe {
+  0% { transform: translate(-50%,-50%) scale(1); opacity:0.5; }
+  100% { transform: translate(-50%,-50%) scale(1.18); opacity:0.85; }
+}
+@keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes floatA { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-18px) rotate(180deg)} }
+@keyframes floatB { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-22px) rotate(180deg)} }
+@keyframes floatC { 0%,100%{transform:translateY(0) rotateZ(0deg)} 50%{transform:translateY(14px) rotateZ(180deg)} }
+.hero-aurora {
+  background: radial-gradient(circle at 50% 50%,
+    rgba(245,200,66,0.13) 0%,
+    rgba(74,222,128,0.07) 45%,
+    transparent 70%);
+}
+.hero-bg-grid {
+  background-size: 60px 60px;
+  background-image:
+    linear-gradient(to right, rgba(232,237,244,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(232,237,244,0.04) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-giant-text {
+  font-size: 32vw;
+  line-height: 0.75;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245,200,66,0.07);
+  background: linear-gradient(180deg, rgba(245,200,66,0.09) 0%, transparent 55%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-glass-pill {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245,200,66,0.18);
+  background: rgba(255,255,255,0.04);
+  transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-glass-pill:hover {
+  border-color: rgba(245,200,66,0.45);
+  background: rgba(245,200,66,0.06);
+  box-shadow: 0 8px 32px rgba(245,200,66,0.18);
+}
+.hero-gold-btn {
+  background: linear-gradient(135deg,#F5C842 0%,#E6A800 100%);
+  color: #1E2B45;
+  font-weight: 800;
+  box-shadow: 0 8px 32px rgba(245,200,66,0.35);
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  border: none;
+}
+.hero-gold-btn:hover {
+  box-shadow: 0 16px 48px rgba(245,200,66,0.55);
+  transform: translateY(-3px);
+}
+.hero-text-glow {
+  background: linear-gradient(180deg, #E8EDF4 0%, rgba(232,237,244,0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 `;
 
-export default function Hero() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const heroTextRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const mockupRef = useRef<HTMLDivElement>(null);
-  const phoneRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number>(0);
-
-  // Mouse parallax on phone
+function MagneticBtn({ children, className, style, href, onClick }: {
+  children: React.ReactNode; className?: string; style?: React.CSSProperties;
+  href?: string; onClick?: () => void;
+}) {
+  const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
   useEffect(() => {
-    const onMouse = (e: MouseEvent) => {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(() => {
-        if (!phoneRef.current) return;
-        const xVal = (e.clientX / window.innerWidth - 0.5) * 2;
-        const yVal = (e.clientY / window.innerHeight - 0.5) * 2;
-        gsap.to(phoneRef.current, { rotationY: xVal * 10, rotationX: -yVal * 8, ease: "power3.out", duration: 1.2 });
-      });
+    const el = ref.current;
+    if (!el) return;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      gsap.to(el, { x: x * 0.3, y: y * 0.3, rotationY: x * 0.1, rotationX: -y * 0.1, scale: 1.05, ease: "power2.out", duration: 0.4 });
     };
-    window.addEventListener("mousemove", onMouse);
-    return () => { window.removeEventListener("mousemove", onMouse); cancelAnimationFrame(rafRef.current); };
+    const onLeave = () => gsap.to(el, { x: 0, y: 0, rotationX: 0, rotationY: 0, scale: 1, ease: "elastic.out(1,0.3)", duration: 1.2 });
+    el.addEventListener("mousemove", onMove as EventListener);
+    el.addEventListener("mouseleave", onLeave);
+    return () => { el.removeEventListener("mousemove", onMove as EventListener); el.removeEventListener("mouseleave", onLeave); };
   }, []);
 
-  // Scroll-pinned animation
+  const props = { ref, className, style };
+  if (href) return <a {...props} href={href} target="_blank" rel="noopener" style={{ ...style, textDecoration: "none", cursor: "pointer" }}>{children}</a>;
+  return <button {...props} onClick={onClick} style={{ ...style, cursor: "pointer", border: "none" }}>{children}</button>;
+}
+
+export default function Hero() {
+  const [wordIdx, setWordIdx] = useState(0);
+  const [typed, setTyped] = useState("");
+  const [lineIdx, setLineIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const charRef = useRef(0);
+  const [mouseX, setMouseX] = useState(0);
+  const [mouseY, setMouseY] = useState(0);
+  const giantRef = useRef<HTMLDivElement>(null);
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const cardOverlayRef = useRef<HTMLDivElement>(null);
+  const cardContentRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+
+  // Typewriter
+  useEffect(() => {
+    const t = setInterval(() => setWordIdx(i => (i + 1) % MORPH_WORDS.length), 2800);
+    return () => clearInterval(t);
+  }, []);
+
+  useEffect(() => {
+    const line = TYPED[lineIdx];
+    const delay = deleting ? 28 : 52;
+    const t = setTimeout(() => {
+      if (!deleting) {
+        if (charRef.current < line.length) { charRef.current++; setTyped(line.slice(0, charRef.current)); }
+        else { setTimeout(() => setDeleting(true), 2200); return; }
+      } else {
+        if (charRef.current > 0) { charRef.current--; setTyped(line.slice(0, charRef.current)); }
+        else { setDeleting(false); setLineIdx(i => (i + 1) % TYPED.length); return; }
+      }
+    }, delay);
+    return () => clearTimeout(t);
+  }, [typed, deleting, lineIdx]);
+
+  // GSAP giant text entrance
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(giantRef.current, { scale: 0.7, opacity: 0, duration: 1.8, ease: "power3.out" });
+    });
+    return () => ctx.revert();
+  }, []);
+
+  // GSAP scroll phone animation
   useEffect(() => {
     const section = sectionRef.current;
-    const heroText = heroTextRef.current;
     const card = cardRef.current;
+    const overlay = cardOverlayRef.current;
+    const content = cardContentRef.current;
     const cta = ctaRef.current;
-    const mockup = mockupRef.current;
-    if (!section || !heroText || !card || !cta || !mockup) return;
+    if (!section || !card || !overlay || !content || !cta) return;
 
-    const isMobile = window.innerWidth < 768;
-
-    // Initial states
-    gsap.set(card, { y: window.innerHeight + 200 });
-    gsap.set(cta, { autoAlpha: 0, scale: 0.85, filter: "blur(20px)" });
-    gsap.set(mockup, { autoAlpha: 0 });
+    gsap.set(card, { yPercent: 110, scale: 0.55, borderRadius: "2rem", opacity: 0 });
+    gsap.set(overlay, { opacity: 0 });
+    gsap.set(content, { opacity: 0, y: 30 });
+    gsap.set(cta, { opacity: 0, y: 20 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: "+=3500",
+        end: "+=1600",
         pin: true,
-        scrub: 0.5,
-        anticipatePin: 1,
+        scrub: 0.25,
       },
     });
 
-    tl
-      // Card rises, text fades
-      .to(heroText, { scale: 1.1, filter: "blur(16px)", opacity: 0.1, duration: 1, ease: "power2.inOut" }, 0)
-      .to(card, { y: 0, duration: 1, ease: "power3.inOut" }, 0)
-      // Card expands fullscreen
-      .to(card, { width: "100%", height: "100%", borderRadius: "0px", duration: 0.8, ease: "power3.inOut" })
-      // Mockup + content reveal
-      .to(mockup, { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, "-=0.3")
-      // Hold
-      .to({}, { duration: 1.2 })
-      // CTA reveal
-      .set(heroText, { autoAlpha: 0 })
-      .set(cta, { autoAlpha: 1 })
-      .to(mockup, { autoAlpha: 0, y: -30, duration: 0.6, ease: "power2.in" })
-      .to(card, { width: isMobile ? "92vw" : "85vw", height: isMobile ? "92vh" : "85vh", borderRadius: isMobile ? "32px" : "40px", duration: 1, ease: "expo.inOut" }, "cta")
-      .to(cta, { scale: 1, filter: "blur(0px)", duration: 1, ease: "expo.inOut" }, "cta")
-      // Exit
-      .to({}, { duration: 0.8 })
-      .to(card, { y: -window.innerHeight - 300, duration: 0.8, ease: "power3.in" });
+    tl.to(card, { yPercent: 0, opacity: 1, duration: 1.2, ease: "power2.out" }, 0)
+      .to(card, { scale: 1, borderRadius: "0rem", duration: 1.8, ease: "power2.inOut" }, 0.4)
+      .to(overlay, { opacity: 1, duration: 1.2 }, 0.6)
+      .to(content, { opacity: 1, y: 0, duration: 1.2 }, 1.4)
+      .to(cta, { opacity: 1, y: 0, duration: 0.8 }, 2.2)
+      .to({}, { duration: 0.8 }, 3.0);
 
-    return () => { tl.kill(); ScrollTrigger.getAll().forEach(t => t.kill()); };
+    return () => { ScrollTrigger.getAll().forEach(t => t.kill()); };
   }, []);
 
   return (
-    <div
+    <section
       ref={sectionRef}
-      style={{ position: "relative", width: "100vw", height: "100vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", background: "#060D18" }}
+      style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8rem 6vw 6rem", overflow: "hidden", textAlign: "center" }}
+      onMouseMove={e => { const r = e.currentTarget.getBoundingClientRect(); setMouseX(e.clientX - r.left); setMouseY(e.clientY - r.top); }}
     >
-      <style dangerouslySetInnerHTML={{ __html: STYLES }} />
+      <style>{HERO_STYLES}</style>
 
-      {/* Grid bg */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", backgroundSize: "60px 60px", backgroundImage: "linear-gradient(to right, rgba(245,200,66,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,200,66,0.04) 1px, transparent 1px)", maskImage: "radial-gradient(ellipse at center, black 0%, transparent 70%)", WebkitMaskImage: "radial-gradient(ellipse at center, black 0%, transparent 70%)" }} />
+      {/* Background image */}
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/image.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
+      {/* Dark overlay */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,15,20,0.92) 0%, rgba(10,15,20,0.75) 50%, rgba(10,15,20,0.88) 100%)", zIndex: 1 }} />
+      {/* Bottom fade */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "16rem", background: "linear-gradient(to top, #0F1923, transparent)", zIndex: 2 }} />
+      {/* Grid overlay */}
+      <div className="hero-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }} />
+      {/* Aurora glow */}
+      <div className="hero-aurora" style={{ position: "absolute", left: "50%", top: "45%", width: "70vw", height: "55vh", borderRadius: "50%", filter: "blur(80px)", animation: "hero-breathe 9s ease-in-out infinite alternate", zIndex: 2, pointerEvents: "none" }} />
+      {/* Spotlight mouse */}
+      <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none", background: `radial-gradient(700px circle at ${mouseX}px ${mouseY}px, rgba(245,200,66,0.07), transparent 42%)`, transition: "background 0.1s" }} />
+      {/* Giant BG text */}
+      <div ref={giantRef} className="hero-giant-text" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", whiteSpace: "nowrap", zIndex: 2 }}>FLOXIA</div>
+      {/* Floating geo shapes */}
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden", zIndex: 3 }} aria-hidden>
+        {[
+          { top: "12%", right: "8%", size: 80, anim: "floatA 14s ease-in-out infinite" },
+          { top: "58%", right: "20%", size: 60, anim: "floatB 18s ease-in-out infinite" },
+          { top: "32%", right: "38%", size: 44, anim: "floatC 11s ease-in-out infinite" },
+        ].map((g, i) => (
+          <div key={i} style={{ position: "absolute", top: g.top, right: g.right, animation: g.anim, opacity: 0.6 }}>
+            <svg width={g.size} height={g.size} viewBox={`0 0 ${g.size} ${g.size}`} fill="none" stroke="rgba(245,200,66,0.18)" strokeWidth="1">
+              {i === 0 && <><rect x="10" y="10" width="60" height="60" rx="4"/><rect x="22" y="22" width="36" height="36" rx="2"/><line x1="10" y1="10" x2="22" y2="22"/><line x1="70" y1="10" x2="58" y2="22"/><line x1="10" y1="70" x2="22" y2="58"/><line x1="70" y1="70" x2="58" y2="58"/></>}
+              {i === 1 && <><polygon points="30,4 56,20 56,44 30,58 4,44 4,20"/><polygon points="30,14 46,23 46,38 30,47 14,38 14,23"/></>}
+              {i === 2 && <><circle cx="22" cy="22" r="18"/><circle cx="22" cy="22" r="10"/><line x1="4" y1="22" x2="40" y2="22"/><line x1="22" y1="4" x2="22" y2="40"/></>}
+            </svg>
+          </div>
+        ))}
+      </div>
 
-      {/* Hero text */}
-      <div ref={heroTextRef} style={{ position: "absolute", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: "100vw", padding: "0 1.5rem" }}>
+      {/* OLD HERO CONTENT */}
+      <div style={{ position: "relative", zIndex: 10 }}>
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+          style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "6px 18px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.06)", backdropFilter: "blur(8px)", marginBottom: "1.8rem" }}>
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#4ADE80", boxShadow: "0 0 8px rgba(74,222,128,0.8)", display: "inline-block" }} />
+          <span style={{ color: "#F5C842", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>IA disponible 24h/24 — Hébergé en France</span>
+        </motion.div>
+
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2.5rem,6.5vw,5.5rem)", color: "#E8EDF4", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "0.2rem" }}
-        >
-          Votre devis en
+          initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+          style={{ marginBottom: "1.5rem", fontFamily: "var(--font-nunito)", fontSize: "clamp(3rem,8vw,7.5rem)", fontWeight: 900, lineHeight: 0.92, letterSpacing: "-.04em" }}>
+          <span className="hero-text-glow">Floxia</span>
+          <span style={{ display: "inline-flex", alignItems: "center", marginLeft: "0.75rem", padding: "0 0.5rem", borderRadius: "0.3rem", background: "#F5C842", color: "#1E2B45", fontSize: "clamp(1rem,2vw,1.8rem)", letterSpacing: ".08em", verticalAlign: "middle", position: "relative", top: "-.1em", fontWeight: 900, boxShadow: "0 4px 20px rgba(245,200,66,0.45)" }}>OS</span>
+          <br />
+          <AnimatePresence mode="wait">
+            <motion.span key={wordIdx} initial={{ filter: "blur(8px)", opacity: 0 }} animate={{ filter: "blur(0)", opacity: 1 }} exit={{ filter: "blur(8px)", opacity: 0 }} transition={{ duration: 0.4 }}
+              style={{ color: "#F5C842", display: "inline-block" }}>
+              {MORPH_WORDS[wordIdx]}
+            </motion.span>
+          </AnimatePresence>.<br />
+          <span style={{ fontSize: "clamp(1.8rem,4vw,3.5rem)", color: "rgba(232,237,244,0.65)" }}>Votre temps. Rendu.</span>
         </motion.h1>
-        <motion.h1
-          initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
-          animate={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }}
-          transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2.5rem,6.5vw,5.5rem)", letterSpacing: "-0.04em", lineHeight: 1.05, background: "linear-gradient(180deg, #F5C842 0%, rgba(245,200,66,0.6) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
-        >
-          3 minutes chrono.
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9 }}
-          style={{ marginTop: "1.25rem", color: "rgba(232,237,244,0.45)", fontSize: "clamp(0.9rem,1.8vw,1.05rem)", maxWidth: "32rem" }}
-        >
-          Un message vocal sur WhatsApp suffit pour générer un devis PDF complet.
+
+        <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.38 }}
+          style={{ marginBottom: "2.5rem", color: "rgba(232,237,244,0.72)", fontSize: "clamp(1rem,2.2vw,1.2rem)", fontWeight: 300, lineHeight: 1.7, maxWidth: 620, margin: "0 auto 2.5rem" }}>
+          <span style={{ display: "block", minHeight: "1.7em" }}>
+            {typed}<span style={{ display: "inline-block", width: 1, height: "1em", background: "#F5C842", margin: "0 1px", verticalAlign: "middle", animation: "cursor-blink 0.8s steps(1) infinite" }} />
+          </span>
+          <span>Un vocal suffit — Floxia s&apos;occupe du reste.</span>
         </motion.p>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.52 }}
+          style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
+          <MagneticBtn href="https://calendly.com/afele1845/30min" className="hero-gold-btn" style={{ padding: "1rem 2.2rem", borderRadius: "999px", fontSize: "0.92rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+            🎯 Réserver une démo — 30 min
+          </MagneticBtn>
+          <MagneticBtn href="#services" className="hero-glass-pill" style={{ padding: "1rem 2rem", borderRadius: "999px", fontSize: "0.88rem", color: "rgba(245,200,66,0.9)", fontWeight: 700, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+            Voir les services →
+          </MagneticBtn>
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.75 }}
+          style={{ display: "flex", gap: "2.5rem", justifyContent: "center", flexWrap: "wrap", marginTop: "3.5rem" }}>
+          {[["3 min", "par devis"], ["99€", "/mois"], ["0h", "de formation"]].map(([val, label]) => (
+            <div key={label} style={{ textAlign: "center" }}>
+              <div style={{ fontSize: "clamp(1.5rem,3vw,2.2rem)", fontWeight: 900, fontFamily: "var(--font-nunito)", color: "#F5C842", lineHeight: 1 }}>{val}</div>
+              <div style={{ fontSize: "0.72rem", color: "rgba(232,237,244,0.45)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", marginTop: "0.25rem" }}>{label}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
-      {/* CTA (revealed after scroll) */}
-      <div ref={ctaRef} style={{ position: "absolute", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: "100vw", padding: "0 1.5rem", pointerEvents: "auto" }}>
-        <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4.5vw,3.5rem)", background: "linear-gradient(180deg,#F5C842 0%,rgba(245,200,66,0.55) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", marginBottom: "1rem" }}>
-          Prêt à gagner 8h/semaine ?
-        </h2>
-        <p style={{ color: "rgba(232,237,244,0.5)", fontSize: "1rem", marginBottom: "2rem", maxWidth: "28rem", lineHeight: 1.65 }}>
-          Rejoignez les artisans du bâtiment qui ont automatisé leur administratif.
-        </p>
-        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
-          <a href="#tarifs" style={{ padding: "0.9rem 2rem", borderRadius: "999px", background: "linear-gradient(180deg,#F5C842 0%,#d4a823 100%)", color: "#0A1520", fontWeight: 800, fontSize: "0.95rem", textDecoration: "none", boxShadow: "0 8px 24px rgba(245,200,66,0.25)" }}>
-            Démarrer gratuitement →
-          </a>
-          <a href="#services" style={{ padding: "0.9rem 2rem", borderRadius: "999px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", color: "#E8EDF4", fontWeight: 600, fontSize: "0.95rem", textDecoration: "none" }}>
-            Voir les fonctionnalités
-          </a>
-        </div>
-      </div>
+      {/* SCROLL PHONE CARD — dark backdrop */}
+      <div ref={cardOverlayRef} style={{ position: "absolute", inset: 0, background: "rgba(5,10,16,0.93)", zIndex: 18, pointerEvents: "none" }} />
 
-      {/* Main card */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 20, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
-        <div
-          ref={cardRef}
-          style={{ position: "relative", overflow: "hidden", width: "92vw", height: "92vh", borderRadius: "32px", background: "linear-gradient(145deg,#0D1F35 0%,#060D18 100%)", border: "1px solid rgba(245,200,66,0.08)", boxShadow: "0 40px 100px -20px rgba(0,0,0,0.95), inset 0 1px 2px rgba(245,200,66,0.1)", pointerEvents: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}
-        >
-          <div ref={mockupRef} style={{ width: "100%", height: "100%", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2rem", alignItems: "center", padding: "2rem 3rem", maxWidth: "80rem", margin: "0 auto" }}>
-
-            {/* LEFT */}
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "4px 12px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", marginBottom: "1.25rem", width: "fit-content" }}>
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80", boxShadow: "0 0 8px rgba(74,222,128,0.8)" }} />
-                <span style={{ color: "#F5C842", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>IA Vocale WhatsApp</span>
+      {/* The rising card */}
+      <div ref={cardRef} style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(160deg, #0A1520 0%, #050A10 100%)",
+        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+        zIndex: 20, overflow: "hidden",
+      }}>
+        <div ref={cardContentRef} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem", padding: "2rem" }}>
+          {/* iPhone mockup */}
+          <div style={{
+            width: 220, height: 440,
+            background: "linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+            borderRadius: "2.5rem", border: "2px solid rgba(255,255,255,0.12)",
+            boxShadow: "0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)",
+            overflow: "hidden", display: "flex", flexDirection: "column",
+          }}>
+            {/* Status bar */}
+            <div style={{ padding: "12px 20px 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ color: "white", fontSize: 11, fontWeight: 600 }}>9:41</span>
+              <div style={{ width: 80, height: 14, background: "#000", borderRadius: 7 }} />
+              <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+                <div style={{ width: 12, height: 8, borderRadius: 1, border: "1.5px solid white", position: "relative" }}><div style={{ position: "absolute", left: 1, top: 1, right: 1, bottom: 1, background: "white", borderRadius: 0.5 }} /></div>
               </div>
-              <h3 style={{ fontFamily: "var(--font-nunito)", color: "#E8EDF4", fontSize: "clamp(1.3rem,2.2vw,2rem)", fontWeight: 900, lineHeight: 1.15, marginBottom: "1rem" }}>
-                Administrez votre chantier <span style={{ color: "#F5C842" }}>depuis le terrain.</span>
-              </h3>
-              <p style={{ color: "rgba(232,237,244,0.5)", fontSize: "0.85rem", lineHeight: 1.65, marginBottom: "1.25rem" }}>
-                Un vocal suffit. <strong style={{ color: "#E8EDF4" }}>Floxia</strong> génère vos devis, factures et relances automatiquement.
-              </p>
-              {["Devis PDF en 3 min via WhatsApp", "Relances auto devis & factures", "Agent IA réceptionniste 24h/24"].map((f, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "0.5rem" }}>
-                  <span style={{ width: 18, height: 18, borderRadius: "50%", background: "rgba(74,222,128,0.12)", border: "1px solid rgba(74,222,128,0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="9" height="9" fill="none" stroke="#4ADE80" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-                  </span>
-                  <span style={{ color: "rgba(232,237,244,0.7)", fontSize: "0.8rem" }}>{f}</span>
+            </div>
+            {/* WhatsApp header */}
+            <div style={{ padding: "8px 14px", background: "rgba(37,211,102,0.12)", borderBottom: "1px solid rgba(37,211,102,0.2)", display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ width: 32, height: 32, borderRadius: "50%", background: "linear-gradient(135deg,#25D366,#128C7E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>🤖</div>
+              <div>
+                <div style={{ color: "white", fontSize: 12, fontWeight: 700 }}>Floxia IA</div>
+                <div style={{ color: "#25D366", fontSize: 10 }}>● en ligne</div>
+              </div>
+            </div>
+            {/* Messages */}
+            <div style={{ flex: 1, padding: "10px", display: "flex", flexDirection: "column", gap: 6, overflowY: "hidden" }}>
+              {MESSAGES.map((msg, i) => (
+                <div key={i} style={{ display: "flex", justifyContent: msg.from === "user" ? "flex-end" : "flex-start" }}>
+                  <div style={{
+                    maxWidth: "78%", padding: "6px 10px",
+                    borderRadius: msg.from === "user" ? "12px 12px 2px 12px" : "12px 12px 12px 2px",
+                    background: msg.from === "user" ? "#25D366" : "rgba(255,255,255,0.08)",
+                    color: msg.from === "user" ? "#fff" : "rgba(232,237,244,0.9)", fontSize: 10, lineHeight: 1.4,
+                  }}>
+                    {msg.text}
+                    <div style={{ fontSize: 8, opacity: 0.6, marginTop: 2, textAlign: "right" }}>{msg.time}</div>
+                  </div>
                 </div>
               ))}
             </div>
+          </div>
 
-            {/* CENTER: Phone */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", position: "relative", height: "100%" }}>
-              <div style={{ position: "relative", transform: "scale(0.9)" }}>
-                <div ref={phoneRef} className="hero-iphone" style={{ position: "relative", width: 265, height: 550, borderRadius: "3rem", willChange: "transform", transformStyle: "preserve-3d" }}>
-                  <div className="hero-hw-btn" style={{ position: "absolute", top: 110, left: -3, width: 3, height: 24, borderRadius: "4px 0 0 4px" }} />
-                  <div className="hero-hw-btn" style={{ position: "absolute", top: 148, left: -3, width: 3, height: 40, borderRadius: "4px 0 0 4px" }} />
-                  <div className="hero-hw-btn" style={{ position: "absolute", top: 200, left: -3, width: 3, height: 40, borderRadius: "4px 0 0 4px" }} />
-                  <div className="hero-hw-btn" style={{ position: "absolute", top: 160, right: -3, width: 3, height: 62, borderRadius: "0 4px 4px 0" }} />
-
-                  <div style={{ position: "absolute", inset: 7, background: "#111B21", borderRadius: "2.5rem", overflow: "hidden", color: "white", zIndex: 10 }}>
-                    <div style={{ position: "absolute", top: 5, left: "50%", transform: "translateX(-50%)", width: 90, height: 25, background: "#000", borderRadius: 999, zIndex: 50 }} />
-
-                    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
-                      {/* WA Header */}
-                      <div style={{ background: "#1F2C34", padding: "38px 12px 10px", display: "flex", alignItems: "center", gap: 8, borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                        <div style={{ width: 28, height: 28, borderRadius: "50%", background: "linear-gradient(135deg,#F5C842,#d4a823)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 11, color: "#0A1520" }}>F</div>
-                        <div>
-                          <div style={{ fontSize: 11, fontWeight: 700 }}>Floxia IA</div>
-                          <div style={{ fontSize: 9, color: "#25D366" }}>en ligne</div>
-                        </div>
-                      </div>
-
-                      {/* Chat */}
-                      <div style={{ flex: 1, padding: "10px 9px", display: "flex", flexDirection: "column", gap: 7, background: "#0B141A", overflowY: "hidden" }}>
-                        <div className="hero-wa-voice">
-                          <div style={{ width: 20, height: 20, borderRadius: "50%", background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <svg width="9" height="9" fill="white" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/></svg>
-                          </div>
-                          <div style={{ flex: 1, height: 18, background: "rgba(255,255,255,0.1)", borderRadius: 999 }}>
-                            <div style={{ height: "100%", width: "60%", background: "#25D366", borderRadius: 999, opacity: 0.6 }} />
-                          </div>
-                          <span style={{ fontSize: 9, color: "rgba(255,255,255,0.35)" }}>0:12</span>
-                        </div>
-
-                        <div className="hero-wa-bubble-in">
-                          <div style={{ color: "#F5C842", fontSize: 10, fontWeight: 700, marginBottom: 3 }}>✦ Floxia IA</div>
-                          Je génère votre devis pour M. Durand — carrelage 85m²...
-                          <div style={{ fontSize: 9, color: "rgba(255,255,255,0.3)", marginTop: 2, textAlign: "right" }}>09:42 ✓✓</div>
-                        </div>
-
-                        <div className="hero-devis-card">
-                          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 5 }}>
-                            <div style={{ width: 18, height: 18, borderRadius: 4, background: "rgba(245,200,66,0.15)", border: "1px solid rgba(245,200,66,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                              <svg width="9" height="9" fill="#F5C842" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                            </div>
-                            <div>
-                              <div style={{ color: "#F5C842", fontWeight: 700, fontSize: 10 }}>DEVIS_Durand.pdf</div>
-                              <div style={{ color: "rgba(232,237,244,0.4)", fontSize: 9 }}>PDF · 48 Ko</div>
-                            </div>
-                          </div>
-                          <div style={{ borderTop: "1px solid rgba(245,200,66,0.1)", paddingTop: 5, display: "flex", justifyContent: "space-between" }}>
-                            <span style={{ color: "rgba(232,237,244,0.4)", fontSize: 9 }}>Total HT</span>
-                            <span style={{ color: "#4ADE80", fontWeight: 800, fontSize: 11 }}>3 840 €</span>
-                          </div>
-                        </div>
-
-                        <div className="hero-wa-bubble-in" style={{ fontSize: 10 }}>
-                          ✅ Envoyé à durand@gmail.com<br/>Relance auto J+3 si non signé.
-                          <div style={{ fontSize: 9, color: "rgba(255,255,255,0.3)", marginTop: 2, textAlign: "right" }}>09:43 ✓✓</div>
-                        </div>
-                      </div>
-
-                      {/* Input */}
-                      <div style={{ background: "#1F2C34", padding: "7px 9px", display: "flex", alignItems: "center", gap: 7, borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                        <div style={{ flex: 1, background: "#2A3942", borderRadius: 999, padding: "5px 11px", fontSize: 10, color: "rgba(232,237,244,0.3)" }}>Message</div>
-                        <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <svg width="9" height="9" fill="white" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/></svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Badges */}
-                <div className="hero-badge" style={{ position: "absolute", top: 20, left: -80, borderRadius: 12, padding: "9px 12px", display: "flex", alignItems: "center", gap: 9 }}>
-                  <span style={{ fontSize: 16 }}>⚡</span>
-                  <div>
-                    <div style={{ color: "#E8EDF4", fontSize: 11, fontWeight: 700 }}>Devis en 3 min</div>
-                    <div style={{ color: "rgba(245,200,66,0.55)", fontSize: 9 }}>IA Vocale WhatsApp</div>
-                  </div>
-                </div>
-                <div className="hero-badge" style={{ position: "absolute", bottom: 50, right: -85, borderRadius: 12, padding: "9px 12px", display: "flex", alignItems: "center", gap: 9 }}>
-                  <span style={{ fontSize: 16 }}>✍️</span>
-                  <div>
-                    <div style={{ color: "#E8EDF4", fontSize: 11, fontWeight: 700 }}>Signé en ligne</div>
-                    <div style={{ color: "rgba(74,222,128,0.65)", fontSize: 9 }}>Valeur légale</div>
-                  </div>
-                </div>
-              </div>
+          {/* Label */}
+          <div style={{ textAlign: "center" }}>
+            <div style={{ color: "#F5C842", fontSize: "clamp(1.2rem,3vw,2rem)", fontWeight: 900, fontFamily: "var(--font-nunito)", marginBottom: "0.5rem" }}>
+              Votre devis en 3 minutes
             </div>
-
-            {/* RIGHT */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", textAlign: "right" }}>
-              <div style={{ fontFamily: "var(--font-nunito)", fontSize: "clamp(3rem,5.5vw,6.5rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.9, marginBottom: "1.5rem", background: "linear-gradient(180deg,#fff 0%,#a1a1aa 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.7))" }}>
-                Floxia
-              </div>
-              {[
-                { val: "47", label: "Fonctionnalités IA", color: "#F5C842" },
-                { val: "8h", label: "Gagnées/semaine", color: "#4ADE80" },
-                { val: "3min", label: "Par devis complet", color: "#60A5FA" },
-              ].map((s) => (
-                <div key={s.label} style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${s.color}20`, borderRadius: 10, padding: "0.65rem 1.1rem", marginBottom: "0.6rem", textAlign: "right", width: "100%" }}>
-                  <div style={{ color: s.color, fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.5rem", lineHeight: 1 }}>{s.val}</div>
-                  <div style={{ color: "rgba(232,237,244,0.4)", fontSize: "0.7rem", marginTop: "0.15rem" }}>{s.label}</div>
-                </div>
-              ))}
+            <div style={{ color: "rgba(232,237,244,0.6)", fontSize: "clamp(0.85rem,1.8vw,1rem)" }}>
+              Un message vocal suffit. Floxia fait le reste.
             </div>
-
           </div>
         </div>
-      </div>
 
-      {/* Bottom fade into next section */}
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "10rem", background: "linear-gradient(to top, rgba(15,25,35,0.95) 0%, transparent 100%)", zIndex: 30, pointerEvents: "none" }} />
-    </div>
+        {/* CTA inside card */}
+        <div ref={ctaRef} style={{ position: "absolute", bottom: "2rem", left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+          <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener"
+            style={{ padding: "1rem 2.5rem", borderRadius: "999px", background: "linear-gradient(135deg,#F5C842,#E6A800)", color: "#1E2B45", fontWeight: 800, fontSize: "0.95rem", textDecoration: "none", boxShadow: "0 8px 32px rgba(245,200,66,0.4)", display: "inline-block" }}>
+            🎯 Voir la démo
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
