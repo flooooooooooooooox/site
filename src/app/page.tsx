@@ -10,7 +10,13 @@ import Pricing from "@/components/sections/Pricing";
 import Faq from "@/components/sections/Faq";
 import CtaBand from "@/components/sections/CtaBand";
 import Footer from "@/components/sections/Footer";
-import { LiquidWave, GoldParticleLine, DiagonalSlash, FogBlend } from "@/components/ui/SectionTransitions";
+import {
+  Perspective3DFloor,
+  CubeEdge,
+  RippleDepth,
+  PrismSlice,
+  DepthFade,
+} from "@/components/ui/SectionTransitions";
 
 export default function Home() {
   return (
@@ -20,22 +26,19 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Perspective3DFloor />
         <Services />
-        {/* #0F1923 → #0A1520 */}
-        <LiquidWave topColor="#0F1923" bottomColor="#0A1520" />
+        <DepthFade />
         <ErpOsSection />
-        {/* #0A1520 → #0F1923 */}
-        <DiagonalSlash topColor="#0A1520" bottomColor="#0F1923" />
+        <PrismSlice />
         <StorySection />
+        <CubeEdge />
         <RoiCalculator />
-        {/* #0F1923 → #0A1520 */}
-        <FogBlend topColor="#0F1923" bottomColor="#0A1520" />
+        <RippleDepth />
         <Comparatif />
-        {/* #0A1520 → #0F1923 */}
-        <LiquidWave topColor="#0A1520" bottomColor="#0F1923" />
+        <Perspective3DFloor />
         <Pricing />
-        {/* #0F1923 → #0A1520 */}
-        <GoldParticleLine topColor="#0F1923" bottomColor="#0A1520" />
+        <DepthFade />
         <Faq />
         <CtaBand />
       </main>
