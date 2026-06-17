@@ -44,8 +44,6 @@ const SECTIONS = [
     label: "Infrastructure & Prix",
     rows: [
       { feature: "Hébergement 100% France / RGPD natif",   floxia: true,       obat: true,       sage: false,      ebp: false },
-      { feature: "Temps de formation",                      floxia: "0h",       obat: "10h+",     sage: "30h+",     ebp: "20h+" },
-      { feature: "Prix mensuel",                            floxia: "dès 99€",  obat: "dès 59€",  sage: "dès 29€*", ebp: "dès 25€*" },
     ],
   },
 ];
