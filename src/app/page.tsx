@@ -17,6 +17,7 @@ import {
   CubeEdge,
   RippleDepth,
   DepthFade,
+  HeroWave,
 } from "@/components/ui/SectionTransitions";
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <HeroWave />
         <Services />
         <DepthFade />
         <ErpOsSection />

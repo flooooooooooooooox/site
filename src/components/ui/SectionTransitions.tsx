@@ -1,6 +1,42 @@
 "use client";
 import { useEffect, useState } from "react";
 
+// Wave transition between hero photo and dark sections
+export function HeroWave() {
+  return (
+    <div style={{ position: "relative", marginTop: "-2px", lineHeight: 0, zIndex: 1 }}>
+      <svg
+        viewBox="0 0 1440 120"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        style={{ width: "100%", height: "clamp(60px, 10vw, 120px)", display: "block" }}
+      >
+        <defs>
+          <linearGradient id="waveGold" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="rgba(245,200,66,0)" />
+            <stop offset="30%" stopColor="rgba(245,200,66,0.18)" />
+            <stop offset="70%" stopColor="rgba(245,200,66,0.18)" />
+            <stop offset="100%" stopColor="rgba(245,200,66,0)" />
+          </linearGradient>
+        </defs>
+        {/* Fill from bottom */}
+        <path
+          d="M0,40 C240,100 480,10 720,60 C960,110 1200,20 1440,55 L1440,120 L0,120 Z"
+          fill="#05080D"
+        />
+        {/* Gold shimmer line */}
+        <path
+          d="M0,40 C240,100 480,10 720,60 C960,110 1200,20 1440,55"
+          fill="none"
+          stroke="url(#waveGold)"
+          strokeWidth="1.5"
+          opacity="0.7"
+        />
+      </svg>
+    </div>
+  );
+}
+
 function useTheme() {
   const [isDark, setIsDark] = useState(true);
   useEffect(() => {

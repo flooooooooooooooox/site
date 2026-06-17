@@ -6,10 +6,10 @@ export default function GlobalScene() {
     <div style={{ position: "fixed", inset: 0, width: "100%", height: "100%", zIndex: -1, pointerEvents: "none" }}>
       <MeshGradient
         style={{ width: "100%", height: "100%" }}
-        colors={["#05080D", "#0D1600", "#1C1200", "#05080D"]}
-        speed={0.35}
-        distortion={1.2}
-        swirl={0.6}
+        colors={["#05080D", "#1F0D00", "#150800", "#0A0500"]}
+        speed={0.3}
+        distortion={1.4}
+        swirl={0.8}
       />
     </div>
   );
