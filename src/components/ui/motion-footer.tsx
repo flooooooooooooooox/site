@@ -201,9 +201,8 @@ export function CinematicFooter() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <div ref={wrapperRef} style={{ position: "relative", height: "100vh", width: "100%" }}
+      <div ref={wrapperRef} style={{ position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
         className="cinematic-footer-wrapper"
-        {...{ style: { position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" } }}
       >
         <footer style={{ position: "fixed", bottom: 0, left: 0, height: "100vh", width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden", background: "var(--background)", color: "var(--foreground)" }}
           className="cinematic-footer-wrapper">
