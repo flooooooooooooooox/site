@@ -143,12 +143,14 @@ export default function Hero() {
 
   return (
     <section
-      style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8rem 6vw 6rem", overflow: "hidden", textAlign: "center" }}
+      style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "clamp(5rem,10vh,8rem) 6vw clamp(3rem,6vh,6rem)", textAlign: "center" }}
       onMouseMove={e => { const r = e.currentTarget.getBoundingClientRect(); setMouseX(e.clientX - r.left); setMouseY(e.clientY - r.top); }}
     >
       <style>{HERO_STYLES}</style>
 
-      {/* extra overlay so text stays readable over the photo */}
+      {/* Photo background */}
+      <img src="/chantier1.png" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", zIndex: 0 }} />
+      {/* Dark overlay */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(5,10,16,0.78) 0%, rgba(5,10,16,0.55) 60%, rgba(5,10,16,0.72) 100%)", zIndex: 1 }} />
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "16rem", background: "linear-gradient(to top, #0F1923, transparent)", zIndex: 2 }} />
       <div className="hero-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }} />
