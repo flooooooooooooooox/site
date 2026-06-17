@@ -1,37 +1,73 @@
 "use client";
 import { useEffect, useState } from "react";
 
-// Wave transition between hero photo and dark sections
+// Terrain/building silhouette transition between hero and dark sections
 export function HeroWave() {
   return (
     <div style={{ position: "relative", marginTop: "-2px", lineHeight: 0, zIndex: 1 }}>
       <svg
-        viewBox="0 0 1440 120"
+        viewBox="0 0 1440 160"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
-        style={{ width: "100%", height: "clamp(60px, 10vw, 120px)", display: "block" }}
+        style={{ width: "100%", height: "clamp(80px, 12vw, 160px)", display: "block" }}
       >
         <defs>
-          <linearGradient id="waveGold" x1="0" y1="0" x2="1" y2="0">
+          <linearGradient id="terrainGold" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="rgba(245,200,66,0)" />
-            <stop offset="30%" stopColor="rgba(245,200,66,0.18)" />
-            <stop offset="70%" stopColor="rgba(245,200,66,0.18)" />
+            <stop offset="20%" stopColor="rgba(245,200,66,0.25)" />
+            <stop offset="50%" stopColor="rgba(245,200,66,0.4)" />
+            <stop offset="80%" stopColor="rgba(245,200,66,0.25)" />
             <stop offset="100%" stopColor="rgba(245,200,66,0)" />
           </linearGradient>
+          <linearGradient id="terrainFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#05080D" stopOpacity="0" />
+            <stop offset="100%" stopColor="#05080D" stopOpacity="1" />
+          </linearGradient>
         </defs>
-        {/* Fill from bottom */}
+
+        {/* Skyline background fill */}
         <path
-          d="M0,40 C240,100 480,10 720,60 C960,110 1200,20 1440,55 L1440,120 L0,120 Z"
+          d="
+            M0,160 L0,110
+            L40,110 L40,90 L60,90 L60,70 L80,70 L80,90 L100,90 L100,75 L120,75 L120,55 L130,55 L130,45 L140,45 L140,55 L150,55 L150,90
+            L180,90 L180,80 L200,80 L200,60 L210,60 L210,50 L220,50 L220,60 L230,60 L230,80 L250,80 L250,95
+            L290,95 L290,85 L300,85 L300,65 L310,65 L310,50 L315,50 L315,40 L320,40 L325,40 L325,50 L330,50 L330,65 L340,65 L340,85 L360,85 L360,100
+            L400,100 L400,85 L420,85 L420,70 L440,70 L440,55 L455,55 L455,45 L460,38 L465,45 L465,55 L480,55 L480,70 L500,70 L500,85 L520,85 L520,100
+            L560,100 L560,90 L580,90 L580,75 L600,75 L600,60 L615,60 L615,50 L620,50 L620,60 L640,60 L640,80 L660,80 L660,95
+            L700,95 L700,80 L720,80 L720,65 L730,65 L730,55 L735,48 L740,42 L745,48 L750,55 L760,55 L760,65 L780,65 L780,80 L800,80 L800,100
+            L840,100 L840,85 L860,85 L860,70 L875,70 L875,58 L880,52 L885,58 L885,70 L900,70 L900,85 L920,85 L920,100
+            L960,100 L960,88 L980,88 L980,72 L990,72 L990,60 L1000,60 L1000,50 L1010,50 L1010,60 L1020,60 L1020,72 L1040,72 L1040,88 L1060,88 L1060,105
+            L1100,105 L1100,90 L1120,90 L1120,75 L1130,75 L1130,62 L1135,55 L1140,48 L1145,55 L1150,62 L1150,75 L1160,75 L1160,90 L1180,90 L1180,108
+            L1220,108 L1220,92 L1240,92 L1240,78 L1260,78 L1260,65 L1270,65 L1270,55 L1280,55 L1280,65 L1290,65 L1290,78 L1310,78 L1310,95 L1330,95
+            L1380,95 L1380,108 L1400,108 L1400,115 L1440,115 L1440,160 Z
+          "
           fill="#05080D"
         />
-        {/* Gold shimmer line */}
+
+        {/* Gold outline on top of skyline */}
         <path
-          d="M0,40 C240,100 480,10 720,60 C960,110 1200,20 1440,55"
+          d="
+            M0,110
+            L40,110 L40,90 L60,90 L60,70 L80,70 L80,90 L100,90 L100,75 L120,75 L120,55 L130,55 L130,45 L140,45 L140,55 L150,55 L150,90
+            L180,90 L180,80 L200,80 L200,60 L210,60 L210,50 L220,50 L220,60 L230,60 L230,80 L250,80 L250,95
+            L290,95 L290,85 L300,85 L300,65 L310,65 L310,50 L315,50 L315,40 L320,40 L325,40 L325,50 L330,50 L330,65 L340,65 L340,85 L360,85 L360,100
+            L400,100 L400,85 L420,85 L420,70 L440,70 L440,55 L455,55 L455,45 L460,38 L465,45 L465,55 L480,55 L480,70 L500,70 L500,85 L520,85 L520,100
+            L560,100 L560,90 L580,90 L580,75 L600,75 L600,60 L615,60 L615,50 L620,50 L620,60 L640,60 L640,80 L660,80 L660,95
+            L700,95 L700,80 L720,80 L720,65 L730,65 L730,55 L735,48 L740,42 L745,48 L750,55 L760,55 L760,65 L780,65 L780,80 L800,80 L800,100
+            L840,100 L840,85 L860,85 L860,70 L875,70 L875,58 L880,52 L885,58 L885,70 L900,70 L900,85 L920,85 L920,100
+            L960,100 L960,88 L980,88 L980,72 L990,72 L990,60 L1000,60 L1000,50 L1010,50 L1010,60 L1020,60 L1020,72 L1040,72 L1040,88 L1060,88 L1060,105
+            L1100,105 L1100,90 L1120,90 L1120,75 L1130,75 L1130,62 L1135,55 L1140,48 L1145,55 L1150,62 L1150,75 L1160,75 L1160,90 L1180,90 L1180,108
+            L1220,108 L1220,92 L1240,92 L1240,78 L1260,78 L1260,65 L1270,65 L1270,55 L1280,55 L1280,65 L1290,65 L1290,78 L1310,78 L1310,95 L1330,95
+            L1380,95 L1380,108 L1400,108 L1400,115 L1440,115
+          "
           fill="none"
-          stroke="url(#waveGold)"
-          strokeWidth="1.5"
-          opacity="0.7"
+          stroke="url(#terrainGold)"
+          strokeWidth="1"
+          opacity="0.9"
         />
+
+        {/* Fade overlay so top blends into hero */}
+        <rect x="0" y="0" width="1440" height="100" fill="url(#terrainFade)" />
       </svg>
     </div>
   );
