@@ -1,4 +1,5 @@
 "use client";
+// Three.js immersive 3D hero scene
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
