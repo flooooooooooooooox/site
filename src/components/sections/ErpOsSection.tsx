@@ -1,6 +1,6 @@
 export default function ErpOsSection() {
   return (
-    <section className="hidden md:block relative" style={{ background: "#0A1520" }}>
+    <section style={{ display: "block", position: "relative", background: "#0A1520" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "5rem 6vw" }}>
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <h2
@@ -21,7 +21,7 @@ export default function ErpOsSection() {
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/image4.png" alt="FloxiaOS Dashboard" className="w-full h-auto" />
+          <img src="/image4.png" alt="FloxiaOS Dashboard" style={{ width: "100%", height: "auto" }} />
         </div>
       </div>
     </section>
