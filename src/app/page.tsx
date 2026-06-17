@@ -9,7 +9,7 @@ import Comparatif from "@/components/sections/Comparatif";
 import Pricing from "@/components/sections/Pricing";
 import Faq from "@/components/sections/Faq";
 import CtaBand from "@/components/sections/CtaBand";
-import Footer from "@/components/sections/Footer";
+import { CinematicFooter } from "@/components/ui/motion-footer";
 import {
   Perspective3DFloor,
   CubeEdge,
@@ -42,7 +42,7 @@ export default function Home() {
         <Faq />
         <CtaBand />
       </main>
-      <Footer />
+      <CinematicFooter />
     </>
   );
 }
