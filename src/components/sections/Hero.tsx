@@ -169,27 +169,24 @@ export default function Hero() {
     const cta = ctaRef.current;
     if (!section || !card || !overlay || !content || !cta) return;
 
-    gsap.set(card, { yPercent: 110, scale: 0.55, borderRadius: "2rem", opacity: 0 });
-    gsap.set(overlay, { opacity: 0 });
-    gsap.set(content, { opacity: 0, y: 30 });
-    gsap.set(cta, { opacity: 0, y: 20 });
+    gsap.set(card, { y: 200, opacity: 0 });
+    gsap.set(content, { opacity: 0, y: 20 });
+    gsap.set(cta, { opacity: 0, y: 10 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: "+=1600",
+        end: "+=1000",
         pin: true,
-        scrub: 0.25,
+        scrub: 0.3,
       },
     });
 
-    tl.to(card, { yPercent: 0, opacity: 1, duration: 1.2, ease: "power2.out" }, 0)
-      .to(card, { scale: 1, borderRadius: "0rem", duration: 1.8, ease: "power2.inOut" }, 0.4)
-      .to(overlay, { opacity: 1, duration: 1.2 }, 0.6)
-      .to(content, { opacity: 1, y: 0, duration: 1.2 }, 1.4)
-      .to(cta, { opacity: 1, y: 0, duration: 0.8 }, 2.2)
-      .to({}, { duration: 0.8 }, 3.0);
+    tl.to(card, { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" }, 0)
+      .to(content, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, 0.5)
+      .to(cta, { opacity: 1, y: 0, duration: 0.8 }, 1.2)
+      .to({}, { duration: 0.5 }, 2.0);
 
     return () => { ScrollTrigger.getAll().forEach(t => t.kill()); };
   }, []);
@@ -285,17 +282,16 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* SCROLL PHONE CARD — dark backdrop */}
-      <div ref={cardOverlayRef} style={{ position: "absolute", inset: 0, background: "rgba(5,10,16,0.93)", zIndex: 18, pointerEvents: "none" }} />
+      {/* hidden overlay ref */}
+      <div ref={cardOverlayRef} style={{ display: "none" }} />
 
-      {/* The rising card */}
+      {/* SCROLL PHONE — rises from bottom */}
       <div ref={cardRef} style={{
-        position: "absolute", inset: 0,
-        background: "linear-gradient(160deg, #0A1520 0%, #050A10 100%)",
-        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-        zIndex: 20, overflow: "hidden",
+        position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)",
+        display: "flex", flexDirection: "column", alignItems: "center",
+        zIndex: 20,
       }}>
-        <div ref={cardContentRef} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem", padding: "2rem" }}>
+        <div ref={cardContentRef} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem", padding: "1rem 1rem 0" }}>
           {/* iPhone mockup */}
           <div style={{
             width: 220, height: 440,
@@ -349,8 +345,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* CTA inside card */}
-        <div ref={ctaRef} style={{ position: "absolute", bottom: "2rem", left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+        <div ref={ctaRef} style={{ display: "flex", justifyContent: "center", paddingBottom: "1.5rem" }}>
           <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener"
             style={{ padding: "1rem 2.5rem", borderRadius: "999px", background: "linear-gradient(135deg,#F5C842,#E6A800)", color: "#1E2B45", fontWeight: 800, fontSize: "0.95rem", textDecoration: "none", boxShadow: "0 8px 32px rgba(245,200,66,0.4)", display: "inline-block" }}>
             🎯 Voir la démo
