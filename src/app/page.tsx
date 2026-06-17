@@ -27,12 +27,12 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <PartnersBand />
         <Services />
         <DepthFade />
         <ErpOsSection />
         <PrismSlice />
         <StorySection />
+        <PartnersBand />
         <CubeEdge />
         <RoiCalculator />
         <RippleDepth />

@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-const MAIN_PARTNERS = [
+const PARTNERS = [
   {
     name: "WhatsApp Business",
     sub: "Meta API Officielle",
@@ -22,124 +22,43 @@ const MAIN_PARTNERS = [
   },
 ];
 
-const SECONDARY_PARTNERS = [
-  {
-    name: "OVHcloud",
-    sub: "Hébergement France",
-    svg: (
-      <svg width="32" height="16" viewBox="0 0 100 40">
-        <text x="0" y="32" fontFamily="Arial" fontWeight="900" fontSize="36" fill="#0050d8">OVH</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Stripe",
-    sub: "Paiements",
-    svg: (
-      <svg width="36" height="16" viewBox="0 0 100 40">
-        <text x="0" y="30" fontFamily="Arial" fontWeight="800" fontSize="30" fill="#635BFF">stripe</text>
-      </svg>
-    ),
-  },
-  {
-    name: "DocuSign",
-    sub: "Signature élec.",
-    svg: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <rect width="24" height="24" rx="5" fill="#FFCC22"/>
-        <path d="M7 12h10M12 7v10" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Pennylane",
-    sub: "Comptabilité",
-    svg: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="11" fill="#7C3AED"/>
-        <text x="6.5" y="17" fontFamily="Arial" fontWeight="900" fontSize="13" fill="white">P</text>
-      </svg>
-    ),
-  },
-  {
-    name: "DGFiP / CERFA",
-    sub: "TVA & e-reporting",
-    svg: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <rect width="24" height="24" rx="5" fill="#002395"/>
-        <text x="3.5" y="17" fontFamily="Arial" fontWeight="900" fontSize="11" fill="white">FR</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Twilio / SIP",
-    sub: "Standard vocal",
-    svg: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="11" fill="#F22F46"/>
-        <circle cx="8.5" cy="8.5" r="1.8" fill="white"/>
-        <circle cx="15.5" cy="8.5" r="1.8" fill="white"/>
-        <circle cx="8.5" cy="15.5" r="1.8" fill="white"/>
-        <circle cx="15.5" cy="15.5" r="1.8" fill="white"/>
-      </svg>
-    ),
-  },
-];
-
-function Pill({ name, sub, svg, large, delay }: { name: string; sub: string; svg: React.ReactNode; large?: boolean; delay: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay }}
-      whileHover={{ borderColor: "rgba(245,200,66,0.25)", backgroundColor: "rgba(245,200,66,0.04)" }}
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: large ? "0.75rem" : "0.5rem",
-        padding: large ? "0.75rem 1.4rem" : "0.45rem 0.9rem",
-        borderRadius: "999px",
-        border: "1px solid rgba(255,255,255,0.08)",
-        background: "rgba(255,255,255,0.03)",
-        backdropFilter: "blur(8px)",
-        transition: "border-color 0.25s, background 0.25s",
-        cursor: "default",
-      }}
-    >
-      <div style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>{svg}</div>
-      <div>
-        <div style={{ fontSize: large ? "0.88rem" : "0.72rem", fontWeight: 700, color: large ? "rgba(232,237,244,0.9)" : "rgba(232,237,244,0.7)", lineHeight: 1.2 }}>{name}</div>
-        <div style={{ fontSize: large ? "0.68rem" : "0.58rem", color: "rgba(232,237,244,0.35)", fontWeight: 500 }}>{sub}</div>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function PartnersBand() {
   return (
-    <section style={{ background: "#0A1520", padding: "2.5rem 0", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 6vw" }}>
+    <section style={{ background: "#0A1520", padding: "2rem 0", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 6vw", display: "flex", flexDirection: "column", alignItems: "center", gap: "1.25rem" }}>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          style={{ textAlign: "center", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(232,237,244,0.25)", marginBottom: "1.5rem" }}
+          style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(232,237,244,0.25)" }}
         >
-          Intégrations & services partenaires
+          Canaux principaux
         </motion.p>
-
-        {/* Ligne 1 — WhatsApp + Gmail en grand */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginBottom: "1rem", flexWrap: "wrap" }}>
-          {MAIN_PARTNERS.map((p, i) => (
-            <Pill key={p.name} {...p} large delay={i * 0.08} />
-          ))}
-        </div>
-
-        {/* Ligne 2 — autres services plus petits */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "0.65rem", flexWrap: "wrap" }}>
-          {SECONDARY_PARTNERS.map((p, i) => (
-            <Pill key={p.name} {...p} delay={0.18 + i * 0.06} />
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
+          {PARTNERS.map((p, i) => (
+            <motion.div
+              key={p.name}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              whileHover={{ borderColor: "rgba(245,200,66,0.25)", backgroundColor: "rgba(245,200,66,0.04)" }}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "0.75rem",
+                padding: "0.75rem 1.5rem", borderRadius: "999px",
+                border: "1px solid rgba(255,255,255,0.08)",
+                background: "rgba(255,255,255,0.03)",
+                backdropFilter: "blur(8px)",
+                transition: "border-color 0.25s, background 0.25s",
+                cursor: "default",
+              }}
+            >
+              <div style={{ flexShrink: 0 }}>{p.svg}</div>
+              <div>
+                <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "rgba(232,237,244,0.9)", lineHeight: 1.2 }}>{p.name}</div>
+                <div style={{ fontSize: "0.68rem", color: "rgba(232,237,244,0.4)", fontWeight: 500 }}>{p.sub}</div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
