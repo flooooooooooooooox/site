@@ -9,8 +9,6 @@ if (typeof window !== "undefined") {
 }
 
 const INJECTED_STYLES = `
-  .gsap-reveal { visibility: hidden; }
-
   .film-grain-floxia {
     position: absolute; inset: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: 50; opacity: 0.04; mix-blend-mode: overlay;
@@ -199,16 +197,9 @@ export default function CinematicLandingHero() {
     const isMobile = window.innerWidth < 768;
 
     const ctx = gsap.context(() => {
-      gsap.set(".flx-text-track", { autoAlpha: 0, y: 60, scale: 0.85, filter: "blur(20px)", rotationX: -20 });
-      gsap.set(".flx-text-accent", { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" });
-      gsap.set(".flx-main-card", { y: window.innerHeight + 200, autoAlpha: 1 });
+      gsap.set(".flx-main-card", { y: window.innerHeight + 200 });
       gsap.set([".flx-card-left", ".flx-card-right", ".flx-mockup", ".flx-badge", ".flx-widget"], { autoAlpha: 0 });
       gsap.set(".flx-cta", { autoAlpha: 0, scale: 0.8, filter: "blur(30px)" });
-
-      const intro = gsap.timeline({ delay: 0.3 });
-      intro
-        .to(".flx-text-track", { duration: 1.8, autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", rotationX: 0, ease: "expo.out" })
-        .to(".flx-text-accent", { duration: 1.4, clipPath: "inset(0 0% 0 0)", ease: "power4.inOut" }, "-=1.0");
 
       const tl = gsap.timeline({
         scrollTrigger: {
