@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 
@@ -104,6 +104,148 @@ function MagneticBtn({ children, className, style, href, onClick }: {
   return <button {...props} onClick={onClick} style={{ ...style, cursor: "pointer", border: "none" }}>{children}</button>;
 }
 
+function HorizonCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animRef = useRef<number>(0);
+  const offsetRef = useRef(0);
+
+  const draw = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const W = canvas.width;
+    const H = canvas.height;
+    const horizonY = H * 0.62;
+    const vanishX = W / 2;
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Sky gradient
+    const sky = ctx.createLinearGradient(0, 0, 0, horizonY);
+    sky.addColorStop(0, "#020508");
+    sky.addColorStop(0.6, "#060D14");
+    sky.addColorStop(1, "#0A1520");
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, W, horizonY);
+
+    // Ground gradient
+    const ground = ctx.createLinearGradient(0, horizonY, 0, H);
+    ground.addColorStop(0, "#0A1520");
+    ground.addColorStop(1, "#050A10");
+    ctx.fillStyle = ground;
+    ctx.fillRect(0, horizonY, W, H - horizonY);
+
+    // --- Grid lines going into horizon ---
+    const LINES = 20;
+    const spread = W * 2.2;
+    const offset = (offsetRef.current % 1);
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(0, horizonY, W, H - horizonY);
+    ctx.clip();
+
+    for (let i = 0; i <= LINES; i++) {
+      const t = i / LINES;
+      const xLeft  = vanishX - (spread / 2) * t;
+      const xRight = vanishX + (spread / 2) * t;
+      const alpha = t * 0.55;
+
+      // Vertical perspective lines
+      ctx.beginPath();
+      ctx.moveTo(vanishX, horizonY);
+      ctx.lineTo(xLeft, H);
+      ctx.strokeStyle = `rgba(245,200,66,${alpha * 0.4})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(vanishX, horizonY);
+      ctx.lineTo(xRight, H);
+      ctx.strokeStyle = `rgba(245,200,66,${alpha * 0.4})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+
+    // Horizontal lines receding into distance
+    const H_LINES = 14;
+    for (let i = 0; i < H_LINES; i++) {
+      const tRaw = (i / H_LINES + offset) % 1;
+      // perspective mapping: lines bunch at horizon
+      const tPersp = Math.pow(tRaw, 2.2);
+      const y = horizonY + tPersp * (H - horizonY);
+      const widthAtY = spread * tPersp;
+      const alpha = tPersp * 0.5;
+
+      ctx.beginPath();
+      ctx.moveTo(vanishX - widthAtY / 2, y);
+      ctx.lineTo(vanishX + widthAtY / 2, y);
+      ctx.strokeStyle = `rgba(245,200,66,${alpha * 0.45})`;
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    // Horizon glow line
+    const glowLine = ctx.createLinearGradient(0, 0, W, 0);
+    glowLine.addColorStop(0,   "transparent");
+    glowLine.addColorStop(0.2, "rgba(245,200,66,0.0)");
+    glowLine.addColorStop(0.5, "rgba(245,200,66,0.9)");
+    glowLine.addColorStop(0.8, "rgba(245,200,66,0.0)");
+    glowLine.addColorStop(1,   "transparent");
+    ctx.strokeStyle = glowLine;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(0, horizonY);
+    ctx.lineTo(W, horizonY);
+    ctx.stroke();
+
+    // Horizon bloom
+    const bloom = ctx.createRadialGradient(vanishX, horizonY, 0, vanishX, horizonY, W * 0.55);
+    bloom.addColorStop(0,   "rgba(245,200,66,0.18)");
+    bloom.addColorStop(0.3, "rgba(245,200,66,0.06)");
+    bloom.addColorStop(1,   "transparent");
+    ctx.fillStyle = bloom;
+    ctx.fillRect(0, horizonY - 80, W, 160);
+
+    // Stars
+    const seed = 42;
+    for (let i = 0; i < 180; i++) {
+      const x = ((seed * (i * 7919 + 1)) % W + W) % W;
+      const y = ((seed * (i * 6271 + 3)) % (horizonY * 0.9));
+      const pulse = 0.4 + 0.6 * Math.abs(Math.sin(Date.now() * 0.001 + i));
+      const size  = 0.5 + (i % 3) * 0.5;
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(232,237,244,${0.3 * pulse})`;
+      ctx.fill();
+    }
+
+    offsetRef.current += 0.004;
+    animRef.current = requestAnimationFrame(draw);
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const resize = () => {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    animRef.current = requestAnimationFrame(draw);
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(animRef.current);
+    };
+  }, [draw]);
+
+  return <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 0 }} />;
+}
+
 export default function Hero() {
   const [wordIdx, setWordIdx] = useState(0);
   const [typed, setTyped] = useState("");
@@ -149,12 +291,10 @@ export default function Hero() {
     >
       <style>{HERO_STYLES}</style>
 
-      {/* Background image */}
-      <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/image.png')", backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
-      {/* Dark overlay */}
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,15,20,0.92) 0%, rgba(10,15,20,0.75) 50%, rgba(10,15,20,0.88) 100%)", zIndex: 1 }} />
+      {/* 3D Horizon environment */}
+      <HorizonCanvas />
       {/* Bottom fade */}
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "16rem", background: "linear-gradient(to top, #0F1923, transparent)", zIndex: 2 }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "18rem", background: "linear-gradient(to top, #0F1923 20%, transparent)", zIndex: 2 }} />
 
       {/* Grid overlay */}
       <div className="hero-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none" }} />
