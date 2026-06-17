@@ -17,7 +17,7 @@ export default function Footer() {
       }}
     >
       <div
-        className="max-w-6xl mx-auto px-[6vw]"
+        style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }} 
         style={{
           display: "flex",
           flexWrap: "wrap",

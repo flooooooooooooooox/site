@@ -50,7 +50,7 @@ const PLANS = [
 export default function Pricing() {
   return (
     <section id="tarifs" style={{ background: "#0F1923", padding: "6rem 0" }}>
-      <div className="max-w-6xl mx-auto px-[6vw]">
+      <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -1,7 +1,7 @@
 export default function ErpOsSection() {
   return (
     <section className="hidden md:block relative" style={{ background: "#0A1520" }}>
-      <div className="max-w-6xl mx-auto px-[6vw] py-20">
+      <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "5rem 6vw" }}>
         <div className="text-center mb-12">
           <h2
             className="font-black text-[clamp(2rem,4vw,3rem)]"

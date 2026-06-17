@@ -35,7 +35,7 @@ export default function Faq() {
 
   return (
     <section style={{ background: "#0A1520", padding: "6rem 0" }}>
-      <div className="max-w-3xl mx-auto px-[6vw]">
+      <div style={{ maxWidth: "48rem", margin: "0 auto", padding: "0 6vw" }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

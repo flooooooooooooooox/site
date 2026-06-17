@@ -70,7 +70,7 @@ export default function RoiCalculator() {
 
   return (
     <section style={{ background: "#0F1923", padding: "6rem 0" }}>
-      <div className="max-w-5xl mx-auto px-[6vw]">
+      <div style={{ maxWidth: "64rem", margin: "0 auto", padding: "0 6vw" }}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
