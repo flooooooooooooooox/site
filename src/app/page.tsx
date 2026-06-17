@@ -15,7 +15,6 @@ import {
   Perspective3DFloor,
   CubeEdge,
   RippleDepth,
-  PrismSlice,
   DepthFade,
 } from "@/components/ui/SectionTransitions";
 
@@ -30,9 +29,8 @@ export default function Home() {
         <Services />
         <DepthFade />
         <ErpOsSection />
-        <PrismSlice />
-        <StorySection />
         <PartnersBand />
+        <StorySection />
         <CubeEdge />
         <RoiCalculator />
         <RippleDepth />
