@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Floxia — Devis & Factures depuis WhatsApp en 3 min | ERP IA Bâtiment</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
+<meta name="description" content="Floxia — Générez vos devis et factures depuis WhatsApp en 3 minutes. ERP IA pour artisans et PME du bâtiment."/>
+<meta property="og:title" content="Floxia — ERP IA Bâtiment"/>
+<meta property="og:description" content="Générez vos devis et factures depuis WhatsApp en 3 minutes."/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#0F1923;font-family:'DM Sans',sans-serif;color:#E8EDF4;cursor:none;}
+
+#cursor-dot{position:fixed;width:8px;height:8px;background:#F5C842;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .15s,height .15s,background .15s;}
+#cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(245,200,66,.5);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .25s cubic-bezier(.22,1,.36,1),height .25s cubic-bezier(.22,1,.36,1),border-color .25s,opacity .25s;}
+#cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;pointer-events:none;z-index:99990;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(245,200,66,.06) 0%,transparent 70%);transition:opacity .4s;}
+body.cursor-hover #cursor-dot{width:14px;height:14px;background:#F5C842;}
+body.cursor-hover #cursor-ring{width:52px;height:52px;border-color:rgba(245,200,66,.8);}
+a,button,input[type=range],[onclick]{cursor:none;}
+
+#grain{position:fixed;inset:0;z-index:9997;pointer-events:none;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px 200px;animation:grainShift 0.5s steps(1) infinite;}
+@keyframes grainShift{0%{background-position:0 0;}20%{background-position:-50px -60px;}40%{background-position:-100px 30px;}60%{background-position:40px -80px;}80%{background-position:-80px 50px;}100%{background-position:20px -30px;}}
+
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(245,200,66,.15)}50%{box-shadow:0 0 40px rgba(245,200,66,.35)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes springIn{0%{opacity:0;transform:scale(.92) translateY(20px)}60%{opacity:1;transform:scale(1.02) translateY(-4px)}80%{transform:scale(.99) translateY(2px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:translateX(0)}}
+@keyframes particleDrift{0%{transform:translate(0,0) scale(1);opacity:.7;}50%{opacity:.3;}100%{transform:translate(var(--px),var(--py)) scale(0);opacity:0;}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+.reveal,.reveal-left,.reveal-right,.reveal-scale{opacity:0;}
+.reveal.in{animation:springIn .7s cubic-bezier(.22,1,.36,1) both;}
+.reveal-left.in{animation:slideInLeft .7s cubic-bezier(.22,1,.36,1) both;}
+.reveal-right.in{animation:slideInRight .7s cubic-bezier(.22,1,.36,1) both;}
+.reveal-scale.in{animation:springIn .75s cubic-bezier(.22,1,.36,1) both;}
+.reveal-stagger>*{opacity:0;}
+.reveal-stagger.in>*{animation:springIn .65s cubic-bezier(.22,1,.36,1) both;}
+.reveal-stagger.in>*:nth-child(1){animation-delay:.02s;}
+.reveal-stagger.in>*:nth-child(2){animation-delay:.07s;}
+.reveal-stagger.in>*:nth-child(3){animation-delay:.12s;}
+.reveal-stagger.in>*:nth-child(4){animation-delay:.17s;}
+.reveal-stagger.in>*:nth-child(5){animation-delay:.22s;}
+.reveal-stagger.in>*:nth-child(6){animation-delay:.27s;}
+.reveal-stagger.in>*:nth-child(7){animation-delay:.32s;}
+.reveal-stagger.in>*:nth-child(8){animation-delay:.37s;}
+.reveal-stagger.in>*:nth-child(9){animation-delay:.42s;}
+.reveal-stagger.in>*:nth-child(10){animation-delay:.47s;}
+.reveal-stagger.in>*:nth-child(11){animation-delay:.52s;}
+.reveal-stagger.in>*:nth-child(12){animation-delay:.57s;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:1rem 5vw;background:rgba(15,25,35,.85);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-logo{display:flex;align-items:center;gap:.6rem;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:-.02em;color:#E8EDF4;text-decoration:none;}
+.bolt{width:26px;height:26px;background:#F5C842;flex-shrink:0;clip-path:polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%);transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.nav-logo:hover .bolt{transform:rotate(20deg) scale(1.15);}
+.nav-links{display:flex;gap:2.2rem;align-items:center;}
+.nav-links a{font-size:.78rem;font-weight:600;color:rgba(232,237,244,.4);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:#F5C842;transition:width .3s cubic-bezier(.22,1,.36,1);}
+.nav-links a:hover{color:#E8EDF4;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:#F5C842!important;color:#1E2B45!important;padding:.46rem 1.2rem;border-radius:50px;font-size:.78rem;font-weight:800;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.nav-cta:hover{transform:scale(1.06);box-shadow:0 4px 28px rgba(245,200,66,.5);}
+.nav-cta::after{display:none!important;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:8rem 6vw 6rem;position:relative;overflow:hidden;text-align:left;background:#0F1923;}
+.hero-bg{position:absolute;inset:0;background-image:url('image.png');background-size:cover;background-position:center center;background-repeat:no-repeat;z-index:0;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,15,20,0.88) 0%,rgba(10,15,20,0.65) 45%,rgba(10,15,20,0.20) 100%);z-index:1;pointer-events:none;}
+.hero-overlay-bottom{position:absolute;bottom:0;left:0;right:0;height:220px;background:linear-gradient(to top,rgba(10,15,20,0.7) 0%,transparent 100%);z-index:1;pointer-events:none;}
+.hero>*:not(.hero-bg):not(.hero-overlay):not(.hero-overlay-bottom){position:relative;z-index:2;}
+#particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+.particle{position:absolute;border-radius:50%;background:#F5C842;animation:particleDrift var(--dur,4s) ease-out var(--delay,0s) infinite;}
+
+.hero-title{font-family:'Nunito',sans-serif;font-weight:900;line-height:.96;letter-spacing:-.04em;color:#E8EDF4;font-size:clamp(3rem,8vw,7.5rem);margin-bottom:1.5rem;animation:fadeUp .7s ease .2s both;text-shadow:0 2px 30px rgba(0,0,0,.5);}
+.hero-title .brand{color:#F5C842;}
+.hero-os-badge{display:inline-flex;align-items:center;background:#F5C842;color:#1E2B45;font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(1rem,2vw,1.8rem);letter-spacing:.08em;padding:.1em .4em;border-radius:.25em;vertical-align:middle;margin-left:.25em;position:relative;top:-.1em;box-shadow:0 4px 20px rgba(245,200,66,.4);}
+.morph-word{display:inline-block;color:#F5C842;transition:filter .4s ease,opacity .4s ease;position:relative;}
+.morph-word.morphing{filter:blur(8px);opacity:.3;}
+.hero-sub{font-size:clamp(1rem,2.2vw,1.25rem);color:rgba(232,237,244,.75);font-weight:400;max-width:520px;margin:0 0 2.2rem;line-height:1.7;animation:fadeUp .7s ease .35s both;text-shadow:0 1px 8px rgba(0,0,0,.4);}
+.typed-line{display:block;min-height:1.7em;}
+.typed-cursor{display:inline-block;width:2px;height:1em;background:#F5C842;margin-left:2px;vertical-align:middle;animation:pulseDot 0.8s infinite;}
+.hero-cta-row{display:flex;gap:1rem;justify-content:flex-start;flex-wrap:wrap;animation:fadeUp .7s ease .5s both;}
+.btn-y{background:#F5C842;color:#1E2B45;padding:.82rem 2rem;border-radius:50px;font-weight:800;font-size:.88rem;text-decoration:none;display:inline-block;transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden;}
+.btn-y::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.25) 50%,transparent 100%);background-size:200% 100%;transform:translateX(-100%);transition:none;}
+.btn-y:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(245,200,66,.45);}
+.btn-y:hover::before{animation:shimmer .6s ease forwards;}
+.btn-ghost{border:1px solid rgba(245,200,66,.5);color:rgba(245,200,66,.9);padding:.82rem 2rem;border-radius:50px;font-weight:700;font-size:.88rem;text-decoration:none;display:inline-block;transition:all .25s;backdrop-filter:blur(8px);background:rgba(0,0,0,.2);}
+.btn-ghost:hover{border-color:#F5C842;color:#F5C842;box-shadow:0 0 20px rgba(245,200,66,.2);}
+
+/* IMAGE BANDS */
+.img-band{position:relative;height:420px;overflow:hidden;isolation:isolate;background:#0F1923;}
+.img-band-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0;pointer-events:none;}
+.img-band-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;}
+.band-chantier-nuit .img-band-bg{background-image:url('image3.png');}
+.band-chantier-nuit .img-band-overlay{background:linear-gradient(to bottom,rgba(15,25,35,0.45) 0%,rgba(15,25,35,0.05) 40%,rgba(15,25,35,0.05) 60%,rgba(15,25,35,0.45) 100%);}
+.band-immeuble-fini .img-band-bg{background-image:url('image2.png');}
+.band-immeuble-fini .img-band-overlay{background:linear-gradient(to bottom,rgba(15,25,35,0.45) 0%,rgba(15,25,35,0.05) 40%,rgba(15,25,35,0.05) 60%,rgba(15,25,35,0.45) 100%);}
+
+/* MARQUEE */
+.mq-wrap{overflow:hidden;padding:.85rem 0;border-top:1px solid rgba(245,200,66,.07);border-bottom:1px solid rgba(245,200,66,.07);background:#111D29;}
+.mq-track{display:flex;gap:2.5rem;width:max-content;animation:marquee 28s linear infinite;}
+.mq-item{font-size:.62rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,200,66,.4);display:flex;align-items:center;gap:.75rem;white-space:nowrap;transition:color .3s;}
+.mq-item:hover{color:rgba(245,200,66,.9);}
+.mq-dot{width:3px;height:3px;background:#F5C842;border-radius:50%;}
+
+/* SOUVERAINETÉ BANNER */
+.souv-banner{background:rgba(245,200,66,.04);border-top:1px solid rgba(245,200,66,.1);border-bottom:1px solid rgba(245,200,66,.1);padding:.9rem 5vw;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;}
+.souv-item{display:flex;align-items:center;gap:.55rem;font-size:.72rem;font-weight:700;color:rgba(245,200,66,.75);transition:color .2s;}
+.souv-item:hover{color:#F5C842;}
+.souv-item svg{width:14px;height:14px;stroke:currentColor;flex-shrink:0;}
+.souv-dot{width:6px;height:6px;background:#F5C842;border-radius:50%;animation:pulseDot 2s infinite;}
+
+/* SECTIONS */
+.sec{padding:6.5rem 5vw;max-width:1280px;margin:0 auto;}
+.sec-lbl{font-size:.6rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,200,66,.55);margin-bottom:.75rem;display:flex;align-items:center;gap:.55rem;}
+.sec-lbl::before{content:'';width:18px;height:1px;background:rgba(245,200,66,.45);}
+.sec-title{font-family:'Nunito',sans-serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;letter-spacing:-.03em;line-height:1.08;margin-bottom:.85rem;color:#E8EDF4;}
+.sec-sub{font-size:.93rem;color:rgba(232,237,244,.35);max-width:430px;line-height:1.88;font-weight:400;}
+.div-line{height:1px;background:rgba(255,255,255,.05);}
+
+/* CARDS GRID */
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:3.8rem;border:1px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.05);}
+.scard{background:#0F1923;padding:2rem;transition:background .22s;transform-style:preserve-3d;transform:perspective(800px) rotateX(0deg) rotateY(0deg);will-change:transform;position:relative;overflow:hidden;}
+.scard::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(245,200,66,.06),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none;}
+.scard:hover::after{opacity:1;}
+.scard:hover{background:#141F2E;}
+.scard.new-feat{background:rgba(245,200,66,.02);}
+.scard.new-feat:hover{background:rgba(245,200,66,.04);}
+.cicon{width:40px;height:40px;background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;transition:transform .3s cubic-bezier(.22,1,.36,1),background .2s;}
+.cicon svg{width:18px;height:18px;stroke:rgba(245,200,66,.75);stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.scard:hover .cicon{transform:scale(1.15) rotate(-5deg);background:rgba(245,200,66,.1);}
+.scard:hover .cicon svg{stroke:#F5C842;}
+.ctitle{font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;margin-bottom:.38rem;color:#E8EDF4;}
+.cdesc{font-size:.78rem;color:rgba(232,237,244,.35);line-height:1.72;}
+.ctag{display:inline-block;margin-top:.85rem;font-size:.6rem;font-weight:800;background:rgba(245,200,66,.05);color:rgba(245,200,66,.6);padding:.17rem .58rem;border-radius:50px;border:1px solid rgba(245,200,66,.12);}
+.ctag.new{background:rgba(245,200,66,.12);color:#F5C842;border-color:rgba(245,200,66,.3);}
+
+/* ERP OS */
+.erp-os-section{max-width:1280px;margin:0 auto;padding:6.5rem 5vw;}
+.erp-os-visual{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden;margin-top:3rem;transition:box-shadow .3s;}
+.erp-os-visual:hover{box-shadow:0 30px 80px rgba(0,0,0,.4);}
+.erp-os-topbar{background:#111D29;padding:.7rem 1.2rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.erp-os-dot{width:10px;height:10px;border-radius:50%;}
+.erp-os-dot.r{background:#ff5f57;}.erp-os-dot.y{background:#ffbd2e;}.erp-os-dot.g{background:#28c840;}
+.erp-os-title-bar{font-size:.65rem;color:rgba(232,237,244,.3);margin-left:.5rem;font-weight:600;letter-spacing:.1em;}
+.erp-os-body{display:grid;grid-template-columns:200px 1fr;min-height:400px;}
+.erp-os-sidebar{background:#0A1520;border-right:1px solid rgba(255,255,255,.05);padding:1.2rem .8rem;}
+.erp-os-sidebar-logo{display:flex;align-items:center;gap:.5rem;margin-bottom:1.5rem;padding:.5rem .6rem;}
+.erp-os-sidebar-logo .bolt-sm{width:18px;height:18px;background:#F5C842;clip-path:polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%);flex-shrink:0;}
+.erp-os-sidebar-logo span{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:900;color:#E8EDF4;}
+.erp-os-nav-item{display:flex;align-items:center;gap:.6rem;padding:.55rem .7rem;border-radius:8px;font-size:.73rem;color:rgba(232,237,244,.4);margin-bottom:.2rem;cursor:pointer;transition:all .18s;}
+.erp-os-nav-item:hover,.erp-os-nav-item.active{background:rgba(245,200,66,.08);color:rgba(245,200,66,.9);}
+.erp-os-nav-item svg{width:13px;height:13px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.erp-os-main{padding:1.5rem;}
+.erp-os-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.erp-os-page-title{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:#E8EDF4;}
+.erp-os-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.5rem;}
+.erp-os-stat{background:#111D29;border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:.85rem;transition:border-color .2s,transform .2s;}
+.erp-os-stat:hover{border-color:rgba(245,200,66,.15);transform:translateY(-2px);}
+.erp-os-stat-val{font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;color:#F5C842;}
+.erp-os-stat-lbl{font-size:.6rem;color:rgba(232,237,244,.3);margin-top:.15rem;letter-spacing:.08em;text-transform:uppercase;}
+.erp-os-row-cards{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.erp-os-mini-card{background:#111D29;border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:1rem;}
+.erp-os-mini-title{font-size:.65rem;font-weight:700;color:rgba(232,237,244,.35);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;}
+.erp-os-line-item{display:flex;align-items:center;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.erp-os-line-item:last-child{border-bottom:none;}
+.erp-os-line-name{font-size:.72rem;color:rgba(232,237,244,.55);}
+.erp-os-line-badge{font-size:.58rem;font-weight:800;padding:.15rem .5rem;border-radius:50px;}
+.erp-os-line-badge.ok{background:rgba(39,155,64,.15);color:#27C840;}
+.erp-os-line-badge.pending{background:rgba(245,200,66,.1);color:#F5C842;}
+.erp-os-line-badge.late{background:rgba(255,95,87,.1);color:#FF5F57;}
+
+/* ECO / HOW */
+.eco-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1280px;margin:0 auto;padding:6.5rem 5vw;}
+.fblock{margin-bottom:1.5rem;}
+.flbl{font-size:.56rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,237,244,.2);margin-bottom:.45rem;}
+.fwrap{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:11px;padding:.95rem 1.1rem;transition:border-color .2s;}
+.fwrap:hover{border-color:rgba(245,200,66,.12);}
+.frow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;}
+.fn{display:inline-flex;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:.28rem .6rem;font-size:.7rem;font-weight:600;color:rgba(232,237,244,.5);white-space:nowrap;transition:all .2s;}
+.fn:hover{border-color:rgba(245,200,66,.2);color:rgba(245,200,66,.7);}
+.fn.g{background:rgba(245,200,66,.06);border-color:rgba(245,200,66,.18);color:rgba(245,200,66,.8);}
+.fn.e{background:#F5C842;color:#1E2B45;border-color:#F5C842;font-weight:800;}
+.fa{color:rgba(255,255,255,.15);font-size:.72rem;}
+.stepn{width:38px;height:38px;border-radius:50%;background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.15);color:rgba(245,200,66,.8);font-family:'Nunito',sans-serif;font-weight:900;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s;}
+.steptitle{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;margin-bottom:.16rem;color:#E8EDF4;}
+.stepdesc{font-size:.78rem;color:rgba(232,237,244,.32);line-height:1.65;}
+.step-row{display:flex;gap:1rem;margin-bottom:1.3rem;cursor:default;}
+.step-row:hover .stepn{background:rgba(245,200,66,.15);border-color:rgba(245,200,66,.4);transform:scale(1.1);}
+.step-row:hover .steptitle{color:#F5C842;}
+
+/* ROI */
+.roi-section{max-width:1280px;margin:0 auto;padding:0 5vw 6.5rem;}
+.roi-slider-wrap{padding:2rem 0 2.5rem;}
+.roi-slider-label{font-size:.6rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,237,244,.4);margin-bottom:.75rem;display:flex;justify-content:space-between;}
+.roi-slider-label span{color:#F5C842;font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:900;}
+.slider-track-wrap{position:relative;height:6px;border-radius:3px;background:rgba(255,255,255,.08);margin-bottom:1rem;}
+.slider-progress{position:absolute;left:0;top:0;height:100%;border-radius:3px;background:linear-gradient(90deg,rgba(245,200,66,.6),#F5C842);transition:width .25s cubic-bezier(.22,1,.36,1);}
+input[type=range]{-webkit-appearance:none;width:100%;height:6px;background:transparent;border-radius:3px;outline:none;position:absolute;left:0;top:0;cursor:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;background:#F5C842;border-radius:50%;cursor:pointer;box-shadow:0 0 0 5px rgba(245,200,66,.2),0 0 20px rgba(245,200,66,.4);transition:transform .2s,box-shadow .2s;}
+input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.2);box-shadow:0 0 0 8px rgba(245,200,66,.15),0 0 30px rgba(245,200,66,.5);}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;background:#F5C842;border-radius:50%;cursor:pointer;border:none;box-shadow:0 0 0 5px rgba(245,200,66,.2);}
+.roi-grid-outer{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.roi-box{background:rgba(255,255,255,.025);border:1px solid rgba(245,200,66,.09);border-radius:18px;padding:2.2rem;}
+.roi-slbl{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,237,244,.4);margin-bottom:.65rem;font-weight:700;}
+.roi-res{background:rgba(245,200,66,.04);border:1px solid rgba(245,200,66,.1);border-radius:11px;padding:1.3rem 1.5rem;margin-top:1.5rem;}
+.roi-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.roi-val{font-family:'Nunito',sans-serif;font-size:1.7rem;font-weight:900;color:#F5C842;letter-spacing:-.03em;transition:color .15s;}
+.roi-lbl{font-size:.62rem;color:rgba(232,237,244,.35);margin-top:.2rem;}
+.task-item{display:flex;justify-content:space-between;align-items:center;padding:.6rem .85rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:7px;margin-bottom:.45rem;transition:border-color .2s,background .2s,transform .2s;}
+.task-item:hover{border-color:rgba(245,200,66,.12);background:rgba(245,200,66,.02);transform:translateX(3px);}
+.task-name{font-size:.76rem;color:rgba(232,237,244,.35);text-decoration:line-through;}
+.task-gain{font-size:.63rem;font-weight:800;color:rgba(245,200,66,.8);background:rgba(245,200,66,.05);border:1px solid rgba(245,200,66,.12);padding:.13rem .5rem;border-radius:50px;white-space:nowrap;}
+.roi-cta-band{margin-top:3rem;}
+.roi-cta-box{background:rgba(245,200,66,.04);border:1px solid rgba(245,200,66,.15);border-radius:18px;padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+.roi-cta-label{font-size:.58rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,200,66,.55);margin-bottom:.5rem;}
+.roi-cta-text{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:#E8EDF4;line-height:1.45;}
+.roi-cta-text span{color:#F5C842;}
+.roi-cta-sub{font-size:.75rem;color:rgba(232,237,244,.32);margin-top:.4rem;}
+.roi-cta-btn{background:#F5C842;color:#1E2B45;padding:.82rem 2rem;border-radius:50px;font-weight:800;font-size:.88rem;text-decoration:none;display:inline-block;white-space:nowrap;transition:transform .2s,box-shadow .2s;}
+.roi-cta-btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(245,200,66,.45);}
+
+/* COMPARATIF */
+.cmp-section{max-width:1280px;margin:0 auto;padding:6.5rem 5vw;}
+.cmp-table-wrap{margin-top:3rem;border:1px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden;}
+.cmp-table{width:100%;border-collapse:collapse;}
+.cmp-table th{padding:1.1rem 1.4rem;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,237,244,.32);background:#111D29;text-align:left;}
+.cmp-table th.floxia-col{color:#F5C842;background:rgba(245,200,66,.04);}
+.cmp-table td{padding:.9rem 1.4rem;font-size:.8rem;border-top:1px solid rgba(255,255,255,.05);color:rgba(232,237,244,.5);background:#0F1923;vertical-align:middle;transition:background .15s;}
+.cmp-table td.floxia-col{background:rgba(245,200,66,.03);color:rgba(232,237,244,.9);}
+.cmp-table tr:hover td{background:#141F2E;}
+.cmp-table tr:hover td.floxia-col{background:rgba(245,200,66,.05);}
+.cmp-row-label{font-size:.78rem;color:rgba(232,237,244,.5);font-weight:500;}
+.cmp-yes{color:#F5C842;font-weight:800;}
+.cmp-no{color:rgba(232,237,244,.2);}
+.cmp-partial{color:rgba(232,237,244,.4);font-style:italic;font-size:.76rem;}
+.cmp-floxia-badge{display:inline-flex;align-items:center;gap:.45rem;font-family:'Nunito',sans-serif;font-weight:900;font-size:.92rem;color:#E8EDF4;}
+.cmp-floxia-dot{width:8px;height:8px;background:#F5C842;border-radius:50%;}
+.cmp-note{margin-top:1.2rem;font-size:.62rem;color:rgba(232,237,244,.2);font-style:italic;text-align:center;}
+.cmp-mobile-cards{display:none;flex-direction:column;gap:.7rem;margin-top:2rem;}
+.cmp-mcard{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1rem 1.1rem;}
+.cmp-mcard-feat{font-size:.78rem;color:#E8EDF4;font-weight:700;margin-bottom:.7rem;line-height:1.4;}
+.cmp-mcard-cols{display:grid;grid-template-columns:repeat(5,1fr);gap:.3rem;}
+.cmp-mcard-col{display:flex;flex-direction:column;align-items:center;gap:.25rem;}
+.cmp-mcard-col-lbl{font-size:.46rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(232,237,244,.25);text-align:center;line-height:1.3;}
+.cmp-mcard-col-lbl.floxia{color:rgba(245,200,66,.55);}
+.cmp-mcard-yes{font-size:.65rem;font-weight:800;color:#F5C842;}
+.cmp-mcard-partial{font-size:.65rem;font-weight:600;color:rgba(232,237,244,.4);font-style:italic;}
+.cmp-mcard-no{font-size:.75rem;color:rgba(232,237,244,.18);}
+.cmp-mobile-note{display:none;margin-top:1rem;text-align:center;font-size:.65rem;color:rgba(232,237,244,.25);font-style:italic;}
+
+/* TARIFS */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:3.5rem;border:1px solid rgba(255,255,255,.06);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.05);}
+.pcard{background:#0F1923;padding:2.2rem;display:flex;flex-direction:column;transition:background .2s;}
+.pcard:hover{background:#141F2E;}
+.pcard.feat{background:rgba(245,200,66,.02);}
+.pcard.feat:hover{background:rgba(245,200,66,.04);}
+.pbadge{display:inline-flex;font-size:.58rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;background:rgba(245,200,66,.07);color:rgba(245,200,66,.8);padding:.18rem .65rem;border-radius:50px;margin-bottom:.9rem;border:1px solid rgba(245,200,66,.18);align-self:flex-start;}
+.pplan{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;margin-bottom:.25rem;color:#E8EDF4;}
+.psub{font-size:.78rem;color:rgba(232,237,244,.4);margin-bottom:1.3rem;font-weight:400;}
+.phighlight{background:rgba(245,200,66,.05);border:1px solid rgba(245,200,66,.12);border-radius:9px;padding:.65rem .85rem;margin-bottom:1.3rem;font-size:.76rem;color:rgba(245,200,66,.8);font-style:italic;}
+.pprice-custom{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;color:#E8EDF4;margin-bottom:.2rem;}
+.pprice-note{font-size:.7rem;color:rgba(232,237,244,.3);margin-bottom:1.5rem;}
+.pfeats{display:flex;flex-direction:column;gap:.52rem;margin-bottom:1.7rem;flex-grow:1;}
+.pfeat{display:flex;align-items:flex-start;gap:.52rem;font-size:.78rem;color:rgba(232,237,244,.55);}
+.pfeat.incl{color:rgba(232,237,244,.3);font-style:italic;}
+.pcheck{color:rgba(245,200,66,.65);}
+.pcheck.bright{color:#F5C842;}
+.pcta{display:block;text-align:center;padding:.72rem 1.2rem;border-radius:50px;font-weight:800;font-size:.82rem;text-decoration:none;transition:all .25s;}
+.pcta-o{border:1px solid rgba(255,255,255,.14);color:rgba(232,237,244,.7);}
+.pcta-o:hover{border-color:rgba(245,200,66,.6);color:#F5C842;}
+.pcta-s{background:#F5C842;color:#1E2B45;font-weight:900;}
+.pcta-s:hover{box-shadow:0 8px 26px rgba(245,200,66,.4);transform:translateY(-2px);}
+.pnote{font-size:.62rem;text-align:center;color:rgba(232,237,244,.22);margin-top:.75rem;}
+.onglets-tag{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.2rem;}
+.otag{font-size:.58rem;font-weight:600;background:rgba(255,255,255,.04);color:rgba(232,237,244,.4);padding:.18rem .52rem;border-radius:4px;border:1px solid rgba(255,255,255,.07);}
+
+/* PRICING TABLE */
+.pt-cat{background:#111D29;padding:.6rem 1.8rem;font-size:.55rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,200,66,.55);border-top:1px solid rgba(255,255,255,.05);}
+.pt-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.04);}
+.pt-row:hover{background:rgba(255,255,255,.015);}
+.pt-feat{padding:.7rem 1.8rem;font-size:.78rem;color:rgba(232,237,244,.45);display:flex;align-items:center;}
+.pt-cell{padding:.7rem 1.4rem;display:flex;align-items:center;justify-content:center;border-left:1px solid rgba(255,255,255,.04);}
+.pt-cell.pro{border-left:1px solid rgba(245,200,66,.1);background:rgba(245,200,66,.015);}
+.pt-yes{color:#F5C842;font-size:1rem;}
+.pt-no{color:rgba(232,237,244,.15);font-size:1rem;}
+
+/* FAQ */
+.faq-seo{max-width:1280px;margin:0 auto;padding:4rem 5vw 2rem;}
+.faq-seo-title{font-family:'Nunito',sans-serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:900;color:#E8EDF4;margin-bottom:2rem;letter-spacing:-.02em;}
+.faq-item{border-top:1px solid rgba(255,255,255,.06);padding:1.2rem 0;}
+.faq-item:last-child{border-bottom:1px solid rgba(255,255,255,.06);}
+.faq-q{font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;color:rgba(245,200,66,.85);margin-bottom:.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color .2s;}
+.faq-q:hover{color:#F5C842;}
+.faq-toggle{width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.faq-toggle svg{width:16px;height:16px;stroke:rgba(245,200,66,.4);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s;}
+.faq-item.open .faq-toggle svg{transform:rotate(180deg);stroke:#F5C842;}
+.faq-a{font-size:.82rem;color:rgba(232,237,244,.45);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-item.open .faq-a{max-height:300px;}
+
+/* CTA BAND */
+.cta-band{background:#F5C842;padding:6rem 5vw;text-align:center;position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(30,43,69,.04) 40px,rgba(30,43,69,.04) 80px);}
+.cta-band h2{font-family:'Nunito',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:900;color:#1E2B45;margin-bottom:2.5rem;position:relative;}
+.ibtn{display:inline-flex;align-items:center;gap:.7rem;background:#1E2B45;color:#F5C842;font-weight:800;font-size:.92rem;padding:.92rem 2.3rem;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s;position:relative;}
+.ibtn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.3);}
+
+/* FOOTER */
+.ft{padding:2rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;background:#0A1520;border-top:1px solid rgba(255,255,255,.05);}
+.ft-logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:.95rem;display:flex;align-items:center;gap:.45rem;color:#E8EDF4;}
+.ft-tag{font-size:.68rem;color:rgba(232,237,244,.3);margin-top:.2rem;}
+.ft-links{display:flex;gap:1.8rem;}
+.ft-links a{font-size:.7rem;color:rgba(232,237,244,.35);text-decoration:none;transition:color .2s;}
+.ft-links a:hover{color:#F5C842;}
+.ft-badge{font-size:.62rem;background:rgba(245,200,66,.06);color:rgba(245,200,66,.65);padding:.35rem .75rem;border-radius:50px;font-weight:800;border:1px solid rgba(245,200,66,.14);}
+.ft-souv{font-size:.62rem;background:rgba(245,200,66,.04);color:rgba(245,200,66,.5);padding:.35rem .75rem;border-radius:50px;font-weight:700;border:1px solid rgba(245,200,66,.1);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  body{cursor:auto;}
+  #cursor-dot,#cursor-ring,#cursor-glow{display:none;}
+  .hero{padding:7rem 5vw 4rem;text-align:left;align-items:flex-start;}
+  .hero-overlay{background:linear-gradient(to bottom,rgba(10,15,20,0.85) 0%,rgba(10,15,20,0.6) 60%,rgba(10,15,20,0.85) 100%);}
+  .hero-title{font-size:clamp(2.4rem,11vw,4rem);}
+  .eco-grid,.roi-grid-outer,.erp-os-body{grid-template-columns:1fr;gap:2.5rem;}
+  .cgrid,.pgrid{grid-template-columns:1fr;border-radius:14px;}
+  .eco-grid{padding:4rem 5vw;}
+  .sec,.cmp-section,.erp-os-section{padding:4rem 5vw;}
+  .ft{flex-direction:column;align-items:flex-start;}
+  .roi-cta-box{flex-direction:column;align-items:flex-start;}
+  .cmp-table-wrap{display:none!important;}
+  .cmp-mobile-cards{display:flex!important;}
+  .cmp-mobile-note{display:block;}
+  .erp-os-stats{grid-template-columns:repeat(2,1fr);}
+  .erp-os-sidebar{display:none;}
+  .souv-banner{gap:1rem;}
+  .img-band{height:260px;}
+  /* ERP OS section masqué sur mobile */
+  .erp-os-section{display:none;}
+  /* Pricing table mobile */
+  .pt-grid{grid-template-columns:1fr!important;}
+  .pt-grid>div:not(:first-child){border-left:none!important;border-top:1px solid rgba(255,255,255,.05);}
+  .pt-row{grid-template-columns:1.5fr 1fr 1fr 1fr;}
+  .pt-feat{font-size:.68rem;padding:.6rem 1rem;}
+  .pt-cell{padding:.6rem .5rem;}
+}
+@media(min-width:769px){.cmp-mobile-cards{display:none!important;}}
+@media(min-width:768px) and (max-width:1024px){
+  .cgrid,.pgrid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div id="grain" aria-hidden="true"></div>
+<div id="cursor-glow" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Navigation principale">
+  <a class="nav-logo" href="#" aria-label="Floxia - Accueil"><div class="bolt"></div>Floxia</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#ecosystem">Ecosystème</a>
+    <a href="#comparatif">Comparatif</a>
+    <a href="#roi">ROI</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="https://calendly.com/afele1845/30min" target="_blank" class="nav-cta" rel="noopener">Réserver une démo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Présentation Floxia ERP IA bâtiment">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-overlay-bottom" aria-hidden="true"></div>
+  <div id="particles" aria-hidden="true"></div>
+
+  <h1 class="hero-title">
+    <span class="brand">Floxia</span><span class="hero-os-badge">OS</span><br>
+    <span class="morph-word" id="morphWord">Automatisée</span>.<br>
+    <span style="font-size:clamp(1.8rem,4vw,3.5rem);color:rgba(232,237,244,.7);">Votre temps. Rendu.</span>
+  </h1>
+
+  <p class="hero-sub">
+    <span class="typed-line" id="typedLine"></span><span class="typed-cursor" id="typedCursor"></span>
+    <br>Un vocal suffit — Floxia s'occupe du reste.
+  </p>
+
+  <div class="hero-cta-row">
+    <a class="btn-y" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener">Réserver une démo — 30 min</a>
+    <a class="btn-ghost" href="#services">Voir les services →</a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap" aria-hidden="true">
+  <div class="mq-track" id="mqTrack"></div>
+</div>
+
+<!-- SOUVERAINETÉ BANNER -->
+<div class="souv-banner">
+  <div class="souv-item">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M3 18h18M3 15l9-9 9 9"/><rect x="5" y="15" width="4" height="6"/><rect x="15" y="15" width="4" height="6"/><rect x="10" y="12" width="4" height="9"/></svg>
+    Données hébergées en France
+  </div>
+  <div class="souv-item">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    Zéro dépendance cloud étranger
+  </div>
+  <div class="souv-item">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Vous êtes souverain sur vos données
+  </div>
+  <div class="souv-item">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6"/></svg>
+    Infrastructure 100% indépendante
+  </div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- SERVICES -->
+<div id="services"></div>
+<section class="sec" aria-label="Services Floxia">
+  <div class="reveal">
+    <div class="sec-lbl">Ce que fait Floxia</div>
+    <h2 class="sec-title">Tout votre flux de travail,<br>automatisé de A à Z.</h2>
+    <p class="sec-sub">Des automatisations concrètes, opérationnelles dès aujourd'hui — incluant les toutes dernières fonctionnalités IA.</p>
+  </div>
+  <div class="reveal-stagger cgrid" id="servicesGrid"></div>
+</section>
+
+<!-- IMAGE BAND 1 -->
+<div class="img-band band-chantier-nuit" role="presentation">
+  <div class="img-band-bg" aria-hidden="true"></div>
+  <div class="img-band-overlay" aria-hidden="true"></div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ERP OS — image4.png -->
+<section class="erp-os-section" aria-label="ERP moderne comme un OS">
+  <div class="reveal">
+    <div class="sec-lbl">ERP nouvelle génération</div>
+    <h2 class="sec-title">Un ERP pensé<br>comme un vrai OS.</h2>
+    <p class="sec-sub">Interface moderne, modulaire et intuitive. Tout ce dont un artisan a besoin, en un seul écran.</p>
+  </div>
+  <div class="reveal-scale" style="margin-top:3rem;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.06);box-shadow:0 30px 80px rgba(0,0,0,.4);">
+    <img src="image4.png" alt="Floxia ERP — Tableau de bord" style="width:100%;display:block;"/>
+  </div>
+</section>
+<div class="div-line"></div>
+
+<!-- ECOSYSTEM -->
+<div id="ecosystem"></div>
+<div class="eco-grid">
+  <div class="reveal-left">
+    <div class="sec-lbl">Comment ça marche</div>
+    <h2 class="sec-title">WhatsApp ou l'ERP comme<br>centre de commandes.</h2>
+    <p class="sec-sub" style="margin-bottom:2.6rem;">Tout part de votre téléphone. Aucun logiciel à apprendre.</p>
+    <div class="step-row"><div class="stepn">1</div><div><div class="steptitle">Une fois connecté</div><div class="stepdesc">WhatsApp Business, Gmail, Google Drive et l'ERP — on s'occupe de tout.</div></div></div>
+    <div class="step-row"><div class="stepn">2</div><div><div class="steptitle">Parlez ou photographiez</div><div class="stepdesc">Vocal ou photo sur WhatsApp. Floxia agit instantanément.</div></div></div>
+    <div class="step-row"><div class="stepn">3</div><div><div class="steptitle">L'IA travaille pour vous</div><div class="stepdesc">Devis envoyé, PV généré, facture émise, RDV booké. Automatiquement.</div></div></div>
+    <div class="step-row"><div class="stepn">4</div><div><div class="steptitle">Pilotez depuis l'ERP OS</div><div class="stepdesc">Tableau de bord temps réel mobile — interface OS complète.</div></div></div>
+  </div>
+  <div class="reveal-right" id="ecoFlux"></div>
+</div>
+<div class="div-line"></div>
+
+<!-- ROI -->
+<div id="roi"></div>
+<div class="sec" style="padding-bottom:2rem;">
+  <div class="reveal">
+    <div class="sec-lbl">Simulateur ROI</div>
+    <h2 class="sec-title">Calculez votre<br>temps libéré.</h2>
+    <p class="sec-sub">Bougez le curseur — voyez ce que Floxia vous rapporte chaque mois.</p>
+  </div>
+</div>
+<div class="roi-section">
+  <div class="roi-slider-wrap">
+    <div class="roi-slider-label">
+      <span>Nombre de devis par mois</span>
+      <span id="sliderVal">15</span>
+    </div>
+    <div class="slider-track-wrap">
+      <div class="slider-progress" id="sliderProgress" style="width:18%;"></div>
+      <input type="range" min="1" max="80" value="15" id="roiSlider" aria-label="Nombre de devis par mois"/>
+    </div>
+  </div>
+  <div class="roi-grid-outer">
+    <div class="roi-box">
+      <div class="roi-slbl" id="roiTitle">Résultats pour 15 devis / mois</div>
+      <div class="roi-res">
+        <div class="roi-nums">
+          <div><div class="roi-val" id="roiH">—</div><div class="roi-lbl">temps libéré</div></div>
+          <div><div class="roi-val" id="roiGain">—</div><div class="roi-lbl">valeur récupérée</div></div>
+          <div><div class="roi-val" id="roiRoi">—</div><div class="roi-lbl">ROI estimé</div></div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;background:rgba(245,200,66,.04);border:1px solid rgba(245,200,66,.1);border-radius:9px;padding:.85rem 1rem;">
+        <div style="font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,200,66,.6);margin-bottom:.55rem;">Cycle devis vers facture finale</div>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div><div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;color:#F5C842;" id="roiCycleH">—</div><div style="font-size:.62rem;color:rgba(232,237,244,.35);">économisées / mois</div></div>
+          <div><div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;color:#F5C842;">3 min</div><div style="font-size:.62rem;color:rgba(232,237,244,.35);">au lieu de 60 min</div></div>
+          <div><div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;color:#F5C842;">-95%</div><div style="font-size:.62rem;color:rgba(232,237,244,.35);">de temps admin</div></div>
+        </div>
+      </div>
+      <div style="margin-top:.75rem;background:rgba(39,155,64,.04);border:1px solid rgba(39,155,64,.15);border-radius:9px;padding:.85rem 1rem;">
+        <div style="font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(39,200,100,.7);margin-bottom:.55rem;">Booking automatique — clients gagnés</div>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div><div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;color:#27C840;" id="roiBookingClients">—</div><div style="font-size:.62rem;color:rgba(232,237,244,.35);">nouveaux clients / mois</div></div>
+          <div><div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;color:#27C840;" id="roiBookingCA">—</div><div style="font-size:.62rem;color:rgba(232,237,244,.35);">CA additionnel estimé</div></div>
+          <div><div style="font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;color:#27C840;">24/7</div><div style="font-size:.62rem;color:rgba(232,237,244,.35);">réception sans interruption</div></div>
+        </div>
+      </div>
+      <div style="font-size:.6rem;color:rgba(232,237,244,.2);margin-top:.75rem;">*55€/h artisan · CA additionnel estimé à 1 200€/client moyen · estimation mensuelle.</div>
+    </div>
+    <div>
+      <div class="sec-lbl" style="margin-bottom:1rem;">Ce que vous ne faites plus</div>
+      <div id="taskList"></div>
+    </div>
+  </div>
+  <div class="roi-cta-band">
+    <div class="roi-cta-box">
+      <div>
+        <div class="roi-cta-label">Votre estimation personnalisée</div>
+        <div class="roi-cta-text" id="roiCtaText">Pour <span>15 devis/mois</span> — offre conseillée : <span>Artisan Autonome</span><br>Valeur récupérée estimée : <span>—</span> · ROI <span>—</span></div>
+        <div class="roi-cta-sub">Tarif personnalisé selon votre volume · sans engagement · réponse sous 24h</div>
+      </div>
+      <a class="roi-cta-btn" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener">Réserver ma démo 30 min →</a>
+    </div>
+  </div>
+</div>
+<div class="div-line"></div>
+
+<!-- COMPARATIF -->
+<div id="comparatif"></div>
+<section class="cmp-section" aria-label="Comparatif Floxia vs concurrents">
+  <div class="reveal">
+    <div class="sec-lbl">Comparatif</div>
+    <h2 class="sec-title">Floxia vs les autres<br>solutions du marché.</h2>
+    <p class="sec-sub">Les ERP du bâtiment existants sont puissants — mais aucun n'a d'agent IA, de booking intelligent ou de souveraineté des données.</p>
+  </div>
+  <div class="reveal-scale cmp-table-wrap">
+    <table class="cmp-table">
+      <thead><tr>
+        <th style="width:28%;">Fonctionnalité</th>
+        <th class="floxia-col"><div class="cmp-floxia-badge"><div class="cmp-floxia-dot"></div>Floxia</div></th>
+        <th>Batiprix / Obat</th><th>Onaya / Batigest</th><th>EBP / Sage</th><th>Excel manuel</th>
+      </tr></thead>
+      <tbody id="cmpTableBody"></tbody>
+    </table>
+  </div>
+  <div class="cmp-mobile-cards" id="cmpMobileCards"></div>
+  <div class="cmp-mobile-note">Comparatif basé sur les fonctionnalités publiquement documentées.</div>
+</section>
+<div class="div-line"></div>
+
+<!-- IMAGE BAND 2 — image4.png -->
+<div class="img-band band-immeuble-fini" role="presentation">
+  <div class="img-band-bg" aria-hidden="true"></div>
+  <div class="img-band-overlay" aria-hidden="true"></div>
+</div>
+
+<div class="div-line"></div>
+
+<!-- TARIFS -->
+<div id="tarifs"></div>
+<section class="sec" style="max-width:1280px;" aria-label="Tarifs Floxia">
+  <div class="reveal">
+    <div class="sec-lbl">Tarifs</div>
+    <h2 class="sec-title">Un prix clair,<br>des résultats concrets.</h2>
+    <p class="sec-sub">Sans engagement. Hébergé en France. Résiliable à tout moment.</p>
+  </div>
+
+  <!-- HEADER CARDS -->
+  <div class="pt-grid reveal-stagger" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:1px;margin-top:3rem;border:1px solid rgba(255,255,255,.06);border-radius:20px 20px 0 0;overflow:hidden;background:rgba(255,255,255,.04);">
+    <div style="background:#0F1923;padding:1.5rem 1.8rem;display:flex;align-items:center;">
+      <span style="font-size:.65rem;font-weight:700;color:rgba(232,237,244,.3);letter-spacing:.1em;text-transform:uppercase;">Fonctionnalités</span>
+    </div>
+    <!-- Essentiel -->
+    <div style="background:#0F1923;padding:1.5rem 1.4rem;border-left:1px solid rgba(255,255,255,.05);">
+      <div style="font-size:.55rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,237,244,.35);margin-bottom:.5rem;">Essentiel</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:#E8EDF4;line-height:1;">99€<span style="font-size:.75rem;font-weight:500;color:rgba(232,237,244,.4);">/mois</span></div>
+      <div style="font-size:.62rem;color:rgba(232,237,244,.3);margin-top:.3rem;">Setup 299€</div>
+      <a class="pcta pcta-o" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:1rem;padding:.55rem .9rem;border-radius:50px;font-size:.75rem;">Démarrer</a>
+    </div>
+    <!-- Artisan Pro -->
+    <div style="background:rgba(245,200,66,.03);padding:1.5rem 1.4rem;border-left:1px solid rgba(245,200,66,.15);position:relative;">
+      <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#F5C842;color:#1E2B45;font-size:.5rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;padding:.2rem .7rem;border-radius:0 0 6px 6px;white-space:nowrap;">Le plus vendu</div>
+      <div style="font-size:.55rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,200,66,.7);margin-bottom:.5rem;">Artisan Pro</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:#F5C842;line-height:1;">179€<span style="font-size:.75rem;font-weight:500;color:rgba(245,200,66,.6);">/mois</span></div>
+      <div style="font-size:.62rem;color:rgba(232,237,244,.3);margin-top:.3rem;">Setup 349€</div>
+      <a class="pcta pcta-s" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:1rem;padding:.55rem .9rem;border-radius:50px;font-size:.75rem;">Choisir ce plan</a>
+    </div>
+    <!-- PME Premium -->
+    <div style="background:#0F1923;padding:1.5rem 1.4rem;border-left:1px solid rgba(255,255,255,.05);">
+      <div style="font-size:.55rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,237,244,.35);margin-bottom:.5rem;">PME Premium</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:#E8EDF4;line-height:1;">349€<span style="font-size:.75rem;font-weight:500;color:rgba(232,237,244,.4);">/mois</span></div>
+      <div style="font-size:.62rem;color:rgba(232,237,244,.3);margin-top:.3rem;">Setup 499€</div>
+      <a class="pcta pcta-o" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:1rem;padding:.55rem .9rem;border-radius:50px;font-size:.75rem;">Nous contacter</a>
+    </div>
+  </div>
+
+  <!-- FEATURE TABLE -->
+  <div class="reveal-scale" style="border:1px solid rgba(255,255,255,.06);border-top:none;border-radius:0 0 20px 20px;overflow:hidden;">
+    <table style="width:100%;border-collapse:collapse;" aria-label="Comparatif fonctionnalités">
+      <tbody id="pricingTableBody"></tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:1.2rem;text-align:center;font-size:.62rem;color:rgba(232,237,244,.2);">Sans engagement · résiliable à tout moment · 🇫🇷 hébergé en France</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-seo" aria-label="Foire aux questions Floxia">
+  <div class="sec-lbl">FAQ</div>
+  <h2 class="faq-seo-title">Questions fréquentes sur Floxia</h2>
+  <div id="faqList"></div>
+</section>
+<div class="div-line"></div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="reveal-scale">
+    <h2>Prêt à récupérer<br>votre temps ?</h2>
+    <a class="ibtn" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener">Réserver une démo — 30 min</a>
+    <div style="margin-top:1rem;font-size:.7rem;color:rgba(30,43,69,.55);position:relative;">Réponse sous 24h · Sans engagement · Hébergé en France</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div>
+    <div class="ft-logo"><div class="bolt" style="width:20px;height:20px;" aria-hidden="true"></div>Floxia Service ERP</div>
+    <div class="ft-tag">L'IA qui travaille à votre place.</div>
+  </div>
+  <div class="ft-links">
+    <a href="#">Mentions légales</a>
+    <a href="#">Confidentialité</a>
+    <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener">Réserver une démo</a>
+  </div>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+    <div class="ft-souv">Données hébergées en France</div>
+    <div class="ft-badge">Propulsé par l'IA</div>
+  </div>
+</footer>
+
+<script>
+// LUCIDE ICONS SVG MAP
+const ICONS = {
+  'file-text': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>',
+  'camera': '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
+  'star': '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+  'alert-triangle': '<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+  'bell': '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',
+  'monitor': '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
+  'mic': '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>',
+  'phone-incoming': '<polyline points="16 2 16 8 22 8"/><line x1="22" y1="2" x2="16" y2="8"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.05 6.05l1.8-1.8a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  'file-check': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/>',
+  'trending-up': '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
+  'users': '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'
+};
+function icon(name){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${ICONS[name]||''}</svg>`;}
+
+// CURSOR
+const dot=document.getElementById('cursor-dot');
+const ring=document.getElementById('cursor-ring');
+const glow=document.getElementById('cursor-glow');
+let mx=0,my=0,rx=0,ry=0,gx=0,gy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+function animCursor(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;gx+=(mx-gx)*0.06;gy+=(my-gy)*0.06;ring.style.left=rx+'px';ring.style.top=ry+'px';glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(animCursor);}
+animCursor();
+document.querySelectorAll('a,button,input,.scard').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));});
+
+// PARTICLES
+const pContainer=document.getElementById('particles');
+for(let i=0;i<18;i++){const p=document.createElement('div');p.className='particle';const size=Math.random()*3+1;p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--px:${(Math.random()-0.5)*200}px;--py:${(Math.random()-0.5)*200}px;--dur:${Math.random()*6+4}s;--delay:${Math.random()*-8}s;opacity:${Math.random()*.6+.2};`;pContainer.appendChild(p);}
+
+// MORPH WORD
+const MORPH_WORDS=['Automatisée','Intelligente','Connectée','Souveraine','Libérée'];
+let morphIdx=0;
+const morphEl=document.getElementById('morphWord');
+function morphNext(){morphEl.classList.add('morphing');setTimeout(()=>{morphIdx=(morphIdx+1)%MORPH_WORDS.length;morphEl.textContent=MORPH_WORDS[morphIdx];morphEl.classList.remove('morphing');},400);}
+setInterval(morphNext,2800);
+
+// TYPEWRITER
+const TYPED_LINES=['Générez vos devis et factures depuis WhatsApp en 3 minutes.','Un message vocal suffit pour créer un devis PDF complet.','Votre agent IA répond aux clients pendant que vous travaillez.','Relances automatiques, signature électronique, zéro ressaisie.'];
+let tIdx=0,cIdx=0,deleting=false;
+const typedEl=document.getElementById('typedLine');
+function typeStep(){const line=TYPED_LINES[tIdx];if(!deleting){typedEl.textContent=line.slice(0,cIdx+1);cIdx++;if(cIdx===line.length){deleting=true;setTimeout(typeStep,2200);return;}}else{typedEl.textContent=line.slice(0,cIdx-1);cIdx--;if(cIdx===0){deleting=false;tIdx=(tIdx+1)%TYPED_LINES.length;setTimeout(typeStep,400);return;}}setTimeout(typeStep,deleting?28:52);}
+setTimeout(typeStep,1200);
+
+// TILT
+function initTilt(){document.querySelectorAll('.scard').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const cx=r.left+r.width/2,cy=r.top+r.height/2;const dx=(e.clientX-cx)/r.width,dy=(e.clientY-cy)/r.height;const rx2=-dy*12,ry2=dx*12;card.style.transform=`perspective(800px) rotateX(${rx2}deg) rotateY(${ry2}deg) scale(1.02)`;const px=((e.clientX-r.left)/r.width*100).toFixed(1);const py=((e.clientY-r.top)/r.height*100).toFixed(1);card.style.setProperty('--mx',px+'%');card.style.setProperty('--my',py+'%');});card.addEventListener('mouseleave',()=>{card.style.transform='perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';});});}
+
+// MARQUEE
+const MQ_ITEMS=['Devis vocal en 3 min','PV de réception auto','Facture finale automatisée','Scan tickets de caisse','Avis clients auto','Relances intelligentes','Planning salariés','Rapports chantier PDF','ERP OS mobile','Agent réceptionniste IA','Booking auto + distance','Avenants & avoirs auto','Assistant vocal technique','100% hébergé France','Données souveraines'];
+const mq=document.getElementById('mqTrack');
+const full=[...MQ_ITEMS,...MQ_ITEMS,...MQ_ITEMS,...MQ_ITEMS];
+mq.innerHTML=full.map(t=>`<div class="mq-item"><div class="mq-dot"></div>${t}</div>`).join('');
+
+// SERVICES — icônes SVG, pas d'emojis
+const SERVICES=[
+  ['file-text','Devis - PV - Facture','Un vocal WhatsApp suffit. Floxia génère le devis PDF, le client signe, le PV est créé, la facture finale se génère automatiquement.','Cycle complet géré',false],
+  ['camera','Scan Tickets de Caisse','Photographiez vos tickets sur WhatsApp. L\'IA extrait fournisseur, articles, HT/TVA et alimente votre compta.','Zéro ressaisie',false],
+  ['star','Avis Google Maps','À chaque chantier terminé, Floxia envoie un message WhatsApp au client pour inviter à laisser un avis Google.','Réputation boostée',false],
+  ['alert-triangle','Alerte Problème Chantier','Un problème ? Envoyez un vocal. Floxia rédige l\'e-mail pro au client : situation, causes, nouveau délai.','Email en 30 sec',false],
+  ['bell','Relances Automatiques','Floxia surveille vos devis non signés et relance en 3 temps : J+3, J+7, J+14.','+30% de conversion',false],
+  ['monitor','ERP OS Mobile Complet','Interface moderne type OS — devis, factures, PV, chantiers, planning, équipe, dépenses. Tout en un seul endroit.','Tout en un endroit',false],
+  ['mic','Assistant Vocal Technique','Posez n\'importe quelle question vocalement sur WhatsApp : technique, administrative, juridique. Floxia répond instantanément.','Réponse IA instantanée',true],
+  ['phone-incoming','Agent Réceptionniste IA','Répond aux clients entrants WA et appels, qualifie la demande, boooke le RDV automatiquement dans votre agenda.','Booking 100% auto',true],
+  ['file-check','Avenants & Avoirs Automatisés','Génération automatique des avenants et avoirs avec relances de signature J+3/J+7/J+14 si pas signés.','Relances auto',true],
+  ['trending-up','Suivi Dépenses et TVA','Chaque ticket scanné alimente votre dashboard : dépenses, TVA récupérable, export 1 clic.','Compta simplifiée',false],
+  ['users','Gestion Équipe et Salariés','Heures, chantiers, planning temps réel. Synchronisé avec Google Sheets.','Équipe pilotée WA',false],
+  ['shield','Données 100% Souveraines','Hébergement France, zéro dépendance cloud étranger. Vous restez propriétaire de vos données artisan.','Souveraineté totale',true]
+];
+document.getElementById('servicesGrid').innerHTML=SERVICES.map(([ico,title,desc,tag,isNew])=>`<div class="scard${isNew?' new-feat':''}"><div class="cicon" aria-hidden="true">${icon(ico)}</div>${isNew?'<div style="display:inline-flex;font-size:.52rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:#F5C842;color:#1E2B45;padding:.14rem .5rem;border-radius:50px;margin-bottom:.5rem;">Nouveau</div>':''}<h3 class="ctitle">${title}</h3><div class="cdesc">${desc}</div><span class="ctag${isNew?' new':''}">${tag}</span></div>`).join('');
+setTimeout(initTilt,200);
+
+// ECO FLUX
+const ECO_FLUX=[['Flux 1 - Cycle devis complet',[['Vocal WA',''],['IA Floxia','g'],['Devis PDF',''],['Signature',''],['PV',''],['Facture','e']]],['Flux 2 - Agent réceptionniste',[['Client appelle',''],['Agent IA','g'],['Qualification',''],['RDV booké','e']]],['Flux 3 - Avenant / Avoir',[['Génération',''],['Floxia envoie','g'],['Relance auto',''],['Signé','e']]],['Flux 4 - Ticket de caisse',[['Photo WA',''],['OCR IA','g'],['Google Sheets',''],['Compta','e']]],['Flux 5 - Relances devis',[['Délai dépassé',''],['Floxia détecte','g'],['J+3 / J+7 / J+14','e']]],['Flux 6 - Assistant technique',[['Question vocale',''],['IA analyse','g'],['Réponse WA','e']]]];
+document.getElementById('ecoFlux').innerHTML=ECO_FLUX.map(([lbl,nodes])=>`<div class="fblock"><div class="flbl">${lbl}</div><div class="fwrap"><div class="frow">${nodes.map(([t,k],i)=>`<span class="fn ${k}">${t}</span>${i<nodes.length-1?'<span class="fa" aria-hidden="true">→</span>':''}`).join('')}</div></div></div>`).join('');
+
+// ROI
+const TASKS=[['Cycle devis - PV - facture finale','{{cycle_h}}h économisées / mois'],['Taper des devis le soir','45 min évitées / devis'],['Ressaisir les tickets de caisse','2h / semaine récupérées'],['Rédiger des e-mails clients','30 min / incident'],['Relancer les devis manuellement','+30% de conversion'],['Répondre aux appels entrants','Agent IA s\'en charge'],['Gérer les avenants & avoirs','Automatisé complet'],['Poser des questions techniques','Assistant vocal IA'],['Exporter votre compta','Export 1 clic'],['Rédiger les rapports chantier','18 min / chantier'],['Demander des avis Google','Automatique'],['Générer un PV de réception','Auto après signature'],['Booker les RDV clients','Booking auto 24/7'],['Rappeler les clients sans réponse','Agent IA relance']];
+function updateROI(nb){
+  const cycleH=Math.round((60-3)*nb/60*10)/10;
+  const h=Math.round((cycleH+8+4+Math.round(18*nb/60*10)/10)*10)/10;
+  const gain=Math.round(h*55);
+  const abo=nb<=10?49:nb<=30?99:149;
+  const bookingClients=Math.round(nb*0.15*10)/10;
+  const bookingCA=Math.round(bookingClients*1200);
+  const totalGain=gain+bookingCA;
+  const roi=Math.round((totalGain/abo)*100);
+  const offre=nb<=10?'Essentiel':nb<=30?'Artisan Autonome':'Premium';
+  const pct=((nb-1)/(80-1)*100).toFixed(1);
+  document.getElementById('sliderProgress').style.width=pct+'%';
+  document.getElementById('sliderVal').textContent=nb;
+  document.getElementById('roiTitle').textContent=`Résultats pour ${nb} devis / mois`;
+  document.getElementById('roiH').textContent=h+'h';
+  document.getElementById('roiGain').textContent=totalGain+'€';
+  document.getElementById('roiRoi').textContent=roi+'%';
+  document.getElementById('roiCycleH').textContent=cycleH+'h';
+  document.getElementById('roiBookingClients').textContent='~'+bookingClients;
+  document.getElementById('roiBookingCA').textContent='+'+bookingCA+'€';
+  document.getElementById('taskList').innerHTML=TASKS.map(([n,g])=>`<div class="task-item"><div class="task-name">${n}</div><div class="task-gain">${g.replace('{{cycle_h}}',cycleH)}</div></div>`).join('');
+  document.getElementById('roiCtaText').innerHTML=`Pour <span>${nb} devis/mois</span> — offre conseillée : <span>${offre}</span><br>Valeur récupérée estimée : <span>${totalGain}€ / mois</span> · ROI <span>${roi}%</span>`;
+}
+const slider=document.getElementById('roiSlider');
+slider.addEventListener('input',()=>updateROI(parseInt(slider.value)));
+updateROI(15);
+
+// COMPARATIF
+const COMP_ROWS=[['Devis depuis WhatsApp vocal','Oui — natif','Non','Non','Non','Non'],['Cycle devis complet en 3 min automatisé','Oui','Non','Partiel','Non','Non'],['PV de réception automatique','Oui','Non','Oui','Non','Non'],['Facture finale auto après PV','Oui','Oui','Oui','Oui','Non'],['Scan tickets de caisse via WA','Oui','Non','Non','Non','Non'],['Relances auto J+3 / J+7 / J+14','Oui','Non','Partiel','Non','Non'],['Gestion avenants & avoirs auto','Oui — nouveau','Non','Partiel','Non','Non'],['Agent réceptionniste IA WA + appel','Oui — nouveau','Non','Non','Non','Non'],['Booking auto + optimisation distance','Oui — nouveau','Non','Non','Non','Non'],['Assistant vocal technique IA','Oui — nouveau','Non','Non','Non','Non'],['ERP interface OS moderne','Oui — nouveau','Non','Partiel','Partiel','Non'],['Hébergement 100% France souverain','Oui','Non','Non','Non','Oui'],['Demande d\'avis Google auto','Oui','Non','Non','Non','Non'],['IA vocale / traitement NLP','Oui','Non','Non','Non','Non'],['Conformité facturation 2026','Oui','Oui','Oui','Oui','Non'],['Sans abonnement logiciel lourd','Oui','Non','Non','Non','Oui']];
+function cmpCell(val,isFloxia=false){const cls=isFloxia?' class="floxia-col"':'';let inner;if(val.startsWith('Oui'))inner=`<span class="cmp-yes">✓ ${val}</span>`;else if(val==='Non')inner=`<span class="cmp-no">✕</span>`;else inner=`<span class="cmp-partial">${val}</span>`;return `<td${cls}>${inner}</td>`;}
+document.getElementById('cmpTableBody').innerHTML=COMP_ROWS.map(r=>`<tr><td class="cmp-row-label">${r[0]}</td>${cmpCell(r[1],true)}${cmpCell(r[2])}${cmpCell(r[3])}${cmpCell(r[4])}${cmpCell(r[5])}</tr>`).join('');
+const COLS=['Floxia','Batiprix','Onaya','EBP/Sage','Excel'];
+document.getElementById('cmpMobileCards').innerHTML=COMP_ROWS.map(r=>{const cols=COLS.map((lbl,i)=>{const val=r[i+1];const isF=i===0;let badge=val.startsWith('Oui')?'<span class="cmp-mcard-yes">✓</span>':val==='Non'?'<span class="cmp-mcard-no">✕</span>':'<span class="cmp-mcard-partial">~</span>';return `<div class="cmp-mcard-col"><div class="cmp-mcard-col-lbl${isF?' floxia':''}">${lbl}</div>${badge}</div>`;}).join('');return `<div class="cmp-mcard"><div class="cmp-mcard-feat">${r[0]}</div><div class="cmp-mcard-cols">${cols}</div></div>`;}).join('');
+
+// TARIFS — tableau comparatif
+// [label, essentiel, artisanPro, pmePremium]
+// true = ✓, false = —, string = texte
+const PT_ROWS = [
+  {cat:'Devis & Facturation'},
+  ['Création de devis depuis le site (simple et rapide)',true,true,true],
+  ['Devis PDF par WhatsApp (3 min)',true,true,true],
+  ['Factures acomptes & bons typés',true,true,true],
+  ['PV de réception + Facture finale (1 clic)',true,true,true],
+  ['Email automatique des factures',true,true,true],
+  ['Conformité facturation 2026 (e-reporting/EN)',true,true,true],
+  ['Numérotation automatique Devis & Factures',true,true,true],
+  ['Bibliothèque de prix (catalogue)',true,true,true],
+  ['Gestion TVA multiples (5,5% / 10% / 20%)',true,true,true],
+  ['Gestion avenants & avoirs automatiques',true,true,true],
+  ['Modèles de devis personnalisables',true,true,true],
+  {cat:'Relances & Suivi'},
+  ['Notifications devis signé',true,true,true],
+  ['Dashboard actif (CA, chantiers, devis)',true,true,true],
+  ['Relances devis non signés (J+3/J+7/J+14)',true,true,true],
+  ['Relances automatiques avoirs & avenants',false,true,true],
+  ['Alerte chantier (e-mail pro depuis vocal)',false,true,true],
+  ['Relance garantie 1 an (J+365)',false,true,true],
+  {cat:'Agent IA & Booking'},
+  ['Agent réceptionniste IA (WhatsApp)',false,true,true],
+  ['Booking automatique de RDV (WhatsApp)',false,true,true],
+  ['Agent réceptionniste IA (Téléphone)',false,false,true],
+  {cat:'Assistant Vocal IA'},
+  ['Vocal devis via WhatsApp (3 min)',true,true,true],
+  ['Assistant vocal technique (artisan, admin, juridique)',false,true,true],
+  ['Assistant vocal IA avancé (agenda, disponibilités)',false,false,true],
+  {cat:'Conformité & Opérations'},
+  ['Scan OCR tickets de caisse via WhatsApp',false,true,true],
+  ['Dashboard dépenses & TVA récupérable',false,true,true],
+  ['Export comptabilité en 1 clic',false,true,true],
+  {cat:'Avis & Réputation'},
+  ['Demande automatique d\'avis Google Maps',false,true,true],
+  {cat:'Gestion Équipe & Chantiers'},
+  ['Collecte photos fin de chantier',false,true,true],
+  ['Gestion équipe & planning chantiers',false,false,true],
+  ['Suivi des heures collaborateurs',false,false,true],
+];
+const yes='<span class="pt-yes">✓</span>';
+const no='<span class="pt-no">—</span>';
+function ptCell(v,isPro){return `<td class="pt-cell${isPro?' pro':''}">${v===true?yes:no}</td>`;}
+document.getElementById('pricingTableBody').innerHTML=PT_ROWS.map(r=>{
+  if(r.cat!==undefined) return `<tr><td colspan="4" class="pt-cat">${r.cat}</td></tr>`;
+  return `<tr class="pt-row"><td class="pt-feat">${r[0]}</td>${ptCell(r[1],false)}${ptCell(r[2],true)}${ptCell(r[3],false)}</tr>`;
+}).join('');
+
+// FAQ
+const FAQ=[
+  ['Qu\'est-ce que Floxia ?','Floxia est un ERP IA pour artisans et PME du bâtiment. Il permet de générer des devis et factures depuis WhatsApp en 3 minutes grâce à un message vocal. Floxia automatise toute la chaîne administrative : devis, PV de réception, facturation, relances, avenants, avoirs, et intègre un agent réceptionniste IA pour gérer les appels et bookings clients. Tout est hébergé 100% en France.'],
+  ['Comment créer un devis avec Floxia ?','Avec Floxia, il suffit d\'envoyer un message vocal sur WhatsApp décrivant votre chantier. L\'IA génère automatiquement un devis PDF en 3 minutes, prêt à être envoyé au client avec signature électronique intégrée.'],
+  ['Comment fonctionne l\'agent réceptionniste IA ?','L\'agent réceptionniste Floxia répond automatiquement aux clients entrants par WhatsApp ou appel. Il qualifie la demande, calcule la distance pour optimiser le créneau géographiquement, et boooke directement le rendez-vous dans votre ERP ou Google Calendar.'],
+  ['Comment fonctionnent les relances d\'avenants et d\'avoirs ?','Floxia génère automatiquement vos avenants et avoirs en PDF et les envoie au client. Si la signature n\'est pas effectuée, Floxia déclenche automatiquement des relances à J+3, J+7 et J+14 avec des emails HTML professionnels.'],
+  ['Floxia héberge-t-il les données en France ?','Oui, Floxia est 100% hébergé en France sur infrastructure indépendante. Vos données ne transitent jamais vers des serveurs américains. Vous êtes souverain sur vos données : export à tout moment, aucune revente, conformité RGPD native.'],
+  ['Floxia remplace-t-il un ERP bâtiment classique comme Batigest ou Onaya ?','Floxia complète ou remplace ces solutions en ajoutant ce qu\'elles n\'ont pas : interface WhatsApp native, devis vocal en 3 minutes, agent réceptionniste IA, gestion avenants/avoirs automatisée et hébergement souverain en France.']
+];
+const chevronSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
+document.getElementById('faqList').innerHTML=FAQ.map(([q,a],i)=>`<div class="faq-item" id="faq-${i}"><div class="faq-q" onclick="toggleFaq(${i})" role="button" aria-expanded="false">${q}<span class="faq-toggle" aria-hidden="true">${chevronSVG}</span></div><div class="faq-a" role="region">${a}</div></div>`).join('');
+function toggleFaq(i){const item=document.getElementById('faq-'+i);const btn=item.querySelector('.faq-q');const isOpen=item.classList.toggle('open');btn.setAttribute('aria-expanded',isOpen);}
+
+// SCROLL REVEAL
+const revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-stagger');
+if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
+  revealEls.forEach(el=>obs.observe(el));
+}else{revealEls.forEach(el=>el.classList.add('in'));}
+</script>
+</body>
+</html>
