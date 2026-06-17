@@ -230,7 +230,7 @@ function CategoryCard({ cat, delay, colSpan }: {
 }
 
 // Bento: 3 cols. hero cards span 2, others span 1
-const LAYOUT = [2, 2, 1, 1, 1, 1, 1, 1];
+const LAYOUT = [2, 2, 1, 1, 1, 1, 2, 2];
 
 export default function Services() {
   return (
