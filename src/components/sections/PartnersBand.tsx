@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-const PARTNERS = [
+const MAIN_PARTNERS = [
   {
     name: "WhatsApp Business",
     sub: "Meta API Officielle",
@@ -12,122 +12,134 @@ const PARTNERS = [
     ),
   },
   {
-    name: "OVHcloud",
-    sub: "Hébergement France",
-    svg: (
-      <svg width="32" height="20" viewBox="0 0 120 60" fill="none">
-        <text x="0" y="46" fontFamily="Arial" fontWeight="900" fontSize="48" fill="#0050d8">OVH</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Google",
-    sub: "Avis & Maps",
+    name: "Gmail",
+    sub: "Envoi d'e-mails pro",
     svg: (
       <svg width="28" height="28" viewBox="0 0 24 24">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Stripe",
-    sub: "Paiements sécurisés",
-    svg: (
-      <svg width="40" height="20" viewBox="0 0 120 50" fill="none">
-        <text x="0" y="40" fontFamily="Arial" fontWeight="800" fontSize="42" fill="#635BFF">stripe</text>
-      </svg>
-    ),
-  },
-  {
-    name: "DocuSign",
-    sub: "Signature électronique",
-    svg: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-        <rect width="24" height="24" rx="5" fill="#FFCC22"/>
-        <path d="M6 12h12M12 6v12" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
-        <circle cx="12" cy="12" r="3" fill="#1a1a1a"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Pennylane",
-    sub: "Export comptable",
-    svg: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="11" fill="#7C3AED"/>
-        <text x="6" y="17" fontFamily="Arial" fontWeight="900" fontSize="13" fill="white">P</text>
-      </svg>
-    ),
-  },
-  {
-    name: "CERFA / DGFiP",
-    sub: "Attestations TVA",
-    svg: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-        <rect width="24" height="24" rx="5" fill="#002395"/>
-        <text x="4" y="17" fontFamily="Arial" fontWeight="900" fontSize="11" fill="white">FR</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Twilio / SIP",
-    sub: "Standard vocal IA",
-    svg: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="11" fill="#F22F46"/>
-        <circle cx="8.5" cy="8.5" r="2" fill="white"/>
-        <circle cx="15.5" cy="8.5" r="2" fill="white"/>
-        <circle cx="8.5" cy="15.5" r="2" fill="white"/>
-        <circle cx="15.5" cy="15.5" r="2" fill="white"/>
+        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.908 1.528-1.147C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/>
       </svg>
     ),
   },
 ];
 
+const SECONDARY_PARTNERS = [
+  {
+    name: "OVHcloud",
+    sub: "Hébergement France",
+    svg: (
+      <svg width="32" height="16" viewBox="0 0 100 40">
+        <text x="0" y="32" fontFamily="Arial" fontWeight="900" fontSize="36" fill="#0050d8">OVH</text>
+      </svg>
+    ),
+  },
+  {
+    name: "Stripe",
+    sub: "Paiements",
+    svg: (
+      <svg width="36" height="16" viewBox="0 0 100 40">
+        <text x="0" y="30" fontFamily="Arial" fontWeight="800" fontSize="30" fill="#635BFF">stripe</text>
+      </svg>
+    ),
+  },
+  {
+    name: "DocuSign",
+    sub: "Signature élec.",
+    svg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="5" fill="#FFCC22"/>
+        <path d="M7 12h10M12 7v10" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    name: "Pennylane",
+    sub: "Comptabilité",
+    svg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#7C3AED"/>
+        <text x="6.5" y="17" fontFamily="Arial" fontWeight="900" fontSize="13" fill="white">P</text>
+      </svg>
+    ),
+  },
+  {
+    name: "DGFiP / CERFA",
+    sub: "TVA & e-reporting",
+    svg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="5" fill="#002395"/>
+        <text x="3.5" y="17" fontFamily="Arial" fontWeight="900" fontSize="11" fill="white">FR</text>
+      </svg>
+    ),
+  },
+  {
+    name: "Twilio / SIP",
+    sub: "Standard vocal",
+    svg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#F22F46"/>
+        <circle cx="8.5" cy="8.5" r="1.8" fill="white"/>
+        <circle cx="15.5" cy="8.5" r="1.8" fill="white"/>
+        <circle cx="8.5" cy="15.5" r="1.8" fill="white"/>
+        <circle cx="15.5" cy="15.5" r="1.8" fill="white"/>
+      </svg>
+    ),
+  },
+];
+
+function Pill({ name, sub, svg, large, delay }: { name: string; sub: string; svg: React.ReactNode; large?: boolean; delay: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay }}
+      whileHover={{ borderColor: "rgba(245,200,66,0.25)", backgroundColor: "rgba(245,200,66,0.04)" }}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: large ? "0.75rem" : "0.5rem",
+        padding: large ? "0.75rem 1.4rem" : "0.45rem 0.9rem",
+        borderRadius: "999px",
+        border: "1px solid rgba(255,255,255,0.08)",
+        background: "rgba(255,255,255,0.03)",
+        backdropFilter: "blur(8px)",
+        transition: "border-color 0.25s, background 0.25s",
+        cursor: "default",
+      }}
+    >
+      <div style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>{svg}</div>
+      <div>
+        <div style={{ fontSize: large ? "0.88rem" : "0.72rem", fontWeight: 700, color: large ? "rgba(232,237,244,0.9)" : "rgba(232,237,244,0.7)", lineHeight: 1.2 }}>{name}</div>
+        <div style={{ fontSize: large ? "0.68rem" : "0.58rem", color: "rgba(232,237,244,0.35)", fontWeight: 500 }}>{sub}</div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function PartnersBand() {
   return (
-    <section style={{ background: "#0A1520", padding: "3rem 0", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+    <section style={{ background: "#0A1520", padding: "2.5rem 0", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 6vw" }}>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          style={{ textAlign: "center", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(232,237,244,0.3)", marginBottom: "2rem" }}
+          style={{ textAlign: "center", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(232,237,244,0.25)", marginBottom: "1.5rem" }}
         >
           Intégrations & services partenaires
         </motion.p>
 
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-          {PARTNERS.map((p, i) => (
-            <motion.div
-              key={p.name}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.07 }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.6rem",
-                padding: "0.6rem 1.1rem",
-                borderRadius: "999px",
-                border: "1px solid rgba(255,255,255,0.07)",
-                background: "rgba(255,255,255,0.03)",
-                backdropFilter: "blur(8px)",
-                transition: "border-color 0.25s, background 0.25s",
-                cursor: "default",
-              }}
-              whileHover={{ borderColor: "rgba(245,200,66,0.2)", backgroundColor: "rgba(245,200,66,0.04)" }}
-            >
-              <div style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>{p.svg}</div>
-              <div>
-                <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "rgba(232,237,244,0.85)", lineHeight: 1.2 }}>{p.name}</div>
-                <div style={{ fontSize: "0.62rem", color: "rgba(232,237,244,0.35)", fontWeight: 500 }}>{p.sub}</div>
-              </div>
-            </motion.div>
+        {/* Ligne 1 — WhatsApp + Gmail en grand */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginBottom: "1rem", flexWrap: "wrap" }}>
+          {MAIN_PARTNERS.map((p, i) => (
+            <Pill key={p.name} {...p} large delay={i * 0.08} />
+          ))}
+        </div>
+
+        {/* Ligne 2 — autres services plus petits */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "0.65rem", flexWrap: "wrap" }}>
+          {SECONDARY_PARTNERS.map((p, i) => (
+            <Pill key={p.name} {...p} delay={0.18 + i * 0.06} />
           ))}
         </div>
       </div>
