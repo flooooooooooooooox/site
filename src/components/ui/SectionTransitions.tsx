@@ -1,48 +1,103 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-// 3D perspective floor transition between hero photo and dark sections
+// Animated 3D warp tunnel transition — canvas-based gold grid flying toward viewer
 export function HeroWave() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let raf: number;
+    let t = 0;
+
+    function resize() {
+      if (!canvas) return;
+      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    function draw() {
+      if (!canvas || !ctx) return;
+      const W = canvas.width, H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      const cx = W / 2;
+      const horizon = H * 0.08;
+      const LINES = 12;
+      const speed = 0.018;
+      t = (t + speed) % 1;
+
+      // Draw perspective grid lines (vertical — left/right vanishing)
+      for (let i = 0; i <= LINES; i++) {
+        const frac = i / LINES; // 0..1
+        const xStart = W * frac;
+        const xEnd = cx + (xStart - cx) * 0.01;
+        const alpha = 0.06 + 0.18 * Math.sin(Math.PI * frac);
+        ctx.beginPath();
+        ctx.moveTo(xStart, H);
+        ctx.lineTo(xEnd, horizon);
+        ctx.strokeStyle = `rgba(245,200,66,${alpha})`;
+        ctx.lineWidth = 1 * window.devicePixelRatio;
+        ctx.stroke();
+      }
+
+      // Draw horizontal lines flying toward viewer
+      const HLINES = 14;
+      for (let i = 0; i < HLINES; i++) {
+        const prog = ((i / HLINES) + t) % 1; // 0=horizon, 1=bottom
+        const eased = Math.pow(prog, 2.2);
+        const y = horizon + (H - horizon) * eased;
+        const spread = eased;
+        const x0 = cx - (cx) * spread;
+        const x1 = cx + (cx) * spread;
+        const alpha = Math.min(eased * 0.7, 0.35);
+        ctx.beginPath();
+        ctx.moveTo(x0, y);
+        ctx.lineTo(x1, y);
+        ctx.strokeStyle = `rgba(245,200,66,${alpha})`;
+        ctx.lineWidth = (0.5 + eased * 1.5) * window.devicePixelRatio;
+        ctx.stroke();
+      }
+
+      // Gold horizon glow
+      const grad = ctx.createLinearGradient(0, horizon - 2, 0, horizon + 6);
+      grad.addColorStop(0, "rgba(245,200,66,0)");
+      grad.addColorStop(0.5, "rgba(245,200,66,0.55)");
+      grad.addColorStop(1, "rgba(245,200,66,0)");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, horizon - 2, W, 8);
+
+      // Fade overlay top→transparent, bottom→dark
+      const fade = ctx.createLinearGradient(0, 0, 0, H);
+      fade.addColorStop(0, "rgba(5,8,13,0.95)");
+      fade.addColorStop(0.25, "rgba(5,8,13,0.4)");
+      fade.addColorStop(0.7, "rgba(5,8,13,0.1)");
+      fade.addColorStop(1, "rgba(5,8,13,0)");
+      ctx.fillStyle = fade;
+      ctx.fillRect(0, 0, W, H);
+
+      raf = requestAnimationFrame(draw);
+    }
+
+    draw();
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
   return (
-    <div style={{ position: "relative", marginTop: "-1px", zIndex: 1, height: "clamp(140px, 18vw, 220px)", overflow: "hidden", background: "transparent" }}>
-      {/* 3D floor grid plunging into darkness */}
-      <div style={{
-        position: "absolute", inset: 0,
-        perspective: "500px",
-        perspectiveOrigin: "50% 0%",
-      }}>
-        <div style={{
-          position: "absolute",
-          width: "160%",
-          height: "300%",
-          left: "-30%",
-          top: "0%",
-          transformOrigin: "50% 0%",
-          transform: "rotateX(72deg)",
-          backgroundImage: `
-            linear-gradient(rgba(245,200,66,0.12) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(245,200,66,0.12) 1px, transparent 1px)
-          `,
-          backgroundSize: "80px 80px",
-        }} />
-      </div>
-
-      {/* Fade from hero (transparent top) to dark bottom */}
-      <div style={{
-        position: "absolute", inset: 0,
-        background: "linear-gradient(to bottom, rgba(5,8,13,0) 0%, rgba(5,8,13,0.6) 40%, #05080D 100%)",
-      }} />
-
-      {/* Gold horizon line */}
-      <div style={{
-        position: "absolute",
-        top: "2px",
-        left: "10%",
-        width: "80%",
-        height: "1px",
-        background: "linear-gradient(to right, transparent, rgba(245,200,66,0.5) 30%, rgba(245,200,66,0.7) 50%, rgba(245,200,66,0.5) 70%, transparent)",
-        boxShadow: "0 0 20px rgba(245,200,66,0.3), 0 0 60px rgba(245,200,66,0.1)",
-      }} />
+    <div style={{ position: "relative", marginTop: "-1px", zIndex: 1, height: "clamp(160px, 20vw, 260px)", overflow: "hidden" }}>
+      <canvas
+        ref={canvasRef}
+        style={{ width: "100%", height: "100%", display: "block" }}
+      />
     </div>
   );
 }
