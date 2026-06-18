@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: "Comparatif", href: "/#comparatif" },
   { label: "ROI", href: "/#roi" },
   { label: "Tarifs", href: "/#tarifs" },
+  { label: "Ressources", href: "/ressources" },
   { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
 ];
 

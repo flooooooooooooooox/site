@@ -6,23 +6,57 @@ import { ChevronDown } from "lucide-react";
 const FAQS = [
   {
     q: "Comment Floxia s'intègre avec WhatsApp ?",
-    a: "Floxia se connecte à votre numéro WhatsApp Business existant via l'API officielle Meta. Aucune application supplémentaire à installer.",
+    a: "Floxia se connecte à votre numéro WhatsApp Business existant via l'API officielle Meta. Aucune application supplémentaire à installer — vous utilisez WhatsApp comme d'habitude, et Floxia traite les devis et factures en arrière-plan.",
+  },
+  {
+    q: "En combien de temps est généré un devis ?",
+    a: "En moins de 3 minutes. Vous décrivez le chantier par message vocal ou texte depuis WhatsApp, et Floxia génère automatiquement le devis PDF avec votre logo, vos tarifs et la bonne TVA (5,5%, 10% ou 20% selon le type de travaux).",
+  },
+  {
+    q: "Floxia gère-t-il la facturation électronique 2026 ?",
+    a: "Oui, nativement. Floxia est conforme à la réglementation e-facturation et e-reporting 2026 obligatoire pour toutes les entreprises françaises. Chaque facture est générée au bon format sans action supplémentaire de votre part.",
   },
   {
     q: "Mes données sont-elles sécurisées ?",
-    a: "Vos données sont chiffrées à l'aide de plusieurs clés de cryptage et hébergées sur nos propres serveurs. Conformité RGPD native.",
+    a: "Vos données sont chiffrées à l'aide de plusieurs clés de cryptage et hébergées sur nos propres serveurs en France. Conformité RGPD native — vos données ne sont jamais revendues à des tiers.",
+  },
+  {
+    q: "Puis-je utiliser Floxia depuis mon téléphone sur chantier ?",
+    a: "C'est exactement pour ça que Floxia a été conçu. Tout fonctionne depuis WhatsApp sur votre téléphone — vous n'avez pas besoin d'ouvrir un ordinateur pour créer un devis, envoyer une facture ou consulter l'état d'un chantier.",
+  },
+  {
+    q: "Combien coûte Floxia ?",
+    a: "Floxia propose trois formules à partir de 49€/mois, avec un setup unique. Consultez la section Tarifs sur la page d'accueil pour le détail complet des offres Essentiel, Artisan Pro et PME Premium.",
+  },
+  {
+    q: "Floxia fonctionne-t-il pour tous les corps de métier du bâtiment ?",
+    a: "Oui — électriciens, plombiers, maçons, peintres, menuisiers, carreleurs, couvreurs... Floxia comprend le vocabulaire et les spécificités de chaque métier : TVA par type de travaux, attestations CERFA, gestion des avenants.",
   },
   {
     q: "Floxia fonctionne-t-il hors connexion ?",
-    a: "L'application web nécessite une connexion. Sur chantier, les données sont synchronisées dès le retour en ligne.",
+    a: "L'application web nécessite une connexion. Sur chantier, les données sont synchronisées dès le retour en ligne. WhatsApp fonctionne en 4G/5G, donc vous pouvez créer des devis même dans des zones à faible couverture.",
   },
 ];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
 
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section style={{ background: "transparent", padding: "6rem 0" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div style={{ maxWidth: "48rem", margin: "0 auto", padding: "0 6vw" }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -66,7 +100,7 @@ export default function Faq() {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.07 }}
+                transition={{ duration: 0.45, delay: i * 0.05 }}
                 style={{
                   background: isOpen ? "rgba(245,200,66,0.04)" : "rgba(var(--surface-rgb),0.03)",
                   border: isOpen ? "1px solid rgba(245,200,66,0.2)" : "1px solid rgba(var(--surface-rgb),0.07)",
