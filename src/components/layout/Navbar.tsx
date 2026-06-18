@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
@@ -75,7 +76,7 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
-        <a
+        <Link
           href="/"
           onClick={(e) => {
             if (window.location.pathname === "/") {
@@ -105,7 +106,7 @@ export default function Navbar() {
             }}
           />
           Floxia
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div
@@ -119,7 +120,7 @@ export default function Navbar() {
           className="nav-links-desktop"
         >
           {NAV_LINKS.map((l) => (
-            <a
+            <Link
               key={l.label}
               href={l.href}
               onClick={(e) => scrollTo(e, l.href)}
@@ -137,7 +138,7 @@ export default function Navbar() {
               onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(232,237,244,.45)")}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -209,7 +210,7 @@ export default function Navbar() {
           className="nav-mobile-menu"
         >
           {NAV_LINKS.map((l) => (
-            <a
+            <Link
               key={l.label}
               href={l.href}
               onClick={(e) => { scrollTo(e, l.href); setMenuOpen(false); }}
@@ -224,7 +225,7 @@ export default function Navbar() {
               }}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </div>
       )}

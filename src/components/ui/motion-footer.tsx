@@ -239,7 +239,7 @@ export function CinematicFooter() {
                   style={{ padding: "1.1rem 2.5rem", borderRadius: "9999px", fontSize: "0.95rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.6rem" }}>
                   Réserver une démo gratuite
                 </MagneticButton>
-                <MagneticButton as="a" href="#tarifs"
+                <MagneticButton as="a" href="/#tarifs"
                   className="footer-glass-pill"
                   style={{ padding: "1.1rem 2.5rem", borderRadius: "9999px", fontSize: "0.95rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.6rem", color: "var(--foreground)", fontWeight: 700 }}>
                   Voir les tarifs →

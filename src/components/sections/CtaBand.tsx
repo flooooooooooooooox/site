@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
 
 export default function CtaBand() {
@@ -98,7 +99,7 @@ export default function CtaBand() {
               margin: "0 auto 3rem",
             }}
           >
-            Rejoignez 340+ artisans et PME qui ont choisi l&apos;efficacité.
+            Rejoignez les artisans et PME qui ont choisi l&apos;efficacité.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
@@ -127,8 +128,8 @@ export default function CtaBand() {
               Réserver une démo gratuite
             </a>
 
-            <a
-              href="#tarifs"
+            <Link
+              href="/#tarifs"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -149,7 +150,7 @@ export default function CtaBand() {
             >
               Voir les tarifs
               <ArrowRight size={16} />
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

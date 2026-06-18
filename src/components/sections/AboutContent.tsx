@@ -33,9 +33,10 @@ const VALUES = [
 ];
 
 const STATS = [
-  { value: "340+", label: "artisans & PME accompagnés" },
   { value: "−80 %", label: "de temps administratif éliminé" },
-  { value: "3 min", label: "pour générer un devis complet" },
+  { value: "3 min", label: "du devis à la facture finale et au PV de réception" },
+  { value: "24h/24", label: "un agent IA qui répond à vos clients" },
+  { value: "48h", label: "pour être 100 % opérationnel" },
   { value: "100 %", label: "hébergé et conçu en France" },
 ];
 
@@ -104,8 +105,9 @@ export default function AboutContent() {
           <div style={{ display: "flex", flexDirection: "column", gap: "1.3rem", color: "rgba(var(--text-rgb),0.75)", fontSize: "1.08rem", lineHeight: 1.8 }}>
             <p>
               Tout commence avec <strong style={{ color: "var(--text)" }}>Florian</strong>, ingénieur en
-              automatisation. Au sein d&apos;une ETI, il déploie des automatisations qui font gagner
-              des centaines d&apos;heures aux équipes et transforment leur façon de travailler.
+              automatisation. Lors d&apos;un stage au sein d&apos;une ETI, il conçoit et met en place des
+              automatisations qui font gagner des centaines d&apos;heures aux équipes — et il mesure
+              concrètement l&apos;impact que ces outils peuvent avoir sur le quotidien d&apos;une entreprise.
             </p>
             <p>
               En échangeant avec <strong style={{ color: "var(--text)" }}>son oncle</strong>, artisan,
