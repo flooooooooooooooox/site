@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
+import { VILLES } from "@/lib/villes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://floxia.fr";
   const now = new Date();
-  return [
+
+  const staticPages: MetadataRoute.Sitemap = [
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/qui-sommes-nous`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Ressources (blog)
@@ -18,7 +20,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/artisans`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/artisans/electricien`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/artisans/plombier`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/artisans/chauffagiste`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/artisans/macon`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/artisans/peintre`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/artisans/menuisier`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/artisans/couvreur`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/artisans/carreleur`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/artisans/plaquiste`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // Alternatives / comparatifs
+    { url: `${base}/alternatives`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/alternatives/floxia-vs-obat`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${base}/alternatives/alternative-batigest`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${base}/alternatives/alternative-sage`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${base}/alternatives/alternative-ebp`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    // Pages villes (index)
+    { url: `${base}/logiciel-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
+
+  const villePages: MetadataRoute.Sitemap = VILLES.map((v) => ({
+    url: `${base}/logiciel-batiment/${v.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...villePages];
 }

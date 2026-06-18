@@ -53,21 +53,12 @@ export const metadata: Metadata = {
     title: "Floxia — Devis & Factures depuis WhatsApp en 3 min | ERP IA Bâtiment",
     description:
       "Générez vos devis et factures depuis WhatsApp en 3 minutes. L'ERP IA pensé pour les artisans et PME du bâtiment.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Floxia — ERP IA pour artisans du bâtiment",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Floxia — ERP IA pour artisans du bâtiment",
     description:
       "Devis et factures depuis WhatsApp en 3 minutes. Automatisez votre gestion avec Floxia.",
-    images: ["/og-image.jpg"],
   },
   alternates: {
     canonical: SITE_URL,
@@ -93,7 +84,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Floxia",
   url: "https://floxia.fr",
-  logo: "https://floxia.fr/og-image.jpg",
+  logo: "https://floxia.fr/icon.svg",
   description: "ERP IA pour artisans et PME du bâtiment. Devis, factures, gestion de chantier depuis WhatsApp.",
   foundingDate: "2024",
   areaServed: "FR",
