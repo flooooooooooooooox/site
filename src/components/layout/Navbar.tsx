@@ -38,13 +38,15 @@ export default function Navbar() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+          // Positionnement constant (left/transform jamais changés) -> transition fluide
+          left: "50%",
+          transform: "translateX(-50%)",
+          willChange: "max-width, padding, border-radius, background, top",
+          transition:
+            "max-width 0.5s cubic-bezier(0.22,1,0.36,1), width 0.5s cubic-bezier(0.22,1,0.36,1), padding 0.5s cubic-bezier(0.22,1,0.36,1), border-radius 0.5s cubic-bezier(0.22,1,0.36,1), top 0.5s cubic-bezier(0.22,1,0.36,1), background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease",
           ...(scrolled
             ? {
                 top: "16px",
-                left: "50%",
-                right: "auto",
-                transform: "translateX(-50%)",
                 maxWidth: "780px",
                 width: "calc(100% - 2rem)",
                 borderRadius: "9999px",
@@ -56,17 +58,13 @@ export default function Navbar() {
               }
             : {
                 top: 0,
-                left: 0,
-                right: 0,
-                transform: "none",
-                maxWidth: "none",
-                width: "auto",
+                maxWidth: "2000px",
+                width: "100%",
                 borderRadius: 0,
                 padding: "0.85rem 5vw",
                 background: "rgba(5,8,13,0.9)",
                 backdropFilter: "blur(24px)",
-                border: "none",
-                borderBottom: "1px solid rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.06)",
                 boxShadow: "none",
               }),
         }}

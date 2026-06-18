@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import ClientCursor from "@/components/layout/ClientCursor";
 import SectionsBackdrop from "@/components/sections/SectionsBackdrop";
 import ContentOverlay from "@/components/sections/ContentOverlay";
+import StickyHero from "@/components/sections/StickyHero";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import ErpOsSection from "@/components/sections/ErpOsSection";
@@ -29,8 +30,11 @@ export default function Home() {
       <div className="grain" aria-hidden />
       <Navbar />
       <main style={{ position: "relative", zIndex: 1 }}>
-        <Hero />
-        {/* La suite arrive « par-dessus » le hero — carte qui glisse au-dessus */}
+        {/* Hero épinglé qui recule pendant que la suite remonte par-dessus */}
+        <StickyHero>
+          <Hero />
+        </StickyHero>
+        {/* La suite arrive « par-dessus » le hero — carte qui glisse au-dessus en 3D */}
         <ContentOverlay>
           <Services />
           <DepthFade />
