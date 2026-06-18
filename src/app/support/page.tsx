@@ -21,13 +21,9 @@ export default function Support() {
             ],
           },
           {
-            heading: "Par e-mail",
-            body: ["Écrivez-nous à contact@floxia.fr — nous répondons sous 24h ouvrées."],
-          },
-          {
             heading: "Réserver un échange",
             body: [
-              "Vous préférez en parler de vive voix ? Réservez une démo ou un échange gratuit de 30 minutes depuis le bouton « Réserver une démo » en haut de page.",
+              "Le plus simple : réservez une démo ou un échange gratuit de 30 minutes depuis le bouton « Réserver une démo » en haut de page. Nous prenons le temps de répondre à toutes vos questions.",
             ],
           },
         ]}

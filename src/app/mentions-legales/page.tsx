@@ -18,7 +18,7 @@ export default function MentionsLegales() {
             heading: "Éditeur du site",
             body: [
               "Le présent site est édité par Floxia.",
-              "Pour toute question relative aux informations légales (raison sociale, forme juridique, numéro SIREN/SIRET, capital social, adresse du siège), vous pouvez nous contacter à l'adresse indiquée dans la rubrique « Contact » ci-dessous.",
+              "Pour toute question relative aux informations légales (raison sociale, forme juridique, numéro SIREN/SIRET, capital social, adresse du siège), vous pouvez nous joindre via le formulaire de réservation de démo accessible depuis le bouton « Réserver une démo » en haut de page.",
             ],
           },
           {
@@ -41,7 +41,7 @@ export default function MentionsLegales() {
           },
           {
             heading: "Contact",
-            body: ["Pour toute demande : contact@floxia.fr"],
+            body: ["Pour toute demande, utilisez le formulaire de réservation de démo accessible depuis le bouton « Réserver une démo » en haut de page."],
           },
         ]}
       />

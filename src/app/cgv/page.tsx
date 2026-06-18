@@ -49,7 +49,7 @@ export default function Cgv() {
           },
           {
             heading: "6. Contact",
-            body: ["Pour toute question relative aux présentes CGV : contact@floxia.fr"],
+            body: ["Pour toute question relative aux présentes CGV, vous pouvez nous joindre via le formulaire de réservation de démo accessible depuis le bouton « Réserver une démo » en haut de page."],
           },
         ]}
       />

@@ -43,7 +43,7 @@ export default function Confidentialite() {
             heading: "Vos droits",
             body: [
               "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation et de portabilité de vos données.",
-              "Pour exercer ces droits, contactez-nous à : contact@floxia.fr",
+              "Pour exercer ces droits, contactez-nous via le formulaire de réservation de démo accessible depuis le bouton « Réserver une démo » en haut de page.",
             ],
           },
           {
