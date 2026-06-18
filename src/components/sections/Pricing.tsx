@@ -181,7 +181,7 @@ export default function Pricing() {
           </p>
         </motion.div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem", alignItems: "start" }}>
+        <div className="pricing-grid" style={{ display: "grid", gap: "1.5rem", alignItems: "start" }}>
           {PLANS.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -211,6 +211,7 @@ export default function Pricing() {
               )}
 
               <div
+                className={plan.popular ? "pricing-card-popular" : undefined}
                 style={{
                   position: "relative",
                   zIndex: 1,
@@ -222,7 +223,7 @@ export default function Pricing() {
                     : "1px solid rgba(var(--surface-rgb),0.08)",
                   borderRadius: "1.5rem",
                   padding: "2rem",
-                  transform: plan.popular ? "scale(1.04)" : "scale(1)",
+                  transform: "scale(1)",
                   boxShadow: plan.popular
                     ? "inset 0 0 60px rgba(245,200,66,0.03), 0 0 40px rgba(245,200,66,0.08)"
                     : "none",
@@ -436,6 +437,13 @@ export default function Pricing() {
         @keyframes badgePulse {
           0%, 100% { box-shadow: 0 0 0 0 rgba(245,200,66,0.4); }
           50% { box-shadow: 0 0 0 6px rgba(245,200,66,0); }
+        }
+        .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+        @media (min-width: 921px) {
+          .pricing-card-popular { transform: scale(1.04); }
+        }
+        @media (max-width: 920px) {
+          .pricing-grid { grid-template-columns: 1fr; max-width: 26rem; margin-left: auto; margin-right: auto; }
         }
       `}</style>
     </section>

@@ -93,7 +93,7 @@ export default function Comparatif() {
           </p>
         </motion.div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "0.9rem", marginBottom: "2.5rem" }}>
+        <div className="comparatif-scores" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "0.9rem", marginBottom: "2.5rem" }}>
           {SCORES.map((s, i) => {
             const score = countScore(s.key);
             return (
@@ -114,7 +114,9 @@ export default function Comparatif() {
           })}
         </div>
 
+        <div className="comparatif-scroll" style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
+          className="comparatif-table"
           style={{ borderRadius: "1.25rem", overflow: "hidden", border: "1px solid rgba(var(--surface-rgb),0.07)" }}>
           <div style={{ display: "grid", gridTemplateColumns: GRID, background: "rgba(var(--surface-rgb),0.04)", borderBottom: "1px solid rgba(var(--surface-rgb),0.07)" }}>
             <div style={{ padding: "1rem 1.5rem", color: "rgba(var(--text-rgb),0.3)", fontSize: ".72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: ".1em" }}>Critère</div>
@@ -146,11 +148,19 @@ export default function Comparatif() {
             </div>
           ))}
         </motion.div>
+        </div>
 
         <p style={{ marginTop: "1rem", textAlign: "center", color: "rgba(var(--text-rgb),0.22)", fontSize: ".7rem" }}>
           * Prix Sage/EBP hors modules bâtiment additionnels &nbsp;·&nbsp; <span style={{ color: "rgba(var(--text-rgb),0.32)" }}>— Partiel</span> = option payante ou fonctionnalité limitée
         </p>
       </div>
+
+      <style>{`
+        @media (max-width: 760px) {
+          .comparatif-scores { grid-template-columns: repeat(2, 1fr) !important; }
+          .comparatif-table { min-width: 600px; }
+        }
+      `}</style>
     </section>
   );
 }
