@@ -176,8 +176,14 @@ export default function Hero() {
           <span style={{ display: "inline-flex", alignItems: "center", marginLeft: "0.75rem", padding: "0 0.5rem", borderRadius: "0.3rem", background: "#F5C842", color: "#1E2B45", fontSize: "clamp(1rem,2vw,1.8rem)", letterSpacing: ".08em", verticalAlign: "middle", position: "relative", top: "-.1em", fontWeight: 900, boxShadow: "0 4px 20px rgba(245,200,66,0.45)" }}>OS</span>
           <br />
           <AnimatePresence mode="wait">
-            <motion.span key={wordIdx} initial={{ filter: "blur(8px)", opacity: 0 }} animate={{ filter: "blur(0)", opacity: 1 }} exit={{ filter: "blur(8px)", opacity: 0 }} transition={{ duration: 0.4 }}
-              style={{ color: "#F5C842", display: "inline-block" }}>
+            <motion.span
+              key={wordIdx}
+              initial={{ opacity: 0, y: "0.5em", rotateX: -45 }}
+              animate={{ opacity: 1, y: "0em", rotateX: 0 }}
+              exit={{ opacity: 0, y: "-0.5em", rotateX: 45 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              style={{ color: "#F5C842", display: "inline-block", transformOrigin: "center", transformStyle: "preserve-3d", willChange: "transform, opacity" }}
+            >
               {MORPH_WORDS[wordIdx]}
             </motion.span>
           </AnimatePresence>.<br />
