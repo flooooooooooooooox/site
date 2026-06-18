@@ -31,13 +31,21 @@ const articleJsonLd = {
   keywords: "ERP bâtiment, logiciel artisan, devis facture, gestion chantier",
 };
 
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Logiciel ERP bâtiment", item: "https://floxia.fr/ressources/logiciel-erp-batiment" },
+  ],
+};
+
 export default function ErpBatiment() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <BlogArticle
         badge="ERP & Logiciel"
         title="Logiciel ERP bâtiment : le guide complet pour artisans et PME"

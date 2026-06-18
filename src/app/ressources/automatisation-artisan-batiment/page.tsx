@@ -31,13 +31,21 @@ const articleJsonLd = {
   keywords: "automatisation artisan, gestion administrative bâtiment, logiciel artisan",
 };
 
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Automatisation artisan", item: "https://floxia.fr/ressources/automatisation-artisan-batiment" },
+  ],
+};
+
 export default function AutomatisationArtisan() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <BlogArticle
         badge="Gestion & Productivité"
         title="Automatisation : comment les artisans gagnent 10h par semaine"

@@ -31,11 +31,11 @@ export default function ErpOsSection() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/chantier3.webp"
-          alt="FloxiaOS Dashboard"
+          src="/dashboard-floxia.jpg"
+          alt="Tableau de bord FloxiaOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
           loading="lazy"
           decoding="async"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left", borderRadius: "1rem" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", borderRadius: "1rem" }}
         />
       </ContainerScroll>
     </section>

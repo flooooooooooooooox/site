@@ -51,6 +51,24 @@ const ARTICLES = [
     date: "Juin 2026",
     readTime: "5 min",
   },
+  {
+    href: "/ressources/tarif-horaire-artisan-batiment",
+    badge: "Prix",
+    title: "Tarif horaire artisan bâtiment : comment fixer ses prix en 2026",
+    description:
+      "Trop bas, vous travaillez à perte ; trop haut, vous perdez des chantiers. La méthode complète pour calculer votre tarif horaire, avec les fourchettes par métier.",
+    date: "Juin 2026",
+    readTime: "6 min",
+  },
+  {
+    href: "/ressources/tva-travaux-renovation",
+    badge: "TVA",
+    title: "TVA travaux de rénovation : 5,5%, 10% ou 20% ? Le guide 2026",
+    description:
+      "Appliquer le mauvais taux de TVA peut coûter cher. Comment savoir à coup sûr quel taux appliquer selon le type de travaux, avec l'attestation obligatoire.",
+    date: "Juin 2026",
+    readTime: "5 min",
+  },
 ];
 
 export default function Ressources() {

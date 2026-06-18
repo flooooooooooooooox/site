@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/ressources/automatisation-artisan-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/ressources/relances-devis-artisan`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/ressources/facturation-electronique-2026`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${base}/ressources/tarif-horaire-artisan-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/ressources/tva-travaux-renovation`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     // Pages par métier
     { url: `${base}/artisans`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/artisans/electricien`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
