@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import ClientCursor from "@/components/layout/ClientCursor";
-import GlobalSceneWrapper from "@/components/sections/GlobalSceneWrapper";
+import SectionsBackdrop from "@/components/sections/SectionsBackdrop";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import ErpOsSection from "@/components/sections/ErpOsSection";
@@ -22,7 +22,6 @@ import {
 export default function Home() {
   return (
     <>
-      <GlobalSceneWrapper />
       <ClientCursor />
       <div className="grain" aria-hidden />
       <Navbar />
@@ -55,22 +54,25 @@ export default function Home() {
               </span>
             </div>
           </div>
-          {/* Reste du contenu — fond translucide pour laisser voir le gradient animé */}
-          <div style={{ background: "rgba(5,8,13,0.55)" }}>
-          <Services />
-          <DepthFade />
-          <ErpOsSection />
-          <PartnersBand />
-          <StorySection />
-          <CubeEdge />
-          <RoiCalculator />
-          <RippleDepth />
-          <Comparatif />
-          <Perspective3DFloor />
-          <Pricing />
-          <DepthFade />
-          <Faq />
-          <CtaBand />
+          {/* Reste du contenu — fond opaque avec gradient animé sticky en arrière-plan */}
+          <div style={{ position: "relative", background: "#05080D" }}>
+            <SectionsBackdrop />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <Services />
+              <DepthFade />
+              <ErpOsSection />
+              <PartnersBand />
+              <StorySection />
+              <CubeEdge />
+              <RoiCalculator />
+              <RippleDepth />
+              <Comparatif />
+              <Perspective3DFloor />
+              <Pricing />
+              <DepthFade />
+              <Faq />
+              <CtaBand />
+            </div>
           </div>
         </div>
       </main>
