@@ -55,8 +55,8 @@ export default function Home() {
               </span>
             </div>
           </div>
-          {/* Reste du contenu sur fond sombre semi-transparent */}
-          <div style={{ background: "rgba(5,8,13,0.97)" }}>
+          {/* Reste du contenu — fond translucide pour laisser voir le gradient animé */}
+          <div style={{ background: "rgba(5,8,13,0.55)" }}>
           <Services />
           <DepthFade />
           <ErpOsSection />
