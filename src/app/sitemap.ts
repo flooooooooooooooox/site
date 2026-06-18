@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Ressources (blog)
     { url: `${base}/ressources`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/ressources/devis-depuis-whatsapp`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${base}/ressources/modele-devis-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/ressources/logiciel-erp-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/ressources/automatisation-artisan-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/ressources/relances-devis-artisan`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },

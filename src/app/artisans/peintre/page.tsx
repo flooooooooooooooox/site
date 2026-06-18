@@ -32,10 +32,11 @@ export default function Peintre() {
         trade="peintre"
         badge="Peinture & Décoration"
         title="Logiciel de devis et facturation pour peintres en bâtiment"
-        subtitle="Devis peinture depuis WhatsApp en 3 minutes."
+        subtitle="Devis peinture depuis WhatsApp ou sur l'application Floxia ERP."
         intro="Peintre en bâtiment, spécialiste du ravalement ou décorateur d'intérieur : vous jongler entre les visites de chantier, les métrés et la rédaction des devis. Floxia calcule automatiquement les surfaces, applique vos tarifs au m² et génère un devis PDF professionnel depuis votre téléphone, en sortie de visite."
         features={[
           { title: "Devis peinture au m² automatique", desc: "Dictez les dimensions par vocal — longueur, largeur, hauteur — Floxia calcule les surfaces et génère le devis avec votre prix au m²." },
+          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Floxia ERP, l'IA propose des pré-modèles de devis peinture prêts à personnaliser, avec calcul au m² intégré." },
           { title: "TVA peinture automatique", desc: "10% pour la rénovation intérieure et ravalement de résidence principale, 20% pour le neuf. Appliquée automatiquement selon le type de chantier." },
           { title: "Catalogue de prestations", desc: "Enregistrez vos prix par type de prestation : préparation des supports, lessivage, enduit, peinture, papier peint, revêtement de sol." },
           { title: "Envoi et signature électronique", desc: "Le client reçoit le devis par WhatsApp ou email et peut signer depuis son téléphone en un clic, avec valeur légale." },
