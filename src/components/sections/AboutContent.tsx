@@ -36,7 +36,6 @@ const STATS = [
   { value: "−80 %", label: "de temps administratif éliminé" },
   { value: "3 min", label: "du devis à la facture finale et au PV de réception" },
   { value: "24h/24", label: "un agent IA qui répond à vos clients" },
-  { value: "48h", label: "pour être 100 % opérationnel" },
   { value: "100 %", label: "hébergé et conçu en France" },
 ];
 
@@ -111,7 +110,7 @@ export default function AboutContent() {
             </p>
             <p>
               En échangeant avec <strong style={{ color: "var(--text)" }}>son oncle</strong>, artisan,
-              le constat est sans appel : les professionnels du bâtiment croulent sous la paperasse,
+              le constat est sans appel : les artisans croulent sous la paperasse,
               les devis, les relances et la saisie administrative — sans aucun des outils dont
               bénéficient les grandes structures.
             </p>

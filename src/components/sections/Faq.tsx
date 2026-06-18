@@ -10,23 +10,11 @@ const FAQS = [
   },
   {
     q: "Mes données sont-elles sécurisées ?",
-    a: "Hébergement 100% en France (OVH), chiffrement AES-256, conformité RGPD native. Vos données ne quittent jamais le territoire français.",
-  },
-  {
-    q: "Combien de temps pour être opérationnel ?",
-    a: "L'onboarding prend 48h. Notre équipe configure votre espace, importe vos données et forme votre équipe en visio.",
-  },
-  {
-    q: "Puis-je annuler à tout moment ?",
-    a: "Oui, sans engagement après les 3 premiers mois. Le setup est non remboursable mais les abonnements sont résiliables à tout moment.",
+    a: "Vos données sont chiffrées à l'aide de plusieurs clés de cryptage et hébergées sur nos propres serveurs. Conformité RGPD native.",
   },
   {
     q: "Floxia fonctionne-t-il hors connexion ?",
     a: "L'application web nécessite une connexion. Sur chantier, les données sont synchronisées dès le retour en ligne.",
-  },
-  {
-    q: "Y a-t-il une période d'essai ?",
-    a: "Oui, 14 jours gratuits sans carte bancaire sur les offres Essentiel et Artisan Pro.",
   },
 ];
 
