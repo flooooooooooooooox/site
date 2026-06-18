@@ -4,6 +4,8 @@ import LegalPage from "@/components/sections/LegalPage";
 export const metadata: Metadata = {
   title: "Support — Floxia",
   description: "Besoin d'aide ? Contactez le support Floxia.",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "https://floxia.fr/support" },
 };
 
 export default function Support() {

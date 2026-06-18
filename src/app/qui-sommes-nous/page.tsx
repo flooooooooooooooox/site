@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   title: "Qui sommes-nous — Floxia | L'automatisation au service des artisans",
   description:
     "Découvrez l'histoire de Floxia : l'automatisation et l'IA éprouvées en entreprise, mises au service des artisans et PME du bâtiment.",
+  openGraph: {
+    title: "Qui sommes-nous — Floxia",
+    description:
+      "Découvrez l'histoire de Floxia : l'automatisation et l'IA éprouvées en entreprise, mises au service des artisans et PME du bâtiment.",
+    url: "https://floxia.fr/qui-sommes-nous",
+  },
+  alternates: {
+    canonical: "https://floxia.fr/qui-sommes-nous",
+  },
 };
 
 export default function QuiSommesNous() {

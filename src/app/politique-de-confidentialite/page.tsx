@@ -4,6 +4,8 @@ import LegalPage from "@/components/sections/LegalPage";
 export const metadata: Metadata = {
   title: "Politique de confidentialité — Floxia",
   description: "Politique de confidentialité et traitement des données personnelles chez Floxia.",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "https://floxia.fr/politique-de-confidentialite" },
 };
 
 export default function Confidentialite() {

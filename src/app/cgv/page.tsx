@@ -4,6 +4,8 @@ import LegalPage from "@/components/sections/LegalPage";
 export const metadata: Metadata = {
   title: "Conditions générales de vente — Floxia",
   description: "Conditions générales de vente des services Floxia.",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "https://floxia.fr/cgv" },
 };
 
 export default function Cgv() {

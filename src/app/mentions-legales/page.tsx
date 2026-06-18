@@ -4,6 +4,8 @@ import LegalPage from "@/components/sections/LegalPage";
 export const metadata: Metadata = {
   title: "Mentions légales — Floxia",
   description: "Mentions légales du site Floxia.",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "https://floxia.fr/mentions-legales" },
 };
 
 export default function MentionsLegales() {
