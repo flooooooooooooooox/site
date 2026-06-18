@@ -219,7 +219,7 @@ export function CinematicFooter() {
           </div>
 
           {/* Marquee */}
-          <div style={{ position: "absolute", top: "3rem", left: 0, width: "100%", overflow: "hidden", borderTop: "1px solid rgba(245,200,66,0.12)", borderBottom: "1px solid rgba(245,200,66,0.12)", background: "rgba(10,21,32,0.6)", backdropFilter: "blur(12px)", padding: "1rem 0", zIndex: 10, transform: "rotate(-2deg) scaleX(1.1)", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}>
+          <div style={{ position: "absolute", top: "3rem", left: 0, width: "100%", overflow: "hidden", borderTop: "1px solid rgba(245,200,66,0.12)", borderBottom: "1px solid rgba(245,200,66,0.12)", background: "rgba(245,200,66,0.06)", backdropFilter: "blur(12px)", padding: "1rem 0", zIndex: 10, transform: "rotate(-2deg) scaleX(1.1)", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}>
             <div className="animate-footer-scroll-marquee" style={{ display: "flex", width: "max-content", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.28em", color: "rgba(232,237,244,0.45)", textTransform: "uppercase" }}>
               <MarqueeItem /><MarqueeItem />
             </div>

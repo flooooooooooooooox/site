@@ -194,16 +194,6 @@ export default function Hero() {
             Voir les services →
           </MagneticBtn>
         </motion.div>
-
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.75 }}
-          style={{ display: "flex", gap: "2.5rem", justifyContent: "center", flexWrap: "wrap", marginTop: "3.5rem" }}>
-          {[["−80 %", "temps admin"], ["3 min", "par devis"], ["99€", "/mois"], ["0h", "de formation"]].map(([val, label]) => (
-            <div key={label} style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "clamp(1.5rem,3vw,2.2rem)", fontWeight: 900, fontFamily: "var(--font-nunito)", color: "#F5C842", lineHeight: 1 }}>{val}</div>
-              <div style={{ fontSize: "0.72rem", color: "rgba(232,237,244,0.45)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", marginTop: "0.25rem" }}>{label}</div>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

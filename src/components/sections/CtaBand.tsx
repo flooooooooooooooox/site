@@ -32,7 +32,7 @@ export default function CtaBand() {
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(135deg, #0A1520 0%, rgba(15,25,35,0.85) 50%, #0A1520 100%)",
+          background: "linear-gradient(135deg, rgba(5,8,13,0.95) 0%, rgba(26,14,0,0.82) 50%, rgba(5,8,13,0.95) 100%)",
           zIndex: 1,
         }}
       />

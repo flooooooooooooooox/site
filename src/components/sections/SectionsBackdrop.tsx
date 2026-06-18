@@ -20,8 +20,8 @@ export default function SectionsBackdrop() {
 
   const colors = isDark
     ? ["#000000", "#0A0400", "#2A1600", "#48280A"]
-    : ["#FFFFFF", "#FBF3DE", "#F6E2A8", "#EBC76A"];
-  const veil = isDark ? "rgba(5,8,13,0.35)" : "rgba(248,249,252,0.45)";
+    : ["#FFFFFF", "#F4F2EC", "#F7ECD6", "#EFE2C2"];
+  const veil = isDark ? "rgba(5,8,13,0.35)" : "rgba(250,250,252,0.62)";
 
   return (
     <div
