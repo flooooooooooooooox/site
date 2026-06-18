@@ -15,9 +15,11 @@ export default function CtaBand() {
       {/* Background image */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/image2.png"
+        src="/chantier2.webp"
         alt=""
         aria-hidden
+        loading="lazy"
+        decoding="async"
         style={{
           position: "absolute",
           inset: 0,

@@ -125,10 +125,11 @@ export default function RoiCalculator() {
             {/* Slider */}
             <div style={{ marginBottom: "1.75rem" }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.75rem" }}>
-                <label style={{ color: "var(--text)", fontWeight: 600, fontSize: ".95rem" }}>Devis réalisés / mois</label>
+                <label htmlFor="roi-devis" style={{ color: "var(--text)", fontWeight: 600, fontSize: ".95rem" }}>Devis réalisés / mois</label>
                 <span style={{ color: "#F5C842", fontWeight: 700, fontSize: "1.1rem" }}>{devis}</span>
               </div>
-              <input type="range" min={5} max={100} value={devis} onChange={e => setDevis(Number(e.target.value))}
+              <input id="roi-devis" type="range" min={5} max={100} value={devis} onChange={e => setDevis(Number(e.target.value))}
+                aria-label="Nombre de devis réalisés par mois"
                 style={{ width: "100%", accentColor: "#F5C842", cursor: "pointer", height: "6px" }} />
               <div style={{ display: "flex", justifyContent: "space-between", marginTop: "0.25rem", color: "rgba(var(--text-rgb),0.35)", fontSize: ".75rem" }}>
                 <span>5</span><span>100</span>
@@ -139,6 +140,7 @@ export default function RoiCalculator() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.75rem", padding: "0.85rem 1rem", borderRadius: "0.75rem", background: "rgba(var(--surface-rgb),0.03)", border: "1px solid rgba(var(--surface-rgb),0.07)" }}>
               <span style={{ color: "var(--text)", fontWeight: 600, fontSize: ".9rem" }}>J&apos;ai des salariés</span>
               <button onClick={() => setSalarie(v => !v)}
+                aria-label="J'ai des salariés" aria-pressed={salarie}
                 style={{ width: 44, height: 24, borderRadius: 999, border: "none", cursor: "pointer", background: salarie ? "#F5C842" : "rgba(var(--surface-rgb),0.12)", position: "relative", transition: "background 0.25s", flexShrink: 0 }}>
                 <span style={{ position: "absolute", top: 3, left: salarie ? 22 : 3, width: 18, height: 18, borderRadius: "50%", background: "#fff", transition: "left 0.25s" }} />
               </button>

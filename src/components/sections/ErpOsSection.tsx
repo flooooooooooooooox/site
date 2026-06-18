@@ -31,8 +31,10 @@ export default function ErpOsSection() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/image4.png"
+          src="/chantier3.webp"
           alt="FloxiaOS Dashboard"
+          loading="lazy"
+          decoding="async"
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left", borderRadius: "1rem" }}
         />
       </ContainerScroll>

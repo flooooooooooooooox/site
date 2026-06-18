@@ -284,6 +284,7 @@ export function CinematicFooter() {
                 © {new Date().getFullYear()} Floxia. Tous droits réservés.
               </span>
               <MagneticButton as="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                aria-label="Retour en haut de page"
                 className="footer-glass-pill"
                 style={{ width: 44, height: 44, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--muted-foreground)", border: "none", background: "none" }}>
                 <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
