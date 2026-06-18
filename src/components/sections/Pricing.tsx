@@ -1,6 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle, ChevronDown } from "lucide-react";
 
 const PLANS = [
   {
@@ -14,6 +15,31 @@ const PLANS = [
       "Signature électronique",
       "Support email",
       "1 utilisateur",
+    ],
+    details: [
+      {
+        category: "Devis & facturation",
+        items: [
+          "Création de devis depuis le site",
+          "Devis PDF par vocal / WhatsApp (3 min)",
+          "Factures acompte / finale / tous types",
+          "PV de réception + facture finale auto",
+          "Envoi automatique des factures",
+          "Conformité facturation 2026 (e-reporting)",
+          "Numérotation automatique devis & factures",
+          "Bibliothèque de prix / catalogue",
+          "Gestion TVA multiples (5,5% / 10% / 20%)",
+          "Signature électronique intégrée",
+        ],
+      },
+      {
+        category: "Relances & suivi",
+        items: ["Notification devis signé"],
+      },
+      {
+        category: "Assistant vocal IA",
+        items: ["Vocal devis via WhatsApp (3 min)"],
+      },
     ],
   },
   {
@@ -30,6 +56,48 @@ const PLANS = [
       "Prévisions trésorerie",
       "3 utilisateurs",
     ],
+    details: [
+      {
+        category: "Devis & facturation",
+        items: [
+          "Tout l'Essentiel inclus",
+          "Gestion avenants & avoirs automatiques",
+          "Modèles de devis personnalisés",
+        ],
+      },
+      {
+        category: "Relances & suivi",
+        items: [
+          "Suivi hebdo activité (CA, chantiers, devis)",
+          "Relances devis non signés (J+3 / J+7 / J+14)",
+          "Relances automatiques avant / jour J",
+          "Alerte chantier → email pro",
+          "Relance garantie 1 an (J+365)",
+        ],
+      },
+      {
+        category: "Agent IA & booking",
+        items: [
+          "Agent réceptionniste IA WhatsApp",
+          "Booking automatique de RDV (WhatsApp)",
+        ],
+      },
+      {
+        category: "Assistant vocal IA",
+        items: ["Assistant vocal technique (bâtiment, admin, juridique)"],
+      },
+      {
+        category: "Comptabilité & dépenses",
+        items: [
+          "Scan OCR tickets / factures fournisseurs (WhatsApp)",
+          "Dashboard dépenses & TVA récupérable",
+        ],
+      },
+      {
+        category: "Avis & réputation",
+        items: ["Demandes automatiques d'avis Google"],
+      },
+    ],
   },
   {
     name: "PME Premium",
@@ -44,10 +112,36 @@ const PLANS = [
       "SLA 99.9%",
       "Utilisateurs illimités",
     ],
+    details: [
+      {
+        category: "Agent IA & booking",
+        items: [
+          "Tout l'Artisan Pro inclus",
+          "Agent réceptionniste IA téléphone",
+        ],
+      },
+      {
+        category: "Assistant vocal IA",
+        items: ["Saisie vocale IA avancée (agenda, disponibilités)"],
+      },
+      {
+        category: "Comptabilité & dépenses",
+        items: ["Export comptabilité en 1 clic"],
+      },
+      {
+        category: "Gestion équipe & chantiers",
+        items: [
+          "Collecte photos fin de chantier (WhatsApp)",
+          "Gestion équipe & plannings salariés",
+          "Suivi des heures collaborateurs",
+        ],
+      },
+    ],
   },
 ];
 
 export default function Pricing() {
+  const [expanded, setExpanded] = useState<string | null>(null);
   return (
     <section id="tarifs" style={{ background: "transparent", padding: "6rem 0" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }}>
@@ -219,6 +313,78 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
+
+                {/* Voir plus — détails complets de l'offre */}
+                <button
+                  onClick={() => setExpanded(expanded === plan.name ? null : plan.name)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "0.4rem",
+                    width: "100%",
+                    padding: "0.6rem",
+                    marginBottom: "1rem",
+                    borderRadius: "0.65rem",
+                    background: "transparent",
+                    border: "1px solid rgba(245,200,66,0.25)",
+                    color: "#F5C842",
+                    fontWeight: 600,
+                    fontSize: ".82rem",
+                    cursor: "pointer",
+                    transition: "all 0.2s",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(245,200,66,0.08)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+                >
+                  {expanded === plan.name ? "Voir moins" : "Voir tout le détail"}
+                  <ChevronDown
+                    size={15}
+                    style={{
+                      transition: "transform 0.3s",
+                      transform: expanded === plan.name ? "rotate(180deg)" : "rotate(0deg)",
+                    }}
+                  />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {expanded === plan.name && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ overflow: "hidden" }}
+                    >
+                      <div style={{ paddingBottom: "1.5rem", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                        {plan.details.map((group) => (
+                          <div key={group.category}>
+                            <p
+                              style={{
+                                fontSize: ".68rem",
+                                fontWeight: 700,
+                                letterSpacing: ".08em",
+                                textTransform: "uppercase",
+                                color: "rgba(245,200,66,0.7)",
+                                marginBottom: "0.6rem",
+                              }}
+                            >
+                              {group.category}
+                            </p>
+                            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                              {group.items.map((item) => (
+                                <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
+                                  <CheckCircle size={14} color="rgba(245,200,66,0.55)" style={{ flexShrink: 0, marginTop: "2px" }} />
+                                  <span style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".82rem", lineHeight: 1.45 }}>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <a
                   href="https://calendly.com/afele1845/30min"
