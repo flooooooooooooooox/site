@@ -248,8 +248,14 @@ export function CinematicFooter() {
 
               {/* Liens secondaires */}
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
-                {["Mentions légales", "CGV", "Politique de confidentialité", "Support"].map((label) => (
-                  <MagneticButton key={label} as="a" href="#"
+                {[
+                  { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
+                  { label: "Mentions légales", href: "#" },
+                  { label: "CGV", href: "#" },
+                  { label: "Politique de confidentialité", href: "#" },
+                  { label: "Support", href: "#" },
+                ].map(({ label, href }) => (
+                  <MagneticButton key={label} as="a" href={href}
                     className="footer-glass-pill"
                     style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", fontSize: "0.72rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500 }}>
                     {label}

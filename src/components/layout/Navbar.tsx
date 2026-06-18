@@ -3,18 +3,23 @@ import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Écosystème", href: "#ecosysteme" },
-  { label: "Comparatif", href: "#comparatif" },
-  { label: "ROI", href: "#roi" },
-  { label: "Tarifs", href: "#tarifs" },
+  { label: "Services", href: "/#services" },
+  { label: "Écosystème", href: "/#ecosysteme" },
+  { label: "Comparatif", href: "/#comparatif" },
+  { label: "ROI", href: "/#roi" },
+  { label: "Tarifs", href: "/#tarifs" },
+  { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
 ];
 
 function scrollTo(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-  if (!href.startsWith("#")) return;
-  e.preventDefault();
-  const target = document.querySelector(href);
+  // Liens d'ancrage : si la cible existe sur la page courante, scroll fluide.
+  // Sinon (ex. depuis une autre page), on laisse le navigateur naviguer vers /#id.
+  const hashIndex = href.indexOf("#");
+  if (hashIndex === -1) return;
+  const id = href.substring(hashIndex);
+  const target = document.querySelector(id);
   if (target) {
+    e.preventDefault();
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
@@ -71,8 +76,13 @@ export default function Navbar() {
       >
         {/* Logo */}
         <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          href="/"
+          onClick={(e) => {
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
           style={{
             display: "flex",
             alignItems: "center",
@@ -102,7 +112,7 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "1.75rem",
+            gap: "1.3rem",
             flex: 1,
             justifyContent: "center",
           }}

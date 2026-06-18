@@ -10,7 +10,6 @@ import StorySection from "@/components/sections/StorySection";
 import RoiCalculator from "@/components/sections/RoiCalculator";
 import Comparatif from "@/components/sections/Comparatif";
 import Pricing from "@/components/sections/Pricing";
-import Faq from "@/components/sections/Faq";
 import CtaBand from "@/components/sections/CtaBand";
 import { CinematicFooter } from "@/components/ui/motion-footer";
 import PartnersBand from "@/components/sections/PartnersBand";
@@ -48,7 +47,6 @@ export default function Home() {
           <Perspective3DFloor />
           <Pricing />
           <DepthFade />
-          <Faq />
           <CtaBand />
         </ContentOverlay>
       </main>
