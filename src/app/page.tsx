@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import ClientCursor from "@/components/layout/ClientCursor";
 import SectionsBackdrop from "@/components/sections/SectionsBackdrop";
+import ContentOverlay from "@/components/sections/ContentOverlay";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import ErpOsSection from "@/components/sections/ErpOsSection";
@@ -29,25 +30,23 @@ export default function Home() {
       <Navbar />
       <main style={{ position: "relative", zIndex: 1 }}>
         <Hero />
-        {/* Sections — fond transparent, le gradient animé fixe est visible derrière */}
-        <div style={{ position: "relative", zIndex: 2 }}>
-          <div style={{ position: "relative" }}>
-            <Services />
-            <DepthFade />
-            <ErpOsSection />
-            <PartnersBand />
-            <StorySection />
-            <CubeEdge />
-            <RoiCalculator />
-            <RippleDepth />
-            <Comparatif />
-            <Perspective3DFloor />
-            <Pricing />
-            <DepthFade />
-            <Faq />
-            <CtaBand />
-          </div>
-        </div>
+        {/* La suite arrive « par-dessus » le hero — carte qui glisse au-dessus */}
+        <ContentOverlay>
+          <Services />
+          <DepthFade />
+          <ErpOsSection />
+          <PartnersBand />
+          <StorySection />
+          <CubeEdge />
+          <RoiCalculator />
+          <RippleDepth />
+          <Comparatif />
+          <Perspective3DFloor />
+          <Pricing />
+          <DepthFade />
+          <Faq />
+          <CtaBand />
+        </ContentOverlay>
       </main>
       <div style={{ position: "relative", zIndex: 1 }}>
         <CinematicFooter />
