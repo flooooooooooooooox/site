@@ -249,6 +249,7 @@ export function CinematicFooter() {
               {/* Liens secondaires */}
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
                 {[
+                  { label: "Entreprises", href: "/logiciel-gestion-entreprise-batiment" },
                   { label: "Ressources", href: "/ressources" },
                   { label: "Métiers", href: "/artisans" },
                   { label: "Comparatifs", href: "/alternatives" },

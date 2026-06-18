@@ -35,6 +35,12 @@ export const metadata: Metadata = {
     "devis artisan",
     "facture artisan",
     "logiciel facturation bâtiment",
+    "logiciel gestion entreprise bâtiment",
+    "logiciel B2B bâtiment",
+    "SaaS bâtiment BTP",
+    "solution gestion PME BTP",
+    "logiciel dirigeant entreprise bâtiment",
+    "outil gestion artisan B2B",
     "FloxiaOS",
   ],
   authors: [{ name: "Floxia" }],
@@ -117,23 +123,39 @@ const jsonLd = {
     "Relances automatiques devis et factures",
     "Signature électronique à valeur légale",
   ],
-  offers: {
-    "@type": "Offer",
-    price: "99",
-    priceCurrency: "EUR",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
+  audience: {
+    "@type": "BusinessAudience",
+    name: "Artisans, TPE et PME du bâtiment et du BTP",
+  },
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Essentiel",
       price: "99",
       priceCurrency: "EUR",
-      billingDuration: "P1M",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: "99", priceCurrency: "EUR", billingDuration: "P1M" },
     },
-  },
+    {
+      "@type": "Offer",
+      name: "Artisan Pro",
+      price: "179",
+      priceCurrency: "EUR",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: "179", priceCurrency: "EUR", billingDuration: "P1M" },
+    },
+    {
+      "@type": "Offer",
+      name: "PME Premium",
+      price: "349",
+      priceCurrency: "EUR",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: "349", priceCurrency: "EUR", billingDuration: "P1M" },
+    },
+  ],
   provider: {
     "@type": "Organization",
     name: "Floxia",
     url: "https://floxia.fr",
     areaServed: "FR",
-    knowsAbout: ["Bâtiment", "Artisanat", "Gestion de chantier", "ERP", "Intelligence artificielle"],
+    knowsAbout: ["Bâtiment", "Artisanat", "Gestion de chantier", "ERP", "Intelligence artificielle", "Logiciel B2B", "Gestion d'entreprise BTP"],
   },
 };
 
