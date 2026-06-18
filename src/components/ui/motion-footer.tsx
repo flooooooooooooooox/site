@@ -250,10 +250,10 @@ export function CinematicFooter() {
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
                 {[
                   { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
-                  { label: "Mentions légales", href: "#" },
-                  { label: "CGV", href: "#" },
-                  { label: "Politique de confidentialité", href: "#" },
-                  { label: "Support", href: "#" },
+                  { label: "Mentions légales", href: "/mentions-legales" },
+                  { label: "CGV", href: "/cgv" },
+                  { label: "Politique de confidentialité", href: "/politique-de-confidentialite" },
+                  { label: "Support", href: "/support" },
                 ].map(({ label, href }) => (
                   <MagneticButton key={label} as="a" href={href}
                     className="footer-glass-pill"
