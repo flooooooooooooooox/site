@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 
-// Animated 3D warp tunnel transition — canvas-based gold grid flying toward viewer
+// Ember particles rising from hero into darkness
 export function HeroWave() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -12,7 +12,6 @@ export function HeroWave() {
     if (!ctx) return;
 
     let raf: number;
-    let t = 0;
 
     function resize() {
       if (!canvas) return;
@@ -22,65 +21,85 @@ export function HeroWave() {
     resize();
     window.addEventListener("resize", resize);
 
+    type Particle = {
+      x: number; y: number; vx: number; vy: number;
+      size: number; alpha: number; life: number; maxLife: number;
+      color: string;
+    };
+
+    const COLORS = [
+      "rgba(245,200,66,",
+      "rgba(255,160,30,",
+      "rgba(255,220,100,",
+      "rgba(200,100,20,",
+    ];
+
+    const particles: Particle[] = [];
+    const COUNT = 90;
+
+    function spawn(): Particle {
+      if (!canvas) return {} as Particle;
+      const W = canvas.width, H = canvas.height;
+      const maxLife = 90 + Math.random() * 120;
+      return {
+        x: W * (0.1 + Math.random() * 0.8),
+        y: H * (0.7 + Math.random() * 0.35),
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: -(0.5 + Math.random() * 1.8),
+        size: 1.5 + Math.random() * 3,
+        alpha: 0.6 + Math.random() * 0.4,
+        life: Math.random() * maxLife,
+        maxLife,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      };
+    }
+
+    for (let i = 0; i < COUNT; i++) particles.push(spawn());
+
     function draw() {
       if (!canvas || !ctx) return;
       const W = canvas.width, H = canvas.height;
       ctx.clearRect(0, 0, W, H);
 
-      const cx = W / 2;
-      const horizon = H * 0.08;
-      const LINES = 12;
-      const speed = 0.018;
-      t = (t + speed) % 1;
-
-      // Draw perspective grid lines (vertical — left/right vanishing)
-      for (let i = 0; i <= LINES; i++) {
-        const frac = i / LINES; // 0..1
-        const xStart = W * frac;
-        const xEnd = cx + (xStart - cx) * 0.01;
-        const alpha = 0.06 + 0.18 * Math.sin(Math.PI * frac);
-        ctx.beginPath();
-        ctx.moveTo(xStart, H);
-        ctx.lineTo(xEnd, horizon);
-        ctx.strokeStyle = `rgba(245,200,66,${alpha})`;
-        ctx.lineWidth = 1 * window.devicePixelRatio;
-        ctx.stroke();
-      }
-
-      // Draw horizontal lines flying toward viewer
-      const HLINES = 14;
-      for (let i = 0; i < HLINES; i++) {
-        const prog = ((i / HLINES) + t) % 1; // 0=horizon, 1=bottom
-        const eased = Math.pow(prog, 2.2);
-        const y = horizon + (H - horizon) * eased;
-        const spread = eased;
-        const x0 = cx - (cx) * spread;
-        const x1 = cx + (cx) * spread;
-        const alpha = Math.min(eased * 0.7, 0.35);
-        ctx.beginPath();
-        ctx.moveTo(x0, y);
-        ctx.lineTo(x1, y);
-        ctx.strokeStyle = `rgba(245,200,66,${alpha})`;
-        ctx.lineWidth = (0.5 + eased * 1.5) * window.devicePixelRatio;
-        ctx.stroke();
-      }
-
-      // Gold horizon glow
-      const grad = ctx.createLinearGradient(0, horizon - 2, 0, horizon + 6);
-      grad.addColorStop(0, "rgba(245,200,66,0)");
-      grad.addColorStop(0.5, "rgba(245,200,66,0.55)");
-      grad.addColorStop(1, "rgba(245,200,66,0)");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, horizon - 2, W, 8);
-
-      // Fade overlay top→transparent, bottom→dark
-      const fade = ctx.createLinearGradient(0, 0, 0, H);
-      fade.addColorStop(0, "rgba(5,8,13,0.95)");
-      fade.addColorStop(0.25, "rgba(5,8,13,0.4)");
-      fade.addColorStop(0.7, "rgba(5,8,13,0.1)");
-      fade.addColorStop(1, "rgba(5,8,13,0)");
-      ctx.fillStyle = fade;
+      // Dark gradient base
+      const bg = ctx.createLinearGradient(0, 0, 0, H);
+      bg.addColorStop(0, "rgba(5,8,13,0)");
+      bg.addColorStop(0.35, "rgba(5,8,13,0.4)");
+      bg.addColorStop(1, "rgba(5,8,13,0.98)");
+      ctx.fillStyle = bg;
       ctx.fillRect(0, 0, W, H);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.life++;
+        if (p.life > p.maxLife) { particles[i] = spawn(); continue; }
+
+        const progress = p.life / p.maxLife;
+        const fadeIn = Math.min(progress * 6, 1);
+        const fadeOut = 1 - Math.pow(progress, 2);
+        const opacity = p.alpha * fadeIn * fadeOut;
+
+        p.x += p.vx + Math.sin(p.life * 0.05) * 0.3;
+        p.y += p.vy;
+        p.vy *= 0.995; // slight deceleration
+
+        if (opacity <= 0) continue;
+
+        // Glow
+        const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
+        glow.addColorStop(0, `${p.color}${opacity.toFixed(2)})`);
+        glow.addColorStop(1, `${p.color}0)`);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = glow;
+        ctx.fill();
+
+        // Core
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 0.6, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,240,180,${opacity})`;
+        ctx.fill();
+      }
 
       raf = requestAnimationFrame(draw);
     }
@@ -93,11 +112,8 @@ export function HeroWave() {
   }, []);
 
   return (
-    <div style={{ position: "relative", marginTop: "-1px", zIndex: 1, height: "clamp(160px, 20vw, 260px)", overflow: "hidden" }}>
-      <canvas
-        ref={canvasRef}
-        style={{ width: "100%", height: "100%", display: "block" }}
-      />
+    <div style={{ position: "relative", marginTop: "-1px", zIndex: 1, height: "clamp(180px, 22vw, 300px)", overflow: "hidden" }}>
+      <canvas ref={canvasRef} style={{ width: "100%", height: "100%", display: "block" }} />
     </div>
   );
 }

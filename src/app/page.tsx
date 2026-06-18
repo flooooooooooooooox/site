@@ -17,7 +17,6 @@ import {
   CubeEdge,
   RippleDepth,
   DepthFade,
-  HeroWave,
 } from "@/components/ui/SectionTransitions";
 
 export default function Home() {
@@ -28,22 +27,33 @@ export default function Home() {
       <div className="grain" aria-hidden />
       <Navbar />
       <main>
-        <Hero />
-        <HeroWave />
-        <Services />
-        <DepthFade />
-        <ErpOsSection />
-        <PartnersBand />
-        <StorySection />
-        <CubeEdge />
-        <RoiCalculator />
-        <RippleDepth />
-        <Comparatif />
-        <Perspective3DFloor />
-        <Pricing />
-        <DepthFade />
-        <Faq />
-        <CtaBand />
+        {/* Hero sticky — carte contenu glisse par-dessus */}
+        <div style={{ position: "sticky", top: 0, zIndex: 0 }}>
+          <Hero />
+        </div>
+        <div style={{
+          position: "relative",
+          zIndex: 10,
+          background: "#05080D",
+          borderRadius: "2rem 2rem 0 0",
+          marginTop: "-4rem",
+          boxShadow: "0 -8px 60px rgba(0,0,0,0.7)",
+        }}>
+          <Services />
+          <DepthFade />
+          <ErpOsSection />
+          <PartnersBand />
+          <StorySection />
+          <CubeEdge />
+          <RoiCalculator />
+          <RippleDepth />
+          <Comparatif />
+          <Perspective3DFloor />
+          <Pricing />
+          <DepthFade />
+          <Faq />
+          <CtaBand />
+        </div>
       </main>
       <CinematicFooter />
     </>
