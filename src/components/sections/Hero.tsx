@@ -100,7 +100,14 @@ function MagneticBtn({ children, className, style, href, onClick }: {
   }, []);
 
   const props = { ref, className, style };
-  if (href) return <a {...props} href={href} target="_blank" rel="noopener" style={{ ...style, textDecoration: "none", cursor: "pointer" }}>{children}</a>;
+  if (href) {
+    const isInternal = href.startsWith("#");
+    const handleClick = isInternal ? (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } : undefined;
+    return <a {...props} href={href} onClick={handleClick} target={isInternal ? undefined : "_blank"} rel={isInternal ? undefined : "noopener noreferrer"} style={{ ...style, textDecoration: "none", cursor: "pointer" }}>{children}</a>;
+  }
   return <button {...props} onClick={onClick} style={{ ...style, cursor: "pointer", border: "none" }}>{children}</button>;
 }
 
