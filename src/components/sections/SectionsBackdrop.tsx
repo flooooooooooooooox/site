@@ -42,6 +42,10 @@ export default function SectionsBackdrop() {
         speed={0.4}
         distortion={1.6}
         swirl={1.1}
+        // Optimisation : rendu en 1x (au lieu de 2x) + plafond de pixels bas.
+        // L'animation continue de tourner, mais le coût GPU est fortement réduit.
+        minPixelRatio={1}
+        maxPixelCount={2073600}
       />
       {/* Veil — keeps it readable but still visible */}
       <div style={{ position: "absolute", inset: 0, background: veil }} />

@@ -18,18 +18,24 @@ export default function MentionsLegales() {
             heading: "Éditeur du site",
             body: [
               "Le présent site est édité par Floxia.",
-              "Pour toute question relative aux informations légales (raison sociale, forme juridique, numéro SIREN/SIRET, capital social, adresse du siège), vous pouvez nous joindre via le formulaire de réservation de démo accessible depuis le bouton « Réserver une démo » en haut de page.",
+              "Raison sociale : Floxia — [forme juridique à compléter : ex. SAS, EI, micro-entreprise].",
+              "Capital social : [montant à compléter, le cas échéant].",
+              "Siège social : [adresse complète à compléter].",
+              "Immatriculation : SIREN/SIRET [numéro à compléter] — RCS [ville à compléter].",
+              "Numéro de TVA intracommunautaire : [à compléter, le cas échéant].",
             ],
           },
           {
             heading: "Directeur de la publication",
-            body: ["Le directeur de la publication est le représentant légal de Floxia."],
+            body: [
+              "Le directeur de la publication est le représentant légal de Floxia : Florian [nom à compléter].",
+            ],
           },
           {
             heading: "Hébergement",
             body: [
               "Les données et l'application Floxia sont hébergées sur des serveurs gérés par Floxia, situés en France.",
-              "Le site vitrine est déployé via la plateforme d'hébergement Vercel.",
+              "Le site vitrine est déployé via la plateforme d'hébergement Vercel Inc. (340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis).",
             ],
           },
           {
@@ -40,8 +46,17 @@ export default function MentionsLegales() {
             ],
           },
           {
+            heading: "Données personnelles",
+            body: [
+              "Le traitement des données personnelles est détaillé dans notre Politique de confidentialité, accessible depuis le pied de page.",
+              "Conformément au RGPD, vous disposez de droits d'accès, de rectification et d'effacement de vos données.",
+            ],
+          },
+          {
             heading: "Contact",
-            body: ["Pour toute demande, utilisez le formulaire de réservation de démo accessible depuis le bouton « Réserver une démo » en haut de page."],
+            body: [
+              "Pour toute demande, utilisez le formulaire de réservation de démo accessible depuis le bouton « Réserver une démo » en haut de page.",
+            ],
           },
         ]}
       />
