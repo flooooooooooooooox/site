@@ -5,6 +5,8 @@
   --bg-alt: #05080D;
   --gold: #F5C842;
   --text: #E8EDF4;
+  --text-rgb: 232,237,244;
+  --surface-rgb: 255,255,255;
   --text-muted: rgba(232,237,244,0.6);
   --card: rgba(255,255,255,0.03);
   --border: rgba(255,255,255,0.07);
@@ -34,6 +36,8 @@ html[data-theme="light"] {
   --bg-alt: #FFFFFF;
   --gold: #D4A017;
   --text: #0F1923;
+  --text-rgb: 15,25,35;
+  --surface-rgb: 15,25,35;
   --text-muted: rgba(15,25,35,0.6);
   --card: rgba(0,0,0,0.03);
   --border: rgba(0,0,0,0.08);

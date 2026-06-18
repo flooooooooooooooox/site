@@ -77,12 +77,12 @@ export default function Pricing() {
           </span>
           <h2
             className="font-black text-[clamp(2rem,4vw,3rem)]"
-            style={{ fontFamily: "var(--font-nunito)", color: "#E8EDF4" }}
+            style={{ fontFamily: "var(--font-nunito)", color: "var(--text)" }}
           >
             Des offres simples,{" "}
             <span style={{ color: "#F5C842" }}>sans surprise</span>
           </h2>
-          <p style={{ marginTop: "0.75rem", color: "rgba(232,237,244,0.6)" }}>
+          <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)" }}>
             Résiliable à tout moment après 3 mois · 14 jours d&apos;essai gratuit
           </p>
         </motion.div>
@@ -120,12 +120,12 @@ export default function Pricing() {
                 style={{
                   position: "relative",
                   zIndex: 1,
-                  background: "rgba(255,255,255,0.04)",
+                  background: "rgba(var(--surface-rgb),0.04)",
                   backdropFilter: "blur(20px) saturate(180%)",
                   WebkitBackdropFilter: "blur(20px) saturate(180%)",
                   border: plan.popular
                     ? "1px solid rgba(245,200,66,0.4)"
-                    : "1px solid rgba(255,255,255,0.08)",
+                    : "1px solid rgba(var(--surface-rgb),0.08)",
                   borderRadius: "1.5rem",
                   padding: "2rem",
                   transform: plan.popular ? "scale(1.04)" : "scale(1)",
@@ -140,7 +140,7 @@ export default function Pricing() {
                     el.style.boxShadow = "inset 0 0 80px rgba(245,200,66,0.06), 0 0 60px rgba(245,200,66,0.14)";
                   } else {
                     el.style.boxShadow = "inset 0 0 40px rgba(245,200,66,0.02), 0 0 30px rgba(245,200,66,0.05)";
-                    el.style.borderColor = "rgba(255,255,255,0.14)";
+                    el.style.borderColor = "rgba(var(--surface-rgb),0.14)";
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -149,7 +149,7 @@ export default function Pricing() {
                     el.style.boxShadow = "inset 0 0 60px rgba(245,200,66,0.03), 0 0 40px rgba(245,200,66,0.08)";
                   } else {
                     el.style.boxShadow = "none";
-                    el.style.borderColor = "rgba(255,255,255,0.08)";
+                    el.style.borderColor = "rgba(var(--surface-rgb),0.08)";
                   }
                 }}
               >
@@ -182,7 +182,7 @@ export default function Pricing() {
                       fontFamily: "var(--font-nunito)",
                       fontWeight: 800,
                       fontSize: "1.15rem",
-                      color: plan.popular ? "#F5C842" : "#E8EDF4",
+                      color: plan.popular ? "#F5C842" : "var(--text)",
                       marginBottom: "1rem",
                     }}
                   >
@@ -194,15 +194,15 @@ export default function Pricing() {
                         fontFamily: "var(--font-nunito)",
                         fontWeight: 900,
                         fontSize: "2.6rem",
-                        color: "#E8EDF4",
+                        color: "var(--text)",
                         lineHeight: 1,
                       }}
                     >
                       {plan.price}€
                     </span>
-                    <span style={{ color: "rgba(232,237,244,0.4)", fontSize: ".85rem" }}>/mois</span>
+                    <span style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".85rem" }}>/mois</span>
                   </div>
-                  <p style={{ color: "rgba(232,237,244,0.35)", fontSize: ".78rem", marginTop: "0.4rem" }}>
+                  <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".78rem", marginTop: "0.4rem" }}>
                     + {plan.setup}€ de setup (unique)
                   </p>
                 </div>
@@ -215,7 +215,7 @@ export default function Pricing() {
                         color={plan.popular ? "#F5C842" : "rgba(245,200,66,0.6)"}
                         style={{ flexShrink: 0, marginTop: "2px" }}
                       />
-                      <span style={{ color: "rgba(232,237,244,0.75)", fontSize: ".88rem", lineHeight: 1.5 }}>{f}</span>
+                      <span style={{ color: "rgba(var(--text-rgb),0.75)", fontSize: ".88rem", lineHeight: 1.5 }}>{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -236,14 +236,14 @@ export default function Pricing() {
                     cursor: "pointer",
                     transition: "all 0.2s",
                     background: plan.popular ? "#F5C842" : "transparent",
-                    color: plan.popular ? "#0F1923" : "#E8EDF4",
-                    border: plan.popular ? "none" : "1px solid rgba(255,255,255,0.15)",
+                    color: plan.popular ? "#0F1923" : "var(--text)",
+                    border: plan.popular ? "none" : "1px solid rgba(var(--surface-rgb),0.15)",
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget;
                     if (!plan.popular) {
-                      el.style.background = "rgba(255,255,255,0.06)";
-                      el.style.borderColor = "rgba(255,255,255,0.3)";
+                      el.style.background = "rgba(var(--surface-rgb),0.06)";
+                      el.style.borderColor = "rgba(var(--surface-rgb),0.3)";
                     } else {
                       el.style.background = "#f0be2a";
                     }
@@ -252,7 +252,7 @@ export default function Pricing() {
                     const el = e.currentTarget;
                     if (!plan.popular) {
                       el.style.background = "transparent";
-                      el.style.borderColor = "rgba(255,255,255,0.15)";
+                      el.style.borderColor = "rgba(var(--surface-rgb),0.15)";
                     } else {
                       el.style.background = "#F5C842";
                     }

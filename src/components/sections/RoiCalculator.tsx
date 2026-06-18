@@ -97,21 +97,20 @@ export default function RoiCalculator() {
           <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
             ROI Calculator
           </span>
-          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "#E8EDF4" }}>
+          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)" }}>
             Calculez votre <span style={{ color: "#F5C842" }}>ROI</span>
           </h2>
-          <p style={{ marginTop: "0.75rem", color: "rgba(232,237,244,0.6)", fontSize: "1.05rem" }}>
+          <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
             Floxia élimine <strong style={{ color: "#F5C842" }}>~80% de votre temps administratif</strong> — devis, facturation, appels, relances, comptabilité
           </p>
           {/* Toggle mois / an */}
-          <div style={{ display: "inline-flex", marginTop: "1.5rem", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "999px", padding: "4px" }}>
+          <div style={{ display: "inline-flex", marginTop: "1.5rem", background: "rgba(var(--surface-rgb),0.05)", border: "1px solid rgba(var(--surface-rgb),0.1)", borderRadius: "999px", padding: "4px" }}>
             {(["mois", "an"] as const).map(p => (
               <button key={p} onClick={() => setPeriode(p)}
                 style={{ padding: "6px 22px", borderRadius: "999px", border: "none", cursor: "pointer", fontWeight: 700, fontSize: ".82rem", transition: "all 0.2s",
                   background: periode === p ? "#F5C842" : "transparent",
-                  color: periode === p ? "#0F1923" : "rgba(232,237,244,0.5)" }}>
+                  color: periode === p ? "#0F1923" : "rgba(var(--text-rgb),0.5)" }}>
                 {p === "mois" ? "Par mois" : "Par an"}
-                {p === "an" && <span style={{ marginLeft: "0.35rem", fontSize: ".7rem", background: "rgba(74,222,128,0.2)", color: "#4ADE80", padding: "1px 6px", borderRadius: "999px" }}>-2 mois offerts</span>}
               </button>
             ))}
           </div>
@@ -121,26 +120,26 @@ export default function RoiCalculator() {
 
           {/* Left panel */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-            style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: "1.25rem", padding: "2rem", backdropFilter: "blur(12px)" }}>
+            style={{ background: "rgba(var(--surface-rgb),0.03)", border: "1px solid rgba(var(--surface-rgb),0.07)", borderRadius: "1.25rem", padding: "2rem", backdropFilter: "blur(12px)" }}>
 
             {/* Slider */}
             <div style={{ marginBottom: "1.75rem" }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.75rem" }}>
-                <label style={{ color: "#E8EDF4", fontWeight: 600, fontSize: ".95rem" }}>Devis réalisés / mois</label>
+                <label style={{ color: "var(--text)", fontWeight: 600, fontSize: ".95rem" }}>Devis réalisés / mois</label>
                 <span style={{ color: "#F5C842", fontWeight: 700, fontSize: "1.1rem" }}>{devis}</span>
               </div>
               <input type="range" min={5} max={100} value={devis} onChange={e => setDevis(Number(e.target.value))}
                 style={{ width: "100%", accentColor: "#F5C842", cursor: "pointer", height: "6px" }} />
-              <div style={{ display: "flex", justifyContent: "space-between", marginTop: "0.25rem", color: "rgba(232,237,244,0.35)", fontSize: ".75rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: "0.25rem", color: "rgba(var(--text-rgb),0.35)", fontSize: ".75rem" }}>
                 <span>5</span><span>100</span>
               </div>
             </div>
 
             {/* Toggle salarié */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.75rem", padding: "0.85rem 1rem", borderRadius: "0.75rem", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
-              <span style={{ color: "#E8EDF4", fontWeight: 600, fontSize: ".9rem" }}>J&apos;ai des salariés</span>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.75rem", padding: "0.85rem 1rem", borderRadius: "0.75rem", background: "rgba(var(--surface-rgb),0.03)", border: "1px solid rgba(var(--surface-rgb),0.07)" }}>
+              <span style={{ color: "var(--text)", fontWeight: 600, fontSize: ".9rem" }}>J&apos;ai des salariés</span>
               <button onClick={() => setSalarie(v => !v)}
-                style={{ width: 44, height: 24, borderRadius: 999, border: "none", cursor: "pointer", background: salarie ? "#F5C842" : "rgba(255,255,255,0.12)", position: "relative", transition: "background 0.25s", flexShrink: 0 }}>
+                style={{ width: 44, height: 24, borderRadius: 999, border: "none", cursor: "pointer", background: salarie ? "#F5C842" : "rgba(var(--surface-rgb),0.12)", position: "relative", transition: "background 0.25s", flexShrink: 0 }}>
                 <span style={{ position: "absolute", top: 3, left: salarie ? 22 : 3, width: 18, height: 18, borderRadius: "50%", background: "#fff", transition: "left 0.25s" }} />
               </button>
             </div>
@@ -148,35 +147,35 @@ export default function RoiCalculator() {
             {/* Plan recommandé */}
             <div style={{ marginBottom: "1.75rem", padding: "1rem 1.25rem", borderRadius: "0.9rem", background: `${plan.color}0D`, border: `1px solid ${plan.color}30`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div>
-                <p style={{ color: "rgba(232,237,244,0.45)", fontSize: ".7rem", fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase" }}>Offre recommandée</p>
+                <p style={{ color: "rgba(var(--text-rgb),0.45)", fontSize: ".7rem", fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase" }}>Offre recommandée</p>
                 <p style={{ color: plan.color, fontWeight: 800, fontSize: "1.1rem", marginTop: "0.15rem" }}>{plan.name}</p>
-                <p style={{ color: "rgba(232,237,244,0.4)", fontSize: ".75rem" }}>{plan.desc}</p>
+                <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".75rem" }}>{plan.desc}</p>
               </div>
               <div style={{ textAlign: "right" }}>
                 <p style={{ color: plan.color, fontWeight: 900, fontSize: "1.5rem", fontFamily: "var(--font-nunito)" }}>{plan.price}€</p>
-                <p style={{ color: "rgba(232,237,244,0.35)", fontSize: ".7rem" }}>/ mois</p>
+                <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".7rem" }}>/ mois</p>
               </div>
             </div>
 
             {/* Offres disponibles */}
             <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1.75rem" }}>
               {PLANS.map(p => (
-                <div key={p.name} style={{ flex: 1, padding: "0.6rem 0.4rem", borderRadius: "0.6rem", background: plan.name === p.name ? `${p.color}15` : "rgba(255,255,255,0.02)", border: `1px solid ${plan.name === p.name ? p.color + "40" : "rgba(255,255,255,0.06)"}`, textAlign: "center", transition: "all 0.25s" }}>
-                  <p style={{ color: plan.name === p.name ? p.color : "rgba(232,237,244,0.4)", fontWeight: 700, fontSize: ".75rem" }}>{p.name}</p>
-                  <p style={{ color: plan.name === p.name ? p.color : "rgba(232,237,244,0.25)", fontWeight: 800, fontSize: ".9rem" }}>{p.price}€</p>
+                <div key={p.name} style={{ flex: 1, padding: "0.6rem 0.4rem", borderRadius: "0.6rem", background: plan.name === p.name ? `${p.color}15` : "rgba(var(--surface-rgb),0.02)", border: `1px solid ${plan.name === p.name ? p.color + "40" : "rgba(var(--surface-rgb),0.06)"}`, textAlign: "center", transition: "all 0.25s" }}>
+                  <p style={{ color: plan.name === p.name ? p.color : "rgba(var(--text-rgb),0.4)", fontWeight: 700, fontSize: ".75rem" }}>{p.name}</p>
+                  <p style={{ color: plan.name === p.name ? p.color : "rgba(var(--text-rgb),0.25)", fontWeight: 800, fontSize: ".9rem" }}>{p.price}€</p>
                 </div>
               ))}
             </div>
 
             {/* Breakdown */}
-            <p style={{ color: "rgba(232,237,244,0.4)", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", marginBottom: "0.6rem" }}>Détail du temps récupéré</p>
+            <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", marginBottom: "0.6rem" }}>Détail du temps récupéré</p>
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {breakdown.map(b => {
                 const Icon = b.icon;
                 return (
                   <div key={b.label} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                     <Icon size={13} color={b.color} style={{ flexShrink: 0 }} />
-                    <span style={{ color: "rgba(232,237,244,0.6)", fontSize: ".8rem", flex: 1 }}>{b.label}</span>
+                    <span style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".8rem", flex: 1 }}>{b.label}</span>
                     <span style={{ color: b.color, fontWeight: 700, fontSize: ".82rem", whiteSpace: "nowrap" }}>{fmtMin(b.min)}</span>
                   </div>
                 );
@@ -196,10 +195,10 @@ export default function RoiCalculator() {
               ].map(s => {
                 const Icon = s.icon;
                 return (
-                  <div key={s.label} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: "0.9rem", padding: "0.9rem", textAlign: "center" }}>
+                  <div key={s.label} style={{ background: "rgba(var(--surface-rgb),0.03)", border: "1px solid rgba(var(--surface-rgb),0.07)", borderRadius: "0.9rem", padding: "0.9rem", textAlign: "center" }}>
                     <Icon size={18} color={s.color} style={{ margin: "0 auto 0.4rem" }} />
                     <div style={{ color: s.color, fontWeight: 800, fontSize: "0.95rem" }}>{s.val}</div>
-                    <div style={{ color: "rgba(232,237,244,0.4)", fontSize: "0.68rem", marginTop: "0.15rem" }}>{s.label}</div>
+                    <div style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: "0.68rem", marginTop: "0.15rem" }}>{s.label}</div>
                   </div>
                 );
               })}
@@ -214,16 +213,16 @@ export default function RoiCalculator() {
               const Icon = m.icon;
               return (
                 <motion.div key={m.label} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: "1rem", padding: "1.4rem 1.6rem", display: "flex", alignItems: "center", gap: "1.2rem" }}>
+                  style={{ background: "rgba(var(--surface-rgb),0.03)", border: "1px solid rgba(var(--surface-rgb),0.07)", borderRadius: "1rem", padding: "1.4rem 1.6rem", display: "flex", alignItems: "center", gap: "1.2rem" }}>
                   <div style={{ width: 48, height: 48, borderRadius: "50%", background: `${m.color}15`, border: `1px solid ${m.color}30`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     <Icon size={22} color={m.color} />
                   </div>
                   <div>
-                    <p style={{ color: "rgba(232,237,244,0.5)", fontSize: ".78rem", marginBottom: "0.2rem" }}>{m.label}</p>
+                    <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".78rem", marginBottom: "0.2rem" }}>{m.label}</p>
                     <p style={{ color: m.color, fontWeight: 800, fontSize: "1.6rem", fontFamily: "var(--font-nunito)", lineHeight: 1 }}>
                       <AnimatedNumber value={m.value} suffix={m.suffix} />
                     </p>
-                    <p style={{ color: "rgba(232,237,244,0.35)", fontSize: ".72rem", marginTop: "0.2rem" }}>{m.sub}</p>
+                    <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".72rem", marginTop: "0.2rem" }}>{m.sub}</p>
                   </div>
                 </motion.div>
               );

@@ -17,13 +17,13 @@ export default function ErpOsSection() {
             </span>
             <h2 style={{
               fontFamily: "var(--font-nunito)", fontWeight: 900,
-              fontSize: "clamp(2rem,4vw,3.5rem)", color: "#E8EDF4",
+              fontSize: "clamp(2rem,4vw,3.5rem)", color: "var(--text)",
               letterSpacing: "-0.03em", lineHeight: 1.1,
             }}>
               Votre{" "}
               <span style={{ color: "#F5C842" }}>cockpit opérationnel</span>
             </h2>
-            <p style={{ marginTop: "0.75rem", color: "rgba(232,237,244,0.55)", fontSize: "1.1rem" }}>
+            <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.55)", fontSize: "1.1rem" }}>
               Un seul écran. Tout votre business.
             </p>
           </div>

@@ -62,7 +62,7 @@ export default function Faq() {
           </span>
           <h2
             className="font-black text-[clamp(2rem,4vw,3rem)]"
-            style={{ fontFamily: "var(--font-nunito)", color: "#E8EDF4" }}
+            style={{ fontFamily: "var(--font-nunito)", color: "var(--text)" }}
           >
             Questions{" "}
             <span style={{ color: "#F5C842" }}>fréquentes</span>
@@ -80,8 +80,8 @@ export default function Faq() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.07 }}
                 style={{
-                  background: isOpen ? "rgba(245,200,66,0.04)" : "rgba(255,255,255,0.03)",
-                  border: isOpen ? "1px solid rgba(245,200,66,0.2)" : "1px solid rgba(255,255,255,0.07)",
+                  background: isOpen ? "rgba(245,200,66,0.04)" : "rgba(var(--surface-rgb),0.03)",
+                  border: isOpen ? "1px solid rgba(245,200,66,0.2)" : "1px solid rgba(var(--surface-rgb),0.07)",
                   borderRadius: "1rem",
                   overflow: "hidden",
                   transition: "border-color 0.3s, background 0.3s",
@@ -105,7 +105,7 @@ export default function Faq() {
                 >
                   <span
                     style={{
-                      color: isOpen ? "#F5C842" : "#E8EDF4",
+                      color: isOpen ? "#F5C842" : "var(--text)",
                       fontWeight: 600,
                       fontSize: ".95rem",
                       lineHeight: 1.4,
@@ -119,7 +119,7 @@ export default function Faq() {
                     transition={{ duration: 0.3 }}
                     style={{ flexShrink: 0 }}
                   >
-                    <ChevronDown size={18} color={isOpen ? "#F5C842" : "rgba(232,237,244,0.4)"} />
+                    <ChevronDown size={18} color={isOpen ? "#F5C842" : "rgba(var(--text-rgb),0.4)"} />
                   </motion.div>
                 </button>
 
@@ -136,7 +136,7 @@ export default function Faq() {
                       <p
                         style={{
                           padding: "0 1.5rem 1.4rem",
-                          color: "rgba(232,237,244,0.65)",
+                          color: "rgba(var(--text-rgb),0.65)",
                           fontSize: ".88rem",
                           lineHeight: 1.7,
                         }}

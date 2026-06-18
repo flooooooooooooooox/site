@@ -24,13 +24,13 @@ const PARTNERS = [
 
 export default function PartnersBand() {
   return (
-    <section style={{ background: "transparent", padding: "2rem 0", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+    <section style={{ background: "transparent", padding: "2rem 0", borderTop: "1px solid rgba(var(--surface-rgb),0.05)", borderBottom: "1px solid rgba(var(--surface-rgb),0.05)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 6vw", display: "flex", flexDirection: "column", alignItems: "center", gap: "1.25rem" }}>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(232,237,244,0.25)" }}
+          style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(var(--text-rgb),0.25)" }}
         >
           Canaux principaux
         </motion.p>
@@ -46,8 +46,8 @@ export default function PartnersBand() {
               style={{
                 display: "inline-flex", alignItems: "center", gap: "0.75rem",
                 padding: "0.75rem 1.5rem", borderRadius: "999px",
-                border: "1px solid rgba(255,255,255,0.08)",
-                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(var(--surface-rgb),0.08)",
+                background: "rgba(var(--surface-rgb),0.03)",
                 backdropFilter: "blur(8px)",
                 transition: "border-color 0.25s, background 0.25s",
                 cursor: "default",
@@ -55,8 +55,8 @@ export default function PartnersBand() {
             >
               <div style={{ flexShrink: 0 }}>{p.svg}</div>
               <div>
-                <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "rgba(232,237,244,0.9)", lineHeight: 1.2 }}>{p.name}</div>
-                <div style={{ fontSize: "0.68rem", color: "rgba(232,237,244,0.4)", fontWeight: 500 }}>{p.sub}</div>
+                <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "rgba(var(--text-rgb),0.9)", lineHeight: 1.2 }}>{p.name}</div>
+                <div style={{ fontSize: "0.68rem", color: "rgba(var(--text-rgb),0.4)", fontWeight: 500 }}>{p.sub}</div>
               </div>
             </motion.div>
           ))}

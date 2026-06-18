@@ -80,7 +80,7 @@ export default function CtaBand() {
             className="font-black text-[clamp(2.2rem,5vw,3.5rem)]"
             style={{
               fontFamily: "var(--font-nunito)",
-              color: "#E8EDF4",
+              color: "var(--text)",
               lineHeight: 1.1,
               marginBottom: "1.2rem",
             }}
@@ -91,7 +91,7 @@ export default function CtaBand() {
 
           <p
             style={{
-              color: "rgba(232,237,244,0.65)",
+              color: "rgba(var(--text-rgb),0.65)",
               fontSize: "clamp(1rem,2vw,1.15rem)",
               marginBottom: "3rem",
               maxWidth: "560px",
@@ -136,16 +136,16 @@ export default function CtaBand() {
                 padding: "1rem 2rem",
                 borderRadius: "0.85rem",
                 background: "transparent",
-                color: "#E8EDF4",
+                color: "var(--text)",
                 fontWeight: 600,
                 fontSize: ".95rem",
                 textDecoration: "none",
                 cursor: "pointer",
-                border: "1px solid rgba(232,237,244,0.2)",
+                border: "1px solid rgba(var(--text-rgb),0.2)",
                 transition: "all 0.2s",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,237,244,0.5)"; e.currentTarget.style.background = "rgba(232,237,244,0.05)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(232,237,244,0.2)"; e.currentTarget.style.background = "transparent"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(var(--text-rgb),0.5)"; e.currentTarget.style.background = "rgba(var(--text-rgb),0.05)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(var(--text-rgb),0.2)"; e.currentTarget.style.background = "transparent"; }}
             >
               Voir les tarifs
               <ArrowRight size={16} />

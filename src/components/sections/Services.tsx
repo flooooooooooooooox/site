@@ -133,7 +133,7 @@ function CategoryCard({ cat, delay, colSpan }: {
   const [expanded, setExpanded] = useState(false);
   const Icon = cat.icon;
   const accent = cat.color;
-  const bg = COLOR_GRADIENTS[accent] ?? "rgba(255,255,255,0.04)";
+  const bg = COLOR_GRADIENTS[accent] ?? "rgba(var(--surface-rgb),0.04)";
   const showAll = cat.features.length <= 6 || expanded;
   const visible = showAll ? cat.features : cat.features.slice(0, 5);
 
@@ -172,8 +172,8 @@ function CategoryCard({ cat, delay, colSpan }: {
         }}
         style={{
           height: "100%",
-          background: `linear-gradient(135deg, ${bg} 0%, rgba(255,255,255,0.02) 100%)`,
-          border: `1px solid rgba(255,255,255,0.07)`,
+          background: `linear-gradient(135deg, ${bg} 0%, rgba(var(--surface-rgb),0.02) 100%)`,
+          border: `1px solid rgba(var(--surface-rgb),0.07)`,
           backdropFilter: "blur(12px)",
           borderRadius: "1.25rem",
           padding: "1.75rem",
@@ -196,7 +196,7 @@ function CategoryCard({ cat, delay, colSpan }: {
           <div style={{ width: 40, height: 40, borderRadius: "10px", background: `${accent}15`, border: `1px solid ${accent}30`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
             <Icon size={20} color={accent} strokeWidth={1.5} />
           </div>
-          <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1rem", color: "#E8EDF4", lineHeight: 1.2 }}>
+          <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1rem", color: "var(--text)", lineHeight: 1.2 }}>
             {cat.title}
           </h3>
           <span style={{ marginLeft: "auto", fontSize: "0.65rem", fontWeight: 700, color: accent, background: `${accent}15`, border: `1px solid ${accent}25`, padding: "2px 8px", borderRadius: "999px", whiteSpace: "nowrap", flexShrink: 0 }}>
@@ -207,7 +207,7 @@ function CategoryCard({ cat, delay, colSpan }: {
         {/* Feature list */}
         <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.55rem", flex: 1 }}>
           {visible.map((f, i) => (
-            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.55rem", fontSize: "0.82rem", color: "rgba(232,237,244,0.7)", lineHeight: 1.45 }}>
+            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.55rem", fontSize: "0.82rem", color: "rgba(var(--text-rgb),0.7)", lineHeight: 1.45 }}>
               <span style={{ width: 5, height: 5, borderRadius: "50%", background: accent, flexShrink: 0, marginTop: "0.45em", opacity: 0.8 }} />
               {f}
             </li>
@@ -246,10 +246,10 @@ export default function Services() {
           <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
             Fonctionnalités
           </span>
-          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "#E8EDF4", marginBottom: ".75rem" }}>
+          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "var(--text)", marginBottom: ".75rem" }}>
             Tout ce que <span style={{ color: "#F5C842" }}>Floxia</span> fait pour vous
           </h2>
-          <p style={{ color: "rgba(232,237,244,0.55)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem" }}>
             47 fonctionnalités IA organisées en 8 modules — activables à la carte
           </p>
         </motion.div>

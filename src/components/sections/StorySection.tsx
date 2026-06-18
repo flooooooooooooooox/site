@@ -59,10 +59,10 @@ export default function StorySection() {
           transition={{ duration: 0.6 }}
           style={{ textAlign: "center", marginBottom: "4.5rem" }}
         >
-          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "#E8EDF4", marginBottom: ".75rem" }}>
+          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "var(--text)", marginBottom: ".75rem" }}>
             Comment ça <span style={{ color: "#F5C842" }}>marche</span>
           </h2>
-          <p style={{ color: "rgba(232,237,244,0.6)", fontSize: "1.05rem" }}>
+          <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
             De la parole au paiement — en automatique.
           </p>
         </motion.div>
@@ -77,7 +77,7 @@ export default function StorySection() {
               bottom: 0,
               left: "50%",
               width: "2px",
-              background: "rgba(255,255,255,0.1)",
+              background: "rgba(var(--surface-rgb),0.1)",
               transform: "translateX(-50%)",
             }} />
             {/* Animated gold fill line */}
@@ -139,8 +139,8 @@ export default function StorySection() {
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.55, delay: i * 0.18 }}
                   style={{
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.07)",
+                    background: "rgba(var(--surface-rgb),0.03)",
+                    border: "1px solid rgba(var(--surface-rgb),0.07)",
                     borderRadius: "1rem",
                     padding: "1.75rem 2rem",
                     display: "flex",
@@ -182,12 +182,12 @@ export default function StorySection() {
                       fontFamily: "var(--font-nunito)",
                       fontWeight: 800,
                       fontSize: "1.15rem",
-                      color: "#E8EDF4",
+                      color: "var(--text)",
                       marginBottom: ".5rem",
                     }}>
                       {step.title}
                     </h3>
-                    <p style={{ color: "rgba(232,237,244,0.6)", fontSize: ".92rem", lineHeight: 1.65 }}>
+                    <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".92rem", lineHeight: 1.65 }}>
                       {step.desc}
                     </p>
                   </div>
