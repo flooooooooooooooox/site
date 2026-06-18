@@ -237,7 +237,7 @@ export function CinematicFooter() {
                 <MagneticButton as="a" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener"
                   className="footer-gold-btn"
                   style={{ padding: "1.1rem 2.5rem", borderRadius: "9999px", fontSize: "0.95rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.6rem" }}>
-                  🎯 Réserver une démo gratuite
+                  Réserver une démo gratuite
                 </MagneticButton>
                 <MagneticButton as="a" href="#tarifs"
                   className="footer-glass-pill"
@@ -269,9 +269,7 @@ export function CinematicFooter() {
 
             {/* Made with love */}
             <div className="footer-glass-pill" style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", display: "flex", alignItems: "center", gap: "0.4rem" }}>
-              <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>Fait avec</span>
-              <span className="animate-footer-heartbeat" style={{ fontSize: "0.9rem", color: "#F87171" }}>❤</span>
-              <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>en France</span>
+              <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>Conçu en France</span>
             </div>
 
             {/* Copyright + back to top */}

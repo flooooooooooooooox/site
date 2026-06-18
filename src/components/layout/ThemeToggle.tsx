@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { Moon, Sun } from "lucide-react";
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(true);
@@ -43,8 +44,8 @@ export default function ThemeToggle() {
       }}
     >
       {/* Track icons */}
-      <span style={{ position: "absolute", left: 7, fontSize: 11, opacity: isDark ? 0.9 : 0.3, transition: "opacity 0.3s" }}>🌙</span>
-      <span style={{ position: "absolute", right: 7, fontSize: 11, opacity: isDark ? 0.3 : 0.9, transition: "opacity 0.3s" }}>☀️</span>
+      <Moon size={11} color="#F5C842" style={{ position: "absolute", left: 7, opacity: isDark ? 0.9 : 0.3, transition: "opacity 0.3s" }} />
+      <Sun size={11} color="#F5C842" style={{ position: "absolute", right: 7, opacity: isDark ? 0.3 : 0.9, transition: "opacity 0.3s" }} />
       {/* Thumb */}
       <span
         style={{
