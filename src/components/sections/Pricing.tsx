@@ -11,7 +11,7 @@ const PLANS = [
     popular: false,
     features: [
       "Devis & factures WhatsApp",
-      "50 documents / mois",
+      "Documents illimités",
       "Signature électronique",
       "Support email",
       "1 utilisateur",
@@ -50,7 +50,7 @@ const PLANS = [
     features: [
       "Tout Essentiel inclus",
       "Standard IA 24h/24",
-      "Documents illimités",
+      "Agent IA WhatsApp 24h/24",
       "Relances automatiques",
       "Avis Google automatisés",
       "Prévisions trésorerie",
