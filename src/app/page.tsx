@@ -22,24 +22,23 @@ import {
 export default function Home() {
   return (
     <>
+      {/* Gradient animé fixe — visible derrière tout le contenu */}
+      <SectionsBackdrop />
       <ClientCursor />
       <div className="grain" aria-hidden />
       <Navbar />
-      <main>
-        {/* Hero sticky — carte contenu glisse par-dessus */}
-        <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
-          <Hero />
-        </div>
+      <main style={{ position: "relative", zIndex: 1 }}>
+        <Hero />
+        {/* Carte qui glisse par-dessus le hero, fond transparent pour voir le gradient */}
         <div style={{
           position: "relative",
-          zIndex: 10,
+          zIndex: 2,
           borderRadius: "2rem 2rem 0 0",
-          marginTop: "-6rem",
+          marginTop: "-4rem",
           boxShadow: "0 -12px 80px rgba(0,0,0,0.85)",
-          overflow: "hidden",
         }}>
-          {/* Peek image — bâtiment illuminé — fond de la carte */}
-          <div style={{ position: "relative", height: "28rem", overflow: "hidden" }}>
+          {/* Peek image — bâtiment illuminé */}
+          <div style={{ position: "relative", height: "28rem", overflow: "hidden", borderRadius: "2rem 2rem 0 0" }}>
             <img
               src="/chantier3.png"
               alt=""
@@ -54,29 +53,28 @@ export default function Home() {
               </span>
             </div>
           </div>
-          {/* Reste du contenu — fond opaque avec gradient animé sticky en arrière-plan */}
-          <div style={{ position: "relative", background: "#05080D" }}>
-            <SectionsBackdrop />
-            <div style={{ position: "relative", zIndex: 1 }}>
-              <Services />
-              <DepthFade />
-              <ErpOsSection />
-              <PartnersBand />
-              <StorySection />
-              <CubeEdge />
-              <RoiCalculator />
-              <RippleDepth />
-              <Comparatif />
-              <Perspective3DFloor />
-              <Pricing />
-              <DepthFade />
-              <Faq />
-              <CtaBand />
-            </div>
+          {/* Sections — fond transparent, le gradient fixe est visible derrière */}
+          <div style={{ position: "relative" }}>
+            <Services />
+            <DepthFade />
+            <ErpOsSection />
+            <PartnersBand />
+            <StorySection />
+            <CubeEdge />
+            <RoiCalculator />
+            <RippleDepth />
+            <Comparatif />
+            <Perspective3DFloor />
+            <Pricing />
+            <DepthFade />
+            <Faq />
+            <CtaBand />
           </div>
         </div>
       </main>
-      <CinematicFooter />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <CinematicFooter />
+      </div>
     </>
   );
 }
