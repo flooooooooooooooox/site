@@ -69,6 +69,15 @@ const ARTICLES = [
     date: "Juin 2026",
     readTime: "5 min",
   },
+  {
+    href: "/ressources/logiciel-auto-entrepreneur-batiment",
+    badge: "Auto-entrepreneur",
+    title: "Logiciel auto-entrepreneur bâtiment : devis et factures sans prise de tête",
+    description:
+      "Auto-entrepreneur ou micro-entreprise dans le bâtiment ? Pas besoin d'un ERP complexe : juste un outil simple, mobile et conforme. Voici ce qu'il vous faut.",
+    date: "Juin 2026",
+    readTime: "5 min",
+  },
 ];
 
 export default function Ressources() {

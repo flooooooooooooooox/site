@@ -4,11 +4,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Logiciel de gestion d'entreprise du bâtiment — Solution B2B | Floxia",
   description:
-    "Floxia, la solution B2B de gestion pour les entreprises du bâtiment et du BTP. Devis, facturation, chantiers, équipes et pilotage : un seul logiciel pour dirigeants de TPE et PME.",
+    "Floxia, la solution de gestion pour les artisans et entreprises du bâtiment : indépendants, auto-entrepreneurs, TPE et PME du BTP. Devis, facturation, chantiers, équipes et pilotage dans un seul logiciel.",
   keywords: [
-    "logiciel gestion entreprise bâtiment", "logiciel B2B bâtiment", "solution gestion BTP",
-    "logiciel dirigeant PME bâtiment", "SaaS bâtiment", "outil gestion entreprise BTP",
-    "logiciel pilotage entreprise bâtiment", "ERP B2B BTP",
+    "logiciel gestion entreprise bâtiment", "logiciel gestion artisan bâtiment", "logiciel B2B bâtiment",
+    "solution gestion BTP", "logiciel artisan indépendant", "logiciel auto-entrepreneur bâtiment",
+    "SaaS bâtiment", "outil gestion entreprise BTP", "logiciel pilotage entreprise bâtiment", "ERP B2B BTP",
   ],
   openGraph: {
     title: "Logiciel de gestion d'entreprise du bâtiment — Floxia",
@@ -24,7 +24,7 @@ const serviceLd = {
   serviceType: "Logiciel de gestion d'entreprise pour le bâtiment (B2B)",
   provider: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
   areaServed: "FR",
-  audience: { "@type": "BusinessAudience", name: "TPE et PME du bâtiment et du BTP" },
+  audience: { "@type": "BusinessAudience", name: "Artisans, auto-entrepreneurs, TPE et PME du bâtiment et du BTP" },
   description:
     "Solution B2B de gestion, devis, facturation et pilotage pour les entreprises du bâtiment et du BTP.",
 };
@@ -58,13 +58,13 @@ export default function LogicielGestionEntreprise() {
           Solution B2B
         </span>
         <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4.5vw,3rem)", color: "var(--text)", lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: "1.5rem" }}>
-          Le logiciel de gestion des <span style={{ color: "#F5C842" }}>entreprises du bâtiment</span>
+          Le logiciel de gestion des <span style={{ color: "#F5C842" }}>artisans et entreprises du bâtiment</span>
         </h1>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Floxia est la solution B2B pensée pour les dirigeants de TPE et PME du bâtiment et du BTP. De la création du devis au pilotage de l&apos;entreprise, vous centralisez toute votre gestion dans un seul outil — accessible depuis WhatsApp sur le terrain et sur l&apos;application au bureau.
+          Floxia est la solution de gestion pensée d&apos;abord pour les artisans du bâtiment — indépendants, auto-entrepreneurs, micro-entreprises — comme pour les TPE et PME du BTP. De la création du devis au pilotage de l&apos;activité, vous centralisez toute votre gestion dans un seul outil, accessible depuis WhatsApp sur le terrain et sur l&apos;application au bureau.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
-          Que vous dirigiez une entreprise générale du bâtiment, une société de sous-traitance ou une PME multi-corps d&apos;état, Floxia s&apos;adapte à votre organisation et grandit avec vous. Des artisans indépendants jusqu&apos;aux structures de 50 collaborateurs.
+          Que vous soyez artisan seul, en auto-entreprise, à la tête d&apos;une entreprise générale du bâtiment ou d&apos;une PME multi-corps d&apos;état, Floxia s&apos;adapte à votre organisation et grandit avec vous — de l&apos;artisan indépendant jusqu&apos;aux structures de 50 collaborateurs.
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.3rem,2.5vw,1.7rem)", color: "var(--text)", marginBottom: "1.5rem" }}>
@@ -81,10 +81,10 @@ export default function LogicielGestionEntreprise() {
         </div>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.3rem,2.5vw,1.7rem)", color: "var(--text)", marginBottom: "1rem" }}>
-          Pourquoi les dirigeants du bâtiment choisissent Floxia
+          Pourquoi les artisans et dirigeants du bâtiment choisissent Floxia
         </h2>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "1.2rem" }}>
-          En B2B, le temps administratif coûte cher : chaque heure passée sur un devis ou une relance est une heure qui ne génère pas de chiffre d&apos;affaires. Floxia automatise ces tâches grâce à l&apos;IA, ce qui permet à toute l&apos;entreprise — du chef de chantier au dirigeant — de se concentrer sur la production et le développement commercial.
+          Pour un artisan comme pour une entreprise, le temps administratif coûte cher : chaque heure passée sur un devis ou une relance est une heure qui ne génère pas de chiffre d&apos;affaires. Floxia automatise ces tâches grâce à l&apos;IA, ce qui permet à l&apos;artisan indépendant comme à toute l&apos;équipe — du chef de chantier au dirigeant — de se concentrer sur la production et le développement commercial.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
           La conformité e-facturation 2026, l&apos;hébergement souverain en France et la traçabilité des documents font de Floxia un partenaire fiable pour les relations B2B, les marchés et la sous-traitance, où la rigueur documentaire est exigée.
@@ -92,7 +92,7 @@ export default function LogicielGestionEntreprise() {
 
         <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(245,200,66,0.05)", border: "1px solid rgba(245,200,66,0.18)", textAlign: "center", marginBottom: "3rem" }}>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.4rem", color: "var(--text)", marginBottom: "0.6rem" }}>
-            Équipez votre entreprise du bâtiment
+            Équipez votre activité d&apos;artisan ou votre entreprise
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite et personnalisée · Sans engagement</p>
           <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"
