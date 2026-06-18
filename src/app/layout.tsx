@@ -68,6 +68,42 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Floxia",
+  url: "https://floxia.fr",
+  description: "ERP IA pour artisans et PME du bâtiment — Devis et factures depuis WhatsApp en 3 minutes.",
+  inLanguage: "fr-FR",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: { "@type": "EntryPoint", urlTemplate: "https://floxia.fr/ressources?q={search_term_string}" },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Floxia",
+  url: "https://floxia.fr",
+  logo: "https://floxia.fr/og-image.jpg",
+  description: "ERP IA pour artisans et PME du bâtiment. Devis, factures, gestion de chantier depuis WhatsApp.",
+  foundingDate: "2024",
+  areaServed: "FR",
+  knowsAbout: [
+    "ERP bâtiment", "Logiciel artisan", "Devis WhatsApp", "Facturation électronique 2026",
+    "Gestion de chantier", "Automatisation PME", "Intelligence artificielle bâtiment",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    url: "https://calendly.com/afele1845/30min",
+    availableLanguage: "French",
+  },
+  sameAs: [],
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -102,10 +138,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className={`${nunito.variable} ${dmSans.variable}`}>
       <body>
         {/* Chrome partagé — monté une seule fois, persiste entre les pages */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <SectionsBackdrop />
         <ClientCursor />
         <div className="grain" aria-hidden />

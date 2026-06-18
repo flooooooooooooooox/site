@@ -10,6 +10,7 @@ import Comparatif from "@/components/sections/Comparatif";
 import Pricing from "@/components/sections/Pricing";
 import CtaBand from "@/components/sections/CtaBand";
 import PartnersBand from "@/components/sections/PartnersBand";
+import TradesSection from "@/components/sections/TradesSection";
 import {
   Perspective3DFloor,
   CubeEdge,
@@ -50,6 +51,7 @@ export default function Home() {
         <Perspective3DFloor />
         <Pricing />
         <DepthFade />
+        <TradesSection />
         <CtaBand />
       </ContentOverlay>
     </main>

@@ -249,6 +249,8 @@ export function CinematicFooter() {
               {/* Liens secondaires */}
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
                 {[
+                  { label: "Ressources", href: "/ressources" },
+                  { label: "Artisans", href: "/artisans" },
                   { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
                   { label: "Mentions légales", href: "/mentions-legales" },
                   { label: "CGV", href: "/cgv" },
