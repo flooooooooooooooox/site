@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 const MORPH_WORDS = ["Automatisée", "Intelligente", "Connectée", "Souveraine", "Libérée"];
 const TYPED = [
@@ -157,7 +158,7 @@ export default function Hero() {
       <style>{HERO_STYLES}</style>
 
       {/* Photo background */}
-      <img src="/chantier1.webp" alt="Artisan sur chantier — logiciel de devis et facturation Floxia pour artisans du bâtiment" fetchPriority="high" decoding="async" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", zIndex: 0 }} />
+      <Image src="/chantier1.webp" alt="Artisan sur chantier — logiciel de devis et facturation Floxia pour artisans du bâtiment" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center", zIndex: 0 }} />
       {/* Dark overlay */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(5,10,16,0.78) 0%, rgba(5,10,16,0.55) 60%, rgba(5,10,16,0.72) 100%)", zIndex: 1 }} />
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "16rem", background: "linear-gradient(to top, #05080D, transparent)", zIndex: 2 }} />
