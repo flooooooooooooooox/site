@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import Image from "next/image";
 
@@ -62,7 +62,6 @@ const HERO_STYLES = `
 .hero-scroll-indicator {
   animation: scroll-bounce 2s ease-in-out infinite;
 }
-/* Typewriter: hauteur fixe sur mobile pour éviter les sauts */
 .hero-typed-line {
   display: block;
   min-height: 3.4em;
@@ -112,7 +111,16 @@ export default function Hero() {
   const charRef = useRef(0);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
-  const giantRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Direction 2 — parallax scroll: content rises + fades as user scrolls down
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   useEffect(() => {
     const t = setInterval(() => setWordIdx(i => (i + 1) % MORPH_WORDS.length), 2800);
@@ -134,29 +142,27 @@ export default function Hero() {
     return () => clearTimeout(t);
   }, [typed, deleting, lineIdx]);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(giantRef.current, { scale: 0.7, opacity: 0, duration: 1.8, ease: "power3.out" });
-    });
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
-      style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "clamp(5rem,10vh,8rem) 6vw clamp(5rem,8vh,7rem)", textAlign: "center" }}
+      ref={sectionRef}
+      style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "clamp(5rem,10vh,8rem) 6vw clamp(5rem,8vh,7rem)", textAlign: "center", overflow: "hidden" }}
       onMouseMove={e => { const r = e.currentTarget.getBoundingClientRect(); setMouseX(e.clientX - r.left); setMouseY(e.clientY - r.top); }}
     >
       <style>{HERO_STYLES}</style>
 
-      {/* Photo background */}
-      <Image src="/chantier1.webp" alt="Artisan sur chantier — logiciel de devis et facturation Floxia pour artisans du bâtiment" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center", zIndex: 0 }} />
-      {/* Dark overlay */}
+      {/* Photo background with Ken Burns on scroll */}
+      <motion.div style={{ position: "absolute", inset: 0, zIndex: 0, scale: bgScale }}>
+        <Image src="/chantier1.webp" alt="Artisan sur chantier — logiciel de devis et facturation Floxia pour artisans du bâtiment" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center" }} />
+      </motion.div>
+
+      {/* Overlays */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(5,10,16,0.82) 0%, rgba(5,10,16,0.58) 60%, rgba(5,10,16,0.75) 100%)", zIndex: 1 }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "16rem", background: "linear-gradient(to top, #05080D, transparent)", zIndex: 2 }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "20rem", background: "linear-gradient(to top, #05080D 0%, transparent 100%)", zIndex: 2 }} />
       <div className="hero-aurora" style={{ position: "absolute", left: "50%", top: "45%", width: "70vw", height: "55vh", borderRadius: "50%", filter: "blur(80px)", animation: "hero-breathe 9s ease-in-out infinite alternate", zIndex: 2, pointerEvents: "none" }} />
       <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none", background: `radial-gradient(700px circle at ${mouseX}px ${mouseY}px, rgba(245,200,66,0.07), transparent 42%)`, transition: "background 0.1s" }} />
 
-      <div style={{ position: "relative", zIndex: 10 }}>
+      {/* Content — rises and fades on scroll */}
+      <motion.div style={{ position: "relative", zIndex: 10, y: contentY, opacity: contentOpacity }}>
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
           style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "6px 18px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.06)", backdropFilter: "blur(8px)", marginBottom: "1.8rem" }}>
           <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#4ADE80", boxShadow: "0 0 8px rgba(74,222,128,0.8)", display: "inline-block" }} />
@@ -201,7 +207,7 @@ export default function Hero() {
             Voir les services →
           </MagneticBtn>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
