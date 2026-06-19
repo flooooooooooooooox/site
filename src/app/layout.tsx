@@ -136,6 +136,8 @@ const organizationJsonLd = {
   sameAs: [
     "https://floxia.fr",
     "https://floxia.fr/qui-sommes-nous",
+    "https://www.instagram.com/floxia.pro",
+    "https://www.linkedin.com/in/floxia-pro-9360333aa",
   ],
 };
 

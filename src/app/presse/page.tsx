@@ -27,6 +27,10 @@ const orgJsonLd = {
   foundingDate: "2024",
   areaServed: { "@type": "Country", name: "France" },
   founder: { "@type": "Person", name: "Florian", jobTitle: "Fondateur & CEO" },
+  sameAs: [
+    "https://www.instagram.com/floxia.pro",
+    "https://www.linkedin.com/in/floxia-pro-9360333aa",
+  ],
 };
 
 const FAITS = [
@@ -126,6 +130,20 @@ export default function Presse() {
           style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "0.9rem 1.8rem", borderRadius: "0.85rem", background: "#F5C842", color: "#0F1923", fontWeight: 700, fontSize: ".95rem", textDecoration: "none", marginBottom: "4rem" }}>
           Prendre rendez-vous
         </a>
+
+        <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
+          Réseaux sociaux
+        </p>
+        <div style={{ display: "flex", gap: "0.6rem", marginBottom: "3rem" }}>
+          <a href="https://www.instagram.com/floxia.pro" target="_blank" rel="noopener noreferrer"
+            style={{ padding: "0.5rem 1.1rem", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.2)", background: "rgba(245,200,66,0.05)", color: "#F5C842", fontSize: ".82rem", fontWeight: 600, textDecoration: "none" }}>
+            Instagram @floxia.pro
+          </a>
+          <a href="https://www.linkedin.com/in/floxia-pro-9360333aa" target="_blank" rel="noopener noreferrer"
+            style={{ padding: "0.5rem 1.1rem", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.2)", background: "rgba(245,200,66,0.05)", color: "#F5C842", fontSize: ".82rem", fontWeight: 600, textDecoration: "none" }}>
+            LinkedIn Floxia
+          </a>
+        </div>
 
         <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
           À explorer
