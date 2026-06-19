@@ -111,6 +111,21 @@ const STYLES = `
   box-shadow: 0 16px 48px rgba(245,200,66,0.5), 0 4px 16px rgba(245,200,66,0.3);
   transform: translateY(-2px);
 }
+
+@media (max-width: 768px) {
+  .cinematic-footer-inner {
+    position: relative !important;
+    height: auto !important;
+    min-height: 100vh;
+  }
+  .cinematic-footer-wrapper-outer {
+    height: auto !important;
+    clip-path: none !important;
+  }
+  .footer-giant-bg-text {
+    font-size: 22vw;
+  }
+}
 `;
 
 export type MagneticButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
@@ -202,10 +217,10 @@ export function CinematicFooter() {
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div ref={wrapperRef} style={{ position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
-        className="cinematic-footer-wrapper"
+        className="cinematic-footer-wrapper cinematic-footer-wrapper-outer"
       >
         <footer style={{ position: "fixed", bottom: 0, left: 0, height: "100vh", width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden", background: "var(--background)", color: "var(--foreground)" }}
-          className="cinematic-footer-wrapper">
+          className="cinematic-footer-wrapper cinematic-footer-inner">
 
           {/* Aurora glow */}
           <div className="footer-aurora animate-footer-breathe" style={{ position: "absolute", left: "50%", top: "50%", width: "80vw", height: "60vh", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />

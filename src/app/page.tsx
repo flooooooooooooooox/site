@@ -19,14 +19,34 @@ import {
 } from "@/components/ui/SectionTransitions";
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: "https://floxia.fr",
-  },
+  title: "Floxia — Logiciel de devis et factures pour artisans du bâtiment | ERP IA",
+  description:
+    "Floxia : créez vos devis et factures en 3 minutes depuis WhatsApp (vocal) ou l'application ERP avec pré-modèles IA. Logiciel pour électriciens, plombiers, maçons, couvreurs et tous les artisans du bâtiment. Conforme e-facturation 2026.",
+  keywords: [
+    "Floxia",
+    "logiciel devis artisan",
+    "logiciel facturation bâtiment",
+    "devis WhatsApp artisan",
+    "ERP artisan bâtiment",
+    "logiciel électricien",
+    "logiciel plombier",
+    "logiciel maçon",
+    "pré-modèle devis IA",
+    "e-facturation 2026 artisan",
+  ],
+  alternates: { canonical: "https://floxia.fr" },
   openGraph: {
-    title: "Floxia — Devis & Factures depuis WhatsApp en 3 min | ERP IA Bâtiment",
+    title: "Floxia — Logiciel de devis et factures pour artisans du bâtiment",
     description:
-      "Générez vos devis et factures depuis WhatsApp en 3 minutes. L'ERP IA pensé pour les artisans et PME du bâtiment.",
+      "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Floxia ERP. Pré-modèles IA, TVA automatique, e-facturation 2026. Pour tous les artisans du bâtiment.",
     url: "https://floxia.fr",
+    images: [{ url: "https://floxia.fr/dashboard-floxia.jpg", width: 842, height: 414, alt: "Tableau de bord Floxia — logiciel ERP artisan bâtiment" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Floxia — Devis artisan en 3 min depuis WhatsApp",
+    description: "Logiciel de devis et facturation pour artisans du bâtiment. Pré-modèles IA, TVA auto, e-facturation 2026.",
+    images: ["https://floxia.fr/dashboard-floxia.jpg"],
   },
 };
 
