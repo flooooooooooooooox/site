@@ -1,13 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" width="320" height="100">
   <defs>
+    <!-- Gradient for the bolt accent -->
     <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
     </linearGradient>
+    <!-- Gradient for the F icon background -->
     <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#1E3A5F;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#0F2340;stop-opacity:1" />
     </linearGradient>
+    <!-- Subtle glow -->
     <filter id="glow">
       <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
       <feMerge>
@@ -17,13 +20,25 @@
     </filter>
   </defs>
 
+  <!-- Icon mark: rounded square with F + bolt -->
   <rect x="4" y="10" width="80" height="80" rx="18" fill="url(#iconGrad)" />
+
+  <!-- Inner subtle border -->
   <rect x="5.5" y="11.5" width="77" height="77" rx="17" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- Letter F -->
   <text x="20" y="66" font-family="'Arial Black', 'Helvetica Neue', sans-serif" font-weight="900" font-size="52" fill="white" opacity="0.95">F</text>
+
+  <!-- Lightning bolt accent (small, top-right of icon) -->
   <polygon points="60,18 52,38 60,36 50,58 68,32 59,34" fill="url(#boltGrad)" filter="url(#glow)" />
 
+  <!-- Wordmark: FLOXIA -->
   <text x="100" y="58" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="38" letter-spacing="-0.5" fill="#0F2340">FLOX</text>
   <text x="212" y="58" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="38" letter-spacing="-0.5" fill="#1D6FA4">IA</text>
+
+  <!-- Tagline -->
   <text x="101" y="76" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="11" letter-spacing="3.5" fill="#64748B" text-anchor="start">ERP ARTISANS</text>
+
+  <!-- Accent line under tagline -->
   <rect x="101" y="80" width="40" height="2" rx="1" fill="#F59E0B" />
 </svg>
