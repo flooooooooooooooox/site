@@ -36,7 +36,7 @@ const aboutJsonLd = {
     name: "Floxia",
     alternateName: "FloxiaOS",
     url: "https://floxia.fr",
-    foundingDate: "2024",
+    foundingDate: "2026",
     description:
       "Floxia est un ERP IA conçu pour les artisans, auto-entrepreneurs, TPE et PME du bâtiment. Il permet de créer des devis et factures depuis WhatsApp ou l'application Floxia ERP, avec des pré-modèles générés par l'IA.",
     founder: {

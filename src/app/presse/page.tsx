@@ -24,7 +24,7 @@ const orgJsonLd = {
   image: "https://floxia.fr/dashboard-floxia.jpg",
   description:
     "Floxia est un logiciel ERP IA pour artisans et PME du bâtiment. Créez devis et factures depuis WhatsApp ou l'application Floxia en 3 minutes.",
-  foundingDate: "2024",
+  foundingDate: "2026",
   areaServed: { "@type": "Country", name: "France" },
   founder: { "@type": "Person", name: "Florian", jobTitle: "Fondateur & CEO" },
   sameAs: [
@@ -36,11 +36,11 @@ const orgJsonLd = {
 const FAITS = [
   { label: "Nom officiel", value: "Floxia" },
   { label: "Nom produit", value: "Floxia ERP / FloxiaOS" },
-  { label: "Secteur", value: "SaaS · Logiciel de gestion pour le bâtiment (BTP)" },
-  { label: "Fondé en", value: "2024" },
+  { label: "Secteur", value: "SaaS · Logiciel de gestion pour artisans et indépendants" },
+  { label: "Fondé en", value: "2026" },
   { label: "Fondateur", value: "Florian — ingénieur en automatisation" },
   { label: "Siège", value: "France" },
-  { label: "Marché", value: "Artisans, auto-entrepreneurs, TPE et PME du bâtiment en France" },
+  { label: "Marché", value: "Artisans, auto-entrepreneurs, TPE et PME en France (bâtiment, services, commerce)" },
   { label: "Tarif d'entrée", value: "À partir de 99 €/mois" },
 ];
 
