@@ -8,7 +8,7 @@ const MORPH_WORDS = ["Automatisée", "Intelligente", "Connectée", "Souveraine",
 const TYPED = [
   "Générez vos devis et factures depuis WhatsApp en 3 minutes.",
   "Un message vocal suffit pour créer un devis PDF complet.",
-  "Ou créez vos devis sur l'application Floxia ERP avec des pré-modèles IA.",
+  "Créez vos devis sur l'app Floxia ERP avec des pré-modèles IA.",
   "Votre agent IA répond aux clients pendant que vous travaillez.",
   "Relances automatiques, signature électronique, zéro ressaisie.",
 ];
@@ -19,47 +19,27 @@ const HERO_STYLES = `
   100% { transform: translate(-50%,-50%) scale(1.18); opacity:0.85; }
 }
 @keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
-@keyframes floatA { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-18px) rotate(180deg)} }
-@keyframes floatB { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-22px) rotate(180deg)} }
-@keyframes floatC { 0%,100%{transform:translateY(0) rotateZ(0deg)} 50%{transform:translateY(14px) rotateZ(180deg)} }
+@keyframes scroll-bounce {
+  0%,100% { transform: translateY(0); opacity:0.6; }
+  50% { transform: translateY(8px); opacity:1; }
+}
 .hero-aurora {
   background: radial-gradient(circle at 50% 50%,
     rgba(245,200,66,0.13) 0%,
     rgba(74,222,128,0.07) 45%,
     transparent 70%);
 }
-.hero-bg-grid {
-  background-size: 60px 60px;
-  background-image:
-    linear-gradient(to right, rgba(232,237,244,0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(232,237,244,0.04) 1px, transparent 1px);
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-}
-.hero-giant-text {
-  font-size: 32vw;
-  line-height: 0.75;
-  font-weight: 900;
-  letter-spacing: -0.05em;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(245,200,66,0.07);
-  background: linear-gradient(180deg, rgba(245,200,66,0.09) 0%, transparent 55%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  pointer-events: none;
-  user-select: none;
-}
 .hero-glass-pill {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(245,200,66,0.18);
-  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(232,237,244,0.18);
+  background: rgba(255,255,255,0.06);
   transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
 }
 .hero-glass-pill:hover {
-  border-color: rgba(245,200,66,0.45);
-  background: rgba(245,200,66,0.06);
-  box-shadow: 0 8px 32px rgba(245,200,66,0.18);
+  border-color: rgba(232,237,244,0.4);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 .hero-gold-btn {
   background: linear-gradient(135deg,#F5C842 0%,#E6A800 100%);
@@ -78,6 +58,17 @@ const HERO_STYLES = `
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.hero-scroll-indicator {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+/* Typewriter: hauteur fixe sur mobile pour éviter les sauts */
+.hero-typed-line {
+  display: block;
+  min-height: 3.4em;
+}
+@media (min-width: 640px) {
+  .hero-typed-line { min-height: 1.7em; }
 }
 `;
 
@@ -152,7 +143,7 @@ export default function Hero() {
 
   return (
     <section
-      style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "clamp(5rem,10vh,8rem) 6vw clamp(3rem,6vh,6rem)", textAlign: "center" }}
+      style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "clamp(5rem,10vh,8rem) 6vw clamp(5rem,8vh,7rem)", textAlign: "center" }}
       onMouseMove={e => { const r = e.currentTarget.getBoundingClientRect(); setMouseX(e.clientX - r.left); setMouseY(e.clientY - r.top); }}
     >
       <style>{HERO_STYLES}</style>
@@ -160,10 +151,11 @@ export default function Hero() {
       {/* Photo background */}
       <Image src="/chantier1.webp" alt="Artisan sur chantier — logiciel de devis et facturation Floxia pour artisans du bâtiment" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center", zIndex: 0 }} />
       {/* Dark overlay */}
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(5,10,16,0.78) 0%, rgba(5,10,16,0.55) 60%, rgba(5,10,16,0.72) 100%)", zIndex: 1 }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(5,10,16,0.82) 0%, rgba(5,10,16,0.58) 60%, rgba(5,10,16,0.75) 100%)", zIndex: 1 }} />
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "16rem", background: "linear-gradient(to top, #05080D, transparent)", zIndex: 2 }} />
       <div className="hero-aurora" style={{ position: "absolute", left: "50%", top: "45%", width: "70vw", height: "55vh", borderRadius: "50%", filter: "blur(80px)", animation: "hero-breathe 9s ease-in-out infinite alternate", zIndex: 2, pointerEvents: "none" }} />
       <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none", background: `radial-gradient(700px circle at ${mouseX}px ${mouseY}px, rgba(245,200,66,0.07), transparent 42%)`, transition: "background 0.1s" }} />
+
       <div style={{ position: "relative", zIndex: 10 }}>
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
           style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "6px 18px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.06)", backdropFilter: "blur(8px)", marginBottom: "1.8rem" }}>
@@ -193,11 +185,11 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.38 }}
-          style={{ marginBottom: "2.5rem", color: "rgba(232,237,244,0.72)", fontSize: "clamp(1rem,2.2vw,1.2rem)", fontWeight: 300, lineHeight: 1.7, maxWidth: 620, margin: "0 auto 2.5rem" }}>
-          <span style={{ display: "block", minHeight: "1.7em" }}>
+          style={{ color: "rgba(232,237,244,0.72)", fontSize: "clamp(1rem,2.2vw,1.2rem)", fontWeight: 300, lineHeight: 1.7, maxWidth: 560, margin: "0 auto 2.5rem" }}>
+          <span className="hero-typed-line">
             {typed}<span style={{ display: "inline-block", width: 1, height: "1em", background: "#F5C842", margin: "0 1px", verticalAlign: "middle", animation: "cursor-blink 0.8s steps(1) infinite" }} />
           </span>
-          <span>−80 % de votre temps administratif éliminé.</span>
+          <span style={{ display: "block", marginTop: "0.5rem", fontSize: "0.95em", color: "rgba(232,237,244,0.5)" }}>−80 % de votre temps administratif éliminé.</span>
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.52 }}
@@ -205,11 +197,25 @@ export default function Hero() {
           <MagneticBtn href="https://calendly.com/afele1845/30min" className="hero-gold-btn" style={{ padding: "1rem 2.2rem", borderRadius: "999px", fontSize: "0.92rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
             Réserver une démo — 30 min
           </MagneticBtn>
-          <MagneticBtn href="#services" className="hero-glass-pill" style={{ padding: "1rem 2rem", borderRadius: "999px", fontSize: "0.88rem", color: "rgba(245,200,66,0.9)", fontWeight: 700, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+          <MagneticBtn href="#services" className="hero-glass-pill" style={{ padding: "1rem 2rem", borderRadius: "999px", fontSize: "0.88rem", color: "rgba(232,237,244,0.9)", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
             Voir les services →
           </MagneticBtn>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        style={{ position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", gap: "0.4rem", cursor: "pointer" }}
+        onClick={() => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" })}
+      >
+        <span style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(232,237,244,0.3)" }}>Découvrir</span>
+        <div className="hero-scroll-indicator" style={{ width: 28, height: 44, borderRadius: 14, border: "1.5px solid rgba(232,237,244,0.2)", display: "flex", alignItems: "flex-start", justifyContent: "center", padding: "6px 0" }}>
+          <div style={{ width: 4, height: 8, borderRadius: 2, background: "#F5C842", opacity: 0.8 }} />
+        </div>
+      </motion.div>
     </section>
   );
 }
