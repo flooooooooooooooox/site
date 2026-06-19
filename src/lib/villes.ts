@@ -1,0 +1,267 @@
+export interface Ville {
+  slug: string;
+  nom: string;
+  region: string;
+  prepo: string; // "à", "au", "aux" — pour "Floxia {prepo} {nom}"
+  contexte: string; // contexte local unique (anti-doublon SEO)
+  zones: string; // départements / agglomération
+}
+
+export const VILLES: Ville[] = [
+  {
+    slug: "paris",
+    nom: "Paris",
+    region: "Île-de-France",
+    prepo: "à",
+    contexte:
+      "À Paris, les artisans du bâtiment interviennent surtout en rénovation d'appartements haussmanniens, copropriétés et locaux commerciaux. Les contraintes de stationnement, d'accès et de copropriété rendent chaque minute administrative précieuse — créer un devis depuis WhatsApp sur le chantier change la donne.",
+    zones: "Paris (75) et toute la petite couronne : Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94).",
+  },
+  {
+    slug: "lyon",
+    nom: "Lyon",
+    region: "Auvergne-Rhône-Alpes",
+    prepo: "à",
+    contexte:
+      "À Lyon et dans la métropole, les artisans jonglent entre rénovation dans le Vieux-Lyon, constructions neuves à la Confluence et chantiers en périphérie. Floxia permet de générer un devis entre deux interventions, sans repasser par le bureau.",
+    zones: "Métropole de Lyon et Rhône (69), avec extension possible sur l'Ain (01) et l'Isère (38).",
+  },
+  {
+    slug: "marseille",
+    nom: "Marseille",
+    region: "Provence-Alpes-Côte d'Azur",
+    prepo: "à",
+    contexte:
+      "À Marseille, entre rénovation dans les quartiers anciens, villas sur la côte et copropriétés, les artisans ont besoin de réactivité. Un devis envoyé par WhatsApp dans l'heure fait souvent la différence face à la concurrence.",
+    zones: "Marseille et les Bouches-du-Rhône (13), de l'Estaque à Aubagne.",
+  },
+  {
+    slug: "toulouse",
+    nom: "Toulouse",
+    region: "Occitanie",
+    prepo: "à",
+    contexte:
+      "À Toulouse, la croissance démographique soutient une forte demande en construction neuve et rénovation énergétique. Floxia aide les artisans à suivre ce rythme en automatisant devis, relances et facturation.",
+    zones: "Toulouse Métropole et Haute-Garonne (31).",
+  },
+  {
+    slug: "bordeaux",
+    nom: "Bordeaux",
+    region: "Nouvelle-Aquitaine",
+    prepo: "à",
+    contexte:
+      "À Bordeaux, la rénovation du bâti ancien en pierre et la construction neuve en périphérie cohabitent. Les artisans bordelais utilisent Floxia pour produire des devis détaillés sans y passer leurs soirées.",
+    zones: "Bordeaux Métropole et Gironde (33).",
+  },
+  {
+    slug: "lille",
+    nom: "Lille",
+    region: "Hauts-de-France",
+    prepo: "à",
+    contexte:
+      "À Lille et dans la métropole, la rénovation des maisons de ville en brique et l'amélioration énergétique sont au cœur de l'activité. Floxia gère automatiquement la TVA réduite et les attestations liées aux travaux d'isolation.",
+    zones: "Métropole Européenne de Lille et Nord (59).",
+  },
+  {
+    slug: "nantes",
+    nom: "Nantes",
+    region: "Pays de la Loire",
+    prepo: "à",
+    contexte:
+      "À Nantes, le dynamisme immobilier alimente une forte demande en travaux. Les artisans nantais s'appuient sur Floxia pour répondre vite aux demandes de devis et ne plus laisser filer de chantiers.",
+    zones: "Nantes Métropole et Loire-Atlantique (44).",
+  },
+  {
+    slug: "nice",
+    nom: "Nice",
+    region: "Provence-Alpes-Côte d'Azur",
+    prepo: "à",
+    contexte:
+      "À Nice, entre rénovation de standing, résidences secondaires et copropriétés, les artisans ont besoin de devis soignés et rapides. Floxia produit des documents professionnels en quelques minutes.",
+    zones: "Nice et les Alpes-Maritimes (06).",
+  },
+  {
+    slug: "strasbourg",
+    nom: "Strasbourg",
+    region: "Grand Est",
+    prepo: "à",
+    contexte:
+      "À Strasbourg, la rénovation du patrimoine alsacien et les exigences thermiques renforcées structurent l'activité du bâtiment. Floxia accompagne les artisans sur la conformité et la rapidité des devis.",
+    zones: "Eurométropole de Strasbourg et Bas-Rhin (67).",
+  },
+  {
+    slug: "montpellier",
+    nom: "Montpellier",
+    region: "Occitanie",
+    prepo: "à",
+    contexte:
+      "À Montpellier, l'une des villes les plus dynamiques de France, la construction neuve bat son plein. Les artisans utilisent Floxia pour absorber le volume de demandes sans sacrifier la qualité de leurs devis.",
+    zones: "Montpellier Méditerranée Métropole et Hérault (34).",
+  },
+  {
+    slug: "rennes",
+    nom: "Rennes",
+    region: "Bretagne",
+    prepo: "à",
+    contexte:
+      "À Rennes, la croissance urbaine et la rénovation énergétique soutiennent l'activité du bâtiment. Floxia permet aux artisans rennais de gérer devis et relances depuis le terrain, par WhatsApp.",
+    zones: "Rennes Métropole et Ille-et-Vilaine (35).",
+  },
+  {
+    slug: "grenoble",
+    nom: "Grenoble",
+    region: "Auvergne-Rhône-Alpes",
+    prepo: "à",
+    contexte:
+      "À Grenoble, la rénovation thermique est une priorité dans une ville pionnière de la transition énergétique. Floxia gère automatiquement la TVA réduite et les attestations des travaux d'amélioration énergétique.",
+    zones: "Grenoble-Alpes Métropole et Isère (38).",
+  },
+  {
+    slug: "nimes",
+    nom: "Nîmes",
+    region: "Occitanie",
+    prepo: "à",
+    contexte:
+      "À Nîmes, la rénovation du centre historique et la construction en périphérie alimentent l'activité des artisans. Floxia leur permet de produire des devis soignés sans y consacrer leurs soirées.",
+    zones: "Nîmes Métropole et Gard (30).",
+  },
+  {
+    slug: "toulon",
+    nom: "Toulon",
+    region: "Provence-Alpes-Côte d'Azur",
+    prepo: "à",
+    contexte:
+      "À Toulon, entre rénovation littorale, copropriétés et résidences secondaires, les artisans doivent répondre vite. Un devis envoyé par WhatsApp dans la journée fait souvent la différence.",
+    zones: "Métropole Toulon-Provence-Méditerranée et Var (83).",
+  },
+  {
+    slug: "angers",
+    nom: "Angers",
+    region: "Pays de la Loire",
+    prepo: "à",
+    contexte:
+      "À Angers, ville réputée pour sa qualité de vie, la rénovation du bâti ancien en tuffeau et la construction neuve cohabitent. Floxia aide les artisans angevins à automatiser devis et relances.",
+    zones: "Angers Loire Métropole et Maine-et-Loire (49).",
+  },
+  {
+    slug: "reims",
+    nom: "Reims",
+    region: "Grand Est",
+    prepo: "à",
+    contexte:
+      "À Reims, la rénovation du patrimoine et l'amélioration énergétique des logements structurent l'activité. Floxia gère la TVA réduite et les attestations associées automatiquement.",
+    zones: "Communauté urbaine du Grand Reims et Marne (51).",
+  },
+  {
+    slug: "dijon",
+    nom: "Dijon",
+    region: "Bourgogne-Franche-Comté",
+    prepo: "à",
+    contexte:
+      "À Dijon, la préservation du centre historique et la rénovation énergétique soutiennent une demande constante de travaux. Floxia permet aux artisans dijonnais de répondre rapidement et de suivre leurs chantiers depuis le terrain.",
+    zones: "Dijon Métropole et Côte-d'Or (21).",
+  },
+  {
+    slug: "le-havre",
+    nom: "Le Havre",
+    region: "Normandie",
+    prepo: "au",
+    contexte:
+      "Au Havre, ville classée à l'UNESCO pour son architecture d'après-guerre, la rénovation du bâti en béton et l'amélioration énergétique sont au cœur des chantiers. Floxia gère la TVA réduite et les attestations associées.",
+    zones: "Le Havre Seine Métropole et Seine-Maritime (76).",
+  },
+  {
+    slug: "saint-etienne",
+    nom: "Saint-Étienne",
+    region: "Auvergne-Rhône-Alpes",
+    prepo: "à",
+    contexte:
+      "À Saint-Étienne, la rénovation du parc immobilier ancien et la requalification urbaine génèrent une forte demande en travaux. Floxia aide les artisans stéphanois à automatiser devis et relances.",
+    zones: "Saint-Étienne Métropole et Loire (42).",
+  },
+  {
+    slug: "clermont-ferrand",
+    nom: "Clermont-Ferrand",
+    region: "Auvergne-Rhône-Alpes",
+    prepo: "à",
+    contexte:
+      "À Clermont-Ferrand, entre rénovation du centre en pierre de Volvic et constructions neuves, les artisans s'appuient sur Floxia pour produire des devis rapidement et suivre leur activité.",
+    zones: "Clermont Auvergne Métropole et Puy-de-Dôme (63).",
+  },
+  {
+    slug: "brest",
+    nom: "Brest",
+    region: "Bretagne",
+    prepo: "à",
+    contexte:
+      "À Brest, le climat océanique et la rénovation énergétique du bâti orientent l'activité du bâtiment. Floxia permet aux artisans brestois de gérer devis et chantiers depuis le terrain, par WhatsApp.",
+    zones: "Brest Métropole et Finistère (29).",
+  },
+  {
+    slug: "le-mans",
+    nom: "Le Mans",
+    region: "Pays de la Loire",
+    prepo: "au",
+    contexte:
+      "Au Mans, la rénovation de la Cité Plantagenêt et l'extension urbaine soutiennent la demande de travaux. Floxia aide les artisans manceaux à produire des devis professionnels en quelques minutes.",
+    zones: "Le Mans Métropole et Sarthe (72).",
+  },
+  {
+    slug: "tours",
+    nom: "Tours",
+    region: "Centre-Val de Loire",
+    prepo: "à",
+    contexte:
+      "À Tours, la rénovation du bâti ancien en tuffeau et la construction neuve cohabitent. Floxia permet aux artisans tourangeaux d'automatiser devis, relances et facturation.",
+    zones: "Tours Métropole Val de Loire et Indre-et-Loire (37).",
+  },
+  {
+    slug: "limoges",
+    nom: "Limoges",
+    region: "Nouvelle-Aquitaine",
+    prepo: "à",
+    contexte:
+      "À Limoges, la rénovation du parc immobilier et l'amélioration énergétique alimentent l'activité des artisans. Floxia gère automatiquement la TVA réduite et les attestations.",
+    zones: "Limoges Métropole et Haute-Vienne (87).",
+  },
+  {
+    slug: "amiens",
+    nom: "Amiens",
+    region: "Hauts-de-France",
+    prepo: "à",
+    contexte:
+      "À Amiens, la rénovation des maisons amiénoises en brique et l'isolation thermique structurent l'activité du bâtiment. Floxia gère la TVA réduite des travaux d'isolation automatiquement.",
+    zones: "Amiens Métropole et Somme (80).",
+  },
+  {
+    slug: "perpignan",
+    nom: "Perpignan",
+    region: "Occitanie",
+    prepo: "à",
+    contexte:
+      "À Perpignan, entre rénovation du centre catalan et constructions neuves sur le littoral, les artisans doivent répondre vite. Floxia leur permet d'envoyer un devis dans la journée.",
+    zones: "Perpignan Méditerranée Métropole et Pyrénées-Orientales (66).",
+  },
+  {
+    slug: "metz",
+    nom: "Metz",
+    region: "Grand Est",
+    prepo: "à",
+    contexte:
+      "À Metz, la rénovation du patrimoine et les exigences thermiques renforcées orientent les chantiers. Floxia accompagne les artisans messins sur la conformité et la rapidité des devis.",
+    zones: "Metz Métropole et Moselle (57).",
+  },
+  {
+    slug: "orleans",
+    nom: "Orléans",
+    region: "Centre-Val de Loire",
+    prepo: "à",
+    contexte:
+      "À Orléans, la rénovation du centre historique et le développement urbain soutiennent une demande constante de travaux. Floxia permet aux artisans orléanais de suivre leurs chantiers depuis le terrain.",
+    zones: "Orléans Métropole et Loiret (45).",
+  },
+];
+
+export function getVille(slug: string): Ville | undefined {
+  return VILLES.find((v) => v.slug === slug);
+}

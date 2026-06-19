@@ -31,13 +31,50 @@ const articleJsonLd = {
   keywords: "devis WhatsApp artisan, logiciel devis bâtiment, Floxia",
 };
 
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Devis depuis WhatsApp", item: "https://floxia.fr/ressources/devis-depuis-whatsapp" },
+  ],
+};
+
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Créer un devis depuis WhatsApp en 3 minutes",
+  description: "Créez et envoyez un devis PDF professionnel depuis WhatsApp en 3 étapes avec Floxia.",
+  totalTime: "PT3M",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Décrivez le chantier",
+      text: "Envoyez un message vocal ou écrit à Floxia via WhatsApp en décrivant les prestations à réaliser.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Validation automatique",
+      text: "Floxia analyse votre message, applique votre grille tarifaire et la bonne TVA, puis génère le devis PDF.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Envoi et signature",
+      text: "Le devis est envoyé au client par WhatsApp ou email. Il peut le signer électroniquement en un clic.",
+    },
+  ],
+};
+
 export default function DevisWhatsApp() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
       <BlogArticle
         badge="Devis & Facturation"
         title="Comment envoyer un devis depuis WhatsApp en 3 minutes"
@@ -113,8 +150,25 @@ export default function DevisWhatsApp() {
               "Floxia se connecte à votre numéro WhatsApp Business existant via l'API officielle Meta. Vous gardez votre numéro actuel, votre profil, vos conversations. Floxia s'intègre comme un assistant supplémentaire — vous lui écrivez comme vous écririez à un collaborateur, et il traite les documents à votre place.",
           },
           {
+            type: "h2",
+            content: "WhatsApp ou application : deux façons de créer vos devis",
+          },
+          {
+            type: "p",
+            content:
+              "WhatsApp n'est pas le seul canal. Vous pouvez aussi créer vos devis directement sur l'application Floxia ERP, depuis un ordinateur ou une tablette. Sur l'application, ce n'est pas du vocal : l'IA vous propose des pré-modèles de devis adaptés à votre métier, que vous personnalisez en quelques clics. Idéal au bureau pour les devis complexes à plusieurs postes.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Sur WhatsApp — rapide, sur le terrain, par vocal ou écrit. Parfait en sortie de visite de chantier.",
+              "Sur l'application Floxia ERP — au bureau, avec pré-modèles de devis IA, catalogue de prix et vue détaillée. Parfait pour les chantiers complexes.",
+              "Les deux canaux sont synchronisés : un devis commencé sur WhatsApp peut être finalisé sur l'application, et inversement.",
+            ],
+          },
+          {
             type: "cta",
-            content: "Prêt à faire votre premier devis depuis WhatsApp ?",
+            content: "Prêt à faire votre premier devis — sur WhatsApp ou sur l'application ?",
           },
         ]}
       />

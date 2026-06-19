@@ -5,16 +5,24 @@ import { ChevronDown } from "lucide-react";
 
 const FAQS = [
   {
+    q: "Comment créer un devis avec Floxia ?",
+    a: "Vous avez deux façons de créer un devis. Depuis WhatsApp : décrivez le chantier par message vocal ou écrit, et Floxia génère le devis PDF en moins de 3 minutes. Ou directement sur l'application Floxia ERP : l'IA vous propose des pré-modèles de devis prêts à l'emploi que vous personnalisez en quelques clics. À vous de choisir le canal qui vous convient.",
+  },
+  {
+    q: "Peut-on faire un devis directement sur l'application Floxia ERP ?",
+    a: "Oui. En plus de WhatsApp, vous pouvez créer vos devis directement dans l'application web Floxia ERP. L'IA génère des pré-modèles de devis adaptés à votre métier que vous n'avez plus qu'à ajuster (quantités, prix, prestations). Sur l'application, ce n'est pas du vocal : tout se fait à l'écran, avec votre catalogue de prix et vos modèles enregistrés.",
+  },
+  {
     q: "Comment Floxia s'intègre avec WhatsApp ?",
-    a: "Floxia se connecte à votre numéro WhatsApp Business existant via l'API officielle Meta. Aucune application supplémentaire à installer — vous utilisez WhatsApp comme d'habitude, et Floxia traite les devis et factures en arrière-plan.",
+    a: "Floxia se connecte à votre numéro WhatsApp Business existant via l'API officielle Meta. Aucune application supplémentaire à installer — vous utilisez WhatsApp comme d'habitude, et Floxia traite les devis et factures en arrière-plan. Vous pouvez aussi tout gérer depuis l'application web Floxia ERP.",
   },
   {
     q: "En combien de temps est généré un devis ?",
-    a: "En moins de 3 minutes. Vous décrivez le chantier par message vocal ou texte depuis WhatsApp, et Floxia génère automatiquement le devis PDF avec votre logo, vos tarifs et la bonne TVA (5,5%, 10% ou 20% selon le type de travaux).",
+    a: "En moins de 3 minutes depuis WhatsApp : vous décrivez le chantier par vocal ou texte, et Floxia génère le devis PDF avec votre logo, vos tarifs et la bonne TVA (5,5%, 10% ou 20%). Sur l'application Floxia ERP, c'est encore plus rapide grâce aux pré-modèles de devis générés par l'IA.",
   },
   {
     q: "Floxia gère-t-il la facturation électronique 2026 ?",
-    a: "Oui, nativement. Floxia est conforme à la réglementation e-facturation et e-reporting 2026 obligatoire pour toutes les entreprises françaises. Chaque facture est générée au bon format sans action supplémentaire de votre part.",
+    a: "Oui, nativement. Floxia est conforme à la réglementation e-facturation et e-reporting 2026 obligatoire pour toutes les entreprises françaises. Chaque facture est générée au bon format sans action supplémentaire de votre part, que vous travailliez depuis WhatsApp ou l'application web.",
   },
   {
     q: "Mes données sont-elles sécurisées ?",
@@ -22,19 +30,19 @@ const FAQS = [
   },
   {
     q: "Puis-je utiliser Floxia depuis mon téléphone sur chantier ?",
-    a: "C'est exactement pour ça que Floxia a été conçu. Tout fonctionne depuis WhatsApp sur votre téléphone — vous n'avez pas besoin d'ouvrir un ordinateur pour créer un devis, envoyer une facture ou consulter l'état d'un chantier.",
+    a: "Oui. Sur le terrain, tout fonctionne depuis WhatsApp sur votre téléphone — vous n'avez pas besoin d'ouvrir un ordinateur pour créer un devis, envoyer une facture ou consulter un chantier. Au bureau, l'application Floxia ERP vous offre une vue complète avec ses pré-modèles de devis et son tableau de bord.",
   },
   {
     q: "Combien coûte Floxia ?",
-    a: "Floxia propose trois formules à partir de 49€/mois, avec un setup unique. Consultez la section Tarifs sur la page d'accueil pour le détail complet des offres Essentiel, Artisan Pro et PME Premium.",
+    a: "Floxia propose trois formules à partir de 99€/mois, avec un setup unique. Consultez la section Tarifs sur la page d'accueil pour le détail complet des offres Essentiel, Artisan Pro et PME Premium.",
   },
   {
     q: "Floxia fonctionne-t-il pour tous les corps de métier du bâtiment ?",
-    a: "Oui — électriciens, plombiers, maçons, peintres, menuisiers, carreleurs, couvreurs... Floxia comprend le vocabulaire et les spécificités de chaque métier : TVA par type de travaux, attestations CERFA, gestion des avenants.",
+    a: "Oui — électriciens, plombiers, maçons, peintres, menuisiers, carreleurs, couvreurs... Floxia comprend le vocabulaire et les spécificités de chaque métier : TVA par type de travaux, attestations CERFA, gestion des avenants. Les pré-modèles de devis de l'application sont adaptés à chaque métier.",
   },
   {
     q: "Floxia fonctionne-t-il hors connexion ?",
-    a: "L'application web nécessite une connexion. Sur chantier, les données sont synchronisées dès le retour en ligne. WhatsApp fonctionne en 4G/5G, donc vous pouvez créer des devis même dans des zones à faible couverture.",
+    a: "L'application web et WhatsApp nécessitent une connexion. Sur chantier, les données sont synchronisées dès le retour en ligne. WhatsApp fonctionne en 4G/5G, donc vous pouvez créer des devis même dans des zones à faible couverture.",
   },
 ];
 

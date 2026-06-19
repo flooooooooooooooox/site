@@ -14,7 +14,7 @@ const CATEGORIES = [
     hero: true,
     features: [
       "Devis PDF par vocal/écrit WhatsApp en 3 min",
-      "Devis depuis le site web",
+      "Devis sur l'application Floxia ERP (pré-modèles IA)",
       "PV de réception + facture finale automatisés",
       "Factures d'acompte, finale, tous types",
       "Gestion des avenants et avoirs automatiques",

@@ -31,13 +31,21 @@ const articleJsonLd = {
   keywords: "ERP bâtiment, logiciel artisan, devis facture, gestion chantier",
 };
 
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Logiciel ERP bâtiment", item: "https://floxia.fr/ressources/logiciel-erp-batiment" },
+  ],
+};
+
 export default function ErpBatiment() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <BlogArticle
         badge="ERP & Logiciel"
         title="Logiciel ERP bâtiment : le guide complet pour artisans et PME"
@@ -108,7 +116,7 @@ export default function ErpBatiment() {
             items: [
               "ERP généraliste (Sage, Cegid) : 200€ à 800€/mois pour une petite entreprise, plus les coûts de formation et d'implémentation.",
               "Logiciel bâtiment classique (Batigest, Onaya) : 100€ à 400€/mois, + 1 000€ à 3 000€ de setup.",
-              "Floxia : à partir de 49€/mois tout inclus, setup en 24h, aucune formation requise — vous l'utilisez depuis WhatsApp.",
+              "Floxia : à partir de 99€/mois tout inclus, aucune formation requise — vous l'utilisez depuis WhatsApp ou directement sur l'application Floxia ERP avec ses pré-modèles de devis.",
             ],
           },
           {

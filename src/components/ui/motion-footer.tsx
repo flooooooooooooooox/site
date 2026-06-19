@@ -246,10 +246,28 @@ export function CinematicFooter() {
                 </MagneticButton>
               </div>
 
+              {/* Réseaux sociaux */}
+              <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
+                <a href="https://www.instagram.com/floxia.pro" target="_blank" rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.55rem 1.1rem", borderRadius: "9999px", fontSize: "0.78rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(245,200,66,0.15)", background: "rgba(245,200,66,0.04)" }}>
+                  Instagram
+                </a>
+                <a href="https://www.linkedin.com/in/floxia-pro-9360333aa" target="_blank" rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.55rem 1.1rem", borderRadius: "9999px", fontSize: "0.78rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(245,200,66,0.15)", background: "rgba(245,200,66,0.04)" }}>
+                  LinkedIn
+                </a>
+              </div>
+
               {/* Liens secondaires */}
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
                 {[
+                  { label: "Entreprises", href: "/logiciel-gestion-entreprise-batiment" },
+                  { label: "Ressources", href: "/ressources" },
+                  { label: "Métiers", href: "/artisans" },
+                  { label: "Comparatifs", href: "/alternatives" },
+                  { label: "Villes", href: "/logiciel-batiment" },
                   { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
+                  { label: "Presse", href: "/presse" },
                   { label: "Mentions légales", href: "/mentions-legales" },
                   { label: "CGV", href: "/cgv" },
                   { label: "Politique de confidentialité", href: "/politique-de-confidentialite" },

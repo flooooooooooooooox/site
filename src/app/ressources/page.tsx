@@ -20,9 +20,18 @@ const ARTICLES = [
     badge: "Devis",
     title: "Comment envoyer un devis depuis WhatsApp en 3 minutes",
     description:
-      "Vous êtes sur chantier, un prospect vous appelle. En 3 minutes, votre devis PDF est envoyé, signé et archivé — depuis WhatsApp. Voici comment.",
+      "Vous êtes sur chantier, un prospect vous appelle. En 3 minutes, votre devis PDF est envoyé, signé et archivé — depuis WhatsApp ou l'application Floxia ERP. Voici comment.",
     date: "Juin 2026",
     readTime: "4 min",
+  },
+  {
+    href: "/ressources/modele-devis-batiment",
+    badge: "Modèles",
+    title: "Modèle de devis bâtiment : les pré-modèles IA qui font gagner du temps",
+    description:
+      "Repartir d'un modèle vierge à chaque chantier fait perdre du temps. Découvrez les pré-modèles de devis générés par l'IA, sur l'application ERP ou depuis WhatsApp.",
+    date: "Juin 2026",
+    readTime: "5 min",
   },
   {
     href: "/ressources/logiciel-erp-batiment",
@@ -39,6 +48,33 @@ const ARTICLES = [
     title: "Automatisation : comment les artisans gagnent 10h par semaine",
     description:
       "Devis, relances, facturation, conformité 2026 — 5 tâches administratives que les artisans peuvent automatiser aujourd'hui pour se concentrer sur le chantier.",
+    date: "Juin 2026",
+    readTime: "5 min",
+  },
+  {
+    href: "/ressources/tarif-horaire-artisan-batiment",
+    badge: "Prix",
+    title: "Tarif horaire artisan bâtiment : comment fixer ses prix en 2026",
+    description:
+      "Trop bas, vous travaillez à perte ; trop haut, vous perdez des chantiers. La méthode complète pour calculer votre tarif horaire, avec les fourchettes par métier.",
+    date: "Juin 2026",
+    readTime: "6 min",
+  },
+  {
+    href: "/ressources/tva-travaux-renovation",
+    badge: "TVA",
+    title: "TVA travaux de rénovation : 5,5%, 10% ou 20% ? Le guide 2026",
+    description:
+      "Appliquer le mauvais taux de TVA peut coûter cher. Comment savoir à coup sûr quel taux appliquer selon le type de travaux, avec l'attestation obligatoire.",
+    date: "Juin 2026",
+    readTime: "5 min",
+  },
+  {
+    href: "/ressources/logiciel-auto-entrepreneur-batiment",
+    badge: "Auto-entrepreneur",
+    title: "Logiciel auto-entrepreneur bâtiment : devis et factures sans prise de tête",
+    description:
+      "Auto-entrepreneur ou micro-entreprise dans le bâtiment ? Pas besoin d'un ERP complexe : juste un outil simple, mobile et conforme. Voici ce qu'il vous faut.",
     date: "Juin 2026",
     readTime: "5 min",
   },

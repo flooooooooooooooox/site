@@ -7,6 +7,7 @@ const MORPH_WORDS = ["Automatisée", "Intelligente", "Connectée", "Souveraine",
 const TYPED = [
   "Générez vos devis et factures depuis WhatsApp en 3 minutes.",
   "Un message vocal suffit pour créer un devis PDF complet.",
+  "Ou créez vos devis sur l'application Floxia ERP avec des pré-modèles IA.",
   "Votre agent IA répond aux clients pendant que vous travaillez.",
   "Relances automatiques, signature électronique, zéro ressaisie.",
 ];
