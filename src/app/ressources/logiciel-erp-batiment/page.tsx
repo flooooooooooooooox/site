@@ -108,7 +108,7 @@ export default function ErpBatiment() {
             items: [
               "ERP généraliste (Sage, Cegid) : 200€ à 800€/mois pour une petite entreprise, plus les coûts de formation et d'implémentation.",
               "Logiciel bâtiment classique (Batigest, Onaya) : 100€ à 400€/mois, + 1 000€ à 3 000€ de setup.",
-              "Floxia : à partir de 49€/mois tout inclus, setup en 24h, aucune formation requise — vous l'utilisez depuis WhatsApp.",
+              "Floxia : à partir de 99€/mois tout inclus, aucune formation requise — vous l'utilisez depuis WhatsApp ou directement sur l'application Floxia ERP avec ses pré-modèles de devis.",
             ],
           },
           {

@@ -51,8 +51,8 @@ export default function TradesSection() {
           }}>
             Conçu pour <span style={{ color: "#F5C842" }}>votre métier</span>
           </h2>
-          <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.5)", fontSize: ".95rem", maxWidth: "480px", margin: "0.75rem auto 0" }}>
-            Électricien, plombier, maçon, peintre — Floxia parle le vocabulaire de votre corps de métier et applique les bonnes TVA automatiquement.
+          <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.5)", fontSize: ".95rem", maxWidth: "520px", margin: "0.75rem auto 0" }}>
+            Électricien, plombier, maçon, peintre — créez vos devis depuis WhatsApp ou sur l&apos;application Floxia ERP avec des pré-modèles IA, et appliquez les bonnes TVA automatiquement.
           </p>
         </div>
 

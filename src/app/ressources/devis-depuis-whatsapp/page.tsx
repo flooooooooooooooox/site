@@ -113,8 +113,25 @@ export default function DevisWhatsApp() {
               "Floxia se connecte à votre numéro WhatsApp Business existant via l'API officielle Meta. Vous gardez votre numéro actuel, votre profil, vos conversations. Floxia s'intègre comme un assistant supplémentaire — vous lui écrivez comme vous écririez à un collaborateur, et il traite les documents à votre place.",
           },
           {
+            type: "h2",
+            content: "WhatsApp ou application : deux façons de créer vos devis",
+          },
+          {
+            type: "p",
+            content:
+              "WhatsApp n'est pas le seul canal. Vous pouvez aussi créer vos devis directement sur l'application Floxia ERP, depuis un ordinateur ou une tablette. Sur l'application, ce n'est pas du vocal : l'IA vous propose des pré-modèles de devis adaptés à votre métier, que vous personnalisez en quelques clics. Idéal au bureau pour les devis complexes à plusieurs postes.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Sur WhatsApp — rapide, sur le terrain, par vocal ou écrit. Parfait en sortie de visite de chantier.",
+              "Sur l'application Floxia ERP — au bureau, avec pré-modèles de devis IA, catalogue de prix et vue détaillée. Parfait pour les chantiers complexes.",
+              "Les deux canaux sont synchronisés : un devis commencé sur WhatsApp peut être finalisé sur l'application, et inversement.",
+            ],
+          },
+          {
             type: "cta",
-            content: "Prêt à faire votre premier devis depuis WhatsApp ?",
+            content: "Prêt à faire votre premier devis — sur WhatsApp ou sur l'application ?",
           },
         ]}
       />

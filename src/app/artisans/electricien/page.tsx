@@ -32,10 +32,11 @@ export default function Electricien() {
         trade="électricien"
         badge="Électricité"
         title="Logiciel de devis et facturation pour électriciens"
-        subtitle="Devis électricité depuis WhatsApp en 3 minutes."
+        subtitle="Devis électricité depuis WhatsApp ou sur l'application Floxia ERP."
         intro="En tant qu'électricien, vous intervenez sur des chantiers variés : mise aux normes NF C 15-100, installation de tableaux électriques, domotique, bornes de recharge VE. Floxia comprend le vocabulaire de l'électricité du bâtiment et génère automatiquement vos devis avec les bonnes TVA et les bonnes nomenclatures, depuis votre téléphone sur chantier."
         features={[
           { title: "Devis électricité par vocal", desc: "Dictez vos prestations depuis WhatsApp — tableau électrique, câblage, prises, éclairage — et recevez le devis PDF en 3 min." },
+          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Floxia ERP, l'IA propose des pré-modèles de devis électricité que vous personnalisez en quelques clics. Idéal au bureau." },
           { title: "TVA automatique", desc: "5,5% pour rénovation en résidence principale, 10% pour travaux sur existant, 20% pour le neuf. Floxia applique la bonne TVA automatiquement." },
           { title: "Attestation TVA réduite", desc: "Génération automatique du formulaire CERFA requis pour les TVA à taux réduit sur les travaux de rénovation." },
           { title: "Conformité e-facturation 2026", desc: "Toutes vos factures sont conformes à l'obligation e-facturation 2026 pour les entreprises du bâtiment." },

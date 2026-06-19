@@ -32,10 +32,11 @@ export default function Macon() {
         trade="maçon"
         badge="Maçonnerie & Gros œuvre"
         title="Logiciel de devis et facturation pour maçons"
-        subtitle="Devis maçonnerie depuis WhatsApp en 3 minutes."
+        subtitle="Devis maçonnerie depuis WhatsApp ou sur l'application Floxia ERP."
         intro="Maçon, entreprise de gros œuvre ou spécialiste du ravalement : vos chantiers sont souvent complexes, avec plusieurs corps de métier et une facturation à l'avancement. Floxia centralise devis, factures d'acompte, situations de travaux et PV de réception dans un seul outil, accessible depuis votre téléphone sur le chantier."
         features={[
           { title: "Devis maçonnerie par vocal", desc: "Décrivez le chantier par message vocal depuis WhatsApp — fondations, murs, chapes, ravalement — et recevez le devis PDF en 3 min." },
+          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Floxia ERP, l'IA propose des pré-modèles de devis gros œuvre que vous adaptez à votre chantier en quelques clics." },
           { title: "Facturation à l'avancement", desc: "Situations de travaux intermédiaires, retenue de garantie, levée de réserves — Floxia gère toute la complexité de la facturation BTP." },
           { title: "TVA gros œuvre automatique", desc: "10% pour les travaux de rénovation sur existant, 20% pour le neuf, 5,5% pour les travaux d'isolation. Calculé automatiquement." },
           { title: "Gestion multi-corps de métier", desc: "Coordonnez les sous-traitants et les différentes équipes depuis le tableau de bord FloxiaOS." },

@@ -10,7 +10,7 @@ const PLANS = [
     setup: 299,
     popular: false,
     features: [
-      "Devis & factures WhatsApp",
+      "Devis & factures WhatsApp + app ERP",
       "Documents illimités",
       "Signature électronique",
       "Support email",
@@ -20,7 +20,8 @@ const PLANS = [
       {
         category: "Devis & facturation",
         items: [
-          "Création de devis depuis le site",
+          "Création de devis sur l'application Floxia ERP",
+          "Pré-modèles de devis générés par l'IA",
           "Devis PDF par vocal / WhatsApp (3 min)",
           "Factures acompte / finale / tous types",
           "PV de réception + facture finale auto",

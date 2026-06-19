@@ -20,9 +20,18 @@ const ARTICLES = [
     badge: "Devis",
     title: "Comment envoyer un devis depuis WhatsApp en 3 minutes",
     description:
-      "Vous êtes sur chantier, un prospect vous appelle. En 3 minutes, votre devis PDF est envoyé, signé et archivé — depuis WhatsApp. Voici comment.",
+      "Vous êtes sur chantier, un prospect vous appelle. En 3 minutes, votre devis PDF est envoyé, signé et archivé — depuis WhatsApp ou l'application Floxia ERP. Voici comment.",
     date: "Juin 2026",
     readTime: "4 min",
+  },
+  {
+    href: "/ressources/modele-devis-batiment",
+    badge: "Modèles",
+    title: "Modèle de devis bâtiment : les pré-modèles IA qui font gagner du temps",
+    description:
+      "Repartir d'un modèle vierge à chaque chantier fait perdre du temps. Découvrez les pré-modèles de devis générés par l'IA, sur l'application ERP ou depuis WhatsApp.",
+    date: "Juin 2026",
+    readTime: "5 min",
   },
   {
     href: "/ressources/logiciel-erp-batiment",
