@@ -37,15 +37,9 @@ const STYLES = `
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-@keyframes footer-heartbeat {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(248,113,113,0.5)); }
-  15%, 45% { transform: scale(1.25); filter: drop-shadow(0 0 12px rgba(248,113,113,0.9)); }
-  30% { transform: scale(1); }
-}
 
 .animate-footer-breathe { animation: footer-breathe 8s ease-in-out infinite alternate; }
 .animate-footer-scroll-marquee { animation: footer-scroll-marquee 38s linear infinite; }
-.animate-footer-heartbeat { animation: footer-heartbeat 2s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
 
 .footer-bg-grid {
   background-size: 60px 60px;
@@ -122,27 +116,13 @@ const STYLES = `
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  border-top: 1px solid rgba(245,200,66,0.06);
 }
 
 @media (max-width: 768px) {
-  .cinematic-footer-inner {
-    position: relative !important;
-    height: auto !important;
-    min-height: 100vh;
-  }
-  .cinematic-footer-wrapper-outer {
-    height: auto !important;
-    clip-path: none !important;
-  }
-  .footer-giant-bg-text {
-    font-size: 22vw;
-  }
-  .footer-center-content {
-    margin-top: 7rem !important;
-    padding: 0 1rem !important;
-  }
+  .footer-giant-bg-text { font-size: 22vw; }
   .footer-bottom-bar {
-    padding: 1.25rem 1.25rem !important;
+    padding: 1.25rem !important;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -213,14 +193,29 @@ const MarqueeItem = () => (
   </div>
 );
 
-export function CinematicFooter() {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+const NAV_LINKS = [
+  { label: "Entreprises", href: "/logiciel-gestion-entreprise-batiment" },
+  { label: "Ressources", href: "/ressources" },
+  { label: "Métiers", href: "/artisans" },
+  { label: "Comparatifs", href: "/alternatives" },
+  { label: "Villes", href: "/logiciel-batiment" },
+  { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
+  { label: "Presse", href: "/presse" },
+  { label: "Mentions légales", href: "/mentions-legales" },
+  { label: "CGV", href: "/cgv" },
+  { label: "Politique de confidentialité", href: "/politique-de-confidentialite" },
+  { label: "Support", href: "/support" },
+];
+
+// Contenu du footer — identique desktop et mobile
+function FooterContent({ isMobile }: { isMobile: boolean }) {
   const giantTextRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !wrapperRef.current) return;
+    if (isMobile || typeof window === "undefined" || !wrapperRef.current) return;
     const ctx = gsap.context(() => {
       gsap.fromTo(giantTextRef.current,
         { y: "10vh", scale: 0.85, opacity: 0 },
@@ -234,121 +229,130 @@ export function CinematicFooter() {
       );
     }, wrapperRef);
     return () => ctx.revert();
+  }, [isMobile]);
+
+  return (
+    <div ref={wrapperRef} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", overflow: "hidden", background: "var(--background)", color: "var(--foreground)", position: "relative" }}
+      className="cinematic-footer-wrapper"
+    >
+      {/* Aurora */}
+      <div className="footer-aurora animate-footer-breathe" style={{ position: "absolute", left: "50%", top: "50%", width: "80vw", height: "60vh", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
+      <div className="footer-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} />
+
+      {/* Giant BG text */}
+      <div ref={giantTextRef} className="footer-giant-bg-text" style={{ position: "absolute", bottom: "-5vh", left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", zIndex: 0, pointerEvents: "none", userSelect: "none" }}>
+        FLOXIA
+      </div>
+
+      {/* Marquee */}
+      {!isMobile && (
+        <div style={{ position: "absolute", top: "3rem", left: 0, width: "100%", overflow: "hidden", borderTop: "1px solid rgba(245,200,66,0.12)", borderBottom: "1px solid rgba(245,200,66,0.12)", background: "rgba(245,200,66,0.06)", backdropFilter: "blur(12px)", padding: "1rem 0", zIndex: 10, transform: "rotate(-2deg) scaleX(1.1)", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}>
+          <div className="animate-footer-scroll-marquee" style={{ display: "flex", width: "max-content", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.28em", color: "rgba(232,237,244,0.45)", textTransform: "uppercase" }}>
+            <MarqueeItem /><MarqueeItem />
+          </div>
+        </div>
+      )}
+
+      {/* Center content */}
+      <div style={{ position: "relative", zIndex: 10, display: "flex", flex: 1, flexDirection: "column", alignItems: "center", justifyContent: "center", padding: isMobile ? "3rem 1.5rem 2rem" : "0 1.5rem", marginTop: isMobile ? 0 : "5rem", maxWidth: "56rem", width: "100%", alignSelf: "center" }}>
+        <h2 ref={headingRef} className="footer-text-glow" style={{ fontSize: isMobile ? "clamp(2rem,8vw,3rem)" : "clamp(2.8rem,8vw,6rem)", fontWeight: 900, letterSpacing: "-0.04em", marginBottom: "2rem", textAlign: "center", fontFamily: "var(--font-nunito)" }}>
+          Prêt à gagner du temps ?
+        </h2>
+
+        <div ref={linksRef} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem", width: "100%" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem" }}>
+            <MagneticButton as="a" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener"
+              className="footer-gold-btn"
+              style={{ padding: isMobile ? "0.9rem 1.8rem" : "1.1rem 2.5rem", borderRadius: "9999px", fontSize: isMobile ? "0.88rem" : "0.95rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.6rem" }}>
+              Réserver une démo gratuite
+            </MagneticButton>
+            <MagneticButton as="a" href="/#tarifs"
+              className="footer-glass-pill"
+              style={{ padding: isMobile ? "0.9rem 1.8rem" : "1.1rem 2.5rem", borderRadius: "9999px", fontSize: isMobile ? "0.88rem" : "0.95rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.6rem", color: "var(--foreground)", fontWeight: 700 }}>
+              Voir les tarifs →
+            </MagneticButton>
+          </div>
+
+          {/* Réseaux */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem" }}>
+            <a href="https://www.instagram.com/floxia.pro" target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(245,200,66,0.15)", background: "rgba(245,200,66,0.04)" }}>
+              Instagram
+            </a>
+            <a href="https://www.linkedin.com/in/floxia-pro-9360333aa" target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(245,200,66,0.15)", background: "rgba(245,200,66,0.04)" }}>
+              LinkedIn
+            </a>
+          </div>
+
+          {/* Liens nav */}
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
+            {NAV_LINKS.map(({ label, href }) => (
+              <MagneticButton key={label} as="a" href={href}
+                className="footer-glass-pill"
+                style={{ padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.7rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500 }}>
+                {label}
+              </MagneticButton>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="footer-bottom-bar">
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div style={{ width: 28, height: 28, background: "#F5C842", clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)" }} />
+          <span style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.1rem", color: "var(--foreground)" }}>Floxia</span>
+        </div>
+        <a href="/qui-sommes-nous" className="footer-glass-pill" style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", display: "flex", alignItems: "center", gap: "0.4rem", textDecoration: "none" }}>
+          <span style={{ fontSize: "1rem" }}>🇫🇷</span>
+          <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>Conçu en France</span>
+        </a>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            © {new Date().getFullYear()} Floxia. Tous droits réservés.
+          </span>
+          <MagneticButton as="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Retour en haut"
+            className="footer-glass-pill"
+            style={{ width: 44, height: 44, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--muted-foreground)", border: "none", background: "none" }}>
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+          </MagneticButton>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function CinematicFooter() {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <div
-        ref={wrapperRef}
-        style={{ position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
-        className="cinematic-footer-wrapper cinematic-footer-wrapper-outer"
-      >
-        <footer
-          style={{ position: "fixed", bottom: 0, left: 0, height: "100vh", width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden", background: "var(--background)", color: "var(--foreground)" }}
-          className="cinematic-footer-wrapper cinematic-footer-inner"
-        >
-          {/* Aurora glow */}
-          <div className="footer-aurora animate-footer-breathe" style={{ position: "absolute", left: "50%", top: "50%", width: "80vw", height: "60vh", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
 
-          {/* Grid */}
-          <div className="footer-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} />
-
-          {/* Giant BG text */}
-          <div ref={giantTextRef} className="footer-giant-bg-text" style={{ position: "absolute", bottom: "-5vh", left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", zIndex: 0, pointerEvents: "none", userSelect: "none" }}>
-            FLOXIA
-          </div>
-
-          {/* Marquee */}
-          <div style={{ position: "absolute", top: "3rem", left: 0, width: "100%", overflow: "hidden", borderTop: "1px solid rgba(245,200,66,0.12)", borderBottom: "1px solid rgba(245,200,66,0.12)", background: "rgba(245,200,66,0.06)", backdropFilter: "blur(12px)", padding: "1rem 0", zIndex: 10, transform: "rotate(-2deg) scaleX(1.1)", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}>
-            <div className="animate-footer-scroll-marquee" style={{ display: "flex", width: "max-content", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.28em", color: "rgba(232,237,244,0.45)", textTransform: "uppercase" }}>
-              <MarqueeItem /><MarqueeItem />
-            </div>
-          </div>
-
-          {/* Center content */}
-          <div className="footer-center-content" style={{ position: "relative", zIndex: 10, display: "flex", flex: 1, flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 1.5rem", margin: "5rem auto 0", maxWidth: "56rem", width: "100%" }}>
-            <h2 ref={headingRef} className="footer-text-glow" style={{ fontSize: "clamp(2.8rem,8vw,6rem)", fontWeight: 900, letterSpacing: "-0.04em", marginBottom: "3rem", textAlign: "center", fontFamily: "var(--font-nunito)" }}>
-              Prêt à gagner du temps ?
-            </h2>
-
-            <div ref={linksRef} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.25rem", width: "100%" }}>
-              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem" }}>
-                <MagneticButton as="a" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener"
-                  className="footer-gold-btn"
-                  style={{ padding: "1.1rem 2.5rem", borderRadius: "9999px", fontSize: "0.95rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.6rem" }}>
-                  Réserver une démo gratuite
-                </MagneticButton>
-                <MagneticButton as="a" href="/#tarifs"
-                  className="footer-glass-pill"
-                  style={{ padding: "1.1rem 2.5rem", borderRadius: "9999px", fontSize: "0.95rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.6rem", color: "var(--foreground)", fontWeight: 700 }}>
-                  Voir les tarifs →
-                </MagneticButton>
-              </div>
-
-              <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
-                <a href="https://www.instagram.com/floxia.pro" target="_blank" rel="noopener noreferrer"
-                  style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.55rem 1.1rem", borderRadius: "9999px", fontSize: "0.78rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(245,200,66,0.15)", background: "rgba(245,200,66,0.04)" }}>
-                  Instagram
-                </a>
-                <a href="https://www.linkedin.com/in/floxia-pro-9360333aa" target="_blank" rel="noopener noreferrer"
-                  style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.55rem 1.1rem", borderRadius: "9999px", fontSize: "0.78rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(245,200,66,0.15)", background: "rgba(245,200,66,0.04)" }}>
-                  LinkedIn
-                </a>
-              </div>
-
-              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
-                {[
-                  { label: "Entreprises", href: "/logiciel-gestion-entreprise-batiment" },
-                  { label: "Ressources", href: "/ressources" },
-                  { label: "Métiers", href: "/artisans" },
-                  { label: "Comparatifs", href: "/alternatives" },
-                  { label: "Villes", href: "/logiciel-batiment" },
-                  { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
-                  { label: "Presse", href: "/presse" },
-                  { label: "Mentions légales", href: "/mentions-legales" },
-                  { label: "CGV", href: "/cgv" },
-                  { label: "Politique de confidentialité", href: "/politique-de-confidentialite" },
-                  { label: "Support", href: "/support" },
-                ].map(({ label, href }) => (
-                  <MagneticButton key={label} as="a" href={href}
-                    className="footer-glass-pill"
-                    style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", fontSize: "0.72rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500 }}>
-                    {label}
-                  </MagneticButton>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom bar */}
-          <div className="footer-bottom-bar">
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <div style={{ width: 28, height: 28, background: "#F5C842", clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)" }} />
-              <span style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.1rem", color: "var(--foreground)" }}>Floxia</span>
-            </div>
-
-            <a href="/qui-sommes-nous" className="footer-glass-pill" style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", display: "flex", alignItems: "center", gap: "0.4rem", textDecoration: "none" }}>
-              <span style={{ fontSize: "1rem" }}>🇫🇷</span>
-              <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>Conçu en France</span>
-            </a>
-
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                © {new Date().getFullYear()} Floxia. Tous droits réservés.
-              </span>
-              <MagneticButton as="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                aria-label="Retour en haut de page"
-                className="footer-glass-pill"
-                style={{ width: 44, height: 44, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--muted-foreground)", border: "none", background: "none" }}>
-                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                </svg>
-              </MagneticButton>
-            </div>
-          </div>
+      {isMobile ? (
+        // Mobile : layout normal dans le flux du document
+        <footer style={{ background: "var(--background)", color: "var(--foreground)", minHeight: "100dvh" }}>
+          <FooterContent isMobile={true} />
         </footer>
-      </div>
+      ) : (
+        // Desktop : effet cinématique avec sticky scroll
+        <div style={{ position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}>
+          <footer style={{ position: "fixed", bottom: 0, left: 0, height: "100vh", width: "100%" }}>
+            <FooterContent isMobile={false} />
+          </footer>
+        </div>
+      )}
     </>
   );
 }
