@@ -112,6 +112,19 @@ const STYLES = `
   transform: translateY(-2px);
 }
 
+/* Bottom bar */
+.footer-bottom-bar {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 @media (max-width: 768px) {
   .cinematic-footer-inner {
     position: relative !important;
@@ -124,6 +137,17 @@ const STYLES = `
   }
   .footer-giant-bg-text {
     font-size: 22vw;
+  }
+  .footer-center-content {
+    margin-top: 7rem !important;
+    padding: 0 1rem !important;
+  }
+  .footer-bottom-bar {
+    padding: 1.25rem 1.25rem !important;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
   }
 }
 `;
@@ -241,7 +265,7 @@ export function CinematicFooter() {
           </div>
 
           {/* Center content */}
-          <div style={{ position: "relative", zIndex: 10, display: "flex", flex: 1, flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 1.5rem", marginTop: "5rem", maxWidth: "56rem", margin: "5rem auto 0" }}>
+          <div className="footer-center-content" style={{ position: "relative", zIndex: 10, display: "flex", flex: 1, flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 1.5rem", margin: "5rem auto 0", maxWidth: "56rem", width: "100%" }}>
             <h2 ref={headingRef} className="footer-text-glow" style={{ fontSize: "clamp(2.8rem,8vw,6rem)", fontWeight: 900, letterSpacing: "-0.04em", marginBottom: "3rem", textAlign: "center", fontFamily: "var(--font-nunito)" }}>
               Prêt à gagner du temps ?
             </h2>
@@ -299,7 +323,7 @@ export function CinematicFooter() {
           </div>
 
           {/* Bottom bar */}
-          <div style={{ position: "relative", zIndex: 20, width: "100%", padding: "1.5rem 3rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
+          <div className="footer-bottom-bar">
             {/* Logo */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <div style={{ width: 28, height: 28, background: "#F5C842", clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)" }} />
@@ -321,7 +345,7 @@ export function CinematicFooter() {
                 className="footer-glass-pill"
                 style={{ width: 44, height: 44, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--muted-foreground)", border: "none", background: "none" }}>
                 <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  <path strokeLinecap="round" strokeLinejoin: "round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
                 </svg>
               </MagneticButton>
             </div>
