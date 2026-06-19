@@ -16,20 +16,55 @@ export default function Footer() {
         padding: "3rem 0",
       }}
     >
-      <div
-        style={{
-          maxWidth: "72rem",
-          margin: "0 auto",
-          padding: "0 6vw",
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "1.5rem",
-        }}
-      >
+      <style>{`
+        .footer-inner {
+          max-width: 72rem;
+          margin: 0 auto;
+          padding: 0 6vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1.8rem;
+          text-align: center;
+        }
+        @media (min-width: 768px) {
+          .footer-inner {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+          }
+        }
+        .footer-nav ul {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem 1.5rem;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        @media (min-width: 768px) {
+          .footer-nav ul {
+            justify-content: flex-start;
+          }
+        }
+        .footer-bottom {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.75rem;
+        }
+        @media (min-width: 768px) {
+          .footer-bottom {
+            flex-direction: row;
+            align-items: center;
+          }
+        }
+      `}</style>
+
+      <div className="footer-inner">
         {/* Logo */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", justifyContent: "center" }}>
           <div
             style={{
               width: 32,
@@ -39,6 +74,7 @@ export default function Footer() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              flexShrink: 0,
             }}
           >
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
@@ -59,17 +95,8 @@ export default function Footer() {
         </div>
 
         {/* Nav links */}
-        <nav>
-          <ul
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "1.5rem",
-              listStyle: "none",
-              padding: 0,
-              margin: 0,
-            }}
-          >
+        <nav className="footer-nav">
+          <ul>
             {links.map((link) => (
               <li key={link.label}>
                 <a
@@ -92,13 +119,14 @@ export default function Footer() {
         </nav>
 
         {/* Social / copyright */}
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <div className="footer-bottom">
           <span style={{ color: "rgba(232,237,244,0.25)", fontSize: ".78rem" }}>
             © {new Date().getFullYear()} Floxia. Tous droits réservés.
           </span>
-          {/* LinkedIn placeholder */}
           <a
-            href="#"
+            href="https://www.linkedin.com/in/floxia-pro-9360333aa"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="LinkedIn"
             style={{
               width: 34,
