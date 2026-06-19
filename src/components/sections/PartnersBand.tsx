@@ -33,7 +33,7 @@ const PARTNERS = [
   },
   {
     name: "E-facture 2026",
-    sub: "Conformité native",
+    sub: "via B2Brouter (PDP)",
     svg: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
         <rect width="24" height="24" rx="5" fill="#4ADE80" fillOpacity="0.1"/>
