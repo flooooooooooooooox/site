@@ -11,6 +11,8 @@ import Pricing from "@/components/sections/Pricing";
 import CtaBand from "@/components/sections/CtaBand";
 import PartnersBand from "@/components/sections/PartnersBand";
 import TradesSection from "@/components/sections/TradesSection";
+import StatsSection from "@/components/sections/StatsSection";
+import Faq from "@/components/sections/Faq";
 import {
   Perspective3DFloor,
   CubeEdge,
@@ -53,12 +55,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main style={{ position: "relative", zIndex: 1 }}>
-      {/* Hero épinglé qui recule pendant que la suite remonte par-dessus */}
       <StickyHero>
         <Hero />
       </StickyHero>
-      {/* La suite arrive « par-dessus » le hero — carte qui glisse au-dessus en 3D */}
       <ContentOverlay>
+        <StatsSection />
         <Services />
         <DepthFade />
         <ErpOsSection />
@@ -71,6 +72,7 @@ export default function Home() {
         <Perspective3DFloor />
         <Pricing />
         <DepthFade />
+        <Faq />
         <TradesSection />
         <CtaBand />
       </ContentOverlay>
