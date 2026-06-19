@@ -18,9 +18,11 @@ export const metadata: Metadata = {
     template: "%s | Floxia",
   },
   description:
-    "Floxia — Créez vos devis et factures depuis WhatsApp ou sur l'application ERP en 3 minutes. Logiciel de devis IA avec pré-modèles pour artisans et PME du bâtiment. Automatisez devis, factures, relances et planning.",
+    "Floxia — Créez vos devis et factures depuis WhatsApp ou sur l'application ERP en 3 minutes. Logiciel de devis IA avec pré-modèles pour artisans et indépendants. Automatisez devis, factures, relances et planning.",
   keywords: [
-    "ERP bâtiment",
+    "ERP artisan",
+    "logiciel devis artisan",
+    "logiciel facturation artisan",
     "logiciel artisan",
     "logiciel devis en ligne bâtiment",
     "application devis artisan",
@@ -79,7 +81,7 @@ const websiteJsonLd = {
   "@type": "WebSite",
   name: "Floxia",
   url: "https://floxia.fr",
-  description: "ERP IA pour artisans et PME du bâtiment — Devis et factures depuis WhatsApp en 3 minutes.",
+  description: "Logiciel de devis et facturation pour artisans — Devis depuis WhatsApp ou app ERP en 3 minutes.",
   inLanguage: "fr-FR",
   potentialAction: {
     "@type": "SearchAction",
@@ -101,12 +103,14 @@ const organizationJsonLd = {
     height: 512,
   },
   image: "https://floxia.fr/dashboard-floxia.jpg",
-  description: "Floxia est un logiciel ERP IA pour artisans et PME du bâtiment. Créez vos devis et factures depuis WhatsApp ou l'application Floxia ERP en 3 minutes grâce aux pré-modèles IA.",
-  foundingDate: "2024",
+  description: "Floxia est un logiciel ERP IA pour artisans et indépendants. Créez vos devis et factures depuis WhatsApp ou l'application Floxia ERP en 3 minutes grâce aux pré-modèles IA.",
+  foundingDate: "2026",
   foundingLocation: { "@type": "Place", addressCountry: "FR" },
   areaServed: { "@type": "Country", name: "France" },
   knowsAbout: [
-    "ERP bâtiment", "Logiciel artisan", "Devis WhatsApp", "Facturation électronique 2026",
+    "ERP artisan",
+    "logiciel devis artisan",
+    "logiciel facturation artisan", "Logiciel artisan", "Devis WhatsApp", "Facturation électronique 2026",
     "Gestion de chantier", "Automatisation PME", "Intelligence artificielle bâtiment",
     "Logiciel devis", "Logiciel facturation artisan",
   ],
@@ -149,7 +153,7 @@ const jsonLd = {
   operatingSystem: "Web, iOS, Android",
   url: "https://floxia.fr",
   description:
-    "ERP IA pour artisans et PME du bâtiment. Créez devis, factures et PV de réception depuis WhatsApp ou sur l'application web, avec des pré-modèles de devis générés par l'IA.",
+    "ERP IA pour artisans et indépendants. Créez devis, factures et PV de réception depuis WhatsApp ou sur l'application web, avec des pré-modèles de devis générés par l'IA.",
   featureList: [
     "Devis depuis WhatsApp par vocal en 3 minutes",
     "Pré-modèles de devis IA sur l'application ERP",
@@ -159,7 +163,7 @@ const jsonLd = {
   ],
   audience: {
     "@type": "BusinessAudience",
-    name: "Artisans, TPE et PME du bâtiment et du BTP",
+    name: "Artisans, auto-entrepreneurs, TPE et PME",
   },
   offers: [
     {
