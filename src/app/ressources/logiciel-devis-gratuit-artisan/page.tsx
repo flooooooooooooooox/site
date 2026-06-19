@@ -16,7 +16,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Logiciel de devis gratuit artisan : avantages et limites — Floxia",
-    description: "Logiciel de devis gratuit ou payant pour artisan ? On compare les options et on vous dit ce qui vaut vraiment le coup.",
+    description:
+      "Logiciel de devis gratuit ou payant pour artisan ? On compare les options et on vous dit ce qui vaut vraiment le coup.",
     url: "https://floxia.fr/ressources/logiciel-devis-gratuit-artisan",
   },
   alternates: { canonical: "https://floxia.fr/ressources/logiciel-devis-gratuit-artisan" },
@@ -26,7 +27,8 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Logiciel de devis gratuit artisan : ce qu'il faut vraiment savoir",
-  description: "Logiciel de devis gratuit pour artisan : avantages, limites et alternatives. Comparatif pour choisir le bon outil.",
+  description:
+    "Logiciel de devis gratuit pour artisan : avantages, limites et alternatives. Comparatif pour choisir le bon outil.",
   author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
   publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
   datePublished: "2026-06-19",
@@ -90,29 +92,45 @@ export default function LogicielDevisGratuitArtisan() {
         blocks={[
           {
             type: "p",
-            content: "Quand on lance son activité d'artisan, réduire les coûts est une priorité. Mais après quelques mois, beaucoup réalisent que le gratuit coûte cher en temps — et que le temps, c'est de l'argent.",
+            content:
+              "Quand on lance son activité d'artisan ou d'indépendant, réduire les coûts est une priorité. Chercher un « logiciel de devis gratuit artisan » est donc naturel. Mais après quelques mois d'utilisation, beaucoup d'artisans réalisent que le gratuit coûte cher en temps — et que le temps, c'est de l'argent.",
           },
-          { type: "h2", content: "Ce que proposent les outils gratuits" },
+          {
+            type: "h2",
+            content: "Ce que proposent les outils gratuits",
+          },
           {
             type: "ul",
             items: [
-              "Modèles Word ou Excel à télécharger : tout est à remplir manuellement à chaque nouveau devis.",
-              "Versions freemium de logiciels : limitées en nombre de devis, sans pré-modèles IA, sans signature électronique.",
-              "PDF éditables : sans numérotation automatique, sans calcul de TVA, sans envoi direct.",
+              "Modèles Word ou Excel à télécharger : rapides à trouver, mais tout est à remplir manuellement à chaque nouveau devis.",
+              "Versions freemium de logiciels (Devis Facile, Henrri, etc.) : limitées en nombre de devis, sans pré-modèles IA, sans signature électronique.",
+              "PDF éditables : pratiques pour commencer, mais sans numérotation automatique, sans calcul de TVA, sans envoi direct.",
             ],
           },
-          { type: "h2", content: "Les limites du gratuit que les artisans rencontrent vite" },
+          {
+            type: "h2",
+            content: "Les limites du gratuit que les artisans rencontrent vite",
+          },
           {
             type: "ul",
             items: [
-              "Tout doit être saisi manuellement à chaque devis : nom du client, adresse, liste des prestations, TVA.",
+              "Tout doit être saisi manuellement à chaque devis : nom du client, adresse du chantier, liste des prestations, TVA.",
               "Pas de pré-modèles adaptés à votre métier — vous repartez d'une feuille blanche à chaque fois.",
               "Pas de signature électronique : le client doit imprimer, signer, scanner et renvoyer.",
-              "Pas d'accès depuis le téléphone sur chantier : il faut rentrer au bureau.",
+              "Pas d'envoi direct depuis le logiciel : vous devez télécharger le PDF puis l'envoyer par email.",
+              "Pas d'accès depuis le téléphone sur chantier : il faut rentrer au bureau ou être sur ordinateur.",
               "Pas de conformité e-facturation 2026 : vous devrez changer d'outil de toute façon.",
             ],
           },
-          { type: "h2", content: "Combien de temps perd-on vraiment avec un outil gratuit ?" },
+          {
+            type: "h2",
+            content: "Combien de temps perd-on vraiment avec un outil gratuit ?",
+          },
+          {
+            type: "p",
+            content:
+              "Un devis créé manuellement depuis un modèle Word prend en moyenne 25 à 45 minutes : saisie des informations client, liste des prestations, calcul des quantités et prix, TVA, mise en forme, enregistrement en PDF, envoi par email. Avec un logiciel de devis IA comme Floxia, ce même devis prend 3 minutes — en décrivant le chantier par vocal sur WhatsApp depuis le terrain.",
+          },
           {
             type: "ul",
             items: [
@@ -121,7 +139,10 @@ export default function LogicielDevisGratuitArtisan() {
               "À 50 €/h de taux horaire : 5 000 € de manque à gagner annuel.",
             ],
           },
-          { type: "h2", content: "Ce que Floxia apporte en plus" },
+          {
+            type: "h2",
+            content: "Ce que Floxia apporte en plus",
+          },
           {
             type: "ul",
             items: [
@@ -130,14 +151,22 @@ export default function LogicielDevisGratuitArtisan() {
               "Signature électronique à valeur légale intégrée — votre client signe depuis son téléphone.",
               "Envoi automatique du devis au client par email ou WhatsApp.",
               "Conformité e-facturation 2026 native — aucun module à ajouter.",
+              "Catalogue de prix personnalisé réutilisable sur tous vos devis.",
             ],
           },
-          { type: "h2", content: "Gratuit ou payant : comment choisir ?" },
+          {
+            type: "h2",
+            content: "Gratuit ou payant : comment choisir ?",
+          },
           {
             type: "p",
-            content: "Si vous faites moins de 2 devis par mois, un modèle gratuit peut suffire pour commencer. Dès que votre activité se développe, le temps perdu sur l'administratif devient votre premier frein. Un logiciel comme Floxia s'autofinance dès les premières heures gagnées.",
+            content:
+              "Si vous faites moins de 2 devis par mois et que votre activité est très occasionnelle, un modèle gratuit peut suffire pour commencer. En revanche, dès que votre activité se développe, le temps perdu sur l'administratif devient votre premier frein à la croissance. Un logiciel de devis artisan comme Floxia s'autofinance dès les premières heures gagnées.",
           },
-          { type: "cta", content: "Essayer Floxia — Devis artisan en 3 min depuis WhatsApp" },
+          {
+            type: "cta",
+            content: "Essayer Floxia — Devis artisan en 3 min depuis WhatsApp",
+          },
         ]}
       />
     </>
