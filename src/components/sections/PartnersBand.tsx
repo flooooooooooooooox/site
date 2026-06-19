@@ -42,29 +42,6 @@ const PARTNERS = [
       </svg>
     ),
   },
-  {
-    name: "Google Agenda",
-    sub: "Booking automatique",
-    svg: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="4" width="20" height="18" rx="3" stroke="#4285F4" strokeWidth="1.5"/>
-        <path d="M16 2v4M8 2v4M2 9h20" stroke="#4285F4" strokeWidth="1.5" strokeLinecap="round"/>
-        <rect x="7" y="13" width="4" height="4" rx="1" fill="#4285F4" fillOpacity="0.7"/>
-      </svg>
-    ),
-  },
-  {
-    name: "CERFA",
-    sub: "Attestations TVA",
-    svg: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <rect width="24" height="24" rx="5" fill="#E8EDF4" fillOpacity="0.06"/>
-        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" stroke="rgba(232,237,244,0.5)" strokeWidth="1.5"/>
-        <path d="M8 12h8M12 8v8" stroke="rgba(232,237,244,0.5)" strokeWidth="1.5" strokeLinecap="round"/>
-        <text x="12" y="13.5" textAnchor="middle" fontSize="5.5" fontWeight="700" fill="rgba(232,237,244,0.6)" fontFamily="sans-serif">FR</text>
-      </svg>
-    ),
-  },
 ];
 
 export default function PartnersBand() {
