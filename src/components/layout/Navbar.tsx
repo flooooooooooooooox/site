@@ -14,8 +14,6 @@ const NAV_LINKS = [
 ];
 
 function scrollTo(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-  // Liens d'ancrage : si la cible existe sur la page courante, scroll fluide.
-  // Sinon (ex. depuis une autre page), on laisse le navigateur naviguer vers /#id.
   const hashIndex = href.indexOf("#");
   if (hashIndex === -1) return;
   const id = href.substring(hashIndex);
@@ -45,7 +43,6 @@ export default function Navbar() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          // Positionnement constant (left/transform jamais changés) -> transition fluide
           left: "50%",
           transform: "translateX(-50%)",
           willChange: "max-width, padding, border-radius, background, top",
@@ -145,11 +142,16 @@ export default function Navbar() {
 
         {/* Right side */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
-          <ThemeToggle />
+          {/* ThemeToggle masqué sur mobile */}
+          <span className="nav-theme-toggle">
+            <ThemeToggle />
+          </span>
+          {/* CTA masqué sur mobile (remplacé dans le menu) */}
           <a
             href="https://calendly.com/afele1845/30min"
             target="_blank"
             rel="noopener noreferrer"
+            className="nav-cta-desktop"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -228,6 +230,27 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          {/* CTA dans le menu mobile */}
+          <a
+            href="https://calendly.com/afele1845/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              display: "block",
+              marginTop: "0.75rem",
+              padding: "0.85rem",
+              borderRadius: "0.75rem",
+              background: "#F5C842",
+              color: "#1E2B45",
+              fontWeight: 700,
+              fontSize: ".9rem",
+              textDecoration: "none",
+              textAlign: "center",
+            }}
+          >
+            Réserver une démo gratuite
+          </a>
         </div>
       )}
 
@@ -235,6 +258,8 @@ export default function Navbar() {
         @media (max-width: 720px) {
           .nav-links-desktop { display: none !important; }
           .nav-hamburger { display: flex !important; flex-direction: column; }
+          .nav-theme-toggle { display: none !important; }
+          .nav-cta-desktop { display: none !important; }
         }
       `}</style>
     </>
