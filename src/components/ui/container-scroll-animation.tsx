@@ -27,11 +27,24 @@ export const ContainerScroll = ({
   return (
     <div
       ref={containerRef}
-      style={{ height: isMobile ? "60rem" : "80rem", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", padding: isMobile ? "0.5rem" : "5rem" }}
+      style={{
+        height: isMobile ? "44rem" : "80rem",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        padding: isMobile ? "0.5rem" : "5rem",
+      }}
     >
-      <div style={{ paddingTop: isMobile ? "2.5rem" : "10rem", paddingBottom: isMobile ? "2.5rem" : "10rem", width: "100%", position: "relative", perspective: "1000px" }}>
+      <div style={{
+        paddingTop: isMobile ? "2.5rem" : "10rem",
+        paddingBottom: isMobile ? "2.5rem" : "10rem",
+        width: "100%",
+        position: "relative",
+        perspective: "1000px",
+      }}>
         <Header translate={translate} titleComponent={titleComponent} />
-        <Card rotate={rotate} translate={translate} scale={scale}>
+        <Card rotate={rotate} translate={translate} scale={scale} isMobile={isMobile}>
           {children}
         </Card>
       </div>
@@ -39,30 +52,42 @@ export const ContainerScroll = ({
   );
 };
 
-export const Header = ({ translate, titleComponent }: { translate: MotionValue<number>; titleComponent: React.ReactNode }) => (
+export const Header = ({
+  translate,
+  titleComponent,
+}: {
+  translate: MotionValue<number>;
+  titleComponent: React.ReactNode;
+}) => (
   <motion.div style={{ translateY: translate, maxWidth: "64rem", margin: "0 auto", textAlign: "center" }}>
     {titleComponent}
   </motion.div>
 );
 
 export const Card = ({
-  rotate, scale, children,
+  rotate,
+  scale,
+  isMobile,
+  children,
 }: {
   rotate: MotionValue<number>;
   scale: MotionValue<number>;
   translate: MotionValue<number>;
+  isMobile?: boolean;
   children: React.ReactNode;
 }) => (
   <motion.div
     style={{
       rotateX: rotate,
       scale,
-      boxShadow: "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
+      boxShadow:
+        "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
       maxWidth: "64rem",
       marginTop: "-3rem",
       marginLeft: "auto",
       marginRight: "auto",
-      height: "40rem",
+      // Hauteur adaptée : ratio 16/10 sur desktop, 4/3 sur mobile
+      height: isMobile ? "22rem" : "40rem",
       width: "100%",
       border: "1px solid rgba(245,200,66,0.2)",
       padding: "6px",
@@ -70,7 +95,13 @@ export const Card = ({
       borderRadius: "1.75rem",
     }}
   >
-    <div style={{ height: "100%", width: "100%", overflow: "hidden", borderRadius: "1.25rem", background: "#0F1923" }}>
+    <div style={{
+      height: "100%",
+      width: "100%",
+      overflow: "hidden",
+      borderRadius: "1.25rem",
+      background: "#0F1923",
+    }}>
       {children}
     </div>
   </motion.div>
