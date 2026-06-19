@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { VILLES } from "@/lib/villes";
+import { METIERS } from "@/lib/metiers";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://floxia.fr";
@@ -40,6 +41,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/logiciel-gestion-entreprise-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     // Pages villes (index)
     { url: `${base}/logiciel-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // Page index devis par métier × ville
+    { url: `${base}/logiciel-devis`, lastModified: now, changeFrequency: "monthly", priority: 0.82 },
+    // Serrurier (ajouté aux artisans)
+    { url: `${base}/artisans/serrurier`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 
   const villePages: MetadataRoute.Sitemap = VILLES.map((v) => ({
@@ -49,5 +54,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...villePages];
+  const matrixPages: MetadataRoute.Sitemap = METIERS.flatMap((m) =>
+    VILLES.map((v) => ({
+      url: `${base}/logiciel-devis/${m.slug}/${v.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    }))
+  );
+
+  return [...staticPages, ...villePages, ...matrixPages];
 }
