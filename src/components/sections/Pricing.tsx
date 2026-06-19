@@ -1,14 +1,17 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, ChevronDown } from "lucide-react";
+import { CheckCircle, ChevronDown, Zap, Star, Building2 } from "lucide-react";
 
 const PLANS = [
   {
     name: "Essentiel",
+    tagline: "Pour démarrer sans prise de tête",
+    icon: Zap,
     price: 99,
     setup: 299,
     popular: false,
+    accentColor: "rgba(96,165,250,0.8)",
     features: [
       "Devis & factures WhatsApp + app ERP",
       "Documents illimités",
@@ -33,21 +36,18 @@ const PLANS = [
           "Signature électronique intégrée",
         ],
       },
-      {
-        category: "Relances & suivi",
-        items: ["Notification devis signé"],
-      },
-      {
-        category: "Assistant vocal IA",
-        items: ["Vocal devis via WhatsApp (3 min)"],
-      },
+      { category: "Relances & suivi", items: ["Notification devis signé"] },
+      { category: "Assistant vocal IA", items: ["Vocal devis via WhatsApp (3 min)"] },
     ],
   },
   {
     name: "Artisan Pro",
+    tagline: "Le choix des artisans qui veulent scaler",
+    icon: Star,
     price: 179,
     setup: 349,
     popular: true,
+    accentColor: "#F5C842",
     features: [
       "Tout Essentiel inclus",
       "Standard IA 24h/24",
@@ -83,10 +83,7 @@ const PLANS = [
           "Booking automatique de RDV (WhatsApp)",
         ],
       },
-      {
-        category: "Assistant vocal IA",
-        items: ["Assistant vocal technique (bâtiment, admin, juridique)"],
-      },
+      { category: "Assistant vocal IA", items: ["Assistant vocal technique (bâtiment, admin, juridique)"] },
       {
         category: "Comptabilité & dépenses",
         items: [
@@ -94,17 +91,17 @@ const PLANS = [
           "Dashboard dépenses & TVA récupérable",
         ],
       },
-      {
-        category: "Avis & réputation",
-        items: ["Demandes automatiques d'avis Google"],
-      },
+      { category: "Avis & réputation", items: ["Demandes automatiques d'avis Google"] },
     ],
   },
   {
     name: "PME Premium",
+    tagline: "Pour les entreprises avec équipe et multi-chantiers",
+    icon: Building2,
     price: 349,
     setup: 499,
     popular: false,
+    accentColor: "rgba(74,222,128,0.9)",
     features: [
       "Tout Artisan Pro inclus",
       "Multi-chantiers",
@@ -116,19 +113,10 @@ const PLANS = [
     details: [
       {
         category: "Agent IA & booking",
-        items: [
-          "Tout l'Artisan Pro inclus",
-          "Agent réceptionniste IA téléphone",
-        ],
+        items: ["Tout l'Artisan Pro inclus", "Agent réceptionniste IA téléphone"],
       },
-      {
-        category: "Assistant vocal IA",
-        items: ["Saisie vocale IA avancée (agenda, disponibilités)"],
-      },
-      {
-        category: "Comptabilité & dépenses",
-        items: ["Export comptabilité en 1 clic"],
-      },
+      { category: "Assistant vocal IA", items: ["Saisie vocale IA avancée (agenda, disponibilités)"] },
+      { category: "Comptabilité & dépenses", items: ["Export comptabilité en 1 clic"] },
       {
         category: "Gestion équipe & chantiers",
         items: [
@@ -143,9 +131,12 @@ const PLANS = [
 
 export default function Pricing() {
   const [expanded, setExpanded] = useState<string | null>(null);
+
   return (
     <section id="tarifs" style={{ background: "transparent", padding: "6rem 0" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }}>
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -153,21 +144,12 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           style={{ textAlign: "center", marginBottom: "4rem" }}
         >
-          <span
-            style={{
-              display: "inline-block",
-              padding: "6px 20px",
-              borderRadius: "999px",
-              border: "1px solid rgba(245,200,66,0.25)",
-              background: "rgba(245,200,66,0.07)",
-              color: "#F5C842",
-              fontSize: ".78rem",
-              fontWeight: 600,
-              letterSpacing: ".1em",
-              textTransform: "uppercase",
-              marginBottom: "1.2rem",
-            }}
-          >
+          <span style={{
+            display: "inline-block", padding: "6px 20px", borderRadius: "999px",
+            border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)",
+            color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em",
+            textTransform: "uppercase", marginBottom: "1.2rem",
+          }}>
             Tarifs
           </span>
           <h2
@@ -177,261 +159,252 @@ export default function Pricing() {
             Des offres simples,{" "}
             <span style={{ color: "#F5C842" }}>sans surprise</span>
           </h2>
-          <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)" }}>
+          <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "0.95rem" }}>
             Résiliable à tout moment après 3 mois · 14 jours d&apos;essai gratuit
           </p>
         </motion.div>
 
+        {/* Cards */}
         <div className="pricing-grid" style={{ display: "grid", gap: "1.5rem", alignItems: "start" }}>
-          {PLANS.map((plan, i) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: i * 0.1 }}
-              style={{ position: "relative" }}
-            >
-              {/* Blurred gold glow behind popular card */}
-              {plan.popular && (
-                <div
-                  aria-hidden
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    width: "300px",
-                    height: "300px",
-                    background: "radial-gradient(circle, rgba(245,200,66,0.12), transparent)",
-                    filter: "blur(60px)",
-                    pointerEvents: "none",
-                    zIndex: 0,
-                  }}
-                />
-              )}
-
-              <div
-                className={plan.popular ? "pricing-card-popular" : undefined}
-                style={{
-                  position: "relative",
-                  zIndex: 1,
-                  background: "rgba(var(--surface-rgb),0.04)",
-                  backdropFilter: "blur(20px) saturate(180%)",
-                  WebkitBackdropFilter: "blur(20px) saturate(180%)",
-                  border: plan.popular
-                    ? "1px solid rgba(245,200,66,0.4)"
-                    : "1px solid rgba(var(--surface-rgb),0.08)",
-                  borderRadius: "1.5rem",
-                  padding: "2rem",
-                  transform: "scale(1)",
-                  boxShadow: plan.popular
-                    ? "inset 0 0 60px rgba(245,200,66,0.03), 0 0 40px rgba(245,200,66,0.08)"
-                    : "none",
-                  transition: "box-shadow 0.3s, border-color 0.3s",
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  if (plan.popular) {
-                    el.style.boxShadow = "inset 0 0 80px rgba(245,200,66,0.06), 0 0 60px rgba(245,200,66,0.14)";
-                  } else {
-                    el.style.boxShadow = "inset 0 0 40px rgba(245,200,66,0.02), 0 0 30px rgba(245,200,66,0.05)";
-                    el.style.borderColor = "rgba(var(--surface-rgb),0.14)";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  if (plan.popular) {
-                    el.style.boxShadow = "inset 0 0 60px rgba(245,200,66,0.03), 0 0 40px rgba(245,200,66,0.08)";
-                  } else {
-                    el.style.boxShadow = "none";
-                    el.style.borderColor = "rgba(var(--surface-rgb),0.08)";
-                  }
-                }}
+          {PLANS.map((plan, i) => {
+            const Icon = plan.icon;
+            const isExpanded = expanded === plan.name;
+            return (
+              <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: i * 0.1 }}
+                style={{ position: "relative" }}
               >
+                {/* Glow behind popular */}
                 {plan.popular && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "-14px",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      background: "#F5C842",
-                      color: "#0F1923",
-                      fontSize: ".72rem",
-                      fontWeight: 800,
-                      padding: "5px 16px",
-                      borderRadius: "999px",
-                      textTransform: "uppercase",
-                      letterSpacing: ".08em",
-                      whiteSpace: "nowrap",
-                      animation: "badgePulse 2.4s ease-in-out infinite",
-                    }}
-                  >
-                    Le plus vendu
-                  </div>
+                  <div aria-hidden style={{
+                    position: "absolute", top: "50%", left: "50%",
+                    transform: "translate(-50%,-50%)",
+                    width: "340px", height: "340px",
+                    background: "radial-gradient(circle, rgba(245,200,66,0.14), transparent)",
+                    filter: "blur(60px)", pointerEvents: "none", zIndex: 0,
+                  }} />
                 )}
 
-                <div style={{ marginBottom: "1.5rem" }}>
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-nunito)",
-                      fontWeight: 800,
-                      fontSize: "1.15rem",
-                      color: plan.popular ? "#F5C842" : "var(--text)",
-                      marginBottom: "1rem",
-                    }}
-                  >
-                    {plan.name}
-                  </h3>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
-                    <span
+                <div
+                  style={{
+                    position: "relative", zIndex: 1,
+                    background: plan.popular
+                      ? "linear-gradient(145deg, rgba(245,200,66,0.06) 0%, rgba(var(--surface-rgb),0.04) 100%)"
+                      : "rgba(var(--surface-rgb),0.04)",
+                    backdropFilter: "blur(20px) saturate(180%)",
+                    WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                    border: plan.popular
+                      ? "1px solid rgba(245,200,66,0.35)"
+                      : "1px solid rgba(var(--surface-rgb),0.08)",
+                    borderRadius: "1.5rem",
+                    padding: 0,
+                    overflow: "hidden",
+                    boxShadow: plan.popular
+                      ? "0 0 0 1px rgba(245,200,66,0.08), 0 24px 80px rgba(245,200,66,0.1)"
+                      : "none",
+                    transition: "box-shadow 0.3s, border-color 0.3s",
+                  }}
+                >
+                  {/* Colored top accent bar */}
+                  <div style={{
+                    height: "3px",
+                    background: plan.popular
+                      ? "linear-gradient(90deg, #F5C842, #E6A800)"
+                      : `linear-gradient(90deg, ${plan.accentColor}, transparent)`,
+                    borderRadius: "1.5rem 1.5rem 0 0",
+                  }} />
+
+                  <div style={{ padding: "1.75rem 2rem 2rem" }}>
+                    {/* Badge popular */}
+                    {plan.popular && (
+                      <div style={{
+                        display: "inline-flex", alignItems: "center", gap: "0.35rem",
+                        padding: "4px 12px", borderRadius: "999px",
+                        background: "#F5C842", color: "#0F1923",
+                        fontSize: ".68rem", fontWeight: 800,
+                        letterSpacing: ".08em", textTransform: "uppercase",
+                        marginBottom: "1rem",
+                      }}>
+                        <Star size={10} fill="#0F1923" /> Le plus vendu
+                      </div>
+                    )}
+
+                    {/* Plan header */}
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", marginBottom: "1.25rem" }}>
+                      <div style={{
+                        width: 40, height: 40, borderRadius: "0.75rem", flexShrink: 0,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        background: plan.popular ? "rgba(245,200,66,0.15)" : "rgba(var(--surface-rgb),0.08)",
+                        border: `1px solid ${plan.popular ? "rgba(245,200,66,0.3)" : "rgba(var(--surface-rgb),0.1)"}`,
+                      }}>
+                        <Icon size={18} color={plan.popular ? "#F5C842" : "rgba(var(--text-rgb),0.5)"} />
+                      </div>
+                      <div>
+                        <h3 style={{
+                          fontFamily: "var(--font-nunito)", fontWeight: 800,
+                          fontSize: "1.1rem", color: plan.popular ? "#F5C842" : "var(--text)",
+                          lineHeight: 1.2, marginBottom: "0.2rem",
+                        }}>
+                          {plan.name}
+                        </h3>
+                        <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".75rem", lineHeight: 1.4 }}>
+                          {plan.tagline}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Price */}
+                    <div style={{
+                      padding: "1rem 1.25rem",
+                      borderRadius: "1rem",
+                      background: "rgba(var(--surface-rgb),0.04)",
+                      border: "1px solid rgba(var(--surface-rgb),0.06)",
+                      marginBottom: "1.5rem",
+                    }}>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
+                        <span style={{
+                          fontFamily: "var(--font-nunito)", fontWeight: 900,
+                          fontSize: "3rem", color: "var(--text)", lineHeight: 1, letterSpacing: "-0.04em",
+                        }}>
+                          {plan.price}€
+                        </span>
+                        <span style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".85rem" }}>/mois</span>
+                      </div>
+                      <p style={{ color: "rgba(var(--text-rgb),0.3)", fontSize: ".75rem", marginTop: "0.3rem" }}>
+                        + {plan.setup}€ de setup (frais unique)
+                      </p>
+                    </div>
+
+                    {/* Features */}
+                    <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1.5rem 0", display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+                      {plan.features.map((f) => (
+                        <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
+                          <CheckCircle
+                            size={15}
+                            color={plan.popular ? "#F5C842" : "rgba(245,200,66,0.5)"}
+                            style={{ flexShrink: 0, marginTop: "2px" }}
+                          />
+                          <span style={{ color: "rgba(var(--text-rgb),0.75)", fontSize: ".86rem", lineHeight: 1.5 }}>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Expand details */}
+                    <button
+                      onClick={() => setExpanded(isExpanded ? null : plan.name)}
                       style={{
-                        fontFamily: "var(--font-nunito)",
-                        fontWeight: 900,
-                        fontSize: "2.6rem",
-                        color: "var(--text)",
-                        lineHeight: 1,
+                        display: "flex", alignItems: "center", justifyContent: "center", gap: "0.4rem",
+                        width: "100%", padding: "0.6rem", marginBottom: "1rem",
+                        borderRadius: "0.65rem", background: "transparent",
+                        border: "1px solid rgba(245,200,66,0.2)", color: "#F5C842",
+                        fontWeight: 600, fontSize: ".8rem", cursor: "pointer", transition: "all 0.2s",
+                      }}
+                      onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(245,200,66,0.07)"; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
+                    >
+                      {isExpanded ? "Voir moins" : "Voir le détail complet"}
+                      <ChevronDown size={14} style={{ transition: "transform 0.3s", transform: isExpanded ? "rotate(180deg)" : "none" }} />
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                          style={{ overflow: "hidden" }}
+                        >
+                          <div style={{ paddingBottom: "1.5rem", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                            {plan.details.map((group) => (
+                              <div key={group.category}>
+                                <p style={{
+                                  fontSize: ".65rem", fontWeight: 700, letterSpacing: ".08em",
+                                  textTransform: "uppercase", color: "rgba(245,200,66,0.6)", marginBottom: "0.5rem",
+                                }}>
+                                  {group.category}
+                                </p>
+                                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.45rem" }}>
+                                  {group.items.map((item) => (
+                                    <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
+                                      <CheckCircle size={13} color="rgba(245,200,66,0.45)" style={{ flexShrink: 0, marginTop: "2px" }} />
+                                      <span style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".8rem", lineHeight: 1.45 }}>{item}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {/* CTA */}
+                    <a
+                      href="https://calendly.com/afele1845/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        gap: "0.5rem", width: "100%", padding: "0.9rem",
+                        borderRadius: "0.75rem", textAlign: "center", fontWeight: 700,
+                        fontSize: ".88rem", textDecoration: "none", cursor: "pointer",
+                        transition: "all 0.2s",
+                        background: plan.popular ? "#F5C842" : "transparent",
+                        color: plan.popular ? "#0F1923" : "var(--text)",
+                        border: plan.popular ? "none" : "1px solid rgba(var(--surface-rgb),0.15)",
+                      }}
+                      onMouseEnter={(e) => {
+                        const el = e.currentTarget;
+                        el.style.background = plan.popular ? "#f0be2a" : "rgba(var(--surface-rgb),0.06)";
+                        if (!plan.popular) el.style.borderColor = "rgba(var(--surface-rgb),0.3)";
+                      }}
+                      onMouseLeave={(e) => {
+                        const el = e.currentTarget;
+                        el.style.background = plan.popular ? "#F5C842" : "transparent";
+                        if (!plan.popular) el.style.borderColor = "rgba(var(--surface-rgb),0.15)";
                       }}
                     >
-                      {plan.price}€
-                    </span>
-                    <span style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".85rem" }}>/mois</span>
+                      Réserver une démo gratuite
+                      {plan.popular && <span style={{ fontSize: "0.8rem" }}>→</span>}
+                    </a>
                   </div>
-                  <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".78rem", marginTop: "0.4rem" }}>
-                    + {plan.setup}€ de setup (unique)
-                  </p>
                 </div>
-
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem 0", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                  {plan.features.map((f) => (
-                    <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
-                      <CheckCircle
-                        size={16}
-                        color={plan.popular ? "#F5C842" : "rgba(245,200,66,0.6)"}
-                        style={{ flexShrink: 0, marginTop: "2px" }}
-                      />
-                      <span style={{ color: "rgba(var(--text-rgb),0.75)", fontSize: ".88rem", lineHeight: 1.5 }}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Voir plus — détails complets de l'offre */}
-                <button
-                  onClick={() => setExpanded(expanded === plan.name ? null : plan.name)}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.4rem",
-                    width: "100%",
-                    padding: "0.6rem",
-                    marginBottom: "1rem",
-                    borderRadius: "0.65rem",
-                    background: "transparent",
-                    border: "1px solid rgba(245,200,66,0.25)",
-                    color: "#F5C842",
-                    fontWeight: 600,
-                    fontSize: ".82rem",
-                    cursor: "pointer",
-                    transition: "all 0.2s",
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(245,200,66,0.08)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
-                >
-                  {expanded === plan.name ? "Voir moins" : "Voir tout le détail"}
-                  <ChevronDown
-                    size={15}
-                    style={{
-                      transition: "transform 0.3s",
-                      transform: expanded === plan.name ? "rotate(180deg)" : "rotate(0deg)",
-                    }}
-                  />
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {expanded === plan.name && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      style={{ overflow: "hidden" }}
-                    >
-                      <div style={{ paddingBottom: "1.5rem", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                        {plan.details.map((group) => (
-                          <div key={group.category}>
-                            <p
-                              style={{
-                                fontSize: ".68rem",
-                                fontWeight: 700,
-                                letterSpacing: ".08em",
-                                textTransform: "uppercase",
-                                color: "rgba(245,200,66,0.7)",
-                                marginBottom: "0.6rem",
-                              }}
-                            >
-                              {group.category}
-                            </p>
-                            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                              {group.items.map((item) => (
-                                <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                                  <CheckCircle size={14} color="rgba(245,200,66,0.55)" style={{ flexShrink: 0, marginTop: "2px" }} />
-                                  <span style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".82rem", lineHeight: 1.45 }}>{item}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                <a
-                  href="https://calendly.com/afele1845/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "block",
-                    width: "100%",
-                    padding: "0.85rem",
-                    borderRadius: "0.75rem",
-                    textAlign: "center",
-                    fontWeight: 700,
-                    fontSize: ".9rem",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                    transition: "all 0.2s",
-                    background: plan.popular ? "#F5C842" : "transparent",
-                    color: plan.popular ? "#0F1923" : "var(--text)",
-                    border: plan.popular ? "none" : "1px solid rgba(var(--surface-rgb),0.15)",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget;
-                    if (!plan.popular) {
-                      el.style.background = "rgba(var(--surface-rgb),0.06)";
-                      el.style.borderColor = "rgba(var(--surface-rgb),0.3)";
-                    } else {
-                      el.style.background = "#f0be2a";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget;
-                    if (!plan.popular) {
-                      el.style.background = "transparent";
-                      el.style.borderColor = "rgba(var(--surface-rgb),0.15)";
-                    } else {
-                      el.style.background = "#F5C842";
-                    }
-                  }}
-                >
-                  Réserver une démo gratuite
-                </a>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* Reassurance bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          style={{
+            marginTop: "2.5rem",
+            padding: "1rem 1.5rem",
+            borderRadius: "1rem",
+            background: "rgba(var(--surface-rgb),0.03)",
+            border: "1px solid rgba(var(--surface-rgb),0.06)",
+            display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1.5rem",
+          }}
+        >
+          {[
+            "✓ Essai 14 jours gratuit",
+            "✓ Résiliable après 3 mois",
+            "✓ Setup inclus dans l'accompagnement",
+            "✓ Données hébergées en France",
+          ].map((item) => (
+            <span key={item} style={{ color: "rgba(var(--text-rgb),0.45)", fontSize: ".75rem", fontWeight: 600 }}>
+              {item}
+            </span>
+          ))}
+        </motion.div>
       </div>
 
       <style>{`
