@@ -28,7 +28,8 @@ export const ContainerScroll = ({
     <div
       ref={containerRef}
       style={{
-        height: isMobile ? "44rem" : "80rem",
+        // Hauteur du conteneur inchangée — garde le scroll travel complet pour l'animation
+        height: isMobile ? "60rem" : "80rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -86,7 +87,7 @@ export const Card = ({
       marginTop: "-3rem",
       marginLeft: "auto",
       marginRight: "auto",
-      // Hauteur adaptée : ratio 16/10 sur desktop, 4/3 sur mobile
+      // Desktop : 40rem inchangé. Mobile : 22rem pour respecter le ratio du dashboard
       height: isMobile ? "22rem" : "40rem",
       width: "100%",
       border: "1px solid rgba(245,200,66,0.2)",
