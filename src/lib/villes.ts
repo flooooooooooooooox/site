@@ -116,6 +116,51 @@ export const VILLES: Ville[] = [
       "À Grenoble, la rénovation thermique est une priorité dans une ville pionnière de la transition énergétique. Floxia gère automatiquement la TVA réduite et les attestations des travaux d'amélioration énergétique.",
     zones: "Grenoble-Alpes Métropole et Isère (38).",
   },
+  {
+    slug: "nimes",
+    nom: "Nîmes",
+    region: "Occitanie",
+    prepo: "à",
+    contexte:
+      "À Nîmes, la rénovation du centre historique et la construction en périphérie alimentent l'activité des artisans. Floxia leur permet de produire des devis soignés sans y consacrer leurs soirées.",
+    zones: "Nîmes Métropole et Gard (30).",
+  },
+  {
+    slug: "toulon",
+    nom: "Toulon",
+    region: "Provence-Alpes-Côte d'Azur",
+    prepo: "à",
+    contexte:
+      "À Toulon, entre rénovation littorale, copropriétés et résidences secondaires, les artisans doivent répondre vite. Un devis envoyé par WhatsApp dans la journée fait souvent la différence.",
+    zones: "Métropole Toulon-Provence-Méditerranée et Var (83).",
+  },
+  {
+    slug: "angers",
+    nom: "Angers",
+    region: "Pays de la Loire",
+    prepo: "à",
+    contexte:
+      "À Angers, ville réputée pour sa qualité de vie, la rénovation du bâti ancien en tuffeau et la construction neuve cohabitent. Floxia aide les artisans angevins à automatiser devis et relances.",
+    zones: "Angers Loire Métropole et Maine-et-Loire (49).",
+  },
+  {
+    slug: "reims",
+    nom: "Reims",
+    region: "Grand Est",
+    prepo: "à",
+    contexte:
+      "À Reims, la rénovation du patrimoine et l'amélioration énergétique des logements structurent l'activité. Floxia gère la TVA réduite et les attestations associées automatiquement.",
+    zones: "Communauté urbaine du Grand Reims et Marne (51).",
+  },
+  {
+    slug: "dijon",
+    nom: "Dijon",
+    region: "Bourgogne-Franche-Comté",
+    prepo: "à",
+    contexte:
+      "À Dijon, la préservation du centre historique et la rénovation énergétique soutiennent une demande constante de travaux. Floxia permet aux artisans dijonnais de répondre rapidement et de suivre leurs chantiers depuis le terrain.",
+    zones: "Dijon Métropole et Côte-d'Or (21).",
+  },
 ];
 
 export function getVille(slug: string): Ville | undefined {

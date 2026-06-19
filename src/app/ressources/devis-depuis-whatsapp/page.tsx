@@ -31,13 +31,50 @@ const articleJsonLd = {
   keywords: "devis WhatsApp artisan, logiciel devis bâtiment, Floxia",
 };
 
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Devis depuis WhatsApp", item: "https://floxia.fr/ressources/devis-depuis-whatsapp" },
+  ],
+};
+
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Créer un devis depuis WhatsApp en 3 minutes",
+  description: "Créez et envoyez un devis PDF professionnel depuis WhatsApp en 3 étapes avec Floxia.",
+  totalTime: "PT3M",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Décrivez le chantier",
+      text: "Envoyez un message vocal ou écrit à Floxia via WhatsApp en décrivant les prestations à réaliser.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Validation automatique",
+      text: "Floxia analyse votre message, applique votre grille tarifaire et la bonne TVA, puis génère le devis PDF.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Envoi et signature",
+      text: "Le devis est envoyé au client par WhatsApp ou email. Il peut le signer électroniquement en un clic.",
+    },
+  ],
+};
+
 export default function DevisWhatsApp() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
       <BlogArticle
         badge="Devis & Facturation"
         title="Comment envoyer un devis depuis WhatsApp en 3 minutes"
