@@ -76,7 +76,7 @@ const STYLES = `
 .footer-glass-pill:hover {
   background: linear-gradient(145deg, var(--pill-bg-1-hover) 0%, var(--pill-bg-2-hover) 100%);
   border-color: var(--pill-border-hover);
-  box-shadow: 0 20px 40px -10px var(--pill-shadow-hover), inset 0 1px 1px var(--pill-highlight-hover));
+  box-shadow: 0 20px 40px -10px var(--pill-shadow-hover), inset 0 1px 1px var(--pill-highlight-hover);
   color: var(--foreground);
 }
 
@@ -112,7 +112,6 @@ const STYLES = `
   transform: translateY(-2px);
 }
 
-/* Bottom bar */
 .footer-bottom-bar {
   position: relative;
   z-index: 20;
@@ -240,12 +239,15 @@ export function CinematicFooter() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <div ref={wrapperRef} style={{ position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+      <div
+        ref={wrapperRef}
+        style={{ position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
         className="cinematic-footer-wrapper cinematic-footer-wrapper-outer"
       >
-        <footer style={{ position: "fixed", bottom: 0, left: 0, height: "100vh", width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden", background: "var(--background)", color: "var(--foreground)" }}
-          className="cinematic-footer-wrapper cinematic-footer-inner">
-
+        <footer
+          style={{ position: "fixed", bottom: 0, left: 0, height: "100vh", width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden", background: "var(--background)", color: "var(--foreground)" }}
+          className="cinematic-footer-wrapper cinematic-footer-inner"
+        >
           {/* Aurora glow */}
           <div className="footer-aurora animate-footer-breathe" style={{ position: "absolute", left: "50%", top: "50%", width: "80vw", height: "60vh", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
 
@@ -271,7 +273,6 @@ export function CinematicFooter() {
             </h2>
 
             <div ref={linksRef} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.25rem", width: "100%" }}>
-              {/* CTA principal */}
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem" }}>
                 <MagneticButton as="a" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener"
                   className="footer-gold-btn"
@@ -285,7 +286,6 @@ export function CinematicFooter() {
                 </MagneticButton>
               </div>
 
-              {/* Réseaux sociaux */}
               <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
                 <a href="https://www.instagram.com/floxia.pro" target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.55rem 1.1rem", borderRadius: "9999px", fontSize: "0.78rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(245,200,66,0.15)", background: "rgba(245,200,66,0.04)" }}>
@@ -297,7 +297,6 @@ export function CinematicFooter() {
                 </a>
               </div>
 
-              {/* Liens secondaires */}
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
                 {[
                   { label: "Entreprises", href: "/logiciel-gestion-entreprise-batiment" },
@@ -324,19 +323,16 @@ export function CinematicFooter() {
 
           {/* Bottom bar */}
           <div className="footer-bottom-bar">
-            {/* Logo */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <div style={{ width: 28, height: 28, background: "#F5C842", clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)" }} />
               <span style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.1rem", color: "var(--foreground)" }}>Floxia</span>
             </div>
 
-            {/* Conçu en France — lien vers /qui-sommes-nous */}
             <a href="/qui-sommes-nous" className="footer-glass-pill" style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", display: "flex", alignItems: "center", gap: "0.4rem", textDecoration: "none" }}>
               <span style={{ fontSize: "1rem" }}>🇫🇷</span>
               <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>Conçu en France</span>
             </a>
 
-            {/* Copyright + back to top */}
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
               <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
                 © {new Date().getFullYear()} Floxia. Tous droits réservés.
