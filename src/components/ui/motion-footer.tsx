@@ -250,7 +250,9 @@ export function CinematicFooter() {
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
                 {[
                   { label: "Ressources", href: "/ressources" },
-                  { label: "Artisans", href: "/artisans" },
+                  { label: "Métiers", href: "/artisans" },
+                  { label: "Comparatifs", href: "/alternatives" },
+                  { label: "Villes", href: "/logiciel-batiment" },
                   { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
                   { label: "Mentions légales", href: "/mentions-legales" },
                   { label: "CGV", href: "/cgv" },

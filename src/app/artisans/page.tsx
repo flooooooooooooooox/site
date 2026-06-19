@@ -24,8 +24,14 @@ const TRADES = [
   {
     href: "/artisans/plombier",
     emoji: "🔧",
-    title: "Plombier & Chauffagiste",
-    keywords: "Salle de bain · Chauffe-eau · Chauffage · Pompe à chaleur",
+    title: "Plombier",
+    keywords: "Salle de bain · Chauffe-eau · Sanitaires · Réseau d'eau",
+  },
+  {
+    href: "/artisans/chauffagiste",
+    emoji: "🔥",
+    title: "Chauffagiste",
+    keywords: "Pompe à chaleur · Chaudière · RGE · MaPrimeRénov'",
   },
   {
     href: "/artisans/macon",
@@ -38,6 +44,30 @@ const TRADES = [
     emoji: "🎨",
     title: "Peintre en bâtiment",
     keywords: "Ravalement façade · Décoration intérieure · Revêtements",
+  },
+  {
+    href: "/artisans/menuisier",
+    emoji: "🪵",
+    title: "Menuisier",
+    keywords: "Fenêtres · Portes · Agencement · Bois, alu, PVC",
+  },
+  {
+    href: "/artisans/couvreur",
+    emoji: "🏠",
+    title: "Couvreur",
+    keywords: "Toiture · Zinguerie · Charpente · Isolation",
+  },
+  {
+    href: "/artisans/carreleur",
+    emoji: "◻️",
+    title: "Carreleur",
+    keywords: "Faïence · Sol · Terrasse · Mosaïque",
+  },
+  {
+    href: "/artisans/plaquiste",
+    emoji: "📐",
+    title: "Plaquiste",
+    keywords: "Cloisons · Doublage · Plafonds · Isolation",
   },
 ];
 
