@@ -92,22 +92,51 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Floxia",
+  alternateName: "FloxiaOS",
   url: "https://floxia.fr",
-  logo: "https://floxia.fr/icon.svg",
-  description: "ERP IA pour artisans et PME du bâtiment. Devis, factures, gestion de chantier depuis WhatsApp.",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://floxia.fr/icon.svg",
+    width: 512,
+    height: 512,
+  },
+  image: "https://floxia.fr/dashboard-floxia.jpg",
+  description: "Floxia est un logiciel ERP IA pour artisans et PME du bâtiment. Créez vos devis et factures depuis WhatsApp ou l'application Floxia ERP en 3 minutes grâce aux pré-modèles IA.",
   foundingDate: "2024",
-  areaServed: "FR",
+  foundingLocation: { "@type": "Place", addressCountry: "FR" },
+  areaServed: { "@type": "Country", name: "France" },
   knowsAbout: [
     "ERP bâtiment", "Logiciel artisan", "Devis WhatsApp", "Facturation électronique 2026",
     "Gestion de chantier", "Automatisation PME", "Intelligence artificielle bâtiment",
+    "Logiciel devis", "Logiciel facturation artisan",
   ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Abonnements Floxia",
+    itemListElement: [
+      { "@type": "Offer", name: "Essentiel", price: "99", priceCurrency: "EUR" },
+      { "@type": "Offer", name: "Artisan Pro", price: "179", priceCurrency: "EUR" },
+      { "@type": "Offer", name: "PME Premium", price: "349", priceCurrency: "EUR" },
+    ],
+  },
   contactPoint: {
     "@type": "ContactPoint",
-    contactType: "customer service",
+    contactType: "sales",
     url: "https://calendly.com/afele1845/30min",
     availableLanguage: "French",
+    contactOption: "TollFree",
   },
-  sameAs: [],
+  founder: {
+    "@type": "Person",
+    name: "Florian",
+    jobTitle: "Fondateur & CEO",
+    worksFor: { "@type": "Organization", name: "Floxia" },
+    knowsAbout: ["Automatisation", "Intelligence artificielle", "ERP bâtiment"],
+  },
+  sameAs: [
+    "https://floxia.fr",
+    "https://floxia.fr/qui-sommes-nous",
+  ],
 };
 
 const jsonLd = {

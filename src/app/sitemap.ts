@@ -39,6 +39,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/alternatives/alternative-ebp`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     // Page B2B / entreprises
     { url: `${base}/logiciel-gestion-entreprise-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    // Brand / presse
+    { url: `${base}/presse`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     // Pages villes (index)
     { url: `${base}/logiciel-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Page index devis par métier × ville

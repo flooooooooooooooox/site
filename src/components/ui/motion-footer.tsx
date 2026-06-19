@@ -255,6 +255,7 @@ export function CinematicFooter() {
                   { label: "Comparatifs", href: "/alternatives" },
                   { label: "Villes", href: "/logiciel-batiment" },
                   { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
+                  { label: "Presse", href: "/presse" },
                   { label: "Mentions légales", href: "/mentions-legales" },
                   { label: "CGV", href: "/cgv" },
                   { label: "Politique de confidentialité", href: "/politique-de-confidentialite" },
