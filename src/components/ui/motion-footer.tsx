@@ -76,7 +76,7 @@ const STYLES = `
 .footer-glass-pill:hover {
   background: linear-gradient(145deg, var(--pill-bg-1-hover) 0%, var(--pill-bg-2-hover) 100%);
   border-color: var(--pill-border-hover);
-  box-shadow: 0 20px 40px -10px var(--pill-shadow-hover), inset 0 1px 1px var(--pill-highlight-hover);
+  box-shadow: 0 20px 40px -10px var(--pill-shadow-hover), inset 0 1px 1px var(--pill-highlight-hover));
   color: var(--foreground);
 }
 
@@ -330,10 +330,11 @@ export function CinematicFooter() {
               <span style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.1rem", color: "var(--foreground)" }}>Floxia</span>
             </div>
 
-            {/* Made with love */}
-            <div className="footer-glass-pill" style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+            {/* Conçu en France — lien vers /qui-sommes-nous */}
+            <a href="/qui-sommes-nous" className="footer-glass-pill" style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", display: "flex", alignItems: "center", gap: "0.4rem", textDecoration: "none" }}>
+              <span style={{ fontSize: "1rem" }}>🇫🇷</span>
               <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>Conçu en France</span>
-            </div>
+            </a>
 
             {/* Copyright + back to top */}
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
