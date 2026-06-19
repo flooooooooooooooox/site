@@ -3,6 +3,7 @@ import { Nunito, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import ClientCursor from "@/components/layout/ClientCursor";
+import FloatingCtaMobile from "@/components/layout/FloatingCtaMobile";
 import SectionsBackdrop from "@/components/sections/SectionsBackdrop";
 import { CinematicFooter } from "@/components/ui/motion-footer";
 
@@ -201,7 +202,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${nunito.variable} ${dmSans.variable}`}>
       <body>
-        {/* Chrome partagé — monté une seule fois, persiste entre les pages */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -210,6 +210,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="grain" aria-hidden />
         <Navbar />
         {children}
+        <FloatingCtaMobile />
         <div style={{ position: "relative", zIndex: 1 }}>
           <CinematicFooter />
         </div>
