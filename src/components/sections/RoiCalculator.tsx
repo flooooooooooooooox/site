@@ -24,8 +24,8 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 }
 
 const PLANS = [
-  { name: "Starter", price: 99, max: 15, color: "#60A5FA", desc: "Jusqu'à 15 devis/mois" },
-  { name: "Artisan Pro", price: 179, max: 50, color: "#F5C842", desc: "Jusqu'à 50 devis/mois" },
+  { name: "Starter", price: 99, max: 15, color: "#60A5FA", desc: "Jusqu\'à 15 devis/mois" },
+  { name: "Artisan Pro", price: 179, max: 50, color: "#F5C842", desc: "Jusqu\'à 50 devis/mois" },
   { name: "Pro Équipe", price: 249, max: 100, color: "#A78BFA", desc: "Illimité + salariés" },
 ];
 
@@ -43,20 +43,10 @@ export default function RoiCalculator() {
 
   const plan = getPlan(devis, salarie);
 
-  // 1. Devis + facture + PV + archivage : 45 min → 8 min chacun
   const gainDevisMin = devis * (45 - 8);
-
-  // 2. Agent réceptionniste IA : économie forfaitaire mensuelle (calls entrants, qualification, booking)
-  //    Estimation : 6h/mois pour un artisan solo, +2h si salariés
   const gainReceptionnisteMin = salarie ? 480 : 360;
-
-  // 3. Relances auto (devis non signés, factures, garantie)
   const gainRelancesMin = Math.round(devis * 0.5 * 2 * 5);
-
-  // 4. Comptabilité / scan tickets / export
   const gainComptaMin = 45;
-
-  // 5. Conformité e-facturation 2026 + suivi hebdo CA
   const gainConformiteMin = 40;
 
   const totalMin = gainDevisMin + gainReceptionnisteMin + gainRelancesMin + gainComptaMin + gainConformiteMin;
@@ -102,6 +92,9 @@ export default function RoiCalculator() {
           </h2>
           <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
             Floxia élimine <strong style={{ color: "#F5C842" }}>~80% de votre temps administratif</strong> — devis, facturation, appels, relances, comptabilité
+          </p>
+          <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: "0.82rem", maxWidth: "480px", margin: "0.5rem auto 0" }}>
+            Le ROI (Retour sur Investissement) mesure ce que vous gagnez réellement après déduction de l&apos;abonnement — en temps récupéré et en euros.
           </p>
           {/* Toggle mois / an */}
           <div style={{ display: "inline-flex", marginTop: "1.5rem", background: "rgba(var(--surface-rgb),0.05)", border: "1px solid rgba(var(--surface-rgb),0.1)", borderRadius: "999px", padding: "4px" }}>
