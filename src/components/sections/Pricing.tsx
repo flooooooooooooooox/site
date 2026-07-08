@@ -27,6 +27,7 @@ const PLANS = [
           "Pré-modèles de devis générés par l'IA",
           "Devis PDF par vocal / WhatsApp (3 min)",
           "Factures acompte / finale / tous types",
+          "Factures périodiques & récurrentes auto",
           "PV de réception + facture finale auto",
           "Envoi automatique des factures",
           "Conformité facturation 2026 (e-reporting)",
@@ -71,6 +72,7 @@ const PLANS = [
         items: [
           "Suivi hebdo activité (CA, chantiers, devis)",
           "Relances devis non signés (J+3 / J+7 / J+14)",
+          "Relances factures impayées automatiques (J+X)",
           "Relances automatiques avant / jour J",
           "Alerte chantier → email pro",
           "Relance garantie 1 an (J+365)",
@@ -122,7 +124,9 @@ const PLANS = [
         items: [
           "Collecte photos fin de chantier (WhatsApp)",
           "Gestion équipe & plannings salariés",
-          "Suivi des heures collaborateurs",
+          "Gestion complète des heures salariés (pointage & feuilles d'heures)",
+          "Suivi heures par salarié et par chantier",
+          "Calcul heures sup + récap mensuel exportable",
         ],
       },
     ],

@@ -17,6 +17,7 @@ const CATEGORIES = [
       "Devis sur l'application Floxia ERP (pré-modèles IA)",
       "PV de réception + facture finale automatisés",
       "Factures d'acompte, finale, tous types",
+      "Factures périodiques & récurrentes automatiques (contrats d'entretien, abonnements)",
       "Gestion des avenants et avoirs automatiques",
       "Signature électronique intégrée (valeur légale)",
       "Conformité e-facturation 2026 (e-reporting pro)",
@@ -35,6 +36,7 @@ const CATEGORIES = [
     hero: true,
     features: [
       "Relances devis non signés : J+3 / J+7 / J+14",
+      "Relances factures impayées automatiques (échéance dépassée, J+X)",
       "Relances signature avenants & avoirs",
       "Alerte chantier → e-mail pro depuis un vocal en 30s",
       "Relance garantie 1 an (J+365 fin de chantier)",
@@ -94,7 +96,9 @@ const CATEGORIES = [
     features: [
       "Interface OS : devis, factures, chantiers, planning",
       "Gestion équipes & plannings salariés temps réel",
-      "Suivi heures collaborateurs (Premium)",
+      "Gestion complète des heures salariés : pointage & feuilles d'heures",
+      "Suivi des heures par salarié et par chantier",
+      "Calcul automatique heures sup + récap mensuel exportable",
       "Collecte photos fin de chantier via WhatsApp",
       "CRM intelligent avec historique client complet",
       "Rentabilité réelle par chantier (analyse IA)",
@@ -250,7 +254,7 @@ export default function Services() {
             Tout ce que <span style={{ color: "#F5C842" }}>Floxia</span> fait pour vous
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem" }}>
-            47 fonctionnalités IA organisées en 8 modules — activables à la carte
+            50+ fonctionnalités IA organisées en 8 modules — activables à la carte
           </p>
         </motion.div>
 
