@@ -42,6 +42,28 @@ const PARTNERS = [
       </svg>
     ),
   },
+  {
+    name: "Mistral AI",
+    sub: "IA souveraine 🇫🇷 · données en UE",
+    svg: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="3" width="20" height="3.4" rx="0.5" fill="#F5C842"/>
+        <rect x="2" y="8.3" width="20" height="3.4" rx="0.5" fill="#FA8C16"/>
+        <rect x="2" y="13.6" width="20" height="3.4" rx="0.5" fill="#F5222D"/>
+        <rect x="2" y="18.9" width="20" height="2.1" rx="0.5" fill="#000" fillOpacity="0.55"/>
+      </svg>
+    ),
+  },
+  {
+    name: "ElevenLabs",
+    sub: "Voix agent réceptionniste IA",
+    svg: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <rect x="6" y="4" width="3" height="16" rx="1.5" fill="var(--text)" fillOpacity="0.85"/>
+        <rect x="15" y="4" width="3" height="16" rx="1.5" fill="var(--text)" fillOpacity="0.85"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function PartnersBand() {
@@ -83,6 +105,15 @@ export default function PartnersBand() {
             </motion.div>
           ))}
         </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          style={{ fontSize: "0.72rem", color: "rgba(var(--text-rgb),0.4)", textAlign: "center", fontWeight: 500 }}
+        >
+          🔒 IA 100% européenne (Mistral AI) — vos données ne quittent jamais l&apos;UE, en conformité RGPD.
+        </motion.p>
       </div>
     </section>
   );
