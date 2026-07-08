@@ -164,7 +164,7 @@ export default function Pricing() {
             <span style={{ color: "#F5C842" }}>sans surprise</span>
           </h2>
           <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "0.95rem" }}>
-            Résiliable à tout moment après 3 mois · 14 jours d&apos;essai gratuit
+            Résiliable à tout moment après 3 mois · Sans engagement caché
           </p>
         </motion.div>
 
@@ -399,7 +399,6 @@ export default function Pricing() {
           }}
         >
           {[
-            "✓ Essai 14 jours gratuit",
             "✓ Résiliable après 3 mois",
             "✓ Setup inclus dans l'accompagnement",
             "✓ Données hébergées en France",
