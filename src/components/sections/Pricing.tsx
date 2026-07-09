@@ -168,6 +168,43 @@ export default function Pricing() {
           </p>
         </motion.div>
 
+        {/* Bandeau offre de lancement */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{
+            maxWidth: "44rem", margin: "0 auto 3rem", padding: "1.1rem 1.5rem",
+            borderRadius: "1rem",
+            background: "linear-gradient(135deg, rgba(245,200,66,0.14), rgba(245,84,54,0.10))",
+            border: "1px solid rgba(245,200,66,0.35)",
+            display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem",
+            flexWrap: "wrap", textAlign: "center",
+            boxShadow: "0 0 40px rgba(245,200,66,0.12)",
+          }}
+        >
+          <span style={{
+            display: "inline-flex", alignItems: "center", gap: "0.4rem",
+            background: "#F5544F", color: "#fff", fontWeight: 800,
+            fontSize: ".72rem", letterSpacing: ".06em", textTransform: "uppercase",
+            padding: "5px 12px", borderRadius: "999px", whiteSpace: "nowrap",
+            animation: "pulseUrgent 2s ease-in-out infinite",
+          }}>
+            🔥 Offre de lancement
+          </span>
+          <span style={{ color: "var(--text)", fontWeight: 700, fontSize: "0.95rem" }}>
+            <span style={{ color: "#F5C842", fontWeight: 900 }}>−50% à vie</span> sur l&apos;abonnement pour les <span style={{ color: "#F5C842", fontWeight: 900 }}>10 premiers artisans</span>
+          </span>
+          <span style={{
+            display: "inline-flex", alignItems: "center", gap: "0.4rem",
+            color: "rgba(var(--text-rgb),0.6)", fontSize: "0.8rem", fontWeight: 600, whiteSpace: "nowrap",
+          }}>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#4ADE80", boxShadow: "0 0 8px #4ADE80", animation: "pulseUrgent 1.5s infinite" }} />
+            Places limitées
+          </span>
+        </motion.div>
+
         {/* Cards */}
         <div className="pricing-grid" style={{ display: "grid", gap: "1.5rem", alignItems: "start" }}>
           {PLANS.map((plan, i) => {
@@ -269,17 +306,32 @@ export default function Pricing() {
                       border: "1px solid rgba(var(--surface-rgb),0.06)",
                       marginBottom: "1.5rem",
                     }}>
-                      <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
+                      {/* Badge -50% lancement */}
+                      <div style={{
+                        display: "inline-flex", alignItems: "center", gap: "0.3rem",
+                        background: "rgba(245,84,79,0.15)", border: "1px solid rgba(245,84,79,0.4)",
+                        color: "#F5544F", fontWeight: 800, fontSize: ".64rem", letterSpacing: ".04em",
+                        textTransform: "uppercase", padding: "3px 9px", borderRadius: "999px", marginBottom: "0.6rem",
+                      }}>
+                        −50% lancement · 10 premiers
+                      </div>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
                         <span style={{
                           fontFamily: "var(--font-nunito)", fontWeight: 900,
                           fontSize: "3rem", color: "var(--text)", lineHeight: 1, letterSpacing: "-0.04em",
                         }}>
-                          {plan.price}€
+                          {(plan.price / 2).toLocaleString("fr-FR")}€
                         </span>
                         <span style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".85rem" }}>/mois</span>
+                        <span style={{
+                          color: "rgba(var(--text-rgb),0.35)", fontSize: "1.05rem", fontWeight: 700,
+                          textDecoration: "line-through", marginLeft: "2px",
+                        }}>
+                          {plan.price}€
+                        </span>
                       </div>
-                      <p style={{ color: "rgba(var(--text-rgb),0.3)", fontSize: ".75rem", marginTop: "0.3rem" }}>
-                        + {plan.setup}€ de setup (frais unique)
+                      <p style={{ color: "rgba(var(--text-rgb),0.3)", fontSize: ".75rem", marginTop: "0.4rem" }}>
+                        + {plan.setup}€ de setup (frais unique) · Tarif réduit conservé à vie
                       </p>
                     </div>
 
@@ -414,6 +466,10 @@ export default function Pricing() {
         @keyframes badgePulse {
           0%, 100% { box-shadow: 0 0 0 0 rgba(245,200,66,0.4); }
           50% { box-shadow: 0 0 0 6px rgba(245,200,66,0); }
+        }
+        @keyframes pulseUrgent {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.75; transform: scale(0.94); }
         }
         .pricing-grid { grid-template-columns: repeat(3, 1fr); }
         @media (min-width: 921px) {
