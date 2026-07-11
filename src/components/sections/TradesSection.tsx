@@ -14,8 +14,8 @@ const TRADES = [
     features: [
       "Tableau électrique, mise aux normes NF C 15-100",
       "Domotique, VMC, borne de recharge VE",
-      "TVA 5,5% / 10% / 20% automatique",
-      "Attestation CERFA travaux intégrée",
+      "TVA 5,5% / 10% / 20% au choix par ligne",
+      "Assistant vocal IA : normes, TVA, admin",
       "PV de réception et facture finale auto",
     ],
   },
@@ -29,8 +29,8 @@ const TRADES = [
     features: [
       "Salle de bain, chauffe-eau, VMC hygro",
       "Pompe à chaleur, radiateurs, plancher chauffant",
-      "TVA 5,5% économies d'énergie auto",
-      "Factures d'acompte et situations de travaux",
+      "TVA 5,5% / 10% / 20% au choix par ligne",
+      "Factures d'acompte et facture finale auto",
       "Relances devis non signés automatiques",
     ],
   },
@@ -44,9 +44,9 @@ const TRADES = [
     features: [
       "Extension, surélévation, ravalement de façade",
       "Réhabilitation, fondations, dallage",
-      "Situations de travaux à l'avancement",
+      "Factures d'acompte et facture finale auto",
       "PV de réception automatisé",
-      "Gestion des sous-traitants et avenants",
+      "Gestion des avenants et avoirs automatiques",
     ],
   },
   {
@@ -59,7 +59,7 @@ const TRADES = [
     features: [
       "Ravalement façade, peinture intérieure/extérieure",
       "Pré-modèles de devis IA par type de chantier",
-      "TVA 10% rénovation appliquée auto",
+      "TVA 5,5% / 10% / 20% au choix par ligne",
       "Devis PDF pro envoyé au client automatiquement",
       "Relances et signature électronique intégrés",
     ],
@@ -74,7 +74,7 @@ const TRADES = [
     features: [
       "Fenêtres, portes, volets, portails",
       "Cuisine, dressing, aménagement intérieur",
-      "TVA selon type de pose (rénovation / neuf)",
+      "TVA au choix selon le type de pose",
       "Catalogue de prix réutilisable",
       "Envoi devis par WhatsApp ou email auto",
     ],
@@ -89,7 +89,7 @@ const TRADES = [
     features: [
       "Tuiles, ardoises, zinc, EPDM, toiture-terrasse",
       "Charpente bois, isolation sous rampant",
-      "TVA 5,5% isolation, 10% rénovation auto",
+      "TVA 5,5% / 10% / 20% au choix par ligne",
       "Pré-modèles IA adaptés à chaque prestation",
       "Photos fin de chantier via WhatsApp",
     ],
@@ -104,7 +104,7 @@ const TRADES = [
     features: [
       "Sol, mur, salle de bain, terrasse",
       "Bibliothèque de prix réutilisable",
-      "TVA 10% rénovation appliquée auto",
+      "TVA 5,5% / 10% / 20% au choix par ligne",
       "Pré-modèles IA adaptés à chaque pièce",
       "Signature électronique mobile-friendly",
     ],
