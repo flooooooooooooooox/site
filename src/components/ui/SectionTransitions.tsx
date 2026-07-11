@@ -137,7 +137,7 @@ export function Perspective3DFloor() {
   const bg = isDark ? "transparent" : "#F8F9FC";
   const grid = isDark ? "rgba(232,237,244,0.07)" : "rgba(15,25,35,0.07)";
   return (
-    <div style={{ width: "100%", height: "140px", perspective: "800px", overflow: "hidden", position: "relative", background: bg }}>
+    <div style={{ width: "100%", height: "clamp(60px, 14vw, 140px)", perspective: "800px", overflow: "hidden", position: "relative", background: bg }}>
       <div style={{
         position: "absolute", width: "100%", height: "200%", top: "-50%", left: 0,
         background: bg,
@@ -182,7 +182,7 @@ export function RippleDepth() {
     { rx: 42, ry: 9, op: 0.9, gold: true },
   ];
   return (
-    <div style={{ width: "100%", height: "160px", background: bg, position: "relative", overflow: "hidden" }}>
+    <div style={{ width: "100%", height: "clamp(70px, 16vw, 160px)", background: bg, position: "relative", overflow: "hidden" }}>
       <svg width="100%" height="160" viewBox="0 0 1000 160" preserveAspectRatio="xMidYMax meet" style={{ position: "absolute", bottom: 0 }}>
         {rings.map((r, i) => (
           <ellipse key={i} cx="500" cy="160" rx={r.rx} ry={r.ry} fill="none"
@@ -218,7 +218,7 @@ export function DepthFade() {
   const grid = isDark ? "rgba(232,237,244,0.06)" : "rgba(15,25,35,0.06)";
   const vignette = isDark ? "transparent" : "rgba(248,249,252,0.92)";
   return (
-    <div style={{ width: "100%", height: "200px", position: "relative", background: bg, overflow: "hidden" }}>
+    <div style={{ width: "100%", height: "clamp(80px, 18vw, 200px)", position: "relative", background: bg, overflow: "hidden" }}>
       <div style={{ position: "absolute", width: "130%", height: "300%", top: "-100%", left: "-15%",
         backgroundImage: `linear-gradient(${grid} 1px, transparent 1px), linear-gradient(90deg, ${grid} 1px, transparent 1px)`,
         backgroundSize: "80px 80px",

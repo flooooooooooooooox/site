@@ -79,7 +79,7 @@ const GRID = "2fr 1fr 1fr 1fr 1fr";
 
 export default function Comparatif() {
   return (
-    <section id="comparatif" style={{ background: "transparent", padding: "6rem 0" }}>
+    <section id="comparatif" style={{ background: "transparent", padding: "clamp(3rem, 8vw, 6rem) 0" }}>
       <div style={{ maxWidth: "80rem", margin: "0 auto", padding: "0 6vw" }}>
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
           style={{ textAlign: "center", marginBottom: "3.5rem" }}>

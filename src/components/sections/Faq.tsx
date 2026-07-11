@@ -60,7 +60,7 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section style={{ background: "transparent", padding: "6rem 0" }}>
+    <section style={{ background: "transparent", padding: "clamp(3rem, 8vw, 6rem) 0" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

@@ -118,7 +118,7 @@ export default function TradesSection() {
   return (
     <section
       aria-label="Floxia par corps de métier du bâtiment"
-      style={{ padding: "6rem 0", background: "transparent" }}
+      style={{ padding: "clamp(3rem, 8vw, 6rem) 0", background: "transparent" }}
     >
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }}>
         {/* Header */}

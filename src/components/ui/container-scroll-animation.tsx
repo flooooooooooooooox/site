@@ -28,8 +28,8 @@ export const ContainerScroll = ({
     <div
       ref={containerRef}
       style={{
-        // Hauteur du conteneur inchangée — garde le scroll travel complet pour l'animation
-        height: isMobile ? "60rem" : "80rem",
+        // Mobile : 46rem — garde le scroll travel de l'animation sans le grand vide sous la carte
+        height: isMobile ? "46rem" : "80rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

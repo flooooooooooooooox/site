@@ -9,7 +9,7 @@ export default function CtaBand() {
       style={{
         position: "relative",
         overflow: "hidden",
-        padding: "8rem 0",
+        padding: "clamp(4rem, 10vw, 8rem) 0",
       }}
     >
       {/* Background image */}
