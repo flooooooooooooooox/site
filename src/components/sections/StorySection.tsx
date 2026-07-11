@@ -67,88 +67,76 @@ export default function StorySection() {
           </p>
         </motion.div>
 
-        <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", flexWrap: "wrap" }}>
-          {/* Timeline column */}
-          <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "2rem" }}>
-            {/* Base line */}
-            <div style={{
-              position: "absolute",
-              top: 0,
-              bottom: 0,
-              left: "50%",
-              width: "2px",
-              background: "rgba(var(--surface-rgb),0.1)",
-              transform: "translateX(-50%)",
-            }} />
-            {/* Animated gold fill line */}
-            <motion.div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: "50%",
-                width: "2px",
-                height: lineHeight,
-                background: "linear-gradient(to bottom, #F5C842, rgba(245,200,66,0.4))",
-                transform: "translateX(-50%)",
-                transformOrigin: "top",
-              }}
-            />
+        <div style={{ position: "relative" }}>
+          {/* Base line — traverse les pastilles numérotées */}
+          <div className="story-line" style={{
+            position: "absolute",
+            top: "20px",
+            bottom: "20px",
+            width: "2px",
+            background: "rgba(var(--surface-rgb),0.1)",
+            borderRadius: "2px",
+          }} />
+          {/* Ligne dorée animée au scroll */}
+          <motion.div className="story-line" style={{
+            position: "absolute",
+            top: "20px",
+            maxHeight: "calc(100% - 40px)",
+            width: "2px",
+            height: lineHeight,
+            background: "linear-gradient(to bottom, #F5C842, rgba(245,200,66,0.35))",
+            borderRadius: "2px",
+            boxShadow: "0 0 12px rgba(245,200,66,0.35)",
+          }} />
 
-            {/* Dots */}
-            {STEPS.map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.4, delay: i * 0.18 }}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  background: "#F5C842",
-                  color: "#1E2B45",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 900,
-                  fontSize: ".85rem",
-                  fontFamily: "var(--font-nunito)",
-                  zIndex: 1,
-                  marginBottom: i < STEPS.length - 1 ? "5.5rem" : 0,
-                  boxShadow: "0 0 0 6px rgba(245,200,66,0.1), 0 0 20px rgba(245,200,66,0.25)",
-                  flexShrink: 0,
-                  position: "relative",
-                  animation: "dotGlow 2.4s ease-in-out infinite",
-                }}
-              >
-                {i + 1}
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Step cards */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "2rem" }}>
+          {/* Step rows : pastille + carte alignées */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             {STEPS.map((step, i) => {
               const Icon = step.icon;
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: -40 }}
+                  initial={{ opacity: 0, x: -32 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.55, delay: i * 0.18 }}
-                  style={{
+                  transition={{ duration: 0.55, delay: i * 0.12 }}
+                  className="story-row"
+                >
+                  {/* Pastille numérotée sur la ligne */}
+                  <div style={{
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "50%",
+                    background: "#F5C842",
+                    color: "#1E2B45",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: 900,
+                    fontSize: ".85rem",
+                    fontFamily: "var(--font-nunito)",
+                    zIndex: 1,
+                    boxShadow: "0 0 0 6px rgba(245,200,66,0.1), 0 0 20px rgba(245,200,66,0.25)",
+                    flexShrink: 0,
+                    position: "relative",
+                    animation: "dotGlow 2.4s ease-in-out infinite",
+                  }}>
+                    {i + 1}
+                  </div>
+
+                  {/* Carte */}
+                  <div style={{
+                    flex: 1,
+                    minWidth: 0,
                     background: "rgba(var(--surface-rgb),0.03)",
                     border: "1px solid rgba(var(--surface-rgb),0.07)",
                     borderRadius: "1rem",
-                    padding: "1.75rem 2rem",
+                    padding: "clamp(1.2rem, 3vw, 1.75rem) clamp(1.2rem, 3.5vw, 2rem)",
                     display: "flex",
                     gap: "1.25rem",
                     alignItems: "flex-start",
                     backdropFilter: "blur(10px)",
-                  }}
-                >
+                  }}>
                   <div style={{
                     width: "48px",
                     height: "48px",
@@ -191,6 +179,7 @@ export default function StorySection() {
                       {step.desc}
                     </p>
                   </div>
+                  </div>
                 </motion.div>
               );
             })}
@@ -202,6 +191,21 @@ export default function StorySection() {
         @keyframes dotGlow {
           0%, 100% { box-shadow: 0 0 0 6px rgba(245,200,66,0.1), 0 0 20px rgba(245,200,66,0.25); }
           50% { box-shadow: 0 0 0 10px rgba(245,200,66,0.05), 0 0 32px rgba(245,200,66,0.45); }
+        }
+        .story-row {
+          display: flex;
+          gap: 1.5rem;
+          align-items: flex-start;
+        }
+        .story-line { left: 19px; }
+        @media (max-width: 640px) {
+          .story-row { gap: 0.9rem; }
+          .story-row > div:first-child {
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 0.75rem !important;
+          }
+          .story-line { left: 15px; }
         }
       `}</style>
     </section>
