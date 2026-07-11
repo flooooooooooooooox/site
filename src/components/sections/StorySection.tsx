@@ -189,8 +189,8 @@ export default function StorySection() {
 
       <style>{`
         @keyframes dotGlow {
-          0%, 100% { box-shadow: 0 0 0 6px rgba(245,200,66,0.1), 0 0 20px rgba(245,200,66,0.25); }
-          50% { box-shadow: 0 0 0 10px rgba(245,200,66,0.05), 0 0 32px rgba(245,200,66,0.45); }
+          0%, 100% { box-shadow: 0 0 0 6px rgba(245,200,66,0.08), 0 0 16px rgba(245,200,66,0.2); }
+          50% { box-shadow: 0 0 0 7px rgba(245,200,66,0.1), 0 0 20px rgba(245,200,66,0.28); }
         }
         .story-row {
           display: flex;

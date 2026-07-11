@@ -20,16 +20,17 @@ export const ContainerScroll = ({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [0.7, 0.9] : [1.05, 1]);
-  const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  // Mobile : pas d'animation 3D (le zoom rend mal sur petit écran) — carte statique
+  const rotate = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [20, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [1, 1] : [1.05, 1]);
+  const translate = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, -100]);
 
   return (
     <div
       ref={containerRef}
       style={{
-        // Mobile : 46rem — garde le scroll travel de l'animation sans le grand vide sous la carte
-        height: isMobile ? "46rem" : "80rem",
+        // Mobile : hauteur naturelle (pas d'animation) — desktop : scroll travel complet
+        height: isMobile ? "auto" : "80rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -38,8 +39,8 @@ export const ContainerScroll = ({
       }}
     >
       <div style={{
-        paddingTop: isMobile ? "2.5rem" : "10rem",
-        paddingBottom: isMobile ? "2.5rem" : "10rem",
+        paddingTop: isMobile ? "1.5rem" : "10rem",
+        paddingBottom: isMobile ? "1.5rem" : "10rem",
         width: "100%",
         position: "relative",
         perspective: "1000px",
@@ -84,7 +85,7 @@ export const Card = ({
       boxShadow:
         "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
       maxWidth: "64rem",
-      marginTop: "-3rem",
+      marginTop: isMobile ? "1.25rem" : "-3rem",
       marginLeft: "auto",
       marginRight: "auto",
       // Desktop : 40rem inchangé. Mobile : 22rem pour respecter le ratio du dashboard
