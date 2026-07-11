@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
   { label: "Services", href: "/#services" },
@@ -142,10 +141,6 @@ export default function Navbar() {
 
         {/* Right side */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
-          {/* ThemeToggle masqué sur mobile */}
-          <span className="nav-theme-toggle">
-            <ThemeToggle />
-          </span>
           {/* CTA masqué sur mobile (remplacé dans le menu) */}
           <a
             href="https://calendly.com/afele1845/30min"
