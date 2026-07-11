@@ -10,6 +10,7 @@ const CATEGORIES = [
   {
     icon: FileText,
     title: "Devis & Facturation",
+    subtitle: "Facturez en 3 minutes, sans jamais ressaisir.",
     color: "#F5C842",
     hero: true,
     features: [
@@ -32,6 +33,7 @@ const CATEGORIES = [
   {
     icon: Bell,
     title: "Relances & Suivi",
+    subtitle: "Plus aucun devis oublié, plus aucune facture impayée.",
     color: "#F5C842",
     hero: true,
     features: [
@@ -49,6 +51,7 @@ const CATEGORIES = [
   {
     icon: PhoneIncoming,
     title: "Agent IA & Booking",
+    subtitle: "Une standardiste IA qui décroche à votre place, 24h/24.",
     color: "#4ADE80",
     features: [
       "Réceptionniste IA WhatsApp & téléphone 24h/24",
@@ -61,6 +64,7 @@ const CATEGORIES = [
   {
     icon: Mic,
     title: "Assistant & IA Vocale",
+    subtitle: "Vous dictez, l'IA écrit. Vos mains restent sur le chantier.",
     color: "#4ADE80",
     features: [
       "Assistant vocal : bâtiment, administratif, juridique",
@@ -72,6 +76,7 @@ const CATEGORIES = [
   {
     icon: Receipt,
     title: "Comptabilité & Dépenses",
+    subtitle: "Une photo suffit. Votre comptable reçoit tout, prêt.",
     color: "#60A5FA",
     features: [
       "Scan tickets & factures fournisseurs via WhatsApp",
@@ -83,6 +88,7 @@ const CATEGORIES = [
   {
     icon: Star,
     title: "Avis & Réputation",
+    subtitle: "Vos meilleurs chantiers deviennent des avis 5 étoiles.",
     color: "#FBBF24",
     features: [
       "Demande d'avis Google Maps auto fin de chantier",
@@ -92,6 +98,7 @@ const CATEGORIES = [
   {
     icon: Monitor,
     title: "ERP & Gestion",
+    subtitle: "Chantiers, équipes et heures : tout piloté d'un seul écran.",
     color: "#A78BFA",
     features: [
       "Interface OS : devis, factures, chantiers, planning",
@@ -108,6 +115,7 @@ const CATEGORIES = [
   {
     icon: Shield,
     title: "Données & Infrastructure",
+    subtitle: "Vos données, en France, protégées — et à vous.",
     color: "#34D399",
     features: [
       "Hébergement 100% France",
@@ -196,16 +204,25 @@ function CategoryCard({ cat, delay, colSpan }: {
         <div aria-hidden style={{ position: "absolute", top: "-20%", right: "-10%", width: 180, height: 180, background: `radial-gradient(circle, ${accent}18, transparent 70%)`, filter: "blur(30px)", pointerEvents: "none" }} />
 
         {/* Header */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.25rem" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", marginBottom: "1rem" }}>
           <div style={{ width: 40, height: 40, borderRadius: "10px", background: `${accent}15`, border: `1px solid ${accent}30`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
             <Icon size={20} color={accent} strokeWidth={1.5} />
           </div>
-          <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1rem", color: "var(--text)", lineHeight: 1.2 }}>
-            {cat.title}
-          </h3>
-          <span style={{ marginLeft: "auto", fontSize: "0.65rem", fontWeight: 700, color: accent, background: `${accent}15`, border: `1px solid ${accent}25`, padding: "2px 8px", borderRadius: "999px", whiteSpace: "nowrap", flexShrink: 0 }}>
-            {cat.features.length} fonctions
-          </span>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1rem", color: "var(--text)", lineHeight: 1.2 }}>
+                {cat.title}
+              </h3>
+              <span style={{ marginLeft: "auto", fontSize: "0.62rem", fontWeight: 700, color: accent, background: `${accent}15`, border: `1px solid ${accent}25`, padding: "2px 8px", borderRadius: "999px", whiteSpace: "nowrap", flexShrink: 0 }}>
+                {cat.features.length}
+              </span>
+            </div>
+            {cat.subtitle && (
+              <p style={{ fontSize: "0.82rem", color: `${accent}`, opacity: 0.85, fontWeight: 600, lineHeight: 1.35, marginTop: "0.3rem" }}>
+                {cat.subtitle}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Feature list */}
@@ -251,10 +268,10 @@ export default function Services() {
             Fonctionnalités
           </span>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "var(--text)", marginBottom: ".75rem" }}>
-            Tout ce que <span style={{ color: "#F5C842" }}>Floxia</span> fait pour vous
+            Tout ce que <span style={{ color: "#F5C842" }}>Floxia</span> fait —<br />pour que vous n&apos;ayez plus à le faire
           </h2>
-          <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem" }}>
-            50+ fonctionnalités IA organisées en 8 modules — activables à la carte
+          <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem", maxWidth: "40rem", margin: "0 auto" }}>
+            50+ automatisations IA réparties en 8 modules. Vous activez ce dont vous avez besoin, Floxia s&apos;occupe du reste.
           </p>
         </motion.div>
 

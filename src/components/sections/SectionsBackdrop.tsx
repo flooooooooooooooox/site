@@ -39,7 +39,7 @@ export default function SectionsBackdrop() {
       <MeshGradient
         style={{ width: "100%", height: "100%" }}
         colors={colors}
-        speed={0.4}
+        speed={0.15}
         distortion={1.6}
         swirl={1.1}
         // Optimisation : rendu en 1x (au lieu de 2x) + plafond de pixels bas.
