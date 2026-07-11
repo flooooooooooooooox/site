@@ -140,121 +140,179 @@ export default function TradesSection() {
           </h2>
         </div>
 
-        {/* Tabs */}
+        {/* ===== Fenêtre OS ===== */}
         <div style={{
-          display: "flex", flexWrap: "wrap", justifyContent: "center",
-          gap: "0.5rem", marginBottom: "2.5rem",
+          borderRadius: "1.1rem",
+          border: "1px solid rgba(var(--surface-rgb),0.12)",
+          background: "rgba(10,15,25,0.55)",
+          backdropFilter: "blur(18px) saturate(160%)",
+          WebkitBackdropFilter: "blur(18px) saturate(160%)",
+          overflow: "hidden",
+          boxShadow: "0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03) inset",
         }}>
-          {TRADES.map((t, i) => (
-            <button
-              key={t.slug}
-              onClick={() => setActive(i)}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: "0.4rem",
-                padding: "0.55rem 1.1rem", borderRadius: "999px", cursor: "pointer",
-                fontWeight: 600, fontSize: "0.82rem", border: "none",
-                transition: "all 0.2s",
-                background: active === i ? t.color : "rgba(var(--surface-rgb),0.04)",
-                color: active === i ? "#0F1923" : "rgba(var(--text-rgb),0.55)",
-                boxShadow: active === i ? `0 4px 20px ${t.color}40` : "none",
-              }}
-            >
-              <span>{t.emoji}</span>
-              {t.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Content panel */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={trade.slug}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "2rem",
-              padding: "2.5rem",
-              borderRadius: "1.5rem",
-              background: "rgba(var(--surface-rgb),0.03)",
-              border: `1px solid ${trade.color}22`,
-              backdropFilter: "blur(16px)",
-              position: "relative",
-              overflow: "hidden",
-            }}
-            className="trades-panel"
-          >
-            {/* Glow */}
-            <div aria-hidden style={{
-              position: "absolute", top: "-30%", left: "-10%",
-              width: "300px", height: "300px",
-              background: `radial-gradient(circle, ${trade.color}12, transparent 70%)`,
-              filter: "blur(40px)", pointerEvents: "none",
-            }} />
-
-            {/* Left */}
-            <div style={{ position: "relative", zIndex: 1 }}>
-              <div style={{
-                display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                marginBottom: "1.25rem",
-              }}>
-                <span style={{ fontSize: "2rem" }}>{trade.emoji}</span>
-                <span style={{
-                  fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em",
-                  textTransform: "uppercase", color: trade.color,
-                  background: `${trade.color}12`,
-                  border: `1px solid ${trade.color}25`,
-                  padding: "3px 10px", borderRadius: "999px",
-                }}>
-                  {trade.label}
-                </span>
-              </div>
-              <h3 style={{
-                fontFamily: "var(--font-nunito)", fontWeight: 900,
-                fontSize: "clamp(1.2rem,2.5vw,1.6rem)", color: "var(--text)",
-                lineHeight: 1.25, marginBottom: "1.5rem",
-              }}>
-                {trade.headline}
-              </h3>
-              <Link
-                href={trade.href}
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                  padding: "0.75rem 1.5rem", borderRadius: "0.75rem",
-                  background: trade.color, color: "#0F1923",
-                  fontWeight: 700, fontSize: "0.88rem", textDecoration: "none",
-                }}
-              >
-                Voir Floxia {trade.label} →
-              </Link>
+          {/* Barre de titre */}
+          <div style={{
+            display: "flex", alignItems: "center", gap: "0.75rem",
+            padding: "0.65rem 1rem",
+            background: "rgba(var(--surface-rgb),0.05)",
+            borderBottom: "1px solid rgba(var(--surface-rgb),0.08)",
+          }}>
+            {/* Traffic lights */}
+            <div style={{ display: "flex", gap: "7px", flexShrink: 0 }}>
+              <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#FF5F57" }} />
+              <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#FEBC2E" }} />
+              <span style={{ width: 12, height: 12, borderRadius: "50%", background: "#28C840" }} />
             </div>
-
-            {/* Right — features */}
-            <ul style={{
-              listStyle: "none", padding: 0, margin: 0,
-              display: "flex", flexDirection: "column", gap: "0.75rem",
-              position: "relative", zIndex: 1,
+            {/* Barre d'adresse */}
+            <div style={{
+              flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "0.45rem",
+              maxWidth: "26rem", margin: "0 auto",
+              padding: "0.32rem 1rem", borderRadius: "999px",
+              background: "rgba(0,0,0,0.25)",
+              border: "1px solid rgba(var(--surface-rgb),0.08)",
+              fontSize: "0.72rem", color: "rgba(var(--text-rgb),0.5)", fontWeight: 600,
+              whiteSpace: "nowrap", overflow: "hidden",
             }}>
-              {trade.features.map((f) => (
-                <li key={f} style={{
-                  display: "flex", alignItems: "flex-start", gap: "0.6rem",
-                  fontSize: "0.88rem", color: "rgba(var(--text-rgb),0.7)", lineHeight: 1.5,
-                }}>
-                  <span style={{
-                    width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
-                    background: `${trade.color}15`, border: `1px solid ${trade.color}30`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: "0.65rem", color: trade.color, fontWeight: 700, marginTop: "1px",
-                  }}>✓</span>
-                  {f}
-                </li>
+              <span style={{ color: "#4ADE80", fontSize: "0.6rem" }}>🔒</span>
+              <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+                floxia.app/<span style={{ color: trade.color }}>{trade.slug}</span>
+              </span>
+            </div>
+            {/* Faux boutons fenêtre */}
+            <div style={{ display: "flex", gap: "0.5rem", flexShrink: 0, color: "rgba(var(--text-rgb),0.3)", fontSize: "0.8rem" }}>
+              <span>—</span><span>▢</span>
+            </div>
+          </div>
+
+          {/* Corps : sidebar + contenu */}
+          <div className="trades-os-body">
+            {/* Sidebar métiers */}
+            <nav className="trades-os-sidebar" aria-label="Choisir un métier">
+              <p className="trades-os-sidebar-title">MÉTIERS</p>
+              {TRADES.map((t, i) => (
+                <button
+                  key={t.slug}
+                  onClick={() => setActive(i)}
+                  className="trades-os-item"
+                  style={{
+                    background: active === i ? `${t.color}18` : "transparent",
+                    borderLeft: `3px solid ${active === i ? t.color : "transparent"}`,
+                    color: active === i ? "var(--text)" : "rgba(var(--text-rgb),0.5)",
+                    fontWeight: active === i ? 700 : 500,
+                  }}
+                >
+                  <span style={{ fontSize: "1rem" }}>{t.emoji}</span>
+                  <span className="trades-os-item-label">{t.label}</span>
+                </button>
               ))}
-            </ul>
-          </motion.div>
-        </AnimatePresence>
+            </nav>
+
+            {/* Écran principal */}
+            <div style={{ position: "relative", minWidth: 0 }}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={trade.slug}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                  className="trades-panel"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "2rem",
+                    padding: "clamp(1.4rem, 3vw, 2.5rem)",
+                    position: "relative",
+                    overflow: "hidden",
+                    minHeight: "100%",
+                  }}
+                >
+                  {/* Glow */}
+                  <div aria-hidden style={{
+                    position: "absolute", top: "-30%", left: "-10%",
+                    width: "300px", height: "300px",
+                    background: `radial-gradient(circle, ${trade.color}12, transparent 70%)`,
+                    filter: "blur(40px)", pointerEvents: "none",
+                  }} />
+
+                  {/* Left */}
+                  <div style={{ position: "relative", zIndex: 1 }}>
+                    <div style={{
+                      display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                      marginBottom: "1.25rem",
+                    }}>
+                      <span style={{ fontSize: "2rem" }}>{trade.emoji}</span>
+                      <span style={{
+                        fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em",
+                        textTransform: "uppercase", color: trade.color,
+                        background: `${trade.color}12`,
+                        border: `1px solid ${trade.color}25`,
+                        padding: "3px 10px", borderRadius: "999px",
+                      }}>
+                        {trade.label}
+                      </span>
+                    </div>
+                    <h3 style={{
+                      fontFamily: "var(--font-nunito)", fontWeight: 900,
+                      fontSize: "clamp(1.2rem,2.5vw,1.6rem)", color: "var(--text)",
+                      lineHeight: 1.25, marginBottom: "1.5rem",
+                    }}>
+                      {trade.headline}
+                    </h3>
+                    <Link
+                      href={trade.href}
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                        padding: "0.75rem 1.5rem", borderRadius: "0.75rem",
+                        background: trade.color, color: "#0F1923",
+                        fontWeight: 700, fontSize: "0.88rem", textDecoration: "none",
+                      }}
+                    >
+                      Voir Floxia {trade.label} →
+                    </Link>
+                  </div>
+
+                  {/* Right — features */}
+                  <ul style={{
+                    listStyle: "none", padding: 0, margin: 0,
+                    display: "flex", flexDirection: "column", gap: "0.75rem",
+                    position: "relative", zIndex: 1,
+                  }}>
+                    {trade.features.map((f) => (
+                      <li key={f} style={{
+                        display: "flex", alignItems: "flex-start", gap: "0.6rem",
+                        fontSize: "0.88rem", color: "rgba(var(--text-rgb),0.7)", lineHeight: 1.5,
+                      }}>
+                        <span style={{
+                          width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
+                          background: `${trade.color}15`, border: `1px solid ${trade.color}30`,
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                          fontSize: "0.65rem", color: trade.color, fontWeight: 700, marginTop: "1px",
+                        }}>✓</span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Barre de statut */}
+          <div style={{
+            display: "flex", alignItems: "center", justifyContent: "space-between",
+            padding: "0.45rem 1rem",
+            borderTop: "1px solid rgba(var(--surface-rgb),0.08)",
+            background: "rgba(var(--surface-rgb),0.04)",
+            fontSize: "0.68rem", color: "rgba(var(--text-rgb),0.35)", fontWeight: 600,
+          }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80" }} />
+              Floxia ERP · Connecté
+            </span>
+            <span>{TRADES.length} métiers disponibles</span>
+          </div>
+        </div>
 
         {/* Link to all trades */}
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
@@ -271,7 +329,62 @@ export default function TradesSection() {
       </div>
 
       <style>{`
-        @media (max-width: 640px) {
+        .trades-os-body {
+          display: grid;
+          grid-template-columns: 190px 1fr;
+          min-height: 340px;
+        }
+        .trades-os-sidebar {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          padding: 0.75rem 0.5rem;
+          border-right: 1px solid rgba(var(--surface-rgb),0.08);
+          background: rgba(0,0,0,0.15);
+        }
+        .trades-os-sidebar-title {
+          font-size: 0.6rem;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          color: rgba(var(--text-rgb),0.3);
+          padding: 0.25rem 0.75rem 0.5rem;
+        }
+        .trades-os-item {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          padding: 0.55rem 0.75rem;
+          border: none;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          font-size: 0.83rem;
+          text-align: left;
+          transition: all 0.18s;
+          white-space: nowrap;
+        }
+        .trades-os-item:hover { background: rgba(var(--surface-rgb),0.06) !important; }
+        @media (max-width: 700px) {
+          .trades-os-body {
+            grid-template-columns: 1fr;
+            min-height: 0;
+          }
+          .trades-os-sidebar {
+            flex-direction: row;
+            overflow-x: auto;
+            border-right: none;
+            border-bottom: 1px solid rgba(var(--surface-rgb),0.08);
+            padding: 0.5rem 0.6rem;
+            gap: 0.35rem;
+            scrollbar-width: none;
+          }
+          .trades-os-sidebar::-webkit-scrollbar { display: none; }
+          .trades-os-sidebar-title { display: none; }
+          .trades-os-item {
+            border-left: none !important;
+            border-radius: 999px;
+            padding: 0.45rem 0.85rem;
+            flex-shrink: 0;
+          }
           .trades-panel { grid-template-columns: 1fr !important; }
         }
       `}</style>
