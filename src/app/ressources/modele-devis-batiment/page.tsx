@@ -75,7 +75,7 @@ export default function ModeleDevis() {
             type: "ul",
             items: [
               "Modèle Word/Excel gratuit — vous repartez de zéro à chaque fois, vous ressaisissez les prestations, vous calculez la TVA à la main, vous risquez les erreurs et les oublis.",
-              "Pré-modèle de devis IA (Floxia) — l'IA reconnaît le type de chantier, propose les lignes de prestations adaptées, applique automatiquement la bonne TVA (5,5%, 10%, 20%) et votre catalogue de prix.",
+              "Pré-modèle de devis IA (Floxia) — l'IA reconnaît le type de chantier, propose les lignes de prestations adaptées avec votre catalogue de prix, et vous choisissez la TVA (5,5%, 10%, 20%) sur chaque ligne.",
               "Résultat : un devis professionnel conforme en quelques clics au lieu de 30 minutes de saisie.",
             ],
           },

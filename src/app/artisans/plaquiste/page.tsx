@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ["logiciel devis plaquiste", "devis plaquiste WhatsApp", "logiciel plâtrerie", "ERP plaquiste", "devis cloison placo"],
   openGraph: {
     title: "Logiciel devis plaquiste — Floxia",
-    description: "Devis plâtrerie depuis WhatsApp ou sur l'application Floxia ERP. Cloisons, doublage, isolation — calcul au m² automatique.",
+    description: "Devis plâtrerie depuis WhatsApp ou sur l'application Floxia ERP. Cloisons, doublage, isolation — devis vocal en 3 minutes.",
     url: "https://floxia.fr/artisans/plaquiste",
   },
   alternates: { canonical: "https://floxia.fr/artisans/plaquiste" },
@@ -33,22 +33,22 @@ export default function Plaquiste() {
         badge="Plâtrerie & Isolation"
         title="Logiciel de devis et facturation pour plaquistes"
         subtitle="Devis plâtrerie depuis WhatsApp ou sur l'application Floxia ERP."
-        intro="Plaquiste, plâtrier ou spécialiste de l'isolation : vos devis se calculent au m² de cloison, doublage ou plafond. Floxia génère vos devis plâtrerie par message vocal depuis WhatsApp, ou via des pré-modèles IA sur l'application, avec calcul des surfaces et TVA automatique."
+        intro="Plaquiste, plâtrier ou spécialiste de l'isolation : vos journées se passent sur les chantiers, pas derrière un bureau. Floxia génère vos devis plâtrerie par message vocal depuis WhatsApp, ou via des pré-modèles IA sur l'application, avec vos prix du catalogue et la TVA de votre choix sur chaque ligne."
         features={[
-          { title: "Devis plâtrerie au m² par vocal", desc: "Dictez les surfaces — cloisons, doublage, plafonds — Floxia calcule les m² et génère le devis en 3 min." },
-          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Floxia ERP, des pré-modèles de devis plâtrerie prêts à personnaliser, avec calcul au m² intégré." },
-          { title: "TVA isolation 5,5%", desc: "Application automatique de la TVA réduite pour les travaux d'isolation thermique éligibles." },
-          { title: "Fourniture + pose distinguées", desc: "Plaques, rails, isolant et main d'œuvre séparés automatiquement avec les bonnes TVA." },
+          { title: "Devis plâtrerie par vocal", desc: "Dictez la prestation — cloisons, doublage, plafonds — Floxia génère le devis PDF en 3 min avec vos prix du catalogue." },
+          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Floxia ERP, des pré-modèles de devis plâtrerie prêts à personnaliser avec vos prestations types." },
+          { title: "TVA isolation 5,5%", desc: "TVA 5,5, 10 ou 20% au choix sur chaque ligne : vous sélectionnez le taux réduit pour les travaux d'isolation thermique éligibles." },
+          { title: "Catalogue de prestations", desc: "Plaques, rails, isolant, pose : enregistrez vos prestations et vos prix dans votre bibliothèque, réutilisable sur chaque devis." },
           { title: "Relances automatiques", desc: "Devis non signé relancé à J+3, J+7, J+14. Facture impayée relancée automatiquement." },
           { title: "Signature & PV de réception", desc: "Signature électronique du devis et PV de réception générés automatiquement." },
         ]}
         useCases={[
-          "Cloisons et doublage d'un appartement neuf : devis multi-pièces au m², généré par vocal après le métré.",
-          "Isolation thermique intérieure (ITI) : devis TVA 5,5%, attestation, créé sur l'application à partir d'un pré-modèle.",
-          "Pose de faux plafonds dans des bureaux : devis avec métré au m² et finitions.",
+          "Cloisons et doublage d'un appartement neuf : devis multi-pièces généré par vocal en sortie de visite.",
+          "Isolation thermique intérieure (ITI) : devis TVA 5,5% créé sur l'application à partir d'un pré-modèle.",
+          "Pose de faux plafonds dans des bureaux : devis détaillé pièce par pièce, avec les finitions.",
           "Plaquiste indépendant : devis créés depuis le chantier, suivi des paiements depuis le téléphone.",
         ]}
-        closing="Floxia calcule vos surfaces de cloisons et plafonds, applique vos prix au m² et gère la TVA isolation. Vos devis de plâtrerie sont prêts en quelques minutes, sur le terrain comme au bureau."
+        closing="Vous dictez la prestation par vocal, Floxia génère le devis avec vos prix du catalogue et la TVA de votre choix. Vos devis de plâtrerie sont prêts en quelques minutes, sur le terrain comme au bureau."
         relatedTrades={[
           { label: "Peintre", href: "/artisans/peintre" },
           { label: "Carreleur", href: "/artisans/carreleur" },

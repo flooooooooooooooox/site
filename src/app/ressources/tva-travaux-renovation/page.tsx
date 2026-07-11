@@ -94,7 +94,7 @@ export default function TvaTravaux() {
           {
             type: "p",
             content:
-              "Pour appliquer un taux de 5,5% ou 10%, l'artisan doit obtenir du client une attestation (formulaire CERFA) confirmant que les conditions sont remplies : ancienneté du logement, nature des travaux. Cette attestation doit être conservée pour justifier le taux appliqué en cas de contrôle. Floxia génère automatiquement cette attestation avec chaque devis concerné.",
+              "Pour appliquer un taux de 5,5% ou 10%, l'artisan doit obtenir du client une attestation (formulaire CERFA) confirmant que les conditions sont remplies : ancienneté du logement, nature des travaux. Cette attestation doit être conservée pour justifier le taux appliqué en cas de contrôle. Une question sur cette attestation ou le formulaire CERFA ? L'assistant vocal IA de Floxia vous répond à tout moment.",
           },
           {
             type: "h2",
@@ -103,11 +103,11 @@ export default function TvaTravaux() {
           {
             type: "p",
             content:
-              "Sur un chantier mêlant plusieurs natures de travaux, il faut parfois appliquer des taux différents sur un même devis. C'est une source fréquente d'erreurs. Floxia applique automatiquement le bon taux de TVA ligne par ligne selon la nature de chaque prestation, et génère les attestations nécessaires — que vous créiez votre devis depuis WhatsApp ou sur l'application.",
+              "Sur un chantier mêlant plusieurs natures de travaux, il faut parfois appliquer des taux différents sur un même devis. C'est une source fréquente d'erreurs. Avec Floxia, vous choisissez le bon taux de TVA ligne par ligne selon la nature de chaque prestation, et Floxia l'applique sur le devis — que vous le créiez depuis WhatsApp ou sur l'application. En cas de doute, l'assistant vocal IA répond à vos questions sur le taux à retenir.",
           },
           {
             type: "cta",
-            content: "Laissez Floxia gérer la TVA de vos devis automatiquement",
+            content: "Créez vos devis avec le bon taux de TVA sur chaque ligne, avec Floxia",
           },
         ]}
       />

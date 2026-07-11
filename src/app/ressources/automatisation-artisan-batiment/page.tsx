@@ -78,12 +78,12 @@ export default function AutomatisationArtisan() {
           },
           {
             type: "h2",
-            content: "Tâche 3 — Facturation à l'avancement du chantier",
+            content: "Tâche 3 — Factures d'acompte et facture finale",
           },
           {
             type: "p",
             content:
-              "La facturation à l'avancement est complexe : facture d'acompte à la signature, situation de travaux intermédiaire, facture finale à la réception. Chaque étape doit être conforme, numérotée dans l'ordre, avec les bons taux de TVA. Floxia déclenche automatiquement chaque document au bon moment, selon le calendrier que vous avez défini lors de la création du devis.",
+              "La facturation d'un chantier suit des étapes précises : facture d'acompte à la signature, facture finale à la réception. Chaque document doit être conforme, numéroté dans l'ordre, avec les bons taux de TVA. Floxia déclenche automatiquement chaque document au bon moment, selon les conditions définies lors de la création du devis.",
           },
           {
             type: "h2",

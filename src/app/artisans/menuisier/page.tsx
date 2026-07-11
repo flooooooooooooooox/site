@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ["logiciel devis menuisier", "devis menuisier WhatsApp", "logiciel menuiserie", "ERP menuisier", "devis agencement bois"],
   openGraph: {
     title: "Logiciel devis menuisier — Floxia",
-    description: "Devis menuiserie depuis WhatsApp ou sur l'application Floxia ERP. Fenêtres, portes, agencement — TVA automatique.",
+    description: "Devis menuiserie depuis WhatsApp ou sur l'application Floxia ERP. Fenêtres, portes, agencement — TVA 5,5/10/20% au choix.",
     url: "https://floxia.fr/artisans/menuisier",
   },
   alternates: { canonical: "https://floxia.fr/artisans/menuisier" },
@@ -33,19 +33,19 @@ export default function Menuisier() {
         badge="Menuiserie & Agencement"
         title="Logiciel de devis et facturation pour menuisiers"
         subtitle="Devis menuiserie depuis WhatsApp ou sur l'application Floxia ERP."
-        intro="Menuisier bois, alu ou PVC, agenceur ou poseur : vos devis mêlent fourniture et pose, avec des dimensions précises et des finitions variées. Floxia génère vos devis depuis WhatsApp par message vocal, ou via des pré-modèles IA sur l'application, en appliquant la bonne TVA selon le type de travaux."
+        intro="Menuisier bois, alu ou PVC, agenceur ou poseur : vos devis mêlent fourniture et pose, avec des dimensions précises et des finitions variées. Floxia génère vos devis depuis WhatsApp par message vocal, ou via des pré-modèles IA sur l'application, avec la TVA de votre choix selon le type de travaux."
         features={[
           { title: "Devis menuiserie par vocal", desc: "Dictez les ouvrages — fenêtres, portes, placards, escaliers — et recevez le devis PDF en 3 min depuis WhatsApp." },
           { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Floxia ERP, des pré-modèles de devis menuiserie prêts à personnaliser, idéal pour l'agencement sur mesure." },
-          { title: "Fourniture + pose distinguées", desc: "Séparez automatiquement la fourniture et la main d'œuvre, avec les TVA adaptées à chaque ligne." },
-          { title: "TVA rénovation automatique", desc: "5,5% pour les menuiseries d'isolation thermique, 10% en rénovation, 20% pour le neuf. Calculé automatiquement." },
+          { title: "Catalogue de prestations", desc: "Fenêtres, portes, placards, pose : enregistrez vos prestations et vos prix dans votre bibliothèque, réutilisable sur chaque devis." },
+          { title: "TVA rénovation au choix", desc: "5,5% pour les menuiseries d'isolation thermique, 10% en rénovation, 20% pour le neuf. Vous choisissez le taux sur chaque ligne, Floxia l'applique sur le devis." },
           { title: "Relances automatiques", desc: "Devis non signé relancé à J+3, J+7, J+14. Facture impayée relancée automatiquement." },
           { title: "Signature & PV de réception", desc: "Signature électronique du devis et PV de réception de pose générés automatiquement." },
         ]}
         useCases={[
-          "Remplacement de 6 fenêtres en rénovation énergétique : devis avec TVA 5,5%, attestation, fourniture et pose distinguées — généré par vocal en sortie de métré.",
+          "Remplacement de 6 fenêtres en rénovation énergétique : devis avec TVA 5,5%, fourniture et pose détaillées — généré par vocal en sortie de visite.",
           "Agencement sur mesure d'une cuisine : devis détaillé multi-postes créé sur l'application à partir d'un pré-modèle, avec plan de prix enregistré.",
-          "Pose de portes intérieures dans un immeuble neuf : devis TVA 20%, facturation à l'avancement par étage.",
+          "Pose de portes intérieures dans un immeuble neuf : devis TVA 20%, facture d'acompte à la commande et facture finale à la pose.",
           "Menuisier indépendant : devis créés depuis le chantier, suivi des signatures et paiements depuis le téléphone.",
         ]}
         closing="Que vous travailliez le bois, l'aluminium ou le PVC, Floxia s'adapte à vos ouvrages et à vos finitions. La création de devis devient instantanée, sur le terrain comme à l'atelier."

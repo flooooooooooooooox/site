@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ["logiciel devis chauffagiste", "devis chauffagiste WhatsApp", "logiciel chauffage", "ERP chauffagiste", "devis pompe à chaleur RGE"],
   openGraph: {
     title: "Logiciel devis chauffagiste — Floxia",
-    description: "Devis chauffage depuis WhatsApp ou sur l'application Floxia ERP. Pompe à chaleur, chaudière, RGE — TVA et aides automatiques.",
+    description: "Devis chauffage depuis WhatsApp ou sur l'application Floxia ERP. Pompe à chaleur, chaudière, RGE — TVA 5,5/10/20% au choix.",
     url: "https://floxia.fr/artisans/chauffagiste",
   },
   alternates: { canonical: "https://floxia.fr/artisans/chauffagiste" },
@@ -33,22 +33,22 @@ export default function Chauffagiste() {
         badge="Chauffage & Énergie"
         title="Logiciel de devis et facturation pour chauffagistes"
         subtitle="Devis chauffage depuis WhatsApp ou sur l'application Floxia ERP."
-        intro="Chauffagiste ou installateur RGE : vos devis impliquent des équipements coûteux, des aides à l'énergie et un formalisme strict (RGE, MaPrimeRénov', CEE). Floxia génère vos devis chauffage par message vocal depuis WhatsApp, ou via des pré-modèles IA sur l'application, en gérant la TVA réduite et les attestations."
+        intro="Chauffagiste ou installateur RGE : vos devis impliquent des équipements coûteux, des aides à l'énergie et un formalisme strict (RGE, MaPrimeRénov', CEE). Floxia génère vos devis chauffage par message vocal depuis WhatsApp, ou via des pré-modèles IA sur l'application — et l'assistant vocal IA répond à vos questions sur la TVA réduite, MaPrimeRénov' ou les CEE."
         features={[
           { title: "Devis chauffage par vocal", desc: "Dictez l'installation — pompe à chaleur, chaudière, radiateurs — et recevez le devis PDF en 3 min depuis WhatsApp." },
           { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Floxia ERP, des pré-modèles de devis chauffage prêts à personnaliser, avec les équipements courants." },
-          { title: "TVA 5,5% économies d'énergie", desc: "Application automatique de la TVA réduite pour les travaux d'amélioration énergétique éligibles." },
-          { title: "Attestations RGE & aides", desc: "Documentation pour MaPrimeRénov', CEE et attestations TVA réduite générées avec le devis." },
+          { title: "TVA 5,5% économies d'énergie", desc: "TVA 5,5, 10 ou 20% au choix sur chaque ligne : vous sélectionnez le taux réduit pour les travaux d'amélioration énergétique éligibles." },
+          { title: "Assistant vocal IA aides & RGE", desc: "Une question sur MaPrimeRénov', les CEE ou l'attestation TVA réduite ? L'assistant vocal IA de Floxia vous répond à tout moment." },
           { title: "Relances & contrats d'entretien", desc: "Relances automatiques et rappels d'entretien annuel des installations." },
           { title: "Signature & PV de réception", desc: "Signature électronique et PV de mise en service générés automatiquement." },
         ]}
         useCases={[
-          "Installation d'une pompe à chaleur air/eau : devis avec TVA 5,5%, attestation RGE et estimation des aides, généré par vocal.",
-          "Remplacement de chaudière par une chaudière à condensation : devis créé sur l'application avec un pré-modèle, documentation CEE incluse.",
+          "Installation d'une pompe à chaleur air/eau : devis avec TVA 5,5% généré par vocal, et l'assistant IA répond à vos questions sur les aides.",
+          "Remplacement de chaudière par une chaudière à condensation : devis créé sur l'application avec un pré-modèle.",
           "Contrat d'entretien annuel : Floxia rappelle automatiquement les échéances et génère les factures récurrentes.",
           "Dépannage chauffage en urgence : devis envoyé sur place au client par WhatsApp.",
         ]}
-        closing="Floxia gère la complexité réglementaire du chauffage — RGE, TVA réduite, aides à l'énergie — pour que vous vous concentriez sur l'installation. Vos devis sont conformes et prêts en quelques minutes."
+        closing="Floxia accélère vos devis et son assistant vocal IA répond à vos questions sur le RGE, la TVA réduite et les aides à l'énergie — pour que vous vous concentriez sur l'installation. Vos devis sont prêts en quelques minutes."
         relatedTrades={[
           { label: "Plombier", href: "/artisans/plombier" },
           { label: "Électricien", href: "/artisans/electricien" },

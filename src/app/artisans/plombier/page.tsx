@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ["logiciel devis plombier", "devis plombier WhatsApp", "logiciel plombier chauffagiste", "ERP plombier", "gestion plombier bâtiment"],
   openGraph: {
     title: "Logiciel devis plombier — Floxia",
-    description: "Devis et factures pour plombiers depuis WhatsApp en 3 minutes. TVA automatique, e-facturation 2026, relances.",
+    description: "Devis et factures pour plombiers depuis WhatsApp en 3 minutes. TVA 5,5/10/20% au choix, e-facturation 2026, relances.",
     url: "https://floxia.fr/artisans/plombier",
   },
   alternates: { canonical: "https://floxia.fr/artisans/plombier" },
@@ -33,20 +33,20 @@ export default function Plombier() {
         badge="Plomberie & Chauffage"
         title="Logiciel de devis et facturation pour plombiers"
         subtitle="Devis plomberie depuis WhatsApp ou sur l'application Floxia ERP."
-        intro="Plombier, chauffagiste ou sanitaire : vos chantiers vont du dépannage d'urgence à la rénovation complète de salle de bain. Floxia comprend le vocabulaire de la plomberie et génère vos devis PDF depuis votre téléphone, avec la bonne TVA selon le type de travaux, sans ressaisie manuelle."
+        intro="Plombier, chauffagiste ou sanitaire : vos chantiers vont du dépannage d'urgence à la rénovation complète de salle de bain. Floxia comprend le vocabulaire de la plomberie et génère vos devis PDF depuis votre téléphone, avec la TVA de votre choix sur chaque ligne, sans ressaisie manuelle."
         features={[
           { title: "Devis plomberie par vocal", desc: "Dictez vos prestations — remplacement chauffe-eau, rénovation salle de bain, pose radiateurs — et recevez le devis PDF en 3 min." },
           { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Floxia ERP, l'IA propose des pré-modèles de devis plomberie prêts à personnaliser. Idéal au bureau pour les chantiers complexes." },
-          { title: "TVA plomberie automatique", desc: "5,5% pour les travaux d'économie d'énergie (pompe à chaleur, chaudière à condensation), 10% pour rénovation, 20% pour le neuf." },
-          { title: "Gestion des acomptes", desc: "Facture d'acompte à la signature du devis, situation intermédiaire, facture finale — tout le cycle est géré automatiquement." },
+          { title: "TVA plomberie au choix", desc: "5,5% pour les travaux d'économie d'énergie (pompe à chaleur, chaudière à condensation), 10% pour rénovation, 20% pour le neuf. Vous choisissez le taux sur chaque ligne." },
+          { title: "Gestion des acomptes", desc: "Facture d'acompte à la signature du devis, facture finale en fin de chantier — tout le cycle est géré automatiquement." },
           { title: "Relances clients automatiques", desc: "Devis non répondu à J+3, J+7, J+14. Plus besoin de relancer manuellement — Floxia s'en charge." },
-          { title: "Attestation RGE et TVA réduite", desc: "Pour les travaux d'économies d'énergie, Floxia génère les attestations et la documentation réglementaire." },
+          { title: "Assistant vocal IA", desc: "Une question sur l'attestation TVA réduite, le RGE ou les normes ? L'assistant vocal IA de Floxia vous répond à tout moment." },
           { title: "Suivi chantier en temps réel", desc: "Tableau de bord centralisé pour suivre l'avancement, les paiements et les relances de tous vos chantiers." },
         ]}
         useCases={[
           "Un plombier reçoit un appel pour remplacer un ballon d'eau chaude en urgence. Il dicte les prestations depuis le van, le devis est envoyé au client par WhatsApp avant même d'arriver sur le chantier.",
-          "Rénovation complète de salle de bain : devis en plusieurs postes (démolition, plomberie, carrelage sous-traité), facturation à l'avancement, PV de réception final — tout automatisé.",
-          "Installateur de pompes à chaleur : attestation RGE, TVA 5,5%, déclaration CEE — Floxia gère le formalisme réglementaire spécifique.",
+          "Rénovation complète de salle de bain : devis en plusieurs postes (démolition, plomberie, sanitaire), facture d'acompte puis facture finale, PV de réception — tout automatisé.",
+          "Installateur de pompes à chaleur : devis TVA 5,5% généré par vocal, et l'assistant IA répond à vos questions sur le RGE et les CEE.",
           "PME de 8 plombiers : chaque technicien gère ses devis depuis le terrain. Le gérant voit en temps réel le CA du mois, les devis en attente et les factures impayées.",
         ]}
         closing="Que vous interveniez en dépannage d'urgence ou sur des rénovations longues durée, Floxia s'adapte à votre rythme de travail. Aucune formation requise — si vous savez utiliser WhatsApp, vous savez utiliser Floxia."

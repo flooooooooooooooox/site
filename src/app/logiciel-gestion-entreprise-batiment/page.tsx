@@ -39,10 +39,10 @@ const breadcrumb = {
 };
 
 const PILLARS = [
-  { title: "Devis & facturation centralisés", desc: "Toute l'entreprise produit des devis conformes depuis WhatsApp ou l'application, avec une numérotation et une TVA gérées automatiquement." },
+  { title: "Devis & facturation centralisés", desc: "Toute l'entreprise produit des devis conformes depuis WhatsApp ou l'application, avec une numérotation automatique et la TVA 5,5/10/20% au choix sur chaque ligne." },
   { title: "Pilotage en temps réel", desc: "Tableau de bord du chiffre d'affaires, des chantiers en cours, des devis signés et des factures impayées — pour décider vite." },
-  { title: "Gestion des équipes", desc: "Plannings, suivi des heures et coordination des collaborateurs et sous-traitants depuis un seul outil." },
-  { title: "Trésorerie & marges", desc: "Prévisions de trésorerie, suivi des dépenses et des marges chantier par chantier pour protéger votre rentabilité." },
+  { title: "Gestion des équipes", desc: "Plannings, suivi des heures et gestion de vos salariés depuis un seul outil." },
+  { title: "Trésorerie & dépenses", desc: "Prévisions de trésorerie, dashboard des dépenses et du chiffre d'affaires mois par mois pour protéger votre rentabilité." },
   { title: "Conformité e-facturation 2026", desc: "Votre entreprise est nativement conforme à l'obligation de facturation électronique, sans module supplémentaire." },
   { title: "Hébergement souverain", desc: "Données chiffrées, hébergées en France, conformité RGPD — un point clé pour les marchés et la sous-traitance B2B." },
 ];

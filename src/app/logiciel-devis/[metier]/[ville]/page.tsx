@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ metier: s
   if (!m || !v) return {};
   const url = `https://floxia.fr/logiciel-devis/${m.slug}/${v.slug}`;
   const title = `Logiciel de devis ${m.nom} ${v.prepo} ${v.nom} — Floxia`;
-  const description = `Logiciel de devis et facturation pour ${m.nom} ${v.prepo} ${v.nom} (${v.region}). Créez vos devis ${m.label.toLowerCase()} depuis WhatsApp ou sur l'application Floxia ERP. TVA automatique, e-facturation 2026.`;
+  const description = `Logiciel de devis et facturation pour ${m.nom} ${v.prepo} ${v.nom} (${v.region}). Créez vos devis ${m.label.toLowerCase()} depuis WhatsApp ou sur l'application Floxia ERP. TVA 5,5/10/20% au choix, e-facturation 2026.`;
   return {
     title,
     description,
@@ -81,7 +81,7 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Vous êtes {m.nom} {v.prepo} {v.nom} ou dans {v.region} ? Floxia vous permet de créer vos devis et factures en quelques minutes, depuis WhatsApp par message vocal ou sur l&apos;application Floxia ERP avec des pré-modèles de devis générés par l&apos;IA. Spécialisé dans {m.domaine}, Floxia applique automatiquement la bonne TVA et génère des documents conformes.
+          Vous êtes {m.nom} {v.prepo} {v.nom} ou dans {v.region} ? Floxia vous permet de créer vos devis et factures en quelques minutes, depuis WhatsApp par message vocal ou sur l&apos;application Floxia ERP avec des pré-modèles de devis générés par l&apos;IA. Spécialisé dans {m.domaine}, Floxia génère des documents conformes avec la TVA de votre choix sur chaque ligne.
         </p>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "1rem" }}>
@@ -100,7 +100,7 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
           ))}
           <li style={{ display: "flex", gap: "0.7rem", color: "rgba(var(--text-rgb),0.7)", fontSize: ".92rem", lineHeight: 1.7 }}>
             <span style={{ color: "#F5C842", fontWeight: 700, flexShrink: 0 }}>→</span>
-            TVA appliquée automatiquement : {m.tva}.
+            TVA au choix sur chaque ligne : {m.tva}.
           </li>
         </ul>
 

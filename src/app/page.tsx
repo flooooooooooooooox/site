@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Floxia — Logiciel de devis et factures pour artisans du bâtiment",
     description:
-      "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Floxia ERP. Pré-modèles IA, TVA automatique, e-facturation 2026. Pour tous les artisans du bâtiment.",
+      "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Floxia ERP. Pré-modèles IA, TVA 5,5/10/20% au choix, e-facturation 2026. Pour tous les artisans du bâtiment.",
     url: "https://floxia.fr",
     images: [{ url: "https://floxia.fr/dashboard-floxia.jpg", width: 842, height: 414, alt: "Tableau de bord Floxia — logiciel ERP artisan bâtiment" }],
   },

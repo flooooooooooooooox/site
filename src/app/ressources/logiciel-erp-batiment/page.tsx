@@ -74,7 +74,7 @@ export default function ErpBatiment() {
           {
             type: "p",
             content:
-              "La plupart des artisans commencent avec un ERP généraliste (Sage, Dolibarr, Cegid) ou un logiciel de facturation basique (Factur-X, Freebe). Le problème : ces outils ne parlent pas le langage du bâtiment. Ils ne gèrent pas les TVA multiples propres aux travaux de rénovation (5,5%, 10%, 20%), l'attestation CERFA pour TVA réduite, les PV de réception, ou la facturation à l'avancement.",
+              "La plupart des artisans commencent avec un ERP généraliste (Sage, Dolibarr, Cegid) ou un logiciel de facturation basique (Factur-X, Freebe). Le problème : ces outils ne parlent pas le langage du bâtiment. Ils ne gèrent pas les TVA multiples propres aux travaux de rénovation (5,5%, 10%, 20%), les PV de réception, ou les factures d'acompte et de solde.",
           },
           {
             type: "ul",
@@ -91,11 +91,11 @@ export default function ErpBatiment() {
           {
             type: "ul",
             items: [
-              "Devis PDF automatique avec TVA bâtiment correcte (5,5% rénovation, 10% travaux neufs sur existant, 20% neuf)",
+              "Devis PDF automatique avec les TVA bâtiment au choix sur chaque ligne (5,5% rénovation énergétique, 10% travaux sur existant, 20% neuf)",
               "Facturation électronique conforme e-facturation 2026 (obligation légale pour toutes les entreprises à partir de 2026)",
               "Signature électronique à valeur légale intégrée — le client signe depuis son téléphone",
               "Relances automatiques — devis non signé à J+3, facture impayée à J+15",
-              "Gestion multi-chantiers — suivi en temps réel de l'avancement, des dépenses et des marges",
+              "Gestion multi-chantiers — suivi en temps réel de l'avancement, des dépenses et du chiffre d'affaires",
             ],
           },
           {
@@ -105,7 +105,7 @@ export default function ErpBatiment() {
           {
             type: "p",
             content:
-              "Les ERP traditionnels demandent de saisir manuellement chaque ligne de devis, chaque prestation, chaque montant. Avec un ERP IA comme Floxia, vous décrivez votre chantier à voix haute depuis WhatsApp — \"installation salle de bain 8m², faïence, plomberie, sanitaires\" — et le logiciel génère automatiquement le devis complet avec les bonnes TVA, les bonnes unités et votre grille tarifaire.",
+              "Les ERP traditionnels demandent de saisir manuellement chaque ligne de devis, chaque prestation, chaque montant. Avec un ERP IA comme Floxia, vous décrivez votre chantier à voix haute depuis WhatsApp — \"installation salle de bain 8m², faïence, plomberie, sanitaires\" — et le logiciel génère automatiquement le devis complet avec votre grille tarifaire et la TVA de votre choix sur chaque ligne.",
           },
           {
             type: "h2",
