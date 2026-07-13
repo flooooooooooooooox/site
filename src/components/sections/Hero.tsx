@@ -1,17 +1,8 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import Image from "next/image";
-
-const MORPH_WORDS = ["Automatisée", "Intelligente", "Connectée", "Souveraine", "Libérée"];
-const TYPED = [
-  "Générez vos devis et factures depuis WhatsApp en 3 minutes.",
-  "Un message vocal suffit pour créer un devis PDF complet.",
-  "Ou créez vos devis sur l'application Floxia ERP avec des pré-modèles IA.",
-  "Votre agent IA répond aux clients pendant que vous travaillez.",
-  "Relances automatiques, signature électronique, zéro ressaisie.",
-];
 
 const HERO_STYLES = `
 @keyframes hero-breathe {
@@ -114,34 +105,9 @@ function MagneticBtn({ children, className, style, href, onClick }: {
 }
 
 export default function Hero() {
-  const [wordIdx, setWordIdx] = useState(0);
-  const [typed, setTyped] = useState("");
-  const [lineIdx, setLineIdx] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-  const charRef = useRef(0);
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
   const giantRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const t = setInterval(() => setWordIdx(i => (i + 1) % MORPH_WORDS.length), 2800);
-    return () => clearInterval(t);
-  }, []);
-
-  useEffect(() => {
-    const line = TYPED[lineIdx];
-    const delay = deleting ? 28 : 52;
-    const t = setTimeout(() => {
-      if (!deleting) {
-        if (charRef.current < line.length) { charRef.current++; setTyped(line.slice(0, charRef.current)); }
-        else { setTimeout(() => setDeleting(true), 2200); return; }
-      } else {
-        if (charRef.current > 0) { charRef.current--; setTyped(line.slice(0, charRef.current)); }
-        else { setDeleting(false); setLineIdx(i => (i + 1) % TYPED.length); return; }
-      }
-    }, delay);
-    return () => clearTimeout(t);
-  }, [typed, deleting, lineIdx]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -177,25 +143,14 @@ export default function Hero() {
           <span className="hero-text-glow">Floxia</span>
           <span style={{ display: "inline-flex", alignItems: "center", marginLeft: "0.75rem", padding: "0 0.5rem", borderRadius: "0.3rem", background: "#F5C842", color: "#1E2B45", fontSize: "clamp(1rem,2vw,1.8rem)", letterSpacing: ".08em", verticalAlign: "middle", position: "relative", top: "-.1em", fontWeight: 900, boxShadow: "0 4px 20px rgba(245,200,66,0.45)" }}>OS</span>
           <br />
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={wordIdx}
-              initial={{ opacity: 0, y: "0.5em", rotateX: -45 }}
-              animate={{ opacity: 1, y: "0em", rotateX: 0 }}
-              exit={{ opacity: 0, y: "-0.5em", rotateX: 45 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              style={{ color: "#F5C842", display: "inline-block", transformOrigin: "center", transformStyle: "preserve-3d", willChange: "transform, opacity" }}
-            >
-              {MORPH_WORDS[wordIdx]}
-            </motion.span>
-          </AnimatePresence>.<br />
+          <span style={{ color: "#F5C842" }}>Automatisée</span>.<br />
           <span style={{ fontSize: "clamp(1.8rem,4vw,3.5rem)", color: "rgba(232,237,244,0.65)" }}>Votre temps. Rendu.</span>
         </motion.h1>
 
         <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.38 }}
           style={{ marginBottom: "2.5rem", color: "rgba(232,237,244,0.72)", fontSize: "clamp(1rem,2.2vw,1.2rem)", fontWeight: 300, lineHeight: 1.7, maxWidth: 620, margin: "0 auto 2.5rem" }}>
-          <span style={{ display: "block", minHeight: "1.7em" }}>
-            {typed}<span style={{ display: "inline-block", width: 1, height: "1em", background: "#F5C842", margin: "0 1px", verticalAlign: "middle", animation: "cursor-blink 0.8s steps(1) infinite" }} />
+          <span style={{ display: "block" }}>
+            Générez vos devis et factures depuis WhatsApp en 3 minutes — par vocal ou sur l&apos;application ERP.
           </span>
           <span>−80 % de votre temps administratif éliminé.</span>
         </motion.p>
