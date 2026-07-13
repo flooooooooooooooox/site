@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/cgv", "/mentions-legales", "/politique-de-confidentialite", "/support"],
+      disallow: ["/cgv", "/support"],
     },
-    sitemap: "https://floxia.fr/sitemap.xml",
+    sitemap: "https://florianai.fr/sitemap.xml",
   };
 }
