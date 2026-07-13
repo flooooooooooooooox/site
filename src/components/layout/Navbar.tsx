@@ -50,7 +50,7 @@ export default function Navbar() {
           ...(scrolled
             ? {
                 top: "16px",
-                maxWidth: "780px",
+                maxWidth: "980px",
                 width: "calc(100% - 2rem)",
                 borderRadius: "9999px",
                 padding: "0.55rem 1.25rem",
@@ -110,9 +110,12 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "1.3rem",
+            gap: "1.1rem",
             flex: 1,
             justifyContent: "center",
+            margin: "0 1.25rem",
+            minWidth: 0,
+            overflow: "hidden",
           }}
           className="nav-links-desktop"
         >
@@ -250,10 +253,11 @@ export default function Navbar() {
       )}
 
       <style>{`
-        @media (max-width: 720px) {
+        @media (max-width: 960px) {
           .nav-links-desktop { display: none !important; }
           .nav-hamburger { display: flex !important; flex-direction: column; }
-          .nav-theme-toggle { display: none !important; }
+        }
+        @media (max-width: 720px) {
           .nav-cta-desktop { display: none !important; }
         }
       `}</style>
