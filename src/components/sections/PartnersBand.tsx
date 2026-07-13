@@ -114,6 +114,15 @@ export default function PartnersBand() {
         >
           🔒 IA 100% européenne (Mistral AI) — vos données ne quittent jamais l&apos;UE, en conformité RGPD.
         </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.35 }}
+          style={{ fontSize: "0.72rem", color: "rgba(var(--text-rgb),0.4)", textAlign: "center", fontWeight: 500, maxWidth: "42rem" }}
+        >
+          ✉️ Floxia utilise votre compte Gmail pour envoyer automatiquement vos devis, factures et e-mails professionnels à vos clients, en votre nom.
+        </motion.p>
       </div>
     </section>
   );
