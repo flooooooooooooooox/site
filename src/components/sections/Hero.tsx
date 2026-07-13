@@ -209,6 +209,13 @@ export default function Hero() {
             Voir les services →
           </MagneticBtn>
         </motion.div>
+
+        {/* Objectif de l'application — en clair pour les visiteurs (et la validation OAuth Google) */}
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.7 }}
+          style={{ marginTop: "1.6rem", color: "rgba(232,237,244,0.5)", fontSize: "0.8rem", fontWeight: 400, lineHeight: 1.6, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
+          Floxia est une application de gestion pour les artisans du bâtiment : elle crée vos devis et factures,
+          les envoie à vos clients par e-mail via votre compte Gmail, et automatise vos relances.
+        </motion.p>
       </div>
     </section>
   );
