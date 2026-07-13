@@ -27,7 +27,7 @@ export default function CtaBand() {
           height: "100%",
           objectFit: "cover",
           zIndex: 0,
-          opacity: 0.25,
+          opacity: 0.6,
         }}
       />
       {/* Dark overlay */}
@@ -35,7 +35,7 @@ export default function CtaBand() {
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(135deg, rgba(5,8,13,0.95) 0%, rgba(26,14,0,0.82) 50%, rgba(5,8,13,0.95) 100%)",
+          background: "linear-gradient(135deg, rgba(5,8,13,0.78) 0%, rgba(26,14,0,0.55) 50%, rgba(5,8,13,0.78) 100%)",
           zIndex: 1,
         }}
       />
