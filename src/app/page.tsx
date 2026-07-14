@@ -10,7 +10,6 @@ import CtaBand from "@/components/sections/CtaBand";
 import PartnersBand from "@/components/sections/PartnersBand";
 import TradesSection from "@/components/sections/TradesSection";
 import StatsSection from "@/components/sections/StatsSection";
-import Faq from "@/components/sections/Faq";
 import {
   Perspective3DFloor,
   CubeEdge,
@@ -97,7 +96,20 @@ export default function Home() {
         <Perspective3DFloor />
         <Pricing />
         <DepthFade />
-        <Faq />
+        {/* Lien vers la FAQ (page dédiée) */}
+        <section style={{ padding: "1rem 6vw 3rem", textAlign: "center" }}>
+          <Link
+            href="/faq"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.6rem",
+              padding: "0.9rem 1.8rem", borderRadius: "999px",
+              border: "1px solid rgba(245,200,66,0.3)", background: "rgba(245,200,66,0.06)",
+              color: "#F5C842", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
+            }}
+          >
+            Questions fréquentes — voir toutes les réponses →
+          </Link>
+        </section>
         <TradesSection />
         <CtaBand />
       </div>
