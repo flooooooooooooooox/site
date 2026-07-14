@@ -4,7 +4,7 @@ import Services from "@/components/sections/Services";
 import ErpOsSection from "@/components/sections/ErpOsSection";
 import StorySection from "@/components/sections/StorySection";
 import RoiCalculator from "@/components/sections/RoiCalculator";
-import Comparatif from "@/components/sections/Comparatif";
+import Link from "next/link";
 import Pricing from "@/components/sections/Pricing";
 import CtaBand from "@/components/sections/CtaBand";
 import PartnersBand from "@/components/sections/PartnersBand";
@@ -14,7 +14,6 @@ import Faq from "@/components/sections/Faq";
 import {
   Perspective3DFloor,
   CubeEdge,
-  RippleDepth,
   DepthFade,
 } from "@/components/ui/SectionTransitions";
 
@@ -81,8 +80,20 @@ export default function Home() {
         <StorySection />
         <CubeEdge />
         <RoiCalculator />
-        <RippleDepth />
-        <Comparatif />
+        {/* Lien vers le comparatif (page dédiée) */}
+        <section style={{ padding: "1rem 6vw 3rem", textAlign: "center" }}>
+          <Link
+            href="/comparatif"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.6rem",
+              padding: "0.9rem 1.8rem", borderRadius: "999px",
+              border: "1px solid rgba(245,200,66,0.3)", background: "rgba(245,200,66,0.06)",
+              color: "#F5C842", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
+            }}
+          >
+            Comparer Floxia vs Obat, Sage, EBP — 21 critères →
+          </Link>
+        </section>
         <Perspective3DFloor />
         <Pricing />
         <DepthFade />
