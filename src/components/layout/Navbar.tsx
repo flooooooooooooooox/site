@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -24,14 +24,7 @@ function scrollTo(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
 }
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
     <>
@@ -42,34 +35,15 @@ export default function Navbar() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          left: "50%",
-          transform: "translateX(-50%)",
-          willChange: "max-width, padding, border-radius, background, top",
-          transition:
-            "max-width 0.5s cubic-bezier(0.22,1,0.36,1), width 0.5s cubic-bezier(0.22,1,0.36,1), padding 0.5s cubic-bezier(0.22,1,0.36,1), border-radius 0.5s cubic-bezier(0.22,1,0.36,1), top 0.5s cubic-bezier(0.22,1,0.36,1), background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease",
-          ...(scrolled
-            ? {
-                top: "16px",
-                maxWidth: "980px",
-                width: "calc(100% - 2rem)",
-                borderRadius: "9999px",
-                padding: "0.55rem 1.25rem",
-                background: "rgba(5,8,13,0.95)",
-                backdropFilter: "blur(32px)",
-                border: "1px solid rgba(245,200,66,0.2)",
-                boxShadow: "0 8px 40px rgba(0,0,0,0.4)",
-              }
-            : {
-                top: 0,
-                maxWidth: "2000px",
-                width: "100%",
-                borderRadius: 0,
-                padding: "0.85rem 5vw",
-                background: "rgba(5,8,13,0.9)",
-                backdropFilter: "blur(24px)",
-                border: "1px solid rgba(255,255,255,0.06)",
-                boxShadow: "none",
-              }),
+          left: 0,
+          right: 0,
+          top: 0,
+          width: "100%",
+          padding: "0.9rem 5vw",
+          background: "rgba(5,8,13,0.72)",
+          backdropFilter: "blur(20px) saturate(160%)",
+          WebkitBackdropFilter: "blur(20px) saturate(160%)",
+          borderBottom: "1px solid rgba(245,200,66,0.12)",
         }}
       >
         {/* Logo */}
