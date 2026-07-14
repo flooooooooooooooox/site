@@ -1,30 +1,36 @@
 "use client";
-import { useRef, useState, MouseEvent } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FileText, Bell, PhoneIncoming, Mic, Receipt,
-  Star, Monitor, Shield, ChevronDown,
+  Star, Monitor, Shield, LucideIcon,
 } from "lucide-react";
 
-const CATEGORIES = [
+interface Category {
+  icon: LucideIcon;
+  title: string;
+  subtitle: string;
+  color: string;
+  features: string[];
+}
+
+const CATEGORIES: Category[] = [
   {
     icon: FileText,
     title: "Devis & Facturation",
     subtitle: "Facturez en 3 minutes, sans jamais ressaisir.",
     color: "#F5C842",
-    hero: true,
     features: [
       "Devis PDF par vocal/écrit WhatsApp en 3 min",
       "Devis sur l'application Floxia ERP (pré-modèles IA)",
       "PV de réception + facture finale automatisés",
       "Factures d'acompte, finale, tous types",
-      "Factures périodiques & récurrentes automatiques (contrats d'entretien, abonnements)",
+      "Factures périodiques & récurrentes automatiques",
       "Gestion des avenants et avoirs automatiques",
       "Signature électronique intégrée (valeur légale)",
       "Conformité e-facturation 2026 (e-reporting pro)",
       "Bibliothèque de prix & catalogue réutilisable",
-      "TVA multiples : 5,5% / 10% / 20% au choix par ligne",
-      "Modèles de devis personnalisables",
+      "TVA 5,5% / 10% / 20% au choix par ligne",
       "Numérotation automatique devis & factures",
       "Archivage automatique clients / docs / signatures",
     ],
@@ -34,14 +40,12 @@ const CATEGORIES = [
     title: "Relances & Suivi",
     subtitle: "Plus aucun devis oublié, plus aucune facture impayée.",
     color: "#F5C842",
-    hero: true,
     features: [
       "Relances devis non signés : J+3 / J+7 / J+14",
-      "Relances factures impayées automatiques (échéance dépassée, J+X)",
+      "Relances factures impayées automatiques (J+X)",
       "Relances signature avenants & avoirs",
       "Alerte chantier → e-mail pro depuis un vocal en 30s",
       "Relance garantie 1 an (J+365 fin de chantier)",
-      "Gestion des retards automatique",
       "Suivi hebdomadaire : CA, chantiers, devis signés",
       "Envoi factures à date calculée automatiquement",
       "Notification devis signé en temps réel",
@@ -108,7 +112,6 @@ const CATEGORIES = [
       "Collecte photos fin de chantier via WhatsApp",
       "CRM intelligent avec historique client complet",
       "Dashboard dépenses & CA par mois",
-      "Archivage structuré sur nos serveurs",
     ],
   },
   {
@@ -121,187 +124,163 @@ const CATEGORIES = [
       "Conformité RGPD native",
       "Sauvegarde quotidienne serveurs français",
       "Export données à tout moment, sans friction",
-      "Zéro friction envoi e-mail (boîte prospect)",
       "Site sécurisé, rapide, interactif",
     ],
   },
 ];
 
-const COLOR_GRADIENTS: Record<string, string> = {
-  "#F5C842": "rgba(245,200,66,0.10)",
-  "#4ADE80": "rgba(74,222,128,0.08)",
-  "#60A5FA": "rgba(96,165,250,0.08)",
-  "#FBBF24": "rgba(251,191,36,0.08)",
-  "#A78BFA": "rgba(167,139,250,0.08)",
-  "#34D399": "rgba(52,211,153,0.08)",
-};
-
-function CategoryCard({ cat, delay, colSpan }: {
-  cat: typeof CATEGORIES[0]; delay: number; colSpan: number;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const shineRef = useRef<HTMLDivElement>(null);
-  const [expanded, setExpanded] = useState(false);
-  const Icon = cat.icon;
-  const accent = cat.color;
-  const bg = COLOR_GRADIENTS[accent] ?? "rgba(var(--surface-rgb),0.04)";
-  const showAll = cat.features.length <= 6 || expanded;
-  const visible = showAll ? cat.features : cat.features.slice(0, 5);
-
-  function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
-    const el = cardRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const x = e.clientX - r.left, y = e.clientY - r.top;
-    const rx = ((y - r.height / 2) / r.height) * -7;
-    const ry = ((x - r.width / 2) / r.width) * 7;
-    el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-    if (shineRef.current)
-      shineRef.current.style.background = `radial-gradient(circle at ${x}px ${y}px, ${accent}22 0%, transparent 65%)`;
-  }
-
-  function handleMouseLeave() {
-    if (cardRef.current) cardRef.current.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
-    if (shineRef.current) shineRef.current.style.background = "transparent";
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      style={{ gridColumn: `span ${colSpan}` }}
-    >
-      <div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        onMouseEnter={e => {
-          (e.currentTarget as HTMLDivElement).style.borderColor = `${accent}44`;
-          (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 60px rgba(0,0,0,0.4), 0 0 30px ${accent}10`;
-        }}
-        style={{
-          height: "100%",
-          background: `linear-gradient(135deg, ${bg} 0%, rgba(var(--surface-rgb),0.02) 100%)`,
-          border: `1px solid rgba(var(--surface-rgb),0.07)`,
-          backdropFilter: "blur(12px)",
-          borderRadius: "1.25rem",
-          padding: "1.75rem",
-          position: "relative",
-          overflow: "hidden",
-          cursor: "default",
-          transition: "border-color 0.3s, box-shadow 0.3s",
-          willChange: "transform",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <div ref={shineRef} style={{ position: "absolute", inset: 0, pointerEvents: "none", borderRadius: "1.25rem", transition: "background 0.12s" }} />
-
-        {/* Glow orb */}
-        <div aria-hidden style={{ position: "absolute", top: "-20%", right: "-10%", width: 180, height: 180, background: `radial-gradient(circle, ${accent}18, transparent 70%)`, filter: "blur(30px)", pointerEvents: "none" }} />
-
-        {/* Header */}
-        <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", marginBottom: "1rem" }}>
-          <div style={{ width: 40, height: 40, borderRadius: "10px", background: `${accent}15`, border: `1px solid ${accent}30`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <Icon size={20} color={accent} strokeWidth={1.5} />
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1rem", color: "var(--text)", lineHeight: 1.2 }}>
-                {cat.title}
-              </h3>
-              <span style={{ marginLeft: "auto", fontSize: "0.62rem", fontWeight: 700, color: accent, background: `${accent}15`, border: `1px solid ${accent}25`, padding: "2px 8px", borderRadius: "999px", whiteSpace: "nowrap", flexShrink: 0 }}>
-                {cat.features.length}
-              </span>
-            </div>
-            {cat.subtitle && (
-              <p style={{ fontSize: "0.82rem", color: `${accent}`, opacity: 0.85, fontWeight: 600, lineHeight: 1.35, marginTop: "0.3rem" }}>
-                {cat.subtitle}
-              </p>
-            )}
-          </div>
-        </div>
-
-        {/* Feature list */}
-        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.55rem", flex: 1 }}>
-          {visible.map((f, i) => (
-            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.55rem", fontSize: "0.82rem", color: "rgba(var(--text-rgb),0.7)", lineHeight: 1.45 }}>
-              <span style={{ width: 5, height: 5, borderRadius: "50%", background: accent, flexShrink: 0, marginTop: "0.45em", opacity: 0.8 }} />
-              {f}
-            </li>
-          ))}
-        </ul>
-
-        {/* Show more */}
-        {cat.features.length > 6 && (
-          <button
-            onClick={() => setExpanded(v => !v)}
-            style={{ display: "flex", alignItems: "center", gap: "0.3rem", marginTop: "0.9rem", background: "none", border: "none", cursor: "pointer", color: accent, fontSize: "0.75rem", fontWeight: 700, padding: 0, opacity: 0.8 }}
-          >
-            {expanded ? "Voir moins" : `+${cat.features.length - 5} de plus`}
-            <ChevronDown size={13} style={{ transform: expanded ? "rotate(180deg)" : "none", transition: "transform 0.25s" }} />
-          </button>
-        )}
-      </div>
-    </motion.div>
-  );
-}
-
-// Bento: 3 cols. hero cards span 2, others span 1
-const LAYOUT = [2, 2, 1, 1, 1, 1, 2, 2];
-
 export default function Services() {
+  const [active, setActive] = useState(0);
+  const cat = CATEGORIES[active];
+  const Icon = cat.icon;
+
   return (
-    <section id="services" style={{ background: "transparent", padding: "clamp(3.5rem, 9vw, 7rem) 0" }}>
-      <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 6vw" }}>
+    <section id="services" style={{ background: "transparent", padding: "clamp(3.5rem, 8vw, 6rem) 0" }}>
+      <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "0 6vw" }}>
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: "4rem" }}
+          style={{ textAlign: "center", marginBottom: "2.5rem" }}
         >
           <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
             Fonctionnalités
           </span>
-          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "var(--text)", marginBottom: ".75rem" }}>
-            Tout ce que <span style={{ color: "#F5C842" }}>Floxia</span> fait —<br />pour que vous n&apos;ayez plus à le faire
+          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "var(--text)", marginBottom: ".6rem", lineHeight: 1.1 }}>
+            Une chaîne qui tourne <span style={{ color: "#F5C842" }}>toute seule</span>
           </h2>
-          <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem", maxWidth: "40rem", margin: "0 auto" }}>
-            50+ automatisations IA réparties en 8 modules. Vous activez ce dont vous avez besoin, Floxia s&apos;occupe du reste.
+          <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1rem", maxWidth: "38rem", margin: "0 auto" }}>
+            8 modules connectés. Cliquez sur une étape pour voir ce qu&apos;elle automatise.
           </p>
         </motion.div>
 
-        <div
-          className="services-bento"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "1.25rem",
-            alignItems: "start",
-          }}
-        >
-          {CATEGORIES.map((cat, i) => (
-            <CategoryCard
-              key={cat.title}
-              cat={cat}
-              delay={i * 0.07}
-              colSpan={LAYOUT[i]}
-            />
-          ))}
+        {/* ===== Chaîne de nœuds ===== */}
+        <div className="flow-track" role="tablist" aria-label="Modules Floxia">
+          {CATEGORIES.map((c, i) => {
+            const NodeIcon = c.icon;
+            const isActive = i === active;
+            return (
+              <div key={c.title} className="flow-node-wrap">
+                {/* Connecteur (sauf avant le 1er) */}
+                {i > 0 && <span className="flow-link" aria-hidden />}
+                <button
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setActive(i)}
+                  className="flow-node"
+                  title={c.title}
+                  style={{
+                    background: isActive ? c.color : "rgba(var(--surface-rgb),0.05)",
+                    borderColor: isActive ? c.color : "rgba(var(--surface-rgb),0.12)",
+                    boxShadow: isActive ? `0 0 22px ${c.color}66` : "none",
+                    color: isActive ? "#0F1923" : c.color,
+                  }}
+                >
+                  <NodeIcon size={19} strokeWidth={2} />
+                </button>
+              </div>
+            );
+          })}
         </div>
+
+        {/* ===== Panneau du module actif ===== */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={cat.title}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              marginTop: "2rem",
+              borderRadius: "1.25rem",
+              border: `1px solid ${cat.color}33`,
+              background: `linear-gradient(135deg, ${cat.color}0D 0%, rgba(var(--surface-rgb),0.02) 100%)`,
+              backdropFilter: "blur(14px)",
+              padding: "clamp(1.4rem, 3vw, 2rem)",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            {/* Glow d'angle */}
+            <div aria-hidden style={{ position: "absolute", top: "-30%", right: "-8%", width: 260, height: 260, background: `radial-gradient(circle, ${cat.color}1A, transparent 70%)`, filter: "blur(38px)", pointerEvents: "none" }} />
+
+            {/* En-tête du module */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.9rem", marginBottom: "1.4rem", position: "relative", zIndex: 1 }}>
+              <div style={{ width: 46, height: 46, borderRadius: "12px", background: `${cat.color}18`, border: `1px solid ${cat.color}40`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Icon size={22} color={cat.color} strokeWidth={1.75} />
+              </div>
+              <div style={{ minWidth: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
+                  <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.15rem", color: "var(--text)", lineHeight: 1.2 }}>
+                    {cat.title}
+                  </h3>
+                  <span style={{ fontSize: "0.62rem", fontWeight: 700, color: cat.color, background: `${cat.color}15`, border: `1px solid ${cat.color}25`, padding: "2px 8px", borderRadius: "999px" }}>
+                    {cat.features.length} fonctions
+                  </span>
+                </div>
+                <p style={{ fontSize: "0.86rem", color: cat.color, opacity: 0.85, fontWeight: 600, marginTop: "0.15rem" }}>
+                  {cat.subtitle}
+                </p>
+              </div>
+            </div>
+
+            {/* Fonctions en 2 colonnes compactes */}
+            <ul className="flow-features" style={{ position: "relative", zIndex: 1 }}>
+              {cat.features.map((f) => (
+                <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.83rem", color: "rgba(var(--text-rgb),0.72)", lineHeight: 1.45 }}>
+                  <span style={{ width: 5, height: 5, borderRadius: "50%", background: cat.color, flexShrink: 0, marginTop: "0.5em" }} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       <style>{`
-        @media (max-width: 1024px) {
-          .services-bento { grid-template-columns: repeat(2, 1fr) !important; }
-          .services-bento > * { grid-column: span 1 !important; }
+        .flow-track {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 0;
+          max-width: 720px;
+          margin: 0 auto;
         }
-        @media (max-width: 640px) {
-          .services-bento { grid-template-columns: 1fr !important; }
-          .services-bento > * { grid-column: span 1 !important; }
+        .flow-node-wrap { display: inline-flex; align-items: center; }
+        .flow-link {
+          width: clamp(14px, 3vw, 34px);
+          height: 2px;
+          background: linear-gradient(to right, rgba(245,200,66,0.25), rgba(245,200,66,0.5));
+          flex-shrink: 0;
+        }
+        .flow-node {
+          width: 46px;
+          height: 46px;
+          border-radius: 13px;
+          border: 1px solid;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background .25s, box-shadow .25s, border-color .25s, transform .2s;
+          flex-shrink: 0;
+        }
+        .flow-node:hover { transform: translateY(-2px); }
+        .flow-features {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.65rem 1.5rem;
+        }
+        @media (max-width: 600px) {
+          .flow-features { grid-template-columns: 1fr; }
+          .flow-node { width: 40px; height: 40px; border-radius: 11px; }
         }
       `}</style>
     </section>
