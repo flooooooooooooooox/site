@@ -54,8 +54,8 @@ const PLANS = [
       "Standard IA 24h/24",
       "Agent IA WhatsApp 24h/24",
       "Relances automatiques",
-      "Rapprochement bancaire semi-auto (Bridge)",
       "Avis Google automatisés",
+      "Prévisions trésorerie",
       "3 utilisateurs",
     ],
     details: [
@@ -91,13 +91,6 @@ const PLANS = [
         items: [
           "Scan OCR tickets / factures fournisseurs (WhatsApp)",
           "Dashboard dépenses & TVA récupérable",
-        ],
-      },
-      {
-        category: "Rapprochement bancaire",
-        items: [
-          "Connexion bancaire sécurisée (Bridge · DSP2)",
-          "Détection des paiements semi-automatique : factures marquées « à valider », vous confirmez d'un clic",
         ],
       },
       { category: "Avis & réputation", items: ["Demandes automatiques d'avis Google"] },
