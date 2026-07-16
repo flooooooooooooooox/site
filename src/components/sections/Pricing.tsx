@@ -54,8 +54,8 @@ const PLANS = [
       "Standard IA 24h/24",
       "Agent IA WhatsApp 24h/24",
       "Relances automatiques",
+      "Rapprochement bancaire semi-auto (Bridge)",
       "Avis Google automatisés",
-      "Prévisions trésorerie",
       "3 utilisateurs",
     ],
     details: [
@@ -93,6 +93,13 @@ const PLANS = [
           "Dashboard dépenses & TVA récupérable",
         ],
       },
+      {
+        category: "Rapprochement bancaire",
+        items: [
+          "Connexion bancaire sécurisée (Bridge · DSP2)",
+          "Détection des paiements semi-automatique : factures marquées « à valider », vous confirmez d'un clic",
+        ],
+      },
       { category: "Avis & réputation", items: ["Demandes automatiques d'avis Google"] },
     ],
   },
@@ -107,7 +114,7 @@ const PLANS = [
     features: [
       "Tout Artisan Pro inclus",
       "Multi-chantiers",
-      "API & intégrations",
+      "Rapprochement bancaire 100% auto (Bridge)",
       "Manager de compte dédié",
       "SLA 99.9%",
       "Utilisateurs illimités",
@@ -119,6 +126,14 @@ const PLANS = [
       },
       { category: "Assistant vocal IA", items: ["Saisie vocale IA avancée (agenda, disponibilités)"] },
       { category: "Comptabilité & dépenses", items: ["Export comptabilité en 1 clic"] },
+      {
+        category: "Rapprochement bancaire",
+        items: [
+          "Connexion bancaire sécurisée (Bridge · DSP2)",
+          "Détection des paiements 100% automatique : les factures passent en « payée » toutes seules, relances stoppées",
+          "Suivi de trésorerie en temps réel",
+        ],
+      },
       {
         category: "Gestion équipe & chantiers",
         items: [

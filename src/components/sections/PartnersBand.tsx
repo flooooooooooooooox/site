@@ -64,6 +64,18 @@ const PARTNERS = [
       </svg>
     ),
   },
+  {
+    name: "Bridge",
+    sub: "Rapprochement bancaire (DSP2)",
+    svg: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="5" fill="#2563EB" fillOpacity="0.12"/>
+        <path d="M12 3l7 3.5v1.5H5V6.5L12 3z" fill="#2563EB"/>
+        <path d="M6.5 10v6M10 10v6M14 10v6M17.5 10v6" stroke="#2563EB" strokeWidth="1.6" strokeLinecap="round"/>
+        <rect x="5" y="17.5" width="14" height="1.8" rx="0.9" fill="#2563EB"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function PartnersBand() {
