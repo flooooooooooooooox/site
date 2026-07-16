@@ -72,6 +72,7 @@ const PLANS = [
         items: [
           "Suivi hebdo activité (CA, chantiers, devis)",
           "Relances devis non signés (J+3 / J+7 / J+14)",
+          "Relances signature avenants & avoirs",
           "Relances factures impayées automatiques (J+X)",
           "Marquez une facture « payée » d'un clic → les relances s'arrêtent automatiquement",
           "Alerte chantier → email pro",
