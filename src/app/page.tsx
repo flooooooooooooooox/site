@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
-import ErpOsSection from "@/components/sections/ErpOsSection";
 import StorySection from "@/components/sections/StorySection";
 import RoiCalculator from "@/components/sections/RoiCalculator";
 import Link from "next/link";
@@ -75,7 +74,6 @@ export default function Home() {
         <StatsSection />
         <Services />
         <DepthFade />
-        <ErpOsSection />
         <StorySection />
         <CubeEdge />
         <RoiCalculator />
