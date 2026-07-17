@@ -96,13 +96,13 @@ const HERO_STYLES = `
 }
 .hero-glass-pill:hover::before { left: 130%; }
 
-/* Panneau glass derriere le texte */
+/* Panneau glass derriere le texte — vrai style Apple : tres transparent, pas de fond blanc plein */
 .hero-text-glass {
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  background: linear-gradient(160deg, rgba(255,255,255,0.55), rgba(255,255,255,0.18));
-  border: 1px solid rgba(255,255,255,0.55);
-  box-shadow: 0 24px 60px -20px rgba(27,42,74,0.18);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  background: linear-gradient(160deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 8px 32px -12px rgba(27,42,74,0.1), inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
 /* E — degrade anime sur "Automatisee" */
@@ -238,33 +238,33 @@ export default function Hero() {
         }} />
       </div>
 
-      <div className="hero-split" style={{ position: "relative", zIndex: 10, maxWidth: "1280px", width: "100%", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "center" }}>
-        <div className="hero-split-text hero-text-glass" style={{ textAlign: "left", borderRadius: "1.5rem", padding: "clamp(1.6rem,3vw,2.6rem)" }}>
+      <div className="hero-split" style={{ position: "relative", zIndex: 10, maxWidth: "1200px", width: "100%", margin: "0 auto", display: "grid", gridTemplateColumns: "0.92fr 1.08fr", gap: "2.5rem", alignItems: "center" }}>
+        <div className="hero-split-text hero-text-glass" style={{ textAlign: "left", borderRadius: "1.5rem", padding: "clamp(2rem,3.4vw,2.8rem) clamp(1.8rem,3vw,2.4rem)" }}>
           <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
             className="hero-live-badge"
             style={{
-              display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "6px 18px",
-              borderRadius: "999px", marginBottom: "1.8rem",
+              display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "5px 14px",
+              borderRadius: "999px", marginBottom: "1.4rem",
             }}>
-            <span className="hero-live-dot" style={{ width: 7, height: 7, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 8px rgba(22,163,74,0.6)", display: "inline-block" }} />
-            <span style={{ color: "#2455D6", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <span className="hero-live-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 8px rgba(22,163,74,0.6)", display: "inline-block", flexShrink: 0 }} />
+            <span style={{ color: "#2455D6", fontSize: "0.64rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
               IA disponible 24h/24 — Hébergé en France
             </span>
           </motion.div>
 
           <h1
             style={{
-              marginBottom: "1.4rem", fontFamily: "var(--font-nunito)",
-              fontSize: "clamp(2.4rem,4.6vw,4.2rem)", fontWeight: 900, lineHeight: 1.02, letterSpacing: "-.03em",
+              marginBottom: "1.2rem", fontFamily: "var(--font-nunito)",
+              fontSize: "clamp(1.9rem,3vw,2.9rem)", fontWeight: 900, lineHeight: 1.06, letterSpacing: "-.03em",
               color: "#1B2A4A",
             }}>
             <span className="hero-line">
               <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
                 Cirrion
                 <span style={{
-                  display: "inline-flex", alignItems: "center", marginLeft: "0.6rem", padding: "0 0.5rem",
+                  display: "inline-flex", alignItems: "center", marginLeft: "0.5rem", padding: "0 0.4rem",
                   borderRadius: "0.3rem", background: "#2455D6", color: "#FFFFFF",
-                  fontSize: "clamp(0.9rem,1.6vw,1.3rem)", letterSpacing: ".08em", verticalAlign: "middle",
+                  fontSize: "clamp(0.65rem,1vw,0.85rem)", letterSpacing: ".08em", verticalAlign: "middle",
                   position: "relative", top: "-.08em", fontWeight: 900,
                 }}>OS</span>
               </motion.span>
@@ -276,7 +276,7 @@ export default function Hero() {
             </span>
             <span className="hero-line">
               <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
-                style={{ fontSize: "clamp(1.8rem,3.2vw,2.8rem)", color: "rgba(27,42,74,0.6)" }}>
+                style={{ fontSize: "clamp(1.2rem,2vw,1.8rem)", color: "rgba(27,42,74,0.6)" }}>
                 Votre temps. Rendu.
               </motion.span>
             </span>
@@ -285,8 +285,8 @@ export default function Hero() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
             className="hero-callout"
             style={{
-              marginBottom: "2.4rem", color: "#42527A", fontSize: "clamp(1rem,1.6vw,1.15rem)",
-              fontWeight: 400, lineHeight: 1.65, maxWidth: 520,
+              marginBottom: "2rem", color: "#42527A", fontSize: "clamp(0.88rem,1.1vw,0.98rem)",
+              fontWeight: 400, lineHeight: 1.6, maxWidth: 460,
             }}>
             Créez vos devis et factures en 3 minutes depuis WhatsApp — l&apos;ERP IA qui automatise devis, factures, relances et planning pour artisans du bâtiment et TPE de services.
             <br /><span className="hero-underline" style={{ color: "#2455D6", fontWeight: 700 }}>−90&nbsp;% de temps administratif en moins</span>. Conforme e-facturation 2026.
@@ -295,11 +295,11 @@ export default function Hero() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.62 }}
             style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
             <MagneticBtn href="https://calendly.com/afele1845/30min" className="hero-solid-btn"
-              style={{ padding: "1rem 2.2rem", borderRadius: "999px", fontSize: "0.92rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+              style={{ padding: "0.8rem 1.7rem", borderRadius: "999px", fontSize: "0.85rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
               Réserver une démo — 30 min
             </MagneticBtn>
             <MagneticBtn href="#services" className="hero-glass-pill"
-              style={{ padding: "1rem 2rem", borderRadius: "999px", fontSize: "0.88rem", color: "#2455D6", fontWeight: 700, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+              style={{ padding: "0.8rem 1.5rem", borderRadius: "999px", fontSize: "0.82rem", color: "#2455D6", fontWeight: 700, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
               Voir les services →
             </MagneticBtn>
           </motion.div>
