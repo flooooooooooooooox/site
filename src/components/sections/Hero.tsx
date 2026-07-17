@@ -96,8 +96,47 @@ const HERO_STYLES = `
 }
 .hero-glass-pill:hover::before { left: 130%; }
 
+/* Panneau glass derriere le texte */
+.hero-text-glass {
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: linear-gradient(160deg, rgba(255,255,255,0.55), rgba(255,255,255,0.18));
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 24px 60px -20px rgba(27,42,74,0.18);
+}
+
+/* E — degrade anime sur "Automatisee" */
+.hero-gradient-word {
+  background: linear-gradient(100deg, #2455D6 0%, #6C7CFF 35%, #2455D6 70%);
+  background-size: 240% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: heroGradientMove 6s ease-in-out infinite;
+}
+@keyframes heroGradientMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* A — soulignement anime (dessine au chargement) */
+.hero-underline { position: relative; display: inline-block; white-space: nowrap; }
+.hero-underline::after {
+  content: ""; position: absolute; left: 0; bottom: -0.05em; height: 0.11em; width: 100%;
+  background: currentColor; opacity: 0.35; border-radius: 2px;
+  transform: scaleX(0); transform-origin: left;
+  animation: heroDrawUnderline 0.7s cubic-bezier(0.16,1,0.3,1) 1.1s forwards;
+}
+@keyframes heroDrawUnderline { to { transform: scaleX(1); } }
+
+/* B — barre d'accent verticale devant le paragraphe */
+.hero-callout { position: relative; padding-left: 1rem; border-left: 2px solid rgba(36,85,214,0.35); }
+
+/* D — reveal ligne par ligne du H1 */
+.hero-line { display: block; overflow: hidden; }
+.hero-line > span { display: inline-block; }
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-blob, .hero-blob-2, .hero-float-badge, .hero-live-dot::after { animation: none !important; }
+  .hero-blob, .hero-blob-2, .hero-float-badge, .hero-live-dot::after, .hero-gradient-word, .hero-underline::after { animation: none !important; }
 }
 `;
 
@@ -200,7 +239,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-split" style={{ position: "relative", zIndex: 10, maxWidth: "1280px", width: "100%", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "center" }}>
-        <div className="hero-split-text" style={{ textAlign: "left" }}>
+        <div className="hero-split-text hero-text-glass" style={{ textAlign: "left", borderRadius: "1.5rem", padding: "clamp(1.6rem,3vw,2.6rem)" }}>
           <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
             className="hero-live-badge"
             style={{
@@ -213,35 +252,47 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.12 }}
+          <h1
             style={{
               marginBottom: "1.4rem", fontFamily: "var(--font-nunito)",
               fontSize: "clamp(2.4rem,4.6vw,4.2rem)", fontWeight: 900, lineHeight: 1.02, letterSpacing: "-.03em",
               color: "#1B2A4A",
             }}>
-            <span>Cirrion</span>
-            <span style={{
-              display: "inline-flex", alignItems: "center", marginLeft: "0.6rem", padding: "0 0.5rem",
-              borderRadius: "0.3rem", background: "#2455D6", color: "#FFFFFF",
-              fontSize: "clamp(0.9rem,1.6vw,1.3rem)", letterSpacing: ".08em", verticalAlign: "middle",
-              position: "relative", top: "-.08em", fontWeight: 900,
-            }}>OS</span>
-            <br />
-            <span style={{ color: "#2455D6" }}>Automatisée</span>.<br />
-            <span style={{ fontSize: "clamp(1.8rem,3.2vw,2.8rem)", color: "rgba(27,42,74,0.6)" }}>Votre temps. Rendu.</span>
-          </motion.h1>
+            <span className="hero-line">
+              <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+                Cirrion
+                <span style={{
+                  display: "inline-flex", alignItems: "center", marginLeft: "0.6rem", padding: "0 0.5rem",
+                  borderRadius: "0.3rem", background: "#2455D6", color: "#FFFFFF",
+                  fontSize: "clamp(0.9rem,1.6vw,1.3rem)", letterSpacing: ".08em", verticalAlign: "middle",
+                  position: "relative", top: "-.08em", fontWeight: 900,
+                }}>OS</span>
+              </motion.span>
+            </span>
+            <span className="hero-line">
+              <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] }} className="hero-gradient-word">
+                Automatisée.
+              </motion.span>
+            </span>
+            <span className="hero-line">
+              <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
+                style={{ fontSize: "clamp(1.8rem,3.2vw,2.8rem)", color: "rgba(27,42,74,0.6)" }}>
+                Votre temps. Rendu.
+              </motion.span>
+            </span>
+          </h1>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.24 }}
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
+            className="hero-callout"
             style={{
               marginBottom: "2.4rem", color: "#42527A", fontSize: "clamp(1rem,1.6vw,1.15rem)",
               fontWeight: 400, lineHeight: 1.65, maxWidth: 520,
             }}>
             Créez vos devis et factures en 3 minutes depuis WhatsApp — l&apos;ERP IA qui automatise devis, factures, relances et planning pour artisans du bâtiment et TPE de services.
-            <br />−90&nbsp;% de temps administratif en moins. Conforme e-facturation 2026.
+            <br /><span className="hero-underline" style={{ color: "#2455D6", fontWeight: 700 }}>−90&nbsp;% de temps administratif en moins</span>. Conforme e-facturation 2026.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.36 }}
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.62 }}
             style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
             <MagneticBtn href="https://calendly.com/afele1845/30min" className="hero-solid-btn"
               style={{ padding: "1rem 2.2rem", borderRadius: "999px", fontSize: "0.92rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
@@ -311,6 +362,7 @@ export default function Hero() {
           .hero-split-text > div:first-child { margin-left: auto; margin-right: auto; }
           .hero-split-image { order: -1; }
           .hero-float-badge { display: none; }
+          .hero-callout { border-left: none; padding-left: 0; border-top: 2px solid rgba(36,85,214,0.25); padding-top: 0.75rem; }
         }
       `}</style>
     </section>
