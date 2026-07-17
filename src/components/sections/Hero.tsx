@@ -29,6 +29,8 @@ const HERO_STYLES = `
   transform: translateY(-2px);
   background: #1E46C2;
 }
+.hero-gmail-disclosure summary::-webkit-details-marker { display: none; }
+.hero-gmail-disclosure summary:hover { color: rgba(36,85,214,0.8) !important; }
 `;
 
 function MagneticBtn({ children, className, style, href }: {
@@ -150,11 +152,20 @@ export default function Hero() {
             </MagneticBtn>
           </motion.div>
 
-          {/* Objectif de l'application — texte statique (lisible par le scanner de validation OAuth Google) */}
-          <p style={{ marginTop: "1.6rem", color: "rgba(27,42,74,0.5)", fontSize: "0.8rem", fontWeight: 400, lineHeight: 1.6, maxWidth: 520 }}>
-            Cirrion est une application de gestion pour les artisans du bâtiment : elle crée vos devis et factures,
-            les envoie à vos clients par e-mail via votre compte Gmail, et automatise vos relances.
-          </p>
+          {/* Objectif de l'application — texte statique présent dans le HTML dès le chargement
+              (lisible par le scanner de validation OAuth Google), replié visuellement via <details> natif */}
+          <details className="hero-gmail-disclosure" style={{ marginTop: "1.6rem", maxWidth: 520 }}>
+            <summary style={{
+              cursor: "pointer", listStyle: "none", color: "rgba(27,42,74,0.45)",
+              fontSize: "0.78rem", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "0.4rem",
+            }}>
+              <span aria-hidden>ℹ️</span> Comment Cirrion utilise Gmail
+            </summary>
+            <p style={{ marginTop: "0.6rem", color: "rgba(27,42,74,0.5)", fontSize: "0.8rem", fontWeight: 400, lineHeight: 1.6 }}>
+              Cirrion est une application de gestion pour les artisans du bâtiment : elle crée vos devis et factures,
+              les envoie à vos clients par e-mail via votre compte Gmail, et automatise vos relances.
+            </p>
+          </details>
         </div>
 
         <motion.div className="hero-split-image" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.2 }}>
