@@ -210,7 +210,6 @@ const NAV_LINKS = [
 // Contenu du footer — identique desktop et mobile
 function FooterContent({ isMobile }: { isMobile: boolean }) {
   const giantTextRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -222,7 +221,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
         { y: "0vh", scale: 1, opacity: 1, ease: "power1.out",
           scrollTrigger: { trigger: wrapperRef.current, start: "top 80%", end: "bottom bottom", scrub: 1 } }
       );
-      gsap.fromTo([headingRef.current, linksRef.current],
+      gsap.fromTo(linksRef.current,
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, stagger: 0.15, ease: "power3.out",
           scrollTrigger: { trigger: wrapperRef.current, start: "top 40%", end: "bottom bottom", scrub: 1 } }
