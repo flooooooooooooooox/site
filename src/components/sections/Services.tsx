@@ -5,6 +5,7 @@ import {
   FileText, Bell, PhoneIncoming, Mic, Receipt,
   Star, Monitor, Shield, LucideIcon,
 } from "lucide-react";
+import { CloudBadge } from "@/components/ui/CloudBadge";
 
 interface Category {
   icon: LucideIcon;
@@ -171,14 +172,15 @@ export default function Services() {
                   onClick={() => setActive(i)}
                   className="flow-node"
                   title={c.title}
-                  style={{
-                    background: isActive ? c.color : "rgba(var(--surface-rgb),0.05)",
-                    borderColor: isActive ? c.color : "rgba(var(--surface-rgb),0.12)",
-                    boxShadow: isActive ? `0 0 22px ${c.color}66` : "none",
-                    color: isActive ? "#FFFFFF" : c.color,
-                  }}
+                  style={{ boxShadow: isActive ? `0 0 22px ${c.color}66` : "none" }}
                 >
-                  <NodeIcon size={19} strokeWidth={2} />
+                  <CloudBadge
+                    size={46}
+                    fill={isActive ? c.color : "rgba(var(--surface-rgb),0.05)"}
+                    border={isActive ? undefined : "rgba(var(--surface-rgb),0.12)"}
+                  >
+                    <NodeIcon size={19} strokeWidth={2} color={isActive ? "#FFFFFF" : c.color} />
+                  </CloudBadge>
                 </button>
               </div>
             );
@@ -209,9 +211,9 @@ export default function Services() {
 
             {/* En-tête du module */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.9rem", marginBottom: "1.4rem", position: "relative", zIndex: 1 }}>
-              <div style={{ width: 46, height: 46, borderRadius: "12px", background: `${cat.color}18`, border: `1px solid ${cat.color}40`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <CloudBadge size={46} fill={`${cat.color}18`} border={`${cat.color}40`}>
                 <Icon size={22} color={cat.color} strokeWidth={1.75} />
-              </div>
+              </CloudBadge>
               <div style={{ minWidth: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
                   <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.15rem", color: "var(--text)", lineHeight: 1.2 }}>
@@ -260,13 +262,15 @@ export default function Services() {
         .flow-node {
           width: 46px;
           height: 46px;
+          background: none;
+          border: none;
+          padding: 0;
           border-radius: 13px;
-          border: 1px solid;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: background .25s, box-shadow .25s, border-color .25s, transform .2s;
+          transition: box-shadow .25s, transform .2s;
           flex-shrink: 0;
         }
         .flow-node:hover { transform: translateY(-2px); }

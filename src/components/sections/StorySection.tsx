@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Mic, FileText, FileCheck, TrendingUp, LucideIcon } from "lucide-react";
+import { CloudBadge } from "@/components/ui/CloudBadge";
 
 interface Step {
   icon: LucideIcon;
@@ -139,19 +140,9 @@ export default function StorySection() {
                     boxShadow: "0 8px 28px -10px rgba(27,42,74,0.14)",
                     transition: "transform 0.25s ease, box-shadow 0.25s ease",
                   }}>
-                  <div style={{
-                    width: "48px",
-                    height: "48px",
-                    borderRadius: "10px",
-                    background: "rgba(36,85,214,0.08)",
-                    border: "1px solid rgba(36,85,214,0.15)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}>
+                  <CloudBadge size={48} fill="rgba(36,85,214,0.08)" border="rgba(36,85,214,0.15)">
                     <Icon size={22} color="#2455D6" strokeWidth={1.5} />
-                  </div>
+                  </CloudBadge>
                   <div>
                     <span style={{
                       display: "inline-block",
