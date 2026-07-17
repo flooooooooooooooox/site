@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Mic, FileText, FileCheck, TrendingUp, LucideIcon } from "lucide-react";
 import { CloudBadge } from "@/components/ui/CloudBadge";
-import { CloudDecor, CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
 
 interface Step {
   icon: LucideIcon;
@@ -52,14 +51,14 @@ export default function StorySection() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={sectionRef} style={{ background: "transparent", padding: "clamp(3.5rem, 9vw, 7rem) 0" }}>
+    <section ref={sectionRef} style={{ background: "transparent", padding: "clamp(1.5rem, 4vw, 3rem) 0 clamp(1.5rem, 4vw, 2.5rem)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 6vw" }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: "4.5rem" }}
+          style={{ textAlign: "center", marginBottom: "3rem" }}
         >
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "var(--text)", marginBottom: ".75rem" }}>
             Comment ça <span style={{ color: "#2455D6" }}>marche</span>
@@ -138,8 +137,6 @@ export default function StorySection() {
                     boxShadow: "0 8px 28px -10px rgba(27,42,74,0.14)",
                     transition: "transform 0.25s ease, box-shadow 0.25s ease",
                   }}>
-                  {/* Nuage flottant sous la carte */}
-                  <CloudDecor size={90} opacity={0.12} strokeWidth={1.4} style={{ bottom: -34, left: `${12 + i * 18}%`, zIndex: -1 }} />
                   <CloudBadge size={48} fill="rgba(36,85,214,0.08)" border="rgba(36,85,214,0.15)">
                     <Icon size={22} color="#2455D6" strokeWidth={1.5} />
                   </CloudBadge>
@@ -180,7 +177,6 @@ export default function StorySection() {
         </div>
       </div>
 
-      <style>{CLOUD_DECOR_STYLES}</style>
       <style>{`
         .story-row {
           display: flex;

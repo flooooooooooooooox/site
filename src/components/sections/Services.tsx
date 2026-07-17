@@ -136,7 +136,7 @@ export default function Services() {
   const Icon = cat.icon;
 
   return (
-    <section id="services" style={{ background: "transparent", padding: "clamp(3.5rem, 8vw, 6rem) 0" }}>
+    <section id="services" style={{ background: "transparent", padding: "clamp(3.5rem, 8vw, 6rem) 0 clamp(1.5rem, 4vw, 2.5rem)" }}>
       <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "0 6vw" }}>
         {/* Header */}
         <motion.div

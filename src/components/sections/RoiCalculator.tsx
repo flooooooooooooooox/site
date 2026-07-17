@@ -79,7 +79,7 @@ export default function RoiCalculator() {
   }
 
   return (
-    <section id="roi" style={{ background: "transparent", padding: "clamp(3rem, 8vw, 6rem) 0" }}>
+    <section id="roi" style={{ background: "transparent", padding: "clamp(1.5rem, 4vw, 3rem) 0 clamp(3rem, 8vw, 6rem)" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }}>
 
         {/* Header */}
@@ -124,7 +124,8 @@ export default function RoiCalculator() {
               </div>
               <input id="roi-devis" type="range" min={5} max={100} value={devis} onChange={e => setDevis(Number(e.target.value))}
                 aria-label="Nombre de devis réalisés par mois"
-                style={{ width: "100%", accentColor: "#2455D6", cursor: "pointer", height: "6px" }} />
+                className="roi-slider"
+                style={{ width: "100%", cursor: "pointer", background: `linear-gradient(to right, #2455D6 ${((devis - 5) / 95) * 100}%, rgba(27,42,74,0.1) ${((devis - 5) / 95) * 100}%)` }} />
               <div style={{ display: "flex", justifyContent: "space-between", marginTop: "0.25rem", color: "rgba(var(--text-rgb),0.35)", fontSize: ".75rem" }}>
                 <span>5</span><span>100</span>
               </div>
@@ -232,6 +233,33 @@ export default function RoiCalculator() {
         @media (max-width: 768px) {
           .roi-grid { grid-template-columns: 1fr !important; }
         }
+        .roi-slider {
+          -webkit-appearance: none;
+          appearance: none;
+          height: 8px;
+          border-radius: 999px;
+          outline: none;
+        }
+        .roi-slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 22px; height: 22px; border-radius: 50%;
+          background: #2455D6;
+          border: 3px solid #FFFFFF;
+          box-shadow: 0 2px 10px rgba(36,85,214,0.45);
+          cursor: grab;
+          transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .roi-slider::-webkit-slider-thumb:hover { transform: scale(1.15); box-shadow: 0 4px 16px rgba(36,85,214,0.55); }
+        .roi-slider::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.05); }
+        .roi-slider::-moz-range-thumb {
+          width: 22px; height: 22px; border-radius: 50%;
+          background: #2455D6;
+          border: 3px solid #FFFFFF;
+          box-shadow: 0 2px 10px rgba(36,85,214,0.45);
+          cursor: grab;
+        }
+        .roi-slider::-moz-range-track { background: transparent; }
       `}</style>
     </section>
   );
