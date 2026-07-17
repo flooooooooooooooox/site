@@ -88,7 +88,7 @@ export default function PartnersBand() {
           viewport={{ once: true }}
           style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(var(--text-rgb),0.25)" }}
         >
-          Compatible avec
+          Nos partenaires
         </motion.p>
         <div className="partners-marquee-viewport" style={{ width: "100%", overflow: "hidden", maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)" }}>
           <div className="partners-marquee-track" style={{ display: "flex", gap: "0.75rem", width: "max-content" }}>

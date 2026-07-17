@@ -71,11 +71,11 @@ export default function Home() {
     <main style={{ position: "relative", zIndex: 1 }}>
       <Hero />
       <div style={{ position: "relative", zIndex: 2 }}>
+        <PartnersBand />
         <StatsSection />
         <Services />
         <DepthFade />
         <ErpOsSection />
-        <PartnersBand />
         <StorySection />
         <CubeEdge />
         <RoiCalculator />
