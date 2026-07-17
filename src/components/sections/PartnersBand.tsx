@@ -90,33 +90,36 @@ export default function PartnersBand() {
         >
           Compatible avec
         </motion.p>
-        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-          {PARTNERS.map((p, i) => (
-            <motion.div
-              key={p.name}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              whileHover={{ borderColor: "rgba(36,85,214,0.25)", backgroundColor: "rgba(36,85,214,0.04)" }}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: "0.65rem",
-                padding: "0.65rem 1.2rem", borderRadius: "999px",
-                border: "1px solid rgba(var(--surface-rgb),0.08)",
-                background: "rgba(var(--surface-rgb),0.03)",
-                backdropFilter: "blur(8px)",
-                transition: "border-color 0.25s, background 0.25s",
-                cursor: "default",
-              }}
-            >
-              <div style={{ flexShrink: 0 }}>{p.svg}</div>
-              <div>
-                <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "rgba(var(--text-rgb),0.85)", lineHeight: 1.2 }}>{p.name}</div>
-                <div style={{ fontSize: "0.65rem", color: "rgba(var(--text-rgb),0.4)", fontWeight: 500 }}>{p.sub}</div>
+        <div className="partners-marquee-viewport" style={{ width: "100%", overflow: "hidden", maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)" }}>
+          <div className="partners-marquee-track" style={{ display: "flex", gap: "0.75rem", width: "max-content" }}>
+            {[...PARTNERS, ...PARTNERS].map((p, i) => (
+              <div
+                key={`${p.name}-${i}`}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "0.65rem",
+                  padding: "0.65rem 1.2rem", borderRadius: "999px",
+                  border: "1px solid rgba(var(--surface-rgb),0.08)",
+                  background: "rgba(var(--surface-rgb),0.03)",
+                  backdropFilter: "blur(8px)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <div style={{ flexShrink: 0 }}>{p.svg}</div>
+                <div>
+                  <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "rgba(var(--text-rgb),0.85)", lineHeight: 1.2 }}>{p.name}</div>
+                  <div style={{ fontSize: "0.65rem", color: "rgba(var(--text-rgb),0.4)", fontWeight: 500 }}>{p.sub}</div>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
+        <style>{`
+          .partners-marquee-track { animation: partners-marquee-scroll 32s linear infinite; }
+          @keyframes partners-marquee-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+          }
+        `}</style>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
