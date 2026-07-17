@@ -118,7 +118,7 @@ export default function TradesSection() {
   return (
     <section
       aria-label="Cirrion par corps de métier du bâtiment"
-      style={{ padding: "clamp(3rem, 8vw, 6rem) 0", background: "transparent" }}
+      style={{ padding: "clamp(3rem, 8vw, 6rem) 0 clamp(1.5rem, 4vw, 3rem)", background: "transparent" }}
     >
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }}>
         {/* Header */}

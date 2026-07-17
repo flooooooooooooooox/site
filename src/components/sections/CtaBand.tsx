@@ -10,7 +10,7 @@ export default function CtaBand() {
       style={{
         position: "relative",
         overflow: "hidden",
-        padding: "clamp(4rem, 10vw, 8rem) 0",
+        padding: "clamp(2.5rem, 6vw, 4.5rem) 0",
       }}
     >
       <style>{CLOUD_DECOR_STYLES}</style>

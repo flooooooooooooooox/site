@@ -9,7 +9,6 @@ import CtaBand from "@/components/sections/CtaBand";
 import PartnersBand from "@/components/sections/PartnersBand";
 import TradesSection from "@/components/sections/TradesSection";
 import StatsSection from "@/components/sections/StatsSection";
-import { DepthFade } from "@/components/ui/SectionTransitions";
 
 export const metadata: Metadata = {
   title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | ERP IA",
@@ -69,7 +68,6 @@ export default function Home() {
         <PartnersBand />
         <StatsSection />
         <Services />
-        <DepthFade />
         <StorySection />
         <RoiCalculator />
         {/* Lien vers le comparatif (page dédiée) */}
@@ -87,7 +85,6 @@ export default function Home() {
           </Link>
         </section>
         <Pricing />
-        <DepthFade />
         {/* Lien vers la FAQ (page dédiée) */}
         <section style={{ padding: "1rem 6vw 3rem", textAlign: "center" }}>
           <Link

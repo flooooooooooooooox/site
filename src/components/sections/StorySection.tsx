@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Mic, FileText, FileCheck, TrendingUp, LucideIcon } from "lucide-react";
 import { CloudBadge } from "@/components/ui/CloudBadge";
+import { CloudDecor, CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
 
 interface Step {
   icon: LucideIcon;
@@ -103,32 +104,29 @@ export default function StorySection() {
                   transition={{ duration: 0.55, delay: i * 0.12 }}
                   className="story-row"
                 >
-                  {/* Pastille numérotée sur la ligne */}
-                  <div style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    background: "#2455D6",
-                    color: "#FFFFFF",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontWeight: 900,
-                    fontSize: ".85rem",
-                    fontFamily: "var(--font-nunito)",
-                    zIndex: 1,
-                    boxShadow: "0 0 0 6px rgba(36,85,214,0.1), 0 0 20px rgba(36,85,214,0.25)",
-                    flexShrink: 0,
-                    position: "relative",
-                    animation: "dotGlow 2.4s ease-in-out infinite",
-                  }}>
-                    {i + 1}
+                  {/* Nuage numéroté sur la ligne — se remplit de bleu quand on l'atteint */}
+                  <div style={{ position: "relative", zIndex: 1, flexShrink: 0, filter: "drop-shadow(0 4px 12px rgba(36,85,214,0.3))" }}>
+                    <CloudBadge size={44} fill="rgba(255,255,255,0.9)" border="rgba(36,85,214,0.3)">
+                      <span style={{ color: "#2455D6", fontWeight: 900, fontSize: ".82rem", fontFamily: "var(--font-nunito)" }}>{i + 1}</span>
+                    </CloudBadge>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.7 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, margin: "-45% 0px -45% 0px" }}
+                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                      style={{ position: "absolute", inset: 0 }}
+                    >
+                      <CloudBadge size={44} fill="#2455D6">
+                        <span style={{ color: "#FFFFFF", fontWeight: 900, fontSize: ".82rem", fontFamily: "var(--font-nunito)" }}>{i + 1}</span>
+                      </CloudBadge>
+                    </motion.div>
                   </div>
 
                   {/* Carte */}
                   <div className="story-card" style={{
                     flex: 1,
                     minWidth: 0,
+                    position: "relative",
                     background: "rgba(255,255,255,0.6)",
                     border: "1px solid rgba(255,255,255,0.7)",
                     borderRadius: "1.1rem",
@@ -140,6 +138,8 @@ export default function StorySection() {
                     boxShadow: "0 8px 28px -10px rgba(27,42,74,0.14)",
                     transition: "transform 0.25s ease, box-shadow 0.25s ease",
                   }}>
+                  {/* Nuage flottant sous la carte */}
+                  <CloudDecor size={90} opacity={0.12} strokeWidth={1.4} style={{ bottom: -34, left: `${12 + i * 18}%`, zIndex: -1 }} />
                   <CloudBadge size={48} fill="rgba(36,85,214,0.08)" border="rgba(36,85,214,0.15)">
                     <Icon size={22} color="#2455D6" strokeWidth={1.5} />
                   </CloudBadge>
@@ -180,26 +180,17 @@ export default function StorySection() {
         </div>
       </div>
 
+      <style>{CLOUD_DECOR_STYLES}</style>
       <style>{`
-        @keyframes dotGlow {
-          0%, 100% { box-shadow: 0 0 0 6px rgba(36,85,214,0.08), 0 0 16px rgba(36,85,214,0.2); }
-          50% { box-shadow: 0 0 0 7px rgba(36,85,214,0.1), 0 0 20px rgba(36,85,214,0.28); }
-        }
         .story-row {
           display: flex;
           gap: 1.5rem;
           align-items: flex-start;
         }
-        .story-line { left: 19px; }
+        .story-line { left: 21px; }
         .story-card:hover { transform: translateY(-3px); box-shadow: 0 14px 36px -10px rgba(36,85,214,0.22); }
         @media (max-width: 640px) {
           .story-row { gap: 0.9rem; }
-          .story-row > div:first-child {
-            width: 32px !important;
-            height: 32px !important;
-            font-size: 0.75rem !important;
-          }
-          .story-line { left: 15px; }
         }
       `}</style>
     </section>
