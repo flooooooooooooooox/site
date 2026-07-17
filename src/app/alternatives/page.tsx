@@ -24,14 +24,14 @@ const ALTS = [
 export default function Alternatives() {
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
-      <style>{`.alt-card{transition:border-color .2s,background .2s}.alt-card:hover{border-color:rgba(245,200,66,.2)!important;background:rgba(245,200,66,.03)!important}`}</style>
+      <style>{`.alt-card{transition:border-color .2s,background .2s}.alt-card:hover{border-color:rgba(36,85,214,.2)!important;background:rgba(36,85,214,.03)!important}`}</style>
       <div style={{ maxWidth: "52rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-          <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
+          <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
             Comparatifs
           </span>
           <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem" }}>
-            Floxia vs <span style={{ color: "#F5C842" }}>les autres logiciels</span>
+            Floxia vs <span style={{ color: "#2455D6" }}>les autres logiciels</span>
           </h1>
           <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem", maxWidth: "500px", margin: "0 auto" }}>
             Comparez Floxia aux principaux logiciels de devis et facturation du bâtiment pour faire le bon choix.

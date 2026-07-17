@@ -59,15 +59,15 @@ export default function ApplicationPage() {
       </p>
 
       <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: "0.95rem", lineHeight: 1.8 }}>
-        <Link href="/politique-de-confidentialite" style={{ color: "#F5C842", textDecoration: "underline" }}>
+        <Link href="/politique-de-confidentialite" style={{ color: "#2455D6", textDecoration: "underline" }}>
           Politique de confidentialité
         </Link>
         {" · "}
-        <Link href="/mentions-legales" style={{ color: "#F5C842", textDecoration: "underline" }}>
+        <Link href="/mentions-legales" style={{ color: "#2455D6", textDecoration: "underline" }}>
           Mentions légales
         </Link>
         {" · "}
-        <Link href="/" style={{ color: "#F5C842", textDecoration: "underline" }}>
+        <Link href="/" style={{ color: "#2455D6", textDecoration: "underline" }}>
           Découvrir Floxia
         </Link>
       </p>

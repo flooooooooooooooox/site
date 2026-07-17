@@ -78,9 +78,9 @@ export default function Faq() {
               display: "inline-block",
               padding: "6px 20px",
               borderRadius: "999px",
-              border: "1px solid rgba(245,200,66,0.25)",
-              background: "rgba(245,200,66,0.07)",
-              color: "#F5C842",
+              border: "1px solid rgba(36,85,214,0.25)",
+              background: "rgba(36,85,214,0.07)",
+              color: "#2455D6",
               fontSize: ".78rem",
               fontWeight: 600,
               letterSpacing: ".1em",
@@ -95,7 +95,7 @@ export default function Faq() {
             style={{ fontFamily: "var(--font-nunito)", color: "var(--text)" }}
           >
             Questions{" "}
-            <span style={{ color: "#F5C842" }}>fréquentes</span>
+            <span style={{ color: "#2455D6" }}>fréquentes</span>
           </h2>
         </motion.div>
 
@@ -110,8 +110,8 @@ export default function Faq() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.05 }}
                 style={{
-                  background: isOpen ? "rgba(245,200,66,0.04)" : "rgba(var(--surface-rgb),0.03)",
-                  border: isOpen ? "1px solid rgba(245,200,66,0.2)" : "1px solid rgba(var(--surface-rgb),0.07)",
+                  background: isOpen ? "rgba(36,85,214,0.04)" : "rgba(var(--surface-rgb),0.03)",
+                  border: isOpen ? "1px solid rgba(36,85,214,0.2)" : "1px solid rgba(var(--surface-rgb),0.07)",
                   borderRadius: "1rem",
                   overflow: "hidden",
                   transition: "border-color 0.3s, background 0.3s",
@@ -135,7 +135,7 @@ export default function Faq() {
                 >
                   <span
                     style={{
-                      color: isOpen ? "#F5C842" : "var(--text)",
+                      color: isOpen ? "#2455D6" : "var(--text)",
                       fontWeight: 600,
                       fontSize: ".95rem",
                       lineHeight: 1.4,
@@ -149,7 +149,7 @@ export default function Faq() {
                     transition={{ duration: 0.3 }}
                     style={{ flexShrink: 0 }}
                   >
-                    <ChevronDown size={18} color={isOpen ? "#F5C842" : "rgba(var(--text-rgb),0.4)"} />
+                    <ChevronDown size={18} color={isOpen ? "#2455D6" : "rgba(var(--text-rgb),0.4)"} />
                   </motion.div>
                 </button>
 

@@ -25,7 +25,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 
 const PLANS = [
   { name: "Starter", price: 99, max: 15, color: "#60A5FA", desc: "Jusqu\'à 15 devis/mois" },
-  { name: "Artisan Pro", price: 179, max: 50, color: "#F5C842", desc: "Jusqu\'à 50 devis/mois" },
+  { name: "Artisan Pro", price: 179, max: 50, color: "#2455D6", desc: "Jusqu\'à 50 devis/mois" },
   { name: "Pro Équipe", price: 249, max: 100, color: "#A78BFA", desc: "Illimité + salariés" },
 ];
 
@@ -61,7 +61,7 @@ export default function RoiCalculator() {
   const totalHDisplay = periode === "an" ? totalH * 12 : totalH;
 
   const breakdown = [
-    { icon: FileText, label: "Devis + factures + PV auto", min: gainDevisMin, color: "#F5C842" },
+    { icon: FileText, label: "Devis + factures + PV auto", min: gainDevisMin, color: "#2455D6" },
     { icon: PhoneIncoming, label: "Agent réceptionniste IA", min: gainReceptionnisteMin, color: "#4ADE80" },
     { icon: Bell, label: "Relances automatiques", min: gainRelancesMin, color: "#60A5FA" },
     { icon: Euro, label: "Comptabilité & scan tickets", min: gainComptaMin, color: "#A78BFA" },
@@ -84,14 +84,14 @@ export default function RoiCalculator() {
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
           style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
+          <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
             ROI Calculator
           </span>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)" }}>
-            Calculez votre <span style={{ color: "#F5C842" }}>ROI</span>
+            Calculez votre <span style={{ color: "#2455D6" }}>ROI</span>
           </h2>
           <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
-            Floxia élimine <strong style={{ color: "#F5C842" }}>~80% de votre temps administratif</strong> — devis, facturation, appels, relances, comptabilité
+            Floxia élimine <strong style={{ color: "#2455D6" }}>~80% de votre temps administratif</strong> — devis, facturation, appels, relances, comptabilité
           </p>
           <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: "0.82rem", maxWidth: "480px", margin: "0.5rem auto 0" }}>
             Le ROI (Retour sur Investissement) mesure ce que vous gagnez réellement après déduction de l&apos;abonnement — en temps récupéré et en euros.
@@ -101,8 +101,8 @@ export default function RoiCalculator() {
             {(["mois", "an"] as const).map(p => (
               <button key={p} onClick={() => setPeriode(p)}
                 style={{ padding: "6px 22px", borderRadius: "999px", border: "none", cursor: "pointer", fontWeight: 700, fontSize: ".82rem", transition: "all 0.2s",
-                  background: periode === p ? "#F5C842" : "transparent",
-                  color: periode === p ? "#0F1923" : "rgba(var(--text-rgb),0.5)" }}>
+                  background: periode === p ? "#2455D6" : "transparent",
+                  color: periode === p ? "#FFFFFF" : "rgba(var(--text-rgb),0.5)" }}>
                 {p === "mois" ? "Par mois" : "Par an"}
               </button>
             ))}
@@ -119,11 +119,11 @@ export default function RoiCalculator() {
             <div style={{ marginBottom: "1.75rem" }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.75rem" }}>
                 <label htmlFor="roi-devis" style={{ color: "var(--text)", fontWeight: 600, fontSize: ".95rem" }}>Devis réalisés / mois</label>
-                <span style={{ color: "#F5C842", fontWeight: 700, fontSize: "1.1rem" }}>{devis}</span>
+                <span style={{ color: "#2455D6", fontWeight: 700, fontSize: "1.1rem" }}>{devis}</span>
               </div>
               <input id="roi-devis" type="range" min={5} max={100} value={devis} onChange={e => setDevis(Number(e.target.value))}
                 aria-label="Nombre de devis réalisés par mois"
-                style={{ width: "100%", accentColor: "#F5C842", cursor: "pointer", height: "6px" }} />
+                style={{ width: "100%", accentColor: "#2455D6", cursor: "pointer", height: "6px" }} />
               <div style={{ display: "flex", justifyContent: "space-between", marginTop: "0.25rem", color: "rgba(var(--text-rgb),0.35)", fontSize: ".75rem" }}>
                 <span>5</span><span>100</span>
               </div>
@@ -134,7 +134,7 @@ export default function RoiCalculator() {
               <span style={{ color: "var(--text)", fontWeight: 600, fontSize: ".9rem" }}>J&apos;ai des salariés</span>
               <button onClick={() => setSalarie(v => !v)}
                 aria-label="J'ai des salariés" aria-pressed={salarie}
-                style={{ width: 44, height: 24, borderRadius: 999, border: "none", cursor: "pointer", background: salarie ? "#F5C842" : "rgba(var(--surface-rgb),0.12)", position: "relative", transition: "background 0.25s", flexShrink: 0 }}>
+                style={{ width: 44, height: 24, borderRadius: 999, border: "none", cursor: "pointer", background: salarie ? "#2455D6" : "rgba(var(--surface-rgb),0.12)", position: "relative", transition: "background 0.25s", flexShrink: 0 }}>
                 <span style={{ position: "absolute", top: 3, left: salarie ? 22 : 3, width: 18, height: 18, borderRadius: "50%", background: "#fff", transition: "left 0.25s" }} />
               </button>
             </div>
@@ -184,7 +184,7 @@ export default function RoiCalculator() {
             {/* Mini icons */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.75rem" }}>
               {[
-                { icon: FileText, label: "Devis auto", val: "8 min", color: "#F5C842" },
+                { icon: FileText, label: "Devis auto", val: "8 min", color: "#2455D6" },
                 { icon: PhoneIncoming, label: "Appels IA", val: "24h/24", color: "#4ADE80" },
                 { icon: Bell, label: "Relances auto", val: "100%", color: "#60A5FA" },
               ].map(s => {
@@ -201,7 +201,7 @@ export default function RoiCalculator() {
 
             {/* Big metrics */}
             {[
-              { icon: Clock, label: `Temps admin récupéré / ${periode}`, value: totalHDisplay, suffix: "h", color: "#F5C842", sub: periode === "an" ? `${totalH * 12 * 60} min récupérées sur l'année` : `${totalMin} min sur 5 postes automatisés` },
+              { icon: Clock, label: `Temps admin récupéré / ${periode}`, value: totalHDisplay, suffix: "h", color: "#2455D6", sub: periode === "an" ? `${totalH * 12 * 60} min récupérées sur l'année` : `${totalMin} min sur 5 postes automatisés` },
               { icon: Euro, label: `Gain financier / ${periode}`, value: gainFinancier, suffix: "€", color: "#4ADE80", sub: `à ${tauxH} €/h — taux artisan moyen` },
               { icon: TrendingUp, label: `ROI net vs Floxia / ${periode}`, value: roi, suffix: "€", color: roi >= 0 ? "#4ADE80" : "#F87171", sub: periode === "an" ? `abonnement ${plan.name} ${plan.price * 12}€/an` : `après abonnement ${plan.name} ${plan.price}€/mois` },
             ].map((m, i) => {

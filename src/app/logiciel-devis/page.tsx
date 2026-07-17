@@ -40,12 +40,12 @@ export default function LogicielDevisIndex() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
 
       <div style={{ maxWidth: "60rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
-        <span style={{ display: "inline-block", padding: "5px 16px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", color: "#F5C842", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
+        <span style={{ display: "inline-block", padding: "5px 16px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
           Logiciel de devis
         </span>
 
         <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "var(--text)", lineHeight: 1.12, letterSpacing: "-0.03em", marginBottom: "1.2rem" }}>
-          Logiciel de devis bâtiment <span style={{ color: "#F5C842" }}>par métier et par ville</span>
+          Logiciel de devis bâtiment <span style={{ color: "#2455D6" }}>par métier et par ville</span>
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "1rem", lineHeight: 1.8, marginBottom: "3rem", maxWidth: "640px" }}>
@@ -65,7 +65,7 @@ export default function LogicielDevisIndex() {
                     {m.label} {v.prepo} {v.nom}
                   </Link>
                 ))}
-                <Link href={`/artisans/${m.slug}`} style={{ color: "#F5C842", fontSize: ".78rem", fontWeight: 600, textDecoration: "none", marginTop: "0.2rem" }}>
+                <Link href={`/artisans/${m.slug}`} style={{ color: "#2455D6", fontSize: ".78rem", fontWeight: 600, textDecoration: "none", marginTop: "0.2rem" }}>
                   Voir tout →
                 </Link>
               </div>
@@ -97,13 +97,13 @@ export default function LogicielDevisIndex() {
           )}
         </div>
 
-        <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(245,200,66,0.05)", border: "1px solid rgba(245,200,66,0.18)", textAlign: "center" }}>
+        <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center" }}>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.3rem", color: "var(--text)", marginBottom: "0.6rem" }}>
             Essayez Floxia gratuitement
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · Sans engagement</p>
           <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"
-            style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "1rem 2rem", borderRadius: "0.85rem", background: "#F5C842", color: "#0F1923", fontWeight: 700, fontSize: ".95rem", textDecoration: "none" }}>
+            style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "1rem 2rem", borderRadius: "0.85rem", background: "#2455D6", color: "#FFFFFF", fontWeight: 700, fontSize: ".95rem", textDecoration: "none" }}>
             Réserver une démo gratuite
           </a>
         </div>

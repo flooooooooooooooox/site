@@ -86,8 +86,8 @@ export default function Home() {
             style={{
               display: "inline-flex", alignItems: "center", gap: "0.6rem",
               padding: "0.9rem 1.8rem", borderRadius: "999px",
-              border: "1px solid rgba(245,200,66,0.3)", background: "rgba(245,200,66,0.06)",
-              color: "#F5C842", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
+              border: "1px solid rgba(36,85,214,0.3)", background: "rgba(36,85,214,0.06)",
+              color: "#2455D6", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
             }}
           >
             Comparer Floxia vs Obat, Sage, EBP — 21 critères →
@@ -103,8 +103,8 @@ export default function Home() {
             style={{
               display: "inline-flex", alignItems: "center", gap: "0.6rem",
               padding: "0.9rem 1.8rem", borderRadius: "999px",
-              border: "1px solid rgba(245,200,66,0.3)", background: "rgba(245,200,66,0.06)",
-              color: "#F5C842", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
+              border: "1px solid rgba(36,85,214,0.3)", background: "rgba(36,85,214,0.06)",
+              color: "#2455D6", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
             }}
           >
             Questions fréquentes — voir toutes les réponses →

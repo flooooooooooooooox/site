@@ -52,15 +52,15 @@ export default function NettoyagePage() {
     <main style={{ position: "relative", zIndex: 1, maxWidth: "60rem", margin: "0 auto", padding: "7rem 6vw 5rem" }}>
       <span style={{
         display: "inline-block", padding: "6px 18px", borderRadius: "999px",
-        border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)",
-        color: "#F5C842", fontSize: ".75rem", fontWeight: 700, letterSpacing: ".1em",
+        border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)",
+        color: "#2455D6", fontSize: ".75rem", fontWeight: 700, letterSpacing: ".1em",
         textTransform: "uppercase", marginBottom: "1.5rem",
       }}>
         Entreprises de nettoyage
       </span>
 
       <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,5vw,3.2rem)", color: "var(--text)", lineHeight: 1.1, marginBottom: "1.2rem" }}>
-        Le logiciel qui gère votre <span style={{ color: "#F5C842" }}>entreprise de nettoyage</span>
+        Le logiciel qui gère votre <span style={{ color: "#2455D6" }}>entreprise de nettoyage</span>
       </h1>
 
       <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.1rem", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "44rem" }}>
@@ -75,8 +75,8 @@ export default function NettoyagePage() {
         rel="noopener noreferrer"
         style={{
           display: "inline-flex", alignItems: "center", gap: "0.5rem",
-          padding: "1rem 2rem", borderRadius: "0.85rem", background: "#F5C842",
-          color: "#0F1923", fontWeight: 700, fontSize: "0.95rem", textDecoration: "none",
+          padding: "1rem 2rem", borderRadius: "0.85rem", background: "#2455D6",
+          color: "#FFFFFF", fontWeight: 700, fontSize: "0.95rem", textDecoration: "none",
           marginBottom: "3.5rem",
         }}
       >
@@ -94,7 +94,7 @@ export default function NettoyagePage() {
             border: "1px solid rgba(var(--surface-rgb),0.08)",
             borderRadius: "1rem", padding: "1.5rem",
           }}>
-            <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1rem", color: "#F5C842", marginBottom: "0.5rem" }}>
+            <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1rem", color: "#2455D6", marginBottom: "0.5rem" }}>
               {f.title}
             </h3>
             <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "0.88rem", lineHeight: 1.55 }}>
@@ -105,7 +105,7 @@ export default function NettoyagePage() {
       </div>
 
       <div style={{
-        background: "rgba(245,200,66,0.06)", border: "1px solid rgba(245,200,66,0.2)",
+        background: "rgba(36,85,214,0.06)", border: "1px solid rgba(36,85,214,0.2)",
         borderRadius: "1.25rem", padding: "2rem", textAlign: "center",
       }}>
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.4rem", color: "var(--text)", marginBottom: "0.75rem" }}>
@@ -121,8 +121,8 @@ export default function NettoyagePage() {
           rel="noopener noreferrer"
           style={{
             display: "inline-flex", alignItems: "center", gap: "0.5rem",
-            padding: "0.9rem 1.8rem", borderRadius: "0.75rem", background: "#F5C842",
-            color: "#0F1923", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
+            padding: "0.9rem 1.8rem", borderRadius: "0.75rem", background: "#2455D6",
+            color: "#FFFFFF", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
           }}
         >
           Voir Floxia en démo →
@@ -130,7 +130,7 @@ export default function NettoyagePage() {
       </div>
 
       <p style={{ marginTop: "2.5rem", textAlign: "center" }}>
-        <Link href="/" style={{ color: "#F5C842", textDecoration: "underline", fontSize: "0.9rem" }}>
+        <Link href="/" style={{ color: "#2455D6", textDecoration: "underline", fontSize: "0.9rem" }}>
           Découvrir tout ce que fait Floxia
         </Link>
       </p>

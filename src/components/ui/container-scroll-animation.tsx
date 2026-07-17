@@ -91,7 +91,7 @@ export const Card = ({
       // Desktop : 40rem inchangé. Mobile : 22rem pour respecter le ratio du dashboard
       height: isMobile ? "22rem" : "40rem",
       width: "100%",
-      border: "1px solid rgba(245,200,66,0.2)",
+      border: "1px solid rgba(36,85,214,0.2)",
       padding: "6px",
       background: "#0A1520",
       borderRadius: "1.75rem",

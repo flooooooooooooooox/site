@@ -53,7 +53,7 @@ const STYLES = `
 .footer-aurora {
   background: radial-gradient(
     circle at 50% 50%,
-    color-mix(in srgb, #F5C842 12%, transparent) 0%,
+    color-mix(in srgb, #2455D6 12%, transparent) 0%,
     color-mix(in srgb, #4ADE80 8%, transparent) 45%,
     transparent 70%
   );
@@ -95,14 +95,14 @@ const STYLES = `
 }
 
 .footer-gold-btn {
-  background: linear-gradient(135deg, #F5C842 0%, #E6A800 100%);
-  color: #1E2B45;
+  background: linear-gradient(135deg, #2455D6 0%, #1A3FA8 100%);
+  color: #FFFFFF;
   font-weight: 800;
-  box-shadow: 0 8px 32px rgba(245,200,66,0.35), 0 2px 8px rgba(245,200,66,0.2);
+  box-shadow: 0 8px 32px rgba(36,85,214,0.35), 0 2px 8px rgba(36,85,214,0.2);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .footer-gold-btn:hover {
-  box-shadow: 0 16px 48px rgba(245,200,66,0.5), 0 4px 16px rgba(245,200,66,0.3);
+  box-shadow: 0 16px 48px rgba(36,85,214,0.5), 0 4px 16px rgba(36,85,214,0.3);
   transform: translateY(-2px);
 }
 
@@ -116,7 +116,7 @@ const STYLES = `
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  border-top: 1px solid rgba(245,200,66,0.06);
+  border-top: 1px solid rgba(36,85,214,0.06);
 }
 
 @media (max-width: 768px) {
@@ -183,13 +183,13 @@ MagneticButton.displayName = "MagneticButton";
 
 const MarqueeItem = () => (
   <div style={{ display: "flex", alignItems: "center", gap: "3rem", padding: "0 1.5rem" }}>
-    <span>Devis en 3 minutes</span> <span style={{ color: "#F5C842", opacity: 0.7 }}>✦</span>
+    <span>Devis en 3 minutes</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
     <span>IA Vocale WhatsApp</span> <span style={{ color: "#4ADE80", opacity: 0.7 }}>✦</span>
-    <span>Standard 24h/24</span> <span style={{ color: "#F5C842", opacity: 0.7 }}>✦</span>
+    <span>Standard 24h/24</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
     <span>Hébergement France</span> <span style={{ color: "#4ADE80", opacity: 0.7 }}>✦</span>
-    <span>RGPD Natif</span> <span style={{ color: "#F5C842", opacity: 0.7 }}>✦</span>
+    <span>RGPD Natif</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
     <span>Relances Auto</span> <span style={{ color: "#4ADE80", opacity: 0.7 }}>✦</span>
-    <span>ROI × 3</span> <span style={{ color: "#F5C842", opacity: 0.7 }}>✦</span>
+    <span>ROI × 3</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
   </div>
 );
 
@@ -246,7 +246,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
 
       {/* Marquee */}
       {!isMobile && (
-        <div style={{ position: "absolute", top: "3rem", left: 0, width: "100%", overflow: "hidden", borderTop: "1px solid rgba(245,200,66,0.12)", borderBottom: "1px solid rgba(245,200,66,0.12)", background: "rgba(245,200,66,0.06)", backdropFilter: "blur(12px)", padding: "1rem 0", zIndex: 10, transform: "rotate(-2deg) scaleX(1.1)", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}>
+        <div style={{ position: "absolute", top: "3rem", left: 0, width: "100%", overflow: "hidden", borderTop: "1px solid rgba(36,85,214,0.12)", borderBottom: "1px solid rgba(36,85,214,0.12)", background: "rgba(36,85,214,0.06)", backdropFilter: "blur(12px)", padding: "1rem 0", zIndex: 10, transform: "rotate(-2deg) scaleX(1.1)", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}>
           <div className="animate-footer-scroll-marquee" style={{ display: "flex", width: "max-content", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.28em", color: "rgba(232,237,244,0.45)", textTransform: "uppercase" }}>
             <MarqueeItem /><MarqueeItem />
           </div>
@@ -276,11 +276,11 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
           {/* Réseaux */}
           <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem" }}>
             <a href="https://www.instagram.com/floxia.pro" target="_blank" rel="noopener noreferrer"
-              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(245,200,66,0.15)", background: "rgba(245,200,66,0.04)" }}>
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(36,85,214,0.15)", background: "rgba(36,85,214,0.04)" }}>
               Instagram
             </a>
             <a href="https://www.linkedin.com/in/floxia-pro-9360333aa" target="_blank" rel="noopener noreferrer"
-              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(245,200,66,0.15)", background: "rgba(245,200,66,0.04)" }}>
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(36,85,214,0.15)", background: "rgba(36,85,214,0.04)" }}>
               LinkedIn
             </a>
           </div>
@@ -301,7 +301,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
       {/* Bottom bar */}
       <div className="footer-bottom-bar">
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <div style={{ width: 28, height: 28, background: "#F5C842", clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)" }} />
+          <div style={{ width: 28, height: 28, background: "#2455D6", clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)" }} />
           <span style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.1rem", color: "var(--foreground)" }}>Floxia</span>
         </div>
         <a href="/qui-sommes-nous" className="footer-glass-pill" style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", display: "flex", alignItems: "center", gap: "0.4rem", textDecoration: "none" }}>

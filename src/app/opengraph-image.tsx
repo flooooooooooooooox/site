@@ -25,7 +25,7 @@ export default function Image() {
               width: 56,
               height: 56,
               marginRight: 18,
-              background: "#F5C842",
+              background: "#2455D6",
               clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)",
             }}
           />
@@ -35,8 +35,8 @@ export default function Image() {
               style={{
                 marginLeft: 12,
                 fontSize: 24,
-                background: "#F5C842",
-                color: "#0F1923",
+                background: "#2455D6",
+                color: "#FFFFFF",
                 padding: "2px 10px",
                 borderRadius: 8,
                 fontWeight: 900,
@@ -60,7 +60,7 @@ export default function Image() {
           }}
         >
           <span style={{ marginRight: 18 }}>Devis &amp; factures depuis</span>
-          <span style={{ color: "#F5C842", marginRight: 18 }}>WhatsApp</span>
+          <span style={{ color: "#2455D6", marginRight: 18 }}>WhatsApp</span>
           <span>en 3 minutes</span>
         </div>
 

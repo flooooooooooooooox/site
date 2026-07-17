@@ -40,10 +40,10 @@ export default function Navbar() {
           top: 0,
           width: "100%",
           padding: "0.9rem 5vw",
-          background: "rgba(5,8,13,0.72)",
+          background: "rgba(239,244,255,0.85)",
           backdropFilter: "blur(20px) saturate(160%)",
           WebkitBackdropFilter: "blur(20px) saturate(160%)",
-          borderBottom: "1px solid rgba(245,200,66,0.12)",
+          borderBottom: "1px solid rgba(36,85,214,0.12)",
         }}
       >
         {/* Logo */}
@@ -63,7 +63,7 @@ export default function Navbar() {
             fontFamily: "var(--font-nunito)",
             fontWeight: 900,
             fontSize: "1.1rem",
-            color: "#E8EDF4",
+            color: "#1B2A4A",
             flexShrink: 0,
           }}
         >
@@ -71,7 +71,7 @@ export default function Navbar() {
             style={{
               width: 24,
               height: 24,
-              background: "#F5C842",
+              background: "#2455D6",
               clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)",
               flexShrink: 0,
             }}
@@ -99,7 +99,7 @@ export default function Navbar() {
               href={l.href}
               onClick={(e) => scrollTo(e, l.href)}
               style={{
-                color: "rgba(232,237,244,.45)",
+                color: "rgba(27,42,74,.55)",
                 fontSize: ".78rem",
                 fontWeight: 600,
                 letterSpacing: ".06em",
@@ -108,8 +108,8 @@ export default function Navbar() {
                 transition: "color 0.2s",
                 whiteSpace: "nowrap",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#E8EDF4")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(232,237,244,.45)")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#1B2A4A")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(27,42,74,.55)")}
             >
               {l.label}
             </Link>
@@ -130,16 +130,16 @@ export default function Navbar() {
               gap: "0.4rem",
               padding: "0.5rem 1.1rem",
               borderRadius: "9999px",
-              background: "#F5C842",
-              color: "#1E2B45",
+              background: "#2455D6",
+              color: "#FFFFFF",
               fontWeight: 700,
               fontSize: ".78rem",
               textDecoration: "none",
               whiteSpace: "nowrap",
               transition: "all 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#f0be2a"; e.currentTarget.style.transform = "scale(1.04)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "#F5C842"; e.currentTarget.style.transform = "scale(1)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#1e46c2"; e.currentTarget.style.transform = "scale(1.04)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "#2455D6"; e.currentTarget.style.transform = "scale(1)"; }}
           >
             Réserver une démo
           </a>
@@ -152,7 +152,7 @@ export default function Navbar() {
               border: "none",
               cursor: "pointer",
               padding: "0.25rem",
-              color: "#E8EDF4",
+              color: "#1B2A4A",
               display: "none",
             }}
             aria-label="Menu"
@@ -173,10 +173,10 @@ export default function Navbar() {
             left: "1rem",
             right: "1rem",
             zIndex: 9998,
-            background: "rgba(5,8,13,0.98)",
+            background: "rgba(255,255,255,0.97)",
             backdropFilter: "blur(32px)",
             borderRadius: "1rem",
-            border: "1px solid rgba(245,200,66,0.15)",
+            border: "1px solid rgba(36,85,214,0.15)",
             padding: "1.25rem",
             display: "flex",
             flexDirection: "column",
@@ -190,13 +190,13 @@ export default function Navbar() {
               href={l.href}
               onClick={(e) => { scrollTo(e, l.href); setMenuOpen(false); }}
               style={{
-                color: "rgba(232,237,244,.7)",
+                color: "rgba(27,42,74,.8)",
                 fontSize: ".9rem",
                 fontWeight: 600,
                 letterSpacing: ".04em",
                 textDecoration: "none",
                 padding: "0.65rem 0.5rem",
-                borderBottom: "1px solid rgba(255,255,255,0.05)",
+                borderBottom: "1px solid rgba(27,42,74,0.08)",
               }}
             >
               {l.label}
@@ -213,8 +213,8 @@ export default function Navbar() {
               marginTop: "0.75rem",
               padding: "0.85rem",
               borderRadius: "0.75rem",
-              background: "#F5C842",
-              color: "#1E2B45",
+              background: "#2455D6",
+              color: "#FFFFFF",
               fontWeight: 700,
               fontSize: ".9rem",
               textDecoration: "none",

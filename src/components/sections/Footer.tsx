@@ -69,7 +69,7 @@ export default function Footer() {
             style={{
               width: 32,
               height: 32,
-              background: "#F5C842",
+              background: "#2455D6",
               borderRadius: "8px",
               display: "flex",
               alignItems: "center",
@@ -108,7 +108,7 @@ export default function Footer() {
                     transition: "color 0.2s",
                     cursor: "pointer",
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = "#F5C842"; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "#2455D6"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(232,237,244,0.45)"; }}
                 >
                   {link.label}
@@ -142,8 +142,8 @@ export default function Footer() {
               cursor: "pointer",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(245,200,66,0.3)";
-              e.currentTarget.style.color = "#F5C842";
+              e.currentTarget.style.borderColor = "rgba(36,85,214,0.3)";
+              e.currentTarget.style.color = "#2455D6";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";

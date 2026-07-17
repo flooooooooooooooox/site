@@ -19,7 +19,7 @@ const CATEGORIES: Category[] = [
     icon: FileText,
     title: "Devis & Facturation",
     subtitle: "Facturez en 3 minutes, sans jamais ressaisir.",
-    color: "#F5C842",
+    color: "#2455D6",
     features: [
       "Devis PDF par vocal/écrit WhatsApp en 3 min",
       "Devis sur l'application Floxia ERP (pré-modèles IA)",
@@ -39,7 +39,7 @@ const CATEGORIES: Category[] = [
     icon: Bell,
     title: "Relances & Suivi",
     subtitle: "Plus aucun devis oublié, plus aucune facture impayée.",
-    color: "#F5C842",
+    color: "#2455D6",
     features: [
       "Relances devis non signés : J+3 / J+7 / J+14",
       "Relances factures impayées automatiques (J+X)",
@@ -92,7 +92,7 @@ const CATEGORIES: Category[] = [
     icon: Star,
     title: "Avis & Réputation",
     subtitle: "Vos meilleurs chantiers deviennent des avis 5 étoiles.",
-    color: "#FBBF24",
+    color: "#5B8CFF",
     features: [
       "Demande d'avis Google Maps auto fin de chantier",
       "E-mail beau & pro qui favorise les paiements",
@@ -145,11 +145,11 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           style={{ textAlign: "center", marginBottom: "2.5rem" }}
         >
-          <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
+          <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
             Fonctionnalités
           </span>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "var(--text)", marginBottom: ".6rem", lineHeight: 1.1 }}>
-            Une chaîne qui tourne <span style={{ color: "#F5C842" }}>toute seule</span>
+            Une chaîne qui tourne <span style={{ color: "#2455D6" }}>toute seule</span>
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1rem", maxWidth: "38rem", margin: "0 auto" }}>
             8 modules connectés. Cliquez sur une étape pour voir ce qu&apos;elle automatise.
@@ -175,7 +175,7 @@ export default function Services() {
                     background: isActive ? c.color : "rgba(var(--surface-rgb),0.05)",
                     borderColor: isActive ? c.color : "rgba(var(--surface-rgb),0.12)",
                     boxShadow: isActive ? `0 0 22px ${c.color}66` : "none",
-                    color: isActive ? "#0F1923" : c.color,
+                    color: isActive ? "#FFFFFF" : c.color,
                   }}
                 >
                   <NodeIcon size={19} strokeWidth={2} />
@@ -254,7 +254,7 @@ export default function Services() {
         .flow-link {
           width: clamp(14px, 3vw, 34px);
           height: 2px;
-          background: linear-gradient(to right, rgba(245,200,66,0.25), rgba(245,200,66,0.5));
+          background: linear-gradient(to right, rgba(36,85,214,0.25), rgba(36,85,214,0.5));
           flex-shrink: 0;
         }
         .flow-node {

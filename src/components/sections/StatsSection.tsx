@@ -10,10 +10,10 @@ import {
 } from "framer-motion";
 
 const STATS = [
-  { value: 3,    suffix: " min", label: "pour créer un devis",  color: "#F5C842", z:   0, rx:  3 },
+  { value: 3,    suffix: " min", label: "pour créer un devis",  color: "#2455D6", z:   0, rx:  3 },
   { value: 47,   suffix: "",     label: "fonctionnalités IA",   color: "#4ADE80", z:  50, rx: -4 },
   { value: 100,  suffix: "%",    label: "hébergé en France",    color: "#60A5FA", z:  50, rx: -4 },
-  { value: 2026, suffix: "",     label: "e-facturation prête",  color: "#F5C842", z:   0, rx:  3 },
+  { value: 2026, suffix: "",     label: "e-facturation prête",  color: "#2455D6", z:   0, rx:  3 },
 ];
 
 function springEase(t: number): number {
@@ -164,7 +164,7 @@ export default function StatsSection() {
           position: "absolute", top: "50%", left: "50%",
           width: "700px", height: "700px", borderRadius: "50%",
           x: "-50%", y: "-50%", scale: glowScale, opacity: glowOp,
-          background: "radial-gradient(circle, rgba(245,200,66,0.2) 0%, rgba(245,200,66,0.05) 38%, transparent 68%)",
+          background: "radial-gradient(circle, rgba(36,85,214,0.2) 0%, rgba(36,85,214,0.05) 38%, transparent 68%)",
           filter: "blur(100px)", pointerEvents: "none", zIndex: 0,
         }} />
 

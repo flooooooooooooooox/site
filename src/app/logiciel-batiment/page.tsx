@@ -18,14 +18,14 @@ export const metadata: Metadata = {
 export default function LogicielBatimentIndex() {
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
-      <style>{`.ville-card{transition:border-color .2s,background .2s}.ville-card:hover{border-color:rgba(245,200,66,.25)!important;background:rgba(245,200,66,.04)!important}`}</style>
+      <style>{`.ville-card{transition:border-color .2s,background .2s}.ville-card:hover{border-color:rgba(36,85,214,.25)!important;background:rgba(36,85,214,.04)!important}`}</style>
       <div style={{ maxWidth: "56rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
+          <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
             Partout en France
           </span>
           <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem" }}>
-            Logiciel bâtiment <span style={{ color: "#F5C842" }}>près de chez vous</span>
+            Logiciel bâtiment <span style={{ color: "#2455D6" }}>près de chez vous</span>
           </h1>
           <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem", maxWidth: "560px", margin: "0 auto" }}>
             Floxia est un logiciel 100% en ligne, accessible aux artisans et PME du bâtiment dans toute la France. Découvrez Floxia dans votre ville.

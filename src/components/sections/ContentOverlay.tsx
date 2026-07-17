@@ -63,8 +63,8 @@ export default function ContentOverlay({ children }: { children: React.ReactNode
             borderTopLeftRadius: "2.5rem",
             borderTopRightRadius: "2.5rem",
             background:
-              "linear-gradient(to right, transparent, rgba(245,200,66,0.9) 50%, transparent)",
-            boxShadow: "0 0 30px rgba(245,200,66,0.6), 0 0 70px rgba(245,200,66,0.3)",
+              "linear-gradient(to right, transparent, rgba(36,85,214,0.9) 50%, transparent)",
+            boxShadow: "0 0 30px rgba(36,85,214,0.6), 0 0 70px rgba(36,85,214,0.3)",
             opacity: lipOpacity,
             pointerEvents: "none",
           }}

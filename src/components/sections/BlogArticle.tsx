@@ -37,8 +37,8 @@ export default function BlogArticle({ title, description, date, readTime, badge,
 
           <span style={{
             display: "inline-block", padding: "5px 16px", borderRadius: "999px",
-            border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)",
-            color: "#F5C842", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em",
+            border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)",
+            color: "#2455D6", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em",
             textTransform: "uppercase", marginBottom: "1.5rem",
           }}>
             {badge}
@@ -102,7 +102,7 @@ export default function BlogArticle({ title, description, date, readTime, badge,
                   <ul key={i} style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem", padding: 0 }}>
                     {block.items.map((item, j) => (
                       <li key={j} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", color: "rgba(var(--text-rgb),0.72)", fontSize: ".95rem", lineHeight: 1.7 }}>
-                        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#F5C842", marginTop: "0.6rem", flexShrink: 0 }} />
+                        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#2455D6", marginTop: "0.6rem", flexShrink: 0 }} />
                         {item}
                       </li>
                     ))}
@@ -113,7 +113,7 @@ export default function BlogArticle({ title, description, date, readTime, badge,
                 return (
                   <div key={i} style={{
                     marginTop: "2rem", padding: "2rem", borderRadius: "1.25rem",
-                    background: "rgba(245,200,66,0.06)", border: "1px solid rgba(245,200,66,0.18)",
+                    background: "rgba(36,85,214,0.06)", border: "1px solid rgba(36,85,214,0.18)",
                     textAlign: "center",
                   }}>
                     <p style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.2rem", color: "var(--text)", marginBottom: "0.75rem" }}>
@@ -126,7 +126,7 @@ export default function BlogArticle({ title, description, date, readTime, badge,
                       style={{
                         display: "inline-flex", alignItems: "center", gap: "0.5rem",
                         padding: "0.9rem 1.8rem", borderRadius: "0.85rem",
-                        background: "#F5C842", color: "#0F1923", fontWeight: 700,
+                        background: "#2455D6", color: "#FFFFFF", fontWeight: 700,
                         fontSize: ".9rem", textDecoration: "none",
                       }}
                     >

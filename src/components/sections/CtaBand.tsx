@@ -12,34 +12,15 @@ export default function CtaBand() {
         padding: "clamp(4rem, 10vw, 8rem) 0",
       }}
     >
-      {/* Background image */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/chantier2.webp"
-        alt=""
-        aria-hidden
-        loading="lazy"
-        decoding="async"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: 0,
-          opacity: 0.6,
-        }}
-      />
-      {/* Dark overlay */}
+      {/* Fond clair — dégradé bleu doux, pas de photo */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(135deg, rgba(5,8,13,0.78) 0%, rgba(26,14,0,0.55) 50%, rgba(5,8,13,0.78) 100%)",
-          zIndex: 1,
+          background: "linear-gradient(135deg, #E4ECFF 0%, #EFF4FF 50%, #FFF3DE 100%)",
+          zIndex: 0,
         }}
       />
-      {/* Gold glow */}
       <div
         style={{
           position: "absolute",
@@ -48,7 +29,7 @@ export default function CtaBand() {
           transform: "translate(-50%, -50%)",
           width: "60vw",
           height: "60vh",
-          background: "radial-gradient(circle, rgba(245,200,66,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(36,85,214,0.1) 0%, transparent 70%)",
           zIndex: 1,
           pointerEvents: "none",
         }}
@@ -66,9 +47,9 @@ export default function CtaBand() {
               display: "inline-block",
               padding: "6px 20px",
               borderRadius: "999px",
-              border: "1px solid rgba(245,200,66,0.3)",
-              background: "rgba(245,200,66,0.08)",
-              color: "#F5C842",
+              border: "1px solid rgba(36,85,214,0.3)",
+              background: "rgba(36,85,214,0.08)",
+              color: "#2455D6",
               fontSize: ".78rem",
               fontWeight: 600,
               letterSpacing: ".1em",
@@ -89,7 +70,7 @@ export default function CtaBand() {
             }}
           >
             Prêt à récupérer{" "}
-            <span style={{ color: "#F5C842" }}>votre temps ?</span>
+            <span style={{ color: "#2455D6" }}>votre temps ?</span>
           </h2>
 
           <p
@@ -115,16 +96,16 @@ export default function CtaBand() {
                 gap: "0.6rem",
                 padding: "1rem 2rem",
                 borderRadius: "0.85rem",
-                background: "#F5C842",
-                color: "#0F1923",
+                background: "#2455D6",
+                color: "#FFFFFF",
                 fontWeight: 700,
                 fontSize: ".95rem",
                 textDecoration: "none",
                 cursor: "pointer",
                 transition: "all 0.2s",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "#f0be2a"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "#F5C842"; e.currentTarget.style.transform = "translateY(0)"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "#1e46c2"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "#2455D6"; e.currentTarget.style.transform = "translateY(0)"; }}
             >
               <CalendarDays size={18} />
               Réserver une démo gratuite

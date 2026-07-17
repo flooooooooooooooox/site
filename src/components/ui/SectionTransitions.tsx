@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 // Ember particles rising from hero into darkness
 export function HeroWave() {
@@ -28,7 +28,7 @@ export function HeroWave() {
     };
 
     const COLORS = [
-      "rgba(245,200,66,",
+      "rgba(36,85,214,",
       "rgba(255,160,30,",
       "rgba(255,220,100,",
       "rgba(200,100,20,",
@@ -118,16 +118,9 @@ export function HeroWave() {
   );
 }
 
-function useTheme() {
-  const [isDark, setIsDark] = useState(true);
-  useEffect(() => {
-    const check = () => setIsDark(document.documentElement.getAttribute("data-theme") !== "light");
-    check();
-    const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => observer.disconnect();
-  }, []);
-  return isDark ? "dark" : "light" as "dark" | "light";
+// Site 100% clair — plus de bascule de thème.
+function useTheme(): "dark" | "light" {
+  return "light";
 }
 
 // 1. Perspective 3D floor with grid
@@ -146,7 +139,7 @@ export function Perspective3DFloor() {
         backgroundSize: "60px 60px",
       }} />
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "60%", background: `linear-gradient(to top, ${bg}, transparent)` }} />
-      <div style={{ position: "absolute", bottom: "30%", left: "50%", transform: "translateX(-50%)", width: "40%", height: "2px", background: "linear-gradient(to right, transparent, rgba(245,200,66,0.4) 50%, transparent)", boxShadow: "0 0 20px rgba(245,200,66,0.2)" }} />
+      <div style={{ position: "absolute", bottom: "30%", left: "50%", transform: "translateX(-50%)", width: "40%", height: "2px", background: "linear-gradient(to right, transparent, rgba(36,85,214,0.4) 50%, transparent)", boxShadow: "0 0 20px rgba(36,85,214,0.2)" }} />
     </div>
   );
 }
@@ -161,7 +154,7 @@ export function CubeEdge() {
   return (
     <div style={{ width: "100%", height: "80px", display: "flex", flexDirection: "column" }}>
       <div style={{ flex: 1, background: `linear-gradient(to bottom, ${top}, ${edge})` }} />
-      <div style={{ height: "3px", background: "linear-gradient(to right, transparent, #F5C842 20%, #F5C842 80%, transparent)", boxShadow: "0 0 16px rgba(245,200,66,0.7), 0 0 40px rgba(245,200,66,0.3)" }} />
+      <div style={{ height: "3px", background: "linear-gradient(to right, transparent, #2455D6 20%, #2455D6 80%, transparent)", boxShadow: "0 0 16px rgba(36,85,214,0.7), 0 0 40px rgba(36,85,214,0.3)" }} />
       <div style={{ flex: 1, background: `linear-gradient(to bottom, ${edge}, ${bottom})` }} />
     </div>
   );
@@ -186,8 +179,8 @@ export function RippleDepth() {
       <svg width="100%" height="160" viewBox="0 0 1000 160" preserveAspectRatio="xMidYMax meet" style={{ position: "absolute", bottom: 0 }}>
         {rings.map((r, i) => (
           <ellipse key={i} cx="500" cy="160" rx={r.rx} ry={r.ry} fill="none"
-            stroke={r.gold ? "#F5C842" : ring} strokeWidth={r.gold ? "2.5" : "1.5"} opacity={r.op}
-            style={r.gold ? { filter: "drop-shadow(0 0 8px rgba(245,200,66,0.8))" } : {}} />
+            stroke={r.gold ? "#2455D6" : ring} strokeWidth={r.gold ? "2.5" : "1.5"} opacity={r.op}
+            style={r.gold ? { filter: "drop-shadow(0 0 8px rgba(36,85,214,0.8))" } : {}} />
         ))}
       </svg>
     </div>
@@ -205,7 +198,7 @@ export function PrismSlice() {
     <div style={{ width: "100%", height: "100px", position: "relative", background: bg, overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, background: f1, clipPath: "polygon(0 0, 100% 28%, 100% 100%, 0 72%)" }} />
       <div style={{ position: "absolute", inset: 0, background: f2, clipPath: "polygon(0 72%, 100% 28%, 100% 100%, 0 100%)" }} />
-      <div style={{ position: "absolute", width: "100%", height: "2px", top: "calc(28% - 1px)", left: 0, background: "linear-gradient(to right, transparent, #F5C842 15%, #F5C842 85%, transparent)", boxShadow: "0 0 14px rgba(245,200,66,0.9)", transform: "skewY(-2.2deg)", transformOrigin: "left center" }} />
+      <div style={{ position: "absolute", width: "100%", height: "2px", top: "calc(28% - 1px)", left: 0, background: "linear-gradient(to right, transparent, #2455D6 15%, #2455D6 85%, transparent)", boxShadow: "0 0 14px rgba(36,85,214,0.9)", transform: "skewY(-2.2deg)", transformOrigin: "left center" }} />
     </div>
   );
 }
@@ -224,7 +217,7 @@ export function DepthFade() {
         backgroundSize: "80px 80px",
         transform: "perspective(600px) rotateX(60deg)", transformOrigin: "center top", opacity: 0.7 }} />
       <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center top, transparent 0%, ${vignette} 100%)` }} />
-      <div style={{ position: "absolute", width: "60%", height: "1px", top: "38%", left: "20%", background: "linear-gradient(to right, transparent, rgba(245,200,66,0.35) 50%, transparent)", boxShadow: "0 0 24px rgba(245,200,66,0.2)" }} />
+      <div style={{ position: "absolute", width: "60%", height: "1px", top: "38%", left: "20%", background: "linear-gradient(to right, transparent, rgba(36,85,214,0.35) 50%, transparent)", boxShadow: "0 0 24px rgba(36,85,214,0.2)" }} />
     </div>
   );
 }

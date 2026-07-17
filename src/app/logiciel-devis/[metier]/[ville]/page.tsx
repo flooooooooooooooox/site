@@ -72,12 +72,12 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
           <Link href={`/logiciel-batiment/${v.slug}`} style={{ color: "rgba(var(--text-rgb),0.45)", textDecoration: "none" }}>{v.nom}</Link>
         </div>
 
-        <span style={{ display: "inline-block", padding: "5px 16px", borderRadius: "999px", border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)", color: "#F5C842", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
+        <span style={{ display: "inline-block", padding: "5px 16px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
           {m.label} · {v.region}
         </span>
 
         <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "var(--text)", lineHeight: 1.12, letterSpacing: "-0.03em", marginBottom: "1.5rem" }}>
-          Logiciel de devis {m.nom} <span style={{ color: "#F5C842" }}>{v.prepo} {v.nom}</span>
+          Logiciel de devis {m.nom} <span style={{ color: "#2455D6" }}>{v.prepo} {v.nom}</span>
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
@@ -94,12 +94,12 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
         <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "2rem" }}>
           {m.prestations.map((p) => (
             <li key={p} style={{ display: "flex", gap: "0.7rem", color: "rgba(var(--text-rgb),0.7)", fontSize: ".92rem", lineHeight: 1.7 }}>
-              <span style={{ color: "#F5C842", fontWeight: 700, flexShrink: 0 }}>→</span>
+              <span style={{ color: "#2455D6", fontWeight: 700, flexShrink: 0 }}>→</span>
               Devis {p} généré automatiquement, avec votre catalogue de prix.
             </li>
           ))}
           <li style={{ display: "flex", gap: "0.7rem", color: "rgba(var(--text-rgb),0.7)", fontSize: ".92rem", lineHeight: 1.7 }}>
-            <span style={{ color: "#F5C842", fontWeight: 700, flexShrink: 0 }}>→</span>
+            <span style={{ color: "#2455D6", fontWeight: 700, flexShrink: 0 }}>→</span>
             TVA au choix sur chaque ligne : {m.tva}.
           </li>
         </ul>
@@ -114,13 +114,13 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
           Que vous soyez {m.nom} indépendant, auto-entrepreneur ou à la tête d&apos;une entreprise de {m.domaine}, Floxia s&apos;adapte à votre activité {v.prepo} {v.nom}.
         </p>
 
-        <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(245,200,66,0.05)", border: "1px solid rgba(245,200,66,0.18)", textAlign: "center", marginBottom: "4rem" }}>
+        <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center", marginBottom: "4rem" }}>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.3rem", color: "var(--text)", marginBottom: "0.6rem" }}>
             Essayez Floxia, {m.nom} {v.prepo} {v.nom}
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · Sans engagement</p>
           <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"
-            style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "1rem 2rem", borderRadius: "0.85rem", background: "#F5C842", color: "#0F1923", fontWeight: 700, fontSize: ".95rem", textDecoration: "none" }}>
+            style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "1rem 2rem", borderRadius: "0.85rem", background: "#2455D6", color: "#FFFFFF", fontWeight: 700, fontSize: ".95rem", textDecoration: "none" }}>
             Réserver une démo gratuite
           </a>
         </div>

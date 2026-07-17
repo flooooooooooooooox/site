@@ -85,14 +85,14 @@ export default function Ressources() {
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
       <style>{`
         .res-card { transition: border-color 0.2s, background 0.2s; }
-        .res-card:hover { border-color: rgba(245,200,66,0.2) !important; background: rgba(245,200,66,0.03) !important; }
+        .res-card:hover { border-color: rgba(36,85,214,0.2) !important; background: rgba(36,85,214,0.03) !important; }
       `}</style>
       <div style={{ maxWidth: "56rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <div style={{ textAlign: "center", marginBottom: "4rem" }}>
           <span style={{
             display: "inline-block", padding: "6px 20px", borderRadius: "999px",
-            border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)",
-            color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em",
+            border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)",
+            color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em",
             textTransform: "uppercase", marginBottom: "1.2rem",
           }}>
             Ressources
@@ -102,7 +102,7 @@ export default function Ressources() {
             fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)",
             letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem",
           }}>
-            Guides pour <span style={{ color: "#F5C842" }}>artisans du bâtiment</span>
+            Guides pour <span style={{ color: "#2455D6" }}>artisans du bâtiment</span>
           </h1>
           <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem", maxWidth: "480px", margin: "0 auto" }}>
             Conseils pratiques pour automatiser votre gestion, gagner du temps et développer votre activité.
@@ -125,7 +125,7 @@ export default function Ressources() {
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
                 <span style={{
                   padding: "3px 12px", borderRadius: "999px",
-                  background: "rgba(245,200,66,0.1)", color: "#F5C842",
+                  background: "rgba(36,85,214,0.1)", color: "#2455D6",
                   fontSize: ".72rem", fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase",
                 }}>
                   {article.badge}

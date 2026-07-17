@@ -60,7 +60,7 @@ export default function StorySection() {
           style={{ textAlign: "center", marginBottom: "4.5rem" }}
         >
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "var(--text)", marginBottom: ".75rem" }}>
-            Comment ça <span style={{ color: "#F5C842" }}>marche</span>
+            Comment ça <span style={{ color: "#2455D6" }}>marche</span>
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
             De la parole au paiement — en automatique.
@@ -84,9 +84,9 @@ export default function StorySection() {
             maxHeight: "calc(100% - 40px)",
             width: "2px",
             height: lineHeight,
-            background: "linear-gradient(to bottom, #F5C842, rgba(245,200,66,0.35))",
+            background: "linear-gradient(to bottom, #2455D6, rgba(36,85,214,0.35))",
             borderRadius: "2px",
-            boxShadow: "0 0 12px rgba(245,200,66,0.35)",
+            boxShadow: "0 0 12px rgba(36,85,214,0.35)",
           }} />
 
           {/* Step rows : pastille + carte alignées */}
@@ -107,8 +107,8 @@ export default function StorySection() {
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
-                    background: "#F5C842",
-                    color: "#1E2B45",
+                    background: "#2455D6",
+                    color: "#FFFFFF",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -116,7 +116,7 @@ export default function StorySection() {
                     fontSize: ".85rem",
                     fontFamily: "var(--font-nunito)",
                     zIndex: 1,
-                    boxShadow: "0 0 0 6px rgba(245,200,66,0.1), 0 0 20px rgba(245,200,66,0.25)",
+                    boxShadow: "0 0 0 6px rgba(36,85,214,0.1), 0 0 20px rgba(36,85,214,0.25)",
                     flexShrink: 0,
                     position: "relative",
                     animation: "dotGlow 2.4s ease-in-out infinite",
@@ -141,14 +141,14 @@ export default function StorySection() {
                     width: "48px",
                     height: "48px",
                     borderRadius: "10px",
-                    background: "rgba(245,200,66,0.08)",
-                    border: "1px solid rgba(245,200,66,0.15)",
+                    background: "rgba(36,85,214,0.08)",
+                    border: "1px solid rgba(36,85,214,0.15)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
                   }}>
-                    <Icon size={22} color="#F5C842" strokeWidth={1.5} />
+                    <Icon size={22} color="#2455D6" strokeWidth={1.5} />
                   </div>
                   <div>
                     <span style={{
@@ -157,9 +157,9 @@ export default function StorySection() {
                       fontWeight: 700,
                       letterSpacing: ".1em",
                       textTransform: "uppercase" as const,
-                      color: "rgba(245,200,66,0.7)",
-                      background: "rgba(245,200,66,0.06)",
-                      border: "1px solid rgba(245,200,66,0.15)",
+                      color: "rgba(36,85,214,0.7)",
+                      background: "rgba(36,85,214,0.06)",
+                      border: "1px solid rgba(36,85,214,0.15)",
                       borderRadius: "100px",
                       padding: ".2rem .75rem",
                       marginBottom: ".6rem",
@@ -189,8 +189,8 @@ export default function StorySection() {
 
       <style>{`
         @keyframes dotGlow {
-          0%, 100% { box-shadow: 0 0 0 6px rgba(245,200,66,0.08), 0 0 16px rgba(245,200,66,0.2); }
-          50% { box-shadow: 0 0 0 7px rgba(245,200,66,0.1), 0 0 20px rgba(245,200,66,0.28); }
+          0%, 100% { box-shadow: 0 0 0 6px rgba(36,85,214,0.08), 0 0 16px rgba(36,85,214,0.2); }
+          50% { box-shadow: 0 0 0 7px rgba(36,85,214,0.1), 0 0 20px rgba(36,85,214,0.28); }
         }
         .story-row {
           display: flex;

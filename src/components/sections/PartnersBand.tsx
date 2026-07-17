@@ -25,9 +25,9 @@ const PARTNERS = [
     sub: "Signature électronique",
     svg: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <rect width="24" height="24" rx="5" fill="#F5C842" fillOpacity="0.12"/>
-        <path d="M6 2h8l4 4v14a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" stroke="#F5C842" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M14 2v4h4M9 13h6M9 9h4M9 17h6" stroke="#F5C842" strokeWidth="1.5" strokeLinecap="round"/>
+        <rect width="24" height="24" rx="5" fill="#2455D6" fillOpacity="0.12"/>
+        <path d="M6 2h8l4 4v14a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" stroke="#2455D6" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M14 2v4h4M9 13h6M9 9h4M9 17h6" stroke="#2455D6" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -47,7 +47,7 @@ const PARTNERS = [
     sub: "IA souveraine 🇫🇷 · données en UE",
     svg: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="3" width="20" height="3.4" rx="0.5" fill="#F5C842"/>
+        <rect x="2" y="3" width="20" height="3.4" rx="0.5" fill="#2455D6"/>
         <rect x="2" y="8.3" width="20" height="3.4" rx="0.5" fill="#FA8C16"/>
         <rect x="2" y="13.6" width="20" height="3.4" rx="0.5" fill="#F5222D"/>
         <rect x="2" y="18.9" width="20" height="2.1" rx="0.5" fill="#000" fillOpacity="0.55"/>
@@ -98,7 +98,7 @@ export default function PartnersBand() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              whileHover={{ borderColor: "rgba(245,200,66,0.25)", backgroundColor: "rgba(245,200,66,0.04)" }}
+              whileHover={{ borderColor: "rgba(36,85,214,0.25)", backgroundColor: "rgba(36,85,214,0.04)" }}
               style={{
                 display: "inline-flex", alignItems: "center", gap: "0.65rem",
                 padding: "0.65rem 1.2rem", borderRadius: "999px",

@@ -31,10 +31,10 @@ export default function FloatingCtaMobile() {
           gap: "0.75rem",
           padding: "0.85rem 1.1rem",
           borderRadius: "1rem",
-          background: "rgba(5,8,13,0.97)",
-          border: "1px solid rgba(245,200,66,0.3)",
+          background: "rgba(255,255,255,0.97)",
+          border: "1px solid rgba(36,85,214,0.3)",
           backdropFilter: "blur(24px)",
-          boxShadow: "0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,200,66,0.08)",
+          boxShadow: "0 8px 40px rgba(27,42,74,0.18), 0 0 0 1px rgba(36,85,214,0.1)",
           animation: "slideUpCta 0.4s cubic-bezier(0.16,1,0.3,1) both",
         }}
       >
@@ -52,7 +52,7 @@ export default function FloatingCtaMobile() {
           <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#4ADE80", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.15rem" }}>
             Démo gratuite disponible
           </div>
-          <div style={{ fontSize: "0.78rem", color: "rgba(232,237,244,0.6)", fontWeight: 500 }}>
+          <div style={{ fontSize: "0.78rem", color: "rgba(27,42,74,0.6)", fontWeight: 500 }}>
             Sans engagement · 30 min
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function FloatingCtaMobile() {
           style={{
             display: "inline-flex", alignItems: "center", gap: "0.35rem",
             padding: "0.6rem 1.1rem", borderRadius: "0.6rem",
-            background: "#F5C842", color: "#1E2B45",
+            background: "#2455D6", color: "#FFFFFF",
             fontWeight: 700, fontSize: "0.8rem", textDecoration: "none",
             whiteSpace: "nowrap", flexShrink: 0,
           }}
@@ -77,7 +77,7 @@ export default function FloatingCtaMobile() {
           aria-label="Fermer"
           style={{
             background: "none", border: "none", cursor: "pointer",
-            color: "rgba(232,237,244,0.3)", padding: "0.2rem",
+            color: "rgba(27,42,74,0.35)", padding: "0.2rem",
             fontSize: "1.1rem", lineHeight: 1, flexShrink: 0,
           }}
         >

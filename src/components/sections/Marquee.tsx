@@ -5,10 +5,10 @@ export default function Marquee() {
   const renderItems = (items: string[]) =>
     [...items, ...items].map((item, i) => (
       <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: "1.2rem", whiteSpace: "nowrap" }}>
-        <span style={{ color: "#F5C842", opacity: 0.45, fontSize: "clamp(.85rem,1.4vw,1rem)", fontWeight: 600, letterSpacing: ".04em" }}>
+        <span style={{ color: "#2455D6", opacity: 0.45, fontSize: "clamp(.85rem,1.4vw,1rem)", fontWeight: 600, letterSpacing: ".04em" }}>
           {item}
         </span>
-        <span style={{ color: "#F5C842", opacity: 0.2, fontSize: ".7rem" }}>◆</span>
+        <span style={{ color: "#2455D6", opacity: 0.2, fontSize: ".7rem" }}>◆</span>
       </span>
     ));
 

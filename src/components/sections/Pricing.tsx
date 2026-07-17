@@ -48,7 +48,7 @@ const PLANS = [
     price: 179,
     setup: 349,
     popular: true,
-    accentColor: "#F5C842",
+    accentColor: "#2455D6",
     features: [
       "Tout Essentiel inclus",
       "Standard IA 24h/24",
@@ -159,8 +159,8 @@ export default function Pricing() {
         >
           <span style={{
             display: "inline-block", padding: "6px 20px", borderRadius: "999px",
-            border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)",
-            color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em",
+            border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)",
+            color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em",
             textTransform: "uppercase", marginBottom: "1.2rem",
           }}>
             Tarifs
@@ -170,7 +170,7 @@ export default function Pricing() {
             style={{ fontFamily: "var(--font-nunito)", color: "var(--text)" }}
           >
             Des offres simples,{" "}
-            <span style={{ color: "#F5C842" }}>sans surprise</span>
+            <span style={{ color: "#2455D6" }}>sans surprise</span>
           </h2>
           <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "0.95rem" }}>
             Résiliable à tout moment après 3 mois · Sans engagement caché
@@ -186,11 +186,11 @@ export default function Pricing() {
           style={{
             maxWidth: "44rem", margin: "0 auto 3rem", padding: "1.1rem 1.5rem",
             borderRadius: "1rem",
-            background: "linear-gradient(135deg, rgba(245,200,66,0.14), rgba(245,84,54,0.10))",
-            border: "1px solid rgba(245,200,66,0.35)",
+            background: "linear-gradient(135deg, rgba(36,85,214,0.14), rgba(245,84,54,0.10))",
+            border: "1px solid rgba(36,85,214,0.35)",
             display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem",
             flexWrap: "wrap", textAlign: "center",
-            boxShadow: "0 0 40px rgba(245,200,66,0.12)",
+            boxShadow: "0 0 40px rgba(36,85,214,0.12)",
           }}
         >
           <span style={{
@@ -203,7 +203,7 @@ export default function Pricing() {
             🔥 Offre de lancement
           </span>
           <span style={{ color: "var(--text)", fontWeight: 700, fontSize: "0.95rem" }}>
-            <span style={{ color: "#F5C842", fontWeight: 900 }}>−50% à vie</span> sur l&apos;abonnement pour les <span style={{ color: "#F5C842", fontWeight: 900 }}>10 premiers artisans</span>
+            <span style={{ color: "#2455D6", fontWeight: 900 }}>−50% à vie</span> sur l&apos;abonnement pour les <span style={{ color: "#2455D6", fontWeight: 900 }}>10 premiers artisans</span>
           </span>
           <span style={{
             display: "inline-flex", alignItems: "center", gap: "0.4rem",
@@ -234,7 +234,7 @@ export default function Pricing() {
                     position: "absolute", top: "50%", left: "50%",
                     transform: "translate(-50%,-50%)",
                     width: "340px", height: "340px",
-                    background: "radial-gradient(circle, rgba(245,200,66,0.14), transparent)",
+                    background: "radial-gradient(circle, rgba(36,85,214,0.14), transparent)",
                     filter: "blur(60px)", pointerEvents: "none", zIndex: 0,
                   }} />
                 )}
@@ -243,18 +243,18 @@ export default function Pricing() {
                   style={{
                     position: "relative", zIndex: 1,
                     background: plan.popular
-                      ? "linear-gradient(145deg, rgba(245,200,66,0.06) 0%, rgba(var(--surface-rgb),0.04) 100%)"
+                      ? "linear-gradient(145deg, rgba(36,85,214,0.06) 0%, rgba(var(--surface-rgb),0.04) 100%)"
                       : "rgba(var(--surface-rgb),0.04)",
                     backdropFilter: "blur(20px) saturate(180%)",
                     WebkitBackdropFilter: "blur(20px) saturate(180%)",
                     border: plan.popular
-                      ? "1px solid rgba(245,200,66,0.35)"
+                      ? "1px solid rgba(36,85,214,0.35)"
                       : "1px solid rgba(var(--surface-rgb),0.08)",
                     borderRadius: "1.5rem",
                     padding: 0,
                     overflow: "hidden",
                     boxShadow: plan.popular
-                      ? "0 0 0 1px rgba(245,200,66,0.08), 0 24px 80px rgba(245,200,66,0.1)"
+                      ? "0 0 0 1px rgba(36,85,214,0.08), 0 24px 80px rgba(36,85,214,0.1)"
                       : "none",
                     transition: "box-shadow 0.3s, border-color 0.3s",
                   }}
@@ -263,7 +263,7 @@ export default function Pricing() {
                   <div style={{
                     height: "3px",
                     background: plan.popular
-                      ? "linear-gradient(90deg, #F5C842, #E6A800)"
+                      ? "linear-gradient(90deg, #2455D6, #1A3FA8)"
                       : `linear-gradient(90deg, ${plan.accentColor}, transparent)`,
                     borderRadius: "1.5rem 1.5rem 0 0",
                   }} />
@@ -274,12 +274,12 @@ export default function Pricing() {
                       <div style={{
                         display: "inline-flex", alignItems: "center", gap: "0.35rem",
                         padding: "4px 12px", borderRadius: "999px",
-                        background: "#F5C842", color: "#0F1923",
+                        background: "#2455D6", color: "#FFFFFF",
                         fontSize: ".68rem", fontWeight: 800,
                         letterSpacing: ".08em", textTransform: "uppercase",
                         marginBottom: "1rem",
                       }}>
-                        <Star size={10} fill="#0F1923" /> Le plus vendu
+                        <Star size={10} fill="#FFFFFF" /> Le plus vendu
                       </div>
                     )}
 
@@ -288,15 +288,15 @@ export default function Pricing() {
                       <div style={{
                         width: 40, height: 40, borderRadius: "0.75rem", flexShrink: 0,
                         display: "flex", alignItems: "center", justifyContent: "center",
-                        background: plan.popular ? "rgba(245,200,66,0.15)" : "rgba(var(--surface-rgb),0.08)",
-                        border: `1px solid ${plan.popular ? "rgba(245,200,66,0.3)" : "rgba(var(--surface-rgb),0.1)"}`,
+                        background: plan.popular ? "rgba(36,85,214,0.15)" : "rgba(var(--surface-rgb),0.08)",
+                        border: `1px solid ${plan.popular ? "rgba(36,85,214,0.3)" : "rgba(var(--surface-rgb),0.1)"}`,
                       }}>
-                        <Icon size={18} color={plan.popular ? "#F5C842" : "rgba(var(--text-rgb),0.5)"} />
+                        <Icon size={18} color={plan.popular ? "#2455D6" : "rgba(var(--text-rgb),0.5)"} />
                       </div>
                       <div>
                         <h3 style={{
                           fontFamily: "var(--font-nunito)", fontWeight: 800,
-                          fontSize: "1.1rem", color: plan.popular ? "#F5C842" : "var(--text)",
+                          fontSize: "1.1rem", color: plan.popular ? "#2455D6" : "var(--text)",
                           lineHeight: 1.2, marginBottom: "0.2rem",
                         }}>
                           {plan.name}
@@ -350,7 +350,7 @@ export default function Pricing() {
                         <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
                           <CheckCircle
                             size={15}
-                            color={plan.popular ? "#F5C842" : "rgba(245,200,66,0.5)"}
+                            color={plan.popular ? "#2455D6" : "rgba(36,85,214,0.5)"}
                             style={{ flexShrink: 0, marginTop: "2px" }}
                           />
                           <span style={{ color: "rgba(var(--text-rgb),0.75)", fontSize: ".86rem", lineHeight: 1.5 }}>{f}</span>
@@ -365,10 +365,10 @@ export default function Pricing() {
                         display: "flex", alignItems: "center", justifyContent: "center", gap: "0.4rem",
                         width: "100%", padding: "0.6rem", marginBottom: "1rem",
                         borderRadius: "0.65rem", background: "transparent",
-                        border: "1px solid rgba(245,200,66,0.2)", color: "#F5C842",
+                        border: "1px solid rgba(36,85,214,0.2)", color: "#2455D6",
                         fontWeight: 600, fontSize: ".8rem", cursor: "pointer", transition: "all 0.2s",
                       }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(245,200,66,0.07)"; }}
+                      onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(36,85,214,0.07)"; }}
                       onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
                     >
                       {isExpanded ? "Voir moins" : "Voir le détail complet"}
@@ -389,14 +389,14 @@ export default function Pricing() {
                               <div key={group.category}>
                                 <p style={{
                                   fontSize: ".65rem", fontWeight: 700, letterSpacing: ".08em",
-                                  textTransform: "uppercase", color: "rgba(245,200,66,0.6)", marginBottom: "0.5rem",
+                                  textTransform: "uppercase", color: "rgba(36,85,214,0.6)", marginBottom: "0.5rem",
                                 }}>
                                   {group.category}
                                 </p>
                                 <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.45rem" }}>
                                   {group.items.map((item) => (
                                     <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                                      <CheckCircle size={13} color="rgba(245,200,66,0.45)" style={{ flexShrink: 0, marginTop: "2px" }} />
+                                      <CheckCircle size={13} color="rgba(36,85,214,0.45)" style={{ flexShrink: 0, marginTop: "2px" }} />
                                       <span style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".8rem", lineHeight: 1.45 }}>{item}</span>
                                     </li>
                                   ))}
@@ -419,18 +419,18 @@ export default function Pricing() {
                         borderRadius: "0.75rem", textAlign: "center", fontWeight: 700,
                         fontSize: ".88rem", textDecoration: "none", cursor: "pointer",
                         transition: "all 0.2s",
-                        background: plan.popular ? "#F5C842" : "transparent",
-                        color: plan.popular ? "#0F1923" : "var(--text)",
+                        background: plan.popular ? "#2455D6" : "transparent",
+                        color: plan.popular ? "#FFFFFF" : "var(--text)",
                         border: plan.popular ? "none" : "1px solid rgba(var(--surface-rgb),0.15)",
                       }}
                       onMouseEnter={(e) => {
                         const el = e.currentTarget;
-                        el.style.background = plan.popular ? "#f0be2a" : "rgba(var(--surface-rgb),0.06)";
+                        el.style.background = plan.popular ? "#1e46c2" : "rgba(var(--surface-rgb),0.06)";
                         if (!plan.popular) el.style.borderColor = "rgba(var(--surface-rgb),0.3)";
                       }}
                       onMouseLeave={(e) => {
                         const el = e.currentTarget;
-                        el.style.background = plan.popular ? "#F5C842" : "transparent";
+                        el.style.background = plan.popular ? "#2455D6" : "transparent";
                         if (!plan.popular) el.style.borderColor = "rgba(var(--surface-rgb),0.15)";
                       }}
                     >
@@ -473,8 +473,8 @@ export default function Pricing() {
 
       <style>{`
         @keyframes badgePulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(245,200,66,0.4); }
-          50% { box-shadow: 0 0 0 6px rgba(245,200,66,0); }
+          0%, 100% { box-shadow: 0 0 0 0 rgba(36,85,214,0.4); }
+          50% { box-shadow: 0 0 0 6px rgba(36,85,214,0); }
         }
         @keyframes pulseUrgent {
           0%, 100% { opacity: 1; transform: scale(1); }

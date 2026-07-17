@@ -20,7 +20,7 @@ export default function SectionSpotlight({ children, style }: {
         style={{
           ...base,
           width: 500, height: 500,
-          background: "radial-gradient(circle, rgba(245,200,66,0.13) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(36,85,214,0.13) 0%, transparent 70%)",
           position: "absolute", top: "0%", left: "5%", zIndex: 0,
         }}
         animate={{ x: [0, 80, -60, 0], y: [0, 60, -40, 0] }}

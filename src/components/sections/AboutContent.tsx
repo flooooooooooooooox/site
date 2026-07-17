@@ -65,9 +65,9 @@ export default function AboutContent() {
             display: "inline-block",
             padding: "6px 20px",
             borderRadius: "999px",
-            border: "1px solid rgba(245,200,66,0.25)",
-            background: "rgba(245,200,66,0.07)",
-            color: "#F5C842",
+            border: "1px solid rgba(36,85,214,0.25)",
+            background: "rgba(36,85,214,0.07)",
+            color: "#2455D6",
             fontSize: ".78rem",
             fontWeight: 600,
             letterSpacing: ".1em",
@@ -83,7 +83,7 @@ export default function AboutContent() {
           style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2.4rem,6vw,4.2rem)", lineHeight: 1.05, color: "var(--text)", marginBottom: "1.4rem" }}
         >
           L&apos;automatisation au service{" "}
-          <span style={{ color: "#F5C842" }}>des artisans</span>
+          <span style={{ color: "#2455D6" }}>des artisans</span>
         </motion.h1>
         <motion.p
           {...fadeUp}
@@ -99,7 +99,7 @@ export default function AboutContent() {
       <section style={{ padding: "clamp(3rem,6vh,5rem) 6vw", maxWidth: "52rem", margin: "0 auto" }}>
         <motion.div {...fadeUp}>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.6rem)", color: "var(--text)", marginBottom: "1.8rem" }}>
-            Notre <span style={{ color: "#F5C842" }}>histoire</span>
+            Notre <span style={{ color: "#2455D6" }}>histoire</span>
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.3rem", color: "rgba(var(--text-rgb),0.75)", fontSize: "1.08rem", lineHeight: 1.8 }}>
             <p>
@@ -115,7 +115,7 @@ export default function AboutContent() {
               bénéficient les grandes structures.
             </p>
             <p>
-              De cette réflexion naît <strong style={{ color: "#F5C842" }}>Floxia</strong> : amener
+              De cette réflexion naît <strong style={{ color: "#2455D6" }}>Floxia</strong> : amener
               l&apos;automatisation et l&apos;intelligence artificielle, éprouvées en entreprise, aux
               artisans et aux PME du bâtiment. Aujourd&apos;hui, Floxia grandit dans ce domaine avec une
               mission claire — rendre aux artisans le temps qu&apos;ils consacrent à l&apos;administratif.
@@ -127,7 +127,7 @@ export default function AboutContent() {
       {/* Mission & valeurs */}
       <section style={{ padding: "clamp(3rem,6vh,5rem) 6vw", maxWidth: "72rem", margin: "0 auto" }}>
         <motion.h2 {...fadeUp} style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.6rem)", color: "var(--text)", marginBottom: "0.6rem", textAlign: "center" }}>
-          Mission & <span style={{ color: "#F5C842" }}>valeurs</span>
+          Mission & <span style={{ color: "#2455D6" }}>valeurs</span>
         </motion.h2>
         <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.05 }} style={{ textAlign: "center", color: "rgba(var(--text-rgb),0.6)", marginBottom: "3rem", fontSize: "1.05rem" }}>
           Redonner du temps aux artisans pour qu&apos;ils se concentrent sur leur métier.
@@ -146,8 +146,8 @@ export default function AboutContent() {
                 padding: "1.8rem",
               }}
             >
-              <div style={{ width: 44, height: 44, borderRadius: "0.75rem", background: "rgba(245,200,66,0.1)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.1rem" }}>
-                <v.icon size={22} color="#F5C842" />
+              <div style={{ width: 44, height: 44, borderRadius: "0.75rem", background: "rgba(36,85,214,0.1)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.1rem" }}>
+                <v.icon size={22} color="#2455D6" />
               </div>
               <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.1rem", color: "var(--text)", marginBottom: "0.6rem" }}>{v.title}</h3>
               <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "0.92rem", lineHeight: 1.6 }}>{v.text}</p>
@@ -166,7 +166,7 @@ export default function AboutContent() {
               transition={{ ...fadeUp.transition, delay: i * 0.08 }}
               style={{ textAlign: "center", padding: "1.5rem 1rem" }}
             >
-              <div style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2.2rem,4vw,3rem)", color: "#F5C842", lineHeight: 1 }}>{s.value}</div>
+              <div style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2.2rem,4vw,3rem)", color: "#2455D6", lineHeight: 1 }}>{s.value}</div>
               <div style={{ marginTop: "0.6rem", color: "rgba(var(--text-rgb),0.65)", fontSize: "0.9rem", lineHeight: 1.4 }}>{s.label}</div>
             </motion.div>
           ))}
@@ -176,7 +176,7 @@ export default function AboutContent() {
       {/* L'équipe */}
       <section style={{ padding: "clamp(3rem,6vh,5rem) 6vw", maxWidth: "60rem", margin: "0 auto" }}>
         <motion.h2 {...fadeUp} style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.6rem)", color: "var(--text)", marginBottom: "0.6rem", textAlign: "center" }}>
-          L&apos;<span style={{ color: "#F5C842" }}>équipe</span>
+          L&apos;<span style={{ color: "#2455D6" }}>équipe</span>
         </motion.h2>
         <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.05 }} style={{ textAlign: "center", color: "rgba(var(--text-rgb),0.6)", marginBottom: "3rem", fontSize: "1.05rem" }}>
           Une équipe à taille humaine, proche de ses clients.
@@ -196,10 +196,10 @@ export default function AboutContent() {
                 textAlign: "center",
               }}
             >
-              <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(245,200,66,0.1)", border: "1px solid rgba(245,200,66,0.25)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.2rem" }}>
-                <m.icon size={28} color="#F5C842" />
+              <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(36,85,214,0.1)", border: "1px solid rgba(36,85,214,0.25)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.2rem" }}>
+                <m.icon size={28} color="#2455D6" />
               </div>
-              <div style={{ color: "#F5C842", fontSize: "0.72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "0.4rem" }}>{m.role}</div>
+              <div style={{ color: "#2455D6", fontSize: "0.72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "0.4rem" }}>{m.role}</div>
               <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.2rem", color: "var(--text)", marginBottom: "0.7rem" }}>{m.name}</h3>
               <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "0.92rem", lineHeight: 1.6 }}>{m.text}</p>
             </motion.div>

@@ -9,7 +9,7 @@ const TRADES = [
     label: "Électricien",
     emoji: "⚡",
     href: "/artisans/electricien",
-    color: "#F5C842",
+    color: "#2455D6",
     headline: "Devis électricien en 3 min depuis WhatsApp",
     features: [
       "Tableau électrique, mise aux normes NF C 15-100",
@@ -69,7 +69,7 @@ const TRADES = [
     label: "Menuisier",
     emoji: "🪵",
     href: "/artisans/menuisier",
-    color: "#FBBF24",
+    color: "#5B8CFF",
     headline: "Devis menuiserie et pose en 3 min",
     features: [
       "Fenêtres, portes, volets, portails",
@@ -125,8 +125,8 @@ export default function TradesSection() {
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <span style={{
             display: "inline-block", padding: "6px 20px", borderRadius: "999px",
-            border: "1px solid rgba(245,200,66,0.25)", background: "rgba(245,200,66,0.07)",
-            color: "#F5C842", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em",
+            border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)",
+            color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em",
             textTransform: "uppercase", marginBottom: "1rem",
           }}>
             Tous les métiers du bâtiment
@@ -136,7 +136,7 @@ export default function TradesSection() {
             fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: "var(--text)",
             letterSpacing: "-0.03em", lineHeight: 1.15,
           }}>
-            Conçu pour <span style={{ color: "#F5C842" }}>votre métier</span>
+            Conçu pour <span style={{ color: "#2455D6" }}>votre métier</span>
           </h2>
         </div>
 
@@ -264,7 +264,7 @@ export default function TradesSection() {
                       style={{
                         display: "inline-flex", alignItems: "center", gap: "0.5rem",
                         padding: "0.75rem 1.5rem", borderRadius: "0.75rem",
-                        background: trade.color, color: "#0F1923",
+                        background: trade.color, color: "#FFFFFF",
                         fontWeight: 700, fontSize: "0.88rem", textDecoration: "none",
                       }}
                     >
