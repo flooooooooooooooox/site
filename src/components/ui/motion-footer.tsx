@@ -283,7 +283,8 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
       {/* Bottom bar */}
       <div className="footer-bottom-bar">
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <div style={{ width: 28, height: 28, background: "#2455D6", clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)" }} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-cirrion.png" alt="" width={32} height={22} style={{ flexShrink: 0, objectFit: "contain" }} />
           <span style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.1rem", color: "var(--foreground)" }}>Cirrion</span>
         </div>
         <a href="/qui-sommes-nous" className="footer-glass-pill" style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", display: "flex", alignItems: "center", gap: "0.4rem", textDecoration: "none" }}>

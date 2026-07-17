@@ -67,15 +67,8 @@ export default function Navbar() {
             flexShrink: 0,
           }}
         >
-          <div
-            style={{
-              width: 24,
-              height: 24,
-              background: "#2455D6",
-              clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)",
-              flexShrink: 0,
-            }}
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-cirrion.png" alt="" width={28} height={19} style={{ flexShrink: 0, objectFit: "contain" }} />
           Cirrion
         </Link>
 
