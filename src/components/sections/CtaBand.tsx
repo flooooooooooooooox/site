@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
+import { CloudDecor, CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
 
 export default function CtaBand() {
   return (
@@ -12,6 +13,7 @@ export default function CtaBand() {
         padding: "clamp(4rem, 10vw, 8rem) 0",
       }}
     >
+      <style>{CLOUD_DECOR_STYLES}</style>
       {/* Fond clair — dégradé bleu doux, pas de photo */}
       <div
         style={{
@@ -21,6 +23,11 @@ export default function CtaBand() {
           zIndex: 0,
         }}
       />
+      <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
+        <CloudDecor size={140} opacity={0.1} style={{ top: "8%", left: "4%" }} />
+        <CloudDecor size={90} opacity={0.12} style={{ bottom: "10%", right: "8%" }} />
+        <CloudDecor size={60} opacity={0.08} style={{ top: "58%", right: "22%" }} float={false} />
+      </div>
       <div
         style={{
           position: "absolute",

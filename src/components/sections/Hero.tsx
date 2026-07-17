@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+import { CloudDecor, CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
 
 const HERO_STYLES = `
 .hero-glass-pill {
@@ -218,6 +219,7 @@ export default function Hero() {
       }}
     >
       <style>{HERO_STYLES}</style>
+      <style>{CLOUD_DECOR_STYLES}</style>
 
       {/* Fond clair — mesh de bulles animees, pas de photo */}
       <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
@@ -231,11 +233,8 @@ export default function Hero() {
           background: "radial-gradient(circle, rgba(255,217,138,0.35) 0%, transparent 70%)",
           bottom: "2%", left: "-4%", filter: "blur(4px)",
         }} />
-        <div className="hero-blob" style={{
-          position: "absolute", width: 180, height: 180, borderRadius: "50%",
-          border: "1.5px solid rgba(36,85,214,0.12)",
-          top: "18%", left: "8%",
-        }} />
+        <CloudDecor size={110} opacity={0.14} style={{ top: "16%", left: "6%" }} />
+        <CloudDecor size={70} opacity={0.1} style={{ top: "62%", left: "16%" }} float={false} />
       </div>
 
       <div className="hero-split" style={{ position: "relative", zIndex: 10, maxWidth: "1200px", width: "100%", margin: "0 auto", display: "grid", gridTemplateColumns: "0.92fr 1.08fr", gap: "2.5rem", alignItems: "center" }}>
