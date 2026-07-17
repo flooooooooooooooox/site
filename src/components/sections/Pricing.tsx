@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, ChevronDown, Zap, Star, Building2 } from "lucide-react";
 import { CloudBadge } from "@/components/ui/CloudBadge";
+import { CloudSupport, CLOUD_SUPPORT_STYLES } from "@/components/ui/CloudSupport";
 
 const PLANS = [
   {
@@ -180,6 +181,7 @@ export default function Pricing() {
           <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "0.95rem" }}>
             Résiliable à tout moment après 3 mois · Sans engagement caché
           </p>
+          <style>{CLOUD_SUPPORT_STYLES}</style>
           <style>{`
             @keyframes pricingGradientMove {
               0%, 100% { background-position: 0% 50%; }
@@ -239,6 +241,9 @@ export default function Pricing() {
                 transition={{ duration: 0.55, delay: i * 0.1 }}
                 style={{ position: "relative" }}
               >
+                {/* Nuage 3D qui supporte la carte */}
+                <CloudSupport width={330} bottom={-30} delay={i * 1.1} />
+
                 {/* Glow behind popular */}
                 {plan.popular && (
                   <div aria-hidden style={{
