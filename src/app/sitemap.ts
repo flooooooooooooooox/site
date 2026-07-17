@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/artisans/plaquiste`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Alternatives / comparatifs
     { url: `${base}/alternatives`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/alternatives/floxia-vs-obat`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${base}/alternatives/cirrion-vs-obat`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/alternatives/alternative-batigest`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/alternatives/alternative-sage`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/alternatives/alternative-ebp`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },

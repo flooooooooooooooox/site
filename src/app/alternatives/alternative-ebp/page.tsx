@@ -50,7 +50,7 @@ export default function AlternativeEbp() {
         ]}
         forWhom="Cirrion est l'alternative à EBP pour les artisans du bâtiment qui veulent un outil mobile, intelligent et sans saisie fastidieuse. Si vous passez plus de temps sur les chantiers qu'au bureau, Cirrion est fait pour vous."
         others={[
-          { label: "Cirrion vs Obat", href: "/alternatives/floxia-vs-obat" },
+          { label: "Cirrion vs Obat", href: "/alternatives/cirrion-vs-obat" },
           { label: "Alternative à Batigest", href: "/alternatives/alternative-batigest" },
           { label: "Alternative à Sage", href: "/alternatives/alternative-sage" },
         ]}

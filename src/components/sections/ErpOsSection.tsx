@@ -31,7 +31,7 @@ export default function ErpOsSection() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/dashboard-floxia.jpg"
+          src="/dashboard-cirrion.jpg"
           alt="Tableau de bord CirrionOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
           loading="lazy"
           decoding="async"

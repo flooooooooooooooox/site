@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const ALTS = [
-  { href: "/alternatives/floxia-vs-obat", title: "Cirrion vs Obat", desc: "Devis en ligne et IA : le comparatif complet entre Cirrion et Obat." },
+  { href: "/alternatives/cirrion-vs-obat", title: "Cirrion vs Obat", desc: "Devis en ligne et IA : le comparatif complet entre Cirrion et Obat." },
   { href: "/alternatives/alternative-batigest", title: "Alternative à Batigest", desc: "Une alternative à Batigest plus simple et sans formation pour les petites structures." },
   { href: "/alternatives/alternative-sage", title: "Alternative à Sage", desc: "Une alternative à Sage ciblée sur les vrais besoins des artisans du bâtiment." },
   { href: "/alternatives/alternative-ebp", title: "Alternative à EBP", desc: "Une alternative moderne et mobile à EBP Bâtiment, pilotée par l'IA." },

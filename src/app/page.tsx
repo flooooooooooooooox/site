@@ -56,13 +56,13 @@ export const metadata: Metadata = {
     description:
       "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Cirrion ERP. Pré-modèles IA, TVA 5,5/10/20% au choix, e-facturation 2026. Pour tous les artisans du bâtiment.",
     url: "https://floxia.fr",
-    images: [{ url: "https://floxia.fr/dashboard-floxia.jpg", width: 842, height: 414, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
+    images: [{ url: "https://floxia.fr/dashboard-cirrion.jpg", width: 842, height: 414, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cirrion — Devis artisan en 3 min depuis WhatsApp",
     description: "Logiciel de devis et facturation pour artisans du bâtiment. Pré-modèles IA, TVA auto, e-facturation 2026.",
-    images: ["https://floxia.fr/dashboard-floxia.jpg"],
+    images: ["https://floxia.fr/dashboard-cirrion.jpg"],
   },
 };
 

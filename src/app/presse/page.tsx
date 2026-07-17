@@ -21,7 +21,7 @@ const orgJsonLd = {
   alternateName: "CirrionOS",
   url: "https://floxia.fr",
   logo: "https://floxia.fr/icon.svg",
-  image: "https://floxia.fr/dashboard-floxia.jpg",
+  image: "https://floxia.fr/dashboard-cirrion.jpg",
   description:
     "Cirrion est un logiciel ERP IA pour artisans et PME du bâtiment. Créez devis et factures depuis WhatsApp ou l'application Cirrion en 3 minutes.",
   foundingDate: "2026",

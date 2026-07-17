@@ -195,7 +195,7 @@ const organizationJsonLd = {
     width: 512,
     height: 512,
   },
-  image: "https://floxia.fr/dashboard-floxia.jpg",
+  image: "https://floxia.fr/dashboard-cirrion.jpg",
   description: "Cirrion est un logiciel ERP IA pour artisans et indépendants. Créez vos devis et factures depuis WhatsApp ou l'application Cirrion ERP en 3 minutes grâce aux pré-modèles IA.",
   foundingDate: "2026",
   foundingLocation: { "@type": "Place", addressCountry: "FR" },

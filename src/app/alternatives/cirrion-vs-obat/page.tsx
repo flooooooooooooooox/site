@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cirrion vs Obat — Comparatif logiciel devis artisan",
     description: "Devis WhatsApp, IA, e-facturation 2026 : Cirrion vs Obat, le comparatif complet pour artisans du bâtiment.",
-    url: "https://floxia.fr/alternatives/floxia-vs-obat",
+    url: "https://floxia.fr/alternatives/cirrion-vs-obat",
   },
-  alternates: { canonical: "https://floxia.fr/alternatives/floxia-vs-obat" },
+  alternates: { canonical: "https://floxia.fr/alternatives/cirrion-vs-obat" },
 };
 
 const breadcrumb = {
@@ -20,11 +20,11 @@ const breadcrumb = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
     { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://floxia.fr/alternatives" },
-    { "@type": "ListItem", position: 3, name: "Cirrion vs Obat", item: "https://floxia.fr/alternatives/floxia-vs-obat" },
+    { "@type": "ListItem", position: 3, name: "Cirrion vs Obat", item: "https://floxia.fr/alternatives/cirrion-vs-obat" },
   ],
 };
 
-export default function FloxiaVsObat() {
+export default function CirrionVsObat() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />

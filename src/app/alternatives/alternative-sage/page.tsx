@@ -50,7 +50,7 @@ export default function AlternativeSage() {
         ]}
         forWhom="Cirrion est l'alternative à Sage pour les artisans et PME du bâtiment qui n'ont pas besoin d'un ERP comptable complet, mais d'un outil simple et intelligent pour gérer devis, factures et relations clients au quotidien."
         others={[
-          { label: "Cirrion vs Obat", href: "/alternatives/floxia-vs-obat" },
+          { label: "Cirrion vs Obat", href: "/alternatives/cirrion-vs-obat" },
           { label: "Alternative à Batigest", href: "/alternatives/alternative-batigest" },
           { label: "Alternative à EBP", href: "/alternatives/alternative-ebp" },
         ]}

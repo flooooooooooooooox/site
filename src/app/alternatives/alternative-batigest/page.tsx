@@ -50,7 +50,7 @@ export default function AlternativeBatigest() {
         ]}
         forWhom="Cirrion est la meilleure alternative à Batigest pour les artisans indépendants et les PME de moins de 50 salariés qui trouvent Batigest trop complexe ou trop cher. Vous gardez la conformité et la rigueur de gestion, mais avec une simplicité d'usage radicale."
         others={[
-          { label: "Cirrion vs Obat", href: "/alternatives/floxia-vs-obat" },
+          { label: "Cirrion vs Obat", href: "/alternatives/cirrion-vs-obat" },
           { label: "Alternative à Sage", href: "/alternatives/alternative-sage" },
           { label: "Alternative à EBP", href: "/alternatives/alternative-ebp" },
         ]}
