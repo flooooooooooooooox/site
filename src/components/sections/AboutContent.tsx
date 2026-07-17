@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Cpu, Heart, ShieldCheck, Sparkles, Users, Wrench } from "lucide-react";
+import { CloudBadge } from "@/components/ui/CloudBadge";
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -146,9 +147,9 @@ export default function AboutContent() {
                 padding: "1.8rem",
               }}
             >
-              <div style={{ width: 44, height: 44, borderRadius: "0.75rem", background: "rgba(36,85,214,0.1)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.1rem" }}>
+              <CloudBadge size={44} fill="rgba(36,85,214,0.1)" style={{ marginBottom: "1.1rem" }}>
                 <v.icon size={22} color="#2455D6" />
-              </div>
+              </CloudBadge>
               <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.1rem", color: "var(--text)", marginBottom: "0.6rem" }}>{v.title}</h3>
               <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "0.92rem", lineHeight: 1.6 }}>{v.text}</p>
             </motion.div>
@@ -196,9 +197,9 @@ export default function AboutContent() {
                 textAlign: "center",
               }}
             >
-              <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(36,85,214,0.1)", border: "1px solid rgba(36,85,214,0.25)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.2rem" }}>
+              <CloudBadge size={64} fill="rgba(36,85,214,0.1)" border="rgba(36,85,214,0.25)" style={{ margin: "0 auto 1.2rem" }}>
                 <m.icon size={28} color="#2455D6" />
-              </div>
+              </CloudBadge>
               <div style={{ color: "#2455D6", fontSize: "0.72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "0.4rem" }}>{m.role}</div>
               <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.2rem", color: "var(--text)", marginBottom: "0.7rem" }}>{m.name}</h3>
               <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "0.92rem", lineHeight: 1.6 }}>{m.text}</p>

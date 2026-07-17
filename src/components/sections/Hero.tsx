@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { CloudDecor, CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
+import { CloudBadge } from "@/components/ui/CloudBadge";
 
 const HERO_STYLES = `
 .hero-glass-pill {
@@ -335,19 +336,19 @@ export default function Hero() {
           {/* Badges flottants */}
           <motion.div className="hero-float-badge b1" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9 }}
             style={{ position: "absolute", top: "-4%", left: "-6%", borderRadius: "0.9rem", padding: "0.6rem 0.9rem", display: "flex", alignItems: "center", gap: "0.5rem", zIndex: 5 }}>
-            <span style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(22,163,74,0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.75rem" }}>✓</span>
+            <CloudBadge size={24} fill="rgba(22,163,74,0.15)"><span style={{ fontSize: "0.68rem" }}>✓</span></CloudBadge>
             <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "#1B2A4A" }}>Facture envoyée</span>
           </motion.div>
 
           <motion.div className="hero-float-badge b2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.05 }}
             style={{ position: "absolute", top: "22%", right: "-7%", borderRadius: "0.9rem", padding: "0.6rem 0.9rem", display: "flex", alignItems: "center", gap: "0.5rem", zIndex: 5 }}>
-            <span style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(36,85,214,0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.75rem" }}>🔔</span>
+            <CloudBadge size={24} fill="rgba(36,85,214,0.15)"><span style={{ fontSize: "0.68rem" }}>🔔</span></CloudBadge>
             <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "#1B2A4A" }}>Relance auto envoyée</span>
           </motion.div>
 
           <motion.div className="hero-float-badge b3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.2 }}
             style={{ position: "absolute", bottom: "-5%", left: "10%", borderRadius: "0.9rem", padding: "0.6rem 0.9rem", display: "flex", alignItems: "center", gap: "0.5rem", zIndex: 5 }}>
-            <span style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(255,159,10,0.18)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.75rem" }}>⚡</span>
+            <CloudBadge size={24} fill="rgba(255,159,10,0.18)"><span style={{ fontSize: "0.68rem" }}>⚡</span></CloudBadge>
             <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "#1B2A4A" }}>Devis créé en 3 min</span>
           </motion.div>
         </motion.div>

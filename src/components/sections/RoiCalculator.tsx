@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Clock, TrendingUp, Euro, PhoneIncoming, FileText, Bell, Star } from "lucide-react";
+import { CloudBadge } from "@/components/ui/CloudBadge";
 
 function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string }) {
   const [display, setDisplay] = useState(0);
@@ -191,7 +192,9 @@ export default function RoiCalculator() {
                 const Icon = s.icon;
                 return (
                   <div key={s.label} style={{ background: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.7)", borderRadius: "0.9rem", padding: "0.9rem", textAlign: "center" }}>
-                    <Icon size={18} color={s.color} style={{ margin: "0 auto 0.4rem" }} />
+                    <CloudBadge size={34} fill={`${s.color}15`} style={{ margin: "0 auto 0.4rem" }}>
+                      <Icon size={16} color={s.color} />
+                    </CloudBadge>
                     <div style={{ color: s.color, fontWeight: 800, fontSize: "0.95rem" }}>{s.val}</div>
                     <div style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: "0.68rem", marginTop: "0.15rem" }}>{s.label}</div>
                   </div>
@@ -209,9 +212,9 @@ export default function RoiCalculator() {
               return (
                 <motion.div key={m.label} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
                   style={{ background: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.7)", borderRadius: "1rem", padding: "1.4rem 1.6rem", display: "flex", alignItems: "center", gap: "1.2rem", backdropFilter: "blur(12px)", boxShadow: "0 10px 30px -14px rgba(27,42,74,0.14)" }}>
-                  <div style={{ width: 48, height: 48, borderRadius: "50%", background: `${m.color}15`, border: `1px solid ${m.color}30`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <CloudBadge size={48} fill={`${m.color}15`} border={`${m.color}30`}>
                     <Icon size={22} color={m.color} />
-                  </div>
+                  </CloudBadge>
                   <div>
                     <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".78rem", marginBottom: "0.2rem" }}>{m.label}</p>
                     <p style={{ color: m.color, fontWeight: 800, fontSize: "1.6rem", fontFamily: "var(--font-nunito)", lineHeight: 1 }}>

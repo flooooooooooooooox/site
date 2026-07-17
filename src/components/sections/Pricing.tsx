@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, ChevronDown, Zap, Star, Building2 } from "lucide-react";
+import { CloudBadge } from "@/components/ui/CloudBadge";
 
 const PLANS = [
   {
@@ -295,14 +296,13 @@ export default function Pricing() {
 
                     {/* Plan header */}
                     <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", marginBottom: "1.25rem" }}>
-                      <div style={{
-                        width: 40, height: 40, borderRadius: "0.75rem", flexShrink: 0,
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        background: plan.popular ? "rgba(36,85,214,0.15)" : "rgba(var(--surface-rgb),0.08)",
-                        border: `1px solid ${plan.popular ? "rgba(36,85,214,0.3)" : "rgba(var(--surface-rgb),0.1)"}`,
-                      }}>
+                      <CloudBadge
+                        size={40}
+                        fill={plan.popular ? "rgba(36,85,214,0.15)" : "rgba(var(--surface-rgb),0.08)"}
+                        border={plan.popular ? "rgba(36,85,214,0.3)" : "rgba(var(--surface-rgb),0.1)"}
+                      >
                         <Icon size={18} color={plan.popular ? "#2455D6" : "rgba(var(--text-rgb),0.5)"} />
-                      </div>
+                      </CloudBadge>
                       <div>
                         <h3 style={{
                           fontFamily: "var(--font-nunito)", fontWeight: 800,

@@ -3,6 +3,7 @@ import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import ClientCursor from "@/components/layout/ClientCursor";
+import IntroLoader from "@/components/layout/IntroLoader";
 import FloatingCtaMobile from "@/components/layout/FloatingCtaMobile";
 import SectionsBackdrop from "@/components/sections/SectionsBackdrop";
 import { CinematicFooter } from "@/components/ui/motion-footer";
@@ -297,6 +298,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <IntroLoader />
         <SectionsBackdrop />
         <ClientCursor />
         <div className="grain" aria-hidden />
