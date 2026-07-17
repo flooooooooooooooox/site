@@ -255,24 +255,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
 
       {/* Center content */}
       <div style={{ position: "relative", zIndex: 10, display: "flex", flex: 1, flexDirection: "column", alignItems: "center", justifyContent: "center", padding: isMobile ? "3rem 1.5rem 2rem" : "0 1.5rem", marginTop: isMobile ? 0 : "5rem", maxWidth: "56rem", width: "100%", alignSelf: "center" }}>
-        <h2 ref={headingRef} className="footer-text-glow" style={{ fontSize: isMobile ? "clamp(2rem,8vw,3rem)" : "clamp(2.8rem,8vw,6rem)", fontWeight: 900, letterSpacing: "-0.04em", marginBottom: "2rem", textAlign: "center", fontFamily: "var(--font-nunito)" }}>
-          Prêt à gagner du temps ?
-        </h2>
-
         <div ref={linksRef} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem", width: "100%" }}>
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem" }}>
-            <MagneticButton as="a" href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener"
-              className="footer-gold-btn"
-              style={{ padding: isMobile ? "0.9rem 1.8rem" : "1.1rem 2.5rem", borderRadius: "9999px", fontSize: isMobile ? "0.88rem" : "0.95rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.6rem" }}>
-              Réserver une démo gratuite
-            </MagneticButton>
-            <MagneticButton as="a" href="/#tarifs"
-              className="footer-glass-pill"
-              style={{ padding: isMobile ? "0.9rem 1.8rem" : "1.1rem 2.5rem", borderRadius: "9999px", fontSize: isMobile ? "0.88rem" : "0.95rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.6rem", color: "var(--foreground)", fontWeight: 700 }}>
-              Voir les tarifs →
-            </MagneticButton>
-          </div>
-
           {/* Réseaux */}
           <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem" }}>
             <a href="https://www.instagram.com/floxia.pro" target="_blank" rel="noopener noreferrer"

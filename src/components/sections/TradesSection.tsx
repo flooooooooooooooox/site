@@ -175,7 +175,7 @@ export default function TradesSection() {
             }}>
               <span style={{ color: "#4ADE80", fontSize: "0.6rem" }}>🔒</span>
               <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
-                floxia.app/<span style={{ color: trade.color }}>{trade.slug}</span>
+                cirrion.app/<span style={{ color: trade.color }}>{trade.slug}</span>
               </span>
             </div>
             {/* Faux boutons fenêtre */}
