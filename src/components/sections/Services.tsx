@@ -148,10 +148,10 @@ export default function Services() {
           <span style={{ display: "inline-block", padding: "6px 20px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
             Fonctionnalités
           </span>
-          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "var(--text)", marginBottom: ".6rem", lineHeight: 1.1 }}>
+          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "var(--text)", marginBottom: "1rem", lineHeight: 1.22 }}>
             Une chaîne qui tourne <span style={{ color: "#2455D6" }}>toute seule</span>
           </h2>
-          <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1rem", maxWidth: "38rem", margin: "0 auto" }}>
+          <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1rem", maxWidth: "38rem", margin: "0 auto", lineHeight: 1.5 }}>
             8 modules connectés. Cliquez sur une étape pour voir ce qu&apos;elle automatise.
           </p>
         </motion.div>

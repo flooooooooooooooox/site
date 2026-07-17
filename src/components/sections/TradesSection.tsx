@@ -144,11 +144,11 @@ export default function TradesSection() {
         <div style={{
           borderRadius: "1.1rem",
           border: "1px solid rgba(var(--surface-rgb),0.12)",
-          background: "rgba(10,15,25,0.55)",
+          background: "rgba(255,255,255,0.55)",
           backdropFilter: "blur(18px) saturate(160%)",
           WebkitBackdropFilter: "blur(18px) saturate(160%)",
           overflow: "hidden",
-          boxShadow: "0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03) inset",
+          boxShadow: "0 30px 80px -20px rgba(27,42,74,0.25), 0 0 0 1px rgba(255,255,255,0.6) inset",
         }}>
           {/* Barre de titre */}
           <div style={{
@@ -168,7 +168,7 @@ export default function TradesSection() {
               flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "0.45rem",
               maxWidth: "26rem", margin: "0 auto",
               padding: "0.32rem 1rem", borderRadius: "999px",
-              background: "rgba(0,0,0,0.25)",
+              background: "rgba(27,42,74,0.06)",
               border: "1px solid rgba(var(--surface-rgb),0.08)",
               fontSize: "0.72rem", color: "rgba(var(--text-rgb),0.5)", fontWeight: 600,
               whiteSpace: "nowrap", overflow: "hidden",
@@ -340,7 +340,7 @@ export default function TradesSection() {
           gap: 2px;
           padding: 0.75rem 0.5rem;
           border-right: 1px solid rgba(var(--surface-rgb),0.08);
-          background: rgba(0,0,0,0.15);
+          background: rgba(27,42,74,0.03);
         }
         .trades-os-sidebar-title {
           font-size: 0.6rem;
