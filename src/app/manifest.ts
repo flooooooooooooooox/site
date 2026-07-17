@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
       "Créez vos devis et factures depuis WhatsApp ou sur l'application Cirrion ERP. Logiciel IA pour artisans et PME du bâtiment.",
     start_url: "/",
     display: "standalone",
-    background_color: "#05080D",
+    background_color: "#EFF4FF",
     theme_color: "#2455D6",
     lang: "fr",
     categories: ["business", "productivity"],
