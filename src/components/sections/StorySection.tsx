@@ -125,17 +125,19 @@ export default function StorySection() {
                   </div>
 
                   {/* Carte */}
-                  <div style={{
+                  <div className="story-card" style={{
                     flex: 1,
                     minWidth: 0,
-                    background: "rgba(var(--surface-rgb),0.03)",
-                    border: "1px solid rgba(var(--surface-rgb),0.07)",
-                    borderRadius: "1rem",
+                    background: "rgba(255,255,255,0.6)",
+                    border: "1px solid rgba(255,255,255,0.7)",
+                    borderRadius: "1.1rem",
                     padding: "clamp(1.2rem, 3vw, 1.75rem) clamp(1.2rem, 3.5vw, 2rem)",
                     display: "flex",
                     gap: "1.25rem",
                     alignItems: "flex-start",
-                    backdropFilter: "blur(10px)",
+                    backdropFilter: "blur(14px)",
+                    boxShadow: "0 8px 28px -10px rgba(27,42,74,0.14)",
+                    transition: "transform 0.25s ease, box-shadow 0.25s ease",
                   }}>
                   <div style={{
                     width: "48px",
@@ -198,6 +200,7 @@ export default function StorySection() {
           align-items: flex-start;
         }
         .story-line { left: 19px; }
+        .story-card:hover { transform: translateY(-3px); box-shadow: 0 14px 36px -10px rgba(36,85,214,0.22); }
         @media (max-width: 640px) {
           .story-row { gap: 0.9rem; }
           .story-row > div:first-child {

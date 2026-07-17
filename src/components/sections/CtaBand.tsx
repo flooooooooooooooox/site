@@ -61,9 +61,10 @@ export default function CtaBand() {
           </span>
 
           <h2
-            className="font-black text-[clamp(2.2rem,5vw,3.5rem)]"
             style={{
               fontFamily: "var(--font-nunito)",
+              fontWeight: 900,
+              fontSize: "clamp(2.2rem,5vw,3.5rem)",
               color: "var(--text)",
               lineHeight: 1.1,
               marginBottom: "1.2rem",

@@ -91,8 +91,7 @@ export default function Faq() {
             FAQ
           </span>
           <h2
-            className="font-black text-[clamp(2rem,4vw,3rem)]"
-            style={{ fontFamily: "var(--font-nunito)", color: "var(--text)" }}
+            style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)", lineHeight: 1.1 }}
           >
             Questions{" "}
             <span style={{ color: "#2455D6" }}>fréquentes</span>

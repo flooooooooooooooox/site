@@ -166,15 +166,25 @@ export default function Pricing() {
             Tarifs
           </span>
           <h2
-            className="font-black text-[clamp(2rem,4vw,3rem)]"
-            style={{ fontFamily: "var(--font-nunito)", color: "var(--text)" }}
+            style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)", lineHeight: 1.1 }}
           >
             Des offres simples,{" "}
-            <span style={{ color: "#2455D6" }}>sans surprise</span>
+            <span className="hero-gradient-word" style={{
+              background: "linear-gradient(100deg, #2455D6 0%, #6C7CFF 35%, #2455D6 70%)",
+              backgroundSize: "240% auto", WebkitBackgroundClip: "text", backgroundClip: "text",
+              WebkitTextFillColor: "transparent", color: "transparent",
+              animation: "pricingGradientMove 6s ease-in-out infinite",
+            }}>sans surprise</span>
           </h2>
           <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "0.95rem" }}>
             Résiliable à tout moment après 3 mois · Sans engagement caché
           </p>
+          <style>{`
+            @keyframes pricingGradientMove {
+              0%, 100% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+            }
+          `}</style>
         </motion.div>
 
         {/* Bandeau offre de lancement */}

@@ -9,11 +9,7 @@ import CtaBand from "@/components/sections/CtaBand";
 import PartnersBand from "@/components/sections/PartnersBand";
 import TradesSection from "@/components/sections/TradesSection";
 import StatsSection from "@/components/sections/StatsSection";
-import {
-  Perspective3DFloor,
-  CubeEdge,
-  DepthFade,
-} from "@/components/ui/SectionTransitions";
+import { DepthFade } from "@/components/ui/SectionTransitions";
 
 export const metadata: Metadata = {
   title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | ERP IA",
@@ -75,7 +71,6 @@ export default function Home() {
         <Services />
         <DepthFade />
         <StorySection />
-        <CubeEdge />
         <RoiCalculator />
         {/* Lien vers le comparatif (page dédiée) */}
         <section style={{ padding: "1rem 6vw 3rem", textAlign: "center" }}>
@@ -91,7 +86,6 @@ export default function Home() {
             Comparer Cirrion vs Obat, Sage, EBP — 21 critères →
           </Link>
         </section>
-        <Perspective3DFloor />
         <Pricing />
         <DepthFade />
         {/* Lien vers la FAQ (page dédiée) */}

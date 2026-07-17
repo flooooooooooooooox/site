@@ -113,7 +113,7 @@ export default function RoiCalculator() {
 
           {/* Left panel */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-            style={{ background: "rgba(var(--surface-rgb),0.03)", border: "1px solid rgba(var(--surface-rgb),0.07)", borderRadius: "1.25rem", padding: "2rem", backdropFilter: "blur(12px)" }}>
+            style={{ background: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.7)", borderRadius: "1.25rem", padding: "2rem", backdropFilter: "blur(12px)", boxShadow: "0 12px 36px -14px rgba(27,42,74,0.16)" }}>
 
             {/* Slider */}
             <div style={{ marginBottom: "1.75rem" }}>
@@ -130,7 +130,7 @@ export default function RoiCalculator() {
             </div>
 
             {/* Toggle salarié */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.75rem", padding: "0.85rem 1rem", borderRadius: "0.75rem", background: "rgba(var(--surface-rgb),0.03)", border: "1px solid rgba(var(--surface-rgb),0.07)" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.75rem", padding: "0.85rem 1rem", borderRadius: "0.75rem", background: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.7)" }}>
               <span style={{ color: "var(--text)", fontWeight: 600, fontSize: ".9rem" }}>J&apos;ai des salariés</span>
               <button onClick={() => setSalarie(v => !v)}
                 aria-label="J'ai des salariés" aria-pressed={salarie}
@@ -190,7 +190,7 @@ export default function RoiCalculator() {
               ].map(s => {
                 const Icon = s.icon;
                 return (
-                  <div key={s.label} style={{ background: "rgba(var(--surface-rgb),0.03)", border: "1px solid rgba(var(--surface-rgb),0.07)", borderRadius: "0.9rem", padding: "0.9rem", textAlign: "center" }}>
+                  <div key={s.label} style={{ background: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.7)", borderRadius: "0.9rem", padding: "0.9rem", textAlign: "center" }}>
                     <Icon size={18} color={s.color} style={{ margin: "0 auto 0.4rem" }} />
                     <div style={{ color: s.color, fontWeight: 800, fontSize: "0.95rem" }}>{s.val}</div>
                     <div style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: "0.68rem", marginTop: "0.15rem" }}>{s.label}</div>
@@ -208,7 +208,7 @@ export default function RoiCalculator() {
               const Icon = m.icon;
               return (
                 <motion.div key={m.label} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                  style={{ background: "rgba(var(--surface-rgb),0.03)", border: "1px solid rgba(var(--surface-rgb),0.07)", borderRadius: "1rem", padding: "1.4rem 1.6rem", display: "flex", alignItems: "center", gap: "1.2rem" }}>
+                  style={{ background: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.7)", borderRadius: "1rem", padding: "1.4rem 1.6rem", display: "flex", alignItems: "center", gap: "1.2rem", backdropFilter: "blur(12px)", boxShadow: "0 10px 30px -14px rgba(27,42,74,0.14)" }}>
                   <div style={{ width: 48, height: 48, borderRadius: "50%", background: `${m.color}15`, border: `1px solid ${m.color}30`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     <Icon size={22} color={m.color} />
                   </div>
