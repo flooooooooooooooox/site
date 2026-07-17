@@ -70,8 +70,8 @@ export default function Hero() {
     <section
       style={{
         position: "relative", minHeight: "92vh", display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center",
-        padding: "clamp(6rem,12vh,9rem) 6vw clamp(3rem,6vh,5rem)", textAlign: "center",
+        justifyContent: "center",
+        padding: "clamp(6rem,12vh,7rem) 6vw clamp(3rem,6vh,5rem)",
         background: "#EFF4FF", overflow: "hidden",
       }}
     >
@@ -96,65 +96,90 @@ export default function Hero() {
         }} />
       </div>
 
-      <div style={{ position: "relative", zIndex: 10, maxWidth: 780 }}>
-        <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
-          style={{
-            display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "6px 18px",
-            borderRadius: "999px", border: "1px solid rgba(36,85,214,0.2)", background: "rgba(255,255,255,0.7)",
-            backdropFilter: "blur(8px)", marginBottom: "1.8rem",
-          }}>
-          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 8px rgba(22,163,74,0.6)", display: "inline-block" }} />
-          <span style={{ color: "#2455D6", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            IA disponible 24h/24 — Hébergé en France
-          </span>
+      <div className="hero-split" style={{ position: "relative", zIndex: 10, maxWidth: "1280px", width: "100%", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "center" }}>
+        <div className="hero-split-text" style={{ textAlign: "left" }}>
+          <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "6px 18px",
+              borderRadius: "999px", border: "1px solid rgba(36,85,214,0.2)", background: "rgba(255,255,255,0.7)",
+              backdropFilter: "blur(8px)", marginBottom: "1.8rem",
+            }}>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 8px rgba(22,163,74,0.6)", display: "inline-block" }} />
+            <span style={{ color: "#2455D6", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              IA disponible 24h/24 — Hébergé en France
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.12 }}
+            style={{
+              marginBottom: "1.4rem", fontFamily: "var(--font-nunito)",
+              fontSize: "clamp(2.4rem,4.6vw,4.2rem)", fontWeight: 900, lineHeight: 1.02, letterSpacing: "-.03em",
+              color: "#1B2A4A",
+            }}>
+            <span>Cirrion</span>
+            <span style={{
+              display: "inline-flex", alignItems: "center", marginLeft: "0.6rem", padding: "0 0.5rem",
+              borderRadius: "0.3rem", background: "#2455D6", color: "#FFFFFF",
+              fontSize: "clamp(0.9rem,1.6vw,1.3rem)", letterSpacing: ".08em", verticalAlign: "middle",
+              position: "relative", top: "-.08em", fontWeight: 900,
+            }}>OS</span>
+            <br />
+            <span style={{ color: "#2455D6" }}>Automatisée</span>.<br />
+            <span style={{ fontSize: "clamp(1.8rem,3.2vw,2.8rem)", color: "rgba(27,42,74,0.6)" }}>Votre temps. Rendu.</span>
+          </motion.h1>
+
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.24 }}
+            style={{
+              marginBottom: "2.4rem", color: "#42527A", fontSize: "clamp(1rem,1.6vw,1.15rem)",
+              fontWeight: 400, lineHeight: 1.65, maxWidth: 520,
+            }}>
+            Générez vos devis et factures depuis WhatsApp en 3 minutes — par vocal ou sur l&apos;application ERP.
+            <br />−80&nbsp;% de votre temps administratif éliminé.
+          </motion.p>
+
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.36 }}
+            style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+            <MagneticBtn href="https://calendly.com/afele1845/30min" className="hero-solid-btn"
+              style={{ padding: "1rem 2.2rem", borderRadius: "999px", fontSize: "0.92rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+              Réserver une démo — 30 min
+            </MagneticBtn>
+            <MagneticBtn href="#services" className="hero-glass-pill"
+              style={{ padding: "1rem 2rem", borderRadius: "999px", fontSize: "0.88rem", color: "#2455D6", fontWeight: 700, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+              Voir les services →
+            </MagneticBtn>
+          </motion.div>
+
+          {/* Objectif de l'application — texte statique (lisible par le scanner de validation OAuth Google) */}
+          <p style={{ marginTop: "1.6rem", color: "rgba(27,42,74,0.5)", fontSize: "0.8rem", fontWeight: 400, lineHeight: 1.6, maxWidth: 520 }}>
+            Cirrion est une application de gestion pour les artisans du bâtiment : elle crée vos devis et factures,
+            les envoie à vos clients par e-mail via votre compte Gmail, et automatise vos relances.
+          </p>
+        </div>
+
+        <motion.div className="hero-split-image" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.2 }}>
+          <div style={{ borderRadius: "1.25rem", overflow: "hidden", border: "1px solid rgba(27,42,74,0.08)", boxShadow: "0 30px 70px rgba(27,42,74,0.16)" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/dashboard-cirrion.jpg"
+              alt="Tableau de bord CirrionOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
+              loading="eager"
+              decoding="async"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          </div>
         </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.12 }}
-          style={{
-            marginBottom: "1.4rem", fontFamily: "var(--font-nunito)",
-            fontSize: "clamp(2.4rem,6vw,5rem)", fontWeight: 900, lineHeight: 1.02, letterSpacing: "-.03em",
-            color: "#1B2A4A",
-          }}>
-          <span>Cirrion</span>
-          <span style={{
-            display: "inline-flex", alignItems: "center", marginLeft: "0.6rem", padding: "0 0.5rem",
-            borderRadius: "0.3rem", background: "#2455D6", color: "#FFFFFF",
-            fontSize: "clamp(0.9rem,1.6vw,1.3rem)", letterSpacing: ".08em", verticalAlign: "middle",
-            position: "relative", top: "-.08em", fontWeight: 900,
-          }}>OS</span>
-          <br />
-          <span style={{ color: "#2455D6" }}>Automatisée</span>.<br />
-          <span style={{ fontSize: "clamp(1.8rem,4vw,3.5rem)", color: "rgba(27,42,74,0.6)" }}>Votre temps. Rendu.</span>
-        </motion.h1>
-
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.24 }}
-          style={{
-            marginBottom: "2.4rem", color: "#42527A", fontSize: "clamp(1rem,2vw,1.15rem)",
-            fontWeight: 400, lineHeight: 1.65, maxWidth: 560, margin: "0 auto 2.4rem",
-          }}>
-          Générez vos devis et factures depuis WhatsApp en 3 minutes — par vocal ou sur l&apos;application ERP.
-          <br />−80&nbsp;% de votre temps administratif éliminé.
-        </motion.p>
-
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.36 }}
-          style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
-          <MagneticBtn href="https://calendly.com/afele1845/30min" className="hero-solid-btn"
-            style={{ padding: "1rem 2.2rem", borderRadius: "999px", fontSize: "0.92rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
-            Réserver une démo — 30 min
-          </MagneticBtn>
-          <MagneticBtn href="#services" className="hero-glass-pill"
-            style={{ padding: "1rem 2rem", borderRadius: "999px", fontSize: "0.88rem", color: "#2455D6", fontWeight: 700, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
-            Voir les services →
-          </MagneticBtn>
-        </motion.div>
-
-        {/* Objectif de l'application — texte statique (lisible par le scanner de validation OAuth Google) */}
-        <p style={{ marginTop: "1.6rem", color: "rgba(27,42,74,0.5)", fontSize: "0.8rem", fontWeight: 400, lineHeight: 1.6, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
-          Cirrion est une application de gestion pour les artisans du bâtiment : elle crée vos devis et factures,
-          les envoie à vos clients par e-mail via votre compte Gmail, et automatise vos relances.
-        </p>
       </div>
+
+      <style>{`
+        @media (max-width: 960px) {
+          .hero-split { grid-template-columns: 1fr !important; text-align: center; }
+          .hero-split-text { text-align: center !important; }
+          .hero-split-text p { margin-left: auto; margin-right: auto; }
+          .hero-split-text > div:first-child { margin-left: auto; margin-right: auto; }
+          .hero-split-image { order: -1; }
+        }
+      `}</style>
     </section>
   );
 }
