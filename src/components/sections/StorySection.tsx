@@ -14,8 +14,8 @@ const STEPS: Step[] = [
   {
     icon: Mic,
     tag: "Étape 1",
-    title: "Parlez à Floxia",
-    desc: "Envoyez un vocal WhatsApp ou appelez. Floxia comprend le contexte chantier instantanément.",
+    title: "Parlez à Cirrion",
+    desc: "Envoyez un vocal WhatsApp ou appelez. Cirrion comprend le contexte chantier instantanément.",
   },
   {
     icon: FileText,

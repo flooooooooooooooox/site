@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
 export const metadata: Metadata = {
-  title: "Relances devis artisan : comment ne plus perdre de clients — Floxia",
+  title: "Relances devis artisan : comment ne plus perdre de clients — Cirrion",
   description:
     "30% des devis artisan ne reçoivent jamais de réponse. Guide pratique pour automatiser vos relances devis et récupérer des chantiers sans effort.",
   keywords: ["relances devis artisan", "relance devis non signé", "automatiser relances devis", "suivi devis artisan bâtiment"],
@@ -19,8 +19,8 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Relances devis artisan : comment ne plus perdre de clients",
   description: "30% des devis artisan ne reçoivent jamais de réponse. Guide pratique pour automatiser vos relances.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://floxia.fr/ressources/relances-devis-artisan",
   keywords: "relances devis artisan, suivi devis bâtiment, automatisation relances",
@@ -77,12 +77,12 @@ export default function RelancesDevis() {
           },
           {
             type: "h2",
-            content: "Automatiser les relances avec Floxia",
+            content: "Automatiser les relances avec Cirrion",
           },
           {
             type: "p",
             content:
-              "Floxia déclenche automatiquement les relances selon le calendrier que vous choisissez. Dès qu'un devis est envoyé et n'a pas été signé, Floxia envoie le premier message de relance à J+3 via WhatsApp ou email. Vous n'avez rien à faire — et vous pouvez personnaliser les messages une fois pour toutes.",
+              "Cirrion déclenche automatiquement les relances selon le calendrier que vous choisissez. Dès qu'un devis est envoyé et n'a pas été signé, Cirrion envoie le premier message de relance à J+3 via WhatsApp ou email. Vous n'avez rien à faire — et vous pouvez personnaliser les messages une fois pour toutes.",
           },
           {
             type: "ul",
@@ -100,7 +100,7 @@ export default function RelancesDevis() {
           {
             type: "p",
             content:
-              "Le même principe s'applique aux factures impayées. Floxia envoie une première relance à J+15 après l'échéance, une deuxième à J+30 et une troisième à J+45 avec mention de la mise en demeure possible. En moyenne, 85% des factures en retard sont réglées avant la troisième relance.",
+              "Le même principe s'applique aux factures impayées. Cirrion envoie une première relance à J+15 après l'échéance, une deuxième à J+30 et une troisième à J+45 avec mention de la mise en demeure possible. En moyenne, 85% des factures en retard sont réglées avant la troisième relance.",
           },
           {
             type: "h2",

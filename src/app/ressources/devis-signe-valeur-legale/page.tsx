@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
 export const metadata: Metadata = {
-  title: "Devis signé : valeur légale, engagement et signature électronique artisan — Floxia",
+  title: "Devis signé : valeur légale, engagement et signature électronique artisan — Cirrion",
   description:
     "Un devis signé a-t-il une valeur légale pour un artisan ? Quand le client est-il engagé ? Tout sur la signature de devis artisan, la signature électronique et les recours en cas de litige.",
   keywords: [
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "recours artisan devis non honoré",
   ],
   openGraph: {
-    title: "Devis signé : valeur légale et engagement du client — Floxia",
+    title: "Devis signé : valeur légale et engagement du client — Cirrion",
     description:
       "Un devis signé engage-t-il le client ? Valeur légale, signature électronique et recours en cas de litige pour artisans.",
     url: "https://floxia.fr/ressources/devis-signe-valeur-legale",
@@ -29,8 +29,8 @@ const articleJsonLd = {
   headline: "Devis signé : valeur légale, engagement et signature électronique artisan",
   description:
     "Un devis signé a-t-il une valeur légale pour un artisan ? Quand le client est-il engagé ?",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-19",
   mainEntityOfPage: "https://floxia.fr/ressources/devis-signe-valeur-legale",
   keywords: "devis signé valeur légale, signature électronique devis artisan, engagement client devis",
@@ -136,7 +136,7 @@ export default function DevisSigneValeurLegale() {
               "Signature électronique simple (clic « j'accepte » + email de confirmation) : valable pour la plupart des devis artisan.",
               "Signature électronique avancée (avec vérification d'identité) : niveau recommandé pour les chantiers importants.",
               "Signature électronique qualifiée (équivalent eIDAS de la signature manuscrite) : même valeur légale que le papier.",
-              "Floxia intègre une signature électronique à valeur légale, avec horodatage et piste d'audit conservée.",
+              "Cirrion intègre une signature électronique à valeur légale, avec horodatage et piste d'audit conservée.",
             ],
           },
           {
@@ -160,7 +160,7 @@ export default function DevisSigneValeurLegale() {
           {
             type: "p",
             content:
-              "Dans tous les cas, le devis signé (avec la preuve de signature conservée) est votre principale pièce de dossier. C'est pourquoi Floxia conserve automatiquement la piste d'audit de chaque signature électronique — date, heure, adresse IP, email du signataire.",
+              "Dans tous les cas, le devis signé (avec la preuve de signature conservée) est votre principale pièce de dossier. C'est pourquoi Cirrion conserve automatiquement la piste d'audit de chaque signature électronique — date, heure, adresse IP, email du signataire.",
           },
           {
             type: "h2",
@@ -178,7 +178,7 @@ export default function DevisSigneValeurLegale() {
           },
           {
             type: "cta",
-            content: "Créer et faire signer vos devis électroniquement avec Floxia",
+            content: "Créer et faire signer vos devis électroniquement avec Cirrion",
           },
         ]}
       />

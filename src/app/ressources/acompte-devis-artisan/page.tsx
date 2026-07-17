@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
 export const metadata: Metadata = {
-  title: "Acompte sur devis artisan : montant, mentions légales et bonnes pratiques — Floxia",
+  title: "Acompte sur devis artisan : montant, mentions légales et bonnes pratiques — Cirrion",
   description:
     "Combien demander comme acompte sur un devis artisan ? Quelles mentions obligatoires ? Comment le facturer ? Tout ce qu'il faut savoir sur l'acompte pour artisans et indépendants.",
   keywords: [
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "facturer acompte artisan",
   ],
   openGraph: {
-    title: "Acompte sur devis artisan : montant et mentions légales — Floxia",
+    title: "Acompte sur devis artisan : montant et mentions légales — Cirrion",
     description:
       "Combien demander comme acompte ? Quelles mentions légales ? Comment facturer l'acompte ? Guide complet pour artisans.",
     url: "https://floxia.fr/ressources/acompte-devis-artisan",
@@ -28,8 +28,8 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Acompte sur devis artisan : montant, mentions légales et bonnes pratiques",
   description: "Combien demander comme acompte sur un devis ? Mentions légales et bonnes pratiques pour artisans.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-19",
   mainEntityOfPage: "https://floxia.fr/ressources/acompte-devis-artisan",
   keywords: "acompte devis artisan, acompte travaux, facturer acompte artisan",
@@ -165,7 +165,7 @@ export default function AcompteDevisArtisan() {
           {
             type: "p",
             content:
-              "La facture finale déduit ensuite le ou les acomptes versés pour afficher uniquement le solde restant à payer. Floxia gère automatiquement ce calcul — il vous suffit d'indiquer les acomptes reçus et la facture finale est générée avec le solde correct.",
+              "La facture finale déduit ensuite le ou les acomptes versés pour afficher uniquement le solde restant à payer. Cirrion gère automatiquement ce calcul — il vous suffit d'indiquer les acomptes reçus et la facture finale est générée avec le solde correct.",
           },
           {
             type: "h2",
@@ -178,16 +178,16 @@ export default function AcompteDevisArtisan() {
           },
           {
             type: "h2",
-            content: "Gérer acomptes et factures avec Floxia",
+            content: "Gérer acomptes et factures avec Cirrion",
           },
           {
             type: "p",
             content:
-              "Avec Floxia, vous incluez le montant de l'acompte directement dans votre devis. Une fois le devis signé et l'acompte reçu, Floxia génère automatiquement la facture d'acompte. La facture de solde finale déduira automatiquement les acomptes versés. Tout est traçable depuis le tableau de bord.",
+              "Avec Cirrion, vous incluez le montant de l'acompte directement dans votre devis. Une fois le devis signé et l'acompte reçu, Cirrion génère automatiquement la facture d'acompte. La facture de solde finale déduira automatiquement les acomptes versés. Tout est traçable depuis le tableau de bord.",
           },
           {
             type: "cta",
-            content: "Créer un devis avec acompte en 3 minutes sur Floxia",
+            content: "Créer un devis avec acompte en 3 minutes sur Cirrion",
           },
         ]}
       />

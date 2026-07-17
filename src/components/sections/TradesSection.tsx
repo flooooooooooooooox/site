@@ -117,7 +117,7 @@ export default function TradesSection() {
 
   return (
     <section
-      aria-label="Floxia par corps de métier du bâtiment"
+      aria-label="Cirrion par corps de métier du bâtiment"
       style={{ padding: "clamp(3rem, 8vw, 6rem) 0", background: "transparent" }}
     >
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }}>
@@ -268,7 +268,7 @@ export default function TradesSection() {
                         fontWeight: 700, fontSize: "0.88rem", textDecoration: "none",
                       }}
                     >
-                      Voir Floxia {trade.label} →
+                      Voir Cirrion {trade.label} →
                     </Link>
                   </div>
 
@@ -308,7 +308,7 @@ export default function TradesSection() {
           }}>
             <span style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}>
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80" }} />
-              Floxia ERP · Connecté
+              Cirrion ERP · Connecté
             </span>
             <span>{TRADES.length} métiers disponibles</span>
           </div>

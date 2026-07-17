@@ -3,13 +3,13 @@ import Link from "next/link";
 import { VILLES } from "@/lib/villes";
 
 export const metadata: Metadata = {
-  title: "Logiciel de devis bâtiment par ville — Floxia partout en France",
+  title: "Logiciel de devis bâtiment par ville — Cirrion partout en France",
   description:
-    "Floxia, le logiciel de devis et facturation IA pour artisans du bâtiment, est disponible partout en France : Paris, Lyon, Marseille, Toulouse, Bordeaux et plus.",
+    "Cirrion, le logiciel de devis et facturation IA pour artisans du bâtiment, est disponible partout en France : Paris, Lyon, Marseille, Toulouse, Bordeaux et plus.",
   keywords: ["logiciel bâtiment France", "logiciel devis artisan ville", "logiciel artisan national", "ERP bâtiment France"],
   openGraph: {
-    title: "Logiciel de devis bâtiment par ville — Floxia",
-    description: "Floxia est disponible partout en France pour les artisans du bâtiment. Trouvez votre ville.",
+    title: "Logiciel de devis bâtiment par ville — Cirrion",
+    description: "Cirrion est disponible partout en France pour les artisans du bâtiment. Trouvez votre ville.",
     url: "https://floxia.fr/logiciel-batiment",
   },
   alternates: { canonical: "https://floxia.fr/logiciel-batiment" },
@@ -28,7 +28,7 @@ export default function LogicielBatimentIndex() {
             Logiciel bâtiment <span style={{ color: "#2455D6" }}>près de chez vous</span>
           </h1>
           <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem", maxWidth: "560px", margin: "0 auto" }}>
-            Floxia est un logiciel 100% en ligne, accessible aux artisans et PME du bâtiment dans toute la France. Découvrez Floxia dans votre ville.
+            Cirrion est un logiciel 100% en ligne, accessible aux artisans et PME du bâtiment dans toute la France. Découvrez Cirrion dans votre ville.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function LogicielBatimentIndex() {
         </div>
 
         <p style={{ textAlign: "center", color: "rgba(var(--text-rgb),0.45)", fontSize: ".88rem", marginTop: "3rem", lineHeight: 1.7 }}>
-          Votre ville n&apos;est pas listée ? Aucun problème : Floxia étant 100% en ligne, vous pouvez l&apos;utiliser partout en France, quelle que soit votre localité.
+          Votre ville n&apos;est pas listée ? Aucun problème : Cirrion étant 100% en ligne, vous pouvez l&apos;utiliser partout en France, quelle que soit votre localité.
         </p>
       </div>
     </main>

@@ -76,7 +76,7 @@ export default function Navbar() {
               flexShrink: 0,
             }}
           />
-          Floxia
+          Cirrion
         </Link>
 
         {/* Desktop links */}

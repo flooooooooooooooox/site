@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import AlternativePage from "@/components/sections/AlternativePage";
 
 export const metadata: Metadata = {
-  title: "Alternative à Batigest : logiciel devis bâtiment simple et IA — Floxia",
+  title: "Alternative à Batigest : logiciel devis bâtiment simple et IA — Cirrion",
   description:
-    "Vous cherchez une alternative à Batigest plus simple et moins chère ? Floxia : devis WhatsApp, IA, e-facturation 2026, sans formation. Comparatif complet.",
+    "Vous cherchez une alternative à Batigest plus simple et moins chère ? Cirrion : devis WhatsApp, IA, e-facturation 2026, sans formation. Comparatif complet.",
   keywords: ["alternative Batigest", "Batigest avis", "logiciel comme Batigest", "remplacer Batigest", "concurrent Batigest"],
   openGraph: {
-    title: "Alternative à Batigest — Floxia, le logiciel devis IA",
+    title: "Alternative à Batigest — Cirrion, le logiciel devis IA",
     description: "Une alternative à Batigest plus simple, sans formation : devis WhatsApp, IA, e-facturation 2026.",
     url: "https://floxia.fr/alternatives/alternative-batigest",
   },
@@ -31,12 +31,12 @@ export default function AlternativeBatigest() {
       <AlternativePage
         competitor="Batigest"
         badge="Alternative"
-        title="Floxia, l'alternative à Batigest pensée pour les petites structures"
-        intro="Batigest (Sage) est un logiciel de gestion bâtiment complet, mais souvent jugé lourd, cher et complexe à prendre en main pour un artisan indépendant ou une petite PME. Floxia propose une alternative moderne : aussi puissante sur les essentiels, mais utilisable depuis WhatsApp et sans aucune formation."
-        whyTitle="Pourquoi choisir Floxia plutôt que Batigest"
+        title="Cirrion, l'alternative à Batigest pensée pour les petites structures"
+        intro="Batigest (Sage) est un logiciel de gestion bâtiment complet, mais souvent jugé lourd, cher et complexe à prendre en main pour un artisan indépendant ou une petite PME. Cirrion propose une alternative moderne : aussi puissante sur les essentiels, mais utilisable depuis WhatsApp et sans aucune formation."
+        whyTitle="Pourquoi choisir Cirrion plutôt que Batigest"
         whyParagraphs={[
           "Batigest s'adresse historiquement aux entreprises du bâtiment structurées, avec un besoin de formation et un coût d'implémentation non négligeable. C'est un outil riche mais exigeant.",
-          "Floxia élimine la barrière de la complexité. Vous créez vos devis par message vocal sur WhatsApp ou via des pré-modèles IA sur l'application, sans manuel ni formation. L'IA gère les relances, l'accueil client et la conformité e-facturation 2026 automatiquement. C'est l'alternative à Batigest pour ceux qui veulent la puissance sans la lourdeur.",
+          "Cirrion élimine la barrière de la complexité. Vous créez vos devis par message vocal sur WhatsApp ou via des pré-modèles IA sur l'application, sans manuel ni formation. L'IA gère les relances, l'accueil client et la conformité e-facturation 2026 automatiquement. C'est l'alternative à Batigest pour ceux qui veulent la puissance sans la lourdeur.",
         ]}
         rows={[
           { feature: "Prise en main sans formation", floxia: true, competitor: false },
@@ -48,9 +48,9 @@ export default function AlternativeBatigest() {
           { feature: "Tarif adapté aux indépendants", floxia: true, competitor: "partial" },
           { feature: "Hébergement 100% France / RGPD", floxia: true, competitor: true },
         ]}
-        forWhom="Floxia est la meilleure alternative à Batigest pour les artisans indépendants et les PME de moins de 50 salariés qui trouvent Batigest trop complexe ou trop cher. Vous gardez la conformité et la rigueur de gestion, mais avec une simplicité d'usage radicale."
+        forWhom="Cirrion est la meilleure alternative à Batigest pour les artisans indépendants et les PME de moins de 50 salariés qui trouvent Batigest trop complexe ou trop cher. Vous gardez la conformité et la rigueur de gestion, mais avec une simplicité d'usage radicale."
         others={[
-          { label: "Floxia vs Obat", href: "/alternatives/floxia-vs-obat" },
+          { label: "Cirrion vs Obat", href: "/alternatives/floxia-vs-obat" },
           { label: "Alternative à Sage", href: "/alternatives/alternative-sage" },
           { label: "Alternative à EBP", href: "/alternatives/alternative-ebp" },
         ]}

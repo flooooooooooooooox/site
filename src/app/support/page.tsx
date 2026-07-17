@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Support — Floxia",
-  description: "Besoin d'aide ? Contactez le support Floxia.",
+  title: "Support — Cirrion",
+  description: "Besoin d'aide ? Contactez le support Cirrion.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://floxia.fr/support" },
 };
@@ -19,7 +19,7 @@ export default function Support() {
           {
             heading: "Une question, un besoin d'aide ?",
             body: [
-              "Notre équipe est à votre écoute pour vous accompagner dans la prise en main de Floxia et répondre à toutes vos questions.",
+              "Notre équipe est à votre écoute pour vous accompagner dans la prise en main de Cirrion et répondre à toutes vos questions.",
             ],
           },
           {

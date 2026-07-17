@@ -12,8 +12,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const ville = getVille(slug);
   if (!ville) return {};
   const url = `https://floxia.fr/logiciel-batiment/${ville.slug}`;
-  const title = `Logiciel de devis bâtiment ${ville.prepo} ${ville.nom} — Floxia`;
-  const description = `Logiciel de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Créez vos devis depuis WhatsApp ou sur l'application Floxia ERP. E-facturation 2026.`;
+  const title = `Logiciel de devis bâtiment ${ville.prepo} ${ville.nom} — Cirrion`;
+  const description = `Logiciel de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Créez vos devis depuis WhatsApp ou sur l'application Cirrion ERP. E-facturation 2026.`;
   return {
     title,
     description,
@@ -48,7 +48,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Logiciel de devis et facturation pour le bâtiment",
-    provider: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+    provider: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
     areaServed: { "@type": "City", name: ville.nom },
     description: `Logiciel de gestion, devis et facturation pour artisans et PME du bâtiment ${ville.prepo} ${ville.nom}.`,
   };
@@ -56,7 +56,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
   const localBusinessLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: `Floxia — Logiciel de devis bâtiment ${ville.prepo} ${ville.nom}`,
+    name: `Cirrion — Logiciel de devis bâtiment ${ville.prepo} ${ville.nom}`,
     url: `https://floxia.fr/logiciel-batiment/${ville.slug}`,
     description: `Logiciel ERP IA de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom}. Créez vos devis depuis WhatsApp en 3 minutes.`,
     areaServed: {
@@ -91,8 +91,8 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Floxia est l&apos;ERP IA des artisans et PME du bâtiment, disponible partout en France — y compris {ville.prepo} {ville.nom}.
-          Créez vos devis et factures depuis WhatsApp en 3 minutes, ou directement sur l&apos;application Floxia ERP grâce aux pré-modèles de devis générés par l&apos;IA.
+          Cirrion est l&apos;ERP IA des artisans et PME du bâtiment, disponible partout en France — y compris {ville.prepo} {ville.nom}.
+          Créez vos devis et factures depuis WhatsApp en 3 minutes, ou directement sur l&apos;application Cirrion ERP grâce aux pré-modèles de devis générés par l&apos;IA.
         </p>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
@@ -100,12 +100,12 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.4rem", color: "var(--text)", marginBottom: "1.25rem" }}>
-          Pourquoi les artisans {ville.prepo} {ville.nom} choisissent Floxia
+          Pourquoi les artisans {ville.prepo} {ville.nom} choisissent Cirrion
         </h2>
         <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "0.7rem", marginBottom: "2.5rem" }}>
           {[
             "Devis créé depuis WhatsApp par message vocal, directement sur le chantier.",
-            "Pré-modèles de devis générés par l'IA sur l'application Floxia ERP, idéal au bureau.",
+            "Pré-modèles de devis générés par l'IA sur l'application Cirrion ERP, idéal au bureau.",
             "Relances automatiques des devis et factures pour ne plus perdre de chantiers.",
             "Conformité e-facturation 2026 native, sans paperasse supplémentaire.",
             "Hébergement 100% France et conformité RGPD.",
@@ -120,12 +120,12 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
           Zone couverte
         </h2>
         <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".92rem", lineHeight: 1.8, marginBottom: "3rem" }}>
-          {ville.zones} Floxia étant 100% en ligne, votre métier — électricien, plombier, maçon, peintre, menuisier, couvreur, carreleur, chauffagiste ou plaquiste — est couvert partout.
+          {ville.zones} Cirrion étant 100% en ligne, votre métier — électricien, plombier, maçon, peintre, menuisier, couvreur, carreleur, chauffagiste ou plaquiste — est couvert partout.
         </p>
 
         <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center", marginBottom: "4rem" }}>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.4rem", color: "var(--text)", marginBottom: "0.6rem" }}>
-            Essayez Floxia {ville.prepo} {ville.nom}
+            Essayez Cirrion {ville.prepo} {ville.nom}
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · Sans engagement</p>
           <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"
@@ -135,7 +135,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         </div>
 
         <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1rem" }}>
-          Floxia dans d&apos;autres villes
+          Cirrion dans d&apos;autres villes
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem" }}>
           {autres.map((v) => (

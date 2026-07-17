@@ -23,7 +23,7 @@ const PLANS = [
       {
         category: "Devis & facturation",
         items: [
-          "Création de devis sur l'application Floxia ERP",
+          "Création de devis sur l'application Cirrion ERP",
           "Pré-modèles de devis générés par l'IA",
           "Devis PDF par vocal / WhatsApp (3 min)",
           "Factures acompte / finale / tous types",

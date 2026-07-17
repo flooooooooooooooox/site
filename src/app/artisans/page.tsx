@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Logiciel de gestion pour artisans du bâtiment — Floxia par métier",
+  title: "Logiciel de gestion pour artisans du bâtiment — Cirrion par métier",
   description:
-    "Floxia s'adapte à chaque corps de métier du bâtiment : électricien, plombier, maçon, peintre. Devis, factures et gestion depuis WhatsApp — spécialisé par métier.",
+    "Cirrion s'adapte à chaque corps de métier du bâtiment : électricien, plombier, maçon, peintre. Devis, factures et gestion depuis WhatsApp — spécialisé par métier.",
   keywords: ["logiciel artisan bâtiment", "devis artisan WhatsApp", "ERP corps de métier bâtiment", "logiciel gestion artisan"],
   openGraph: {
-    title: "Floxia par métier — Logiciel pour artisans du bâtiment",
-    description: "Floxia s'adapte à chaque corps de métier : électricien, plombier, maçon, peintre. Devis et facturation depuis WhatsApp.",
+    title: "Cirrion par métier — Logiciel pour artisans du bâtiment",
+    description: "Cirrion s'adapte à chaque corps de métier : électricien, plombier, maçon, peintre. Devis et facturation depuis WhatsApp.",
     url: "https://floxia.fr/artisans",
   },
   alternates: { canonical: "https://floxia.fr/artisans" },
@@ -84,7 +84,7 @@ export default function Artisans() {
             Par métier
           </span>
           <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem" }}>
-            Floxia pour chaque <span style={{ color: "#2455D6" }}>corps de métier</span>
+            Cirrion pour chaque <span style={{ color: "#2455D6" }}>corps de métier</span>
           </h1>
           <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1.05rem", maxWidth: "500px", margin: "0 auto" }}>
             Devis, factures et gestion administrative adaptés aux spécificités de votre métier du bâtiment.
@@ -108,7 +108,7 @@ export default function Artisans() {
 
         <div style={{ marginTop: "4rem", padding: "2rem", borderRadius: "1.25rem", border: "1px solid rgba(36,85,214,0.15)", background: "rgba(36,85,214,0.04)", textAlign: "center" }}>
           <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".92rem", marginBottom: "1rem" }}>
-            Votre métier n&apos;est pas dans la liste ? Floxia fonctionne pour tous les artisans et PME du bâtiment : menuisier, couvreur, carreleur, serrurier, paysagiste, multi-corps d&apos;état.
+            Votre métier n&apos;est pas dans la liste ? Cirrion fonctionne pour tous les artisans et PME du bâtiment : menuisier, couvreur, carreleur, serrurier, paysagiste, multi-corps d&apos;état.
           </p>
           <Link href="/#tarifs" style={{ color: "#2455D6", fontWeight: 700, fontSize: ".9rem", textDecoration: "none" }}>
             Voir les tarifs →

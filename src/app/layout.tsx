@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, DM_Sans } from "next/font/google";
+import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import ClientCursor from "@/components/layout/ClientCursor";
@@ -7,19 +7,22 @@ import FloatingCtaMobile from "@/components/layout/FloatingCtaMobile";
 import SectionsBackdrop from "@/components/sections/SectionsBackdrop";
 import { CinematicFooter } from "@/components/ui/motion-footer";
 
-const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito", weight: ["700","800","900"] });
-const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm", weight: ["300","400","500"] });
+// Direction C — Net & Confiant : Sora (titres) + Inter (texte courant).
+// Noms de variables CSS conservés (--font-nunito / --font-dm) pour ne pas
+// toucher aux centaines de références fontFamily existantes dans le code.
+const nunito = Sora({ subsets: ["latin"], variable: "--font-nunito", weight: ["600","700","800"] });
+const dmSans = Inter({ subsets: ["latin"], variable: "--font-dm", weight: ["300","400","500","600"] });
 
 const SITE_URL = "https://floxia.fr";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Floxia — Devis & Factures depuis WhatsApp en 3 min | ERP IA Artisans & Services",
-    template: "%s | Floxia",
+    default: "Cirrion — Devis & Factures depuis WhatsApp en 3 min | ERP IA Artisans & Services",
+    template: "%s | Cirrion",
   },
   description:
-    "Floxia — L'ERP IA des artisans et TPE de services (bâtiment, nettoyage, et toutes petites entreprises). Créez vos devis et factures depuis WhatsApp en 3 minutes, automatisez relances, planning, heures salariés et rapprochement bancaire.",
+    "Cirrion — L'ERP IA des artisans et TPE de services (bâtiment, nettoyage, et toutes petites entreprises). Créez vos devis et factures depuis WhatsApp en 3 minutes, automatisez relances, planning, heures salariés et rapprochement bancaire.",
   keywords: [
     "ERP artisan",
     "logiciel devis artisan",
@@ -61,8 +64,8 @@ export const metadata: Metadata = {
     "solution gestion PME BTP",
     "logiciel dirigeant entreprise bâtiment",
     "outil gestion artisan B2B",
-    "FloxiaOS",
-    "Floxia",
+    "CirrionOS",
+    "Cirrion",
     "logiciel BTP",
     "ERP BTP",
     "logiciel gestion BTP",
@@ -138,9 +141,9 @@ export const metadata: Metadata = {
     "gagner du temps administratif artisan",
     "gestion administrative artisan",
   ],
-  authors: [{ name: "Floxia" }],
-  creator: "Floxia",
-  publisher: "Floxia",
+  authors: [{ name: "Cirrion" }],
+  creator: "Cirrion",
+  publisher: "Cirrion",
   robots: {
     index: true,
     follow: true,
@@ -150,16 +153,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     url: SITE_URL,
-    siteName: "Floxia",
-    title: "Floxia — Devis & Factures depuis WhatsApp en 3 min | ERP IA Bâtiment",
+    siteName: "Cirrion",
+    title: "Cirrion — Devis & Factures depuis WhatsApp en 3 min | ERP IA Bâtiment",
     description:
       "Générez vos devis et factures depuis WhatsApp en 3 minutes. L'ERP IA pensé pour les artisans et PME du bâtiment.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Floxia — ERP IA pour artisans du bâtiment",
+    title: "Cirrion — ERP IA pour artisans du bâtiment",
     description:
-      "Devis et factures depuis WhatsApp en 3 minutes. Automatisez votre gestion avec Floxia.",
+      "Devis et factures depuis WhatsApp en 3 minutes. Automatisez votre gestion avec Cirrion.",
   },
   alternates: {
     canonical: SITE_URL,
@@ -169,7 +172,7 @@ export const metadata: Metadata = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Floxia",
+  name: "Cirrion",
   url: "https://floxia.fr",
   description: "Logiciel de devis et facturation pour artisans — Devis depuis WhatsApp ou app ERP en 3 minutes.",
   inLanguage: "fr-FR",
@@ -183,8 +186,8 @@ const websiteJsonLd = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Floxia",
-  alternateName: "FloxiaOS",
+  name: "Cirrion",
+  alternateName: "CirrionOS",
   url: "https://floxia.fr",
   logo: {
     "@type": "ImageObject",
@@ -193,7 +196,7 @@ const organizationJsonLd = {
     height: 512,
   },
   image: "https://floxia.fr/dashboard-floxia.jpg",
-  description: "Floxia est un logiciel ERP IA pour artisans et indépendants. Créez vos devis et factures depuis WhatsApp ou l'application Floxia ERP en 3 minutes grâce aux pré-modèles IA.",
+  description: "Cirrion est un logiciel ERP IA pour artisans et indépendants. Créez vos devis et factures depuis WhatsApp ou l'application Cirrion ERP en 3 minutes grâce aux pré-modèles IA.",
   foundingDate: "2026",
   foundingLocation: { "@type": "Place", addressCountry: "FR" },
   areaServed: { "@type": "Country", name: "France" },
@@ -206,7 +209,7 @@ const organizationJsonLd = {
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Abonnements Floxia",
+    name: "Abonnements Cirrion",
     itemListElement: [
       { "@type": "Offer", name: "Essentiel", price: "99", priceCurrency: "EUR" },
       { "@type": "Offer", name: "Artisan Pro", price: "179", priceCurrency: "EUR" },
@@ -224,7 +227,7 @@ const organizationJsonLd = {
     "@type": "Person",
     name: "Florian",
     jobTitle: "Fondateur & CEO",
-    worksFor: { "@type": "Organization", name: "Floxia" },
+    worksFor: { "@type": "Organization", name: "Cirrion" },
     knowsAbout: ["Automatisation", "Intelligence artificielle", "ERP bâtiment"],
   },
   sameAs: [
@@ -238,7 +241,7 @@ const organizationJsonLd = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Floxia",
+  name: "Cirrion",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web, iOS, Android",
   url: "https://floxia.fr",
@@ -280,7 +283,7 @@ const jsonLd = {
   ],
   provider: {
     "@type": "Organization",
-    name: "Floxia",
+    name: "Cirrion",
     url: "https://floxia.fr",
     areaServed: "FR",
     knowsAbout: ["Bâtiment", "Artisanat", "Gestion de chantier", "ERP", "Intelligence artificielle", "Logiciel B2B", "Gestion d'entreprise BTP"],

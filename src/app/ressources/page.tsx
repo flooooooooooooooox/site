@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Guides pratiques pour artisans et PME du bâtiment : devis WhatsApp, logiciel ERP, automatisation administrative. Gagnez du temps sur votre gestion.",
   openGraph: {
-    title: "Ressources Floxia — Guides pour artisans du bâtiment",
+    title: "Ressources Cirrion — Guides pour artisans du bâtiment",
     description:
       "Guides pratiques pour artisans et PME du bâtiment : devis WhatsApp, logiciel ERP, automatisation administrative.",
     url: "https://floxia.fr/ressources",
@@ -20,7 +20,7 @@ const ARTICLES = [
     badge: "Devis",
     title: "Comment envoyer un devis depuis WhatsApp en 3 minutes",
     description:
-      "Vous êtes sur chantier, un prospect vous appelle. En 3 minutes, votre devis PDF est envoyé, signé et archivé — depuis WhatsApp ou l'application Floxia ERP. Voici comment.",
+      "Vous êtes sur chantier, un prospect vous appelle. En 3 minutes, votre devis PDF est envoyé, signé et archivé — depuis WhatsApp ou l'application Cirrion ERP. Voici comment.",
     date: "Juin 2026",
     readTime: "4 min",
   },

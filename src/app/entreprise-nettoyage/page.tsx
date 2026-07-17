@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Logiciel pour entreprise de nettoyage — Devis, factures récurrentes & planning | Floxia",
+  title: "Logiciel pour entreprise de nettoyage — Devis, factures récurrentes & planning | Cirrion",
   description:
-    "Floxia, l'ERP IA pour les entreprises de nettoyage : devis en 3 min depuis WhatsApp, factures récurrentes automatiques (contrats mensuels), relances, planning des agents et suivi des heures. Idéal pour lancer et gérer votre société de nettoyage.",
+    "Cirrion, l'ERP IA pour les entreprises de nettoyage : devis en 3 min depuis WhatsApp, factures récurrentes automatiques (contrats mensuels), relances, planning des agents et suivi des heures. Idéal pour lancer et gérer votre société de nettoyage.",
   keywords: [
     "logiciel entreprise de nettoyage",
     "logiciel société de nettoyage",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const FEATURES = [
   {
     title: "Devis en 3 minutes depuis WhatsApp",
-    desc: "Dictez la prestation par vocal (bureaux, copropriété, fin de chantier, vitres…), Floxia génère le devis PDF professionnel avec vos tarifs.",
+    desc: "Dictez la prestation par vocal (bureaux, copropriété, fin de chantier, vitres…), Cirrion génère le devis PDF professionnel avec vos tarifs.",
   },
   {
     title: "Factures récurrentes automatiques",
@@ -64,7 +64,7 @@ export default function NettoyagePage() {
       </h1>
 
       <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.1rem", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "44rem" }}>
-        Devis, factures récurrentes, relances, planning des agents et suivi des heures — Floxia
+        Devis, factures récurrentes, relances, planning des agents et suivi des heures — Cirrion
         automatise tout l&apos;administratif de votre société de nettoyage pour que vous vous
         concentriez sur vos chantiers et vos clients. Depuis WhatsApp ou l&apos;application.
       </p>
@@ -112,7 +112,7 @@ export default function NettoyagePage() {
           Vous lancez votre entreprise de nettoyage ?
         </h2>
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "0.95rem", lineHeight: 1.6, marginBottom: "1.5rem", maxWidth: "38rem", margin: "0 auto 1.5rem" }}>
-          Floxia vous donne dès le départ des outils pros : devis, factures récurrentes et suivi
+          Cirrion vous donne dès le départ des outils pros : devis, factures récurrentes et suivi
           client. Vous démarrez organisé, vous gagnez du temps, vous paraissez sérieux face à vos clients.
         </p>
         <a
@@ -125,13 +125,13 @@ export default function NettoyagePage() {
             color: "#FFFFFF", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
           }}
         >
-          Voir Floxia en démo →
+          Voir Cirrion en démo →
         </a>
       </div>
 
       <p style={{ marginTop: "2.5rem", textAlign: "center" }}>
         <Link href="/" style={{ color: "#2455D6", textDecoration: "underline", fontSize: "0.9rem" }}>
-          Découvrir tout ce que fait Floxia
+          Découvrir tout ce que fait Cirrion
         </Link>
       </p>
     </main>

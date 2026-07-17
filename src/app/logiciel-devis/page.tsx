@@ -4,7 +4,7 @@ import { METIERS } from "@/lib/metiers";
 import { VILLES } from "@/lib/villes";
 
 export const metadata: Metadata = {
-  title: "Logiciel de devis bâtiment par métier et ville — Floxia",
+  title: "Logiciel de devis bâtiment par métier et ville — Cirrion",
   description:
     "Logiciel de devis et facturation pour tous les artisans du bâtiment : électricien, plombier, chauffagiste, maçon, peintre, menuisier, couvreur, carreleur, plaquiste, serrurier. Disponible dans toutes les grandes villes de France.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "logiciel devis chauffagiste",
   ],
   openGraph: {
-    title: "Logiciel de devis bâtiment par métier et ville — Floxia",
+    title: "Logiciel de devis bâtiment par métier et ville — Cirrion",
     description:
       "Logiciel de devis et facturation pour tous les artisans du bâtiment, disponible dans toutes les grandes villes de France.",
     url: "https://floxia.fr/logiciel-devis",
@@ -49,7 +49,7 @@ export default function LogicielDevisIndex() {
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "1rem", lineHeight: 1.8, marginBottom: "3rem", maxWidth: "640px" }}>
-          Floxia génère vos devis en quelques minutes depuis WhatsApp ou sur l&apos;application Floxia ERP avec des pré-modèles IA. Retrouvez la page dédiée à votre métier et votre ville pour découvrir comment Floxia s&apos;adapte à votre activité.
+          Cirrion génère vos devis en quelques minutes depuis WhatsApp ou sur l&apos;application Cirrion ERP avec des pré-modèles IA. Retrouvez la page dédiée à votre métier et votre ville pour découvrir comment Cirrion s&apos;adapte à votre activité.
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.3rem", color: "var(--text)", marginBottom: "1.2rem" }}>
@@ -99,7 +99,7 @@ export default function LogicielDevisIndex() {
 
         <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center" }}>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.3rem", color: "var(--text)", marginBottom: "0.6rem" }}>
-            Essayez Floxia gratuitement
+            Essayez Cirrion gratuitement
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · Sans engagement</p>
           <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"

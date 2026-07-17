@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité — Floxia",
-  description: "Politique de confidentialité et traitement des données personnelles chez Floxia.",
+  title: "Politique de confidentialité — Cirrion",
+  description: "Politique de confidentialité et traitement des données personnelles chez Cirrion.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://floxia.fr/politique-de-confidentialite" },
 };
@@ -19,20 +19,20 @@ export default function Confidentialite() {
           {
             heading: "Notre engagement",
             body: [
-              "Floxia accorde une importance particulière à la protection de vos données personnelles, dans le respect du Règlement Général sur la Protection des Données (RGPD).",
+              "Cirrion accorde une importance particulière à la protection de vos données personnelles, dans le respect du Règlement Général sur la Protection des Données (RGPD).",
               "Vos données sont chiffrées à l'aide de plusieurs clés de cryptage et hébergées sur nos propres serveurs, en France.",
             ],
           },
           {
             heading: "Données collectées",
             body: [
-              "Nous collectons uniquement les données nécessaires au fonctionnement du service : informations de compte, données de facturation, ainsi que les documents et échanges que vous traitez via Floxia (devis, factures, messages).",
+              "Nous collectons uniquement les données nécessaires au fonctionnement du service : informations de compte, données de facturation, ainsi que les documents et échanges que vous traitez via Cirrion (devis, factures, messages).",
             ],
           },
           {
             heading: "Utilisation des données",
             body: [
-              "Vos données sont utilisées exclusivement pour fournir et améliorer le service Floxia. Elles ne sont jamais revendues à des tiers.",
+              "Vos données sont utilisées exclusivement pour fournir et améliorer le service Cirrion. Elles ne sont jamais revendues à des tiers.",
             ],
           },
           {

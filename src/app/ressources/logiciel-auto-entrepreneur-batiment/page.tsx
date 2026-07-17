@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
 export const metadata: Metadata = {
-  title: "Logiciel auto-entrepreneur bâtiment : devis & factures simples — Floxia",
+  title: "Logiciel auto-entrepreneur bâtiment : devis & factures simples — Cirrion",
   description:
     "Le logiciel de devis et facturation idéal pour les auto-entrepreneurs et artisans du bâtiment en micro-entreprise. Simple, conforme, depuis WhatsApp. Guide complet 2026.",
   keywords: [
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "facture auto-entrepreneur travaux", "logiciel artisan indépendant", "gestion micro-entreprise bâtiment",
   ],
   openGraph: {
-    title: "Logiciel auto-entrepreneur bâtiment — Floxia",
+    title: "Logiciel auto-entrepreneur bâtiment — Cirrion",
     description: "Devis et factures simples et conformes pour auto-entrepreneurs et artisans du bâtiment, depuis WhatsApp.",
     url: "https://floxia.fr/ressources/logiciel-auto-entrepreneur-batiment",
   },
@@ -22,8 +22,8 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Logiciel auto-entrepreneur bâtiment : devis & factures simples",
   description: "Le logiciel de devis et facturation idéal pour les auto-entrepreneurs et artisans du bâtiment en micro-entreprise.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://floxia.fr/ressources/logiciel-auto-entrepreneur-batiment",
   keywords: "logiciel auto-entrepreneur bâtiment, micro-entreprise BTP, devis artisan indépendant",
@@ -77,7 +77,7 @@ export default function AutoEntrepreneur() {
           {
             type: "p",
             content:
-              "Beaucoup d'auto-entrepreneurs du bâtiment bénéficient de la franchise en base de TVA : ils ne facturent pas la TVA et apposent la mention « TVA non applicable, art. 293 B du CGI ». Dès que le seuil est dépassé, la TVA devient applicable. Floxia gère automatiquement ces deux situations et fait évoluer vos documents quand votre statut change, sans risque d'erreur de mention.",
+              "Beaucoup d'auto-entrepreneurs du bâtiment bénéficient de la franchise en base de TVA : ils ne facturent pas la TVA et apposent la mention « TVA non applicable, art. 293 B du CGI ». Dès que le seuil est dépassé, la TVA devient applicable. Cirrion gère automatiquement ces deux situations et fait évoluer vos documents quand votre statut change, sans risque d'erreur de mention.",
           },
           {
             type: "h2",
@@ -86,7 +86,7 @@ export default function AutoEntrepreneur() {
           {
             type: "p",
             content:
-              "Avec Floxia, vous créez vos devis par simple message vocal sur WhatsApp, directement depuis le chantier. Décrivez les travaux, et le devis PDF conforme est généré en 3 minutes, avec vos coordonnées, votre numéro SIRET et les bonnes mentions. Vous pouvez aussi passer par l'application Floxia, qui propose des pré-modèles de devis prêts à personnaliser — idéal le soir, au calme.",
+              "Avec Cirrion, vous créez vos devis par simple message vocal sur WhatsApp, directement depuis le chantier. Décrivez les travaux, et le devis PDF conforme est généré en 3 minutes, avec vos coordonnées, votre numéro SIRET et les bonnes mentions. Vous pouvez aussi passer par l'application Cirrion, qui propose des pré-modèles de devis prêts à personnaliser — idéal le soir, au calme.",
           },
           {
             type: "h2",
@@ -95,7 +95,7 @@ export default function AutoEntrepreneur() {
           {
             type: "p",
             content:
-              "La réforme de la facturation électronique 2026 s'applique également aux micro-entreprises du bâtiment. Dès 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques, et l'obligation d'émettre arrivera progressivement. Floxia vous met en conformité automatiquement, sans que vous ayez à comprendre les formats techniques.",
+              "La réforme de la facturation électronique 2026 s'applique également aux micro-entreprises du bâtiment. Dès 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques, et l'obligation d'émettre arrivera progressivement. Cirrion vous met en conformité automatiquement, sans que vous ayez à comprendre les formats techniques.",
           },
           {
             type: "h2",
@@ -104,11 +104,11 @@ export default function AutoEntrepreneur() {
           {
             type: "p",
             content:
-              "L'avantage de démarrer avec Floxia comme auto-entrepreneur, c'est que l'outil grandit avec vous. Si votre activité se développe et que vous passez en entreprise individuelle, en EURL ou que vous embauchez, vous gardez le même logiciel : il suffit d'activer les fonctions supplémentaires (relances avancées, gestion d'équipe, multi-utilisateurs). Vous ne perdez ni vos données, ni vos habitudes.",
+              "L'avantage de démarrer avec Cirrion comme auto-entrepreneur, c'est que l'outil grandit avec vous. Si votre activité se développe et que vous passez en entreprise individuelle, en EURL ou que vous embauchez, vous gardez le même logiciel : il suffit d'activer les fonctions supplémentaires (relances avancées, gestion d'équipe, multi-utilisateurs). Vous ne perdez ni vos données, ni vos habitudes.",
           },
           {
             type: "cta",
-            content: "Lancez votre gestion d'auto-entrepreneur avec Floxia",
+            content: "Lancez votre gestion d'auto-entrepreneur avec Cirrion",
           },
         ]}
       />

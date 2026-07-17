@@ -37,7 +37,7 @@ export default function TradeLanding({ trade, badge, title, subtitle, intro, fea
 
           {/* Features grid */}
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.3rem,2.5vw,1.7rem)", color: "var(--text)", marginBottom: "1.5rem" }}>
-            Ce que Floxia fait pour les {trade}s
+            Ce que Cirrion fait pour les {trade}s
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1rem", marginBottom: "3rem" }}>
             {features.map((f, i) => (

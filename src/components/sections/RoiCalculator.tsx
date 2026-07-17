@@ -91,7 +91,7 @@ export default function RoiCalculator() {
             Calculez votre <span style={{ color: "#2455D6" }}>ROI</span>
           </h2>
           <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
-            Floxia élimine <strong style={{ color: "#2455D6" }}>~80% de votre temps administratif</strong> — devis, facturation, appels, relances, comptabilité
+            Cirrion élimine <strong style={{ color: "#2455D6" }}>~80% de votre temps administratif</strong> — devis, facturation, appels, relances, comptabilité
           </p>
           <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: "0.82rem", maxWidth: "480px", margin: "0.5rem auto 0" }}>
             Le ROI (Retour sur Investissement) mesure ce que vous gagnez réellement après déduction de l&apos;abonnement — en temps récupéré et en euros.
@@ -203,7 +203,7 @@ export default function RoiCalculator() {
             {[
               { icon: Clock, label: `Temps admin récupéré / ${periode}`, value: totalHDisplay, suffix: "h", color: "#2455D6", sub: periode === "an" ? `${totalH * 12 * 60} min récupérées sur l'année` : `${totalMin} min sur 5 postes automatisés` },
               { icon: Euro, label: `Gain financier / ${periode}`, value: gainFinancier, suffix: "€", color: "#4ADE80", sub: `à ${tauxH} €/h — taux artisan moyen` },
-              { icon: TrendingUp, label: `ROI net vs Floxia / ${periode}`, value: roi, suffix: "€", color: roi >= 0 ? "#4ADE80" : "#F87171", sub: periode === "an" ? `abonnement ${plan.name} ${plan.price * 12}€/an` : `après abonnement ${plan.name} ${plan.price}€/mois` },
+              { icon: TrendingUp, label: `ROI net vs Cirrion / ${periode}`, value: roi, suffix: "€", color: roi >= 0 ? "#4ADE80" : "#F87171", sub: periode === "an" ? `abonnement ${plan.name} ${plan.price * 12}€/an` : `après abonnement ${plan.name} ${plan.price}€/mois` },
             ].map((m, i) => {
               const Icon = m.icon;
               return (

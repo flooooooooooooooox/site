@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Floxia — ERP IA pour artisans et PME du bâtiment";
+export const alt = "Cirrion — ERP IA pour artisans et PME du bâtiment";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -30,7 +30,7 @@ export default function Image() {
             }}
           />
           <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ fontSize: 52, fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>Floxia</span>
+            <span style={{ fontSize: 52, fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>Cirrion</span>
             <span
               style={{
                 marginLeft: 12,

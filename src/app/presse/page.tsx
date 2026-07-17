@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Presse & médias — Floxia | Kit de presse logiciel artisan bâtiment",
+  title: "Presse & médias — Cirrion | Kit de presse logiciel artisan bâtiment",
   description:
-    "Kit de presse Floxia : informations officielles, éléments de langage et visuels pour les journalistes et blogueurs. Floxia est le logiciel ERP IA pour artisans et PME du bâtiment.",
-  keywords: ["Floxia presse", "kit presse Floxia", "Floxia médias", "logiciel artisan bâtiment presse"],
+    "Kit de presse Cirrion : informations officielles, éléments de langage et visuels pour les journalistes et blogueurs. Cirrion est le logiciel ERP IA pour artisans et PME du bâtiment.",
+  keywords: ["Cirrion presse", "kit presse Cirrion", "Cirrion médias", "logiciel artisan bâtiment presse"],
   openGraph: {
-    title: "Presse & médias — Floxia",
-    description: "Kit de presse officiel Floxia : éléments de langage, visuels et contacts pour journalistes.",
+    title: "Presse & médias — Cirrion",
+    description: "Kit de presse officiel Cirrion : éléments de langage, visuels et contacts pour journalistes.",
     url: "https://floxia.fr/presse",
   },
   alternates: { canonical: "https://floxia.fr/presse" },
@@ -17,13 +17,13 @@ export const metadata: Metadata = {
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Floxia",
-  alternateName: "FloxiaOS",
+  name: "Cirrion",
+  alternateName: "CirrionOS",
   url: "https://floxia.fr",
   logo: "https://floxia.fr/icon.svg",
   image: "https://floxia.fr/dashboard-floxia.jpg",
   description:
-    "Floxia est un logiciel ERP IA pour artisans et PME du bâtiment. Créez devis et factures depuis WhatsApp ou l'application Floxia en 3 minutes.",
+    "Cirrion est un logiciel ERP IA pour artisans et PME du bâtiment. Créez devis et factures depuis WhatsApp ou l'application Cirrion en 3 minutes.",
   foundingDate: "2026",
   areaServed: { "@type": "Country", name: "France" },
   founder: { "@type": "Person", name: "Florian", jobTitle: "Fondateur & CEO" },
@@ -34,8 +34,8 @@ const orgJsonLd = {
 };
 
 const FAITS = [
-  { label: "Nom officiel", value: "Floxia" },
-  { label: "Nom produit", value: "Floxia ERP / FloxiaOS" },
+  { label: "Nom officiel", value: "Cirrion" },
+  { label: "Nom produit", value: "Cirrion ERP / CirrionOS" },
   { label: "Secteur", value: "SaaS · Logiciel de gestion pour artisans et indépendants" },
   { label: "Fondé en", value: "2026" },
   { label: "Fondateur", value: "Florian — ingénieur en automatisation" },
@@ -47,19 +47,19 @@ const FAITS = [
 const ANGLES = [
   {
     titre: "L'IA qui répond à vos clients à 2h du matin",
-    desc: "Floxia intègre un agent IA disponible 24h/24 pour répondre aux demandes de devis des clients, même quand l'artisan est sur chantier.",
+    desc: "Cirrion intègre un agent IA disponible 24h/24 pour répondre aux demandes de devis des clients, même quand l'artisan est sur chantier.",
   },
   {
     titre: "Devis depuis WhatsApp en 3 minutes",
-    desc: "L'artisan décrit son intervention par vocal sur WhatsApp ; Floxia génère le devis PDF et l'envoie au client — sans ordinateur, sans saisie.",
+    desc: "L'artisan décrit son intervention par vocal sur WhatsApp ; Cirrion génère le devis PDF et l'envoie au client — sans ordinateur, sans saisie.",
   },
   {
     titre: "La e-facturation 2026 sans effort",
-    desc: "Floxia prépare nativement les artisans et PME à l'obligation de facturation électronique 2026, sans module supplémentaire.",
+    desc: "Cirrion prépare nativement les artisans et PME à l'obligation de facturation électronique 2026, sans module supplémentaire.",
   },
   {
     titre: "L'ERP des artisans vs les mastodontes",
-    desc: "Face à Sage, EBP ou Batigest, Floxia mise sur la simplicité mobile-first et l'IA pour séduire les artisans qui rejettent les logiciels complexes.",
+    desc: "Face à Sage, EBP ou Batigest, Cirrion mise sur la simplicité mobile-first et l'IA pour séduire les artisans qui rejettent les logiciels complexes.",
   },
 ];
 
@@ -74,21 +74,21 @@ export default function Presse() {
         </span>
 
         <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.8rem)", color: "var(--text)", lineHeight: 1.12, letterSpacing: "-0.03em", marginBottom: "1.2rem" }}>
-          Kit de presse <span style={{ color: "#2455D6" }}>Floxia</span>
+          Kit de presse <span style={{ color: "#2455D6" }}>Cirrion</span>
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "1rem", lineHeight: 1.8, marginBottom: "3rem", maxWidth: "600px" }}>
-          Vous êtes journaliste, blogueur ou créateur de contenu et souhaitez parler de Floxia ? Retrouvez ici les informations officielles sur notre société, notre produit et nos angles éditoriaux.
+          Vous êtes journaliste, blogueur ou créateur de contenu et souhaitez parler de Cirrion ? Retrouvez ici les informations officielles sur notre société, notre produit et nos angles éditoriaux.
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.25rem", color: "var(--text)", marginBottom: "1.2rem" }}>
-          Floxia en quelques mots
+          Cirrion en quelques mots
         </h2>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "1rem" }}>
-          <strong style={{ color: "var(--text)" }}>Floxia</strong> (aussi appelé <strong style={{ color: "var(--text)" }}>FloxiaOS</strong>) est un logiciel ERP IA destiné aux artisans, auto-entrepreneurs, TPE et PME du bâtiment en France. Il permet de créer des devis et factures en 3 minutes, depuis WhatsApp par message vocal ou sur l&apos;application web Floxia ERP avec des pré-modèles de devis générés par l&apos;IA.
+          <strong style={{ color: "var(--text)" }}>Cirrion</strong> (aussi appelé <strong style={{ color: "var(--text)" }}>CirrionOS</strong>) est un logiciel ERP IA destiné aux artisans, auto-entrepreneurs, TPE et PME du bâtiment en France. Il permet de créer des devis et factures en 3 minutes, depuis WhatsApp par message vocal ou sur l&apos;application web Cirrion ERP avec des pré-modèles de devis générés par l&apos;IA.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
-          Fondé en 2024 par Florian, ingénieur en automatisation, Floxia a pour mission de rendre aux artisans le temps qu&apos;ils consacrent à l&apos;administratif, en apportant aux petites structures du bâtiment les outils d&apos;automatisation dont bénéficient les grandes entreprises.
+          Fondé en 2024 par Florian, ingénieur en automatisation, Cirrion a pour mission de rendre aux artisans le temps qu&apos;ils consacrent à l&apos;administratif, en apportant aux petites structures du bâtiment les outils d&apos;automatisation dont bénéficient les grandes entreprises.
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.25rem", color: "var(--text)", marginBottom: "1.2rem" }}>
@@ -141,7 +141,7 @@ export default function Presse() {
           </a>
           <a href="https://www.linkedin.com/in/floxia-pro-9360333aa" target="_blank" rel="noopener noreferrer"
             style={{ padding: "0.5rem 1.1rem", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.2)", background: "rgba(36,85,214,0.05)", color: "#2455D6", fontSize: ".82rem", fontWeight: 600, textDecoration: "none" }}>
-            LinkedIn Floxia
+            LinkedIn Cirrion
           </a>
         </div>
 

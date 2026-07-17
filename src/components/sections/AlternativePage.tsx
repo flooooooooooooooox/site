@@ -47,12 +47,12 @@ export default function AlternativePage({ competitor, badge, title, intro, whyTi
 
           {/* Comparison table */}
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.3rem,2.5vw,1.7rem)", color: "var(--text)", margin: "2.5rem 0 1.25rem" }}>
-            Floxia vs {competitor} : le comparatif
+            Cirrion vs {competitor} : le comparatif
           </h2>
           <div style={{ border: "1px solid rgba(var(--surface-rgb),0.1)", borderRadius: "1rem", overflow: "hidden", marginBottom: "3rem" }}>
             <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", padding: "0.9rem 1.2rem", background: "rgba(36,85,214,0.06)", fontWeight: 700, fontSize: ".82rem", color: "var(--text)" }}>
               <span>Fonctionnalité</span>
-              <span style={{ textAlign: "center", color: "#2455D6" }}>Floxia</span>
+              <span style={{ textAlign: "center", color: "#2455D6" }}>Cirrion</span>
               <span style={{ textAlign: "center" }}>{competitor}</span>
             </div>
             {rows.map((r, i) => (
@@ -65,14 +65,14 @@ export default function AlternativePage({ competitor, badge, title, intro, whyTi
           </div>
 
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.3rem,2.5vw,1.7rem)", color: "var(--text)", marginBottom: "1rem" }}>
-            Pour qui Floxia est-il la meilleure alternative ?
+            Pour qui Cirrion est-il la meilleure alternative ?
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>{forWhom}</p>
 
           {/* CTA */}
           <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center", marginBottom: "4rem" }}>
             <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.4rem", color: "var(--text)", marginBottom: "0.6rem" }}>
-              Découvrez pourquoi Floxia est l&apos;alternative à {competitor}
+              Découvrez pourquoi Cirrion est l&apos;alternative à {competitor}
             </h3>
             <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · Sans engagement</p>
             <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"

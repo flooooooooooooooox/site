@@ -22,8 +22,8 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "TVA travaux de rénovation 2026 : 5,5%, 10% ou 20% ?",
   description: "Quel taux de TVA appliquer sur vos travaux de rénovation : règles, conditions, attestation et exemples.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://floxia.fr/ressources/tva-travaux-renovation",
   keywords: "TVA travaux rénovation, TVA 5.5, TVA 10, attestation TVA réduite",
@@ -94,7 +94,7 @@ export default function TvaTravaux() {
           {
             type: "p",
             content:
-              "Pour appliquer un taux de 5,5% ou 10%, l'artisan doit obtenir du client une attestation (formulaire CERFA) confirmant que les conditions sont remplies : ancienneté du logement, nature des travaux. Cette attestation doit être conservée pour justifier le taux appliqué en cas de contrôle. Une question sur cette attestation ou le formulaire CERFA ? L'assistant vocal IA de Floxia vous répond à tout moment.",
+              "Pour appliquer un taux de 5,5% ou 10%, l'artisan doit obtenir du client une attestation (formulaire CERFA) confirmant que les conditions sont remplies : ancienneté du logement, nature des travaux. Cette attestation doit être conservée pour justifier le taux appliqué en cas de contrôle. Une question sur cette attestation ou le formulaire CERFA ? L'assistant vocal IA de Cirrion vous répond à tout moment.",
           },
           {
             type: "h2",
@@ -103,11 +103,11 @@ export default function TvaTravaux() {
           {
             type: "p",
             content:
-              "Sur un chantier mêlant plusieurs natures de travaux, il faut parfois appliquer des taux différents sur un même devis. C'est une source fréquente d'erreurs. Avec Floxia, vous choisissez le bon taux de TVA ligne par ligne selon la nature de chaque prestation, et Floxia l'applique sur le devis — que vous le créiez depuis WhatsApp ou sur l'application. En cas de doute, l'assistant vocal IA répond à vos questions sur le taux à retenir.",
+              "Sur un chantier mêlant plusieurs natures de travaux, il faut parfois appliquer des taux différents sur un même devis. C'est une source fréquente d'erreurs. Avec Cirrion, vous choisissez le bon taux de TVA ligne par ligne selon la nature de chaque prestation, et Cirrion l'applique sur le devis — que vous le créiez depuis WhatsApp ou sur l'application. En cas de doute, l'assistant vocal IA répond à vos questions sur le taux à retenir.",
           },
           {
             type: "cta",
-            content: "Créez vos devis avec le bon taux de TVA sur chaque ligne, avec Floxia",
+            content: "Créez vos devis avec le bon taux de TVA sur chaque ligne, avec Cirrion",
           },
         ]}
       />

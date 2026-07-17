@@ -24,8 +24,8 @@ const articleJsonLd = {
   headline: "Logiciel ERP Bâtiment : guide complet pour artisans et PME 2026",
   description:
     "Quel logiciel ERP choisir pour votre entreprise du bâtiment ? Comparatif complet et guide pratique.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://floxia.fr/ressources/logiciel-erp-batiment",
   keywords: "ERP bâtiment, logiciel artisan, devis facture, gestion chantier",
@@ -81,7 +81,7 @@ export default function ErpBatiment() {
             items: [
               "ERP généraliste — avantage : prix bas. Inconvénient : pas adapté au bâtiment, nécessite des paramétrages complexes et du temps de formation.",
               "Logiciel bâtiment classique (Batigest, Onaya) — adapté aux grands groupes, trop lourd et trop cher pour un artisan indépendant ou une PME de moins de 20 personnes.",
-              "Solution IA spécialisée (Floxia) — conçue pour les artisans, fonctionne depuis WhatsApp, automatise toute la chaîne devis → facture → PV de réception.",
+              "Solution IA spécialisée (Cirrion) — conçue pour les artisans, fonctionne depuis WhatsApp, automatise toute la chaîne devis → facture → PV de réception.",
             ],
           },
           {
@@ -105,7 +105,7 @@ export default function ErpBatiment() {
           {
             type: "p",
             content:
-              "Les ERP traditionnels demandent de saisir manuellement chaque ligne de devis, chaque prestation, chaque montant. Avec un ERP IA comme Floxia, vous décrivez votre chantier à voix haute depuis WhatsApp — \"installation salle de bain 8m², faïence, plomberie, sanitaires\" — et le logiciel génère automatiquement le devis complet avec votre grille tarifaire et la TVA de votre choix sur chaque ligne.",
+              "Les ERP traditionnels demandent de saisir manuellement chaque ligne de devis, chaque prestation, chaque montant. Avec un ERP IA comme Cirrion, vous décrivez votre chantier à voix haute depuis WhatsApp — \"installation salle de bain 8m², faïence, plomberie, sanitaires\" — et le logiciel génère automatiquement le devis complet avec votre grille tarifaire et la TVA de votre choix sur chaque ligne.",
           },
           {
             type: "h2",
@@ -116,7 +116,7 @@ export default function ErpBatiment() {
             items: [
               "ERP généraliste (Sage, Cegid) : 200€ à 800€/mois pour une petite entreprise, plus les coûts de formation et d'implémentation.",
               "Logiciel bâtiment classique (Batigest, Onaya) : 100€ à 400€/mois, + 1 000€ à 3 000€ de setup.",
-              "Floxia : à partir de 99€/mois tout inclus, aucune formation requise — vous l'utilisez depuis WhatsApp ou directement sur l'application Floxia ERP avec ses pré-modèles de devis.",
+              "Cirrion : à partir de 99€/mois tout inclus, aucune formation requise — vous l'utilisez depuis WhatsApp ou directement sur l'application Cirrion ERP avec ses pré-modèles de devis.",
             ],
           },
           {
@@ -126,11 +126,11 @@ export default function ErpBatiment() {
           {
             type: "p",
             content:
-              "Depuis 2026, toutes les entreprises françaises (y compris les micro-entreprises du bâtiment) doivent être capables de recevoir et émettre des factures électroniques conformes. Floxia gère nativement l'e-reporting et l'e-facturation — pas besoin d'un module supplémentaire ou d'un comptable pour s'y conformer.",
+              "Depuis 2026, toutes les entreprises françaises (y compris les micro-entreprises du bâtiment) doivent être capables de recevoir et émettre des factures électroniques conformes. Cirrion gère nativement l'e-reporting et l'e-facturation — pas besoin d'un module supplémentaire ou d'un comptable pour s'y conformer.",
           },
           {
             type: "cta",
-            content: "Découvrez Floxia, l'ERP IA conçu pour les artisans du bâtiment",
+            content: "Découvrez Cirrion, l'ERP IA conçu pour les artisans du bâtiment",
           },
         ]}
       />

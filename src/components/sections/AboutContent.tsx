@@ -44,13 +44,13 @@ const TEAM = [
     icon: Wrench,
     role: "Fondateur",
     name: "Florian",
-    text: "Ingénieur en automatisation, à l'origine de Floxia. Il pilote la vision produit et le développement de l'outil.",
+    text: "Ingénieur en automatisation, à l'origine de Cirrion. Il pilote la vision produit et le développement de l'outil.",
   },
   {
     icon: Users,
     role: "Réseau",
     name: "Nos apporteurs d'affaires",
-    text: "Un réseau de partenaires de confiance qui font découvrir Floxia aux artisans partout en France.",
+    text: "Un réseau de partenaires de confiance qui font découvrir Cirrion aux artisans partout en France.",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function AboutContent() {
           transition={{ ...fadeUp.transition, delay: 0.1 }}
           style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "clamp(1.05rem,2.2vw,1.25rem)", lineHeight: 1.7, maxWidth: "42rem", margin: "0 auto" }}
         >
-          Floxia est né d&apos;une conviction simple : les artisans du bâtiment méritent les
+          Cirrion est né d&apos;une conviction simple : les artisans du bâtiment méritent les
           mêmes outils intelligents que les grandes entreprises.
         </motion.p>
       </section>
@@ -115,9 +115,9 @@ export default function AboutContent() {
               bénéficient les grandes structures.
             </p>
             <p>
-              De cette réflexion naît <strong style={{ color: "#2455D6" }}>Floxia</strong> : amener
+              De cette réflexion naît <strong style={{ color: "#2455D6" }}>Cirrion</strong> : amener
               l&apos;automatisation et l&apos;intelligence artificielle, éprouvées en entreprise, aux
-              artisans et aux PME du bâtiment. Aujourd&apos;hui, Floxia grandit dans ce domaine avec une
+              artisans et aux PME du bâtiment. Aujourd&apos;hui, Cirrion grandit dans ce domaine avec une
               mission claire — rendre aux artisans le temps qu&apos;ils consacrent à l&apos;administratif.
             </p>
           </div>

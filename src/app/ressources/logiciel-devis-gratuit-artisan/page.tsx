@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
 export const metadata: Metadata = {
-  title: "Logiciel de devis gratuit artisan : ce qu'il faut vraiment savoir — Floxia",
+  title: "Logiciel de devis gratuit artisan : ce qu'il faut vraiment savoir — Cirrion",
   description:
-    "Logiciel de devis gratuit pour artisan : avantages, limites et alternatives payantes. Découvrez pourquoi un logiciel de devis IA comme Floxia vous fait gagner plus qu'un outil gratuit.",
+    "Logiciel de devis gratuit pour artisan : avantages, limites et alternatives payantes. Découvrez pourquoi un logiciel de devis IA comme Cirrion vous fait gagner plus qu'un outil gratuit.",
   keywords: [
     "logiciel devis gratuit artisan",
     "logiciel devis artisan gratuit",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "outil devis artisan",
   ],
   openGraph: {
-    title: "Logiciel de devis gratuit artisan : avantages et limites — Floxia",
+    title: "Logiciel de devis gratuit artisan : avantages et limites — Cirrion",
     description:
       "Logiciel de devis gratuit ou payant pour artisan ? On compare les options et on vous dit ce qui vaut vraiment le coup.",
     url: "https://floxia.fr/ressources/logiciel-devis-gratuit-artisan",
@@ -29,8 +29,8 @@ const articleJsonLd = {
   headline: "Logiciel de devis gratuit artisan : ce qu'il faut vraiment savoir",
   description:
     "Logiciel de devis gratuit pour artisan : avantages, limites et alternatives. Comparatif pour choisir le bon outil.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-19",
   mainEntityOfPage: "https://floxia.fr/ressources/logiciel-devis-gratuit-artisan",
   keywords: "logiciel devis gratuit artisan, application devis artisan, meilleur logiciel devis artisan",
@@ -63,7 +63,7 @@ const faqJsonLd = {
       name: "Quel est le meilleur logiciel de devis pour artisan ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Le meilleur logiciel de devis artisan est celui qui fait gagner du temps réellement. Floxia se distingue par ses pré-modèles IA adaptés à chaque métier et la création de devis depuis WhatsApp par vocal en 3 minutes, sans ordinateur.",
+        text: "Le meilleur logiciel de devis artisan est celui qui fait gagner du temps réellement. Cirrion se distingue par ses pré-modèles IA adaptés à chaque métier et la création de devis depuis WhatsApp par vocal en 3 minutes, sans ordinateur.",
       },
     },
     {
@@ -71,7 +71,7 @@ const faqJsonLd = {
       name: "Peut-on créer un devis depuis son téléphone ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Oui, avec Floxia vous créez un devis depuis WhatsApp en décrivant le chantier par message vocal ou écrit. L'IA génère le devis PDF et l'envoie au client — depuis votre téléphone, sur le terrain.",
+        text: "Oui, avec Cirrion vous créez un devis depuis WhatsApp en décrivant le chantier par message vocal ou écrit. L'IA génère le devis PDF et l'envoie au client — depuis votre téléphone, sur le terrain.",
       },
     },
   ],
@@ -129,7 +129,7 @@ export default function LogicielDevisGratuitArtisan() {
           {
             type: "p",
             content:
-              "Un devis créé manuellement depuis un modèle Word prend en moyenne 25 à 45 minutes : saisie des informations client, liste des prestations, calcul des quantités et prix, TVA, mise en forme, enregistrement en PDF, envoi par email. Avec un logiciel de devis IA comme Floxia, ce même devis prend 3 minutes — en décrivant le chantier par vocal sur WhatsApp depuis le terrain.",
+              "Un devis créé manuellement depuis un modèle Word prend en moyenne 25 à 45 minutes : saisie des informations client, liste des prestations, calcul des quantités et prix, TVA, mise en forme, enregistrement en PDF, envoi par email. Avec un logiciel de devis IA comme Cirrion, ce même devis prend 3 minutes — en décrivant le chantier par vocal sur WhatsApp depuis le terrain.",
           },
           {
             type: "ul",
@@ -141,7 +141,7 @@ export default function LogicielDevisGratuitArtisan() {
           },
           {
             type: "h2",
-            content: "Ce que Floxia apporte en plus",
+            content: "Ce que Cirrion apporte en plus",
           },
           {
             type: "ul",
@@ -161,11 +161,11 @@ export default function LogicielDevisGratuitArtisan() {
           {
             type: "p",
             content:
-              "Si vous faites moins de 2 devis par mois et que votre activité est très occasionnelle, un modèle gratuit peut suffire pour commencer. En revanche, dès que votre activité se développe, le temps perdu sur l'administratif devient votre premier frein à la croissance. Un logiciel de devis artisan comme Floxia s'autofinance dès les premières heures gagnées.",
+              "Si vous faites moins de 2 devis par mois et que votre activité est très occasionnelle, un modèle gratuit peut suffire pour commencer. En revanche, dès que votre activité se développe, le temps perdu sur l'administratif devient votre premier frein à la croissance. Un logiciel de devis artisan comme Cirrion s'autofinance dès les premières heures gagnées.",
           },
           {
             type: "cta",
-            content: "Essayer Floxia — Devis artisan en 3 min depuis WhatsApp",
+            content: "Essayer Cirrion — Devis artisan en 3 min depuis WhatsApp",
           },
         ]}
       />

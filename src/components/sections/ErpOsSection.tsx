@@ -13,7 +13,7 @@ export default function ErpOsSection() {
               color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em",
               textTransform: "uppercase", marginBottom: "1.2rem",
             }}>
-              FloxiaOS
+              CirrionOS
             </span>
             <h2 style={{
               fontFamily: "var(--font-nunito)", fontWeight: 900,
@@ -32,7 +32,7 @@ export default function ErpOsSection() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/dashboard-floxia.jpg"
-          alt="Tableau de bord FloxiaOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
+          alt="Tableau de bord CirrionOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
           loading="lazy"
           decoding="async"
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", borderRadius: "1rem" }}

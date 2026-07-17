@@ -55,7 +55,7 @@ function countScore(key: "floxia" | "obat" | "sage" | "ebp") {
 }
 
 const SCORES = [
-  { label: "Floxia", key: "floxia" as const, color: "#2455D6", highlight: true },
+  { label: "Cirrion", key: "floxia" as const, color: "#2455D6", highlight: true },
   { label: "Obat",   key: "obat"   as const, color: "#60A5FA", highlight: false },
   { label: "Sage",   key: "sage"   as const, color: "rgba(var(--text-rgb),0.35)", highlight: false },
   { label: "EBP",    key: "ebp"    as const, color: "rgba(var(--text-rgb),0.25)", highlight: false },
@@ -69,7 +69,7 @@ function Cell({ val, isFloxia }: { val: Val; isFloxia?: boolean }) {
 }
 
 const COLS: { name: string; key: "floxia"|"obat"|"sage"|"ebp"; highlight: boolean }[] = [
-  { name: "Floxia", key: "floxia", highlight: true },
+  { name: "Cirrion", key: "floxia", highlight: true },
   { name: "Obat",   key: "obat",   highlight: false },
   { name: "Sage",   key: "sage",   highlight: false },
   { name: "EBP",    key: "ebp",    highlight: false },
@@ -87,7 +87,7 @@ export default function Comparatif() {
             Comparaison
           </span>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)" }}>
-            Floxia vs <span style={{ color: "#2455D6" }}>Obat, Sage, EBP</span>
+            Cirrion vs <span style={{ color: "#2455D6" }}>Obat, Sage, EBP</span>
           </h2>
           <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
             {TOTAL} critères. Un seul outil pensé pour les artisans du bâtiment.

@@ -24,8 +24,8 @@ const articleJsonLd = {
   headline: "Automatisation artisan : gagnez 10h par semaine sur votre gestion",
   description:
     "5 tâches administratives que tout artisan du bâtiment peut automatiser aujourd'hui : devis, relances, facturation, conformité 2026.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://floxia.fr/ressources/automatisation-artisan-batiment",
   keywords: "automatisation artisan, gestion administrative bâtiment, logiciel artisan",
@@ -65,7 +65,7 @@ export default function AutomatisationArtisan() {
           {
             type: "p",
             content:
-              "Créer un devis manuellement prend entre 20 et 45 minutes : trouver le bon modèle, saisir les lignes de prestations, calculer les TVA correctes (5,5% pour la rénovation, 10% pour certains travaux, 20% pour le neuf), mettre en forme, exporter en PDF, l'envoyer. Avec Floxia, vous dictez le chantier par vocal depuis WhatsApp et le devis est prêt en moins de 3 minutes, avec votre logo et vos tarifs.",
+              "Créer un devis manuellement prend entre 20 et 45 minutes : trouver le bon modèle, saisir les lignes de prestations, calculer les TVA correctes (5,5% pour la rénovation, 10% pour certains travaux, 20% pour le neuf), mettre en forme, exporter en PDF, l'envoyer. Avec Cirrion, vous dictez le chantier par vocal depuis WhatsApp et le devis est prêt en moins de 3 minutes, avec votre logo et vos tarifs.",
           },
           {
             type: "h2",
@@ -74,7 +74,7 @@ export default function AutomatisationArtisan() {
           {
             type: "p",
             content:
-              "Les artisans oublient souvent de relancer — par manque de temps, par gêne, ou tout simplement parce qu'ils sont sur un chantier. Résultat : 30 à 40% des devis envoyés ne reçoivent jamais de réponse. Floxia envoie automatiquement des relances à J+3, J+7 et J+14 pour les devis non signés, et à J+15, J+30 pour les factures impayées. Vous n'avez rien à faire.",
+              "Les artisans oublient souvent de relancer — par manque de temps, par gêne, ou tout simplement parce qu'ils sont sur un chantier. Résultat : 30 à 40% des devis envoyés ne reçoivent jamais de réponse. Cirrion envoie automatiquement des relances à J+3, J+7 et J+14 pour les devis non signés, et à J+15, J+30 pour les factures impayées. Vous n'avez rien à faire.",
           },
           {
             type: "h2",
@@ -83,7 +83,7 @@ export default function AutomatisationArtisan() {
           {
             type: "p",
             content:
-              "La facturation d'un chantier suit des étapes précises : facture d'acompte à la signature, facture finale à la réception. Chaque document doit être conforme, numéroté dans l'ordre, avec les bons taux de TVA. Floxia déclenche automatiquement chaque document au bon moment, selon les conditions définies lors de la création du devis.",
+              "La facturation d'un chantier suit des étapes précises : facture d'acompte à la signature, facture finale à la réception. Chaque document doit être conforme, numéroté dans l'ordre, avec les bons taux de TVA. Cirrion déclenche automatiquement chaque document au bon moment, selon les conditions définies lors de la création du devis.",
           },
           {
             type: "h2",
@@ -92,7 +92,7 @@ export default function AutomatisationArtisan() {
           {
             type: "p",
             content:
-              "Depuis 2026, toutes les entreprises françaises — y compris les artisans en micro-entreprise — doivent émettre des factures électroniques conformes (e-reporting, e-invoicing). Se mettre en conformité manuellement nécessite un comptable ou des heures de paramétrage. Floxia gère cette conformité nativement : chaque facture est générée au bon format, déclarée automatiquement.",
+              "Depuis 2026, toutes les entreprises françaises — y compris les artisans en micro-entreprise — doivent émettre des factures électroniques conformes (e-reporting, e-invoicing). Se mettre en conformité manuellement nécessite un comptable ou des heures de paramétrage. Cirrion gère cette conformité nativement : chaque facture est générée au bon format, déclarée automatiquement.",
           },
           {
             type: "h2",
@@ -101,7 +101,7 @@ export default function AutomatisationArtisan() {
           {
             type: "p",
             content:
-              "Retrouver un devis signé de l'année dernière, le montant facturé sur un chantier en cours, ou l'état des paiements d'un client — ça prend du temps si tout est éparpillé dans des dossiers papier ou des boîtes email. Floxia centralise tout : chaque chantier a sa fiche avec tous les documents, statuts et historiques. Et à la fin du chantier, le PV de réception est généré et envoyé automatiquement.",
+              "Retrouver un devis signé de l'année dernière, le montant facturé sur un chantier en cours, ou l'état des paiements d'un client — ça prend du temps si tout est éparpillé dans des dossiers papier ou des boîtes email. Cirrion centralise tout : chaque chantier a sa fiche avec tous les documents, statuts et historiques. Et à la fin du chantier, le PV de réception est généré et envoyé automatiquement.",
           },
           {
             type: "h2",
@@ -124,7 +124,7 @@ export default function AutomatisationArtisan() {
           {
             type: "p",
             content:
-              "L'automatisation n'est pas réservée aux grandes entreprises. Floxia est conçu pour les artisans seuls ou les PME jusqu'à 50 personnes. La mise en place prend moins de 24 heures : on connecte votre numéro WhatsApp Business, on configure vos tarifs et modèles, et vous pouvez envoyer votre premier devis depuis votre téléphone le lendemain matin.",
+              "L'automatisation n'est pas réservée aux grandes entreprises. Cirrion est conçu pour les artisans seuls ou les PME jusqu'à 50 personnes. La mise en place prend moins de 24 heures : on connecte votre numéro WhatsApp Business, on configure vos tarifs et modèles, et vous pouvez envoyer votre premier devis depuis votre téléphone le lendemain matin.",
           },
           {
             type: "cta",

@@ -17,11 +17,11 @@ import {
 } from "@/components/ui/SectionTransitions";
 
 export const metadata: Metadata = {
-  title: "Floxia — Logiciel de devis et factures pour artisans du bâtiment | ERP IA",
+  title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | ERP IA",
   description:
-    "Floxia : créez vos devis et factures en 3 minutes depuis WhatsApp (vocal) ou l'application ERP avec pré-modèles IA. Logiciel pour électriciens, plombiers, maçons, couvreurs et tous les artisans du bâtiment. Conforme e-facturation 2026.",
+    "Cirrion : créez vos devis et factures en 3 minutes depuis WhatsApp (vocal) ou l'application ERP avec pré-modèles IA. Logiciel pour électriciens, plombiers, maçons, couvreurs et tous les artisans du bâtiment. Conforme e-facturation 2026.",
   keywords: [
-    "Floxia",
+    "Cirrion",
     "logiciel devis artisan",
     "logiciel facturation bâtiment",
     "devis WhatsApp artisan",
@@ -52,15 +52,15 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://floxia.fr" },
   openGraph: {
-    title: "Floxia — Logiciel de devis et factures pour artisans du bâtiment",
+    title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment",
     description:
-      "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Floxia ERP. Pré-modèles IA, TVA 5,5/10/20% au choix, e-facturation 2026. Pour tous les artisans du bâtiment.",
+      "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Cirrion ERP. Pré-modèles IA, TVA 5,5/10/20% au choix, e-facturation 2026. Pour tous les artisans du bâtiment.",
     url: "https://floxia.fr",
-    images: [{ url: "https://floxia.fr/dashboard-floxia.jpg", width: 842, height: 414, alt: "Tableau de bord Floxia — logiciel ERP artisan bâtiment" }],
+    images: [{ url: "https://floxia.fr/dashboard-floxia.jpg", width: 842, height: 414, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Floxia — Devis artisan en 3 min depuis WhatsApp",
+    title: "Cirrion — Devis artisan en 3 min depuis WhatsApp",
     description: "Logiciel de devis et facturation pour artisans du bâtiment. Pré-modèles IA, TVA auto, e-facturation 2026.",
     images: ["https://floxia.fr/dashboard-floxia.jpg"],
   },
@@ -90,7 +90,7 @@ export default function Home() {
               color: "#2455D6", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
             }}
           >
-            Comparer Floxia vs Obat, Sage, EBP — 21 critères →
+            Comparer Cirrion vs Obat, Sage, EBP — 21 critères →
           </Link>
         </section>
         <Perspective3DFloor />

@@ -19,8 +19,8 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "E-facturation 2026 artisan bâtiment : tout ce qu'il faut savoir",
   description: "Obligation e-facturation 2026 pour artisans et PME du bâtiment. Ce qui change, les délais, et comment se conformer.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://floxia.fr/ressources/facturation-electronique-2026",
   keywords: "e-facturation 2026, facturation électronique artisan, conformité TVA bâtiment",
@@ -103,12 +103,12 @@ export default function EFacturation() {
           {
             type: "p",
             content:
-              "La bonne nouvelle : si vous utilisez Floxia, vous êtes automatiquement conforme. Floxia génère vos factures dans le format Factur-X (PDF avec données structurées intégrées), les transmet via une PDP immatriculée, et gère le reporting TVA automatiquement. Pas besoin de comprendre les normes techniques — Floxia s'en charge.",
+              "La bonne nouvelle : si vous utilisez Cirrion, vous êtes automatiquement conforme. Cirrion génère vos factures dans le format Factur-X (PDF avec données structurées intégrées), les transmet via une PDP immatriculée, et gère le reporting TVA automatiquement. Pas besoin de comprendre les normes techniques — Cirrion s'en charge.",
           },
           {
             type: "ul",
             items: [
-              "Factur-X intégré : chaque facture Floxia est automatiquement au format Factur-X conforme.",
+              "Factur-X intégré : chaque facture Cirrion est automatiquement au format Factur-X conforme.",
               "Transmission PDP : vos factures sont transmises via la plateforme de dématérialisation partenaire certifiée.",
               "E-reporting automatique : les données de vos ventes aux particuliers sont déclarées automatiquement.",
               "Archivage légal : vos factures sont archivées pendant 10 ans conformément aux obligations légales.",
@@ -125,7 +125,7 @@ export default function EFacturation() {
           },
           {
             type: "cta",
-            content: "Floxia vous met en conformité e-facturation 2026 automatiquement",
+            content: "Cirrion vous met en conformité e-facturation 2026 automatiquement",
           },
         ]}
       />

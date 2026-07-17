@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Mentions légales — Floxia",
-  description: "Mentions légales du site Floxia.",
+  title: "Mentions légales — Cirrion",
+  description: "Mentions légales du site Cirrion.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://floxia.fr/mentions-legales" },
 };
@@ -19,8 +19,8 @@ export default function MentionsLegales() {
           {
             heading: "Éditeur du site",
             body: [
-              "Le présent site est édité par Floxia.",
-              "Raison sociale : Floxia — [forme juridique à compléter : ex. SAS, EI, micro-entreprise].",
+              "Le présent site est édité par Cirrion.",
+              "Raison sociale : Cirrion — [forme juridique à compléter : ex. SAS, EI, micro-entreprise].",
               "Capital social : [montant à compléter, le cas échéant].",
               "Siège social : [adresse complète à compléter].",
               "Immatriculation : SIREN/SIRET [numéro à compléter] — RCS [ville à compléter].",
@@ -30,20 +30,20 @@ export default function MentionsLegales() {
           {
             heading: "Directeur de la publication",
             body: [
-              "Le directeur de la publication est le représentant légal de Floxia : Florian [nom à compléter].",
+              "Le directeur de la publication est le représentant légal de Cirrion : Florian [nom à compléter].",
             ],
           },
           {
             heading: "Hébergement",
             body: [
-              "Les données et l'application Floxia sont hébergées sur des serveurs gérés par Floxia, situés en France.",
+              "Les données et l'application Cirrion sont hébergées sur des serveurs gérés par Cirrion, situés en France.",
               "Le site vitrine est déployé via la plateforme d'hébergement Vercel Inc. (340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis).",
             ],
           },
           {
             heading: "Propriété intellectuelle",
             body: [
-              "L'ensemble des éléments du site (textes, logos, marques, visuels, interface) est protégé par le droit de la propriété intellectuelle et demeure la propriété exclusive de Floxia.",
+              "L'ensemble des éléments du site (textes, logos, marques, visuels, interface) est protégé par le droit de la propriété intellectuelle et demeure la propriété exclusive de Cirrion.",
               "Toute reproduction, représentation ou exploitation, totale ou partielle, sans autorisation préalable écrite, est interdite.",
             ],
           },

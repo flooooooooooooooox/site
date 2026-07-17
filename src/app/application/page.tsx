@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Floxia — Application de gestion pour artisans du bâtiment",
+  title: "Cirrion — Application de gestion pour artisans du bâtiment",
   description:
-    "Floxia est une application de gestion pour les artisans du bâtiment : création de devis et factures, envoi par e-mail via votre compte Gmail, relances automatiques.",
+    "Cirrion est une application de gestion pour les artisans du bâtiment : création de devis et factures, envoi par e-mail via votre compte Gmail, relances automatiques.",
   alternates: { canonical: "https://florianai.fr/application" },
 };
 
@@ -28,17 +28,17 @@ export default function ApplicationPage() {
           marginBottom: "1.5rem",
         }}
       >
-        Floxia
+        Cirrion
       </h1>
 
       <p style={{ color: "rgba(var(--text-rgb),0.8)", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-        Floxia est une application de gestion destinée aux artisans et aux entreprises du bâtiment.
+        Cirrion est une application de gestion destinée aux artisans et aux entreprises du bâtiment.
         Son objectif : créer vos devis et vos factures, les envoyer à vos clients et automatiser
         le suivi de votre activité, afin de réduire le temps que vous passez sur l&apos;administratif.
       </p>
 
       <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.3rem", color: "var(--text)", marginBottom: "0.8rem" }}>
-        Ce que fait l&apos;application Floxia
+        Ce que fait l&apos;application Cirrion
       </h2>
       <ul style={{ color: "rgba(var(--text-rgb),0.75)", fontSize: "1rem", lineHeight: 1.9, paddingLeft: "1.2rem", marginBottom: "1.5rem" }}>
         <li>Création de devis et de factures professionnels (y compris depuis un message vocal WhatsApp).</li>
@@ -52,9 +52,9 @@ export default function ApplicationPage() {
         Utilisation de votre compte Google
       </h2>
       <p style={{ color: "rgba(var(--text-rgb),0.75)", fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-        Floxia se connecte à votre compte Gmail uniquement pour envoyer, en votre nom, les documents
+        Cirrion se connecte à votre compte Gmail uniquement pour envoyer, en votre nom, les documents
         que vous créez dans l&apos;application (devis, factures, e-mails professionnels et relances).
-        Floxia ne lit pas vos e-mails personnels et n&apos;utilise vos données que pour le fonctionnement
+        Cirrion ne lit pas vos e-mails personnels et n&apos;utilise vos données que pour le fonctionnement
         du service, conformément à notre politique de confidentialité.
       </p>
 
@@ -68,7 +68,7 @@ export default function ApplicationPage() {
         </Link>
         {" · "}
         <Link href="/" style={{ color: "#2455D6", textDecoration: "underline" }}>
-          Découvrir Floxia
+          Découvrir Cirrion
         </Link>
       </p>
     </main>

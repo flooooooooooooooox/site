@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ metier: s
   const v = getVille(vs);
   if (!m || !v) return {};
   const url = `https://floxia.fr/logiciel-devis/${m.slug}/${v.slug}`;
-  const title = `Logiciel de devis ${m.nom} ${v.prepo} ${v.nom} — Floxia`;
-  const description = `Logiciel de devis et facturation pour ${m.nom} ${v.prepo} ${v.nom} (${v.region}). Créez vos devis ${m.label.toLowerCase()} depuis WhatsApp ou sur l'application Floxia ERP. TVA 5,5/10/20% au choix, e-facturation 2026.`;
+  const title = `Logiciel de devis ${m.nom} ${v.prepo} ${v.nom} — Cirrion`;
+  const description = `Logiciel de devis et facturation pour ${m.nom} ${v.prepo} ${v.nom} (${v.region}). Créez vos devis ${m.label.toLowerCase()} depuis WhatsApp ou sur l'application Cirrion ERP. TVA 5,5/10/20% au choix, e-facturation 2026.`;
   return {
     title,
     description,
@@ -51,7 +51,7 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: `Logiciel de devis et facturation pour ${m.nom}`,
-    provider: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+    provider: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
     areaServed: { "@type": "City", name: v.nom },
     description: `Logiciel de devis, facturation et gestion pour ${m.pluriel} ${v.prepo} ${v.nom}.`,
   };
@@ -81,7 +81,7 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Vous êtes {m.nom} {v.prepo} {v.nom} ou dans {v.region} ? Floxia vous permet de créer vos devis et factures en quelques minutes, depuis WhatsApp par message vocal ou sur l&apos;application Floxia ERP avec des pré-modèles de devis générés par l&apos;IA. Spécialisé dans {m.domaine}, Floxia génère des documents conformes avec la TVA de votre choix sur chaque ligne.
+          Vous êtes {m.nom} {v.prepo} {v.nom} ou dans {v.region} ? Cirrion vous permet de créer vos devis et factures en quelques minutes, depuis WhatsApp par message vocal ou sur l&apos;application Cirrion ERP avec des pré-modèles de devis générés par l&apos;IA. Spécialisé dans {m.domaine}, Cirrion génère des documents conformes avec la TVA de votre choix sur chaque ligne.
         </p>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "1rem" }}>
@@ -105,18 +105,18 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
         </ul>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.35rem", color: "var(--text)", marginBottom: "0.75rem" }}>
-          Pourquoi Floxia pour un {m.nom} {v.prepo} {v.nom}
+          Pourquoi Cirrion pour un {m.nom} {v.prepo} {v.nom}
         </h2>
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "0.8rem" }}>
-          {v.zones} Floxia étant 100% en ligne, vous l&apos;utilisez où que soit votre chantier. Les relances de devis et factures sont automatiques, et la conformité e-facturation 2026 est native.
+          {v.zones} Cirrion étant 100% en ligne, vous l&apos;utilisez où que soit votre chantier. Les relances de devis et factures sont automatiques, et la conformité e-facturation 2026 est native.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
-          Que vous soyez {m.nom} indépendant, auto-entrepreneur ou à la tête d&apos;une entreprise de {m.domaine}, Floxia s&apos;adapte à votre activité {v.prepo} {v.nom}.
+          Que vous soyez {m.nom} indépendant, auto-entrepreneur ou à la tête d&apos;une entreprise de {m.domaine}, Cirrion s&apos;adapte à votre activité {v.prepo} {v.nom}.
         </p>
 
         <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center", marginBottom: "4rem" }}>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.3rem", color: "var(--text)", marginBottom: "0.6rem" }}>
-            Essayez Floxia, {m.nom} {v.prepo} {v.nom}
+            Essayez Cirrion, {m.nom} {v.prepo} {v.nom}
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · Sans engagement</p>
           <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"

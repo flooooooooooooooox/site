@@ -90,7 +90,7 @@ export default function Footer() {
               letterSpacing: "-.01em",
             }}
           >
-            Floxia
+            Cirrion
           </span>
         </div>
 
@@ -121,7 +121,7 @@ export default function Footer() {
         {/* Social / copyright */}
         <div className="footer-bottom">
           <span style={{ color: "rgba(232,237,244,0.25)", fontSize: ".78rem" }}>
-            © {new Date().getFullYear()} Floxia. Tous droits réservés.
+            © {new Date().getFullYear()} Cirrion. Tous droits réservés.
           </span>
           <a
             href="https://www.linkedin.com/in/floxia-pro-9360333aa"

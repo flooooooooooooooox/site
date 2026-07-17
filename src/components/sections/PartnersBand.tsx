@@ -127,7 +127,7 @@ export default function PartnersBand() {
           🔒 IA 100% européenne (Mistral AI) — vos données ne quittent jamais l&apos;UE, en conformité RGPD.
         </motion.p>
         <p style={{ fontSize: "0.72rem", color: "rgba(var(--text-rgb),0.4)", textAlign: "center", fontWeight: 500, maxWidth: "42rem" }}>
-          ✉️ Floxia utilise votre compte Gmail pour envoyer automatiquement vos devis, factures et e-mails professionnels à vos clients, en votre nom.
+          ✉️ Cirrion utilise votre compte Gmail pour envoyer automatiquement vos devis, factures et e-mails professionnels à vos clients, en votre nom.
         </p>
       </div>
     </section>

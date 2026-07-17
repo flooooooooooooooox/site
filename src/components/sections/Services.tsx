@@ -22,7 +22,7 @@ const CATEGORIES: Category[] = [
     color: "#2455D6",
     features: [
       "Devis PDF par vocal/écrit WhatsApp en 3 min",
-      "Devis sur l'application Floxia ERP (pré-modèles IA)",
+      "Devis sur l'application Cirrion ERP (pré-modèles IA)",
       "PV de réception + facture finale automatisés",
       "Factures d'acompte, finale, tous types",
       "Factures périodiques & récurrentes automatiques",
@@ -157,7 +157,7 @@ export default function Services() {
         </motion.div>
 
         {/* ===== Chaîne de nœuds ===== */}
-        <div className="flow-track" role="tablist" aria-label="Modules Floxia">
+        <div className="flow-track" role="tablist" aria-label="Modules Cirrion">
           {CATEGORIES.map((c, i) => {
             const NodeIcon = c.icon;
             const isActive = i === active;

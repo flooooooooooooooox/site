@@ -241,7 +241,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
 
       {/* Giant BG text */}
       <div ref={giantTextRef} className="footer-giant-bg-text" style={{ position: "absolute", bottom: "-5vh", left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", zIndex: 0, pointerEvents: "none", userSelect: "none" }}>
-        FLOXIA
+        CIRRION
       </div>
 
       {/* Marquee */}
@@ -302,7 +302,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
       <div className="footer-bottom-bar">
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <div style={{ width: 28, height: 28, background: "#2455D6", clipPath: "polygon(65% 0%,35% 45%,60% 45%,35% 100%,65% 55%,40% 55%)" }} />
-          <span style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.1rem", color: "var(--foreground)" }}>Floxia</span>
+          <span style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.1rem", color: "var(--foreground)" }}>Cirrion</span>
         </div>
         <a href="/qui-sommes-nous" className="footer-glass-pill" style={{ padding: "0.6rem 1.25rem", borderRadius: "9999px", display: "flex", alignItems: "center", gap: "0.4rem", textDecoration: "none" }}>
           <span style={{ fontSize: "1rem" }}>🇫🇷</span>
@@ -310,7 +310,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
           <span style={{ color: "var(--muted-foreground)", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            © {new Date().getFullYear()} Floxia. Tous droits réservés.
+            © {new Date().getFullYear()} Cirrion. Tous droits réservés.
           </span>
           <MagneticButton as="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             aria-label="Retour en haut"

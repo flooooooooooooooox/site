@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
 export const metadata: Metadata = {
-  title: "Modèle de devis bâtiment : pré-modèles IA prêts à l'emploi — Floxia",
+  title: "Modèle de devis bâtiment : pré-modèles IA prêts à l'emploi — Cirrion",
   description:
-    "Modèles de devis bâtiment gratuits et pré-modèles générés par l'IA. Créez des devis professionnels conformes en quelques clics sur l'application Floxia ERP ou depuis WhatsApp.",
+    "Modèles de devis bâtiment gratuits et pré-modèles générés par l'IA. Créez des devis professionnels conformes en quelques clics sur l'application Cirrion ERP ou depuis WhatsApp.",
   keywords: [
     "modèle devis bâtiment", "modèle devis artisan", "exemple devis travaux",
     "pré-modèle devis", "logiciel devis en ligne", "créer devis en ligne artisan",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Modèle de devis bâtiment — Pré-modèles IA prêts à l'emploi",
     description:
-      "Créez des devis bâtiment professionnels en quelques clics avec les pré-modèles IA de Floxia, sur l'application ERP ou depuis WhatsApp.",
+      "Créez des devis bâtiment professionnels en quelques clics avec les pré-modèles IA de Cirrion, sur l'application ERP ou depuis WhatsApp.",
     url: "https://floxia.fr/ressources/modele-devis-batiment",
   },
   alternates: { canonical: "https://floxia.fr/ressources/modele-devis-batiment" },
@@ -24,8 +24,8 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Modèle de devis bâtiment : pré-modèles IA prêts à l'emploi",
   description: "Modèles de devis bâtiment et pré-modèles générés par l'IA pour créer des devis professionnels conformes en quelques clics.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://floxia.fr/ressources/modele-devis-batiment",
   keywords: "modèle devis bâtiment, pré-modèle devis IA, logiciel devis en ligne",
@@ -75,18 +75,18 @@ export default function ModeleDevis() {
             type: "ul",
             items: [
               "Modèle Word/Excel gratuit — vous repartez de zéro à chaque fois, vous ressaisissez les prestations, vous calculez la TVA à la main, vous risquez les erreurs et les oublis.",
-              "Pré-modèle de devis IA (Floxia) — l'IA reconnaît le type de chantier, propose les lignes de prestations adaptées avec votre catalogue de prix, et vous choisissez la TVA (5,5%, 10%, 20%) sur chaque ligne.",
+              "Pré-modèle de devis IA (Cirrion) — l'IA reconnaît le type de chantier, propose les lignes de prestations adaptées avec votre catalogue de prix, et vous choisissez la TVA (5,5%, 10%, 20%) sur chaque ligne.",
               "Résultat : un devis professionnel conforme en quelques clics au lieu de 30 minutes de saisie.",
             ],
           },
           {
             type: "h2",
-            content: "Deux façons d'utiliser les pré-modèles avec Floxia",
+            content: "Deux façons d'utiliser les pré-modèles avec Cirrion",
           },
           {
             type: "p",
             content:
-              "Avec Floxia, vous créez vos devis là où c'est le plus pratique pour vous. Sur l'application Floxia ERP (ordinateur ou tablette), vous choisissez un pré-modèle adapté à votre métier et vous le personnalisez à l'écran — idéal pour les chantiers complexes avec plusieurs postes. Depuis WhatsApp, vous décrivez le chantier par message vocal ou écrit, et l'IA construit le devis en 3 minutes — idéal sur le terrain.",
+              "Avec Cirrion, vous créez vos devis là où c'est le plus pratique pour vous. Sur l'application Cirrion ERP (ordinateur ou tablette), vous choisissez un pré-modèle adapté à votre métier et vous le personnalisez à l'écran — idéal pour les chantiers complexes avec plusieurs postes. Depuis WhatsApp, vous décrivez le chantier par message vocal ou écrit, et l'IA construit le devis en 3 minutes — idéal sur le terrain.",
           },
           {
             type: "ul",
@@ -114,7 +114,7 @@ export default function ModeleDevis() {
           {
             type: "p",
             content:
-              "Floxia intègre automatiquement tous ces éléments dans chaque pré-modèle. Vous ne risquez plus d'oublier une mention obligatoire, et chaque devis est conforme à la réglementation, y compris l'e-facturation 2026.",
+              "Cirrion intègre automatiquement tous ces éléments dans chaque pré-modèle. Vous ne risquez plus d'oublier une mention obligatoire, et chaque devis est conforme à la réglementation, y compris l'e-facturation 2026.",
           },
           {
             type: "h2",

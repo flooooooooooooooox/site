@@ -22,8 +22,8 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Tarif horaire artisan bâtiment 2026 : comment fixer ses prix",
   description: "Méthode de calcul du tarif horaire, fourchettes par métier et conseils pour des devis rentables.",
-  author: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://floxia.fr/ressources/tarif-horaire-artisan-batiment",
   keywords: "tarif horaire artisan, prix horaire bâtiment, calcul prix de revient",
@@ -96,7 +96,7 @@ export default function TarifHoraire() {
           {
             type: "p",
             content:
-              "Le piège le plus fréquent est de calculer son tarif sur la base de toutes les heures travaillées. Or, rédiger des devis, se déplacer entre chantiers et gérer l'administratif représente facilement 30 à 40% du temps. Si ce temps n'est pas intégré dans le tarif horaire, l'artisan travaille à perte sans s'en rendre compte. C'est précisément là qu'un outil comme Floxia aide : en automatisant devis et relances, vous réduisez le temps non facturable et améliorez votre rentabilité réelle.",
+              "Le piège le plus fréquent est de calculer son tarif sur la base de toutes les heures travaillées. Or, rédiger des devis, se déplacer entre chantiers et gérer l'administratif représente facilement 30 à 40% du temps. Si ce temps n'est pas intégré dans le tarif horaire, l'artisan travaille à perte sans s'en rendre compte. C'est précisément là qu'un outil comme Cirrion aide : en automatisant devis et relances, vous réduisez le temps non facturable et améliorez votre rentabilité réelle.",
           },
           {
             type: "h2",
@@ -105,7 +105,7 @@ export default function TarifHoraire() {
           {
             type: "ul",
             items: [
-              "Réduire le temps passé sur les devis : avec Floxia, un devis prend 3 minutes au lieu de 30.",
+              "Réduire le temps passé sur les devis : avec Cirrion, un devis prend 3 minutes au lieu de 30.",
               "Relancer automatiquement pour transformer plus de devis en chantiers.",
               "Diminuer les impayés grâce aux relances de factures automatiques.",
               "Suivre sa marge chantier par chantier pour ajuster ses prix au bon endroit.",
@@ -113,7 +113,7 @@ export default function TarifHoraire() {
           },
           {
             type: "cta",
-            content: "Optimisez votre rentabilité avec Floxia",
+            content: "Optimisez votre rentabilité avec Cirrion",
           },
         ]}
       />

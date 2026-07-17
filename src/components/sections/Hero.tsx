@@ -116,7 +116,7 @@ export default function Hero() {
             fontSize: "clamp(2.4rem,6vw,5rem)", fontWeight: 900, lineHeight: 1.02, letterSpacing: "-.03em",
             color: "#1B2A4A",
           }}>
-          <span>Floxia</span>
+          <span>Cirrion</span>
           <span style={{
             display: "inline-flex", alignItems: "center", marginLeft: "0.6rem", padding: "0 0.5rem",
             borderRadius: "0.3rem", background: "#2455D6", color: "#FFFFFF",
@@ -151,7 +151,7 @@ export default function Hero() {
 
         {/* Objectif de l'application — texte statique (lisible par le scanner de validation OAuth Google) */}
         <p style={{ marginTop: "1.6rem", color: "rgba(27,42,74,0.5)", fontSize: "0.8rem", fontWeight: 400, lineHeight: 1.6, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
-          Floxia est une application de gestion pour les artisans du bâtiment : elle crée vos devis et factures,
+          Cirrion est une application de gestion pour les artisans du bâtiment : elle crée vos devis et factures,
           les envoie à vos clients par e-mail via votre compte Gmail, et automatise vos relances.
         </p>
       </div>

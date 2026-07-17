@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Comparatif from "@/components/sections/Comparatif";
 
 export const metadata: Metadata = {
-  title: "Comparatif — Floxia vs Obat, Sage, EBP",
+  title: "Comparatif — Cirrion vs Obat, Sage, EBP",
   description:
-    "Comparez Floxia aux logiciels bâtiment Obat, Sage et EBP : devis par vocal WhatsApp, agent IA 24h/24, relances automatiques, e-facturation 2026. 21 critères comparés.",
+    "Comparez Cirrion aux logiciels bâtiment Obat, Sage et EBP : devis par vocal WhatsApp, agent IA 24h/24, relances automatiques, e-facturation 2026. 21 critères comparés.",
   keywords: [
-    "Floxia vs Obat",
+    "Cirrion vs Obat",
     "alternative Obat",
     "alternative Batigest",
     "alternative Sage bâtiment",

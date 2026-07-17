@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Logiciel de gestion d'entreprise du bâtiment — Solution B2B | Floxia",
+  title: "Logiciel de gestion d'entreprise du bâtiment — Solution B2B | Cirrion",
   description:
-    "Floxia, la solution de gestion pour les artisans et entreprises du bâtiment : indépendants, auto-entrepreneurs, TPE et PME du BTP. Devis, facturation, chantiers, équipes et pilotage dans un seul logiciel.",
+    "Cirrion, la solution de gestion pour les artisans et entreprises du bâtiment : indépendants, auto-entrepreneurs, TPE et PME du BTP. Devis, facturation, chantiers, équipes et pilotage dans un seul logiciel.",
   keywords: [
     "logiciel gestion entreprise bâtiment", "logiciel gestion artisan bâtiment", "logiciel B2B bâtiment",
     "solution gestion BTP", "logiciel artisan indépendant", "logiciel auto-entrepreneur bâtiment",
     "SaaS bâtiment", "outil gestion entreprise BTP", "logiciel pilotage entreprise bâtiment", "ERP B2B BTP",
   ],
   openGraph: {
-    title: "Logiciel de gestion d'entreprise du bâtiment — Floxia",
+    title: "Logiciel de gestion d'entreprise du bâtiment — Cirrion",
     description: "La solution B2B de gestion pour les entreprises du bâtiment : devis, facturation, chantiers, équipes et pilotage.",
     url: "https://floxia.fr/logiciel-gestion-entreprise-batiment",
   },
@@ -22,7 +22,7 @@ const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "Logiciel de gestion d'entreprise pour le bâtiment (B2B)",
-  provider: { "@type": "Organization", name: "Floxia", url: "https://floxia.fr" },
+  provider: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
   areaServed: "FR",
   audience: { "@type": "BusinessAudience", name: "Artisans, auto-entrepreneurs, TPE et PME du bâtiment et du BTP" },
   description:
@@ -61,10 +61,10 @@ export default function LogicielGestionEntreprise() {
           Le logiciel de gestion des <span style={{ color: "#2455D6" }}>artisans et entreprises du bâtiment</span>
         </h1>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Floxia est la solution de gestion pensée d&apos;abord pour les artisans du bâtiment — indépendants, auto-entrepreneurs, micro-entreprises — comme pour les TPE et PME du BTP. De la création du devis au pilotage de l&apos;activité, vous centralisez toute votre gestion dans un seul outil, accessible depuis WhatsApp sur le terrain et sur l&apos;application au bureau.
+          Cirrion est la solution de gestion pensée d&apos;abord pour les artisans du bâtiment — indépendants, auto-entrepreneurs, micro-entreprises — comme pour les TPE et PME du BTP. De la création du devis au pilotage de l&apos;activité, vous centralisez toute votre gestion dans un seul outil, accessible depuis WhatsApp sur le terrain et sur l&apos;application au bureau.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
-          Que vous soyez artisan seul, en auto-entreprise, à la tête d&apos;une entreprise générale du bâtiment ou d&apos;une PME multi-corps d&apos;état, Floxia s&apos;adapte à votre organisation et grandit avec vous — de l&apos;artisan indépendant jusqu&apos;aux structures de 50 collaborateurs.
+          Que vous soyez artisan seul, en auto-entreprise, à la tête d&apos;une entreprise générale du bâtiment ou d&apos;une PME multi-corps d&apos;état, Cirrion s&apos;adapte à votre organisation et grandit avec vous — de l&apos;artisan indépendant jusqu&apos;aux structures de 50 collaborateurs.
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.3rem,2.5vw,1.7rem)", color: "var(--text)", marginBottom: "1.5rem" }}>
@@ -81,13 +81,13 @@ export default function LogicielGestionEntreprise() {
         </div>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.3rem,2.5vw,1.7rem)", color: "var(--text)", marginBottom: "1rem" }}>
-          Pourquoi les artisans et dirigeants du bâtiment choisissent Floxia
+          Pourquoi les artisans et dirigeants du bâtiment choisissent Cirrion
         </h2>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "1.2rem" }}>
-          Pour un artisan comme pour une entreprise, le temps administratif coûte cher : chaque heure passée sur un devis ou une relance est une heure qui ne génère pas de chiffre d&apos;affaires. Floxia automatise ces tâches grâce à l&apos;IA, ce qui permet à l&apos;artisan indépendant comme à toute l&apos;équipe — du chef de chantier au dirigeant — de se concentrer sur la production et le développement commercial.
+          Pour un artisan comme pour une entreprise, le temps administratif coûte cher : chaque heure passée sur un devis ou une relance est une heure qui ne génère pas de chiffre d&apos;affaires. Cirrion automatise ces tâches grâce à l&apos;IA, ce qui permet à l&apos;artisan indépendant comme à toute l&apos;équipe — du chef de chantier au dirigeant — de se concentrer sur la production et le développement commercial.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
-          La conformité e-facturation 2026, l&apos;hébergement souverain en France et la traçabilité des documents font de Floxia un partenaire fiable pour les relations B2B, les marchés et la sous-traitance, où la rigueur documentaire est exigée.
+          La conformité e-facturation 2026, l&apos;hébergement souverain en France et la traçabilité des documents font de Cirrion un partenaire fiable pour les relations B2B, les marchés et la sous-traitance, où la rigueur documentaire est exigée.
         </p>
 
         <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center", marginBottom: "3rem" }}>
@@ -106,7 +106,7 @@ export default function LogicielGestionEntreprise() {
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem" }}>
           {[
-            { label: "Floxia par métier", href: "/artisans" },
+            { label: "Cirrion par métier", href: "/artisans" },
             { label: "Comparatifs", href: "/alternatives" },
             { label: "Logiciel par ville", href: "/logiciel-batiment" },
             { label: "Ressources", href: "/ressources" },

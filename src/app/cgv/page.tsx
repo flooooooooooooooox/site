@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Conditions générales de vente — Floxia",
-  description: "Conditions générales de vente des services Floxia.",
+  title: "Conditions générales de vente — Cirrion",
+  description: "Conditions générales de vente des services Cirrion.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://floxia.fr/cgv" },
 };
@@ -19,14 +19,14 @@ export default function Cgv() {
           {
             heading: "1. Objet",
             body: [
-              "Les présentes conditions générales de vente (CGV) régissent l'accès et l'utilisation des services Floxia, solution de gestion et d'automatisation destinée aux artisans et PME du bâtiment.",
+              "Les présentes conditions générales de vente (CGV) régissent l'accès et l'utilisation des services Cirrion, solution de gestion et d'automatisation destinée aux artisans et PME du bâtiment.",
               "Toute souscription à un abonnement implique l'acceptation pleine et entière des présentes CGV.",
             ],
           },
           {
             heading: "2. Offres et tarifs",
             body: [
-              "Floxia propose plusieurs formules d'abonnement mensuel (Essentiel, Artisan Pro, PME Premium), auxquelles s'ajoutent des frais de mise en service (setup) facturés une seule fois.",
+              "Cirrion propose plusieurs formules d'abonnement mensuel (Essentiel, Artisan Pro, PME Premium), auxquelles s'ajoutent des frais de mise en service (setup) facturés une seule fois.",
               "Les tarifs en vigueur sont ceux affichés sur le site au moment de la souscription. Ils sont indiqués en euros et hors taxes éventuelles applicables.",
             ],
           },
@@ -46,7 +46,7 @@ export default function Cgv() {
           {
             heading: "5. Responsabilité",
             body: [
-              "Floxia met en œuvre les moyens nécessaires pour assurer la disponibilité et la sécurité du service. La responsabilité de Floxia ne saurait être engagée en cas de force majeure ou de mauvaise utilisation du service par le client.",
+              "Cirrion met en œuvre les moyens nécessaires pour assurer la disponibilité et la sécurité du service. La responsabilité de Cirrion ne saurait être engagée en cas de force majeure ou de mauvaise utilisation du service par le client.",
             ],
           },
           {
