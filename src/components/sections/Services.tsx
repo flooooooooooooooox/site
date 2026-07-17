@@ -152,7 +152,7 @@ export default function Services() {
             Une chaîne qui tourne <span style={{ color: "#2455D6" }}>toute seule</span>
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1rem", maxWidth: "38rem", margin: "0 auto", lineHeight: 1.5 }}>
-            8 modules connectés. Cliquez sur une étape pour voir ce qu&apos;elle automatise.
+            8 modules connectés. <strong style={{ fontWeight: 700, color: "rgba(var(--text-rgb),0.8)" }}>Cliquez sur une étape pour voir ce qu&apos;elle automatise.</strong>
           </p>
         </motion.div>
 
