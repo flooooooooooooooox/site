@@ -216,7 +216,7 @@ export default function Hero() {
         position: "relative", minHeight: "92vh", display: "flex", flexDirection: "column",
         justifyContent: "center",
         padding: "clamp(6rem,12vh,7rem) 6vw clamp(3rem,6vh,5rem)",
-        background: "#EFF4FF", overflow: "hidden",
+        background: "transparent", overflow: "hidden",
       }}
     >
       <style>{HERO_STYLES}</style>
