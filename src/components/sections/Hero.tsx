@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { CloudDecor, CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
 import { CloudBadge } from "@/components/ui/CloudBadge";
@@ -209,7 +209,67 @@ function TiltImageCard({ children }: { children: React.ReactNode }) {
   );
 }
 
+function ImageLightbox({ open, onClose }: { open: boolean; onClose: () => void }) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [open, onClose]);
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          onClick={onClose}
+          role="dialog"
+          aria-label="Tableau de bord CirrionOS en plein écran"
+          style={{
+            position: "fixed", inset: 0, zIndex: 100000,
+            background: "rgba(15,22,40,0.85)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            padding: "clamp(0.75rem, 3vw, 2.5rem)", cursor: "zoom-out",
+          }}
+        >
+          <motion.img
+            src="/dashboard-cirrion.webp"
+            alt="Tableau de bord CirrionOS — vue plein écran"
+            initial={{ scale: 0.92, y: 12 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.95, y: 8 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              maxWidth: "100%", maxHeight: "100%", objectFit: "contain",
+              borderRadius: "0.9rem", boxShadow: "0 40px 120px rgba(0,0,0,0.5)",
+            }}
+          />
+          <button
+            onClick={onClose}
+            aria-label="Fermer"
+            style={{
+              position: "absolute", top: "1rem", right: "1rem",
+              width: 42, height: 42, borderRadius: "50%",
+              background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.25)",
+              color: "#FFFFFF", fontSize: "1.15rem", fontWeight: 600,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", backdropFilter: "blur(8px)",
+            }}
+          >
+            ✕
+          </button>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 export default function Hero() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   return (
     <section
       style={{
@@ -323,19 +383,25 @@ export default function Hero() {
         <motion.div className="hero-split-image" style={{ position: "relative" }}
           initial={{ opacity: 0, x: 24, scale: 1.05 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
           <TiltImageCard>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/dashboard-cirrion.webp"
-              srcSet="/dashboard-cirrion-sm.webp 820w, /dashboard-cirrion.webp 1600w"
-              sizes="(max-width: 960px) 92vw, 640px"
-              width={1600}
-              height={756}
-              alt="Tableau de bord CirrionOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              style={{ width: "100%", height: "auto", display: "block" }}
-            />
+            <button
+              onClick={() => setLightboxOpen(true)}
+              aria-label="Agrandir le tableau de bord en plein écran"
+              style={{ display: "block", width: "100%", padding: 0, border: "none", background: "none", cursor: "zoom-in" }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/dashboard-cirrion.webp"
+                srcSet="/dashboard-cirrion-sm.webp 820w, /dashboard-cirrion.webp 1600w"
+                sizes="(max-width: 960px) 92vw, 640px"
+                width={1600}
+                height={756}
+                alt="Tableau de bord CirrionOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </button>
           </TiltImageCard>
 
           {/* Badges flottants */}
@@ -370,6 +436,8 @@ export default function Hero() {
           .hero-callout { border-left: none; padding-left: 0; border-top: 2px solid rgba(36,85,214,0.25); padding-top: 0.75rem; }
         }
       `}</style>
+
+      <ImageLightbox open={lightboxOpen} onClose={() => setLightboxOpen(false)} />
     </section>
   );
 }
