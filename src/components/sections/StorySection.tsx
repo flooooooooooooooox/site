@@ -39,6 +39,33 @@ const STEPS: Step[] = [
 ];
 
 
+// Pastille nuage synchronisee avec la ligne de progression : elle se remplit
+// de bleu au moment exact ou la ligne animee atteint sa position verticale.
+function StepCloud({ index, total, progress }: {
+  index: number;
+  total: number;
+  progress: import("framer-motion").MotionValue<number>;
+}) {
+  // position verticale du centre de la pastille dans la colonne (0 → 1)
+  const t = total > 1 ? index / (total - 1) : 0;
+  const start = Math.max(t - 0.08, 0);
+  const opacity = useTransform(progress, [start, Math.max(t, 0.02)], [0, 1]);
+  const scale = useTransform(opacity, [0, 1], [0.75, 1]);
+
+  return (
+    <div style={{ position: "relative", zIndex: 1, flexShrink: 0, filter: "drop-shadow(0 4px 12px rgba(36,85,214,0.3))" }}>
+      <CloudBadge size={44} fill="rgba(255,255,255,0.9)" border="rgba(36,85,214,0.3)">
+        <span style={{ color: "#2455D6", fontWeight: 900, fontSize: ".82rem", fontFamily: "var(--font-nunito)" }}>{index + 1}</span>
+      </CloudBadge>
+      <motion.div style={{ position: "absolute", inset: 0, opacity, scale }}>
+        <CloudBadge size={44} fill="#2455D6">
+          <span style={{ color: "#FFFFFF", fontWeight: 900, fontSize: ".82rem", fontFamily: "var(--font-nunito)" }}>{index + 1}</span>
+        </CloudBadge>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function StorySection() {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -103,23 +130,8 @@ export default function StorySection() {
                   transition={{ duration: 0.55, delay: i * 0.12 }}
                   className="story-row"
                 >
-                  {/* Nuage numéroté sur la ligne — se remplit de bleu quand on l'atteint */}
-                  <div style={{ position: "relative", zIndex: 1, flexShrink: 0, filter: "drop-shadow(0 4px 12px rgba(36,85,214,0.3))" }}>
-                    <CloudBadge size={44} fill="rgba(255,255,255,0.9)" border="rgba(36,85,214,0.3)">
-                      <span style={{ color: "#2455D6", fontWeight: 900, fontSize: ".82rem", fontFamily: "var(--font-nunito)" }}>{i + 1}</span>
-                    </CloudBadge>
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.7 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, margin: "-45% 0px -45% 0px" }}
-                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      style={{ position: "absolute", inset: 0 }}
-                    >
-                      <CloudBadge size={44} fill="#2455D6">
-                        <span style={{ color: "#FFFFFF", fontWeight: 900, fontSize: ".82rem", fontFamily: "var(--font-nunito)" }}>{i + 1}</span>
-                      </CloudBadge>
-                    </motion.div>
-                  </div>
+                  {/* Nuage numéroté sur la ligne — se remplit quand la ligne bleue l'atteint */}
+                  <StepCloud index={i} total={STEPS.length} progress={scrollYProgress} />
 
                   {/* Carte */}
                   <div className="story-card" style={{
