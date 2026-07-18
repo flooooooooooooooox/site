@@ -324,8 +324,8 @@ export function CinematicFooter() {
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
 
       {isMobile ? (
-        // Mobile : layout normal dans le flux du document
-        <footer style={{ background: "var(--background)", color: "var(--foreground)", minHeight: "100dvh" }}>
+        // Mobile : layout normal dans le flux du document, hauteur naturelle
+        <footer style={{ background: "var(--background)", color: "var(--foreground)" }}>
           <FooterContent isMobile={true} />
         </footer>
       ) : (
