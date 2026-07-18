@@ -70,9 +70,24 @@ const HERO_STYLES = `
   background: rgba(255,255,255,0.5);
   border: 1px solid rgba(255,255,255,0.6);
   box-shadow: 0 40px 90px -20px rgba(36,85,214,0.35), 0 0 0 1px rgba(36,85,214,0.06);
-  transform-style: preserve-3d;
-  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
 }
+.hero-image-wrap:hover .hero-image-card {
+  transform: scale(1.03);
+  box-shadow: 0 50px 110px -20px rgba(36,85,214,0.42), 0 0 0 1px rgba(36,85,214,0.08);
+}
+/* halo blanc progressif derriere l'image au survol */
+.hero-image-halo {
+  position: absolute;
+  inset: -14%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 45%, transparent 72%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-image-wrap:hover .hero-image-halo { opacity: 1; }
 .hero-float-badge {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -176,33 +191,12 @@ function MagneticBtn({ children, className, style, href }: {
   );
 }
 
-function TiltImageCard({ children }: { children: React.ReactNode }) {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const wrap = wrapRef.current;
-    const card = cardRef.current;
-    if (!wrap || !card) return;
-    const onMove = (e: MouseEvent) => {
-      const r = wrap.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      gsap.to(card, {
-        rotateY: px * 10, rotateX: -py * 8,
-        x: px * 14, y: py * 10,
-        ease: "power2.out", duration: 0.5,
-      });
-    };
-    const onLeave = () => gsap.to(card, { rotateY: 0, rotateX: 0, x: 0, y: 0, ease: "elastic.out(1,0.4)", duration: 1.2 });
-    wrap.addEventListener("mousemove", onMove);
-    wrap.addEventListener("mouseleave", onLeave);
-    return () => { wrap.removeEventListener("mousemove", onMove); wrap.removeEventListener("mouseleave", onLeave); };
-  }, []);
-
+// Survol : leger zoom + halo blanc progressif derriere l'image (plus de tilt 3D).
+function HoverImageCard({ children }: { children: React.ReactNode }) {
   return (
-    <div ref={wrapRef} style={{ perspective: "1400px" }}>
-      <div ref={cardRef} className="hero-image-card" style={{ borderRadius: "1.25rem", overflow: "hidden" }}>
+    <div className="hero-image-wrap" style={{ position: "relative" }}>
+      <div className="hero-image-halo" aria-hidden />
+      <div className="hero-image-card" style={{ borderRadius: "1.25rem", overflow: "hidden", position: "relative" }}>
         {children}
       </div>
     </div>
@@ -382,7 +376,7 @@ export default function Hero() {
 
         <motion.div className="hero-split-image" style={{ position: "relative" }}
           initial={{ opacity: 0, x: 24, scale: 1.05 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-          <TiltImageCard>
+          <HoverImageCard>
             <button
               onClick={() => setLightboxOpen(true)}
               aria-label="Agrandir le tableau de bord en plein écran"
@@ -402,7 +396,7 @@ export default function Hero() {
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
             </button>
-          </TiltImageCard>
+          </HoverImageCard>
 
           {/* Badges flottants */}
           <motion.div className="hero-float-badge b1" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9 }}
