@@ -1,12 +1,21 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Cursor() {
   const dot = useRef<HTMLDivElement>(null);
   const ring = useRef<HTMLDivElement>(null);
   const glow = useRef<HTMLDivElement>(null);
+  // Desactive sur ecrans tactiles : pas de curseur, pas de boucle d'animation.
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      setEnabled(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
     let mx = 0, my = 0, rx = 0, ry = 0, gx = 0, gy = 0;
     const onMove = (e: MouseEvent) => {
       mx = e.clientX; my = e.clientY;
@@ -29,7 +38,9 @@ export default function Cursor() {
       el.addEventListener("mouseleave", rmHover);
     });
     return () => { document.removeEventListener("mousemove", onMove); cancelAnimationFrame(raf); };
-  }, []);
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
     <>

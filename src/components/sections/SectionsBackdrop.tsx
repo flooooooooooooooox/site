@@ -1,19 +1,7 @@
 // Fond clair fixe, épinglé au viewport, visible derrière tout le contenu.
-// Masses nuageuses volumétriques (gris-bleu + blanches, très floutées) pour
-// une immersion "à l'intérieur d'un nuage", cohérente avec l'identité Cirrion.
-
-const PUFFS: React.CSSProperties[] = [
-  // — masses grises (l'épaisseur du nuage) —
-  { width: "55vw", height: "34vh", top: "6%", right: "-12%", background: "rgba(128,146,180,0.38)" },
-  { width: "48vw", height: "30vh", top: "38%", left: "-14%", background: "rgba(118,136,172,0.34)" },
-  { width: "42vw", height: "26vh", bottom: "-6%", right: "8%", background: "rgba(134,150,184,0.3)" },
-  { width: "34vw", height: "22vh", top: "58%", left: "42%", background: "rgba(140,156,190,0.24)" },
-  // — trouées blanches lumineuses —
-  { width: "50vw", height: "32vh", top: "14%", left: "6%", background: "rgba(255,255,255,0.95)" },
-  { width: "44vw", height: "28vh", bottom: "10%", left: "22%", background: "rgba(255,255,255,0.85)" },
-  { width: "36vw", height: "24vh", top: "44%", right: "2%", background: "rgba(255,255,255,0.8)" },
-];
-
+// Masses nuageuses (gris-bleu + trouées blanches) rendues en dégradés radiaux
+// natifs — même rendu doux qu'un blur, mais sans aucun coût GPU au scroll
+// (les filter: blur() sur de grandes surfaces sont très chers sur mobile).
 export default function SectionsBackdrop() {
   return (
     <div
@@ -26,20 +14,20 @@ export default function SectionsBackdrop() {
         zIndex: 0,
         pointerEvents: "none",
         overflow: "hidden",
-        background: "linear-gradient(180deg, #F2F6FF 0%, #E9EFFC 45%, #E4EBFA 100%)",
+        background: [
+          // trouées blanches lumineuses
+          "radial-gradient(ellipse 52% 34% at 28% 26%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 70%)",
+          "radial-gradient(ellipse 46% 30% at 42% 82%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 68%)",
+          "radial-gradient(ellipse 38% 26% at 88% 52%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 66%)",
+          // masses grises (l'épaisseur du nuage)
+          "radial-gradient(ellipse 56% 34% at 92% 12%, rgba(128,146,180,0.34) 0%, rgba(128,146,180,0) 70%)",
+          "radial-gradient(ellipse 50% 30% at 4% 46%, rgba(118,136,172,0.3) 0%, rgba(118,136,172,0) 68%)",
+          "radial-gradient(ellipse 44% 26% at 74% 94%, rgba(134,150,184,0.28) 0%, rgba(134,150,184,0) 66%)",
+          "radial-gradient(ellipse 36% 22% at 56% 60%, rgba(140,156,190,0.2) 0%, rgba(140,156,190,0) 62%)",
+          // base
+          "linear-gradient(180deg, #F2F6FF 0%, #E9EFFC 45%, #E4EBFA 100%)",
+        ].join(", "),
       }}
-    >
-      {PUFFS.map((s, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            borderRadius: "50%",
-            filter: "blur(70px)",
-            ...s,
-          }}
-        />
-      ))}
-    </div>
+    />
   );
 }

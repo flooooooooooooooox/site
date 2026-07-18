@@ -325,9 +325,14 @@ export default function Hero() {
           <TiltImageCard>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/dashboard-cirrion.jpg"
+              src="/dashboard-cirrion.webp"
+              srcSet="/dashboard-cirrion-sm.webp 820w, /dashboard-cirrion.webp 1600w"
+              sizes="(max-width: 960px) 92vw, 640px"
+              width={1600}
+              height={756}
               alt="Tableau de bord CirrionOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
               loading="eager"
+              fetchPriority="high"
               decoding="async"
               style={{ width: "100%", height: "auto", display: "block" }}
             />
