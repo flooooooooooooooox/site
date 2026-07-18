@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/cgv", "/support"],
     },
-    sitemap: "https://florianai.fr/sitemap.xml",
+    sitemap: "https://www.florianai.fr/sitemap.xml",
   };
 }

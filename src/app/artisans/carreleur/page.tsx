@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis carreleur — Cirrion",
     description: "Devis carrelage depuis WhatsApp ou sur l'application Cirrion ERP. Faïence, sol, terrasse — devis vocal en 3 minutes.",
-    url: "https://florianai.fr/artisans/carreleur",
+    url: "https://www.florianai.fr/artisans/carreleur",
   },
-  alternates: { canonical: "https://florianai.fr/artisans/carreleur" },
+  alternates: { canonical: "https://www.florianai.fr/artisans/carreleur" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://florianai.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Carreleur", item: "https://florianai.fr/artisans/carreleur" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://www.florianai.fr/artisans" },
+    { "@type": "ListItem", position: 3, name: "Carreleur", item: "https://www.florianai.fr/artisans/carreleur" },
   ],
 };
 

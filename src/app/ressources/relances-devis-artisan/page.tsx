@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Relances devis artisan — Récupérez vos chantiers perdus",
     description: "30% des devis sans réponse. Automatisez vos relances à J+3, J+7, J+14 et récupérez des chantiers sans effort.",
-    url: "https://florianai.fr/ressources/relances-devis-artisan",
+    url: "https://www.florianai.fr/ressources/relances-devis-artisan",
   },
-  alternates: { canonical: "https://florianai.fr/ressources/relances-devis-artisan" },
+  alternates: { canonical: "https://www.florianai.fr/ressources/relances-devis-artisan" },
 };
 
 const articleJsonLd = {
@@ -19,10 +19,10 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Relances devis artisan : comment ne plus perdre de clients",
   description: "30% des devis artisan ne reçoivent jamais de réponse. Guide pratique pour automatiser vos relances.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://florianai.fr/ressources/relances-devis-artisan",
+  mainEntityOfPage: "https://www.florianai.fr/ressources/relances-devis-artisan",
   keywords: "relances devis artisan, suivi devis bâtiment, automatisation relances",
 };
 
@@ -30,9 +30,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Relances devis artisan", item: "https://florianai.fr/ressources/relances-devis-artisan" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Relances devis artisan", item: "https://www.florianai.fr/ressources/relances-devis-artisan" },
   ],
 };
 

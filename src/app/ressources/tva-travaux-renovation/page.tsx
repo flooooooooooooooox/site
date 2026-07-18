@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "TVA travaux de rénovation 2026 — 5,5%, 10% ou 20% ?",
     description: "Quel taux de TVA appliquer sur vos travaux ? Règles, conditions et exemples par type de travaux.",
-    url: "https://florianai.fr/ressources/tva-travaux-renovation",
+    url: "https://www.florianai.fr/ressources/tva-travaux-renovation",
   },
-  alternates: { canonical: "https://florianai.fr/ressources/tva-travaux-renovation" },
+  alternates: { canonical: "https://www.florianai.fr/ressources/tva-travaux-renovation" },
 };
 
 const articleJsonLd = {
@@ -22,10 +22,10 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "TVA travaux de rénovation 2026 : 5,5%, 10% ou 20% ?",
   description: "Quel taux de TVA appliquer sur vos travaux de rénovation : règles, conditions, attestation et exemples.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://florianai.fr/ressources/tva-travaux-renovation",
+  mainEntityOfPage: "https://www.florianai.fr/ressources/tva-travaux-renovation",
   keywords: "TVA travaux rénovation, TVA 5.5, TVA 10, attestation TVA réduite",
 };
 
@@ -33,9 +33,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "TVA travaux de rénovation", item: "https://florianai.fr/ressources/tva-travaux-renovation" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "TVA travaux de rénovation", item: "https://www.florianai.fr/ressources/tva-travaux-renovation" },
   ],
 };
 

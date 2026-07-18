@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cirrion vs Obat — Comparatif logiciel devis artisan",
     description: "Devis WhatsApp, IA, e-facturation 2026 : Cirrion vs Obat, le comparatif complet pour artisans du bâtiment.",
-    url: "https://florianai.fr/alternatives/cirrion-vs-obat",
+    url: "https://www.florianai.fr/alternatives/cirrion-vs-obat",
   },
-  alternates: { canonical: "https://florianai.fr/alternatives/cirrion-vs-obat" },
+  alternates: { canonical: "https://www.florianai.fr/alternatives/cirrion-vs-obat" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://florianai.fr/alternatives" },
-    { "@type": "ListItem", position: 3, name: "Cirrion vs Obat", item: "https://florianai.fr/alternatives/cirrion-vs-obat" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://www.florianai.fr/alternatives" },
+    { "@type": "ListItem", position: 3, name: "Cirrion vs Obat", item: "https://www.florianai.fr/alternatives/cirrion-vs-obat" },
   ],
 };
 

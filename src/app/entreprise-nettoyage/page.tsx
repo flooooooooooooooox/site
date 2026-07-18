@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "créer entreprise de nettoyage",
     "gérer une entreprise de nettoyage",
   ],
-  alternates: { canonical: "https://florianai.fr/entreprise-nettoyage" },
+  alternates: { canonical: "https://www.florianai.fr/entreprise-nettoyage" },
 };
 
 const FEATURES = [

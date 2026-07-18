@@ -14,7 +14,7 @@ import { CinematicFooter } from "@/components/ui/motion-footer";
 const nunito = Sora({ subsets: ["latin"], variable: "--font-nunito", weight: ["600","700","800"] });
 const dmSans = Inter({ subsets: ["latin"], variable: "--font-dm", weight: ["300","400","500","600"] });
 
-const SITE_URL = "https://florianai.fr";
+const SITE_URL = "https://www.florianai.fr";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -174,12 +174,12 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Cirrion",
-  url: "https://florianai.fr",
+  url: "https://www.florianai.fr",
   description: "Logiciel de devis et facturation pour artisans — Devis depuis WhatsApp ou app ERP en 3 minutes.",
   inLanguage: "fr-FR",
   potentialAction: {
     "@type": "SearchAction",
-    target: { "@type": "EntryPoint", urlTemplate: "https://florianai.fr/ressources?q={search_term_string}" },
+    target: { "@type": "EntryPoint", urlTemplate: "https://www.florianai.fr/ressources?q={search_term_string}" },
     "query-input": "required name=search_term_string",
   },
 };
@@ -189,14 +189,14 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Cirrion",
   alternateName: "CirrionOS",
-  url: "https://florianai.fr",
+  url: "https://www.florianai.fr",
   logo: {
     "@type": "ImageObject",
-    url: "https://florianai.fr/icon.png",
+    url: "https://www.florianai.fr/icon.png",
     width: 256,
     height: 256,
   },
-  image: "https://florianai.fr/dashboard-cirrion.jpg",
+  image: "https://www.florianai.fr/dashboard-cirrion.jpg",
   description: "Cirrion est un logiciel ERP IA pour artisans et indépendants. Créez vos devis et factures depuis WhatsApp ou l'application Cirrion ERP en 3 minutes grâce aux pré-modèles IA.",
   foundingDate: "2026",
   foundingLocation: { "@type": "Place", addressCountry: "FR" },
@@ -232,8 +232,8 @@ const organizationJsonLd = {
     knowsAbout: ["Automatisation", "Intelligence artificielle", "ERP bâtiment"],
   },
   sameAs: [
-    "https://florianai.fr",
-    "https://florianai.fr/qui-sommes-nous",
+    "https://www.florianai.fr",
+    "https://www.florianai.fr/qui-sommes-nous",
     "https://www.instagram.com/floxia.pro",
     "https://www.linkedin.com/in/floxia-pro-9360333aa",
   ],
@@ -245,7 +245,7 @@ const jsonLd = {
   name: "Cirrion",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web, iOS, Android",
-  url: "https://florianai.fr",
+  url: "https://www.florianai.fr",
   description:
     "ERP IA pour artisans et indépendants. Créez devis, factures et PV de réception depuis WhatsApp ou sur l'application web, avec des pré-modèles de devis générés par l'IA.",
   featureList: [
@@ -285,7 +285,7 @@ const jsonLd = {
   provider: {
     "@type": "Organization",
     name: "Cirrion",
-    url: "https://florianai.fr",
+    url: "https://www.florianai.fr",
     areaServed: "FR",
     knowsAbout: ["Bâtiment", "Artisanat", "Gestion de chantier", "ERP", "Intelligence artificielle", "Logiciel B2B", "Gestion d'entreprise BTP"],
   },

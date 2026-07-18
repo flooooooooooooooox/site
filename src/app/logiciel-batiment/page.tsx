@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel de devis bâtiment par ville — Cirrion",
     description: "Cirrion est disponible partout en France pour les artisans du bâtiment. Trouvez votre ville.",
-    url: "https://florianai.fr/logiciel-batiment",
+    url: "https://www.florianai.fr/logiciel-batiment",
   },
-  alternates: { canonical: "https://florianai.fr/logiciel-batiment" },
+  alternates: { canonical: "https://www.florianai.fr/logiciel-batiment" },
 };
 
 export default function LogicielBatimentIndex() {

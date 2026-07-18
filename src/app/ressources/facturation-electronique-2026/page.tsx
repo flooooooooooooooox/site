@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "E-facturation 2026 pour artisans — Guide complet",
     description: "Obligation e-facturation 2026 : ce qui change pour les artisans du bâtiment, les délais, et comment se conformer simplement.",
-    url: "https://florianai.fr/ressources/facturation-electronique-2026",
+    url: "https://www.florianai.fr/ressources/facturation-electronique-2026",
   },
-  alternates: { canonical: "https://florianai.fr/ressources/facturation-electronique-2026" },
+  alternates: { canonical: "https://www.florianai.fr/ressources/facturation-electronique-2026" },
 };
 
 const articleJsonLd = {
@@ -19,10 +19,10 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "E-facturation 2026 artisan bâtiment : tout ce qu'il faut savoir",
   description: "Obligation e-facturation 2026 pour artisans et PME du bâtiment. Ce qui change, les délais, et comment se conformer.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://florianai.fr/ressources/facturation-electronique-2026",
+  mainEntityOfPage: "https://www.florianai.fr/ressources/facturation-electronique-2026",
   keywords: "e-facturation 2026, facturation électronique artisan, conformité TVA bâtiment",
 };
 
@@ -30,9 +30,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "E-facturation 2026", item: "https://florianai.fr/ressources/facturation-electronique-2026" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "E-facturation 2026", item: "https://www.florianai.fr/ressources/facturation-electronique-2026" },
   ],
 };
 

@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     title: "Logiciel de devis gratuit artisan : avantages et limites — Cirrion",
     description:
       "Logiciel de devis gratuit ou payant pour artisan ? On compare les options et on vous dit ce qui vaut vraiment le coup.",
-    url: "https://florianai.fr/ressources/logiciel-devis-gratuit-artisan",
+    url: "https://www.florianai.fr/ressources/logiciel-devis-gratuit-artisan",
   },
-  alternates: { canonical: "https://florianai.fr/ressources/logiciel-devis-gratuit-artisan" },
+  alternates: { canonical: "https://www.florianai.fr/ressources/logiciel-devis-gratuit-artisan" },
 };
 
 const articleJsonLd = {
@@ -29,10 +29,10 @@ const articleJsonLd = {
   headline: "Logiciel de devis gratuit artisan : ce qu'il faut vraiment savoir",
   description:
     "Logiciel de devis gratuit pour artisan : avantages, limites et alternatives. Comparatif pour choisir le bon outil.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
   datePublished: "2026-06-19",
-  mainEntityOfPage: "https://florianai.fr/ressources/logiciel-devis-gratuit-artisan",
+  mainEntityOfPage: "https://www.florianai.fr/ressources/logiciel-devis-gratuit-artisan",
   keywords: "logiciel devis gratuit artisan, application devis artisan, meilleur logiciel devis artisan",
 };
 
@@ -40,9 +40,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Logiciel devis gratuit artisan", item: "https://florianai.fr/ressources/logiciel-devis-gratuit-artisan" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Logiciel devis gratuit artisan", item: "https://www.florianai.fr/ressources/logiciel-devis-gratuit-artisan" },
   ],
 };
 

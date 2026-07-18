@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis plaquiste — Cirrion",
     description: "Devis plâtrerie depuis WhatsApp ou sur l'application Cirrion ERP. Cloisons, doublage, isolation — devis vocal en 3 minutes.",
-    url: "https://florianai.fr/artisans/plaquiste",
+    url: "https://www.florianai.fr/artisans/plaquiste",
   },
-  alternates: { canonical: "https://florianai.fr/artisans/plaquiste" },
+  alternates: { canonical: "https://www.florianai.fr/artisans/plaquiste" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://florianai.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Plaquiste", item: "https://florianai.fr/artisans/plaquiste" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://www.florianai.fr/artisans" },
+    { "@type": "ListItem", position: 3, name: "Plaquiste", item: "https://www.florianai.fr/artisans/plaquiste" },
   ],
 };
 

@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     title: "Devis signé : valeur légale et engagement du client — Cirrion",
     description:
       "Un devis signé engage-t-il le client ? Valeur légale, signature électronique et recours en cas de litige pour artisans.",
-    url: "https://florianai.fr/ressources/devis-signe-valeur-legale",
+    url: "https://www.florianai.fr/ressources/devis-signe-valeur-legale",
   },
-  alternates: { canonical: "https://florianai.fr/ressources/devis-signe-valeur-legale" },
+  alternates: { canonical: "https://www.florianai.fr/ressources/devis-signe-valeur-legale" },
 };
 
 const articleJsonLd = {
@@ -29,10 +29,10 @@ const articleJsonLd = {
   headline: "Devis signé : valeur légale, engagement et signature électronique artisan",
   description:
     "Un devis signé a-t-il une valeur légale pour un artisan ? Quand le client est-il engagé ?",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
   datePublished: "2026-06-19",
-  mainEntityOfPage: "https://florianai.fr/ressources/devis-signe-valeur-legale",
+  mainEntityOfPage: "https://www.florianai.fr/ressources/devis-signe-valeur-legale",
   keywords: "devis signé valeur légale, signature électronique devis artisan, engagement client devis",
 };
 
@@ -40,9 +40,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Devis signé valeur légale", item: "https://florianai.fr/ressources/devis-signe-valeur-legale" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Devis signé valeur légale", item: "https://www.florianai.fr/ressources/devis-signe-valeur-legale" },
   ],
 };
 

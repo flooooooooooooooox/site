@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Conditions générales de vente — Cirrion",
   description: "Conditions générales de vente des services Cirrion.",
   robots: { index: false, follow: false },
-  alternates: { canonical: "https://florianai.fr/cgv" },
+  alternates: { canonical: "https://www.florianai.fr/cgv" },
 };
 
 export default function Cgv() {

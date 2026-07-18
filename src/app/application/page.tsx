@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Cirrion — Application de gestion pour artisans du bâtiment",
   description:
     "Cirrion est une application de gestion pour les artisans du bâtiment : création de devis et factures, envoi par e-mail via votre compte Gmail, relances automatiques.",
-  alternates: { canonical: "https://florianai.fr/application" },
+  alternates: { canonical: "https://www.florianai.fr/application" },
 };
 
 export default function ApplicationPage() {

@@ -44,19 +44,19 @@ export const metadata: Metadata = {
     "alternative Obat Batigest EBP",
     "meilleur logiciel artisan 2026",
   ],
-  alternates: { canonical: "https://florianai.fr" },
+  alternates: { canonical: "https://www.florianai.fr" },
   openGraph: {
     title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment",
     description:
       "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Cirrion ERP. Pré-modèles IA, TVA 5,5/10/20% au choix, e-facturation 2026. Pour tous les artisans du bâtiment.",
-    url: "https://florianai.fr",
-    images: [{ url: "https://florianai.fr/dashboard-cirrion.jpg", width: 842, height: 414, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
+    url: "https://www.florianai.fr",
+    images: [{ url: "https://www.florianai.fr/dashboard-cirrion.jpg", width: 842, height: 414, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cirrion — Devis artisan en 3 min depuis WhatsApp",
     description: "Logiciel de devis et facturation pour artisans du bâtiment. Pré-modèles IA, TVA auto, e-facturation 2026.",
-    images: ["https://florianai.fr/dashboard-cirrion.jpg"],
+    images: ["https://www.florianai.fr/dashboard-cirrion.jpg"],
   },
 };
 
