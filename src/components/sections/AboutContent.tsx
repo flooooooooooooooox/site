@@ -34,7 +34,7 @@ const VALUES = [
 ];
 
 const STATS = [
-  { value: "−80 %", label: "de temps administratif éliminé" },
+  { value: "−90 %", label: "de temps administratif éliminé" },
   { value: "3 min", label: "du devis à la facture finale et au PV de réception" },
   { value: "24h/24", label: "un agent IA qui répond à vos clients" },
   { value: "100 %", label: "hébergé et conçu en France" },

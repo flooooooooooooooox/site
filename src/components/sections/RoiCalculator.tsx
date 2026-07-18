@@ -92,7 +92,7 @@ export default function RoiCalculator() {
             Calculez votre <span style={{ color: "#2455D6" }}>ROI</span>
           </h2>
           <p style={{ marginTop: "0.75rem", color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
-            Cirrion élimine <strong style={{ color: "#2455D6" }}>~80% de votre temps administratif</strong> — devis, facturation, appels, relances, comptabilité
+            Cirrion élimine <strong style={{ color: "#2455D6" }}>~90% de votre temps administratif</strong> — devis, facturation, appels, relances, comptabilité
           </p>
           <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: "0.82rem", maxWidth: "480px", margin: "0.5rem auto 0" }}>
             Le ROI (Retour sur Investissement) mesure ce que vous gagnez réellement après déduction de l&apos;abonnement — en temps récupéré et en euros.
