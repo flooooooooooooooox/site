@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     title: "Automatisation artisan — Gagnez 10h par semaine",
     description:
       "5 tâches administratives que tout artisan du bâtiment peut automatiser aujourd'hui avec l'IA.",
-    url: "https://floxia.fr/ressources/automatisation-artisan-batiment",
+    url: "https://florianai.fr/ressources/automatisation-artisan-batiment",
   },
-  alternates: { canonical: "https://floxia.fr/ressources/automatisation-artisan-batiment" },
+  alternates: { canonical: "https://florianai.fr/ressources/automatisation-artisan-batiment" },
 };
 
 const articleJsonLd = {
@@ -24,10 +24,10 @@ const articleJsonLd = {
   headline: "Automatisation artisan : gagnez 10h par semaine sur votre gestion",
   description:
     "5 tâches administratives que tout artisan du bâtiment peut automatiser aujourd'hui : devis, relances, facturation, conformité 2026.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://floxia.fr/ressources/automatisation-artisan-batiment",
+  mainEntityOfPage: "https://florianai.fr/ressources/automatisation-artisan-batiment",
   keywords: "automatisation artisan, gestion administrative bâtiment, logiciel artisan",
 };
 
@@ -35,9 +35,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Automatisation artisan", item: "https://floxia.fr/ressources/automatisation-artisan-batiment" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Automatisation artisan", item: "https://florianai.fr/ressources/automatisation-artisan-batiment" },
   ],
 };
 

@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const { ville: slug } = await params;
   const ville = getVille(slug);
   if (!ville) return {};
-  const url = `https://floxia.fr/logiciel-batiment/${ville.slug}`;
+  const url = `https://florianai.fr/logiciel-batiment/${ville.slug}`;
   const title = `Logiciel de devis bâtiment ${ville.prepo} ${ville.nom} — Cirrion`;
   const description = `Logiciel de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Créez vos devis depuis WhatsApp ou sur l'application Cirrion ERP. E-facturation 2026.`;
   return {
@@ -34,13 +34,13 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
   const ville = getVille(slug);
   if (!ville) notFound();
 
-  const url = `https://floxia.fr/logiciel-batiment/${ville.slug}`;
+  const url = `https://florianai.fr/logiciel-batiment/${ville.slug}`;
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-      { "@type": "ListItem", position: 2, name: "Logiciel bâtiment par ville", item: "https://floxia.fr/logiciel-batiment" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+      { "@type": "ListItem", position: 2, name: "Logiciel bâtiment par ville", item: "https://florianai.fr/logiciel-batiment" },
       { "@type": "ListItem", position: 3, name: ville.nom, item: url },
     ],
   };
@@ -48,7 +48,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Logiciel de devis et facturation pour le bâtiment",
-    provider: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+    provider: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
     areaServed: { "@type": "City", name: ville.nom },
     description: `Logiciel de gestion, devis et facturation pour artisans et PME du bâtiment ${ville.prepo} ${ville.nom}.`,
   };
@@ -57,7 +57,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: `Cirrion — Logiciel de devis bâtiment ${ville.prepo} ${ville.nom}`,
-    url: `https://floxia.fr/logiciel-batiment/${ville.slug}`,
+    url: `https://florianai.fr/logiciel-batiment/${ville.slug}`,
     description: `Logiciel ERP IA de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom}. Créez vos devis depuis WhatsApp en 3 minutes.`,
     areaServed: {
       "@type": "City",
@@ -66,7 +66,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
     },
     priceRange: "€€",
     telephone: null,
-    sameAs: ["https://floxia.fr", "https://www.instagram.com/floxia.pro", "https://www.linkedin.com/in/floxia-pro-9360333aa"],
+    sameAs: ["https://florianai.fr", "https://www.instagram.com/floxia.pro", "https://www.linkedin.com/in/floxia-pro-9360333aa"],
   };
 
   const autres = VILLES.filter((v) => v.slug !== ville.slug).slice(0, 6);

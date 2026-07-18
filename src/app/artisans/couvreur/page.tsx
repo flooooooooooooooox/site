@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis couvreur — Cirrion",
     description: "Devis toiture depuis WhatsApp ou sur l'application Cirrion ERP. Couverture, zinguerie, isolation — TVA 5,5/10/20% au choix.",
-    url: "https://floxia.fr/artisans/couvreur",
+    url: "https://florianai.fr/artisans/couvreur",
   },
-  alternates: { canonical: "https://floxia.fr/artisans/couvreur" },
+  alternates: { canonical: "https://florianai.fr/artisans/couvreur" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://floxia.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Couvreur", item: "https://floxia.fr/artisans/couvreur" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://florianai.fr/artisans" },
+    { "@type": "ListItem", position: 3, name: "Couvreur", item: "https://florianai.fr/artisans/couvreur" },
   ],
 };
 

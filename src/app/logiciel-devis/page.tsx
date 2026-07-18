@@ -20,17 +20,17 @@ export const metadata: Metadata = {
     title: "Logiciel de devis bâtiment par métier et ville — Cirrion",
     description:
       "Logiciel de devis et facturation pour tous les artisans du bâtiment, disponible dans toutes les grandes villes de France.",
-    url: "https://floxia.fr/logiciel-devis",
+    url: "https://florianai.fr/logiciel-devis",
   },
-  alternates: { canonical: "https://floxia.fr/logiciel-devis" },
+  alternates: { canonical: "https://florianai.fr/logiciel-devis" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Logiciel de devis", item: "https://floxia.fr/logiciel-devis" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Logiciel de devis", item: "https://florianai.fr/logiciel-devis" },
   ],
 };
 

@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis chauffagiste — Cirrion",
     description: "Devis chauffage depuis WhatsApp ou sur l'application Cirrion ERP. Pompe à chaleur, chaudière, RGE — TVA 5,5/10/20% au choix.",
-    url: "https://floxia.fr/artisans/chauffagiste",
+    url: "https://florianai.fr/artisans/chauffagiste",
   },
-  alternates: { canonical: "https://floxia.fr/artisans/chauffagiste" },
+  alternates: { canonical: "https://florianai.fr/artisans/chauffagiste" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://floxia.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Chauffagiste", item: "https://floxia.fr/artisans/chauffagiste" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://florianai.fr/artisans" },
+    { "@type": "ListItem", position: 3, name: "Chauffagiste", item: "https://florianai.fr/artisans/chauffagiste" },
   ],
 };
 

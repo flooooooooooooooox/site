@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     title: "Logiciel de devis gratuit artisan : avantages et limites — Cirrion",
     description:
       "Logiciel de devis gratuit ou payant pour artisan ? On compare les options et on vous dit ce qui vaut vraiment le coup.",
-    url: "https://floxia.fr/ressources/logiciel-devis-gratuit-artisan",
+    url: "https://florianai.fr/ressources/logiciel-devis-gratuit-artisan",
   },
-  alternates: { canonical: "https://floxia.fr/ressources/logiciel-devis-gratuit-artisan" },
+  alternates: { canonical: "https://florianai.fr/ressources/logiciel-devis-gratuit-artisan" },
 };
 
 const articleJsonLd = {
@@ -29,10 +29,10 @@ const articleJsonLd = {
   headline: "Logiciel de devis gratuit artisan : ce qu'il faut vraiment savoir",
   description:
     "Logiciel de devis gratuit pour artisan : avantages, limites et alternatives. Comparatif pour choisir le bon outil.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
   datePublished: "2026-06-19",
-  mainEntityOfPage: "https://floxia.fr/ressources/logiciel-devis-gratuit-artisan",
+  mainEntityOfPage: "https://florianai.fr/ressources/logiciel-devis-gratuit-artisan",
   keywords: "logiciel devis gratuit artisan, application devis artisan, meilleur logiciel devis artisan",
 };
 
@@ -40,9 +40,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Logiciel devis gratuit artisan", item: "https://floxia.fr/ressources/logiciel-devis-gratuit-artisan" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Logiciel devis gratuit artisan", item: "https://florianai.fr/ressources/logiciel-devis-gratuit-artisan" },
   ],
 };
 

@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Presse & médias — Cirrion",
     description: "Kit de presse officiel Cirrion : éléments de langage, visuels et contacts pour journalistes.",
-    url: "https://floxia.fr/presse",
+    url: "https://florianai.fr/presse",
   },
-  alternates: { canonical: "https://floxia.fr/presse" },
+  alternates: { canonical: "https://florianai.fr/presse" },
 };
 
 const orgJsonLd = {
@@ -19,9 +19,9 @@ const orgJsonLd = {
   "@type": "Organization",
   name: "Cirrion",
   alternateName: "CirrionOS",
-  url: "https://floxia.fr",
-  logo: "https://floxia.fr/icon.svg",
-  image: "https://floxia.fr/dashboard-cirrion.jpg",
+  url: "https://florianai.fr",
+  logo: "https://florianai.fr/icon.svg",
+  image: "https://florianai.fr/dashboard-cirrion.jpg",
   description:
     "Cirrion est un logiciel ERP IA pour artisans et PME du bâtiment. Créez devis et factures depuis WhatsApp ou l'application Cirrion en 3 minutes.",
   foundingDate: "2026",

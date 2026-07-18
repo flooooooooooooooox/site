@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tarif horaire artisan bâtiment 2026 — Comment fixer ses prix",
     description: "Méthode de calcul du tarif horaire, fourchettes par métier et conseils pour des devis rentables.",
-    url: "https://floxia.fr/ressources/tarif-horaire-artisan-batiment",
+    url: "https://florianai.fr/ressources/tarif-horaire-artisan-batiment",
   },
-  alternates: { canonical: "https://floxia.fr/ressources/tarif-horaire-artisan-batiment" },
+  alternates: { canonical: "https://florianai.fr/ressources/tarif-horaire-artisan-batiment" },
 };
 
 const articleJsonLd = {
@@ -22,10 +22,10 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Tarif horaire artisan bâtiment 2026 : comment fixer ses prix",
   description: "Méthode de calcul du tarif horaire, fourchettes par métier et conseils pour des devis rentables.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://floxia.fr/ressources/tarif-horaire-artisan-batiment",
+  mainEntityOfPage: "https://florianai.fr/ressources/tarif-horaire-artisan-batiment",
   keywords: "tarif horaire artisan, prix horaire bâtiment, calcul prix de revient",
 };
 
@@ -33,9 +33,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Tarif horaire artisan", item: "https://floxia.fr/ressources/tarif-horaire-artisan-batiment" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Tarif horaire artisan", item: "https://florianai.fr/ressources/tarif-horaire-artisan-batiment" },
   ],
 };
 

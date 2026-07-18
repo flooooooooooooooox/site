@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alternative à Sage — Cirrion pour artisans du bâtiment",
     description: "Une alternative à Sage plus simple et moderne : devis WhatsApp, IA, e-facturation 2026.",
-    url: "https://floxia.fr/alternatives/alternative-sage",
+    url: "https://florianai.fr/alternatives/alternative-sage",
   },
-  alternates: { canonical: "https://floxia.fr/alternatives/alternative-sage" },
+  alternates: { canonical: "https://florianai.fr/alternatives/alternative-sage" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://floxia.fr/alternatives" },
-    { "@type": "ListItem", position: 3, name: "Alternative à Sage", item: "https://floxia.fr/alternatives/alternative-sage" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://florianai.fr/alternatives" },
+    { "@type": "ListItem", position: 3, name: "Alternative à Sage", item: "https://florianai.fr/alternatives/alternative-sage" },
   ],
 };
 

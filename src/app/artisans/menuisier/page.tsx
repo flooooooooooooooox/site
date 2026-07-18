@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis menuisier — Cirrion",
     description: "Devis menuiserie depuis WhatsApp ou sur l'application Cirrion ERP. Fenêtres, portes, agencement — TVA 5,5/10/20% au choix.",
-    url: "https://floxia.fr/artisans/menuisier",
+    url: "https://florianai.fr/artisans/menuisier",
   },
-  alternates: { canonical: "https://floxia.fr/artisans/menuisier" },
+  alternates: { canonical: "https://florianai.fr/artisans/menuisier" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://floxia.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Menuisier", item: "https://floxia.fr/artisans/menuisier" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://florianai.fr/artisans" },
+    { "@type": "ListItem", position: 3, name: "Menuisier", item: "https://florianai.fr/artisans/menuisier" },
   ],
 };
 

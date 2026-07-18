@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis électricien — Cirrion",
     description: "Devis et factures pour électriciens depuis WhatsApp en 3 minutes. TVA 5,5/10/20% au choix, e-facturation 2026, relances.",
-    url: "https://floxia.fr/artisans/electricien",
+    url: "https://florianai.fr/artisans/electricien",
   },
-  alternates: { canonical: "https://floxia.fr/artisans/electricien" },
+  alternates: { canonical: "https://florianai.fr/artisans/electricien" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://floxia.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Électricien", item: "https://floxia.fr/artisans/electricien" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://florianai.fr/artisans" },
+    { "@type": "ListItem", position: 3, name: "Électricien", item: "https://florianai.fr/artisans/electricien" },
   ],
 };
 

@@ -9,9 +9,9 @@ export const metadata: Metadata = {
     title: "Ressources Cirrion — Guides pour artisans du bâtiment",
     description:
       "Guides pratiques pour artisans et PME du bâtiment : devis WhatsApp, logiciel ERP, automatisation administrative.",
-    url: "https://floxia.fr/ressources",
+    url: "https://florianai.fr/ressources",
   },
-  alternates: { canonical: "https://floxia.fr/ressources" },
+  alternates: { canonical: "https://florianai.fr/ressources" },
 };
 
 const ARTICLES = [

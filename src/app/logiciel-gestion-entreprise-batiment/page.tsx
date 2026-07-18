@@ -13,16 +13,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel de gestion d'entreprise du bâtiment — Cirrion",
     description: "La solution B2B de gestion pour les entreprises du bâtiment : devis, facturation, chantiers, équipes et pilotage.",
-    url: "https://floxia.fr/logiciel-gestion-entreprise-batiment",
+    url: "https://florianai.fr/logiciel-gestion-entreprise-batiment",
   },
-  alternates: { canonical: "https://floxia.fr/logiciel-gestion-entreprise-batiment" },
+  alternates: { canonical: "https://florianai.fr/logiciel-gestion-entreprise-batiment" },
 };
 
 const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "Logiciel de gestion d'entreprise pour le bâtiment (B2B)",
-  provider: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  provider: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
   areaServed: "FR",
   audience: { "@type": "BusinessAudience", name: "Artisans, auto-entrepreneurs, TPE et PME du bâtiment et du BTP" },
   description:
@@ -33,8 +33,8 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Logiciel de gestion d'entreprise du bâtiment", item: "https://floxia.fr/logiciel-gestion-entreprise-batiment" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Logiciel de gestion d'entreprise du bâtiment", item: "https://florianai.fr/logiciel-gestion-entreprise-batiment" },
   ],
 };
 

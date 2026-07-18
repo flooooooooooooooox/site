@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis peintre — Cirrion",
     description: "Devis et factures pour peintres depuis WhatsApp en 3 minutes. Ravalement, intérieur — TVA 5,5/10/20% au choix, e-facturation 2026.",
-    url: "https://floxia.fr/artisans/peintre",
+    url: "https://florianai.fr/artisans/peintre",
   },
-  alternates: { canonical: "https://floxia.fr/artisans/peintre" },
+  alternates: { canonical: "https://florianai.fr/artisans/peintre" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://floxia.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Peintre", item: "https://floxia.fr/artisans/peintre" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://florianai.fr/artisans" },
+    { "@type": "ListItem", position: 3, name: "Peintre", item: "https://florianai.fr/artisans/peintre" },
   ],
 };
 

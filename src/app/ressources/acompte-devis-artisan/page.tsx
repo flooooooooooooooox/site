@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     title: "Acompte sur devis artisan : montant et mentions légales — Cirrion",
     description:
       "Combien demander comme acompte ? Quelles mentions légales ? Comment facturer l'acompte ? Guide complet pour artisans.",
-    url: "https://floxia.fr/ressources/acompte-devis-artisan",
+    url: "https://florianai.fr/ressources/acompte-devis-artisan",
   },
-  alternates: { canonical: "https://floxia.fr/ressources/acompte-devis-artisan" },
+  alternates: { canonical: "https://florianai.fr/ressources/acompte-devis-artisan" },
 };
 
 const articleJsonLd = {
@@ -28,10 +28,10 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Acompte sur devis artisan : montant, mentions légales et bonnes pratiques",
   description: "Combien demander comme acompte sur un devis ? Mentions légales et bonnes pratiques pour artisans.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
   datePublished: "2026-06-19",
-  mainEntityOfPage: "https://floxia.fr/ressources/acompte-devis-artisan",
+  mainEntityOfPage: "https://florianai.fr/ressources/acompte-devis-artisan",
   keywords: "acompte devis artisan, acompte travaux, facturer acompte artisan",
 };
 
@@ -39,9 +39,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Acompte devis artisan", item: "https://floxia.fr/ressources/acompte-devis-artisan" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Acompte devis artisan", item: "https://florianai.fr/ressources/acompte-devis-artisan" },
   ],
 };
 

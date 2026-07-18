@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     title: "Logiciel ERP Bâtiment 2026 — Guide complet artisans et PME",
     description:
       "Quel ERP choisir pour votre entreprise du bâtiment ? Comparatif ERP généraliste vs solution IA. Devis, facturation, gestion de chantier.",
-    url: "https://floxia.fr/ressources/logiciel-erp-batiment",
+    url: "https://florianai.fr/ressources/logiciel-erp-batiment",
   },
-  alternates: { canonical: "https://floxia.fr/ressources/logiciel-erp-batiment" },
+  alternates: { canonical: "https://florianai.fr/ressources/logiciel-erp-batiment" },
 };
 
 const articleJsonLd = {
@@ -24,10 +24,10 @@ const articleJsonLd = {
   headline: "Logiciel ERP Bâtiment : guide complet pour artisans et PME 2026",
   description:
     "Quel logiciel ERP choisir pour votre entreprise du bâtiment ? Comparatif complet et guide pratique.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://floxia.fr/ressources/logiciel-erp-batiment",
+  mainEntityOfPage: "https://florianai.fr/ressources/logiciel-erp-batiment",
   keywords: "ERP bâtiment, logiciel artisan, devis facture, gestion chantier",
 };
 
@@ -35,9 +35,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Logiciel ERP bâtiment", item: "https://floxia.fr/ressources/logiciel-erp-batiment" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Logiciel ERP bâtiment", item: "https://florianai.fr/ressources/logiciel-erp-batiment" },
   ],
 };
 

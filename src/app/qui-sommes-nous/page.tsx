@@ -20,22 +20,22 @@ export const metadata: Metadata = {
     title: "Qui sommes-nous — Cirrion",
     description:
       "Découvrez l'histoire de Cirrion : l'automatisation et l'IA éprouvées en entreprise, mises au service des artisans et PME du bâtiment.",
-    url: "https://floxia.fr/qui-sommes-nous",
+    url: "https://florianai.fr/qui-sommes-nous",
   },
-  alternates: { canonical: "https://floxia.fr/qui-sommes-nous" },
+  alternates: { canonical: "https://florianai.fr/qui-sommes-nous" },
 };
 
 const aboutJsonLd = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "Qui sommes-nous — Cirrion",
-  url: "https://floxia.fr/qui-sommes-nous",
+  url: "https://florianai.fr/qui-sommes-nous",
   description: "Page officielle de présentation de Cirrion, logiciel ERP IA pour artisans et PME du bâtiment.",
   about: {
     "@type": "Organization",
     name: "Cirrion",
     alternateName: "CirrionOS",
-    url: "https://floxia.fr",
+    url: "https://florianai.fr",
     foundingDate: "2026",
     description:
       "Cirrion est un ERP IA conçu pour les artisans, auto-entrepreneurs, TPE et PME du bâtiment. Il permet de créer des devis et factures depuis WhatsApp ou l'application Cirrion ERP, avec des pré-modèles générés par l'IA.",
@@ -54,8 +54,8 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Qui sommes-nous", item: "https://floxia.fr/qui-sommes-nous" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Qui sommes-nous", item: "https://florianai.fr/qui-sommes-nous" },
   ],
 };
 

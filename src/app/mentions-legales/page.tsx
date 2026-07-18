@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Mentions légales — Cirrion",
   description: "Mentions légales du site Cirrion.",
   robots: { index: false, follow: false },
-  alternates: { canonical: "https://floxia.fr/mentions-legales" },
+  alternates: { canonical: "https://florianai.fr/mentions-legales" },
 };
 
 export default function MentionsLegales() {

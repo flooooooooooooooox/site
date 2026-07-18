@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     title: "Devis depuis WhatsApp en 3 minutes — Guide artisan",
     description:
       "Créez et envoyez un devis PDF professionnel depuis WhatsApp en moins de 3 minutes. Guide pratique pour artisans et PME du bâtiment.",
-    url: "https://floxia.fr/ressources/devis-depuis-whatsapp",
+    url: "https://florianai.fr/ressources/devis-depuis-whatsapp",
   },
-  alternates: { canonical: "https://floxia.fr/ressources/devis-depuis-whatsapp" },
+  alternates: { canonical: "https://florianai.fr/ressources/devis-depuis-whatsapp" },
 };
 
 const articleJsonLd = {
@@ -24,10 +24,10 @@ const articleJsonLd = {
   headline: "Comment envoyer un devis depuis WhatsApp en 3 minutes",
   description:
     "Guide pratique : créez et envoyez un devis PDF professionnel directement depuis WhatsApp en moins de 3 minutes.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://floxia.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://florianai.fr" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://floxia.fr/ressources/devis-depuis-whatsapp",
+  mainEntityOfPage: "https://florianai.fr/ressources/devis-depuis-whatsapp",
   keywords: "devis WhatsApp artisan, logiciel devis bâtiment, Cirrion",
 };
 
@@ -35,9 +35,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://floxia.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://floxia.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Devis depuis WhatsApp", item: "https://floxia.fr/ressources/devis-depuis-whatsapp" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://florianai.fr" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://florianai.fr/ressources" },
+    { "@type": "ListItem", position: 3, name: "Devis depuis WhatsApp", item: "https://florianai.fr/ressources/devis-depuis-whatsapp" },
   ],
 };
 
