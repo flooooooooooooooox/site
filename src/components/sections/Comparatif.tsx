@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Minus, Search, Sparkles } from "lucide-react";
 
 type Val = true | false | "partial" | string;
+type Row = { feature: string; floxia: Val; obat: Val; sage: Val; ebp: Val };
 
 // floxia | obat | sage | ebp
-const SECTIONS = [
+const SECTIONS: { label: string; rows: Row[] }[] = [
   {
     label: "Devis & Facturation",
     rows: [
