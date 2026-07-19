@@ -13,7 +13,7 @@ const SECTIONS: { label: string; rows: Row[] }[] = [
     rows: [
       { feature: "Devis par vocal WhatsApp en 3 min",       floxia: true,       obat: false,      sage: false,      ebp: false },
       { feature: "Pré-modèles de devis IA sur l'app web",   floxia: true,       obat: "partial",  sage: false,      ebp: false },
-      { feature: "Devis en moins de 8 minutes",             floxia: true,       obat: false,      sage: false,      ebp: false },
+      { feature: "Devis complet en moins de 3 minutes",     floxia: true,       obat: false,      sage: false,      ebp: false },
       { feature: "Factures & PV de réception automatisés",  floxia: true,       obat: false,      sage: false,      ebp: false },
       { feature: "Signature électronique légale",           floxia: true,       obat: "partial",  sage: false,      ebp: false },
       { feature: "Réforme e-facturation 2026 (e-reporting)",floxia: true,       obat: true,       sage: true,       ebp: true  },

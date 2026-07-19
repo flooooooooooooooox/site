@@ -44,7 +44,7 @@ export default function RoiCalculator() {
 
   const plan = getPlan(devis, salarie);
 
-  const gainDevisMin = devis * (45 - 8);
+  const gainDevisMin = devis * (45 - 3);
   const gainReceptionnisteMin = salarie ? 480 : 360;
   const gainRelancesMin = Math.round(devis * 0.5 * 2 * 5);
   const gainComptaMin = 45;
@@ -186,7 +186,7 @@ export default function RoiCalculator() {
             {/* Mini icons */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.75rem" }}>
               {[
-                { icon: FileText, label: "Devis auto", val: "8 min", color: "#2455D6" },
+                { icon: FileText, label: "Devis auto", val: "3 min", color: "#2455D6" },
                 { icon: PhoneIncoming, label: "Appels IA", val: "24h/24", color: "#4ADE80" },
                 { icon: Bell, label: "Relances auto", val: "100%", color: "#60A5FA" },
               ].map(s => {
