@@ -3,7 +3,7 @@ import { VILLES } from "@/lib/villes";
 import { METIERS } from "@/lib/metiers";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://www.florianai.fr";
+  const base = "https://www.cirrion.eu";
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [

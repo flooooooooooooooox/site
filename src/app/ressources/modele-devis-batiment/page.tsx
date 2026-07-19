@@ -14,9 +14,9 @@ export const metadata: Metadata = {
     title: "Modèle de devis bâtiment — Pré-modèles IA prêts à l'emploi",
     description:
       "Créez des devis bâtiment professionnels en quelques clics avec les pré-modèles IA de Cirrion, sur l'application ERP ou depuis WhatsApp.",
-    url: "https://www.florianai.fr/ressources/modele-devis-batiment",
+    url: "https://www.cirrion.eu/ressources/modele-devis-batiment",
   },
-  alternates: { canonical: "https://www.florianai.fr/ressources/modele-devis-batiment" },
+  alternates: { canonical: "https://www.cirrion.eu/ressources/modele-devis-batiment" },
 };
 
 const articleJsonLd = {
@@ -24,10 +24,10 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Modèle de devis bâtiment : pré-modèles IA prêts à l'emploi",
   description: "Modèles de devis bâtiment et pré-modèles générés par l'IA pour créer des devis professionnels conformes en quelques clics.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://www.florianai.fr/ressources/modele-devis-batiment",
+  mainEntityOfPage: "https://www.cirrion.eu/ressources/modele-devis-batiment",
   keywords: "modèle devis bâtiment, pré-modèle devis IA, logiciel devis en ligne",
 };
 
@@ -35,9 +35,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.florianai.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Modèle de devis bâtiment", item: "https://www.florianai.fr/ressources/modele-devis-batiment" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cirrion.eu" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.cirrion.eu/ressources" },
+    { "@type": "ListItem", position: 3, name: "Modèle de devis bâtiment", item: "https://www.cirrion.eu/ressources/modele-devis-batiment" },
   ],
 };
 

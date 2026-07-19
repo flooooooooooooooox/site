@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Cirrion sécurité données",
     "Cirrion tarifs",
   ],
-  alternates: { canonical: "https://www.florianai.fr/faq" },
+  alternates: { canonical: "https://www.cirrion.eu/faq" },
 };
 
 export default function FaqPage() {

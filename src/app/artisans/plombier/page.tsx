@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis plombier — Cirrion",
     description: "Devis et factures pour plombiers depuis WhatsApp en 3 minutes. TVA 5,5/10/20% au choix, e-facturation 2026, relances.",
-    url: "https://www.florianai.fr/artisans/plombier",
+    url: "https://www.cirrion.eu/artisans/plombier",
   },
-  alternates: { canonical: "https://www.florianai.fr/artisans/plombier" },
+  alternates: { canonical: "https://www.cirrion.eu/artisans/plombier" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://www.florianai.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Plombier", item: "https://www.florianai.fr/artisans/plombier" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cirrion.eu" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://www.cirrion.eu/artisans" },
+    { "@type": "ListItem", position: 3, name: "Plombier", item: "https://www.cirrion.eu/artisans/plombier" },
   ],
 };
 

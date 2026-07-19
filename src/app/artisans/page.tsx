@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cirrion par métier — Logiciel pour artisans du bâtiment",
     description: "Cirrion s'adapte à chaque corps de métier : électricien, plombier, maçon, peintre. Devis et facturation depuis WhatsApp.",
-    url: "https://www.florianai.fr/artisans",
+    url: "https://www.cirrion.eu/artisans",
   },
-  alternates: { canonical: "https://www.florianai.fr/artisans" },
+  alternates: { canonical: "https://www.cirrion.eu/artisans" },
 };
 
 const TRADES = [

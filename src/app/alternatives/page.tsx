@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alternatives & comparatifs logiciels devis bâtiment — Cirrion",
     description: "Cirrion comparé à Obat, Batigest, Sage, EBP. Quelle solution de devis et facturation choisir ?",
-    url: "https://www.florianai.fr/alternatives",
+    url: "https://www.cirrion.eu/alternatives",
   },
-  alternates: { canonical: "https://www.florianai.fr/alternatives" },
+  alternates: { canonical: "https://www.cirrion.eu/alternatives" },
 };
 
 const ALTS = [

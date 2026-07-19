@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ metier: s
   const m = getMetier(ms);
   const v = getVille(vs);
   if (!m || !v) return {};
-  const url = `https://www.florianai.fr/logiciel-devis/${m.slug}/${v.slug}`;
+  const url = `https://www.cirrion.eu/logiciel-devis/${m.slug}/${v.slug}`;
   const title = `Logiciel de devis ${m.nom} ${v.prepo} ${v.nom} — Cirrion`;
   const description = `Logiciel de devis et facturation pour ${m.nom} ${v.prepo} ${v.nom} (${v.region}). Créez vos devis ${m.label.toLowerCase()} depuis WhatsApp ou sur l'application Cirrion ERP. TVA 5,5/10/20% au choix, e-facturation 2026.`;
   return {
@@ -36,14 +36,14 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
   const v = getVille(vs);
   if (!m || !v) notFound();
 
-  const url = `https://www.florianai.fr/logiciel-devis/${m.slug}/${v.slug}`;
+  const url = `https://www.cirrion.eu/logiciel-devis/${m.slug}/${v.slug}`;
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
-      { "@type": "ListItem", position: 2, name: "Logiciel de devis", item: "https://www.florianai.fr/logiciel-devis" },
-      { "@type": "ListItem", position: 3, name: m.label, item: `https://www.florianai.fr/artisans/${m.slug}` },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cirrion.eu" },
+      { "@type": "ListItem", position: 2, name: "Logiciel de devis", item: "https://www.cirrion.eu/logiciel-devis" },
+      { "@type": "ListItem", position: 3, name: m.label, item: `https://www.cirrion.eu/artisans/${m.slug}` },
       { "@type": "ListItem", position: 4, name: v.nom, item: url },
     ],
   };
@@ -51,7 +51,7 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: `Logiciel de devis et facturation pour ${m.nom}`,
-    provider: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
+    provider: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
     areaServed: { "@type": "City", name: v.nom },
     description: `Logiciel de devis, facturation et gestion pour ${m.pluriel} ${v.prepo} ${v.nom}.`,
   };

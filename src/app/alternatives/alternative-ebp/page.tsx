@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alternative à EBP — Cirrion, le logiciel devis IA",
     description: "Une alternative à EBP plus moderne : devis WhatsApp, IA, e-facturation 2026, pré-modèles de devis.",
-    url: "https://www.florianai.fr/alternatives/alternative-ebp",
+    url: "https://www.cirrion.eu/alternatives/alternative-ebp",
   },
-  alternates: { canonical: "https://www.florianai.fr/alternatives/alternative-ebp" },
+  alternates: { canonical: "https://www.cirrion.eu/alternatives/alternative-ebp" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://www.florianai.fr/alternatives" },
-    { "@type": "ListItem", position: 3, name: "Alternative à EBP", item: "https://www.florianai.fr/alternatives/alternative-ebp" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cirrion.eu" },
+    { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://www.cirrion.eu/alternatives" },
+    { "@type": "ListItem", position: 3, name: "Alternative à EBP", item: "https://www.cirrion.eu/alternatives/alternative-ebp" },
   ],
 };
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "comparatif logiciel artisan",
     "meilleur logiciel devis bâtiment",
   ],
-  alternates: { canonical: "https://www.florianai.fr/comparatif" },
+  alternates: { canonical: "https://www.cirrion.eu/comparatif" },
 };
 
 export default function ComparatifPage() {

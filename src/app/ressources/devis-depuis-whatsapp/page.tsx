@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     title: "Devis depuis WhatsApp en 3 minutes — Guide artisan",
     description:
       "Créez et envoyez un devis PDF professionnel depuis WhatsApp en moins de 3 minutes. Guide pratique pour artisans et PME du bâtiment.",
-    url: "https://www.florianai.fr/ressources/devis-depuis-whatsapp",
+    url: "https://www.cirrion.eu/ressources/devis-depuis-whatsapp",
   },
-  alternates: { canonical: "https://www.florianai.fr/ressources/devis-depuis-whatsapp" },
+  alternates: { canonical: "https://www.cirrion.eu/ressources/devis-depuis-whatsapp" },
 };
 
 const articleJsonLd = {
@@ -24,10 +24,10 @@ const articleJsonLd = {
   headline: "Comment envoyer un devis depuis WhatsApp en 3 minutes",
   description:
     "Guide pratique : créez et envoyez un devis PDF professionnel directement depuis WhatsApp en moins de 3 minutes.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://www.florianai.fr/ressources/devis-depuis-whatsapp",
+  mainEntityOfPage: "https://www.cirrion.eu/ressources/devis-depuis-whatsapp",
   keywords: "devis WhatsApp artisan, logiciel devis bâtiment, Cirrion",
 };
 
@@ -35,9 +35,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.florianai.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Devis depuis WhatsApp", item: "https://www.florianai.fr/ressources/devis-depuis-whatsapp" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cirrion.eu" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.cirrion.eu/ressources" },
+    { "@type": "ListItem", position: 3, name: "Devis depuis WhatsApp", item: "https://www.cirrion.eu/ressources/devis-depuis-whatsapp" },
   ],
 };
 

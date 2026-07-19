@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Support — Cirrion",
   description: "Besoin d'aide ? Contactez le support Cirrion.",
   robots: { index: false, follow: false },
-  alternates: { canonical: "https://www.florianai.fr/support" },
+  alternates: { canonical: "https://www.cirrion.eu/support" },
 };
 
 export default function Support() {

@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel auto-entrepreneur bâtiment — Cirrion",
     description: "Devis et factures simples et conformes pour auto-entrepreneurs et artisans du bâtiment, depuis WhatsApp.",
-    url: "https://www.florianai.fr/ressources/logiciel-auto-entrepreneur-batiment",
+    url: "https://www.cirrion.eu/ressources/logiciel-auto-entrepreneur-batiment",
   },
-  alternates: { canonical: "https://www.florianai.fr/ressources/logiciel-auto-entrepreneur-batiment" },
+  alternates: { canonical: "https://www.cirrion.eu/ressources/logiciel-auto-entrepreneur-batiment" },
 };
 
 const articleJsonLd = {
@@ -22,10 +22,10 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Logiciel auto-entrepreneur bâtiment : devis & factures simples",
   description: "Le logiciel de devis et facturation idéal pour les auto-entrepreneurs et artisans du bâtiment en micro-entreprise.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.florianai.fr" },
+  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
   datePublished: "2026-06-18",
-  mainEntityOfPage: "https://www.florianai.fr/ressources/logiciel-auto-entrepreneur-batiment",
+  mainEntityOfPage: "https://www.cirrion.eu/ressources/logiciel-auto-entrepreneur-batiment",
   keywords: "logiciel auto-entrepreneur bâtiment, micro-entreprise BTP, devis artisan indépendant",
 };
 
@@ -33,9 +33,9 @@ const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.florianai.fr/ressources" },
-    { "@type": "ListItem", position: 3, name: "Logiciel auto-entrepreneur bâtiment", item: "https://www.florianai.fr/ressources/logiciel-auto-entrepreneur-batiment" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cirrion.eu" },
+    { "@type": "ListItem", position: 2, name: "Ressources", item: "https://www.cirrion.eu/ressources" },
+    { "@type": "ListItem", position: 3, name: "Logiciel auto-entrepreneur bâtiment", item: "https://www.cirrion.eu/ressources/logiciel-auto-entrepreneur-batiment" },
   ],
 };
 

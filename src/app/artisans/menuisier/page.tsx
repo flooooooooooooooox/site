@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis menuisier — Cirrion",
     description: "Devis menuiserie depuis WhatsApp ou sur l'application Cirrion ERP. Fenêtres, portes, agencement — TVA 5,5/10/20% au choix.",
-    url: "https://www.florianai.fr/artisans/menuisier",
+    url: "https://www.cirrion.eu/artisans/menuisier",
   },
-  alternates: { canonical: "https://www.florianai.fr/artisans/menuisier" },
+  alternates: { canonical: "https://www.cirrion.eu/artisans/menuisier" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://www.florianai.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Menuisier", item: "https://www.florianai.fr/artisans/menuisier" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cirrion.eu" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://www.cirrion.eu/artisans" },
+    { "@type": "ListItem", position: 3, name: "Menuisier", item: "https://www.cirrion.eu/artisans/menuisier" },
   ],
 };
 

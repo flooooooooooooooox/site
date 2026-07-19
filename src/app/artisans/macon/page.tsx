@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Logiciel devis maçon — Cirrion",
     description: "Devis et factures pour maçons depuis WhatsApp en 3 minutes. Gros œuvre, ravalement, extension — TVA 5,5/10/20% au choix, e-facturation 2026.",
-    url: "https://www.florianai.fr/artisans/macon",
+    url: "https://www.cirrion.eu/artisans/macon",
   },
-  alternates: { canonical: "https://www.florianai.fr/artisans/macon" },
+  alternates: { canonical: "https://www.cirrion.eu/artisans/macon" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://www.florianai.fr/artisans" },
-    { "@type": "ListItem", position: 3, name: "Maçon", item: "https://www.florianai.fr/artisans/macon" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cirrion.eu" },
+    { "@type": "ListItem", position: 2, name: "Artisans", item: "https://www.cirrion.eu/artisans" },
+    { "@type": "ListItem", position: 3, name: "Maçon", item: "https://www.cirrion.eu/artisans/macon" },
   ],
 };
 

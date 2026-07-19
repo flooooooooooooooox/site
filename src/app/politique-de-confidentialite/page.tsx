@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Politique de confidentialité — Cirrion",
   description: "Politique de confidentialité et traitement des données personnelles chez Cirrion.",
   robots: { index: false, follow: false },
-  alternates: { canonical: "https://www.florianai.fr/politique-de-confidentialite" },
+  alternates: { canonical: "https://www.cirrion.eu/politique-de-confidentialite" },
 };
 
 export default function Confidentialite() {

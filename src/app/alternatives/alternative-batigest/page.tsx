@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alternative à Batigest — Cirrion, le logiciel devis IA",
     description: "Une alternative à Batigest plus simple, sans formation : devis WhatsApp, IA, e-facturation 2026.",
-    url: "https://www.florianai.fr/alternatives/alternative-batigest",
+    url: "https://www.cirrion.eu/alternatives/alternative-batigest",
   },
-  alternates: { canonical: "https://www.florianai.fr/alternatives/alternative-batigest" },
+  alternates: { canonical: "https://www.cirrion.eu/alternatives/alternative-batigest" },
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.florianai.fr" },
-    { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://www.florianai.fr/alternatives" },
-    { "@type": "ListItem", position: 3, name: "Alternative à Batigest", item: "https://www.florianai.fr/alternatives/alternative-batigest" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.cirrion.eu" },
+    { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://www.cirrion.eu/alternatives" },
+    { "@type": "ListItem", position: 3, name: "Alternative à Batigest", item: "https://www.cirrion.eu/alternatives/alternative-batigest" },
   ],
 };
 
