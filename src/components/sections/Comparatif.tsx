@@ -1,6 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
-import { Check, X, Minus } from "lucide-react";
+import { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Check, X, Minus, Search, Sparkles } from "lucide-react";
 
 type Val = true | false | "partial" | string;
 
@@ -75,9 +76,52 @@ const COLS: { name: string; key: "floxia"|"obat"|"sage"|"ebp"; highlight: boolea
   { name: "EBP",    key: "ebp",    highlight: false },
 ];
 
-const GRID = "2fr 1fr 1fr 1fr 1fr";
+// Logiciels sélectionnables — avec alias pour la recherche.
+// Les logiciels sans colonne dédiée (Kolecto, Axonaut…) tombent sur "autre" :
+// on montre alors les exclusivités Cirrion (ce qu'aucun leader ne propose).
+type CompetitorKey = "obat" | "sage" | "ebp" | "autre";
+const SOFTWARE_LIST: { label: string; key: CompetitorKey; aliases: string[] }[] = [
+  { label: "Obat", key: "obat", aliases: ["obat"] },
+  { label: "Sage / Batigest", key: "sage", aliases: ["sage", "batigest", "sage batigest", "batigest connect"] },
+  { label: "EBP", key: "ebp", aliases: ["ebp", "ebp batiment"] },
+  { label: "Kolecto", key: "autre", aliases: ["kolecto"] },
+  { label: "Axonaut", key: "autre", aliases: ["axonaut"] },
+  { label: "Tolteck", key: "autre", aliases: ["tolteck"] },
+  { label: "Excel / papier", key: "autre", aliases: ["excel", "papier", "word", "rien", "aucun"] },
+  { label: "Autre logiciel", key: "autre", aliases: ["autre"] },
+];
+
+const COMPETITOR_NAMES: Record<Exclude<CompetitorKey, "autre">, string> = {
+  obat: "Obat", sage: "Sage / Batigest", ebp: "EBP",
+};
+
+function missingFeatures(key: CompetitorKey) {
+  const rows = SECTIONS.flatMap(s => s.rows);
+  if (key === "autre") {
+    // exclusivités : aucune des 3 références ne le fait
+    return rows.filter(r => r.obat === false && r.sage === false && r.ebp === false).map(r => ({ feature: r.feature, partial: false }));
+  }
+  return rows
+    .filter(r => r[key] === false || r[key] === "partial")
+    .map(r => ({ feature: r.feature, partial: r[key] === "partial" }));
+}
 
 export default function Comparatif() {
+  const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<{ label: string; key: CompetitorKey } | null>(null);
+
+  const suggestions = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return SOFTWARE_LIST;
+    return SOFTWARE_LIST.filter(s => s.label.toLowerCase().includes(q) || s.aliases.some(a => a.includes(q)));
+  }, [query]);
+
+  const missing = selected ? missingFeatures(selected.key) : [];
+  const duelCols = selected && selected.key !== "autre"
+    ? COLS.filter(c => c.highlight || c.key === selected.key)
+    : COLS;
+  const grid = duelCols.length === 2 ? "2fr 1fr 1fr" : "2fr 1fr 1fr 1fr 1fr";
+
   return (
     <section id="comparatif" style={{ background: "transparent", padding: "clamp(3rem, 8vw, 6rem) 0" }}>
       <div style={{ maxWidth: "80rem", margin: "0 auto", padding: "0 6vw" }}>
@@ -93,6 +137,107 @@ export default function Comparatif() {
             {TOTAL} critères. Un seul outil pensé pour les artisans du bâtiment.
           </p>
         </motion.div>
+
+        {/* ===== Sélecteur : quel logiciel utilisez-vous ? ===== */}
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
+          style={{ maxWidth: "44rem", margin: "0 auto 2.5rem", textAlign: "center" }}>
+          <p style={{ color: "var(--text)", fontWeight: 700, fontSize: "1rem", marginBottom: "0.9rem" }}>
+            Quel logiciel utilisez-vous aujourd&apos;hui ?
+          </p>
+          <div style={{
+            display: "flex", alignItems: "center", gap: "0.6rem",
+            background: "rgba(255,255,255,0.75)", border: "1px solid rgba(36,85,214,0.2)",
+            borderRadius: "999px", padding: "0.7rem 1.2rem", marginBottom: "0.9rem",
+            boxShadow: "0 6px 20px -8px rgba(27,42,74,0.12)",
+          }}>
+            <Search size={17} color="rgba(27,42,74,0.4)" style={{ flexShrink: 0 }} />
+            <input
+              type="text"
+              value={query}
+              onChange={e => { setQuery(e.target.value); }}
+              placeholder="Tapez le nom : Obat, Batigest, EBP, Kolecto, Excel…"
+              aria-label="Rechercher votre logiciel actuel"
+              style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontSize: "0.92rem", color: "var(--text)", minWidth: 0 }}
+            />
+            {selected && (
+              <button onClick={() => { setSelected(null); setQuery(""); }}
+                style={{ border: "none", background: "rgba(36,85,214,0.1)", color: "#2455D6", borderRadius: "999px", padding: "0.3rem 0.8rem", fontSize: "0.75rem", fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>
+                Réinitialiser
+              </button>
+            )}
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", justifyContent: "center" }}>
+            {suggestions.map(s => {
+              const isActive = selected?.label === s.label;
+              return (
+                <button key={s.label}
+                  onClick={() => { setSelected({ label: s.label, key: s.key }); setQuery(""); }}
+                  style={{
+                    padding: "0.45rem 1rem", borderRadius: "999px", cursor: "pointer",
+                    border: `1px solid ${isActive ? "#2455D6" : "rgba(36,85,214,0.2)"}`,
+                    background: isActive ? "#2455D6" : "rgba(255,255,255,0.6)",
+                    color: isActive ? "#FFFFFF" : "#2455D6",
+                    fontSize: "0.8rem", fontWeight: 700, transition: "all 0.2s",
+                  }}>
+                  {s.label}
+                </button>
+              );
+            })}
+            {suggestions.length === 0 && (
+              <button onClick={() => { setSelected({ label: query.trim() || "votre logiciel", key: "autre" }); setQuery(""); }}
+                style={{ padding: "0.45rem 1rem", borderRadius: "999px", cursor: "pointer", border: "1px dashed rgba(36,85,214,0.35)", background: "transparent", color: "#2455D6", fontSize: "0.8rem", fontWeight: 700 }}>
+                Comparer avec « {query.trim()} »
+              </button>
+            )}
+          </div>
+        </motion.div>
+
+        {/* ===== Panneau : ce que Cirrion a en plus ===== */}
+        <AnimatePresence>
+          {selected && (
+            <motion.div
+              key={selected.label}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.35 }}
+              style={{
+                maxWidth: "56rem", margin: "0 auto 2.5rem",
+                borderRadius: "1.25rem", border: "1px solid rgba(36,85,214,0.25)",
+                background: "linear-gradient(145deg, rgba(36,85,214,0.07), rgba(255,255,255,0.5))",
+                backdropFilter: "blur(12px)", padding: "clamp(1.3rem, 3vw, 2rem)",
+              }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "1rem", flexWrap: "wrap" }}>
+                <Sparkles size={18} color="#2455D6" />
+                <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.05rem", color: "var(--text)" }}>
+                  {selected.key === "autre"
+                    ? <>Ce que Cirrion fait et qu&apos;aucun logiciel classique ne propose</>
+                    : <>Ce que Cirrion a en plus de <span style={{ color: "#2455D6" }}>{selected.label}</span></>}
+                </h3>
+                <span style={{ marginLeft: "auto", background: "#2455D6", color: "#fff", borderRadius: "999px", padding: "0.2rem 0.7rem", fontSize: "0.75rem", fontWeight: 800 }}>
+                  +{missing.length} fonctionnalités
+                </span>
+              </div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "0.5rem 1.25rem" }}>
+                {missing.map(m => (
+                  <li key={m.feature} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.84rem", color: "rgba(var(--text-rgb),0.78)", lineHeight: 1.45 }}>
+                    <Check size={15} color="#2455D6" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: "0.15em" }} />
+                    <span>
+                      {m.feature}
+                      {m.partial && <span style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: "0.72rem" }}> (limité chez {selected.key !== "autre" ? COMPETITOR_NAMES[selected.key] : "eux"})</span>}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div style={{ marginTop: "1.3rem", textAlign: "center" }}>
+                <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.8rem 1.8rem", borderRadius: "999px", background: "#2455D6", color: "#fff", fontWeight: 700, fontSize: "0.88rem", textDecoration: "none" }}>
+                  Voir la différence en démo — 30 min →
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <div className="comparatif-scores" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "0.9rem", marginBottom: "2.5rem" }}>
           {SCORES.map((s, i) => {
@@ -119,9 +264,9 @@ export default function Comparatif() {
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
           className="comparatif-table"
           style={{ borderRadius: "1.25rem", overflow: "hidden", border: "1px solid rgba(var(--surface-rgb),0.07)" }}>
-          <div style={{ display: "grid", gridTemplateColumns: GRID, background: "rgba(var(--surface-rgb),0.04)", borderBottom: "1px solid rgba(var(--surface-rgb),0.07)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: grid, background: "rgba(var(--surface-rgb),0.04)", borderBottom: "1px solid rgba(var(--surface-rgb),0.07)" }}>
             <div style={{ padding: "1rem 1.5rem", color: "rgba(var(--text-rgb),0.3)", fontSize: ".72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: ".1em" }}>Critère</div>
-            {COLS.map(col => (
+            {duelCols.map(col => (
               <div key={col.name} style={{ padding: "1rem 0.75rem", textAlign: "center", background: col.highlight ? "rgba(36,85,214,0.08)" : "transparent", borderLeft: `1px solid ${col.highlight ? "rgba(36,85,214,0.2)" : "rgba(var(--surface-rgb),0.05)"}`, color: col.highlight ? "#2455D6" : "rgba(var(--text-rgb),0.4)", fontWeight: 700, fontSize: ".82rem" }}>
                 {col.name}
               </div>
@@ -130,16 +275,16 @@ export default function Comparatif() {
 
           {SECTIONS.map((section, si) => (
             <div key={section.label}>
-              <div style={{ display: "grid", gridTemplateColumns: GRID, background: "rgba(var(--surface-rgb),0.02)", borderTop: si > 0 ? "2px solid rgba(var(--surface-rgb),0.07)" : undefined }}>
+              <div style={{ display: "grid", gridTemplateColumns: grid, background: "rgba(var(--surface-rgb),0.02)", borderTop: si > 0 ? "2px solid rgba(var(--surface-rgb),0.07)" : undefined }}>
                 <div style={{ padding: "0.55rem 1.5rem", color: "#2455D6", fontSize: ".7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: ".12em" }}>{section.label}</div>
-                {COLS.map((col, j) => (
+                {duelCols.map((col, j) => (
                   <div key={j} style={{ background: col.highlight ? "rgba(36,85,214,0.05)" : "transparent", borderLeft: `1px solid ${col.highlight ? "rgba(36,85,214,0.15)" : "rgba(var(--surface-rgb),0.04)"}` }} />
                 ))}
               </div>
               {section.rows.map((row, i) => (
-                <div key={row.feature} style={{ display: "grid", gridTemplateColumns: GRID, background: i % 2 === 0 ? "rgba(var(--surface-rgb),0.01)" : "transparent", borderTop: "1px solid rgba(var(--surface-rgb),0.04)" }}>
+                <div key={row.feature} style={{ display: "grid", gridTemplateColumns: grid, background: i % 2 === 0 ? "rgba(var(--surface-rgb),0.01)" : "transparent", borderTop: "1px solid rgba(var(--surface-rgb),0.04)" }}>
                   <div style={{ padding: "0.8rem 1.5rem", color: "rgba(var(--text-rgb),0.78)", fontSize: ".84rem", display: "flex", alignItems: "center" }}>{row.feature}</div>
-                  {COLS.map((col, j) => (
+                  {duelCols.map((col, j) => (
                     <div key={j} style={{ padding: "0.8rem 0.75rem", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", background: col.highlight ? "rgba(36,85,214,0.04)" : "transparent", borderLeft: `1px solid ${col.highlight ? "rgba(36,85,214,0.12)" : "rgba(var(--surface-rgb),0.04)"}` }}>
                       <Cell val={row[col.key] as Val} isFloxia={col.highlight} />
                     </div>
