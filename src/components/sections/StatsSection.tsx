@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -29,16 +29,20 @@ function Counter({ target, suffix, color, trigger }: {
   const done = useRef(false);
   const startT = useRef(0);
 
-  if (trigger && !done.current) {
+  useEffect(() => {
+    if (!trigger || done.current) return;
     done.current = true;
+    let raf: number;
     const kick = (now: number) => {
       if (!startT.current) startT.current = now;
       const t = Math.min((now - startT.current) / 1800, 1);
       setCount(Math.min(Math.round(springEase(t) * target), target));
-      if (t < 1) requestAnimationFrame(kick);
+      if (t < 1) raf = requestAnimationFrame(kick);
     };
-    requestAnimationFrame(kick);
-  }
+    raf = requestAnimationFrame(kick);
+    return () => cancelAnimationFrame(raf);
+  }, [trigger, target]);
+
   return <span style={{ color }}>{count}{suffix}</span>;
 }
 

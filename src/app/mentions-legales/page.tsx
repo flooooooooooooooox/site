@@ -30,7 +30,7 @@ export default function MentionsLegales() {
           {
             heading: "Directeur de la publication",
             body: [
-              "Le directeur de la publication est le représentant légal de Cirrion : Florian [nom à compléter].",
+              "Le directeur de la publication est le représentant légal de Cirrion : Florian Gagnebien.",
             ],
           },
           {

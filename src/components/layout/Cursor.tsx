@@ -6,13 +6,10 @@ export default function Cursor() {
   const ring = useRef<HTMLDivElement>(null);
   const glow = useRef<HTMLDivElement>(null);
   // Desactive sur ecrans tactiles : pas de curseur, pas de boucle d'animation.
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      setEnabled(true);
-    }
-  }, []);
+  const [enabled] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  );
 
   useEffect(() => {
     if (!enabled) return;

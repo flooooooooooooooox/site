@@ -35,19 +35,18 @@ const PATHS: { d: string; dur: number; delay: number }[] = [
  * Ne se joue qu'une fois par session de navigation.
  */
 export default function IntroLoader() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(() =>
+    typeof window === "undefined" ? true : !sessionStorage.getItem(SEEN_KEY)
+  );
 
   useEffect(() => {
-    if (sessionStorage.getItem(SEEN_KEY)) {
-      setShow(false);
-      return;
-    }
+    if (!show) return;
     const t = setTimeout(() => {
       sessionStorage.setItem(SEEN_KEY, "1");
       setShow(false);
     }, 1500);
     return () => clearTimeout(t);
-  }, []);
+  }, [show]);
 
   return (
     <AnimatePresence>
