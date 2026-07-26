@@ -334,6 +334,27 @@ function FooterContent({ isMobile, ghost }: { isMobile: boolean; ghost: boolean 
               </Link>
             </div>
           </div>
+
+          {/* Badge FranceSaaS — lien retour requis par l'annuaire (plan gratuit).
+              Code fourni par FranceSaaS, conserve tel quel : pas de nofollow,
+              pas de masquage CSS, present sur toutes les pages via ce footer. */}
+          <div style={{ marginTop: "1.5rem", display: "flex", justifyContent: "center" }}>
+            <a
+              href="https://francesaas.fr/saas/cirrion"
+              target="_blank"
+              rel="noopener"
+              title="Profil du SaaS Cirrion sur FranceSaaS.fr"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://francesaas.fr/badge-francesaas.svg"
+                alt="Badge FranceSaaS"
+                width="200"
+                height="44"
+                style={{ height: "auto" }}
+              />
+            </a>
+          </div>
         </div>
       </div>
 
