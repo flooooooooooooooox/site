@@ -6,6 +6,7 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+import GhostCursor from "@/components/ui/GhostCursor";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -255,6 +256,21 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
       {/* Aurora */}
       <div className="footer-aurora animate-footer-breathe" style={{ position: "absolute", left: "50%", top: "50%", width: "80vw", height: "60vh", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
       <div className="footer-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} />
+
+      {/* Ghost cursor — trainee lumineuse qui suit la souris dans le footer (desktop only) */}
+      {!isMobile && (
+        <GhostCursor
+          trailLength={20}
+          inertia={0.1}
+          grainIntensity={0.02}
+          bloomStrength={0.1}
+          bloomRadius={2.5}
+          brightness={2.8}
+          color="#5e5d5e"
+          edgeIntensity={0.3}
+          zIndex={1}
+        />
+      )}
 
       {/* Giant BG text */}
       <div ref={giantTextRef} className="footer-giant-bg-text" style={{ position: "absolute", bottom: "-5vh", left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", zIndex: 0, pointerEvents: "none", userSelect: "none" }}>
