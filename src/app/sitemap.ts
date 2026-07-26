@@ -14,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/entreprise-nettoyage`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     // Ressources (blog)
     { url: `${base}/ressources`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/ressources/pourquoi-jai-cree-cirrion`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/ressources/automatiser-facturation-avant-2026`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/ressources/devis-depuis-whatsapp`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/ressources/modele-devis-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/ressources/logiciel-erp-batiment`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },

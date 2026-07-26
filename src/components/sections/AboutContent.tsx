@@ -43,9 +43,9 @@ const STATS = [
 const TEAM = [
   {
     icon: Wrench,
-    role: "Fondateur",
-    name: "Florian",
-    text: "Ingénieur en automatisation, à l'origine de Cirrion. Il pilote la vision produit et le développement de l'outil.",
+    role: "Fondateur & CEO",
+    name: "Florian Gagnebien",
+    text: "Ingénieur en automatisation, passé par la Fondation Anaïs (ETI, Alençon) où il a conçu des automatisations de processus internes. Il pilote la vision produit et le développement de Cirrion.",
   },
   {
     icon: Users,
@@ -104,10 +104,12 @@ export default function AboutContent() {
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.3rem", color: "rgba(var(--text-rgb),0.75)", fontSize: "1.08rem", lineHeight: 1.8 }}>
             <p>
-              Tout commence avec <strong style={{ color: "var(--text)" }}>Florian</strong>, ingénieur en
-              automatisation. Lors d&apos;un stage au sein d&apos;une ETI, il conçoit et met en place des
-              automatisations qui font gagner des centaines d&apos;heures aux équipes — et il mesure
-              concrètement l&apos;impact que ces outils peuvent avoir sur le quotidien d&apos;une entreprise.
+              Tout commence avec <strong style={{ color: "var(--text)" }}>Florian Gagnebien</strong>, ingénieur
+              en automatisation. Lors d&apos;une expérience au sein de la{" "}
+              <strong style={{ color: "var(--text)" }}>Fondation Anaïs</strong>, une ETI basée à Alençon, il
+              conçoit et met en place des automatisations de processus qui font gagner des centaines d&apos;heures
+              aux équipes — et il mesure concrètement l&apos;impact que ces outils peuvent avoir sur le quotidien
+              d&apos;une entreprise.
             </p>
             <p>
               En échangeant avec <strong style={{ color: "var(--text)" }}>son oncle</strong>, artisan,

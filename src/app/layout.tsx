@@ -226,10 +226,18 @@ const organizationJsonLd = {
   },
   founder: {
     "@type": "Person",
-    name: "Florian",
+    name: "Florian Gagnebien",
     jobTitle: "Fondateur & CEO",
+    url: "https://www.cirrion.eu/qui-sommes-nous",
     worksFor: { "@type": "Organization", name: "Cirrion" },
-    knowsAbout: ["Automatisation", "Intelligence artificielle", "ERP bâtiment"],
+    knowsAbout: [
+      "Automatisation des processus",
+      "Intelligence artificielle appliquée",
+      "ERP bâtiment",
+      "Facturation électronique",
+    ],
+    alumniOf: { "@type": "Organization", name: "Fondation Anaïs", address: { "@type": "PostalAddress", addressLocality: "Alençon", addressCountry: "FR" } },
+    sameAs: ["https://www.linkedin.com/in/floxia-pro-9360333aa"],
   },
   sameAs: [
     "https://www.cirrion.eu",

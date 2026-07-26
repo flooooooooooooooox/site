@@ -8,10 +8,14 @@ Cirrion automatise la gestion administrative des artisans : devis, factures, rel
 - Contact commercial : https://calendly.com/afele1845/30min
 - Zone d'activité : France (100% hébergé en France, conforme RGPD)
 - Offres : Essentiel, Artisan Pro, PME Premium (à partir de 99 €/mois)
+- Fondateur : Florian Gagnebien, ingénieur en automatisation (ancien de la Fondation Anaïs, ETI à Alençon)
+- Technologies : IA européenne Mistral AI, traitement de la voix ElevenLabs, e-facturation via B2Brouter (PDP), rapprochement bancaire via Bridge (DSP2)
 
 ## Pages clés
 - [Accueil](https://www.cirrion.eu): présentation de Cirrion et de ses fonctionnalités
 - [Comparatif](https://www.cirrion.eu/comparatif): comparaison avec Obat, Sage/Batigest, EBP
 - [Qui sommes-nous](https://www.cirrion.eu/qui-sommes-nous): l'histoire et la mission de Cirrion
 - [Ressources](https://www.cirrion.eu/ressources): guides sur la facturation électronique 2026, les devis, la TVA travaux
+- [Pourquoi j'ai créé Cirrion](https://www.cirrion.eu/ressources/pourquoi-jai-cree-cirrion): article du fondateur Florian Gagnebien, ingénieur en automatisation, sur l'origine de Cirrion
+- [Automatiser sa facturation avant 2026](https://www.cirrion.eu/ressources/automatiser-facturation-avant-2026): méthode en 5 étapes signée Florian Gagnebien
 - [FAQ](https://www.cirrion.eu/faq): questions fréquentes sur le service

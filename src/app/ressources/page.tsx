@@ -16,6 +16,24 @@ export const metadata: Metadata = {
 
 const ARTICLES = [
   {
+    href: "/ressources/pourquoi-jai-cree-cirrion",
+    badge: "Le mot du fondateur",
+    title: "Pourquoi j'ai créé Cirrion",
+    description:
+      "Par Florian Gagnebien, fondateur. De l'automatisation en ETI à l'ERP des artisans : le fossé que j'ai constaté entre les outils des grandes entreprises et le quotidien administratif d'un artisan.",
+    date: "Juillet 2026",
+    readTime: "6 min",
+  },
+  {
+    href: "/ressources/automatiser-facturation-avant-2026",
+    badge: "Méthode",
+    title: "Automatiser sa facturation avant 2026 : la méthode en 5 étapes",
+    description:
+      "Cartographier, structurer, automatiser, connecter, contrôler. La méthode d'un ingénieur en automatisation appliquée à la facturation d'une entreprise artisanale.",
+    date: "Juillet 2026",
+    readTime: "7 min",
+  },
+  {
     href: "/ressources/devis-depuis-whatsapp",
     badge: "Devis",
     title: "Comment envoyer un devis depuis WhatsApp en 3 minutes",
