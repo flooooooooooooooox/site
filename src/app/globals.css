@@ -26,9 +26,9 @@ html { scroll-behavior: smooth; }
 html { background: #EFF4FF; overflow-x: hidden; }
 body { background: transparent; color: var(--text); font-family: var(--font-dm), -apple-system, sans-serif; cursor: none; overflow-x: hidden; max-width: 100vw; }
 
-.cursor-dot { position: fixed; width: 6px; height: 6px; background: #2455D6; border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); transition: width .18s, height .18s; }
-.cursor-ring { display: none; }
-.cursor-glow { display: none; }
+/* La position est pilotee en JS via `transform` (translate3d + recentrage),
+   donc pas de `transform` ni de left/top ici : cela ecraserait la valeur. */
+.cursor-dot { position: fixed; top: 0; left: 0; width: 6px; height: 6px; background: #2455D6; border-radius: 50%; pointer-events: none; z-index: 99999; will-change: transform; transition: width .18s, height .18s; }
 body.cursor-hover .cursor-dot { width: 12px; height: 12px; background: #2455D6; }
 
 .grain { display: none; }
@@ -40,11 +40,17 @@ body.cursor-hover .cursor-dot { width: 12px; height: 12px; background: #2455D6; 
 .story-step.active .step-tag { color: #2455D6 !important; background: rgba(36,85,214,.08) !important; border-color: rgba(36,85,214,.25) !important; }
 .story-step.active .step-title { color: #2455D6 !important; }
 
-*, *::before, *::after { transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+/* Transition de couleur limitee aux elements reellement survolables.
+   Auparavant appliquee a `*, *::before, *::after`, elle faisait transitionner
+   des milliers de noeuds a chaque changement de couleur (les pages ville en
+   comptent plusieurs milliers) — cout inutile puisque le site n'a qu'un theme. */
+a, button, input, textarea, select, [role="button"] {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
 
 @media (max-width: 768px) {
   body { cursor: auto; }
-  .cursor-dot, .cursor-ring, .cursor-glow { display: none; }
+  .cursor-dot { display: none; }
 }
 
 /* ===== Performance mobile =====

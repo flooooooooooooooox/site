@@ -338,8 +338,10 @@ const GhostCursor = ({
       resize();
     });
     resizeObsRef.current = ro;
+    // On n'observe que le parent : `host` est en inset:0 du parent (donc de meme
+    // taille), et l'observer aussi faisait re-declencher resize() a chaque
+    // setSize du canvas — une boucle de redimensionnement.
     ro.observe(parent);
-    ro.observe(host);
 
     const start = typeof performance !== 'undefined' ? performance.now() : Date.now();
     const animate = () => {

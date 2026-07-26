@@ -129,9 +129,10 @@ export default function StatsSection() {
   const translateZ = useTransform(scrollYProgress, [0, 1], [-320, 0]);
   const stageY     = useTransform(scrollYProgress, [0, 1], [80, 0]);
   const stageOp    = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  const blurPx     = useTransform(scrollYProgress, [0, 0.65], [16, 0]);
   const fogOp      = useTransform(scrollYProgress, [0, 0.7], [0.85, 0]);
-  const stageFilter    = useMotionTemplate`blur(${blurPx}px)`;
+  // Pas de `filter: blur()` pilote au scroll : le flou doit etre recalcule a
+  // chaque frame sur toute la surface de la grille 3D, ce qui saccade meme sur
+  // desktop. L'entree reste lisible via l'opacite et le translateZ (composites).
   const stageTransform = useMotionTemplate`perspective(1400px) rotateX(${rotateX}deg) translateZ(${translateZ}px)`;
 
   const glowScale = useTransform(scrollYProgress, [0.15, 0.65], [0.4, 1.8]);
@@ -178,10 +179,9 @@ export default function StatsSection() {
             transformStyle: "preserve-3d",
             transformOrigin: "center top",
             transform: stageTransform,
-            filter: stageFilter,
             opacity: stageOp,
             y: stageY,
-            willChange: "transform, opacity, filter",
+            willChange: "transform, opacity",
           }}>
             <div className="stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1.5rem", transformStyle: "preserve-3d" }}>
               {STATS.map((s) => (

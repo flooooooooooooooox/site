@@ -12,11 +12,12 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+// Note : pas d'@import de police externe ici — les polices du site sont chargees
+// et auto-hebergees par next/font (Sora + Inter). Un @import vers fonts.googleapis.com
+// ajoutait une requete bloquante sur chaque page.
 const STYLES = `
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-
 .cinematic-footer-wrapper {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-dm), sans-serif;
   -webkit-font-smoothing: antialiased;
   --pill-bg-1: color-mix(in srgb, var(--foreground) 4%, transparent);
   --pill-bg-2: color-mix(in srgb, var(--foreground) 1%, transparent);
@@ -227,7 +228,7 @@ const LOCAL_LINKS = [
 ];
 
 // Contenu du footer — identique desktop et mobile
-function FooterContent({ isMobile }: { isMobile: boolean }) {
+function FooterContent({ isMobile, ghost }: { isMobile: boolean; ghost: boolean }) {
   const giantTextRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -257,8 +258,10 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
       <div className="footer-aurora animate-footer-breathe" style={{ position: "absolute", left: "50%", top: "50%", width: "80vw", height: "60vh", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
       <div className="footer-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} />
 
-      {/* Ghost cursor — trainee lumineuse qui suit la souris dans le footer (desktop only) */}
-      {!isMobile && (
+      {/* Ghost cursor — trainee lumineuse qui suit la souris dans le footer.
+          Monte uniquement quand le footer arrive a l'ecran : l'initialisation
+          WebGL (shaders + bloom) est chere, inutile de la payer en haut de page. */}
+      {!isMobile && ghost && (
         <GhostCursor
           trailLength={20}
           inertia={0.1}
@@ -365,6 +368,10 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
 
 export function CinematicFooter() {
   const [isMobile, setIsMobile] = React.useState(false);
+  // Le ghost cursor n'est monte qu'une fois le footer approche par le scroll,
+  // et jamais si l'utilisateur a demande a reduire les animations.
+  const [ghost, setGhost] = React.useState(false);
+  const revealRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
@@ -373,6 +380,23 @@ export function CinematicFooter() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
+  useEffect(() => {
+    const el = revealRef.current;
+    if (!el || isMobile) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setGhost(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [isMobile]);
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
@@ -380,13 +404,13 @@ export function CinematicFooter() {
       {isMobile ? (
         // Mobile : layout normal dans le flux du document, hauteur naturelle
         <footer style={{ background: "var(--background)", color: "var(--foreground)" }}>
-          <FooterContent isMobile={true} />
+          <FooterContent isMobile={true} ghost={false} />
         </footer>
       ) : (
         // Desktop : effet cinématique avec sticky scroll
-        <div style={{ position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}>
+        <div ref={revealRef} style={{ position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}>
           <footer style={{ position: "fixed", bottom: 0, left: 0, height: "100vh", width: "100%" }}>
-            <FooterContent isMobile={false} />
+            <FooterContent isMobile={false} ghost={ghost} />
           </footer>
         </div>
       )}
