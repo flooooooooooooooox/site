@@ -38,7 +38,7 @@ const authorJsonLd = {
     "Facturation électronique",
     "Gestion administrative des artisans",
   ],
-  sameAs: ["https://www.linkedin.com/in/floxia-pro-9360333aa"],
+  sameAs: ["https://www.linkedin.com/in/cirrion-pro-9360333aa"],
 };
 
 const articleJsonLd = {

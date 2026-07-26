@@ -124,7 +124,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Cirrion. Tous droits réservés.
           </span>
           <a
-            href="https://www.linkedin.com/in/floxia-pro-9360333aa"
+            href="https://www.linkedin.com/in/cirrion-pro-9360333aa"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"

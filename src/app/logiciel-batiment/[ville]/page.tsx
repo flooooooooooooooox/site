@@ -66,7 +66,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
     },
     priceRange: "€€",
     telephone: null,
-    sameAs: ["https://www.cirrion.eu", "https://www.instagram.com/floxia.pro", "https://www.linkedin.com/in/floxia-pro-9360333aa"],
+    sameAs: ["https://www.cirrion.eu", "https://www.instagram.com/floxia.pro", "https://www.linkedin.com/in/cirrion-pro-9360333aa"],
   };
 
   const autres = VILLES.filter((v) => v.slug !== ville.slug).slice(0, 6);

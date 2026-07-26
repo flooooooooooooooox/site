@@ -44,6 +44,30 @@ const FAQS = [
     q: "Cirrion fonctionne-t-il hors connexion ?",
     a: "L'application web et WhatsApp nécessitent une connexion. Sur chantier, les données sont synchronisées dès le retour en ligne. WhatsApp fonctionne en 4G/5G, donc vous pouvez créer des devis même dans des zones à faible couverture.",
   },
+  {
+    q: "Comment dicter un devis BTP sur WhatsApp ?",
+    a: "Envoyez un message vocal à votre numéro WhatsApp Business connecté à Cirrion, en décrivant le chantier comme vous le diriez à un collègue : « devis pour Mme Durand, remplacement tableau électrique, 6 heures de main d'œuvre, environ 400 euros de matériel ». Cirrion transcrit le vocal, identifie les prestations, applique le bon taux de TVA et génère le devis PDF avec votre logo en moins de 3 minutes. Vous le validez, puis il part en signature électronique.",
+  },
+  {
+    q: "Quel est le meilleur logiciel de devis pour un artisan en 2026 ?",
+    a: "Cela dépend de votre façon de travailler. Si vous êtes majoritairement sur chantier et que vous voulez créer un devis sans ouvrir d'ordinateur, un outil pilotable par WhatsApp comme Cirrion est le plus adapté. Si vous avez un bureau d'études et des métrés complexes, un logiciel type Obat ou Batigest reste pertinent. Le critère à ne pas négliger en 2026 : la conformité e-facturation, qui devient obligatoire à la réception dès septembre 2026.",
+  },
+  {
+    q: "Quelle IA utilise Cirrion, et mes données partent-elles à l'étranger ?",
+    a: "Non, vos données ne quittent pas l'Union européenne. Cirrion s'appuie sur Mistral AI (IA française) pour la compréhension du langage et sur ElevenLabs pour le traitement de la voix. L'hébergement est en France, sur nos propres serveurs, avec chiffrement et conformité RGPD native. Vos prix, vos clients et vos marges ne transitent pas par des serveurs hors UE.",
+  },
+  {
+    q: "Comment passer d'Obat, Batigest ou EBP à Cirrion ?",
+    a: "La bascule se fait en trois temps : import de votre base clients et de votre catalogue de prestations, paramétrage de vos taux de TVA et de vos modèles de devis, puis connexion de votre numéro WhatsApp Business et de votre compte bancaire. Le setup est réalisé avec vous — vous n'avez pas à repartir de zéro ni à ressaisir votre historique.",
+  },
+  {
+    q: "Cirrion remplace-t-il mon expert-comptable ?",
+    a: "Non, et ce n'est pas l'objectif. Cirrion fait la pré-comptabilité : factures au bon format, justificatifs scannés et classés, rapprochement bancaire automatique via Bridge, export comptable propre. Votre expert-comptable reçoit un dossier déjà en ordre, ce qui réduit son temps de traitement — mais le conseil fiscal et la liasse restent son métier.",
+  },
+  {
+    q: "Combien de temps un artisan gagne-t-il réellement avec Cirrion ?",
+    a: "Pour un artisan qui émet une quinzaine de devis et factures par mois, le travail administratif représente généralement entre 8 et 12 heures mensuelles (saisies, relances, classement des justificatifs, suivi des impayés). Une chaîne automatisée de bout en bout en supprime l'essentiel, non pas parce que les tâches disparaissent, mais parce qu'elles n'exigent plus votre présence.",
+  },
 ];
 
 const faqJsonLd = {

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
@@ -207,6 +208,23 @@ const NAV_LINKS = [
   { label: "Support", href: "/support" },
 ];
 
+// Maillage local : requetes precises metier x ville, pour la pertinence
+// geographique (SEO local + reponses des IA sur des recherches localisees).
+const LOCAL_LINKS = [
+  { label: "Logiciel devis électricien à Paris", href: "/logiciel-devis/electricien/paris" },
+  { label: "Logiciel devis plombier à Lyon", href: "/logiciel-devis/plombier/lyon" },
+  { label: "Logiciel devis maçon à Marseille", href: "/logiciel-devis/macon/marseille" },
+  { label: "Logiciel devis peintre à Bordeaux", href: "/logiciel-devis/peintre/bordeaux" },
+  { label: "Logiciel devis menuisier à Toulouse", href: "/logiciel-devis/menuisier/toulouse" },
+  { label: "Logiciel devis couvreur à Nantes", href: "/logiciel-devis/couvreur/nantes" },
+  { label: "Logiciel devis carreleur à Lille", href: "/logiciel-devis/carreleur/lille" },
+  { label: "Logiciel devis chauffagiste à Rennes", href: "/logiciel-devis/chauffagiste/rennes" },
+  { label: "Logiciel bâtiment à Nice", href: "/logiciel-batiment/nice" },
+  { label: "Logiciel bâtiment à Strasbourg", href: "/logiciel-batiment/strasbourg" },
+  { label: "Logiciel bâtiment à Montpellier", href: "/logiciel-batiment/montpellier" },
+  { label: "Logiciel bâtiment à Caen", href: "/logiciel-batiment/caen" },
+];
+
 // Contenu du footer — identique desktop et mobile
 function FooterContent({ isMobile }: { isMobile: boolean }) {
   const giantTextRef = useRef<HTMLDivElement>(null);
@@ -261,7 +279,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
               style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(36,85,214,0.15)", background: "rgba(36,85,214,0.04)" }}>
               Instagram
             </a>
-            <a href="https://www.linkedin.com/in/floxia-pro-9360333aa" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/cirrion-pro-9360333aa" target="_blank" rel="noopener noreferrer"
               style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(36,85,214,0.15)", background: "rgba(36,85,214,0.04)" }}>
               LinkedIn
             </a>
@@ -276,6 +294,26 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
                 {label}
               </MagneticButton>
             ))}
+          </div>
+
+          {/* Maillage local — metier x ville */}
+          <div style={{ marginTop: "1.5rem", width: "100%" }}>
+            <div style={{ textAlign: "center", color: "var(--muted-foreground)", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: "0.7rem", opacity: 0.75 }}>
+              Cirrion près de chez vous
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.4rem" }}>
+              {LOCAL_LINKS.map(({ label, href }) => (
+                <a key={href} href={href}
+                  style={{ padding: "0.35rem 0.8rem", borderRadius: "9999px", fontSize: "0.63rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(36,85,214,0.12)", background: "rgba(36,85,214,0.03)", opacity: 0.85 }}>
+                  {label}
+                </a>
+              ))}
+            </div>
+            <div style={{ textAlign: "center", marginTop: "0.7rem" }}>
+              <Link href="/logiciel-batiment" style={{ color: "#2455D6", fontSize: "0.65rem", fontWeight: 600, textDecoration: "none" }}>
+                Voir les 200+ villes couvertes →
+              </Link>
+            </div>
           </div>
         </div>
       </div>

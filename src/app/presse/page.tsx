@@ -29,7 +29,7 @@ const orgJsonLd = {
   founder: { "@type": "Person", name: "Florian", jobTitle: "Fondateur & CEO" },
   sameAs: [
     "https://www.instagram.com/floxia.pro",
-    "https://www.linkedin.com/in/floxia-pro-9360333aa",
+    "https://www.linkedin.com/in/cirrion-pro-9360333aa",
   ],
 };
 
@@ -139,7 +139,7 @@ export default function Presse() {
             style={{ padding: "0.5rem 1.1rem", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.2)", background: "rgba(36,85,214,0.05)", color: "#2455D6", fontSize: ".82rem", fontWeight: 600, textDecoration: "none" }}>
             Instagram @floxia.pro
           </a>
-          <a href="https://www.linkedin.com/in/floxia-pro-9360333aa" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.linkedin.com/in/cirrion-pro-9360333aa" target="_blank" rel="noopener noreferrer"
             style={{ padding: "0.5rem 1.1rem", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.2)", background: "rgba(36,85,214,0.05)", color: "#2455D6", fontSize: ".82rem", fontWeight: 600, textDecoration: "none" }}>
             LinkedIn Cirrion
           </a>

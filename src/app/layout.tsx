@@ -237,13 +237,13 @@ const organizationJsonLd = {
       "Facturation électronique",
     ],
     alumniOf: { "@type": "Organization", name: "Fondation Anaïs", address: { "@type": "PostalAddress", addressLocality: "Alençon", addressCountry: "FR" } },
-    sameAs: ["https://www.linkedin.com/in/floxia-pro-9360333aa"],
+    sameAs: ["https://www.linkedin.com/in/cirrion-pro-9360333aa"],
   },
   sameAs: [
     "https://www.cirrion.eu",
     "https://www.cirrion.eu/qui-sommes-nous",
     "https://www.instagram.com/floxia.pro",
-    "https://www.linkedin.com/in/floxia-pro-9360333aa",
+    "https://www.linkedin.com/in/cirrion-pro-9360333aa",
   ],
 };
 
@@ -297,6 +297,72 @@ const jsonLd = {
     areaServed: "FR",
     knowsAbout: ["Bâtiment", "Artisanat", "Gestion de chantier", "ERP", "Intelligence artificielle", "Logiciel B2B", "Gestion d'entreprise BTP"],
   },
+  // Technologies et entités officielles utilisées — permet aux moteurs et aux IA
+  // de relier Cirrion aux entités connues (WhatsApp, Mistral AI, ElevenLabs...).
+  isAccessibleForFree: false,
+  softwareVersion: "1.0",
+  inLanguage: "fr-FR",
+  countriesSupported: "FR",
+  isBasedOn: [
+    {
+      "@type": "SoftwareApplication",
+      name: "WhatsApp Business Platform",
+      url: "https://business.whatsapp.com/products/business-platform",
+      sameAs: ["https://en.wikipedia.org/wiki/WhatsApp", "https://www.wikidata.org/wiki/Q1049511"],
+    },
+    {
+      "@type": "Organization",
+      name: "Mistral AI",
+      url: "https://mistral.ai",
+      sameAs: ["https://en.wikipedia.org/wiki/Mistral_AI", "https://www.wikidata.org/wiki/Q124373819"],
+    },
+    {
+      "@type": "Organization",
+      name: "ElevenLabs",
+      url: "https://elevenlabs.io",
+      sameAs: ["https://en.wikipedia.org/wiki/ElevenLabs"],
+    },
+    {
+      "@type": "Organization",
+      name: "B2Brouter",
+      url: "https://www.b2brouter.net/fr/",
+    },
+    {
+      "@type": "Organization",
+      name: "Bridge",
+      url: "https://bridgeapi.io",
+    },
+  ],
+};
+
+// Product + AggregateOffer : donne aux moteurs et aux IA une lecture directe
+// de la gamme tarifaire (fourchette, devise, disponibilite).
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Cirrion — ERP IA pour artisans",
+  description:
+    "Logiciel de devis, facturation et gestion pour artisans et TPE de services. Devis en 3 minutes depuis WhatsApp par message vocal, facturation électronique conforme 2026, relances automatiques et rapprochement bancaire.",
+  brand: { "@type": "Brand", name: "Cirrion" },
+  category: "Logiciel de gestion pour artisans du bâtiment",
+  url: "https://www.cirrion.eu",
+  image: "https://www.cirrion.eu/dashboard-cirrion.jpg",
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "EUR",
+    lowPrice: "99",
+    highPrice: "349",
+    offerCount: 3,
+    availability: "https://schema.org/InStock",
+    areaServed: { "@type": "Country", name: "France" },
+    seller: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+    offers: [
+      { "@type": "Offer", name: "Essentiel", price: "99", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
+      { "@type": "Offer", name: "Artisan Pro", price: "179", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
+      { "@type": "Offer", name: "PME Premium", price: "349", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
+    ],
+  },
+  audience: { "@type": "BusinessAudience", name: "Artisans, auto-entrepreneurs, TPE et PME du bâtiment et des services" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -306,6 +372,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
         <IntroLoader />
         <SectionsBackdrop />
         <ClientCursor />

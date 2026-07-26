@@ -46,12 +46,14 @@ const TEAM = [
     role: "Fondateur & CEO",
     name: "Florian Gagnebien",
     text: "Ingénieur en automatisation, passé par la Fondation Anaïs (ETI, Alençon) où il a conçu des automatisations de processus internes. Il pilote la vision produit et le développement de Cirrion.",
+    linkedin: "https://www.linkedin.com/in/cirrion-pro-9360333aa",
   },
   {
     icon: Users,
     role: "Réseau",
     name: "Nos apporteurs d'affaires",
     text: "Un réseau de partenaires de confiance qui font découvrir Cirrion aux artisans partout en France.",
+    linkedin: null,
   },
 ];
 
@@ -205,6 +207,24 @@ export default function AboutContent() {
               <div style={{ color: "#2455D6", fontSize: "0.72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "0.4rem" }}>{m.role}</div>
               <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.2rem", color: "var(--text)", marginBottom: "0.7rem" }}>{m.name}</h3>
               <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "0.92rem", lineHeight: 1.6 }}>{m.text}</p>
+              {m.linkedin && (
+                <a
+                  href={m.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: "0.4rem",
+                    marginTop: "1rem", padding: "0.5rem 1.1rem", borderRadius: "999px",
+                    border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.06)",
+                    color: "#2455D6", fontSize: "0.78rem", fontWeight: 700, textDecoration: "none",
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+                  </svg>
+                  Profil LinkedIn
+                </a>
+              )}
             </motion.div>
           ))}
         </div>

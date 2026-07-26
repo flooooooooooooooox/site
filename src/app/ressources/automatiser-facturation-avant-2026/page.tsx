@@ -39,7 +39,7 @@ const authorJsonLd = {
     "ERP bâtiment",
     "Intelligence artificielle appliquée",
   ],
-  sameAs: ["https://www.linkedin.com/in/floxia-pro-9360333aa"],
+  sameAs: ["https://www.linkedin.com/in/cirrion-pro-9360333aa"],
 };
 
 const articleJsonLd = {
@@ -101,7 +101,7 @@ export default function AutomatiserFacturation() {
           },
           {
             type: "h2",
-            content: "Étape 1 — Cartographier avant d'automatiser",
+            content: "Étape 1 — Comment cartographier sa chaîne de facturation ?",
           },
           {
             type: "p",
@@ -130,7 +130,7 @@ export default function AutomatiserFacturation() {
           },
           {
             type: "h2",
-            content: "Étape 2 — Structurer les données avant de les faire circuler",
+            content: "Étape 2 — Quelles données faut-il structurer avant d'automatiser ?",
           },
           {
             type: "p",
@@ -157,7 +157,7 @@ export default function AutomatiserFacturation() {
           },
           {
             type: "h2",
-            content: "Étape 3 — Automatiser d'abord ce qui est répétitif et sans décision",
+            content: "Étape 3 — Quelles tâches faut-il automatiser en priorité ?",
           },
           {
             type: "p",
@@ -185,7 +185,7 @@ export default function AutomatiserFacturation() {
           },
           {
             type: "h2",
-            content: "Étape 4 — Connecter la chaîne, y compris la banque et la plateforme de dématérialisation",
+            content: "Étape 4 — Pourquoi faut-il connecter sa banque et une plateforme de dématérialisation ?",
           },
           {
             type: "p",
@@ -209,7 +209,7 @@ export default function AutomatiserFacturation() {
           },
           {
             type: "h2",
-            content: "Étape 5 — Contrôler, parce qu'une automatisation silencieuse est dangereuse",
+            content: "Étape 5 — Comment vérifier qu'une automatisation fonctionne vraiment ?",
           },
           {
             type: "p",
@@ -236,7 +236,7 @@ export default function AutomatiserFacturation() {
           },
           {
             type: "h2",
-            content: "Le calcul, honnêtement",
+            content: "Combien de temps gagne-t-on réellement ?",
           },
           {
             type: "p",
