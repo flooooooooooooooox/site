@@ -81,7 +81,7 @@ export default function Home() {
               color: "#2455D6", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
             }}
           >
-            Comparer Cirrion vs Obat, Sage, EBP — 21 critères →
+            Comparer Cirrion vs Obat, Sage, EBP — 26 critères →
           </Link>
         </section>
         <Pricing />

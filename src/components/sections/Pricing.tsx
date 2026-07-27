@@ -17,6 +17,8 @@ const PLANS = [
     features: [
       "Devis & factures WhatsApp + app ERP",
       "Documents illimités",
+      "Rentabilité par chantier",
+      "Gestion de stock automatique",
       "Signature électronique",
       "Support email",
       "1 utilisateur",
@@ -37,6 +39,16 @@ const PLANS = [
           "Bibliothèque de prix / catalogue",
           "Gestion TVA multiples (5,5% / 10% / 20%)",
           "Signature électronique intégrée",
+        ],
+      },
+      {
+        category: "Rentabilité & stock",
+        items: [
+          "Rentabilité par chantier (marge réelle en temps réel)",
+          "Coûts matériaux et main d'œuvre rattachés au chantier",
+          "Gestion de stock automatique",
+          "Décrémentation du stock à chaque chantier",
+          "Alertes de réapprovisionnement",
         ],
       },
       { category: "Relances & suivi", items: ["Notification devis signé"] },

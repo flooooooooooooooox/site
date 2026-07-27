@@ -39,6 +39,8 @@ const SECTIONS: { label: string; rows: Row[] }[] = [
       { feature: "CRM clients & historique complet",        floxia: true,       obat: true,       sage: true,       ebp: true  },
       { feature: "Planning équipes temps réel",             floxia: true,       obat: "partial",  sage: false,      ebp: "partial" },
       { feature: "Collecte photos chantier WhatsApp",       floxia: true,       obat: false,      sage: false,      ebp: false },
+      { feature: "Rentabilité par chantier en temps réel",  floxia: true,       obat: "partial",  sage: true,       ebp: true  },
+      { feature: "Gestion de stock automatique",            floxia: true,       obat: false,      sage: "partial",  ebp: "partial" },
       { feature: "Dashboard CA & trésorerie",               floxia: true,       obat: true,       sage: true,       ebp: true  },
       { feature: "Export comptabilité 1 clic",              floxia: true,       obat: true,       sage: true,       ebp: true  },
     ],

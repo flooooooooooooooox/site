@@ -262,6 +262,8 @@ const jsonLd = {
     "Facturation électronique conforme 2026",
     "Relances automatiques devis et factures",
     "Signature électronique à valeur légale",
+    "Rentabilité par chantier en temps réel",
+    "Gestion de stock automatique",
   ],
   audience: {
     "@type": "BusinessAudience",
@@ -342,7 +344,7 @@ const productJsonLd = {
   "@type": "Product",
   name: "Cirrion — ERP IA pour artisans",
   description:
-    "Logiciel de devis, facturation et gestion pour artisans et TPE de services. Devis en 3 minutes depuis WhatsApp par message vocal, facturation électronique conforme 2026, relances automatiques et rapprochement bancaire.",
+    "Logiciel de devis, facturation et gestion pour artisans et TPE de services. Devis en 3 minutes depuis WhatsApp par message vocal, facturation électronique conforme 2026, rentabilité par chantier, gestion de stock automatique, relances automatiques et rapprochement bancaire.",
   brand: { "@type": "Brand", name: "Cirrion" },
   category: "Logiciel de gestion pour artisans du bâtiment",
   url: "https://www.cirrion.eu",
