@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/comparatif`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/entreprise-nettoyage`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/pointage-preuve-de-passage`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     // Ressources (blog)
     { url: `${base}/ressources`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/ressources/pourquoi-jai-cree-cirrion`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

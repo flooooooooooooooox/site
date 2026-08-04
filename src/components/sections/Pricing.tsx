@@ -122,6 +122,8 @@ const PLANS = [
     features: [
       "Tout Artisan Pro inclus",
       "Multi-chantiers",
+      "Pointage sur site & preuve de passage",
+      "Espace client en temps réel",
       "Rapprochement bancaire 100% auto (Bridge)",
       "Manager de compte dédié",
       "SLA 99.9%",
@@ -140,6 +142,22 @@ const PLANS = [
           "Connexion bancaire sécurisée (Bridge · DSP2)",
           "Détection des paiements 100% automatique : les factures passent en « payée » toutes seules, relances stoppées",
           "Suivi de trésorerie en temps réel",
+        ],
+      },
+      {
+        category: "Pointage & preuve de passage",
+        items: [
+          "Pointage par QR code ou code à 8 chiffres, par site",
+          "Géolocalisation vérifiée contre un périmètre défini par l'admin",
+          "Check-list de missions paramétrable site par site",
+          "Photos imposées depuis l'appareil photo de l'app (galerie bloquée)",
+          "Classement automatique des photos : client / prestation / objet",
+          "Signalement d'anomalies avec photo et commentaire",
+          "Clôture bloquée tant que l'intervention est incomplète",
+          "Alertes retard et intervention non commencée",
+          "Espace client : avancement et photos en temps réel",
+          "Rapport d'intervention consultable, téléchargeable et exportable",
+          "Comptes sous-traitants avec accès limité à leurs chantiers",
         ],
       },
       {

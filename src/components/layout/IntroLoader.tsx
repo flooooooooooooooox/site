@@ -35,18 +35,22 @@ const PATHS: { d: string; dur: number; delay: number }[] = [
  * Ne se joue qu'une fois par session de navigation.
  */
 export default function IntroLoader() {
-  const [show, setShow] = useState(() =>
-    typeof window === "undefined" ? true : !sessionStorage.getItem(SEEN_KEY)
-  );
+  // L'etat initial doit etre identique au rendu serveur, sinon l'hydratation
+  // casse des la 2e navigation (sessionStorage n'existe pas au SSR).
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
-    if (!show) return;
+    // Deja vue dans cette session : on masque des la frame suivante.
+    if (sessionStorage.getItem(SEEN_KEY)) {
+      const raf = requestAnimationFrame(() => setShow(false));
+      return () => cancelAnimationFrame(raf);
+    }
     const t = setTimeout(() => {
       sessionStorage.setItem(SEEN_KEY, "1");
       setShow(false);
     }, 1500);
     return () => clearTimeout(t);
-  }, [show]);
+  }, []);
 
   return (
     <AnimatePresence>

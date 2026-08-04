@@ -264,6 +264,9 @@ const jsonLd = {
     "Signature électronique à valeur légale",
     "Rentabilité par chantier en temps réel",
     "Gestion de stock automatique",
+    "Pointage sur site par QR code et géolocalisation",
+    "Preuve de passage et preuve de réalisation des interventions",
+    "Espace client avec suivi des interventions en temps réel",
   ],
   audience: {
     "@type": "BusinessAudience",

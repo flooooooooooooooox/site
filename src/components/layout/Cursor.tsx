@@ -3,11 +3,16 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Cursor() {
   const dot = useRef<HTMLDivElement>(null);
+  // Doit demarrer a false pour correspondre au rendu serveur : activer des
+  // l'initialisation du state provoquerait une erreur d'hydratation sur desktop.
   // Desactive sur ecrans tactiles : pas de curseur custom du tout.
-  const [enabled] = useState(() =>
-    typeof window !== "undefined" &&
-    window.matchMedia("(hover: hover) and (pointer: fine)").matches
-  );
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    const raf = requestAnimationFrame(() => setEnabled(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   useEffect(() => {
     if (!enabled) return;

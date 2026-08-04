@@ -14,6 +14,7 @@ Cirrion automatise la gestion administrative des artisans : devis, factures, rel
 ## Pages clés
 - [Accueil](https://www.cirrion.eu): présentation de Cirrion et de ses fonctionnalités
 - [Comparatif](https://www.cirrion.eu/comparatif): comparaison avec Obat, Sage/Batigest, EBP
+- [Pointage & preuve de passage](https://www.cirrion.eu/pointage-preuve-de-passage): module de contrôle des interventions de sous-traitants — QR code, géolocalisation, check-list bloquante, photos horodatées, espace client temps réel (offre PME Premium)
 - [Qui sommes-nous](https://www.cirrion.eu/qui-sommes-nous): l'histoire et la mission de Cirrion
 - [Ressources](https://www.cirrion.eu/ressources): guides sur la facturation électronique 2026, les devis, la TVA travaux
 - [Pourquoi j'ai créé Cirrion](https://www.cirrion.eu/ressources/pourquoi-jai-cree-cirrion): article du fondateur Florian Gagnebien, ingénieur en automatisation, sur l'origine de Cirrion
