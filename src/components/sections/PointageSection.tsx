@@ -98,7 +98,7 @@ export default function PointageSection() {
 
   return (
     <section
-      aria-label="Pointage sur site et suivi client en temps réel"
+      aria-label="Nouveau système relation client et pointage moderne"
       style={{ padding: "clamp(3rem, 8vw, 6rem) 0 clamp(1.5rem, 4vw, 3rem)", background: "transparent" }}
     >
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 6vw" }}>
@@ -117,7 +117,7 @@ export default function PointageSection() {
             fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: "var(--text)",
             letterSpacing: "-0.03em", lineHeight: 1.15,
           }}>
-            Pointage sur site et <span style={{ color: "#2455D6" }}>preuve de passage</span>
+            Nouveau système relation client et <span style={{ color: "#2455D6" }}>pointage moderne</span>
           </h2>
           <p style={{
             marginTop: "1rem", maxWidth: "42rem", marginLeft: "auto", marginRight: "auto",
