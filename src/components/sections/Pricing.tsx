@@ -70,7 +70,7 @@ const PLANS = [
       "Relances auto + validation paiement en 1 clic",
       "Avis Google automatisés",
       "Prévisions trésorerie",
-      "3 utilisateurs",
+      "Jusqu'à 25 comptes",
     ],
     details: [
       {
@@ -127,7 +127,7 @@ const PLANS = [
       "Rapprochement bancaire 100% auto (Bridge)",
       "Manager de compte dédié",
       "SLA 99.9%",
-      "Utilisateurs illimités",
+      "Comptes illimités",
     ],
     details: [
       {
