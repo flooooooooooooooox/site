@@ -7,7 +7,7 @@ import Link from "next/link";
 import Pricing from "@/components/sections/Pricing";
 import CtaBand from "@/components/sections/CtaBand";
 import PartnersBand from "@/components/sections/PartnersBand";
-import TradesSection from "@/components/sections/TradesSection";
+import PointageSection from "@/components/sections/PointageSection";
 import StatsSection from "@/components/sections/StatsSection";
 
 export const metadata: Metadata = {
@@ -99,7 +99,7 @@ export default function Home() {
             Questions fréquentes — voir toutes les réponses →
           </Link>
         </section>
-        <TradesSection />
+        <PointageSection />
         <CtaBand />
       </div>
     </main>
