@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     description:
       "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Cirrion ERP. Pré-modèles IA, TVA 5,5/10/20% au choix, e-facturation 2026. Pour tous les artisans du bâtiment.",
     url: "https://www.cirrion.eu",
-    images: [{ url: "https://www.cirrion.eu/dashboard-cirrion.jpg", width: 842, height: 414, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
+    images: [{ url: "https://www.cirrion.eu/dashboard-cirrion.jpg", width: 1600, height: 787, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
   },
   twitter: {
     card: "summary_large_image",

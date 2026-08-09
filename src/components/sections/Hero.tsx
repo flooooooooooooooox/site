@@ -388,7 +388,7 @@ export default function Hero() {
                 srcSet="/dashboard-cirrion-sm.webp 820w, /dashboard-cirrion.webp 1600w"
                 sizes="(max-width: 960px) 92vw, 640px"
                 width={1600}
-                height={756}
+                height={787}
                 alt="Tableau de bord CirrionOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
                 loading="eager"
                 fetchPriority="high"
