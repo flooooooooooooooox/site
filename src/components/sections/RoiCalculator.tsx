@@ -24,10 +24,12 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
   return <span>{display.toLocaleString("fr-FR")}{suffix}</span>;
 }
 
+// Noms alignes sur les offres reelles de la page Tarifs. Pas de prix affiche :
+// la tarification se fait sur devis.
 const PLANS = [
-  { name: "Starter", price: 99, max: 15, color: "#60A5FA", desc: "Jusqu\'à 15 devis/mois" },
-  { name: "Artisan Pro", price: 179, max: 50, color: "#2455D6", desc: "Jusqu\'à 50 devis/mois" },
-  { name: "Pro Équipe", price: 249, max: 100, color: "#A78BFA", desc: "Illimité + salariés" },
+  { name: "Essentiel", max: 15, color: "#60A5FA", desc: "Jusqu\'à 15 devis/mois" },
+  { name: "Artisan Pro", max: 50, color: "#2455D6", desc: "Jusqu\'à 50 devis/mois" },
+  { name: "PME Premium", max: 100, color: "#A78BFA", desc: "Illimité + salariés" },
 ];
 
 function getPlan(devis: number, salarie: boolean) {
@@ -54,12 +56,11 @@ export default function RoiCalculator() {
   const totalH = Math.round(totalMin / 60);
   const tauxH = 45;
   const gainFinancierMois = Math.round(totalH * tauxH);
-  const roiMois = gainFinancierMois - plan.price;
 
   const mult = periode === "an" ? 12 : 1;
   const gainFinancier = gainFinancierMois * mult;
-  const roi = roiMois * mult;
   const totalHDisplay = periode === "an" ? totalH * 12 : totalH;
+  const journees = Math.round(totalHDisplay / 7);
 
   const breakdown = [
     { icon: FileText, label: "Devis + factures + PV auto", min: gainDevisMin, color: "#2455D6" },
@@ -149,8 +150,8 @@ export default function RoiCalculator() {
                 <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".75rem" }}>{plan.desc}</p>
               </div>
               <div style={{ textAlign: "right" }}>
-                <p style={{ color: plan.color, fontWeight: 900, fontSize: "1.5rem", fontFamily: "var(--font-nunito)" }}>{plan.price}€</p>
-                <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".7rem" }}>/ mois</p>
+                <p style={{ color: plan.color, fontWeight: 900, fontSize: "1.1rem", fontFamily: "var(--font-nunito)" }}>Sur devis</p>
+                <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".7rem" }}>après démo</p>
               </div>
             </div>
 
@@ -159,7 +160,7 @@ export default function RoiCalculator() {
               {PLANS.map(p => (
                 <div key={p.name} style={{ flex: 1, padding: "0.6rem 0.4rem", borderRadius: "0.6rem", background: plan.name === p.name ? `${p.color}15` : "rgba(var(--surface-rgb),0.02)", border: `1px solid ${plan.name === p.name ? p.color + "40" : "rgba(var(--surface-rgb),0.06)"}`, textAlign: "center", transition: "all 0.25s" }}>
                   <p style={{ color: plan.name === p.name ? p.color : "rgba(var(--text-rgb),0.4)", fontWeight: 700, fontSize: ".75rem" }}>{p.name}</p>
-                  <p style={{ color: plan.name === p.name ? p.color : "rgba(var(--text-rgb),0.25)", fontWeight: 800, fontSize: ".9rem" }}>{p.price}€</p>
+                  <p style={{ color: plan.name === p.name ? p.color : "rgba(var(--text-rgb),0.25)", fontWeight: 600, fontSize: ".7rem" }}>{p.desc}</p>
                 </div>
               ))}
             </div>
@@ -207,7 +208,7 @@ export default function RoiCalculator() {
             {[
               { icon: Clock, label: `Temps admin récupéré / ${periode}`, value: totalHDisplay, suffix: "h", color: "#2455D6", sub: periode === "an" ? `${totalH * 12 * 60} min récupérées sur l'année` : `${totalMin} min sur 5 postes automatisés` },
               { icon: Euro, label: `Gain financier / ${periode}`, value: gainFinancier, suffix: "€", color: "#4ADE80", sub: `à ${tauxH} €/h — taux artisan moyen` },
-              { icon: TrendingUp, label: `ROI net vs Cirrion / ${periode}`, value: roi, suffix: "€", color: roi >= 0 ? "#4ADE80" : "#F87171", sub: periode === "an" ? `abonnement ${plan.name} ${plan.price * 12}€/an` : `après abonnement ${plan.name} ${plan.price}€/mois` },
+              { icon: TrendingUp, label: `Journées de travail récupérées / ${periode}`, value: journees, suffix: " j", color: "#A78BFA", sub: `sur la base de 7 h par journée · offre ${plan.name}` },
             ].map((m, i) => {
               const Icon = m.icon;
               return (

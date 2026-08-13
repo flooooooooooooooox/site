@@ -77,8 +77,6 @@ const moduleJsonLd = {
   offers: {
     "@type": "Offer",
     name: "PME Premium",
-    price: "349",
-    priceCurrency: "EUR",
     availability: "https://schema.org/InStock",
   },
   provider: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },

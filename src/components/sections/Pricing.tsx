@@ -258,7 +258,7 @@ export default function Pricing() {
             🔥 Offre de lancement
           </span>
           <span style={{ color: "var(--text)", fontWeight: 700, fontSize: "0.95rem" }}>
-            <span style={{ color: "#2455D6", fontWeight: 900 }}>−50% à vie</span> sur l&apos;abonnement pour les <span style={{ color: "#2455D6", fontWeight: 900 }}>10 premiers artisans</span>
+            <span style={{ color: "#2455D6", fontWeight: 900 }}>Conditions préférentielles</span> pour les <span style={{ color: "#2455D6", fontWeight: 900 }}>10 premiers artisans</span>
           </span>
           <span style={{
             display: "inline-flex", alignItems: "center", gap: "0.4rem",
@@ -372,32 +372,16 @@ export default function Pricing() {
                       border: "1px solid rgba(var(--surface-rgb),0.06)",
                       marginBottom: "1.5rem",
                     }}>
-                      {/* Badge -50% lancement */}
-                      <div style={{
-                        display: "inline-flex", alignItems: "center", gap: "0.3rem",
-                        background: "rgba(245,84,79,0.15)", border: "1px solid rgba(245,84,79,0.4)",
-                        color: "#F5544F", fontWeight: 800, fontSize: ".64rem", letterSpacing: ".04em",
-                        textTransform: "uppercase", padding: "3px 9px", borderRadius: "999px", marginBottom: "0.6rem",
-                      }}>
-                        −50% lancement · 10 premiers
-                      </div>
-                      <div style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
                         <span style={{
                           fontFamily: "var(--font-nunito)", fontWeight: 900,
-                          fontSize: "3rem", color: "var(--text)", lineHeight: 1, letterSpacing: "-0.04em",
+                          fontSize: "2.1rem", color: "var(--text)", lineHeight: 1.1, letterSpacing: "-0.03em",
                         }}>
-                          {(plan.price / 2).toLocaleString("fr-FR")}€
-                        </span>
-                        <span style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".85rem" }}>/mois</span>
-                        <span style={{
-                          color: "rgba(var(--text-rgb),0.35)", fontSize: "1.05rem", fontWeight: 700,
-                          textDecoration: "line-through", marginLeft: "2px",
-                        }}>
-                          {plan.price}€
+                          Sur devis
                         </span>
                       </div>
-                      <p style={{ color: "rgba(var(--text-rgb),0.3)", fontSize: ".75rem", marginTop: "0.4rem" }}>
-                        + {plan.setup}€ de setup (frais unique) · Tarif réduit conservé à vie
+                      <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".75rem", marginTop: "0.45rem", lineHeight: 1.5 }}>
+                        Tarif établi selon votre activité et le nombre de comptes. Réponse sous 24 h après la démo.
                       </p>
                     </div>
 

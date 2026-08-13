@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Combien coûte Cirrion ?",
-    a: "Cirrion propose trois formules à partir de 99€/mois, avec un setup unique. Consultez la section Tarifs sur la page d'accueil pour le détail complet des offres Essentiel, Artisan Pro et PME Premium.",
+    a: "Le tarif est établi sur devis. Cirrion propose trois formules — Essentiel, Artisan Pro et PME Premium — dont le prix dépend de votre activité, du nombre de comptes et des modules retenus. Réservez une démonstration de 30 minutes : vous recevez une proposition chiffrée sous 24 h, sans engagement.",
   },
   {
     q: "Cirrion fonctionne-t-il pour tous les corps de métier du bâtiment ?",

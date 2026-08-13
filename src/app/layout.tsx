@@ -212,9 +212,10 @@ const organizationJsonLd = {
     "@type": "OfferCatalog",
     name: "Abonnements Cirrion",
     itemListElement: [
-      { "@type": "Offer", name: "Essentiel", price: "99", priceCurrency: "EUR" },
-      { "@type": "Offer", name: "Artisan Pro", price: "179", priceCurrency: "EUR" },
-      { "@type": "Offer", name: "PME Premium", price: "349", priceCurrency: "EUR" },
+      // Tarifs sur devis : aucun prix publie, donc aucun prix declare ici.
+      { "@type": "Offer", name: "Essentiel" },
+      { "@type": "Offer", name: "Artisan Pro" },
+      { "@type": "Offer", name: "PME Premium" },
     ],
   },
   contactPoint: {
@@ -273,28 +274,11 @@ const jsonLd = {
     "@type": "BusinessAudience",
     name: "Artisans, auto-entrepreneurs, TPE et PME",
   },
+  // Offres sans prix : la tarification se fait sur devis apres demonstration.
   offers: [
-    {
-      "@type": "Offer",
-      name: "Essentiel",
-      price: "99",
-      priceCurrency: "EUR",
-      priceSpecification: { "@type": "UnitPriceSpecification", price: "99", priceCurrency: "EUR", billingDuration: "P1M" },
-    },
-    {
-      "@type": "Offer",
-      name: "Artisan Pro",
-      price: "179",
-      priceCurrency: "EUR",
-      priceSpecification: { "@type": "UnitPriceSpecification", price: "179", priceCurrency: "EUR", billingDuration: "P1M" },
-    },
-    {
-      "@type": "Offer",
-      name: "PME Premium",
-      price: "349",
-      priceCurrency: "EUR",
-      priceSpecification: { "@type": "UnitPriceSpecification", price: "349", priceCurrency: "EUR", billingDuration: "P1M" },
-    },
+    { "@type": "Offer", name: "Essentiel", availability: "https://schema.org/InStock" },
+    { "@type": "Offer", name: "Artisan Pro", availability: "https://schema.org/InStock" },
+    { "@type": "Offer", name: "PME Premium", availability: "https://schema.org/InStock" },
   ],
   provider: {
     "@type": "Organization",
@@ -353,21 +337,13 @@ const productJsonLd = {
   category: "Logiciel de gestion pour artisans du bâtiment",
   url: "https://www.cirrion.eu",
   image: "https://www.cirrion.eu/dashboard-cirrion.jpg",
-  offers: {
-    "@type": "AggregateOffer",
-    priceCurrency: "EUR",
-    lowPrice: "99",
-    highPrice: "349",
-    offerCount: 3,
-    availability: "https://schema.org/InStock",
-    areaServed: { "@type": "Country", name: "France" },
-    seller: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-    offers: [
-      { "@type": "Offer", name: "Essentiel", price: "99", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
-      { "@type": "Offer", name: "Artisan Pro", price: "179", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
-      { "@type": "Offer", name: "PME Premium", price: "349", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
-    ],
-  },
+  // Pas d'AggregateOffer : elle exigerait un lowPrice/highPrice, or la
+  // tarification se fait sur devis. On declare les offres sans prix.
+  offers: [
+    { "@type": "Offer", name: "Essentiel", availability: "https://schema.org/InStock", areaServed: { "@type": "Country", name: "France" }, seller: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" } },
+    { "@type": "Offer", name: "Artisan Pro", availability: "https://schema.org/InStock", areaServed: { "@type": "Country", name: "France" }, seller: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" } },
+    { "@type": "Offer", name: "PME Premium", availability: "https://schema.org/InStock", areaServed: { "@type": "Country", name: "France" }, seller: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" } },
+  ],
   audience: { "@type": "BusinessAudience", name: "Artisans, auto-entrepreneurs, TPE et PME du bâtiment et des services" },
 };
 
