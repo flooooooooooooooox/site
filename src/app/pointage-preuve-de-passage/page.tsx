@@ -71,6 +71,7 @@ const moduleJsonLd = {
     "Clôture impossible tant que l'intervention est incomplète",
     "Alerte automatique en cas de retard ou d'intervention non commencée",
     "Espace client avec suivi en temps réel et rapport téléchargeable",
+    "Tutoriel rattaché à chaque tâche de la check-list : la vidéo s'ouvre depuis la tâche",
     "Onglet Cours : vidéos, images et fiches écrites déposées par l'administrateur pour ses équipes",
   ],
   offers: {
@@ -101,6 +102,14 @@ const faqJsonLd = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "Non. Les photos doivent être prises depuis l'appareil photo de l'application : l'accès à la galerie du téléphone est bloqué. Chaque cliché est horodaté et classé automatiquement par client, prestation et objet, puis devient visible par le client sans attendre la fin de l'intervention.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Comment un intervenant sait-il ce qu'il doit faire exactement ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Chaque tâche de la check-list porte son propre tutoriel : l'intervenant ouvre la tâche et accède directement à la vidéo, à la photo d'exemple ou à la fiche écrite déposée par l'administrateur. L'aide arrive au moment où la question se pose, sur le chantier, sans avoir à appeler son responsable ni à chercher dans une documentation. Les contenus sont également regroupés dans un onglet Cours, alimenté avec des vidéos YouTube, des fichiers vidéo importés, des images et des cours écrits.",
       },
     },
     {

@@ -29,7 +29,7 @@ const STEPS = [
     features: [
       "Missions et sous-missions définies par site, par l'administrateur",
       "Sanitaires, bureaux, parties communes — ou vos propres catégories",
-      "Chaque tâche indique la photo attendue",
+      "Chaque tâche indique la photo attendue et son tutoriel",
       "Le sous-traitant coche au fur et à mesure, depuis son téléphone",
       "Aucune liste identique imposée : elle se paramètre client par client",
     ],
@@ -83,10 +83,10 @@ const STEPS = [
     color: "#0EA5A5",
     headline: "Le geste à faire est expliqué là où il se fait",
     features: [
-      "Un onglet Cours dans l'application, alimenté par l'administrateur",
+      "Chaque tâche de la check-list porte son tutoriel : la vidéo s'ouvre depuis la tâche",
+      "Un onglet Cours regroupe tous les contenus, alimenté par l'administrateur",
       "Vidéos YouTube ou fichiers vidéo importés",
       "Images, photos d'exemple et cours écrits",
-      "Consultable sur le chantier, depuis le téléphone",
       "Plus besoin d'appeler le responsable pour une question de procédure",
     ],
   },

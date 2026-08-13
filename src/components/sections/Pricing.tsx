@@ -164,6 +164,7 @@ const PLANS = [
       {
         category: "Cours & formation interne",
         items: [
+          "Tutoriel rattaché à chaque tâche de la check-list",
           "Onglet Cours : votre bibliothèque de formation",
           "Vidéos YouTube ou fichiers vidéo importés",
           "Images, photos d'exemple et cours écrits",
