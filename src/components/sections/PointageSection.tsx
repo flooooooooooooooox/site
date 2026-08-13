@@ -77,6 +77,20 @@ const STEPS = [
     ],
   },
   {
+    slug: "cours",
+    label: "Cours",
+    emoji: "🎓",
+    color: "#0EA5A5",
+    headline: "Le geste à faire est expliqué là où il se fait",
+    features: [
+      "Un onglet Cours dans l'application, alimenté par l'administrateur",
+      "Vidéos YouTube ou fichiers vidéo importés",
+      "Images, photos d'exemple et cours écrits",
+      "Consultable sur le chantier, depuis le téléphone",
+      "Plus besoin d'appeler le responsable pour une question de procédure",
+    ],
+  },
+  {
     slug: "client",
     label: "Espace client",
     emoji: "👁️",

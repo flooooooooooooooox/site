@@ -71,6 +71,7 @@ const moduleJsonLd = {
     "Clôture impossible tant que l'intervention est incomplète",
     "Alerte automatique en cas de retard ou d'intervention non commencée",
     "Espace client avec suivi en temps réel et rapport téléchargeable",
+    "Onglet Cours : vidéos, images et fiches écrites déposées par l'administrateur pour ses équipes",
   ],
   offers: {
     "@type": "Offer",

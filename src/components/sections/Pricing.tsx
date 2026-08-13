@@ -124,6 +124,7 @@ const PLANS = [
       "Multi-chantiers",
       "Pointage sur site & preuve de passage",
       "Espace client en temps réel",
+      "Cours & tutoriels pour vos équipes",
       "Rapprochement bancaire 100% auto (Bridge)",
       "Manager de compte dédié",
       "SLA 99.9%",
@@ -158,6 +159,16 @@ const PLANS = [
           "Espace client : avancement et photos en temps réel",
           "Rapport d'intervention consultable, téléchargeable et exportable",
           "Comptes sous-traitants avec accès limité à leurs chantiers",
+        ],
+      },
+      {
+        category: "Cours & formation interne",
+        items: [
+          "Onglet Cours : votre bibliothèque de formation",
+          "Vidéos YouTube ou fichiers vidéo importés",
+          "Images, photos d'exemple et cours écrits",
+          "Contenus déposés par l'administrateur pour ses équipes",
+          "Consultables par les salariés et sous-traitants depuis le chantier",
         ],
       },
       {

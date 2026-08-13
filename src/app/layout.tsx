@@ -267,6 +267,7 @@ const jsonLd = {
     "Pointage sur site par QR code et géolocalisation",
     "Preuve de passage et preuve de réalisation des interventions",
     "Espace client avec suivi des interventions en temps réel",
+    "Cours et tutoriels internes : vidéos, images et fiches écrites pour les équipes",
   ],
   audience: {
     "@type": "BusinessAudience",
