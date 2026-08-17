@@ -127,7 +127,7 @@ const PLANS = [
       "Cours & tutoriels pour vos équipes",
       "Rapprochement bancaire 100% auto (Bridge)",
       "Manager de compte dédié",
-      "SLA 99.9%",
+      "Disponibilité garantie 99%",
       "Comptes illimités",
     ],
     details: [
