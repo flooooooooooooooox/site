@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   FileText, Bell, PhoneIncoming, Mic, Receipt,
   Star, Monitor, Shield, LucideIcon,
+  TrendingUp, Tags, MapPin, GraduationCap, Landmark,
 } from "lucide-react";
 import { CloudBadge } from "@/components/ui/CloudBadge";
 
@@ -34,6 +35,34 @@ const CATEGORIES: Category[] = [
       "TVA 5,5% / 10% / 20% au choix par ligne",
       "Numérotation automatique devis & factures",
       "Archivage automatique clients / docs / signatures",
+    ],
+  },
+  {
+    icon: TrendingUp,
+    title: "Rentabilité & Stock",
+    subtitle: "Vous savez ce que chaque chantier vous rapporte vraiment.",
+    color: "#2455D6",
+    features: [
+      "Rentabilité par chantier : marge réelle en temps réel",
+      "Coûts matériaux et main d'œuvre rattachés au chantier",
+      "Gestion de stock automatique",
+      "Décrémentation du stock à chaque chantier",
+      "Alertes de réapprovisionnement",
+      "Dashboard dépenses et CA par mois",
+    ],
+  },
+  {
+    icon: Tags,
+    title: "Tarification & Données",
+    subtitle: "Vos prix, vos infos légales, votre catalogue — sous votre main.",
+    color: "#60A5FA",
+    features: [
+      "Tarification produit : créez et modifiez vos tarifs et prestations",
+      "Catalogue et données de référence éditables à tout moment",
+      "Modifications valables pour l'avenir, documents émis intacts",
+      "Coordonnées & conformité : SIREN, TVA, IBAN, mentions légales",
+      "Mentions obligatoires reprises automatiquement sur vos documents",
+      "Recherche globale : clients, devis, factures et chantiers en un champ",
     ],
   },
   {
@@ -106,6 +135,8 @@ const CATEGORIES: Category[] = [
     color: "#A78BFA",
     features: [
       "Interface OS : devis, factures, chantiers, planning",
+      "Suivi multi-chantiers simultanés",
+      "Comptes utilisateurs multiples, jusqu'à illimité",
       "Gestion équipes & plannings salariés temps réel",
       "Gestion complète des heures salariés : pointage & feuilles d'heures",
       "Suivi des heures par salarié et par chantier",
@@ -113,6 +144,53 @@ const CATEGORIES: Category[] = [
       "Collecte photos fin de chantier via WhatsApp",
       "CRM intelligent avec historique client complet",
       "Dashboard dépenses & CA par mois",
+    ],
+  },
+  {
+    icon: MapPin,
+    title: "Pointage & Preuve de passage",
+    subtitle: "La preuve que l'intervention a bien eu lieu, sans vous déplacer.",
+    color: "#A78BFA",
+    features: [
+      "Pointage par QR code ou code à 8 chiffres, par site",
+      "Géolocalisation vérifiée contre un périmètre défini par l'admin",
+      "Check-list de missions paramétrable site par site",
+      "Photos imposées depuis l'appareil photo de l'app (galerie bloquée)",
+      "Classement automatique des photos : client / prestation / objet",
+      "Signalement d'anomalies avec photo et commentaire",
+      "Clôture bloquée tant que l'intervention est incomplète",
+      "Alertes retard et intervention non commencée",
+      "Espace client : avancement et photos en temps réel",
+      "Rapport d'intervention consultable, téléchargeable et exportable",
+      "Comptes sous-traitants avec accès limité à leurs chantiers",
+    ],
+  },
+  {
+    icon: GraduationCap,
+    title: "Cours & Formation",
+    subtitle: "Vos équipes se forment seules, depuis le chantier.",
+    color: "#A78BFA",
+    features: [
+      "Onglet Cours : votre bibliothèque de formation interne",
+      "Tutoriel rattaché à chaque tâche de la check-list",
+      "Vidéos YouTube ou fichiers vidéo importés",
+      "Images, photos d'exemple et cours écrits",
+      "Contenus déposés par l'administrateur pour ses équipes",
+      "Consultables par les salariés et sous-traitants depuis le chantier",
+    ],
+  },
+  {
+    icon: Landmark,
+    title: "Trésorerie & Banque",
+    subtitle: "Les paiements se rapprochent tout seuls, les relances s'arrêtent.",
+    color: "#34D399",
+    features: [
+      "Connexion bancaire sécurisée (Bridge · DSP2)",
+      "Détection des paiements 100% automatique",
+      "Factures passées en « payée » sans intervention, relances stoppées",
+      "Validation manuelle d'un paiement en 1 clic",
+      "Suivi de trésorerie en temps réel",
+      "Prévisions de trésorerie",
     ],
   },
   {
@@ -153,7 +231,7 @@ export default function Services() {
             Une chaîne qui tourne <span style={{ color: "#2455D6" }}>toute seule</span>
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: "1rem", maxWidth: "38rem", margin: "0 auto", lineHeight: 1.5 }}>
-            8 modules connectés. <strong style={{ fontWeight: 700, color: "rgba(var(--text-rgb),0.8)" }}>Cliquez sur une étape pour voir ce qu&apos;elle automatise.</strong>
+            13 modules connectés. <strong style={{ fontWeight: 700, color: "rgba(var(--text-rgb),0.8)" }}>Cliquez sur une étape pour voir ce qu&apos;elle automatise.</strong>
           </p>
         </motion.div>
 
