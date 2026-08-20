@@ -19,18 +19,19 @@ export default function MentionsLegales() {
           {
             heading: "Éditeur du site",
             body: [
-              "Le présent site est édité par Cirrion.",
-              "Raison sociale : Cirrion — [forme juridique à compléter : ex. SAS, EI, micro-entreprise].",
-              "Capital social : [montant à compléter, le cas échéant].",
-              "Siège social : [adresse complète à compléter].",
-              "Immatriculation : SIREN/SIRET [numéro à compléter] — RCS [ville à compléter].",
-              "Numéro de TVA intracommunautaire : [à compléter, le cas échéant].",
+              "Le présent site est édité par Florian Gagnebien — EI, exerçant sous le nom commercial « Cirrion ».",
+              "Forme juridique : entrepreneur individuel, relevant du régime de la micro-entreprise.",
+              "Adresse de l'établissement : 108 rue de Falaise, 14000 Caen, France.",
+              "SIREN : 108 915 943 — SIRET : 108 915 943 00014 — Code APE : 8211Z.",
+              "Immatriculation au Registre national des entreprises (RNE) le 20 août 2026.",
+              "TVA : non applicable, article 293 B du Code général des impôts (franchise en base).",
+              "Contact : contact@cirrion.eu — 06 33 79 05 42.",
             ],
           },
           {
             heading: "Directeur de la publication",
             body: [
-              "Le directeur de la publication est le représentant légal de Cirrion : Florian Gagnebien.",
+              "Le directeur de la publication est Florian Gagnebien, entrepreneur individuel.",
             ],
           },
           {
