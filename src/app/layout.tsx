@@ -237,7 +237,7 @@ const organizationJsonLd = {
       "ERP bâtiment",
       "Facturation électronique",
     ],
-    alumniOf: { "@type": "Organization", name: "Fondation Anaïs", address: { "@type": "PostalAddress", addressLocality: "Alençon", addressCountry: "FR" } },
+    alumniOf: { "@type": "Organization", name: "Fondation ANAIS", address: { "@type": "PostalAddress", addressLocality: "Alençon", addressCountry: "FR" } },
     sameAs: ["https://www.linkedin.com/in/cirrion-pro-9360333aa"],
   },
   sameAs: [

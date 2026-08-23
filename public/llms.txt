@@ -8,7 +8,7 @@ Cirrion automatise la gestion administrative des artisans : devis, factures, rel
 - Contact commercial : https://calendly.com/afele1845/30min
 - Zone d'activité : France (100% hébergé en France, conforme RGPD)
 - Offres : Essentiel, Artisan Pro, PME Premium — tarification sur devis, établie après une démonstration
-- Fondateur : Florian Gagnebien, ingénieur en automatisation (ancien de la Fondation Anaïs, ETI à Alençon)
+- Fondateur : Florian Gagnebien, ingénieur en automatisation (ancien de la Fondation ANAIS, ETI à Alençon)
 - Technologies : IA européenne Mistral AI, traitement de la voix ElevenLabs, e-facturation via B2Brouter (PDP), rapprochement bancaire via Bridge (DSP2)
 
 ## Pages clés
