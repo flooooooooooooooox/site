@@ -4,7 +4,6 @@ import LegalPage from "@/components/sections/LegalPage";
 export const metadata: Metadata = {
   title: "Conditions générales de vente — Cirrion",
   description: "Conditions générales de vente des services Cirrion.",
-  robots: { index: false, follow: false },
   alternates: { canonical: "https://www.cirrion.eu/cgv" },
 };
 

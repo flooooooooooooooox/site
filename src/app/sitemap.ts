@@ -56,6 +56,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/logiciel-devis`, lastModified: now, changeFrequency: "monthly", priority: 0.82 },
     // Serrurier (ajouté aux artisans)
     { url: `${base}/artisans/serrurier`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // Pages légales — indexables, signal de confiance (E-E-A-T)
+    { url: `${base}/mentions-legales`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/politique-de-confidentialite`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/cgv`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const villePages: MetadataRoute.Sitemap = VILLES.map((v) => ({

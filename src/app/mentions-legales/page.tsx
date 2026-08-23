@@ -4,7 +4,6 @@ import LegalPage from "@/components/sections/LegalPage";
 export const metadata: Metadata = {
   title: "Mentions légales — Cirrion",
   description: "Mentions légales du site Cirrion.",
-  robots: { index: false, follow: false },
   alternates: { canonical: "https://www.cirrion.eu/mentions-legales" },
 };
 
