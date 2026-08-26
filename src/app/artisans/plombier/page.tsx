@@ -40,7 +40,6 @@ export default function Plombier() {
           { title: "TVA plomberie au choix", desc: "5,5% pour les travaux d'économie d'énergie (pompe à chaleur, chaudière à condensation), 10% pour rénovation, 20% pour le neuf. Vous choisissez le taux sur chaque ligne." },
           { title: "Gestion des acomptes", desc: "Facture d'acompte à la signature du devis, facture finale en fin de chantier — tout le cycle est géré automatiquement." },
           { title: "Relances clients automatiques", desc: "Devis non répondu à J+3, J+7, J+14. Plus besoin de relancer manuellement — Cirrion s'en charge." },
-          { title: "Assistant vocal IA", desc: "Une question sur l'attestation TVA réduite, le RGE ou les normes ? L'assistant vocal IA de Cirrion vous répond à tout moment." },
           { title: "Suivi chantier en temps réel", desc: "Tableau de bord centralisé pour suivre l'avancement, les paiements et les relances de tous vos chantiers." },
         ]}
         useCases={[

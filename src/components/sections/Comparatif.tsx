@@ -17,7 +17,6 @@ const SECTIONS: { label: string; rows: Row[] }[] = [
       { feature: "Factures & PV de réception automatisés",  floxia: true,       obat: false,      sage: false,      ebp: false },
       { feature: "Signature électronique légale",           floxia: true,       obat: "partial",  sage: false,      ebp: false },
       { feature: "Réforme e-facturation 2026 (e-reporting)",floxia: true,       obat: true,       sage: true,       ebp: true  },
-      { feature: "Assistant vocal IA (TVA, normes, admin)", floxia: true,       obat: false,      sage: false,      ebp: false },
       { feature: "Avoirs & avenants automatiques",          floxia: true,       obat: false,      sage: "partial",  ebp: "partial" },
     ],
   },

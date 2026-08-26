@@ -91,7 +91,6 @@ export const metadata: Metadata = {
     "agent IA artisan",
     "réceptionniste IA",
     "standard téléphonique IA artisan",
-    "assistant vocal artisan",
     "secrétaire virtuelle artisan",
     "prise de rendez-vous automatique artisan",
     "CRM artisan",

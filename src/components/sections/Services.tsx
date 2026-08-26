@@ -100,7 +100,6 @@ const CATEGORIES: Category[] = [
     subtitle: "Vous dictez, l'IA écrit. Vos mains restent sur le chantier.",
     color: "#4ADE80",
     features: [
-      "Assistant vocal : bâtiment, administratif, juridique",
       "Saisie vocale IA avancée (dispo instantanée)",
       "E-mail pro rédigé depuis un vocal en 30s",
       "Rapport de chantier envoyé par e-mail client",

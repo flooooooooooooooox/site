@@ -112,7 +112,6 @@ const PLANS = [
           "Booking automatique de RDV (WhatsApp)",
         ],
       },
-      { category: "Assistant vocal IA", items: ["Assistant vocal technique (bâtiment, admin, juridique)"] },
       {
         category: "Comptabilité & dépenses",
         items: [

@@ -38,7 +38,6 @@ export default function Electricien() {
           { title: "Devis électricité par vocal", desc: "Dictez vos prestations depuis WhatsApp — tableau électrique, câblage, prises, éclairage — et recevez le devis PDF en 3 min." },
           { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, l'IA propose des pré-modèles de devis électricité que vous personnalisez en quelques clics. Idéal au bureau." },
           { title: "TVA au choix sur chaque ligne", desc: "5,5% pour rénovation en résidence principale, 10% pour travaux sur existant, 20% pour le neuf. Vous choisissez le taux, Cirrion l'applique sur le devis." },
-          { title: "Assistant vocal IA", desc: "Une question sur la TVA réduite, le CERFA d'attestation ou les normes ? L'assistant vocal IA de Cirrion vous répond à tout moment." },
           { title: "Conformité e-facturation 2026", desc: "Toutes vos factures sont conformes à l'obligation e-facturation 2026 pour les entreprises du bâtiment." },
           { title: "Relances automatiques", desc: "Devis non signé à J+3, J+7, J+14. Facture impayée à J+15, J+30. Tout est automatique." },
           { title: "PV de réception", desc: "À la fin du chantier électrique, Cirrion génère et envoie le PV de réception avec signature électronique." },

@@ -38,7 +38,7 @@ const FAQS = [
   },
   {
     q: "Cirrion fonctionne-t-il pour tous les corps de métier du bâtiment ?",
-    a: "Oui — électriciens, plombiers, maçons, peintres, menuisiers, carreleurs, couvreurs... Cirrion comprend le vocabulaire et les spécificités de chaque métier : choix de la TVA par type de travaux, gestion des avenants et avoirs. Les pré-modèles de devis de l'application sont adaptés à chaque métier, et l'assistant vocal IA répond à vos questions sur les normes et la TVA.",
+    a: "Oui — électriciens, plombiers, maçons, peintres, menuisiers, carreleurs, couvreurs... Cirrion comprend le vocabulaire et les spécificités de chaque métier : choix de la TVA par type de travaux, gestion des avenants et avoirs. Les pré-modèles de devis de l'application sont adaptés à chaque métier.",
   },
   {
     q: "Cirrion fonctionne-t-il hors connexion ?",

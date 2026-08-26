@@ -15,7 +15,6 @@ const TRADES = [
       "Tableau électrique, mise aux normes NF C 15-100",
       "Domotique, VMC, borne de recharge VE",
       "TVA 5,5% / 10% / 20% au choix par ligne",
-      "Assistant vocal IA : normes, TVA, admin",
       "PV de réception et facture finale auto",
     ],
   },
