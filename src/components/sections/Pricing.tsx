@@ -81,6 +81,7 @@ const PLANS = [
       "Agent IA WhatsApp 24h/24",
       "Relances auto + validation paiement en 1 clic",
       "Avis Google automatisés",
+      "TVA calculée et télétransmise (ASPOne)",
       "Prévisions trésorerie",
       "Jusqu'à 25 comptes",
     ],
@@ -117,6 +118,9 @@ const PLANS = [
         items: [
           "Scan OCR tickets / factures fournisseurs (WhatsApp)",
           "Dashboard dépenses & TVA récupérable",
+          "TVA à décaisser calculée automatiquement (mois ou trimestre)",
+          "Déclaration CA3 préparée et transmise à votre comptable",
+          "Télétransmission à la DGFiP via ASPOne après validation du comptable",
         ],
       },
       { category: "Avis & réputation", items: ["Demandes automatiques d'avis Google"] },

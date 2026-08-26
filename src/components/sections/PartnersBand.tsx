@@ -65,6 +65,18 @@ const PARTNERS = [
     ),
   },
   {
+    name: "ASPOne",
+    sub: "Partenaire EDI de la DGFiP",
+    svg: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <rect width="24" height="24" rx="5" fill="#2455D6" fillOpacity="0.1"/>
+        <path d="M5 19h14" stroke="#2455D6" strokeWidth="1.6" strokeLinecap="round"/>
+        <path d="M6.5 19V10M10 19V10M14 19V10M17.5 19V10" stroke="#2455D6" strokeWidth="1.6" strokeLinecap="round"/>
+        <path d="M12 4l7 4H5l7-4z" fill="#2455D6"/>
+      </svg>
+    ),
+  },
+  {
     name: "Bridge",
     sub: "Rapprochement bancaire (DSP2)",
     svg: (
