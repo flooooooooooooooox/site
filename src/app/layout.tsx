@@ -19,11 +19,11 @@ const SITE_URL = "https://www.cirrion.eu";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Cirrion — Devis & Factures depuis WhatsApp en 3 min | ERP IA Artisans & Services",
+    default: "Cirrion — Devis & Factures depuis WhatsApp en 3 min | Plus qu'un ERP",
     template: "%s | Cirrion",
   },
   description:
-    "Cirrion — L'ERP IA des artisans et TPE de services (bâtiment, nettoyage, et toutes petites entreprises). Créez vos devis et factures depuis WhatsApp en 3 minutes, automatisez relances, planning, heures salariés et rapprochement bancaire.",
+    "Cirrion — Le système d'exploitation des artisans et TPE de services (bâtiment, nettoyage, et toutes petites entreprises). Créez vos devis et factures depuis WhatsApp en 3 minutes, automatisez relances, planning, heures salariés et rapprochement bancaire.",
   keywords: [
     "ERP artisan",
     "logiciel devis artisan",
@@ -154,13 +154,13 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: SITE_URL,
     siteName: "Cirrion",
-    title: "Cirrion — Devis & Factures depuis WhatsApp en 3 min | ERP IA Bâtiment",
+    title: "Cirrion — Devis & Factures depuis WhatsApp en 3 min | Plus qu'un ERP",
     description:
-      "Générez vos devis et factures depuis WhatsApp en 3 minutes. L'ERP IA pensé pour les artisans et PME du bâtiment.",
+      "Générez vos devis et factures depuis WhatsApp en 3 minutes. Bien plus qu'un ERP : le système d'exploitation des artisans et PME du bâtiment.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cirrion — ERP IA pour artisans du bâtiment",
+    title: "Cirrion — Le système d'exploitation des artisans du bâtiment",
     description:
       "Devis et factures depuis WhatsApp en 3 minutes. Automatisez votre gestion avec Cirrion.",
   },
@@ -196,7 +196,7 @@ const organizationJsonLd = {
     height: 256,
   },
   image: "https://www.cirrion.eu/dashboard-cirrion.jpg",
-  description: "Cirrion est un logiciel ERP IA pour artisans et indépendants. Créez vos devis et factures depuis WhatsApp ou l'application Cirrion ERP en 3 minutes grâce aux vos modèles de devis.",
+  description: "Cirrion est un ERP nouvelle génération pour artisans et indépendants. Créez vos devis et factures depuis WhatsApp ou l'application Cirrion ERP en 3 minutes grâce à vos modèles de devis.",
   foundingDate: "2026",
   foundingLocation: { "@type": "Place", addressCountry: "FR" },
   areaServed: { "@type": "Country", name: "France" },
@@ -255,7 +255,7 @@ const jsonLd = {
   operatingSystem: "Web, iOS, Android",
   url: "https://www.cirrion.eu",
   description:
-    "ERP IA pour artisans et indépendants. Créez devis, factures et PV de réception depuis WhatsApp ou sur l'application web, avec des modèles de devis que vous créez.",
+    "ERP nouvelle génération pour artisans et indépendants. Créez devis, factures et PV de réception depuis WhatsApp ou sur l'application web, avec des modèles de devis que vous créez.",
   featureList: [
     "Devis depuis WhatsApp par vocal en 3 minutes",
     "Vos modèles de devis sur l'application ERP",
@@ -329,7 +329,7 @@ const jsonLd = {
 const productJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "Cirrion — ERP IA pour artisans",
+  name: "Cirrion — ERP nouvelle génération pour artisans",
   description:
     "Logiciel de devis, facturation et gestion pour artisans et TPE de services. Devis en 3 minutes depuis WhatsApp par message vocal, facturation électronique conforme 2026, rentabilité par chantier, gestion de stock automatique, relances automatiques et rapprochement bancaire.",
   brand: { "@type": "Brand", name: "Cirrion" },

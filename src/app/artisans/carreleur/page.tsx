@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
 export const metadata: Metadata = {
-  title: "Logiciel devis carreleur WhatsApp — Cirrion | ERP IA Bâtiment",
+  title: "Logiciel devis carreleur WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour carreleurs. Créez vos devis carrelage depuis WhatsApp ou sur l'application Cirrion ERP : faïence, sol, terrasse, e-facturation 2026.",
   keywords: ["logiciel devis carreleur", "devis carreleur WhatsApp", "logiciel carrelage", "ERP carreleur", "devis carrelage au m2"],

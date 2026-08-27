@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
 export const metadata: Metadata = {
-  title: "Logiciel devis peintre WhatsApp — Cirrion | ERP IA Bâtiment",
+  title: "Logiciel devis peintre WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour peintres en bâtiment. Créez vos devis peinture depuis WhatsApp en 3 min : ravalement façade, décoration intérieure, e-facturation 2026.",
   keywords: ["logiciel devis peintre", "devis peintre WhatsApp", "logiciel peintre bâtiment", "ERP peintre", "devis peinture bâtiment"],

@@ -1,5 +1,5 @@
 export default function Marquee() {
-  const row1 = ["WhatsApp", "Devis PDF", "Factures", "Signature électronique", "ERP IA", "Bâtiment", "Artisans", "PME"];
+  const row1 = ["WhatsApp", "Devis PDF", "Factures", "Signature électronique", "Plus qu'un ERP", "Bâtiment", "Artisans", "PME"];
   const row2 = ["100% Français", "RGPD", "IA Souveraine", "Zéro formation", "24h/24", "3 minutes", "ROI x3", "Relances auto"];
 
   const renderItems = (items: string[]) =>

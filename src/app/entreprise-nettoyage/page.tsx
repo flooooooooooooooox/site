@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Logiciel pour entreprise de nettoyage — Devis, factures récurrentes & planning | Cirrion",
   description:
-    "Cirrion, l'ERP IA pour les entreprises de nettoyage : devis en 3 min depuis WhatsApp, factures récurrentes automatiques (contrats mensuels), relances, planning des agents et suivi des heures. Idéal pour lancer et gérer votre société de nettoyage.",
+    "Cirrion, l'ERP nouvelle génération pour les entreprises de nettoyage : devis en 3 min depuis WhatsApp, factures récurrentes automatiques (contrats mensuels), relances, planning des agents et suivi des heures. Idéal pour lancer et gérer votre société de nettoyage.",
   keywords: [
     "logiciel entreprise de nettoyage",
     "logiciel société de nettoyage",

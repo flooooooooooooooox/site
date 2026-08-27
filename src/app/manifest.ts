@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Cirrion — ERP IA pour artisans du bâtiment",
+    name: "Cirrion — Le système d'exploitation des artisans du bâtiment",
     short_name: "Cirrion",
     description:
       "Créez vos devis et factures depuis WhatsApp ou sur l'application Cirrion ERP. Logiciel IA pour artisans et PME du bâtiment.",

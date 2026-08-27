@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
 export const metadata: Metadata = {
-  title: "Logiciel devis plombier WhatsApp — Cirrion | ERP IA Bâtiment",
+  title: "Logiciel devis plombier WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour plombiers et chauffagistes. Créez vos devis plomberie depuis WhatsApp en 3 min : salle de bain, chauffe-eau, chauffage, e-facturation 2026.",
   keywords: ["logiciel devis plombier", "devis plombier WhatsApp", "logiciel plombier chauffagiste", "ERP plombier", "gestion plombier bâtiment"],

@@ -275,7 +275,7 @@ export default function CinematicLandingHero() {
           Prêt à gagner 8h/semaine ?
         </h2>
         <p style={{ color: "rgba(232,237,244,0.5)", fontSize: "1.05rem", marginBottom: "2.5rem", maxWidth: "30rem", lineHeight: 1.6 }}>
-          Rejoignez les artisans du bâtiment qui ont automatisé leur administratif avec Floxia.
+          Rejoignez les artisans du bâtiment qui ont automatisé leur administratif avec Cirrion.
         </p>
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
           <a href="#tarifs" className="btn-floxia-primary" style={{ padding: "1rem 2.25rem", borderRadius: "999px", fontSize: "1rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
@@ -312,7 +312,7 @@ export default function CinematicLandingHero() {
                   Administrez votre chantier <span style={{ color: "#F5C842" }}>depuis le terrain.</span>
                 </h3>
                 <p style={{ color: "rgba(232,237,244,0.5)", fontSize: "0.9rem", lineHeight: 1.65 }}>
-                  Un message vocal ou texte suffit. <span style={{ color: "#E8EDF4", fontWeight: 600 }}>Floxia</span> génère vos devis, factures, PV de réception et relances — automatiquement.
+                  Un message vocal ou texte suffit. <span style={{ color: "#E8EDF4", fontWeight: 600 }}>Cirrion</span> génère vos devis, factures, PV de réception et relances — automatiquement.
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginTop: "1.5rem" }}>
                   {["Devis PDF en 3 min via WhatsApp", "Relances auto devis & factures", "Agent IA réceptionniste 24h/24"].map((f, i) => (
@@ -350,9 +350,9 @@ export default function CinematicLandingHero() {
                         {/* Header */}
                         <div className="flx-widget" style={{ background: "#1F2C34", padding: "40px 12px 10px", display: "flex", alignItems: "center", gap: "8px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                           <svg width="12" height="12" fill="none" stroke="#25D366" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-                          <div style={{ width: 28, height: 28, borderRadius: "50%", background: "linear-gradient(135deg, #F5C842, #d4a823)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 11, color: "#0A1520" }}>F</div>
+                          <div style={{ width: 28, height: 28, borderRadius: "50%", background: "linear-gradient(135deg, #F5C842, #d4a823)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 11, color: "#0A1520" }}>C</div>
                           <div>
-                            <div style={{ fontSize: 11, fontWeight: 700, color: "#E8EDF4" }}>Floxia IA</div>
+                            <div style={{ fontSize: 11, fontWeight: 700, color: "#E8EDF4" }}>Cirrion</div>
                             <div style={{ fontSize: 9, color: "#25D366" }}>en ligne</div>
                           </div>
                         </div>
@@ -371,7 +371,7 @@ export default function CinematicLandingHero() {
                           </div>
 
                           <div className="flx-widget wa-bubble-in">
-                            <div style={{ color: "#F5C842", fontSize: 10, fontWeight: 700, marginBottom: 3 }}>✦ Floxia IA</div>
+                            <div style={{ color: "#F5C842", fontSize: 10, fontWeight: 700, marginBottom: 3 }}>✦ Cirrion</div>
                             Bien reçu ! Je génère votre devis pour M. Durand — pose carrelage 85m²...
                             <div className="wa-time">09:42 ✓✓</div>
                           </div>
@@ -432,11 +432,11 @@ export default function CinematicLandingHero() {
               {/* RIGHT: Brand + stats */}
               <div className="flx-card-right gsap-reveal" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-end", textAlign: "right" }}>
                 <div className="text-card-silver" style={{ fontFamily: "var(--font-nunito)", fontSize: "clamp(3rem,6vw,7rem)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.9, marginBottom: "1.5rem" }}>
-                  Floxia
+                  Cirrion
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "1rem", alignItems: "flex-end" }}>
                   {[
-                    { val: "47", label: "Fonctionnalités IA", color: "#F5C842" },
+                    { val: "47", label: "Fonctionnalités", color: "#F5C842" },
                     { val: "8h", label: "Gagnées par semaine", color: "#4ADE80" },
                     { val: "3min", label: "Par devis complet", color: "#60A5FA" },
                   ].map((s) => (

@@ -11,7 +11,7 @@ import PointageSection from "@/components/sections/PointageSection";
 import StatsSection from "@/components/sections/StatsSection";
 
 export const metadata: Metadata = {
-  title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | ERP IA",
+  title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | Plus qu'un ERP",
   description:
     "Cirrion : créez vos devis et factures en 3 minutes depuis WhatsApp (vocal) ou l'application ERP avec vos modèles de devis. Logiciel pour électriciens, plombiers, maçons, couvreurs et tous les artisans du bâtiment. Conforme e-facturation 2026.",
   keywords: [

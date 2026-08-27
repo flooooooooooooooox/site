@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
 export const metadata: Metadata = {
-  title: "Logiciel devis menuisier WhatsApp — Cirrion | ERP IA Bâtiment",
+  title: "Logiciel devis menuisier WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour menuisiers. Créez vos devis menuiserie depuis WhatsApp ou sur l'application Cirrion ERP : fenêtres, portes, agencement, e-facturation 2026.",
   keywords: ["logiciel devis menuisier", "devis menuisier WhatsApp", "logiciel menuiserie", "ERP menuisier", "devis agencement bois"],

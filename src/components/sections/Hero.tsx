@@ -342,7 +342,7 @@ export default function Hero() {
               marginBottom: "2rem", color: "#42527A", fontSize: "clamp(0.88rem,1.1vw,0.98rem)",
               fontWeight: 400, lineHeight: 1.6, maxWidth: 460,
             }}>
-            Créez vos devis et factures en 3 minutes depuis WhatsApp — l&apos;ERP IA qui automatise devis, factures, relances et planning pour artisans du bâtiment et TPE de services.
+            Créez vos devis et factures en 3 minutes depuis WhatsApp — plus qu&apos;un ERP : le système d&apos;exploitation de votre entreprise, qui automatise devis, factures, relances et planning pour les artisans du bâtiment et les TPE de services.
             <br /><span className="hero-underline" style={{ color: "#2455D6", fontWeight: 700 }}>−90&nbsp;% de temps administratif en moins</span>. Conforme e-facturation 2026.
           </motion.p>
 

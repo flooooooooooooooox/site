@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
 export const metadata: Metadata = {
-  title: "Logiciel devis électricien WhatsApp — Cirrion | ERP IA Bâtiment",
+  title: "Logiciel devis électricien WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour électriciens. Créez vos devis électricité depuis WhatsApp en 3 min : mise aux normes, tableau électrique, domotique, e-facturation 2026.",
   keywords: ["logiciel devis électricien", "devis électricien WhatsApp", "logiciel électricien bâtiment", "ERP électricien", "gestion électricien"],

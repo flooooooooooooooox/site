@@ -105,7 +105,7 @@ export default function ErpBatiment() {
           {
             type: "p",
             content:
-              "Les ERP traditionnels demandent de saisir manuellement chaque ligne de devis, chaque prestation, chaque montant. Avec un ERP IA comme Cirrion, vous décrivez votre chantier à voix haute depuis WhatsApp — \"installation salle de bain 8m², faïence, plomberie, sanitaires\" — et le logiciel génère automatiquement le devis complet avec votre grille tarifaire et la TVA de votre choix sur chaque ligne.",
+              "Les ERP traditionnels demandent de saisir manuellement chaque ligne de devis, chaque prestation, chaque montant. Avec un ERP nouvelle génération comme Cirrion, vous décrivez votre chantier à voix haute depuis WhatsApp — \"installation salle de bain 8m², faïence, plomberie, sanitaires\" — et le logiciel génère automatiquement le devis complet avec votre grille tarifaire et la TVA de votre choix sur chaque ligne.",
           },
           {
             type: "h2",
@@ -130,7 +130,7 @@ export default function ErpBatiment() {
           },
           {
             type: "cta",
-            content: "Découvrez Cirrion, l'ERP IA conçu pour les artisans du bâtiment",
+            content: "Découvrez Cirrion, l'ERP nouvelle génération conçu pour les artisans du bâtiment",
           },
         ]}
       />

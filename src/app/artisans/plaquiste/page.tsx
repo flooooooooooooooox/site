@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
 export const metadata: Metadata = {
-  title: "Logiciel devis plaquiste WhatsApp — Cirrion | ERP IA Bâtiment",
+  title: "Logiciel devis plaquiste WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour plaquistes. Créez vos devis plâtrerie depuis WhatsApp ou sur l'application Cirrion ERP : cloisons, doublage, isolation, e-facturation 2026.",
   keywords: ["logiciel devis plaquiste", "devis plaquiste WhatsApp", "logiciel plâtrerie", "ERP plaquiste", "devis cloison placo"],

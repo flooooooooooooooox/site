@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
 export const metadata: Metadata = {
-  title: "Logiciel devis couvreur WhatsApp — Cirrion | ERP IA Bâtiment",
+  title: "Logiciel devis couvreur WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour couvreurs et charpentiers. Créez vos devis toiture depuis WhatsApp ou sur l'application Cirrion ERP : couverture, zinguerie, isolation, e-facturation 2026.",
   keywords: ["logiciel devis couvreur", "devis couvreur WhatsApp", "logiciel couverture toiture", "ERP couvreur charpentier", "devis toiture"],

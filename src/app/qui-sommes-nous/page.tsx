@@ -30,7 +30,7 @@ const aboutJsonLd = {
   "@type": "AboutPage",
   name: "Qui sommes-nous — Cirrion",
   url: "https://www.cirrion.eu/qui-sommes-nous",
-  description: "Page officielle de présentation de Cirrion, logiciel ERP IA pour artisans et PME du bâtiment.",
+  description: "Page officielle de présentation de Cirrion, ERP nouvelle génération pour artisans et PME du bâtiment.",
   about: {
     "@type": "Organization",
     name: "Cirrion",
@@ -38,7 +38,7 @@ const aboutJsonLd = {
     url: "https://www.cirrion.eu",
     foundingDate: "2026",
     description:
-      "Cirrion est un ERP IA conçu pour les artisans, auto-entrepreneurs, TPE et PME du bâtiment. Il permet de créer des devis et factures depuis WhatsApp ou l'application Cirrion ERP, avec des modèles que vous créez.",
+      "Cirrion est bien plus qu'un ERP : le système d'exploitation des artisans, auto-entrepreneurs, TPE et PME du bâtiment. Il permet de créer des devis et factures depuis WhatsApp ou l'application Cirrion ERP, avec des modèles que vous créez.",
     founder: {
       "@type": "Person",
       name: "Florian",

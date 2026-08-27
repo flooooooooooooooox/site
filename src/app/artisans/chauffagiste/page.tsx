@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
 export const metadata: Metadata = {
-  title: "Logiciel devis chauffagiste WhatsApp — Cirrion | ERP IA Bâtiment",
+  title: "Logiciel devis chauffagiste WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour chauffagistes. Créez vos devis chauffage depuis WhatsApp ou sur l'application Cirrion ERP : pompe à chaleur, chaudière, RGE, e-facturation 2026.",
   keywords: ["logiciel devis chauffagiste", "devis chauffagiste WhatsApp", "logiciel chauffage", "ERP chauffagiste", "devis pompe à chaleur RGE"],

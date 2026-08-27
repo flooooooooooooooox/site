@@ -58,7 +58,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
     "@type": "LocalBusiness",
     name: `Cirrion — Logiciel de devis bâtiment ${ville.prepo} ${ville.nom}`,
     url: `https://www.cirrion.eu/logiciel-batiment/${ville.slug}`,
-    description: `Logiciel ERP IA de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom}. Créez vos devis depuis WhatsApp en 3 minutes.`,
+    description: `Logiciel ERP nouvelle génération de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom}. Créez vos devis depuis WhatsApp en 3 minutes.`,
     areaServed: {
       "@type": "City",
       name: ville.nom,
@@ -91,7 +91,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Cirrion est l&apos;ERP IA des artisans et PME du bâtiment, disponible partout en France — y compris {ville.prepo} {ville.nom}.
+          Cirrion est le système d&apos;exploitation des artisans et PME du bâtiment — bien plus qu&apos;un ERP, disponible partout en France — y compris {ville.prepo} {ville.nom}.
           Créez vos devis et factures depuis WhatsApp en 3 minutes, ou directement sur l&apos;application Cirrion ERP grâce aux modèles de devis que vous créez.
         </p>
 
