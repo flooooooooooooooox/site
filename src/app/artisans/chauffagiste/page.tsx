@@ -33,17 +33,17 @@ export default function Chauffagiste() {
         badge="Chauffage & Énergie"
         title="Logiciel de devis et facturation pour chauffagistes"
         subtitle="Devis chauffage depuis WhatsApp ou sur l'application Cirrion ERP."
-        intro="Chauffagiste ou installateur RGE : vos devis impliquent des équipements coûteux, des aides à l'énergie et un formalisme strict (RGE, MaPrimeRénov', CEE). Cirrion génère vos devis chauffage par message vocal depuis WhatsApp, ou via des pré-modèles IA sur l'application."
+        intro="Chauffagiste ou installateur RGE : vos devis impliquent des équipements coûteux, des aides à l'énergie et un formalisme strict (RGE, MaPrimeRénov', CEE). Cirrion génère vos devis chauffage par message vocal depuis WhatsApp, ou via vos modèles de devis sur l'application."
         features={[
           { title: "Devis chauffage par vocal", desc: "Dictez l'installation — pompe à chaleur, chaudière, radiateurs — et recevez le devis PDF en 3 min depuis WhatsApp." },
-          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, des pré-modèles de devis chauffage prêts à personnaliser, avec les équipements courants." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis chauffage, prêts à personnaliser, avec les équipements courants." },
           { title: "TVA 5,5% économies d'énergie", desc: "TVA 5,5, 10 ou 20% au choix sur chaque ligne : vous sélectionnez le taux réduit pour les travaux d'amélioration énergétique éligibles." },
           { title: "Relances & contrats d'entretien", desc: "Relances automatiques et rappels d'entretien annuel des installations." },
           { title: "Signature & PV de réception", desc: "Signature électronique et PV de mise en service générés automatiquement." },
         ]}
         useCases={[
           "Installation d'une pompe à chaleur air/eau : devis avec TVA 5,5% généré par vocal, et l'assistant IA répond à vos questions sur les aides.",
-          "Remplacement de chaudière par une chaudière à condensation : devis créé sur l'application avec un pré-modèle.",
+          "Remplacement de chaudière par une chaudière à condensation : devis créé sur l'application avec un de vos modèles.",
           "Contrat d'entretien annuel : Cirrion rappelle automatiquement les échéances et génère les factures récurrentes.",
           "Dépannage chauffage en urgence : devis envoyé sur place au client par WhatsApp.",
         ]}

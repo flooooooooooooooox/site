@@ -45,9 +45,9 @@ const ARTICLES = [
   {
     href: "/ressources/modele-devis-batiment",
     badge: "Modèles",
-    title: "Modèle de devis bâtiment : les pré-modèles IA qui font gagner du temps",
+    title: "Modèle de devis bâtiment : créez vos modèles une fois, réutilisez-les toujours",
     description:
-      "Repartir d'un modèle vierge à chaque chantier fait perdre du temps. Découvrez les pré-modèles de devis générés par l'IA, sur l'application ERP ou depuis WhatsApp.",
+      "Repartir d'un modèle vierge à chaque chantier fait perdre du temps. Découvrez les modèles de devis que vous créez, sur l'application ERP ou depuis WhatsApp.",
     date: "Juin 2026",
     readTime: "5 min",
   },

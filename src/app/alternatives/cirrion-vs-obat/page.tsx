@@ -4,7 +4,7 @@ import AlternativePage from "@/components/sections/AlternativePage";
 export const metadata: Metadata = {
   title: "Cirrion vs Obat : quel logiciel de devis pour artisans choisir ?",
   description:
-    "Comparatif Cirrion vs Obat pour les artisans du bâtiment. Devis WhatsApp, IA, e-facturation 2026, pré-modèles de devis. Découvrez quelle solution choisir.",
+    "Comparatif Cirrion vs Obat pour les artisans du bâtiment. Devis WhatsApp, IA, e-facturation 2026, vos modèles de devis. Découvrez quelle solution choisir.",
   keywords: ["Cirrion vs Obat", "alternative Obat", "Obat avis", "comparatif logiciel devis artisan", "logiciel comme Obat"],
   openGraph: {
     title: "Cirrion vs Obat — Comparatif logiciel devis artisan",
@@ -36,11 +36,11 @@ export default function CirrionVsObat() {
         whyTitle="Ce qui distingue Cirrion d'Obat"
         whyParagraphs={[
           "Obat est un excellent outil de création de devis et factures en ligne, avec une bibliothèque d'ouvrages riche. C'est une solution solide pour la gestion documentaire classique.",
-          "Cirrion ajoute une couche d'intelligence artificielle : vous créez vos devis depuis WhatsApp par simple message vocal, l'agent IA répond à vos clients 24h/24, les relances de devis et factures partent automatiquement, et vous pouvez aussi créer vos devis sur l'application avec des pré-modèles IA. Cirrion couvre toute la chaîne, pas seulement le document.",
+          "Cirrion ajoute une couche d'intelligence artificielle : vous créez vos devis depuis WhatsApp par simple message vocal, l'agent IA répond à vos clients 24h/24, les relances de devis et factures partent automatiquement, et vous pouvez aussi créer vos devis sur l'application avec vos modèles de devis. Cirrion couvre toute la chaîne, pas seulement le document.",
         ]}
         rows={[
           { feature: "Devis par vocal WhatsApp", floxia: true, competitor: false },
-          { feature: "Pré-modèles de devis IA sur l'app", floxia: true, competitor: "partial" },
+          { feature: "Vos modèles de devis sur l'app", floxia: true, competitor: "partial" },
           { feature: "Bibliothèque d'ouvrages / prix", floxia: true, competitor: true },
           { feature: "Agent IA réceptionniste 24h/24", floxia: true, competitor: false },
           { feature: "Relances automatiques devis / factures", floxia: true, competitor: false },

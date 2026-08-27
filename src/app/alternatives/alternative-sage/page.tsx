@@ -4,7 +4,7 @@ import AlternativePage from "@/components/sections/AlternativePage";
 export const metadata: Metadata = {
   title: "Alternative à Sage : logiciel devis & facture bâtiment IA — Cirrion",
   description:
-    "Une alternative à Sage plus simple pour les artisans du bâtiment : devis WhatsApp, IA, e-facturation 2026, pré-modèles de devis. Comparatif Cirrion vs Sage.",
+    "Une alternative à Sage plus simple pour les artisans du bâtiment : devis WhatsApp, IA, e-facturation 2026, vos modèles de devis. Comparatif Cirrion vs Sage.",
   keywords: ["alternative Sage", "Sage bâtiment avis", "logiciel comme Sage", "remplacer Sage artisan", "concurrent Sage"],
   openGraph: {
     title: "Alternative à Sage — Cirrion pour artisans du bâtiment",
@@ -41,7 +41,7 @@ export default function AlternativeSage() {
         rows={[
           { feature: "Spécialisé bâtiment / artisan", floxia: true, competitor: "partial" },
           { feature: "Devis par vocal WhatsApp", floxia: true, competitor: false },
-          { feature: "Pré-modèles de devis IA", floxia: true, competitor: false },
+          { feature: "Vos modèles de devis", floxia: true, competitor: false },
           { feature: "Agent IA réceptionniste 24h/24", floxia: true, competitor: false },
           { feature: "Relances automatiques IA", floxia: true, competitor: false },
           { feature: "Export comptabilité 1 clic", floxia: true, competitor: true },

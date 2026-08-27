@@ -36,7 +36,7 @@ export default function Peintre() {
         intro="Peintre en bâtiment, spécialiste du ravalement ou décorateur d'intérieur : vous jonglez entre les visites de chantier et la rédaction des devis. Vous dictez la prestation par vocal, Cirrion génère un devis PDF professionnel avec vos prix du catalogue, depuis votre téléphone, en sortie de visite."
         features={[
           { title: "Devis peinture par vocal en 3 min", desc: "Dictez la prestation par vocal — ravalement, rénovation intérieure, décoration — Cirrion génère le devis PDF avec vos prix du catalogue." },
-          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, l'IA propose des pré-modèles de devis peinture prêts à personnaliser avec vos prestations types." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis peinture, créés avec vos prestations types." },
           { title: "TVA peinture au choix", desc: "10% pour la rénovation intérieure et ravalement de résidence principale, 20% pour le neuf. Vous choisissez le taux sur chaque ligne, Cirrion l'applique sur le devis." },
           { title: "Catalogue de prestations", desc: "Enregistrez vos prix par type de prestation : préparation des supports, lessivage, enduit, peinture, papier peint, revêtement de sol." },
           { title: "Envoi et signature électronique", desc: "Le client reçoit le devis par WhatsApp ou email et peut signer depuis son téléphone en un clic, avec valeur légale." },

@@ -33,10 +33,10 @@ export default function Carreleur() {
         badge="Carrelage & Revêtements"
         title="Logiciel de devis et facturation pour carreleurs"
         subtitle="Devis carrelage depuis WhatsApp ou sur l'application Cirrion ERP."
-        intro="Carreleur, mosaïste ou poseur de revêtements : vos journées se passent sur les chantiers, pas derrière l'administratif. Cirrion génère vos devis carrelage par message vocal depuis WhatsApp, ou via des pré-modèles IA sur l'application, avec vos prix du catalogue et la TVA de votre choix sur chaque ligne."
+        intro="Carreleur, mosaïste ou poseur de revêtements : vos journées se passent sur les chantiers, pas derrière l'administratif. Cirrion génère vos devis carrelage par message vocal depuis WhatsApp, ou via vos modèles de devis sur l'application, avec vos prix du catalogue et la TVA de votre choix sur chaque ligne."
         features={[
           { title: "Devis carrelage par vocal", desc: "Dictez la prestation — sol, murs, faïence — Cirrion génère le devis en 3 min avec vos prix du catalogue." },
-          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, des pré-modèles de devis carrelage prêts à personnaliser avec vos prestations types." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis carrelage, prêts à personnaliser avec vos prestations types." },
           { title: "Bibliothèque de prestations", desc: "Carrelage, colle, joints, pose : enregistrez vos prestations et vos prix, réutilisables sur chaque devis." },
           { title: "TVA rénovation au choix", desc: "10% pour la rénovation, 20% pour le neuf. Vous choisissez le taux sur chaque ligne, Cirrion l'applique sur le devis." },
           { title: "Catalogue de prix réutilisable", desc: "Enregistrez vos prix par type de pose et de matériau pour des devis ultra-rapides." },
@@ -44,7 +44,7 @@ export default function Carreleur() {
         ]}
         useCases={[
           "Carrelage d'une salle de bain 8m² + faïence murale : devis détaillé fourniture et pose, généré par vocal.",
-          "Pose de grès cérame sur une terrasse 30m² : devis créé sur l'application à partir d'un pré-modèle, TVA 10%.",
+          "Pose de grès cérame sur une terrasse 30m² : devis créé sur l'application à partir d'un de vos modèles, TVA 10%.",
           "Rénovation de sol d'un appartement : devis multi-pièces généré en quelques minutes.",
           "Carreleur indépendant : devis créés en sortie de visite, suivi des signatures depuis le téléphone.",
         ]}

@@ -156,13 +156,13 @@ export default function DevisWhatsApp() {
           {
             type: "p",
             content:
-              "WhatsApp n'est pas le seul canal. Vous pouvez aussi créer vos devis directement sur l'application Cirrion ERP, depuis un ordinateur ou une tablette. Sur l'application, ce n'est pas du vocal : l'IA vous propose des pré-modèles de devis adaptés à votre métier, que vous personnalisez en quelques clics. Idéal au bureau pour les devis complexes à plusieurs postes.",
+              "WhatsApp n'est pas le seul canal. Vous pouvez aussi créer vos devis directement sur l'application Cirrion ERP, depuis un ordinateur ou une tablette. Sur l'application, ce n'est pas du vocal : vous réutilisez vos modèles de devis, créés par vos soins, que vous personnalisez en quelques clics. Idéal au bureau pour les devis complexes à plusieurs postes.",
           },
           {
             type: "ul",
             items: [
               "Sur WhatsApp — rapide, sur le terrain, par vocal ou écrit. Parfait en sortie de visite de chantier.",
-              "Sur l'application Cirrion ERP — au bureau, avec pré-modèles de devis IA, catalogue de prix et vue détaillée. Parfait pour les chantiers complexes.",
+              "Sur l'application Cirrion ERP — au bureau, avec vos modèles de devis, catalogue de prix et vue détaillée. Parfait pour les chantiers complexes.",
               "Les deux canaux sont synchronisés : un devis commencé sur WhatsApp peut être finalisé sur l'application, et inversement.",
             ],
           },

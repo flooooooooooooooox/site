@@ -92,7 +92,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
           Cirrion est l&apos;ERP IA des artisans et PME du bâtiment, disponible partout en France — y compris {ville.prepo} {ville.nom}.
-          Créez vos devis et factures depuis WhatsApp en 3 minutes, ou directement sur l&apos;application Cirrion ERP grâce aux pré-modèles de devis générés par l&apos;IA.
+          Créez vos devis et factures depuis WhatsApp en 3 minutes, ou directement sur l&apos;application Cirrion ERP grâce aux modèles de devis que vous créez.
         </p>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
@@ -105,7 +105,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "0.7rem", marginBottom: "2.5rem" }}>
           {[
             "Devis créé depuis WhatsApp par message vocal, directement sur le chantier.",
-            "Pré-modèles de devis générés par l'IA sur l'application Cirrion ERP, idéal au bureau.",
+            "Vos modèles de devis réutilisables sur l'application Cirrion ERP, idéal au bureau.",
             "Relances automatiques des devis et factures pour ne plus perdre de chantiers.",
             "Conformité e-facturation 2026 native, sans paperasse supplémentaire.",
             "Hébergement 100% France et conformité RGPD.",

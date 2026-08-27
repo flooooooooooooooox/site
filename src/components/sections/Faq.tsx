@@ -6,11 +6,11 @@ import { ChevronDown } from "lucide-react";
 const FAQS = [
   {
     q: "Comment créer un devis avec Cirrion ?",
-    a: "Vous avez deux façons de créer un devis. Depuis WhatsApp : décrivez le chantier par message vocal ou écrit, et Cirrion génère le devis PDF en moins de 3 minutes. Ou directement sur l'application Cirrion ERP : l'IA vous propose des pré-modèles de devis prêts à l'emploi que vous personnalisez en quelques clics. À vous de choisir le canal qui vous convient.",
+    a: "Vous avez deux façons de créer un devis. Depuis WhatsApp : décrivez le chantier par message vocal ou écrit, et Cirrion génère le devis PDF en moins de 3 minutes. Ou directement sur l'application Cirrion ERP : vous réutilisez vos propres modèles de devis que vous personnalisez en quelques clics. À vous de choisir le canal qui vous convient.",
   },
   {
     q: "Peut-on faire un devis directement sur l'application Cirrion ERP ?",
-    a: "Oui. En plus de WhatsApp, vous pouvez créer vos devis directement dans l'application web Cirrion ERP. L'IA génère des pré-modèles de devis adaptés à votre métier que vous n'avez plus qu'à ajuster (quantités, prix, prestations). Sur l'application, ce n'est pas du vocal : tout se fait à l'écran, avec votre catalogue de prix et vos modèles enregistrés.",
+    a: "Oui. En plus de WhatsApp, vous pouvez créer vos devis directement dans l'application web Cirrion ERP. Vous y créez vos propres modèles de devis, adaptés à votre métier, qu'il ne reste plus qu'à ajuster (quantités, prix, prestations). Sur l'application, ce n'est pas du vocal : tout se fait à l'écran, avec votre catalogue de prix et vos modèles enregistrés.",
   },
   {
     q: "Comment Cirrion s'intègre avec WhatsApp ?",
@@ -18,7 +18,7 @@ const FAQS = [
   },
   {
     q: "En combien de temps est généré un devis ?",
-    a: "En moins de 3 minutes depuis WhatsApp : vous décrivez le chantier par vocal ou texte, et Cirrion génère le devis PDF avec votre logo, vos tarifs et la bonne TVA (5,5%, 10% ou 20%). Sur l'application Cirrion ERP, c'est encore plus rapide grâce aux pré-modèles de devis générés par l'IA.",
+    a: "En moins de 3 minutes depuis WhatsApp : vous décrivez le chantier par vocal ou texte, et Cirrion génère le devis PDF avec votre logo, vos tarifs et la bonne TVA (5,5%, 10% ou 20%). Sur l'application Cirrion ERP, c'est encore plus rapide grâce aux modèles de devis que vous créez.",
   },
   {
     q: "Cirrion gère-t-il la facturation électronique 2026 ?",
@@ -30,7 +30,7 @@ const FAQS = [
   },
   {
     q: "Puis-je utiliser Cirrion depuis mon téléphone sur chantier ?",
-    a: "Oui. Sur le terrain, tout fonctionne depuis WhatsApp sur votre téléphone — vous n'avez pas besoin d'ouvrir un ordinateur pour créer un devis, envoyer une facture ou consulter un chantier. Au bureau, l'application Cirrion ERP vous offre une vue complète avec ses pré-modèles de devis et son tableau de bord.",
+    a: "Oui. Sur le terrain, tout fonctionne depuis WhatsApp sur votre téléphone — vous n'avez pas besoin d'ouvrir un ordinateur pour créer un devis, envoyer une facture ou consulter un chantier. Au bureau, l'application Cirrion ERP vous offre une vue complète avec vos modèles de devis et son tableau de bord.",
   },
   {
     q: "Combien coûte Cirrion ?",
@@ -38,7 +38,7 @@ const FAQS = [
   },
   {
     q: "Cirrion fonctionne-t-il pour tous les corps de métier du bâtiment ?",
-    a: "Oui — électriciens, plombiers, maçons, peintres, menuisiers, carreleurs, couvreurs... Cirrion comprend le vocabulaire et les spécificités de chaque métier : choix de la TVA par type de travaux, gestion des avenants et avoirs. Les pré-modèles de devis de l'application sont adaptés à chaque métier.",
+    a: "Oui — électriciens, plombiers, maçons, peintres, menuisiers, carreleurs, couvreurs... Cirrion comprend le vocabulaire et les spécificités de chaque métier : choix de la TVA par type de travaux, gestion des avenants et avoirs. Vous enregistrez dans l'application vos propres modèles de devis, adaptés à votre métier.",
   },
   {
     q: "Cirrion fonctionne-t-il hors connexion ?",

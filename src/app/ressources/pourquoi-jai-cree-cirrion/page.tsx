@@ -148,7 +148,7 @@ export default function PourquoiCirrion() {
           {
             type: "p",
             content:
-              "L'application ERP existe bien sûr, avec les pré-modèles de devis générés par IA pour ceux qui préfèrent travailler au bureau. Mais elle n'est pas le prérequis. C'est un choix d'architecture, et c'est aussi un choix philosophique : l'outil doit s'adapter au métier, jamais l'inverse.",
+              "L'application ERP existe bien sûr, avec vos modèles de devis pour ceux qui préfèrent travailler au bureau. Mais elle n'est pas le prérequis. C'est un choix d'architecture, et c'est aussi un choix philosophique : l'outil doit s'adapter au métier, jamais l'inverse.",
           },
           {
             type: "h2",
@@ -176,7 +176,7 @@ export default function PourquoiCirrion() {
           {
             type: "ul",
             items: [
-              "Devis et factures — depuis WhatsApp par vocal, ou depuis l'application avec des pré-modèles IA",
+              "Devis et factures — depuis WhatsApp par vocal, ou depuis l'application avec vos modèles de devis",
               "Signature électronique à valeur légale, pour ne plus courir après un devis signé",
               "Relances automatiques des devis sans réponse et des factures impayées",
               "Facturation électronique conforme 2026, via B2Brouter (plateforme de dématérialisation)",

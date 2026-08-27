@@ -33,10 +33,10 @@ export default function Plaquiste() {
         badge="Plâtrerie & Isolation"
         title="Logiciel de devis et facturation pour plaquistes"
         subtitle="Devis plâtrerie depuis WhatsApp ou sur l'application Cirrion ERP."
-        intro="Plaquiste, plâtrier ou spécialiste de l'isolation : vos journées se passent sur les chantiers, pas derrière un bureau. Cirrion génère vos devis plâtrerie par message vocal depuis WhatsApp, ou via des pré-modèles IA sur l'application, avec vos prix du catalogue et la TVA de votre choix sur chaque ligne."
+        intro="Plaquiste, plâtrier ou spécialiste de l'isolation : vos journées se passent sur les chantiers, pas derrière un bureau. Cirrion génère vos devis plâtrerie par message vocal depuis WhatsApp, ou via vos modèles de devis sur l'application, avec vos prix du catalogue et la TVA de votre choix sur chaque ligne."
         features={[
           { title: "Devis plâtrerie par vocal", desc: "Dictez la prestation — cloisons, doublage, plafonds — Cirrion génère le devis PDF en 3 min avec vos prix du catalogue." },
-          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, des pré-modèles de devis plâtrerie prêts à personnaliser avec vos prestations types." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis plâtrerie, prêts à personnaliser avec vos prestations types." },
           { title: "TVA isolation 5,5%", desc: "TVA 5,5, 10 ou 20% au choix sur chaque ligne : vous sélectionnez le taux réduit pour les travaux d'isolation thermique éligibles." },
           { title: "Catalogue de prestations", desc: "Plaques, rails, isolant, pose : enregistrez vos prestations et vos prix dans votre bibliothèque, réutilisable sur chaque devis." },
           { title: "Relances automatiques", desc: "Devis non signé relancé à J+3, J+7, J+14. Facture impayée relancée automatiquement." },
@@ -44,7 +44,7 @@ export default function Plaquiste() {
         ]}
         useCases={[
           "Cloisons et doublage d'un appartement neuf : devis multi-pièces généré par vocal en sortie de visite.",
-          "Isolation thermique intérieure (ITI) : devis TVA 5,5% créé sur l'application à partir d'un pré-modèle.",
+          "Isolation thermique intérieure (ITI) : devis TVA 5,5% créé sur l'application à partir d'un de vos modèles.",
           "Pose de faux plafonds dans des bureaux : devis détaillé pièce par pièce, avec les finitions.",
           "Plaquiste indépendant : devis créés depuis le chantier, suivi des paiements depuis le téléphone.",
         ]}

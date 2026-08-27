@@ -86,7 +86,7 @@ export default function AutoEntrepreneur() {
           {
             type: "p",
             content:
-              "Avec Cirrion, vous créez vos devis par simple message vocal sur WhatsApp, directement depuis le chantier. Décrivez les travaux, et le devis PDF conforme est généré en 3 minutes, avec vos coordonnées, votre numéro SIRET et les bonnes mentions. Vous pouvez aussi passer par l'application Cirrion, qui propose des pré-modèles de devis prêts à personnaliser — idéal le soir, au calme.",
+              "Avec Cirrion, vous créez vos devis par simple message vocal sur WhatsApp, directement depuis le chantier. Décrivez les travaux, et le devis PDF conforme est généré en 3 minutes, avec vos coordonnées, votre numéro SIRET et les bonnes mentions. Vous pouvez aussi passer par l'application Cirrion, où vous réutilisez vos modèles de devis — idéal le soir, au calme.",
           },
           {
             type: "h2",

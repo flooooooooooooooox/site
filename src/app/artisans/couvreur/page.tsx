@@ -33,10 +33,10 @@ export default function Couvreur() {
         badge="Couverture & Charpente"
         title="Logiciel de devis et facturation pour couvreurs"
         subtitle="Devis toiture depuis WhatsApp ou sur l'application Cirrion ERP."
-        intro="Couvreur, charpentier ou zingueur : vos chantiers exigent de la réactivité, avec des interventions souvent urgentes après un sinistre. Cirrion vous permet de générer un devis toiture par message vocal depuis WhatsApp, ou via des pré-modèles IA sur l'application, avec vos prix du catalogue et la TVA de votre choix."
+        intro="Couvreur, charpentier ou zingueur : vos chantiers exigent de la réactivité, avec des interventions souvent urgentes après un sinistre. Cirrion vous permet de générer un devis toiture par message vocal depuis WhatsApp, ou via vos modèles de devis sur l'application, avec vos prix du catalogue et la TVA de votre choix."
         features={[
           { title: "Devis toiture par vocal", desc: "Dictez les ouvrages — tuiles, ardoises, zinguerie, isolation — et recevez le devis PDF en 3 min avec vos prix du catalogue." },
-          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, des pré-modèles de devis couverture prêts à personnaliser pour vos chantiers complexes." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis couverture, prêts à personnaliser pour vos chantiers complexes." },
           { title: "Devis d'urgence rapide", desc: "Après une tempête ou une fuite, générez un devis sur place en quelques minutes pour rassurer le client." },
           { title: "TVA rénovation au choix", desc: "5,5% pour l'isolation de toiture, 10% en rénovation, 20% pour le neuf. Vous choisissez le taux sur chaque ligne, Cirrion l'applique sur le devis." },
           { title: "Relances & garantie décennale", desc: "Relances automatiques et suivi des garanties sur vos travaux de couverture." },

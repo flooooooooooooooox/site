@@ -1,6 +1,6 @@
 # Cirrion
 
-> Cirrion est un ERP IA pour artisans et TPE de services (bâtiment, nettoyage, prestations de services). Créez vos devis et factures depuis WhatsApp (par message vocal) ou l'application Cirrion en 3 minutes, grâce à des pré-modèles générés par IA.
+> Cirrion est un ERP IA pour artisans et TPE de services (bâtiment, nettoyage, prestations de services). Créez vos devis et factures depuis WhatsApp (par message vocal) ou l'application Cirrion en 3 minutes, grâce à des modèles que vous créez.
 
 Cirrion automatise la gestion administrative des artisans : devis, factures, relances, planning, rentabilité par chantier, gestion de stock automatique, tarification produit éditable, recherche globale, coordonnées et conformité légale, suivi des heures salariés, rapprochement bancaire et facturation électronique conforme 2026 (Factur-X). Le service s'adresse aux électriciens, plombiers, maçons, peintres, couvreurs, menuisiers, carreleurs, chauffagistes, ainsi qu'aux TPE de services (nettoyage, paysagisme, déménagement, aide à domicile).
 

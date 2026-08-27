@@ -30,7 +30,7 @@ const PLANS = [
         category: "Devis & facturation",
         items: [
           "Création de devis sur l'application Cirrion ERP",
-          "Pré-modèles de devis générés par l'IA",
+          "Vos modèles de devis réutilisables",
           "Devis PDF par vocal / WhatsApp (3 min)",
           "Factures acompte / finale / tous types",
           "Factures périodiques & récurrentes auto",

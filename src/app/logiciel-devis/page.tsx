@@ -49,7 +49,7 @@ export default function LogicielDevisIndex() {
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "1rem", lineHeight: 1.8, marginBottom: "3rem", maxWidth: "640px" }}>
-          Cirrion génère vos devis en quelques minutes depuis WhatsApp ou sur l&apos;application Cirrion ERP avec des pré-modèles IA. Retrouvez la page dédiée à votre métier et votre ville pour découvrir comment Cirrion s&apos;adapte à votre activité.
+          Cirrion génère vos devis en quelques minutes depuis WhatsApp ou sur l&apos;application Cirrion ERP avec vos modèles de devis. Retrouvez la page dédiée à votre métier et votre ville pour découvrir comment Cirrion s&apos;adapte à votre activité.
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.3rem", color: "var(--text)", marginBottom: "1.2rem" }}>

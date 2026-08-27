@@ -36,12 +36,12 @@ export default function AlternativeBatigest() {
         whyTitle="Pourquoi choisir Cirrion plutôt que Batigest"
         whyParagraphs={[
           "Batigest s'adresse historiquement aux entreprises du bâtiment structurées, avec un besoin de formation et un coût d'implémentation non négligeable. C'est un outil riche mais exigeant.",
-          "Cirrion élimine la barrière de la complexité. Vous créez vos devis par message vocal sur WhatsApp ou via des pré-modèles IA sur l'application, sans manuel ni formation. L'IA gère les relances, l'accueil client et la conformité e-facturation 2026 automatiquement. C'est l'alternative à Batigest pour ceux qui veulent la puissance sans la lourdeur.",
+          "Cirrion élimine la barrière de la complexité. Vous créez vos devis par message vocal sur WhatsApp ou via vos modèles de devis sur l'application, sans manuel ni formation. L'IA gère les relances, l'accueil client et la conformité e-facturation 2026 automatiquement. C'est l'alternative à Batigest pour ceux qui veulent la puissance sans la lourdeur.",
         ]}
         rows={[
           { feature: "Prise en main sans formation", floxia: true, competitor: false },
           { feature: "Devis par vocal WhatsApp", floxia: true, competitor: false },
-          { feature: "Pré-modèles de devis IA", floxia: true, competitor: "partial" },
+          { feature: "Vos modèles de devis", floxia: true, competitor: "partial" },
           { feature: "Relances automatiques IA", floxia: true, competitor: false },
           { feature: "Gestion de chantier complète", floxia: true, competitor: true },
           { feature: "E-facturation 2026 conforme", floxia: true, competitor: true },

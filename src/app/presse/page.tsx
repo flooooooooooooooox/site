@@ -85,7 +85,7 @@ export default function Presse() {
           Cirrion en quelques mots
         </h2>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "1rem" }}>
-          <strong style={{ color: "var(--text)" }}>Cirrion</strong> (aussi appelé <strong style={{ color: "var(--text)" }}>CirrionOS</strong>) est un logiciel ERP IA destiné aux artisans, auto-entrepreneurs, TPE et PME du bâtiment en France. Il permet de créer des devis et factures en 3 minutes, depuis WhatsApp par message vocal ou sur l&apos;application web Cirrion ERP avec des pré-modèles de devis générés par l&apos;IA.
+          <strong style={{ color: "var(--text)" }}>Cirrion</strong> (aussi appelé <strong style={{ color: "var(--text)" }}>CirrionOS</strong>) est un logiciel ERP IA destiné aux artisans, auto-entrepreneurs, TPE et PME du bâtiment en France. Il permet de créer des devis et factures en 3 minutes, depuis WhatsApp par message vocal ou sur l&apos;application web Cirrion ERP avec des modèles de devis que vous créez.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
           Fondé en 2024 par Florian, ingénieur en automatisation, Cirrion a pour mission de rendre aux artisans le temps qu&apos;ils consacrent à l&apos;administratif, en apportant aux petites structures du bâtiment les outils d&apos;automatisation dont bénéficient les grandes entreprises.

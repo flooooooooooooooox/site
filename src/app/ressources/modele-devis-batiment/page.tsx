@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
 export const metadata: Metadata = {
-  title: "Modèle de devis bâtiment : pré-modèles IA prêts à l'emploi — Cirrion",
+  title: "Modèle de devis bâtiment : créez vos modèles réutilisables — Cirrion",
   description:
-    "Modèles de devis bâtiment gratuits et pré-modèles générés par l'IA. Créez des devis professionnels conformes en quelques clics sur l'application Cirrion ERP ou depuis WhatsApp.",
+    "Modèles de devis bâtiment : créez vos propres modèles réutilisables et générez des devis professionnels conformes en quelques clics, sur l'application Cirrion ERP ou depuis WhatsApp.",
   keywords: [
     "modèle devis bâtiment", "modèle devis artisan", "exemple devis travaux",
-    "pré-modèle devis", "logiciel devis en ligne", "créer devis en ligne artisan",
+    "modèle devis", "logiciel devis en ligne", "créer devis en ligne artisan",
     "modèle devis gratuit bâtiment", "template devis BTP",
   ],
   openGraph: {
-    title: "Modèle de devis bâtiment — Pré-modèles IA prêts à l'emploi",
+    title: "Modèle de devis bâtiment — Créez vos modèles réutilisables",
     description:
-      "Créez des devis bâtiment professionnels en quelques clics avec les pré-modèles IA de Cirrion, sur l'application ERP ou depuis WhatsApp.",
+      "Créez des devis bâtiment professionnels en quelques clics avec vos modèles de devis enregistrés dans Cirrion, sur l'application ERP ou depuis WhatsApp.",
     url: "https://www.cirrion.eu/ressources/modele-devis-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/modele-devis-batiment" },
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Modèle de devis bâtiment : pré-modèles IA prêts à l'emploi",
-  description: "Modèles de devis bâtiment et pré-modèles générés par l'IA pour créer des devis professionnels conformes en quelques clics.",
+  headline: "Modèle de devis bâtiment : créez vos modèles réutilisables",
+  description: "Créez vos propres modèles de devis bâtiment réutilisables et générez des devis conformes en quelques clics.",
   author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
   publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/modele-devis-batiment",
-  keywords: "modèle devis bâtiment, pré-modèle devis IA, logiciel devis en ligne",
+  keywords: "modèle devis bâtiment, modèle devis artisan, logiciel devis en ligne",
 };
 
 const breadcrumb = {
@@ -48,51 +48,51 @@ export default function ModeleDevis() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <BlogArticle
         badge="Devis & Modèles"
-        title="Modèle de devis bâtiment : les pré-modèles IA qui font gagner du temps"
-        description="Repartir d'un modèle de devis vierge à chaque chantier fait perdre un temps fou. Découvrez comment les pré-modèles de devis générés par l'IA transforment la création de devis pour les artisans du bâtiment."
+        title="Modèle de devis bâtiment : créez vos modèles une fois, réutilisez-les toujours"
+        description="Repartir d'un modèle vierge à chaque chantier fait perdre un temps fou. Découvrez comment enregistrer vos propres modèles de devis et les réutiliser en quelques clics."
         date="18 juin 2026"
         readTime="5 min de lecture"
         blocks={[
           {
             type: "p",
             content:
-              "Un bon modèle de devis bâtiment, c'est la base d'une activité d'artisan bien gérée. Mais télécharger un modèle Word ou Excel gratuit puis tout ressaisir à la main pour chaque chantier reste long et source d'erreurs. C'est là que les pré-modèles de devis générés par l'IA changent la donne : ils s'adaptent à votre métier et se remplissent presque tout seuls.",
+              "Un bon modèle de devis bâtiment, c'est la base d'une activité d'artisan bien gérée. Mais télécharger un modèle Word ou Excel gratuit puis tout ressaisir à la main pour chaque chantier reste long et source d'erreurs. La solution : enregistrer une fois vos propres modèles, avec vos prestations, vos unités et vos taux de TVA — puis les réutiliser à chaque chantier.",
           },
           {
             type: "h2",
-            content: "Qu'est-ce qu'un pré-modèle de devis ?",
+            content: "Qu'est-ce qu'un modèle de devis réutilisable ?",
           },
           {
             type: "p",
             content:
-              "Un pré-modèle de devis est un modèle intelligent, déjà structuré pour votre corps de métier, que l'IA pré-remplit avec les prestations les plus courantes, les bonnes unités et les bons taux de TVA. Contrairement à un modèle de devis statique (Word, Excel, PDF vierge), un pré-modèle s'ajuste automatiquement au type de chantier que vous décrivez. Vous n'avez plus qu'à valider les quantités et les prix.",
+              "C'est un modèle que vous construisez vous-même, une seule fois, pour un type de chantier récurrent : les prestations que vous facturez habituellement, leurs unités, vos prix issus de votre catalogue et le taux de TVA applicable à chaque ligne. Contrairement à un modèle statique (Word, Excel, PDF vierge) qu'il faut retaper, il vit dans l'application : vous le rappelez, vous ajustez les quantités, le devis est prêt.",
           },
           {
             type: "h2",
-            content: "Modèle statique vs pré-modèle IA : la différence",
+            content: "Modèle statique vs modèle IA : la différence",
           },
           {
             type: "ul",
             items: [
               "Modèle Word/Excel gratuit — vous repartez de zéro à chaque fois, vous ressaisissez les prestations, vous calculez la TVA à la main, vous risquez les erreurs et les oublis.",
-              "Pré-modèle de devis IA (Cirrion) — l'IA reconnaît le type de chantier, propose les lignes de prestations adaptées avec votre catalogue de prix, et vous choisissez la TVA (5,5%, 10%, 20%) sur chaque ligne.",
+              "Modèle de devis réutilisable (Cirrion) — vous créez vos propres modèles par type de chantier, avec vos lignes de prestations et votre catalogue de prix, et vous choisissez la TVA (5,5%, 10%, 20%) sur chaque ligne.",
               "Résultat : un devis professionnel conforme en quelques clics au lieu de 30 minutes de saisie.",
             ],
           },
           {
             type: "h2",
-            content: "Deux façons d'utiliser les pré-modèles avec Cirrion",
+            content: "Deux façons d'utiliser vos modèles avec Cirrion",
           },
           {
             type: "p",
             content:
-              "Avec Cirrion, vous créez vos devis là où c'est le plus pratique pour vous. Sur l'application Cirrion ERP (ordinateur ou tablette), vous choisissez un pré-modèle adapté à votre métier et vous le personnalisez à l'écran — idéal pour les chantiers complexes avec plusieurs postes. Depuis WhatsApp, vous décrivez le chantier par message vocal ou écrit, et l'IA construit le devis en 3 minutes — idéal sur le terrain.",
+              "Avec Cirrion, vous créez vos devis là où c'est le plus pratique pour vous. Sur l'application Cirrion ERP (ordinateur ou tablette), vous rappelez l'un de vos modèles et vous le personnalisez à l'écran — idéal pour les chantiers complexes à plusieurs postes. Depuis WhatsApp, vous décrivez le chantier par message vocal ou écrit, et Cirrion construit le devis en 3 minutes — idéal sur le terrain.",
           },
           {
             type: "ul",
             items: [
-              "Sur l'application web : sélection d'un pré-modèle, personnalisation des lignes, ajout de votre catalogue de prix, génération du PDF.",
-              "Sur WhatsApp : description vocale ou écrite du chantier, l'IA génère le devis automatiquement.",
+              "Sur l'application web : sélection d'un de vos modèles, personnalisation des lignes, ajout de votre catalogue de prix, génération du PDF.",
+              "Sur WhatsApp : description vocale ou écrite du chantier, et Cirrion génère le devis automatiquement.",
               "Vos modèles personnalisés sont enregistrés et réutilisables à l'infini.",
             ],
           },
@@ -114,7 +114,7 @@ export default function ModeleDevis() {
           {
             type: "p",
             content:
-              "Cirrion intègre automatiquement tous ces éléments dans chaque pré-modèle. Vous ne risquez plus d'oublier une mention obligatoire, et chaque devis est conforme à la réglementation, y compris l'e-facturation 2026.",
+              "Cirrion intègre automatiquement tous ces éléments dans chaque modèle. Vous ne risquez plus d'oublier une mention obligatoire, et chaque devis est conforme à la réglementation, y compris l'e-facturation 2026.",
           },
           {
             type: "h2",
@@ -131,7 +131,7 @@ export default function ModeleDevis() {
           },
           {
             type: "cta",
-            content: "Créez votre premier devis à partir d'un pré-modèle IA",
+            content: "Créez votre premier modèle de devis en quelques minutes",
           },
         ]}
       />

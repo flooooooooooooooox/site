@@ -38,7 +38,7 @@ const aboutJsonLd = {
     url: "https://www.cirrion.eu",
     foundingDate: "2026",
     description:
-      "Cirrion est un ERP IA conçu pour les artisans, auto-entrepreneurs, TPE et PME du bâtiment. Il permet de créer des devis et factures depuis WhatsApp ou l'application Cirrion ERP, avec des pré-modèles générés par l'IA.",
+      "Cirrion est un ERP IA conçu pour les artisans, auto-entrepreneurs, TPE et PME du bâtiment. Il permet de créer des devis et factures depuis WhatsApp ou l'application Cirrion ERP, avec des modèles que vous créez.",
     founder: {
       "@type": "Person",
       name: "Florian",

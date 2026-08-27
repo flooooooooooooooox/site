@@ -24,7 +24,7 @@ const CATEGORIES: Category[] = [
     color: "#2455D6",
     features: [
       "Devis PDF par vocal/écrit WhatsApp en 3 min",
-      "Devis sur l'application Cirrion ERP (pré-modèles IA)",
+      "Devis sur l'application Cirrion ERP (vos modèles de devis)",
       "PV de réception + facture finale automatisés",
       "Factures d'acompte, finale, tous types",
       "Factures périodiques & récurrentes automatiques",

@@ -13,7 +13,7 @@ import StatsSection from "@/components/sections/StatsSection";
 export const metadata: Metadata = {
   title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | ERP IA",
   description:
-    "Cirrion : créez vos devis et factures en 3 minutes depuis WhatsApp (vocal) ou l'application ERP avec pré-modèles IA. Logiciel pour électriciens, plombiers, maçons, couvreurs et tous les artisans du bâtiment. Conforme e-facturation 2026.",
+    "Cirrion : créez vos devis et factures en 3 minutes depuis WhatsApp (vocal) ou l'application ERP avec vos modèles de devis. Logiciel pour électriciens, plombiers, maçons, couvreurs et tous les artisans du bâtiment. Conforme e-facturation 2026.",
   keywords: [
     "Cirrion",
     "logiciel devis artisan",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "logiciel couvreur",
     "logiciel carreleur",
     "logiciel chauffagiste",
-    "pré-modèle devis IA",
+    "modèle devis artisan",
     "e-facturation 2026 artisan",
     "devis vocal WhatsApp",
     "devis en 3 minutes",
@@ -48,14 +48,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment",
     description:
-      "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Cirrion ERP. Pré-modèles IA, TVA 5,5/10/20% au choix, e-facturation 2026. Pour tous les artisans du bâtiment.",
+      "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Cirrion ERP. Vos modèles de devis, TVA 5,5/10/20% au choix, e-facturation 2026. Pour tous les artisans du bâtiment.",
     url: "https://www.cirrion.eu",
     images: [{ url: "https://www.cirrion.eu/dashboard-cirrion.jpg", width: 1600, height: 787, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cirrion — Devis artisan en 3 min depuis WhatsApp",
-    description: "Logiciel de devis et facturation pour artisans du bâtiment. Pré-modèles IA, TVA auto, e-facturation 2026.",
+    description: "Logiciel de devis et facturation pour artisans du bâtiment. Vos modèles de devis, TVA auto, e-facturation 2026.",
     images: ["https://www.cirrion.eu/dashboard-cirrion.jpg"],
   },
 };

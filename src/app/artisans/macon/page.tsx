@@ -36,7 +36,7 @@ export default function Macon() {
         intro="Maçon, entreprise de gros œuvre ou spécialiste du ravalement : vos chantiers sont souvent longs et complexes, avec une paperasse qui s'accumule. Cirrion centralise devis, factures d'acompte, facture finale et PV de réception dans un seul outil, accessible depuis votre téléphone sur le chantier."
         features={[
           { title: "Devis maçonnerie par vocal", desc: "Décrivez le chantier par message vocal depuis WhatsApp — fondations, murs, chapes, ravalement — et recevez le devis PDF en 3 min." },
-          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, l'IA propose des pré-modèles de devis gros œuvre que vous adaptez à votre chantier en quelques clics." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis gros œuvre et les adaptez à votre chantier en quelques clics." },
           { title: "Acompte et facture finale automatiques", desc: "Facture d'acompte générée à la signature du devis, facture finale en fin de chantier — Cirrion enchaîne les étapes sans que vous y pensiez." },
           { title: "TVA gros œuvre au choix", desc: "10% pour les travaux de rénovation sur existant, 20% pour le neuf, 5,5% pour les travaux d'isolation. Vous choisissez le taux sur chaque ligne, Cirrion l'applique sur le devis." },
           { title: "Gestion des équipes", desc: "Gérez vos équipes, les plannings et les heures de vos salariés depuis le tableau de bord CirrionOS." },

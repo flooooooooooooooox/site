@@ -81,7 +81,7 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Vous êtes {m.nom} {v.prepo} {v.nom} ou dans {v.region} ? Cirrion vous permet de créer vos devis et factures en quelques minutes, depuis WhatsApp par message vocal ou sur l&apos;application Cirrion ERP avec des pré-modèles de devis générés par l&apos;IA. Spécialisé dans {m.domaine}, Cirrion génère des documents conformes avec la TVA de votre choix sur chaque ligne.
+          Vous êtes {m.nom} {v.prepo} {v.nom} ou dans {v.region} ? Cirrion vous permet de créer vos devis et factures en quelques minutes, depuis WhatsApp par message vocal ou sur l&apos;application Cirrion ERP avec des modèles de devis que vous créez. Spécialisé dans {m.domaine}, Cirrion génère des documents conformes avec la TVA de votre choix sur chaque ligne.
         </p>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "1rem" }}>

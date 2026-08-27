@@ -36,7 +36,7 @@ export default function Plombier() {
         intro="Plombier, chauffagiste ou sanitaire : vos chantiers vont du dépannage d'urgence à la rénovation complète de salle de bain. Cirrion comprend le vocabulaire de la plomberie et génère vos devis PDF depuis votre téléphone, avec la TVA de votre choix sur chaque ligne, sans ressaisie manuelle."
         features={[
           { title: "Devis plomberie par vocal", desc: "Dictez vos prestations — remplacement chauffe-eau, rénovation salle de bain, pose radiateurs — et recevez le devis PDF en 3 min." },
-          { title: "Pré-modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, l'IA propose des pré-modèles de devis plomberie prêts à personnaliser. Idéal au bureau pour les chantiers complexes." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis plomberie, prêts à personnaliser. Idéal au bureau pour les chantiers complexes." },
           { title: "TVA plomberie au choix", desc: "5,5% pour les travaux d'économie d'énergie (pompe à chaleur, chaudière à condensation), 10% pour rénovation, 20% pour le neuf. Vous choisissez le taux sur chaque ligne." },
           { title: "Gestion des acomptes", desc: "Facture d'acompte à la signature du devis, facture finale en fin de chantier — tout le cycle est géré automatiquement." },
           { title: "Relances clients automatiques", desc: "Devis non répondu à J+3, J+7, J+14. Plus besoin de relancer manuellement — Cirrion s'en charge." },

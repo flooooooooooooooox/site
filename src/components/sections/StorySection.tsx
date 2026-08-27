@@ -21,7 +21,7 @@ const STEPS: Step[] = [
   {
     icon: FileText,
     tag: "Étape 2",
-    title: "L'IA génère vos documents",
+    title: "Vos documents se génèrent seuls",
     desc: "Devis PDF complet, facture conforme, rapport de chantier — en moins de 3 minutes.",
   },
   {

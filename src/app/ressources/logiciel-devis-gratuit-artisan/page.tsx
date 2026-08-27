@@ -55,7 +55,7 @@ const faqJsonLd = {
       name: "Existe-t-il un logiciel de devis vraiment gratuit pour artisan ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Oui, des outils gratuits existent (modèles Word/Excel, certaines versions freemium). Mais ils imposent souvent des limites : nombre de devis restreint, pas de pré-modèles IA, pas de signature électronique, pas d'envoi direct au client.",
+        text: "Oui, des outils gratuits existent (modèles Word/Excel, certaines versions freemium). Mais ils imposent souvent des limites : nombre de devis restreint, pas de modèles de devis réutilisables, pas de signature électronique, pas d'envoi direct au client.",
       },
     },
     {
@@ -63,7 +63,7 @@ const faqJsonLd = {
       name: "Quel est le meilleur logiciel de devis pour artisan ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Le meilleur logiciel de devis artisan est celui qui fait gagner du temps réellement. Cirrion se distingue par ses pré-modèles IA adaptés à chaque métier et la création de devis depuis WhatsApp par vocal en 3 minutes, sans ordinateur.",
+        text: "Le meilleur logiciel de devis artisan est celui qui fait gagner du temps réellement. Cirrion se distingue par vos modèles de devis réutilisables, adaptés à votre métier et la création de devis depuis WhatsApp par vocal en 3 minutes, sans ordinateur.",
       },
     },
     {
@@ -71,7 +71,7 @@ const faqJsonLd = {
       name: "Peut-on créer un devis depuis son téléphone ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Oui, avec Cirrion vous créez un devis depuis WhatsApp en décrivant le chantier par message vocal ou écrit. L'IA génère le devis PDF et l'envoie au client — depuis votre téléphone, sur le terrain.",
+        text: "Oui, avec Cirrion vous créez un devis depuis WhatsApp en décrivant le chantier par message vocal ou écrit. Cirrion génère le devis PDF et l'envoie au client — depuis votre téléphone, sur le terrain.",
       },
     },
   ],
@@ -103,7 +103,7 @@ export default function LogicielDevisGratuitArtisan() {
             type: "ul",
             items: [
               "Modèles Word ou Excel à télécharger : rapides à trouver, mais tout est à remplir manuellement à chaque nouveau devis.",
-              "Versions freemium de logiciels (Devis Facile, Henrri, etc.) : limitées en nombre de devis, sans pré-modèles IA, sans signature électronique.",
+              "Versions freemium de logiciels (Devis Facile, Henrri, etc.) : limitées en nombre de devis, sans modèles de devis réutilisables, sans signature électronique.",
               "PDF éditables : pratiques pour commencer, mais sans numérotation automatique, sans calcul de TVA, sans envoi direct.",
             ],
           },
@@ -115,7 +115,7 @@ export default function LogicielDevisGratuitArtisan() {
             type: "ul",
             items: [
               "Tout doit être saisi manuellement à chaque devis : nom du client, adresse du chantier, liste des prestations, TVA.",
-              "Pas de pré-modèles adaptés à votre métier — vous repartez d'une feuille blanche à chaque fois.",
+              "Pas de modèles réutilisables adaptés à votre métier — vous repartez d'une feuille blanche à chaque fois.",
               "Pas de signature électronique : le client doit imprimer, signer, scanner et renvoyer.",
               "Pas d'envoi direct depuis le logiciel : vous devez télécharger le PDF puis l'envoyer par email.",
               "Pas d'accès depuis le téléphone sur chantier : il faut rentrer au bureau ou être sur ordinateur.",
@@ -146,7 +146,7 @@ export default function LogicielDevisGratuitArtisan() {
           {
             type: "ul",
             items: [
-              "Pré-modèles de devis IA adaptés à votre métier (électricien, plombier, peintre, maçon, etc.).",
+              "Vos modèles de devis adaptés à votre métier (électricien, plombier, peintre, maçon, etc.).",
               "Création de devis depuis WhatsApp par message vocal en 3 minutes, même sur chantier.",
               "Signature électronique à valeur légale intégrée — votre client signe depuis son téléphone.",
               "Envoi automatique du devis au client par email ou WhatsApp.",
