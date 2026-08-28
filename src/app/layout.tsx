@@ -326,6 +326,50 @@ const jsonLd = {
 
 // Product + AggregateOffer : donne aux moteurs et aux IA une lecture directe
 // de la gamme tarifaire (fourchette, devise, disponibilite).
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.cirrion.eu/#localbusiness",
+  name: "Cirrion",
+  alternateName: "CirrionOS",
+  description:
+    "Logiciel de gestion pour artisans du bâtiment et TPE de services : devis et factures depuis WhatsApp, pointage sur site, TVA préparée et télétransmise. Basé à Caen, dans tout le Calvados et la Normandie.",
+  url: "https://www.cirrion.eu",
+  logo: "https://www.cirrion.eu/icon.png",
+  image: "https://www.cirrion.eu/dashboard-cirrion.jpg",
+  email: "contact@cirrion.eu",
+  telephone: "+33633790542",
+  priceRange: "€€",
+  currenciesAccepted: "EUR",
+  paymentAccepted: "Virement bancaire, prélèvement automatique",
+  founder: { "@type": "Person", name: "Florian Gagnebien" },
+  // Adresse volontairement limitée à la ville : le siège est au domicile du fondateur.
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Caen",
+    postalCode: "14000",
+    addressRegion: "Normandie",
+    addressCountry: "FR",
+  },
+  areaServed: [
+    { "@type": "City", name: "Caen" },
+    { "@type": "AdministrativeArea", name: "Calvados" },
+    { "@type": "AdministrativeArea", name: "Normandie" },
+    { "@type": "Country", name: "France" },
+  ],
+  serviceType: [
+    "Logiciel de devis et facturation pour artisans",
+    "Facturation électronique 2026",
+    "Pointage et preuve de passage",
+    "Préparation et télétransmission de la TVA",
+  ],
+  knowsLanguage: "fr-FR",
+  sameAs: [
+    "https://www.linkedin.com/in/cirrion-pro-9360333aa",
+    "https://www.instagram.com/floxia.pro",
+  ],
+};
+
 const productJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -352,6 +396,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
         <IntroLoader />

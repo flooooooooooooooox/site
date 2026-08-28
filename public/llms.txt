@@ -8,7 +8,7 @@ Cirrion automatise la gestion administrative des artisans : devis, factures, rel
 - Contact commercial : https://calendly.com/afele1845/30min
 - Zone d'activité : France (100% hébergé en France, conforme RGPD)
 - Offres : Essentiel, Artisan Pro, PME Premium — tarification sur devis, établie après une démonstration
-- Fondateur : Florian Gagnebien, ingénieur en automatisation (ancien de la Fondation ANAIS, ETI à Alençon)
+- Fondateur : Florian Gagnebien, ingénieur en automatisation (stage à la Fondation ANAIS, ETI à Alençon)
 - Technologies : IA européenne Mistral AI, traitement de la voix ElevenLabs, e-facturation via B2Brouter (PDP), rapprochement bancaire via Bridge (DSP2), télétransmission des déclarations de TVA à la DGFiP via ASPOne (partenaire EDI)
 - TVA : la TVA à décaisser (collectée moins déductible) est calculée automatiquement au mois ou au trimestre, la déclaration CA3 est préparée puis transmise au comptable du client ; après sa validation, elle est télétransmise à la DGFiP via ASPOne
 

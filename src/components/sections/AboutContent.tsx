@@ -45,7 +45,7 @@ const TEAM = [
     icon: Wrench,
     role: "Fondateur & CEO",
     name: "Florian Gagnebien",
-    text: "Ingénieur en automatisation, passé par la Fondation ANAIS (ETI, Alençon) où il a conçu des automatisations de processus internes. Il pilote la vision produit et le développement de Cirrion.",
+    text: "Ingénieur en automatisation, formé lors d'un stage à la Fondation ANAIS (ETI, Alençon) où il a conçu des automatisations de processus internes. Il pilote la vision produit et le développement de Cirrion.",
     linkedin: "https://www.linkedin.com/in/cirrion-pro-9360333aa",
   },
   {
@@ -107,7 +107,7 @@ export default function AboutContent() {
           <div style={{ display: "flex", flexDirection: "column", gap: "1.3rem", color: "rgba(var(--text-rgb),0.75)", fontSize: "1.08rem", lineHeight: 1.8 }}>
             <p>
               Tout commence avec <strong style={{ color: "var(--text)" }}>Florian Gagnebien</strong>, ingénieur
-              en automatisation. Lors d&apos;une expérience au sein de la{" "}
+              en automatisation. Lors d&apos;un stage au sein de la{" "}
               <strong style={{ color: "var(--text)" }}>Fondation ANAIS</strong>, une ETI basée à Alençon, il
               conçoit et met en place des automatisations de processus qui font gagner des centaines d&apos;heures
               aux équipes — et il mesure concrètement l&apos;impact que ces outils peuvent avoir sur le quotidien

@@ -272,7 +272,7 @@ export default function CinematicLandingHero() {
       {/* LAYER 2: CTA */}
       <div className="flx-cta gsap-reveal" style={{ position: "absolute", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", width: "100vw", padding: "0 1rem", pointerEvents: "auto" }}>
         <h2 className="text-floxia-silver" style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,5vw,4rem)", letterSpacing: "-0.03em", marginBottom: "1rem" }}>
-          Prêt à gagner 8h/semaine ?
+          Prêt à récupérer vos soirées ?
         </h2>
         <p style={{ color: "rgba(232,237,244,0.5)", fontSize: "1.05rem", marginBottom: "2.5rem", maxWidth: "30rem", lineHeight: 1.6 }}>
           Rejoignez les artisans du bâtiment qui ont automatisé leur administratif avec Cirrion.

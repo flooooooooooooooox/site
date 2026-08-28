@@ -100,7 +100,7 @@ export default function PourquoiCirrion() {
           {
             type: "p",
             content:
-              "Lors de mon expérience à la Fondation ANAIS, une ETI basée à Alençon, j'ai travaillé sur la conception et la mise en place d'automatisations de processus internes. Concrètement : identifier les tâches répétitives, les cartographier, puis les faire exécuter par des systèmes plutôt que par des humains. Saisies en double, transferts de données entre outils, relances manuelles, documents à générer à la chaîne.",
+              "Lors de mon stage à la Fondation ANAIS, une ETI basée à Alençon, j'ai travaillé sur la conception et la mise en place d'automatisations de processus internes. Concrètement : identifier les tâches répétitives, les cartographier, puis les faire exécuter par des systèmes plutôt que par des humains. Saisies en double, transferts de données entre outils, relances manuelles, documents à générer à la chaîne.",
           },
           {
             type: "p",
