@@ -50,7 +50,9 @@ export default function Confidentialite() {
           {
             heading: "Cookies",
             body: [
-              "Le site peut utiliser des cookies strictement nécessaires à son fonctionnement et, le cas échéant, à la mesure d'audience. Vous pouvez configurer votre navigateur pour les refuser.",
+              "Ce site ne dépose aucun cookie. Il n'utilise ni outil de mesure d'audience, ni traceur publicitaire, ni bouton de réseau social, et les polices de caractères sont hébergées sur nos propres serveurs : aucune requête n'est adressée à un tiers lors de votre visite.",
+              "Seul un indicateur technique temporaire est conservé par votre navigateur pendant la session, afin de ne pas rejouer l'animation d'accueil à chaque page. Il ne contient aucune donnée personnelle, n'est jamais transmis et disparaît à la fermeture de l'onglet.",
+              "Aucun bandeau de consentement n'est donc nécessaire. Si un outil de mesure d'audience devait être ajouté à l'avenir, votre consentement préalable serait recueilli.",
             ],
           },
         ]}
