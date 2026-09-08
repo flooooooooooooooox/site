@@ -6,7 +6,6 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
-import GhostCursor from "@/components/ui/GhostCursor";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -228,7 +227,7 @@ const LOCAL_LINKS = [
 ];
 
 // Contenu du footer — identique desktop et mobile
-function FooterContent({ isMobile, ghost }: { isMobile: boolean; ghost: boolean }) {
+function FooterContent({ isMobile }: { isMobile: boolean }) {
   const giantTextRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -257,23 +256,6 @@ function FooterContent({ isMobile, ghost }: { isMobile: boolean; ghost: boolean 
       {/* Aurora */}
       <div className="footer-aurora animate-footer-breathe" style={{ position: "absolute", left: "50%", top: "50%", width: "80vw", height: "60vh", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
       <div className="footer-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} />
-
-      {/* Ghost cursor — trainee lumineuse qui suit la souris dans le footer.
-          Monte uniquement quand le footer arrive a l'ecran : l'initialisation
-          WebGL (shaders + bloom) est chere, inutile de la payer en haut de page. */}
-      {!isMobile && ghost && (
-        <GhostCursor
-          trailLength={20}
-          inertia={0.1}
-          grainIntensity={0.02}
-          bloomStrength={0.1}
-          bloomRadius={2.5}
-          brightness={2.8}
-          color="#5e5d5e"
-          edgeIntensity={0.3}
-          zIndex={1}
-        />
-      )}
 
       {/* Giant BG text */}
       <div ref={giantTextRef} className="footer-giant-bg-text" style={{ position: "absolute", bottom: "-5vh", left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", zIndex: 0, pointerEvents: "none", userSelect: "none" }}>
@@ -389,9 +371,6 @@ function FooterContent({ isMobile, ghost }: { isMobile: boolean; ghost: boolean 
 
 export function CinematicFooter() {
   const [isMobile, setIsMobile] = React.useState(false);
-  // Le ghost cursor n'est monte qu'une fois le footer approche par le scroll,
-  // et jamais si l'utilisateur a demande a reduire les animations.
-  const [ghost, setGhost] = React.useState(false);
   const revealRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -401,23 +380,6 @@ export function CinematicFooter() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  useEffect(() => {
-    const el = revealRef.current;
-    if (!el || isMobile) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setGhost(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [isMobile]);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
@@ -425,13 +387,13 @@ export function CinematicFooter() {
       {isMobile ? (
         // Mobile : layout normal dans le flux du document, hauteur naturelle
         <footer style={{ background: "var(--background)", color: "var(--foreground)" }}>
-          <FooterContent isMobile={true} ghost={false} />
+          <FooterContent isMobile={true} />
         </footer>
       ) : (
         // Desktop : effet cinématique avec sticky scroll
         <div ref={revealRef} style={{ position: "relative", height: "100vh", width: "100%", clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}>
           <footer style={{ position: "fixed", bottom: 0, left: 0, height: "100vh", width: "100%" }}>
-            <FooterContent isMobile={false} ghost={ghost} />
+            <FooterContent isMobile={false} />
           </footer>
         </div>
       )}
