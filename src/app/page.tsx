@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import StorySection from "@/components/sections/StorySection";
-import RoiCalculator from "@/components/sections/RoiCalculator";
 import Link from "next/link";
 import Pricing from "@/components/sections/Pricing";
 import CtaBand from "@/components/sections/CtaBand";
 import PartnersBand from "@/components/sections/PartnersBand";
-import PointageSection from "@/components/sections/PointageSection";
 import StatsSection from "@/components/sections/StatsSection";
+import GmailDisclosure from "@/components/sections/GmailDisclosure";
 
 export const metadata: Metadata = {
   title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | Plus qu'un ERP",
@@ -63,44 +62,76 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main style={{ position: "relative", zIndex: 1 }}>
+      {/* Six sections, pas onze : promesse → mecanique → preuve → couverture →
+          prix → passage a l'acte. Le comparatif, le calculateur de ROI, le
+          pointage et la FAQ ont leurs pages dediees, rassemblees plus bas. */}
       <Hero />
       <div style={{ position: "relative", zIndex: 2 }}>
-        <PartnersBand />
-        <StatsSection />
-        <Services />
+        {/* 2 — La mecanique : ce que fait Cirrion, etape par etape */}
         <StorySection />
-        <RoiCalculator />
-        {/* Lien vers le comparatif (page dédiée) */}
-        <section style={{ padding: "1rem 6vw 3rem", textAlign: "center" }}>
-          <Link
-            href="/comparatif"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: "0.6rem",
-              padding: "0.9rem 1.8rem", borderRadius: "999px",
-              border: "1px solid rgba(36,85,214,0.3)", background: "rgba(36,85,214,0.06)",
-              color: "#2455D6", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
-            }}
-          >
-            Comparer Cirrion vs Obat, Sage, EBP — 28 critères →
-          </Link>
-        </section>
+
+        {/* 3 — Le bandeau de confiance, pose sur une surface distincte pour
+               casser l'uniformite visuelle du reste de la page */}
+        <div
+          style={{
+            background: "color-mix(in srgb, var(--foreground) 3%, transparent)",
+            borderTop: "1px solid color-mix(in srgb, var(--foreground) 7%, transparent)",
+            borderBottom: "1px solid color-mix(in srgb, var(--foreground) 7%, transparent)",
+            padding: "clamp(1rem,3vw,2rem) 0",
+          }}
+        >
+          <PartnersBand />
+          <StatsSection />
+        </div>
+
+        {/* 4 — Ce que ça couvre */}
+        <Services />
+
+        {/* 5 — Prix */}
         <Pricing />
-        {/* Lien vers la FAQ (page dédiée) */}
-        <section style={{ padding: "1rem 6vw 3rem", textAlign: "center" }}>
-          <Link
-            href="/faq"
+
+        {/* Aller plus loin — une seule rangee de liens au lieu de sections fantomes */}
+        <section style={{ padding: "clamp(2rem,5vw,3.5rem) 6vw" }}>
+          <div
             style={{
-              display: "inline-flex", alignItems: "center", gap: "0.6rem",
-              padding: "0.9rem 1.8rem", borderRadius: "999px",
-              border: "1px solid rgba(36,85,214,0.3)", background: "rgba(36,85,214,0.06)",
-              color: "#2455D6", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none",
+              maxWidth: 1100,
+              margin: "0 auto",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))",
+              gap: "0.9rem",
             }}
           >
-            Questions fréquentes — voir toutes les réponses →
-          </Link>
+            {[
+              { href: "/roi", label: "Calculer ce que vous récupérez", sub: "Estimation en 30 secondes" },
+              { href: "/comparatif", label: "Cirrion vs Obat, Sage, EBP", sub: "28 critères comparés" },
+              { href: "/pointage-preuve-de-passage", label: "Pointage & preuve de passage", sub: "QR code, photos horodatées" },
+              { href: "/faq", label: "Questions fréquentes", sub: "Toutes les réponses" },
+            ].map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                style={{
+                  display: "block",
+                  padding: "1.1rem 1.3rem",
+                  borderRadius: "0.9rem",
+                  border: "1px solid rgba(36,85,214,0.16)",
+                  background: "rgba(36,85,214,0.04)",
+                  textDecoration: "none",
+                }}
+              >
+                <span style={{ display: "block", color: "#2455D6", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.2rem" }}>
+                  {l.label} →
+                </span>
+                <span style={{ display: "block", color: "rgba(27,42,74,0.5)", fontSize: "0.78rem" }}>{l.sub}</span>
+              </Link>
+            ))}
+          </div>
         </section>
-        <PointageSection />
+
+        {/* 6 — Passage a l'acte */}
         <CtaBand />
+
+        <GmailDisclosure />
       </div>
     </main>
   );

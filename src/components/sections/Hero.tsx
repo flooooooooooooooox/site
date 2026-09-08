@@ -302,7 +302,7 @@ export default function Hero() {
             }}>
             <span className="hero-live-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 8px rgba(22,163,74,0.6)", display: "inline-block", flexShrink: 0 }} />
             <span style={{ color: "#2455D6", fontSize: "0.64rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-              IA disponible 24h/24 — Hébergé en France
+              Hébergé en France — Conforme e-facturation 2026
             </span>
           </motion.div>
 
@@ -314,24 +314,18 @@ export default function Hero() {
             }}>
             <span className="hero-line">
               <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-                Cirrion
-                <span style={{
-                  display: "inline-flex", alignItems: "center", marginLeft: "0.5rem", padding: "0 0.4rem",
-                  borderRadius: "0.3rem", background: "#2455D6", color: "#FFFFFF",
-                  fontSize: "clamp(0.65rem,1vw,0.85rem)", letterSpacing: ".08em", verticalAlign: "middle",
-                  position: "relative", top: "-.08em", fontWeight: 900,
-                }}>OS</span>
+                Vos devis et vos factures
               </motion.span>
             </span>
             <span className="hero-line">
               <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] }} className="hero-gradient-word">
-                Automatisée.
+                se font sans vous.
               </motion.span>
             </span>
             <span className="hero-line">
               <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
-                style={{ fontSize: "clamp(1.2rem,2vw,1.8rem)", color: "rgba(27,42,74,0.6)" }}>
-                Votre temps. Rendu.
+                style={{ fontSize: "clamp(1.05rem,1.7vw,1.55rem)", color: "rgba(27,42,74,0.6)", fontWeight: 700 }}>
+                Du devis dicté à la TVA déclarée.
               </motion.span>
             </span>
           </h1>
@@ -339,11 +333,11 @@ export default function Hero() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
             className="hero-callout"
             style={{
-              marginBottom: "2rem", color: "#42527A", fontSize: "clamp(0.88rem,1.1vw,0.98rem)",
-              fontWeight: 400, lineHeight: 1.6, maxWidth: 460,
+              marginBottom: "2rem", color: "#42527A", fontSize: "clamp(0.92rem,1.15vw,1.02rem)",
+              fontWeight: 400, lineHeight: 1.65, maxWidth: 440,
             }}>
-            Créez vos devis et factures en 3 minutes depuis WhatsApp — plus qu&apos;un ERP : le système d&apos;exploitation de votre entreprise, qui automatise devis, factures, relances et planning pour les artisans du bâtiment et les TPE de services.
-            <br /><span className="hero-underline" style={{ color: "#2455D6", fontWeight: 700 }}>−90&nbsp;% de temps administratif en moins</span>. Conforme e-facturation 2026.
+            Vous dictez. Cirrion rédige le devis, le fait signer, facture, relance les impayés
+            et prépare votre TVA. <span className="hero-underline" style={{ color: "#2455D6", fontWeight: 700 }}>Vous posez vos outils, l&apos;administratif suit.</span>
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.62 }}
@@ -358,20 +352,6 @@ export default function Hero() {
             </MagneticBtn>
           </motion.div>
 
-          {/* Objectif de l'application — texte statique présent dans le HTML dès le chargement
-              (lisible par le scanner de validation OAuth Google), replié visuellement via <details> natif */}
-          <details className="hero-gmail-disclosure" style={{ marginTop: "1.6rem", maxWidth: 520 }}>
-            <summary style={{
-              cursor: "pointer", listStyle: "none", color: "rgba(27,42,74,0.45)",
-              fontSize: "0.78rem", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "0.4rem",
-            }}>
-              <span aria-hidden>ℹ️</span> Comment Cirrion utilise Gmail
-            </summary>
-            <p style={{ marginTop: "0.6rem", color: "rgba(27,42,74,0.5)", fontSize: "0.8rem", fontWeight: 400, lineHeight: 1.6 }}>
-              Cirrion est une application de gestion pour les artisans du bâtiment : elle crée vos devis et factures,
-              les envoie à vos clients par e-mail via votre compte Gmail, et automatise vos relances.
-            </p>
-          </details>
         </div>
 
         <motion.div className="hero-split-image" style={{ position: "relative" }}
@@ -420,12 +400,20 @@ export default function Hero() {
       </div>
 
       <style>{`
+        /* Un enfant de grille a min-width:auto par defaut : le badge en une seule
+           ligne elargissait la colonne au-dela du viewport et rognait le titre. */
+        .hero-split > * { min-width: 0; }
+
         @media (max-width: 960px) {
           .hero-split { grid-template-columns: 1fr !important; text-align: center; }
+          .hero-live-badge span { white-space: normal !important; }
+          .hero-float-badge { display: none !important; }
           .hero-split-text { text-align: center !important; }
           .hero-split-text p { margin-left: auto; margin-right: auto; }
           .hero-split-text > div:first-child { margin-left: auto; margin-right: auto; }
-          .hero-split-image { order: -1; }
+          /* Sur mobile le texte passe d'abord : une capture d'ecran illisible
+             en tete de page ne dit pas ce qu'est le produit. */
+          .hero-split-image { order: 1; margin-top: 2.5rem; }
           .hero-float-badge { display: none; }
           .hero-callout { border-left: none; padding-left: 0; border-top: 2px solid rgba(36,85,214,0.25); padding-top: 0.75rem; }
         }

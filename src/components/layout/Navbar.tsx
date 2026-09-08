@@ -2,11 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 
+// Quatre entrees seulement : au-dela, le menu devient une table des matieres
+// et plus personne ne clique. Comparatif, ROI et Qui sommes-nous restent
+// accessibles depuis le corps de la page et le footer.
 const NAV_LINKS = [
-  { label: "Services", href: "/#services" },
-  { label: "Écosystème", href: "/#ecosysteme" },
-  { label: "Comparatif", href: "/comparatif" },
-  { label: "ROI", href: "/#roi" },
+  { label: "Fonctionnalités", href: "/#services" },
   { label: "Tarifs", href: "/#tarifs" },
   { label: "Ressources", href: "/ressources" },
   { label: "Qui sommes-nous", href: "/qui-sommes-nous" },

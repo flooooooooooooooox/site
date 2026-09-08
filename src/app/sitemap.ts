@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/qui-sommes-nous`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/comparatif`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/roi`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/entreprise-nettoyage`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/pointage-preuve-de-passage`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     // Ressources (blog)
