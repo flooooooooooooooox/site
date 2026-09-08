@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Mic, FileText, FileCheck, TrendingUp, LucideIcon } from "lucide-react";
+import { Mic, PenLine, CalendarClock, Receipt, Landmark, TrendingUp, LucideIcon } from "lucide-react";
 import { CloudBadge } from "@/components/ui/CloudBadge";
 
 interface Step {
@@ -11,30 +11,44 @@ interface Step {
   desc: string;
 }
 
+// La chaine complete, du devis dicte aux declarations : chaque etape est
+// declenchee par la precedente, l'artisan n'intervient qu'a la premiere.
 const STEPS: Step[] = [
   {
     icon: Mic,
     tag: "Étape 1",
-    title: "Parlez à Cirrion",
-    desc: "Envoyez un vocal WhatsApp ou appelez. Cirrion comprend le contexte chantier instantanément.",
+    title: "Le devis part de votre voix",
+    desc: "Un vocal sur WhatsApp depuis le camion, ou quelques touches dans l'application Cirrion. Le devis se rédige à partir de votre catalogue de prix, avec la bonne TVA par ligne.",
   },
   {
-    icon: FileText,
+    icon: PenLine,
     tag: "Étape 2",
-    title: "Vos documents se génèrent seuls",
-    desc: "Devis PDF complet, facture conforme, rapport de chantier — en moins de 3 minutes.",
+    title: "Votre client signe sur son téléphone",
+    desc: "Il reçoit le devis par e-mail ou SMS et le signe électroniquement, sans imprimante ni rendez-vous. La signature est horodatée et archivée.",
   },
   {
-    icon: FileCheck,
+    icon: CalendarClock,
     tag: "Étape 3",
-    title: "Votre client reçoit & signe",
-    desc: "Email ou SMS automatique avec lien de signature électronique mobile-friendly.",
+    title: "Le chantier se planifie tout seul",
+    desc: "Vous indiquez la date de début : le planning se remplit, les horaires se posent, vous affectez vos salariés et le stock est décompté automatiquement.",
+  },
+  {
+    icon: Receipt,
+    tag: "Étape 4",
+    title: "Acompte, PV de réception, facture finale",
+    desc: "Les documents s'enchaînent et se classent seuls, au format Factur-X conforme 2026. Les impayés sont relancés sans que vous ayez à écrire quoi que ce soit.",
+  },
+  {
+    icon: Landmark,
+    tag: "Étape 5",
+    title: "TVA, URSSAF et DSN préparées",
+    desc: "TVA collectée et déductible calculées en continu, CA3 pré-remplie, cotisations et déclarations sociales préparées à partir des heures pointées et des factures émises.",
   },
   {
     icon: TrendingUp,
-    tag: "Étape 4",
-    title: "Vous encaissez plus vite",
-    desc: "Relances automatiques, suivi de paiement, trésorerie prévisionnelle en temps réel.",
+    tag: "Étape 6",
+    title: "Votre comptable valide, vous encaissez",
+    desc: "Il reçoit des pièces déjà qualifiées et un export FEC normé. Rien n'est transmis à l'administration sans sa validation. Vous, vous suivez votre trésorerie en temps réel.",
   },
 ];
 
@@ -91,7 +105,7 @@ export default function StorySection() {
             Comment ça <span style={{ color: "#2455D6" }}>marche</span>
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
-            De la parole au paiement — en automatique.
+            Du devis dicté à la TVA déclarée — vous n&apos;intervenez qu&apos;à la première étape.
           </p>
         </motion.div>
 
