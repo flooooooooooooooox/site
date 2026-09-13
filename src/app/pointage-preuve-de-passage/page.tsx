@@ -60,7 +60,7 @@ const moduleJsonLd = {
   inLanguage: "fr-FR",
   countriesSupported: "FR",
   description:
-    "Module de pointage sur site et de preuve de passage pour les entreprises qui font intervenir des sous-traitants : QR code ou code à 8 chiffres, contrôle de la géolocalisation, check-list paramétrable par site, photos horodatées prises dans l'application, blocage de la clôture si l'intervention est incomplète, espace client en temps réel.",
+    "Module de pointage sur site et de preuve de passage pour les entreprises qui font intervenir des sous-traitants : QR code ou code à 8 chiffres, contrôle de la géolocalisation, check-list paramétrable par site, photos horodatées prises dans l'application, chronomètre par section et par tâche, blocage de la clôture si l'intervention est incomplète, signature électronique du contrat de travail, espace client en temps réel.",
   featureList: [
     "Pointage par QR code ou code à 8 chiffres",
     "Vérification de la géolocalisation contre un périmètre défini",
@@ -73,6 +73,10 @@ const moduleJsonLd = {
     "Espace client avec suivi en temps réel et rapport téléchargeable",
     "Tutoriel rattaché à chaque tâche de la check-list : la vidéo s'ouvre depuis la tâche",
     "Onglet Cours : vidéos, images et fiches écrites déposées par l'administrateur pour ses équipes",
+    "Chronomètre par section et par tâche, lancé par le salarié",
+    "Comparaison des temps entre intervenants pour identifier les plus performants",
+    "Photo prise sur site qui coche automatiquement la tâche, validée ensuite par le salarié",
+    "Dépôt du contrat de travail et signature électronique depuis l'application",
   ],
   offers: {
     "@type": "Offer",
@@ -116,6 +120,30 @@ const faqJsonLd = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "L'intervention ne peut pas être clôturée. L'application vérifie que toutes les tâches obligatoires sont validées, que toutes les photos attendues sont présentes, que le QR code ou le code du site a été utilisé et que la position GPS est conforme. S'il manque une condition, la validation reste impossible.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Comment connaître le temps réellement passé sur chaque tâche ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Chaque salarié lance et arrête lui-même un chronomètre, section par section et tâche par tâche. L'administrateur obtient un temps réel par tâche et non un total approximatif en fin de journée : il voit où part le temps sur chaque site, compare les durées entre intervenants et identifie les plus performants. Ces temps servent aussi de base fiable pour chiffrer un site et ajuster les durées prévues au devis.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Le salarié doit-il cocher chaque tâche à la main ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Non. La photo prise sur site coche automatiquement la tâche correspondante dans la check-list. Le salarié n'a plus qu'à valider ce qui a été coché avant de clôturer, ce qui évite les oublis et les doubles saisies tout en conservant une validation humaine.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Peut-on faire signer un contrat de travail depuis l'application ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Oui. L'employeur dépose le contrat de travail dans l'espace du salarié, qui le signe électroniquement depuis son téléphone, sans impression ni rendez-vous. Les avenants, attestations et autres documents se signent de la même façon. Chaque signature est horodatée et le document reste archivé et consultable par les deux parties.",
       },
     },
     {

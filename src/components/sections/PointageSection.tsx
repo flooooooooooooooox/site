@@ -35,6 +35,20 @@ const STEPS = [
     ],
   },
   {
+    slug: "chrono",
+    label: "Chronomètre",
+    emoji: "⏱️",
+    color: "#F97316",
+    headline: "Le temps réel passé, section par section et tâche par tâche",
+    features: [
+      "Le salarié lance et arrête lui-même le chronomètre sur chaque tâche",
+      "Un temps par section et un temps par tâche, pas un total flou en fin de journée",
+      "L'administrateur voit où part réellement le temps sur chaque site",
+      "Comparaison des durées entre intervenants : les plus performants ressortent",
+      "Base fiable pour chiffrer un site et ajuster les temps prévus au devis",
+    ],
+  },
+  {
     slug: "photos",
     label: "Photos",
     emoji: "📷",
@@ -43,9 +57,9 @@ const STEPS = [
     features: [
       "Prise de vue imposée depuis l'appareil photo de l'application",
       "Impossible d'envoyer une photo existante du téléphone",
-      "Classement automatique : client / prestation / objet",
-      "Horodatage de chaque cliché",
-      "Visibles par le client dès la prise, sans attendre la fin",
+      "La photo prise coche automatiquement la tâche correspondante",
+      "Le salarié n'a plus qu'à valider ce qui a été coché",
+      "Classement automatique, horodatage, visibles par le client dès la prise",
     ],
   },
   {
@@ -88,6 +102,20 @@ const STEPS = [
       "Vidéos YouTube ou fichiers vidéo importés",
       "Images, photos d'exemple et cours écrits",
       "Plus besoin d'appeler le responsable pour une question de procédure",
+    ],
+  },
+  {
+    slug: "contrats",
+    label: "Contrats",
+    emoji: "✍️",
+    color: "#7C5CD6",
+    headline: "Le contrat de travail se dépose et se signe depuis l'application",
+    features: [
+      "Dépôt du contrat de travail dans l'espace du salarié",
+      "Signature électronique depuis son téléphone, sans impression ni rendez-vous",
+      "Avenants, attestations et autres documents signés de la même façon",
+      "Signature horodatée, document archivé et consultable par les deux parties",
+      "Plus de contrat qui traîne des semaines avant de revenir signé",
     ],
   },
   {
