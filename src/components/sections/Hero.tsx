@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { CloudDecor, CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
 import { CloudBadge } from "@/components/ui/CloudBadge";
-import SkyBackdrop, { SKY_STYLES } from "@/components/ui/SkyBackdrop";
 
 const HERO_STYLES = `
 .hero-glass-pill {
@@ -276,14 +275,8 @@ export default function Hero() {
     >
       <style>{HERO_STYLES}</style>
       <style>{CLOUD_DECOR_STYLES}</style>
-      <style>{SKY_STYLES}</style>
 
-      {/* Ciel nuageux plein — le haut du site est un ciel, puis le fond
-          redevient celui du reste des sections. */}
-      <SkyBackdrop />
-
-      {/* Halos de couleur, conserves par-dessus le ciel pour garder la
-          signature bleue de la marque. */}
+      {/* Halos de couleur poses sur le ciel global. */}
       <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
         <div className="hero-blob" style={{
           position: "absolute", width: 420, height: 420, borderRadius: "50%",

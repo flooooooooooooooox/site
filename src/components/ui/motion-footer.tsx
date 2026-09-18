@@ -250,7 +250,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
   }, [isMobile]);
 
   return (
-    <div ref={wrapperRef} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", overflow: "hidden", background: "var(--background)", color: "var(--foreground)", position: "relative" }}
+    <div ref={wrapperRef} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", overflow: "hidden", background: "transparent", color: "var(--foreground)", position: "relative" }}
       className="cinematic-footer-wrapper"
     >
       {/* Aurora */}
@@ -386,7 +386,7 @@ export function CinematicFooter() {
 
       {isMobile ? (
         // Mobile : layout normal dans le flux du document, hauteur naturelle
-        <footer style={{ background: "var(--background)", color: "var(--foreground)" }}>
+        <footer style={{ background: "transparent", color: "var(--foreground)" }}>
           <FooterContent isMobile={true} />
         </footer>
       ) : (

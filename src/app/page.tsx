@@ -70,16 +70,9 @@ export default function Home() {
         {/* 2 — La mecanique : ce que fait Cirrion, etape par etape */}
         <StorySection />
 
-        {/* 3 — Le bandeau de confiance, pose sur une surface distincte pour
-               casser l'uniformite visuelle du reste de la page */}
-        <div
-          style={{
-            background: "color-mix(in srgb, var(--foreground) 3%, transparent)",
-            borderTop: "1px solid color-mix(in srgb, var(--foreground) 7%, transparent)",
-            borderBottom: "1px solid color-mix(in srgb, var(--foreground) 7%, transparent)",
-            padding: "clamp(1rem,3vw,2rem) 0",
-          }}
-        >
+        {/* 3 — Le bandeau de confiance. Aucun filet ni aplat : le ciel de
+               fond doit rester une seule etendue, du haut au bas de la page. */}
+        <div style={{ padding: "clamp(1rem,3vw,2rem) 0" }}>
           <PartnersBand />
           <StatsSection />
         </div>
