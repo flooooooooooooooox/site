@@ -34,14 +34,23 @@ type Cloud = {
   mobile?: boolean;
 };
 
+// Le haut de page est une couverture nuageuse pleine, qui s'ouvre ensuite sur
+// le ciel bleu. Les nuages du bandeau superieur se chevauchent volontairement
+// pour former une masse continue ; ceux du bas sont isoles dans le bleu.
 const CLOUDS: Cloud[] = [
-  { top: "-4%", left: "-10%", w: 460, opacity: 1, blur: 6, dur: 54, delay: 0, drift: 46, mobile: true },
-  { top: "2%", left: "30%", w: 320, opacity: 0.92, blur: 5, dur: 64, delay: -14, drift: -34 },
-  { top: "-6%", left: "66%", w: 520, opacity: 1, blur: 7, dur: 58, delay: -28, drift: 38, mobile: true },
-  { top: "22%", left: "86%", w: 300, opacity: 0.85, blur: 5, dur: 70, delay: -9, drift: -28 },
-  { top: "34%", left: "-6%", w: 340, opacity: 0.8, blur: 6, dur: 66, delay: -36, drift: 30, mobile: true },
-  { top: "52%", left: "72%", w: 380, opacity: 0.62, blur: 8, dur: 76, delay: -20, drift: -26 },
-  { top: "66%", left: "26%", w: 300, opacity: 0.45, blur: 8, dur: 72, delay: -48, drift: 22 },
+  // --- couverture pleine, tout en haut ---
+  { top: "-26%", left: "-12%", w: 460, opacity: 1, blur: 6, dur: 54, delay: 0, drift: 40, mobile: true },
+  { top: "-23%", left: "14%", w: 400, opacity: 1, blur: 6, dur: 62, delay: -15, drift: -32, mobile: true },
+  { top: "-28%", left: "38%", w: 470, opacity: 1, blur: 7, dur: 58, delay: -30, drift: 36, mobile: true },
+  { top: "-22%", left: "64%", w: 420, opacity: 1, blur: 6, dur: 66, delay: -8, drift: -28, mobile: true },
+  { top: "-26%", left: "86%", w: 440, opacity: 1, blur: 7, dur: 60, delay: -42, drift: 34, mobile: true },
+  { top: "-14%", left: "26%", w: 300, opacity: 0.9, blur: 8, dur: 70, delay: -22, drift: 26 },
+  { top: "-13%", left: "72%", w: 290, opacity: 0.9, blur: 8, dur: 74, delay: -36, drift: -24 },
+
+  // --- nuages isoles, une fois le ciel bleu degage ---
+  { top: "42%", left: "-7%", w: 260, opacity: 0.7, blur: 6, dur: 68, delay: -12, drift: 28, mobile: true },
+  { top: "56%", left: "86%", w: 280, opacity: 0.55, blur: 7, dur: 78, delay: -26, drift: -22 },
+  { top: "72%", left: "34%", w: 230, opacity: 0.35, blur: 9, dur: 80, delay: -50, drift: 18 },
 ];
 
 export const SKY_STYLES = `
@@ -112,13 +121,26 @@ export default function SkyBackdrop() {
         zIndex: 0,
         pointerEvents: "none",
         overflow: "hidden",
-        // Couleurs relevees directement sur le fond de l'application, pour que
-        // le site et le produit soient le meme ciel. Le bas devient transparent
-        // afin que la section suivante reprenne le fond normal du site.
+        // Couleurs relevees sur le fond de l'application, pour que le site et
+        // le produit soient le meme ciel. Le tout debute en blanc — la
+        // couverture nuageuse — s'ouvre sur le bleu, puis redevient
+        // transparent afin que la section suivante reprenne le fond du site.
         background:
-          "linear-gradient(180deg, #8DAEE0 0%, #A3C6F8 14%, #B0CDF8 28%, #BCD7F9 40%, #CDE1FD 54%, #DAE9FD 66%, #EDF4FF 80%, rgba(247,251,255,0.6) 92%, rgba(247,251,255,0) 100%)",
+          "linear-gradient(180deg, #FFFFFF 0%, #F6FAFF 10%, #D2E2FB 22%, #9CC0F5 34%, #93BAF2 48%, #9FC3F6 62%, #BCD7F9 74%, #DAE9FD 85%, rgba(247,251,255,0.55) 94%, rgba(247,251,255,0) 100%)",
       }}
     >
+      {/* Voile blanc du haut : c'est lui qui soude les nuages de la premiere
+          rangee en une couverture continue plutot qu'en formes separees. */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "14%",
+          background: "linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.8) 45%, rgba(255,255,255,0) 100%)",
+        }}
+      />
       {CLOUDS.map((c, i) => (
         <CloudShape key={i} c={c} />
       ))}
