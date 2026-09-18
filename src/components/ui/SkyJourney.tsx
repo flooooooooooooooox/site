@@ -6,89 +6,99 @@ import { useEffect, useRef } from "react";
  *
  *   haut de page .... on est DANS les nuages : gris dense, contraste
  *   milieu .......... on debouche : ciel bleu degage
- *   bas de page ..... on replonge : les nuages se referment
+ *   bas de page ..... on replonge : la couche se referme
  *
- * Mise en oeuvre : trois calques fixes empiles, de la taille du viewport. Le
- * ciel bleu est le fond, les deux couches nuageuses se croisent par simple
- * opacite selon l'avancement du scroll.
+ * On traverse reellement : deux bandes plus hautes que l'ecran defilent a des
+ * vitesses differentes, ce qui donne la profondeur. Un simple fondu entre deux
+ * images fixes ne produit pas cette sensation.
  *
- * Pourquoi pas une grande bande que l'on translate : deplacer une texture de
- * 300 vh chargee de `filter: blur()` la fait re-rasteriser au defilement, ce
- * qui saccade des qu'il y a d'autres animations liees au scroll sur la page.
- * Ici rien ne bouge et aucun filtre n'est utilise — les nuages sont dessines
- * en degrades radiaux, que le compositeur peint une fois pour toutes. Seule
- * l'opacite varie, et elle est composite.
+ * Ce qui coutait cher dans la premiere version n'etait pas le mouvement mais
+ * le `filter: blur()` pose sur chaque nuage : deplacer une texture floutee la
+ * fait re-rasteriser a chaque frame. Ici les nuages sont dessines en degrades
+ * radiaux — peints une fois — et les bandes sont promues en calques
+ * composites : le defilement n'est plus qu'une translation.
  */
 
-// Un lobe de nuage = un degrade radial. `c` est la couleur du lobe, `s` sa
-// douceur de bord (plus la valeur est basse, plus le bord est net).
-function lobe(x: number, y: number, rx: number, ry: number, c: string, s = 55) {
+// Un lobe de nuage = un degrade radial. `s` regle la douceur du bord.
+function lobe(x: number, y: number, rx: number, ry: number, c: string, s = 52) {
   return `radial-gradient(ellipse ${rx}% ${ry}% at ${x}% ${y}%, ${c} 0%, ${c} ${s}%, rgba(255,255,255,0) 100%)`;
 }
 
-const WHITE = "rgba(255,255,255,0.96)";
-const LIGHT = "rgba(226,231,240,0.95)";
-const MID = "rgba(186,194,210,0.92)";
-const DARK = "rgba(146,157,178,0.9)";
-const DEEP = "rgba(122,134,158,0.85)";
+const WHITE = "rgba(255,255,255,0.97)";
+const LIGHT = "rgba(228,233,242,0.95)";
+const MID = "rgba(188,196,212,0.92)";
+const DARK = "rgba(148,159,180,0.9)";
+const DEEP = "rgba(124,136,160,0.88)";
 
-// Couche haute : on est dedans, la lumiere est sourde. Les lobes sombres sont
-// places sous les lobes clairs — c'est ce decalage qui donne l'epaisseur.
-const CLOUDS_TOP = [
-  lobe(14, 18, 42, 34, WHITE, 48),
-  lobe(52, 10, 46, 32, LIGHT, 50),
-  lobe(86, 22, 40, 32, WHITE, 46),
-  lobe(30, 34, 44, 30, MID, 52),
-  lobe(70, 38, 42, 28, MID, 52),
-  lobe(8, 52, 38, 28, DARK, 54),
-  lobe(48, 58, 46, 30, DARK, 56),
-  lobe(90, 62, 36, 26, DEEP, 54),
-  lobe(26, 78, 44, 30, DEEP, 58),
-  lobe(72, 84, 42, 28, DARK, 56),
-  "linear-gradient(180deg, #C6CDDA 0%, #B4BDCE 38%, #A3ADC2 70%, #96A1B8 100%)",
+// La bande du fond porte le ciel et la traversee ; celle de devant ne porte
+// que des voiles. Plus haute, elle parcourt plus de chemin pour la meme
+// fraction de scroll : c'est ce differentiel qui fait la profondeur.
+const SKY_VH = 260;
+const WISPS_VH = 360;
+
+/**
+ * Bande principale : la matiere du ciel. Les pourcentages verticaux sont
+ * exprimes sur la hauteur totale de la bande (260 vh), pas sur l'ecran.
+ */
+const MAIN = [
+  // --- on est DANS la masse : lobes sombres devant, lumiere sourde ---
+  lobe(16, 1, 52, 10, DEEP, 54),
+  lobe(62, 2, 54, 9, DARK, 54),
+  lobe(94, 5, 46, 9, DEEP, 52),
+  lobe(8, 8, 48, 8, DARK, 54),
+  lobe(44, 10, 52, 8, DEEP, 56),
+  lobe(80, 12, 48, 8, DARK, 54),
+  // --- la lumiere monte : les lobes s'eclaircissent ---
+  lobe(24, 15, 50, 8, MID, 52),
+  lobe(68, 17, 48, 7, MID, 52),
+  lobe(6, 20, 44, 7, LIGHT, 50),
+  lobe(52, 22, 50, 8, WHITE, 48),
+  lobe(90, 24, 42, 7, LIGHT, 48),
+  // --- derniers lambeaux avant la sortie ---
+  lobe(18, 28, 38, 6, "rgba(255,255,255,0.6)", 50),
+  lobe(76, 31, 34, 5, "rgba(255,255,255,0.45)", 50),
+  // --- ciel degage : nuages blancs isoles ---
+  lobe(18, 42, 26, 4.5, "rgba(255,255,255,0.9)", 44),
+  lobe(76, 49, 24, 4, "rgba(255,255,255,0.75)", 44),
+  lobe(40, 57, 28, 4.5, "rgba(255,255,255,0.65)", 44),
+  lobe(86, 63, 22, 3.5, "rgba(255,255,255,0.55)", 44),
+  // --- la couche se referme : l'inverse, du clair vers le sombre ---
+  lobe(22, 72, 40, 6, "rgba(255,255,255,0.6)", 50),
+  lobe(70, 75, 44, 6, LIGHT, 50),
+  lobe(12, 79, 48, 7, WHITE, 48),
+  lobe(56, 82, 50, 7, MID, 52),
+  lobe(92, 85, 44, 7, MID, 52),
+  lobe(28, 89, 50, 8, DARK, 54),
+  lobe(74, 92, 48, 8, DEEP, 56),
+  lobe(10, 96, 46, 8, DARK, 54),
+  lobe(58, 99, 52, 9, DEEP, 56),
+  // --- le ciel lui-meme ---
+  "linear-gradient(180deg," +
+    " #8A95AB 0%, #909BB1 10%, #A3ADC2 18%, #C2CAD9 25%," +
+    " #C6D9F6 32%, #A8C8F5 40%, #8FB8F1 50%, #8FB8F1 60%," +
+    " #A8C8F5 68%, #C6D9F6 74%, #C2CAD9 81%," +
+    " #A3ADC2 88%, #909BB1 95%, #8A95AB 100%)",
 ].join(", ");
 
-// Couche basse : la couche se referme, on y rentre par le dessus. Les lobes
-// clairs sont donc en bas cette fois.
-const CLOUDS_BOTTOM = [
-  lobe(20, 84, 44, 32, WHITE, 48),
-  lobe(58, 90, 46, 30, LIGHT, 50),
-  lobe(88, 78, 38, 30, WHITE, 46),
-  lobe(34, 66, 44, 28, MID, 52),
-  lobe(74, 62, 40, 28, MID, 52),
-  lobe(10, 46, 38, 28, DARK, 54),
-  lobe(50, 40, 46, 28, DARK, 56),
-  lobe(88, 32, 36, 26, DEEP, 54),
-  lobe(24, 18, 44, 30, DEEP, 58),
-  lobe(70, 12, 42, 28, DARK, 56),
-  "linear-gradient(0deg, #C6CDDA 0%, #B4BDCE 38%, #A3ADC2 70%, #96A1B8 100%)",
+/** Bande de fond : voiles plus diffus, qui avancent moins vite. */
+const DEPTH = [
+  lobe(70, 5, 60, 10, "rgba(255,255,255,0.5)", 55),
+  lobe(20, 15, 58, 9, "rgba(140,152,175,0.45)", 58),
+  lobe(84, 22, 54, 8, "rgba(255,255,255,0.4)", 55),
+  lobe(30, 45, 46, 7, "rgba(255,255,255,0.35)", 55),
+  lobe(78, 58, 44, 6, "rgba(255,255,255,0.3)", 55),
+  lobe(16, 80, 58, 9, "rgba(140,152,175,0.4)", 58),
+  lobe(74, 90, 60, 10, "rgba(255,255,255,0.45)", 55),
 ].join(", ");
-
-// Ciel degage : quelques nuages blancs isoles sur le bleu.
-const SKY = [
-  lobe(16, 24, 26, 18, "rgba(255,255,255,0.85)", 45),
-  lobe(78, 36, 24, 16, "rgba(255,255,255,0.7)", 45),
-  lobe(44, 72, 28, 18, "rgba(255,255,255,0.6)", 45),
-  "linear-gradient(180deg, #A8C8F5 0%, #8FB8F1 46%, #93BAF2 100%)",
-].join(", ");
-
-// Bornes de la traversee, en fraction de scroll.
-const OUT_START = 0.04; // on commence a sortir des nuages
-const OUT_END = 0.26; // ciel degage
-const IN_START = 0.7; // la couche se reforme
-const IN_END = 0.94; // on est dedans
-
-const ramp = (p: number, a: number, b: number) =>
-  Math.min(Math.max((p - a) / (b - a), 0), 1);
 
 export default function SkyJourney() {
-  const topRef = useRef<HTMLDivElement>(null);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const frontRef = useRef<HTMLDivElement>(null);
+  const backRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const top = topRef.current;
-    const bottom = bottomRef.current;
-    if (!top || !bottom) return;
+    const front = frontRef.current;
+    const back = backRef.current;
+    if (!front || !back) return;
 
     let queued = false;
     let raf = 0;
@@ -98,9 +108,10 @@ export default function SkyJourney() {
       const doc = document.documentElement;
       const max = doc.scrollHeight - window.innerHeight;
       const p = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+      const vh = window.innerHeight;
       // Ecriture directe dans le DOM : aucun rendu React pendant le scroll.
-      top.style.opacity = String(1 - ramp(p, OUT_START, OUT_END));
-      bottom.style.opacity = String(ramp(p, IN_START, IN_END));
+      back.style.transform = `translate3d(0, ${-p * ((SKY_VH - 100) / 100) * vh}px, 0)`;
+      front.style.transform = `translate3d(0, ${-p * ((WISPS_VH - 100) / 100) * vh}px, 0)`;
     };
 
     const onScroll = () => {
@@ -119,24 +130,30 @@ export default function SkyJourney() {
     };
   }, []);
 
-  const layer: React.CSSProperties = {
+  const band = (h: number): React.CSSProperties => ({
     position: "absolute",
-    inset: 0,
-    willChange: "opacity",
-    // Promotion explicite : sans elle, Chromium re-rasterise ces degrades a
-    // chaque changement d'opacite au lieu de se contenter de recomposer.
-    transform: "translateZ(0)",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: `${h}vh`,
+    willChange: "transform",
     backfaceVisibility: "hidden",
-    contain: "strict",
-  };
+  });
 
   return (
     <div
       aria-hidden
-      style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", background: SKY }}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 0,
+        pointerEvents: "none",
+        overflow: "hidden",
+        background: "#8FB8F1",
+      }}
     >
-      <div ref={topRef} style={{ ...layer, background: CLOUDS_TOP, opacity: 1 }} />
-      <div ref={bottomRef} style={{ ...layer, background: CLOUDS_BOTTOM, opacity: 0 }} />
+      <div ref={backRef} style={{ ...band(SKY_VH), background: MAIN }} />
+      <div ref={frontRef} style={{ ...band(WISPS_VH), background: DEPTH }} />
     </div>
   );
 }
