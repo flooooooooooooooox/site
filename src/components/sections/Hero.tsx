@@ -269,7 +269,7 @@ export default function Hero() {
       style={{
         position: "relative", minHeight: "92vh", display: "flex", flexDirection: "column",
         justifyContent: "center",
-        padding: "clamp(6rem,12vh,7rem) 6vw clamp(3rem,6vh,5rem)",
+        padding: "clamp(6rem,12vh,7rem) 6vw clamp(1.5rem,4vh,5rem)",
         background: "transparent", overflow: "hidden",
       }}
     >
@@ -362,7 +362,12 @@ export default function Hero() {
               aria-label="Agrandir le tableau de bord en plein écran"
               style={{ display: "block", width: "100%", padding: 0, border: "none", background: "none", cursor: "zoom-in" }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <picture>
+              {/* Sur mobile, le tableau de bord entier est illisible : on sert un
+                  cadrage serre sur la zone parlante (CA, impayes, TVA) plutot
+                  qu'un ecran de 1600 px reduit a la largeur d'un telephone. */}
+              <source media="(max-width: 768px)" srcSet="/dashboard-cirrion-mobile.webp" width={860} height={522} />
+
               <img
                 src="/dashboard-cirrion.webp"
                 srcSet="/dashboard-cirrion-sm.webp 820w, /dashboard-cirrion.webp 1600w"
@@ -375,6 +380,7 @@ export default function Hero() {
                 decoding="async"
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
+              </picture>
             </button>
           </HoverImageCard>
 
@@ -413,7 +419,7 @@ export default function Hero() {
           .hero-split-text > div:first-child { margin-left: auto; margin-right: auto; }
           /* Sur mobile le texte passe d'abord : une capture d'ecran illisible
              en tete de page ne dit pas ce qu'est le produit. */
-          .hero-split-image { order: 1; margin-top: 2.5rem; }
+          .hero-split-image { order: 1; margin-top: 1.25rem; }
           .hero-float-badge { display: none; }
           .hero-callout { border-left: none; padding-left: 0; border-top: 2px solid rgba(36,85,214,0.25); padding-top: 0.75rem; }
         }

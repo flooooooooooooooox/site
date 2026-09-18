@@ -13,6 +13,15 @@ export default function FloatingCtaMobile() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Le bandeau est fixe : sans reserve de place en bas de document, il
+  // recouvre en permanence la fin du contenu.
+  useEffect(() => {
+    const shown = visible && !dismissed;
+    const mobile = window.matchMedia("(max-width: 768px)").matches;
+    document.body.style.paddingBottom = shown && mobile ? "5.5rem" : "";
+    return () => { document.body.style.paddingBottom = ""; };
+  }, [visible, dismissed]);
+
   if (dismissed || !visible) return null;
 
   return (
@@ -27,8 +36,8 @@ export default function FloatingCtaMobile() {
           zIndex: 8888,
           display: "flex",
           alignItems: "center",
-          gap: "0.75rem",
-          padding: "0.85rem 1.1rem",
+          gap: "0.6rem",
+          padding: "0.7rem 0.85rem",
           borderRadius: "1rem",
           background: "rgba(255,255,255,0.97)",
           border: "1px solid rgba(36,85,214,0.3)",
@@ -48,10 +57,10 @@ export default function FloatingCtaMobile() {
         </div>
 
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#4ADE80", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.15rem" }}>
-            Démo gratuite disponible
+          <div style={{ fontSize: "0.66rem", fontWeight: 700, color: "#16A34A", letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: "0.1rem", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+            Démo gratuite
           </div>
-          <div style={{ fontSize: "0.78rem", color: "rgba(27,42,74,0.6)", fontWeight: 500 }}>
+          <div style={{ fontSize: "0.74rem", color: "rgba(27,42,74,0.6)", fontWeight: 500, whiteSpace: "nowrap" }}>
             Sans engagement · 30 min
           </div>
         </div>
@@ -62,7 +71,7 @@ export default function FloatingCtaMobile() {
           rel="noopener noreferrer"
           style={{
             display: "inline-flex", alignItems: "center", gap: "0.35rem",
-            padding: "0.6rem 1.1rem", borderRadius: "0.6rem",
+            padding: "0.55rem 0.9rem", borderRadius: "0.6rem",
             background: "#2455D6", color: "#FFFFFF",
             fontWeight: 700, fontSize: "0.8rem", textDecoration: "none",
             whiteSpace: "nowrap", flexShrink: 0,
