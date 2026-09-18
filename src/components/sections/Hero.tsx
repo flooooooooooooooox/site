@@ -152,6 +152,13 @@ const HERO_STYLES = `
 .hero-line { display: block; overflow: hidden; }
 .hero-line > span { display: inline-block; }
 
+.hero-offscreen .hero-blob,
+.hero-offscreen .hero-blob-2,
+.hero-offscreen .hero-float-badge,
+.hero-offscreen .hero-live-dot::after,
+.hero-offscreen .hero-gradient-word,
+.hero-offscreen .cloud-decor-float { animation-play-state: paused !important; }
+
 @media (prefers-reduced-motion: reduce) {
   .hero-blob, .hero-blob-2, .hero-float-badge, .hero-live-dot::after, .hero-gradient-word, .hero-underline::after { animation: none !important; }
 }
@@ -264,8 +271,25 @@ function ImageLightbox({ open, onClose }: { open: boolean; onClose: () => void }
 
 export default function Hero() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Une animation qui tourne force le compositeur a redessiner a chaque frame,
+  // meme hors champ. Les halos et les nuages du hero sont donc suspendus des
+  // qu'on l'a depasse.
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const io = new IntersectionObserver(
+      ([entry]) => node.classList.toggle("hero-offscreen", !entry?.isIntersecting),
+      { rootMargin: "100px" }
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       style={{
         position: "relative", minHeight: "92vh", display: "flex", flexDirection: "column",
         justifyContent: "center",

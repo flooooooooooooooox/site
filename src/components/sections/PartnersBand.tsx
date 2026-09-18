@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const PARTNERS = [
@@ -91,8 +92,21 @@ const PARTNERS = [
 ];
 
 export default function PartnersBand() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const io = new IntersectionObserver(
+      ([entry]) => node.classList.toggle("partners-offscreen", !entry?.isIntersecting),
+      { rootMargin: "120px" }
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section style={{ background: "transparent", padding: "3rem 0", borderTop: "1px solid rgba(var(--surface-rgb),0.05)", borderBottom: "1px solid rgba(var(--surface-rgb),0.05)" }}>
+    <section ref={sectionRef} style={{ background: "transparent", padding: "3rem 0", borderTop: "1px solid rgba(var(--surface-rgb),0.05)", borderBottom: "1px solid rgba(var(--surface-rgb),0.05)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 6vw", display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem" }}>
         <motion.p
           initial={{ opacity: 0 }}
@@ -102,8 +116,8 @@ export default function PartnersBand() {
         >
           Nos partenaires
         </motion.p>
-        <div className="partners-marquee-viewport" style={{ width: "100%", overflow: "hidden", maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)" }}>
-          <div className="partners-marquee-track" style={{ display: "flex", gap: "0.75rem", width: "max-content" }}>
+        <div className="partners-marquee-viewport" style={{ position: "relative", width: "100%", overflow: "hidden", maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)" }}>
+          <div className="partners-marquee-track" style={{ display: "flex", gap: "0.75rem", width: "max-content", willChange: "transform", backfaceVisibility: "hidden" }}>
             {[...PARTNERS, ...PARTNERS].map((p, i) => (
               <div
                 key={`${p.name}-${i}`}
@@ -127,6 +141,13 @@ export default function PartnersBand() {
         </div>
         <style>{`
           .partners-marquee-track { animation: partners-marquee-scroll 32s linear infinite; }
+          /* Hors ecran, l'animation est suspendue : une animation qui tourne
+             force le compositeur a redessiner a chaque frame, meme si personne
+             ne la regarde. */
+          .partners-offscreen .partners-marquee-track { animation-play-state: paused; }
+          @media (prefers-reduced-motion: reduce) {
+            .partners-marquee-track { animation: none !important; }
+          }
           @keyframes partners-marquee-scroll {
             from { transform: translateX(0); }
             to   { transform: translateX(-50%); }

@@ -42,6 +42,13 @@ const STYLES = `
 
 .animate-footer-breathe { animation: footer-breathe 8s ease-in-out infinite alternate; }
 .animate-footer-scroll-marquee { animation: footer-scroll-marquee 38s linear infinite; }
+/* Le pied de page est en position fixe des le haut du document : sans cette
+   suspension, ses deux animations tournent pendant toute la visite. */
+.footer-offscreen .animate-footer-breathe,
+.footer-offscreen .animate-footer-scroll-marquee { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-footer-breathe, .animate-footer-scroll-marquee { animation: none !important; }
+}
 
 .footer-bg-grid {
   background-size: 60px 60px;
@@ -379,6 +386,17 @@ export function CinematicFooter() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  useEffect(() => {
+    const node = revealRef.current;
+    if (!node) return;
+    const io = new IntersectionObserver(
+      ([entry]) => document.body.classList.toggle("footer-offscreen", !entry?.isIntersecting),
+      { rootMargin: "200px" }
+    );
+    io.observe(node);
+    return () => { io.disconnect(); document.body.classList.remove("footer-offscreen"); };
+  }, [isMobile]);
 
   return (
     <>
