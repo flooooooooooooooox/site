@@ -126,7 +126,7 @@ export default function SkyBackdrop() {
         // couverture nuageuse — s'ouvre sur le bleu, puis redevient
         // transparent afin que la section suivante reprenne le fond du site.
         background:
-          "linear-gradient(180deg, #FFFFFF 0%, #F6FAFF 10%, #D2E2FB 22%, #9CC0F5 34%, #93BAF2 48%, #9FC3F6 62%, #BCD7F9 74%, #DAE9FD 85%, rgba(247,251,255,0.55) 94%, rgba(247,251,255,0) 100%)",
+          "linear-gradient(180deg, #FFFFFF 0%, #F6FAFF 10%, #D2E2FB 22%, #9CC0F5 34%, #93BAF2 48%, #9FC3F6 62%, #BCD7F9 74%, #DAE9FD 85%, rgba(199,219,250,0.5) 92%, rgba(199,219,250,0) 100%)",
       }}
     >
       {/* Voile blanc du haut : c'est lui qui soude les nuages de la premiere
@@ -145,18 +145,6 @@ export default function SkyBackdrop() {
         <CloudShape key={i} c={c} />
       ))}
 
-      {/* Raccord final : evite que les nuages du bas ne coupent net sur la
-          section suivante. */}
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          height: "20%",
-          background: "linear-gradient(180deg, rgba(239,244,255,0) 0%, var(--background) 100%)",
-        }}
-      />
     </div>
   );
 }
