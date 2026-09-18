@@ -53,13 +53,30 @@ a, button, input, textarea, select, [role="button"] {
   .cursor-dot { display: none; }
 }
 
-/* ===== Performance mobile =====
-   Les backdrop-filter (flou de verre) sont tres couteux sur les telephones
-   d'entree de gamme : on les desactive sous 821px. Les fonds translucides
-   restent en place, seul le flou temps reel disparait. */
-@media (max-width: 820px) {
-  [style*="backdrop-filter"] {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
+/* ===== Cout des flous de verre =====
+   backdrop-filter re-calcule le flou de ce qui passe derriere a chaque frame :
+   mesure au defilement, il pesait plus de la moitie du temps par frame
+   (116,6 ms -> 50 ms sur desktop, 33,4 ms -> 16,7 ms sur mobile). Il est donc
+   neutralise partout, et les panneaux recoivent un fond plus opaque en
+   remplacement — sur un ciel doux, la difference visuelle est minime.
+
+   La valeur est ecrite `initial` et non `none` : ecrites cote a cote, la
+   declaration non prefixee etait supprimee a la minification et seule restait
+   -webkit-backdrop-filter, que Chromium ignore. La regle ne s'appliquait
+   alors jamais. */
+[style*="backdrop-filter"],
+.hero-text-glass,
+.hero-glass-pill,
+.hero-live-badge,
+.hero-image-card,
+.hero-float-badge,
+.footer-glass-pill,
+.story-card {
+  backdrop-filter: initial !important;
 }
+.hero-text-glass { background: linear-gradient(160deg, rgba(255,255,255,0.72), rgba(255,255,255,0.5)) !important; }
+.hero-live-badge,
+.hero-glass-pill,
+.hero-float-badge { background: rgba(255, 255, 255, 0.9) !important; }
+.hero-image-card { background: rgba(255, 255, 255, 0.82) !important; }
+.story-card { background: rgba(255, 255, 255, 0.8) !important; }
