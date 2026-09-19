@@ -23,10 +23,16 @@ if (typeof window !== "undefined") {
 const W = 1440;
 const H = 900;
 
-const svg = (body: string, box = `0 0 ${W} ${H}`) =>
-  `url("data:image/svg+xml,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${box}" preserveAspectRatio="none">${body}</svg>`
+// Les dimensions sont declarees et le rapport de forme conserve : sans elles,
+// et avec preserveAspectRatio="none", le navigateur etire le dessin a la
+// hauteur de sa boite — sur un ecran etroit, les nuages s'aplatissaient en
+// arcs verticaux.
+const svg = (body: string, box = `0 0 ${W} ${H}`) => {
+  const [, , w, h] = box.split(" ");
+  return `url("data:image/svg+xml,${encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${box}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid meet">${body}</svg>`
   )}")`;
+};
 
 /** Degrades partages par les calques. */
 const DEFS = `
@@ -211,11 +217,11 @@ export default function HeroCloudscape() {
           .hc-swirl { display: none !important; }
           /* Le dessin tient en entier dans la largeur et se pose en bas : on
              voit des nuages complets, pas un fragment agrandi. */
-          .hc-back { background-size: 118% auto !important; background-position: 50% 100% !important; }
+          .hc-back { background-size: 200% auto !important; background-position: 46% 100% !important; }
           .hc-front {
             left: 0 !important; right: 0 !important; top: auto !important; bottom: 0 !important;
             height: 30% !important;
-            background-size: 108% auto !important; background-position: 50% 100% !important;
+            background-size: 175% auto !important; background-position: 55% 100% !important;
           }
         }
       `}</style>
