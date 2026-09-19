@@ -77,8 +77,18 @@ export default function Home() {
           <StatsSection />
         </div>
 
-        {/* 4 — Ce que ça couvre */}
-        <Services />
+        {/* 4 — Ce que ça couvre. Pose sur un bandeau bleu : c'est le seul
+               aplat colore de la page, il marque la section la plus dense et
+               casse la suite de blocs clairs. Le bleu reste assez pale pour
+               que le texte marine garde son contraste. */}
+        <div
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(220,233,252,0) 0%, #DCE9FC 6%, #CFE0FA 50%, #DCE9FC 94%, rgba(220,233,252,0) 100%)",
+          }}
+        >
+          <Services />
+        </div>
 
         {/* 5 — Prix */}
         <Pricing />

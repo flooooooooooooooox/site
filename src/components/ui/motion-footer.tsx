@@ -46,6 +46,9 @@ const STYLES = `
    suspension, ses deux animations tournent pendant toute la visite. */
 .footer-offscreen .animate-footer-breathe,
 .footer-offscreen .animate-footer-scroll-marquee { animation-play-state: paused !important; }
+/* Tant qu'on en est loin, il n'est pas peint du tout : en position fixe, il
+   restait sinon compose a chaque frame pendant toute la visite. */
+.footer-offscreen .cinematic-footer-wrapper { visibility: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .animate-footer-breathe, .animate-footer-scroll-marquee { animation: none !important; }
 }

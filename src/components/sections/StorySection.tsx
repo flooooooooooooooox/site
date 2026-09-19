@@ -160,7 +160,7 @@ export default function StorySection() {
                     gap: "1.25rem",
                     alignItems: "flex-start",
                     backdropFilter: "blur(14px)",
-                    boxShadow: "0 8px 28px -10px rgba(27,42,74,0.14)",
+                    boxShadow: "0 6px 16px -8px rgba(27,42,74,0.14)",
                     transition: "transform 0.25s ease, box-shadow 0.25s ease",
                   }}>
                   <CloudBadge size={48} fill="rgba(36,85,214,0.08)" border="rgba(36,85,214,0.15)">
@@ -210,7 +210,7 @@ export default function StorySection() {
           align-items: flex-start;
         }
         .story-line { left: 21px; }
-        .story-card:hover { transform: translateY(-3px); box-shadow: 0 14px 36px -10px rgba(36,85,214,0.22); }
+        .story-card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px -8px rgba(36,85,214,0.22); }
         @media (max-width: 640px) {
           .story-row { gap: 0.9rem; }
         }

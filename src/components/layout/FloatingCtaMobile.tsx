@@ -42,7 +42,7 @@ export default function FloatingCtaMobile() {
           background: "rgba(255,255,255,0.97)",
           border: "1px solid rgba(36,85,214,0.3)",
           backdropFilter: "blur(24px)",
-          boxShadow: "0 8px 40px rgba(27,42,74,0.18), 0 0 0 1px rgba(36,85,214,0.1)",
+          boxShadow: "0 6px 20px rgba(27,42,74,0.18), 0 0 0 1px rgba(36,85,214,0.1)",
           animation: "slideUpCta 0.4s cubic-bezier(0.16,1,0.3,1) both",
         }}
       >

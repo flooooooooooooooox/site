@@ -23,9 +23,9 @@ if (typeof window !== "undefined") {
 const W = 1440;
 const H = 900;
 
-const svg = (body: string) =>
+const svg = (body: string, box = `0 0 ${W} ${H}`) =>
   `url("data:image/svg+xml,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${body}</svg>`
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${box}" preserveAspectRatio="none">${body}</svg>`
   )}")`;
 
 /** Degrades partages par les calques. */
@@ -88,7 +88,7 @@ const BACK = svg(`${DEFS}<g mask="url(#soft)">
   ${volume(980, 90, 0.7, "url(#volSoft)", 0.6)}
 </g>`);
 
-const SWIRL = svg(`${DEFS}<g mask="url(#soft)">
+const SWIRL = svg(`${DEFS}<g>
   <g transform="translate(1105 330) rotate(-24)">
     ${[
       [300, 208, 46, 0.5],
@@ -130,10 +130,15 @@ const SWIRL = svg(`${DEFS}<g mask="url(#soft)">
     .join("")}
 </g>`);
 
-const FRONT = svg(`${DEFS}<g mask="url(#soft)">
+// Les volumes de premier plan n'occupent que le bas de l'image : la boite du
+// calque est resserree d'autant, il y a moins de pixels a composer.
+const FRONT = svg(
+  `${DEFS}<g>
   ${volume(520, 980, 1.5, "url(#vol)", 0.9)}
   ${volume(1180, 1010, 1.3, "url(#vol)", 0.8)}
-</g>`);
+</g>`,
+  `0 640 ${W} 260`
+);
 
 export default function HeroCloudscape() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -191,8 +196,8 @@ export default function HeroCloudscape() {
     >
       <div ref={skyRef} style={{ ...layer(""), backgroundImage: SKY_CSS }} />
       <div ref={backRef} style={layer(BACK)} />
-      <div ref={swirlRef} style={layer(SWIRL)} />
-      <div ref={frontRef} style={layer(FRONT)} />
+      <div ref={swirlRef} style={{ ...layer(SWIRL), left: "42%", height: "86%", bottom: "auto" }} />
+      <div ref={frontRef} style={{ ...layer(FRONT), top: "auto", height: "29%" }} />
       {/* Sortie vers le fond uni de la suite. Un voile peint coute nettement
           moins qu'un mask-image sur le conteneur (mesure : 17 ms par frame). */}
       <div

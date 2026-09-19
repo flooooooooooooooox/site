@@ -23,12 +23,12 @@ const HERO_STYLES = `
   background: #2455D6;
   color: #FFFFFF;
   font-weight: 800;
-  box-shadow: 0 10px 28px rgba(36,85,214,0.28);
+  box-shadow: 0 8px 18px rgba(36,85,214,0.28);
   transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
   border: none;
 }
 .hero-solid-btn:hover {
-  box-shadow: 0 16px 36px rgba(36,85,214,0.38);
+  box-shadow: 0 12px 24px rgba(36,85,214,0.38);
   transform: translateY(-2px);
   background: #1E46C2;
 }
@@ -70,12 +70,12 @@ const HERO_STYLES = `
   -webkit-backdrop-filter: blur(6px);
   background: rgba(255,255,255,0.5);
   border: 1px solid rgba(255,255,255,0.6);
-  box-shadow: 0 40px 90px -20px rgba(36,85,214,0.35), 0 0 0 1px rgba(36,85,214,0.06);
+  box-shadow: 0 18px 40px -16px rgba(36,85,214,0.32), 0 0 0 1px rgba(36,85,214,0.06);
   transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
 }
 .hero-image-wrap:hover .hero-image-card {
   transform: scale(1.03);
-  box-shadow: 0 50px 110px -20px rgba(36,85,214,0.42), 0 0 0 1px rgba(36,85,214,0.08);
+  box-shadow: 0 22px 48px -16px rgba(36,85,214,0.38), 0 0 0 1px rgba(36,85,214,0.08);
 }
 /* halo blanc progressif derriere l'image au survol */
 .hero-image-halo {
@@ -94,7 +94,7 @@ const HERO_STYLES = `
   -webkit-backdrop-filter: blur(14px);
   background: rgba(255,255,255,0.75);
   border: 1px solid rgba(255,255,255,0.7);
-  box-shadow: 0 12px 28px rgba(27,42,74,0.14);
+  box-shadow: 0 8px 16px rgba(27,42,74,0.14);
   animation: heroFloat 4s ease-in-out infinite;
 }
 .hero-float-badge.b2 { animation-delay: -1.4s; }
