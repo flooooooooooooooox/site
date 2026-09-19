@@ -49,6 +49,20 @@ const STYLES = `
 /* Tant qu'on en est loin, il n'est pas peint du tout : en position fixe, il
    restait sinon compose a chaque frame pendant toute la visite. */
 .footer-offscreen .cinematic-footer-wrapper { visibility: hidden; }
+
+/* Derive lente des deux couches nuageuses, a des vitesses differentes pour la
+   profondeur. Transform uniquement : le compositeur ne redessine rien. */
+@keyframes footer-clouds-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-12%, 0, 0); }
+}
+.footer-clouds { will-change: transform; backface-visibility: hidden; }
+.footer-clouds-back { animation: footer-clouds-drift 90s linear infinite; }
+.footer-clouds-front { animation: footer-clouds-drift 58s linear infinite reverse; }
+.footer-offscreen .footer-clouds { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) {
+  .footer-clouds { animation: none !important; }
+}
 @media (prefers-reduced-motion: reduce) {
   .animate-footer-breathe, .animate-footer-scroll-marquee { animation: none !important; }
 }
@@ -266,6 +280,34 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
       {/* Aurora */}
       <div className="footer-aurora animate-footer-breathe" style={{ position: "absolute", left: "50%", top: "50%", width: "80vw", height: "60vh", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
       <div className="footer-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} />
+
+      {/* Nuages : la page se termine dans la couche. Memes textures que le
+          reste du site, en images deja rasterisees — elles derivent lentement
+          et ne sont animees qu'en transform. */}
+      <div
+        aria-hidden
+        className="footer-clouds footer-clouds-back"
+        style={{
+          position: "absolute", left: "-10%", right: "-10%", top: "-6%", height: "46%",
+          backgroundImage: 'url("/cloud-mass.webp")',
+          backgroundSize: "60% 100%", backgroundRepeat: "repeat-x",
+          opacity: 0.5, zIndex: 0, pointerEvents: "none",
+          maskImage: "linear-gradient(180deg, #000 0%, #000 42%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 42%, rgba(0,0,0,0) 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="footer-clouds footer-clouds-front"
+        style={{
+          position: "absolute", left: "-12%", right: "-12%", bottom: "-4%", height: "38%",
+          backgroundImage: 'url("/cloud-wisps.webp")',
+          backgroundSize: "48% 100%", backgroundRepeat: "repeat-x",
+          opacity: 0.45, zIndex: 0, pointerEvents: "none",
+          maskImage: "linear-gradient(0deg, #000 0%, #000 38%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(0deg, #000 0%, #000 38%, rgba(0,0,0,0) 100%)",
+        }}
+      />
 
       {/* Giant BG text */}
       <div ref={giantTextRef} className="footer-giant-bg-text" style={{ position: "absolute", bottom: "-5vh", left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", zIndex: 0, pointerEvents: "none", userSelect: "none" }}>

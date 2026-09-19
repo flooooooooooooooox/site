@@ -91,9 +91,56 @@ export default function StorySection() {
   // Map scroll progress to line height percentage
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
+  // La lumiere descend avec la lecture : le fond bleuit a mesure qu'on avance
+  // dans la chaine, et un halo suit la progression. Seules l'opacite et la
+  // translation sont animees — rien qui touche la mise en page.
+  const blueVeil = useTransform(scrollYProgress, [0, 0.25, 1], [0, 0.35, 1]);
+  const glowY = useTransform(scrollYProgress, [0, 1], ["-10%", "92%"]);
+  const glowFade = useTransform(scrollYProgress, [0, 0.08, 0.9, 1], [0, 1, 1, 0]);
+
   return (
-    <section ref={sectionRef} style={{ background: "transparent", padding: "clamp(1.5rem, 4vw, 3rem) 0 clamp(1.5rem, 4vw, 2.5rem)" }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 6vw" }}>
+    <section
+      ref={sectionRef}
+      style={{
+        background: "transparent",
+        padding: "clamp(1.5rem, 4vw, 3rem) 0 clamp(1.5rem, 4vw, 2.5rem)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Le bleu monte au fil du scroll. */}
+      <motion.div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: blueVeil,
+          background:
+            "linear-gradient(180deg, rgba(219,232,252,0) 0%, rgba(206,224,250,0.75) 45%, rgba(176,205,248,0.9) 100%)",
+          pointerEvents: "none",
+          willChange: "opacity",
+        }}
+      />
+      {/* Halo qui descend avec la lecture : c'est lui qui fait "jouer" la
+          lumiere le long de la colonne. */}
+      <motion.div
+        aria-hidden
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: 0,
+          y: glowY,
+          opacity: glowFade,
+          width: "min(1100px, 92vw)",
+          height: "38vh",
+          marginLeft: "min(-550px, -46vw)",
+          background:
+            "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%)",
+          pointerEvents: "none",
+          willChange: "transform, opacity",
+        }}
+      />
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 6vw", position: "relative", zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
