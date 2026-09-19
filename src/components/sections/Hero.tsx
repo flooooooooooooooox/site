@@ -2,8 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
-import { CloudDecor, CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
+import { CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
 import { CloudBadge } from "@/components/ui/CloudBadge";
+import HeroCloudscape from "@/components/ui/HeroCloudscape";
 
 const HERO_STYLES = `
 .hero-glass-pill {
@@ -300,21 +301,9 @@ export default function Hero() {
       <style>{HERO_STYLES}</style>
       <style>{CLOUD_DECOR_STYLES}</style>
 
-      {/* Halos de couleur poses sur le ciel global. */}
-      <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
-        <div className="hero-blob" style={{
-          position: "absolute", width: 420, height: 420, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(36,85,214,0.16) 0%, transparent 70%)",
-          top: "-8%", right: "-6%", filter: "blur(6px)",
-        }} />
-        <div className="hero-blob-2" style={{
-          position: "absolute", width: 300, height: 300, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,217,138,0.35) 0%, transparent 70%)",
-          bottom: "2%", left: "-4%", filter: "blur(4px)",
-        }} />
-        <CloudDecor size={110} opacity={0.14} style={{ top: "16%", left: "6%" }} />
-        <CloudDecor size={70} opacity={0.1} style={{ top: "62%", left: "16%" }} float={false} />
-      </div>
+      {/* Paysage nuageux : il porte desormais tout le fond du hero, et se
+          dissipe au scroll. Les anciens halos faisaient doublon. */}
+      <HeroCloudscape />
 
       <div className="hero-split" style={{ position: "relative", zIndex: 10, maxWidth: "1200px", width: "100%", margin: "0 auto", display: "grid", gridTemplateColumns: "0.92fr 1.08fr", gap: "2.5rem", alignItems: "center" }}>
         <div className="hero-split-text hero-text-glass" style={{ textAlign: "left", borderRadius: "1.5rem", padding: "clamp(2rem,3.4vw,2.8rem) clamp(1.8rem,3vw,2.4rem)" }}>
