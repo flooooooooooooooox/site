@@ -115,8 +115,11 @@ export default function StorySection() {
           position: "absolute",
           inset: 0,
           opacity: blueVeil,
+          // Le degrade redescend vers le transparent sur les dix derniers
+          // pour cent : sans cela le bleu se coupait net sur la section
+          // suivante.
           background:
-            "linear-gradient(180deg, rgba(219,232,252,0) 0%, rgba(206,224,250,0.75) 45%, rgba(176,205,248,0.9) 100%)",
+            "linear-gradient(180deg, rgba(219,232,252,0) 0%, rgba(206,224,250,0.75) 40%, rgba(176,205,248,0.95) 72%, rgba(186,212,250,0.7) 88%, rgba(219,232,252,0) 100%)",
           pointerEvents: "none",
           willChange: "opacity",
         }}

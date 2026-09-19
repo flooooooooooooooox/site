@@ -6,6 +6,7 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+import { cloudBand } from "@/components/ui/cloudArt";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -18,6 +19,14 @@ const STYLES = `
 .cinematic-footer-wrapper {
   font-family: var(--font-dm), sans-serif;
   -webkit-font-smoothing: antialiased;
+  /* Palette redefinie localement : le pied de page est un bloc bleu profond
+     et son texte est blanc. Tout le reste du composant lit ces variables. */
+  --foreground: #FFFFFF;
+  --background: #0B2A63;
+  --text: #FFFFFF;
+  --text-rgb: 255, 255, 255;
+  --muted-foreground: rgba(255, 255, 255, 0.72);
+  color: #FFFFFF;
   --pill-bg-1: color-mix(in srgb, var(--foreground) 4%, transparent);
   --pill-bg-2: color-mix(in srgb, var(--foreground) 1%, transparent);
   --pill-shadow: color-mix(in srgb, var(--background) 50%, transparent);
@@ -53,12 +62,16 @@ const STYLES = `
 /* Derive lente des deux couches nuageuses, a des vitesses differentes pour la
    profondeur. Transform uniquement : le compositeur ne redessine rien. */
 @keyframes footer-clouds-drift {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-12%, 0, 0); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-4%, 0, 0); }
 }
 .footer-clouds { will-change: transform; backface-visibility: hidden; }
-.footer-clouds-back { animation: footer-clouds-drift 90s linear infinite; }
-.footer-clouds-front { animation: footer-clouds-drift 58s linear infinite reverse; }
+.footer-clouds-back { animation: footer-clouds-drift 90s ease-in-out infinite; }
+.footer-clouds-front { animation: footer-clouds-front-drift 64s ease-in-out infinite; }
+@keyframes footer-clouds-front-drift {
+  0%, 100% { transform: scaleY(-1) translate3d(0, 0, 0); }
+  50% { transform: scaleY(-1) translate3d(5%, 0, 0); }
+}
 .footer-offscreen .footer-clouds { animation-play-state: paused !important; }
 @media (prefers-reduced-motion: reduce) {
   .footer-clouds { animation: none !important; }
@@ -274,38 +287,40 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
   }, [isMobile]);
 
   return (
-    <div ref={wrapperRef} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", overflow: "hidden", background: "transparent", color: "var(--foreground)", position: "relative" }}
+    <div ref={wrapperRef} style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", overflow: "hidden", background: "linear-gradient(180deg, #123C86 0%, #0F3378 46%, #0B2A63 100%)", color: "var(--foreground)", position: "relative" }}
       className="cinematic-footer-wrapper"
     >
       {/* Aurora */}
       <div className="footer-aurora animate-footer-breathe" style={{ position: "absolute", left: "50%", top: "50%", width: "80vw", height: "60vh", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
       <div className="footer-bg-grid" style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }} />
 
-      {/* Nuages : la page se termine dans la couche. Memes textures que le
-          reste du site, en images deja rasterisees — elles derivent lentement
-          et ne sont animees qu'en transform. */}
+      {/* Nuages 3D : la page se termine dans la couche. Memes volumes lisses
+          que le hero, encodes en image — rien a recalculer au defilement. */}
       <div
         aria-hidden
         className="footer-clouds footer-clouds-back"
         style={{
-          position: "absolute", left: "-10%", right: "-10%", top: "-6%", height: "46%",
-          backgroundImage: 'url("/cloud-mass.webp")',
-          backgroundSize: "60% 100%", backgroundRepeat: "repeat-x",
-          opacity: 0.5, zIndex: 0, pointerEvents: "none",
-          maskImage: "linear-gradient(180deg, #000 0%, #000 42%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 42%, rgba(0,0,0,0) 100%)",
+          position: "absolute", left: "-14%", right: "-14%", top: "-10%", height: "52%",
+          backgroundImage: cloudBand("onDark"),
+          // Une seule bande etiree plutot qu'un motif repete : la repetition
+          // laissait une couture verticale et un chapelet de lobes identiques.
+          backgroundSize: "170% 100%", backgroundPosition: "0% 0%", backgroundRepeat: "no-repeat",
+          opacity: 0.42, zIndex: 0, pointerEvents: "none",
+          maskImage: "linear-gradient(180deg, #000 0%, #000 46%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 46%, rgba(0,0,0,0) 100%)",
         }}
       />
       <div
         aria-hidden
         className="footer-clouds footer-clouds-front"
         style={{
-          position: "absolute", left: "-12%", right: "-12%", bottom: "-4%", height: "38%",
-          backgroundImage: 'url("/cloud-wisps.webp")',
-          backgroundSize: "48% 100%", backgroundRepeat: "repeat-x",
-          opacity: 0.45, zIndex: 0, pointerEvents: "none",
-          maskImage: "linear-gradient(0deg, #000 0%, #000 38%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(0deg, #000 0%, #000 38%, rgba(0,0,0,0) 100%)",
+          position: "absolute", left: "-16%", right: "-16%", bottom: "-12%", height: "46%",
+          backgroundImage: cloudBand("onDark"),
+          backgroundSize: "145% 100%", backgroundPosition: "100% 0%", backgroundRepeat: "no-repeat",
+          transform: "scaleY(-1)",
+          opacity: 0.28, zIndex: 0, pointerEvents: "none",
+          maskImage: "linear-gradient(180deg, #000 0%, #000 44%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 44%, rgba(0,0,0,0) 100%)",
         }}
       />
 
@@ -449,7 +464,7 @@ export function CinematicFooter() {
 
       {isMobile ? (
         // Mobile : layout normal dans le flux du document, hauteur naturelle
-        <footer style={{ background: "transparent", color: "var(--foreground)" }}>
+        <footer style={{ background: "linear-gradient(180deg, #123C86 0%, #0B2A63 100%)", color: "var(--foreground)" }}>
           <FooterContent isMobile={true} />
         </footer>
       ) : (
