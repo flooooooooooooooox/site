@@ -344,11 +344,11 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
           {/* Réseaux */}
           <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem" }}>
             <a href="https://www.instagram.com/floxia.pro" target="_blank" rel="noopener noreferrer"
-              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(36,85,214,0.15)", background: "rgba(36,85,214,0.04)" }}>
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "#FFFFFF", fontWeight: 600, border: "1px solid rgba(255,255,255,0.35)", background: "rgba(13,47,105,0.42)" }}>
               Instagram
             </a>
             <a href="https://www.linkedin.com/in/cirrion-pro-9360333aa" target="_blank" rel="noopener noreferrer"
-              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "var(--muted-foreground)", fontWeight: 500, border: "1px solid rgba(36,85,214,0.15)", background: "rgba(36,85,214,0.04)" }}>
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.5rem 1rem", borderRadius: "9999px", fontSize: "0.75rem", textDecoration: "none", color: "#FFFFFF", fontWeight: 600, border: "1px solid rgba(255,255,255,0.35)", background: "rgba(13,47,105,0.42)" }}>
               LinkedIn
             </a>
           </div>

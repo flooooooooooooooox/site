@@ -194,10 +194,31 @@ export default function HeroCloudscape() {
         overflow: "hidden",
       }}
     >
-      <div ref={skyRef} style={{ ...layer(""), backgroundImage: SKY_CSS }} />
-      <div ref={backRef} style={layer(BACK)} />
-      <div ref={swirlRef} style={{ ...layer(SWIRL), left: "42%", height: "86%", bottom: "auto" }} />
-      <div ref={frontRef} style={{ ...layer(FRONT), top: "auto", height: "29%" }} />
+      <div ref={skyRef} className="hc-sky" style={{ ...layer(""), backgroundImage: SKY_CSS }} />
+      <div ref={backRef} className="hc-back" style={layer(BACK)} />
+      <div ref={swirlRef} className="hc-swirl" style={{ ...layer(SWIRL), left: "42%", height: "86%", bottom: "auto" }} />
+      <div ref={frontRef} className="hc-front" style={{ ...layer(FRONT), top: "auto", height: "29%" }} />
+
+      {/* Sur un ecran etroit, les boites resserrees des calques n'ont plus du
+          tout le rapport de forme de leur dessin : recadres pour couvrir, ils
+          affichaient un fragment agrandi, et la composition partait en
+          morceaux. Le ruban est retire — illisible une fois recadre — et les
+          volumes reprennent toute la largeur. */}
+      <style>{`
+        @media (max-width: 768px) {
+          /* !important : les calques portent leurs reglages en style en ligne,
+             qui l'emporte sinon sur cette regle. */
+          .hc-swirl { display: none !important; }
+          /* Le dessin tient en entier dans la largeur et se pose en bas : on
+             voit des nuages complets, pas un fragment agrandi. */
+          .hc-back { background-size: 118% auto !important; background-position: 50% 100% !important; }
+          .hc-front {
+            left: 0 !important; right: 0 !important; top: auto !important; bottom: 0 !important;
+            height: 30% !important;
+            background-size: 108% auto !important; background-position: 50% 100% !important;
+          }
+        }
+      `}</style>
       {/* Sortie vers le fond uni de la suite. Un voile peint coute nettement
           moins qu'un mask-image sur le conteneur (mesure : 17 ms par frame). */}
       <div
