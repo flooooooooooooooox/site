@@ -330,8 +330,8 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
 
       {/* Marquee */}
       {!isMobile && (
-        <div style={{ position: "absolute", top: "3rem", left: 0, width: "100%", overflow: "hidden", borderTop: "1px solid rgba(36,85,214,0.12)", borderBottom: "1px solid rgba(36,85,214,0.12)", background: "rgba(36,85,214,0.06)", backdropFilter: "blur(12px)", padding: "1rem 0", zIndex: 10, transform: "rotate(-2deg) scaleX(1.1)", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}>
-          <div className="animate-footer-scroll-marquee" style={{ display: "flex", width: "max-content", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.28em", color: "rgba(232,237,244,0.45)", textTransform: "uppercase" }}>
+        <div style={{ position: "absolute", top: "3rem", left: 0, width: "100%", overflow: "hidden", borderTop: "1px solid rgba(36,85,214,0.12)", borderBottom: "1px solid rgba(36,85,214,0.12)", background: "rgba(255,255,255,0.4)", padding: "1rem 0", zIndex: 10, transform: "rotate(-2deg) scaleX(1.1)", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}>
+          <div className="animate-footer-scroll-marquee" style={{ display: "flex", width: "max-content", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.28em", color: "rgba(11,42,99,0.5)", textTransform: "uppercase" }}>
             <MarqueeItem /><MarqueeItem />
           </div>
         </div>
@@ -377,7 +377,7 @@ function FooterContent({ isMobile }: { isMobile: boolean }) {
               ))}
             </div>
             <div style={{ textAlign: "center", marginTop: "0.7rem" }}>
-              <Link href="/logiciel-batiment" style={{ color: "#2455D6", fontSize: "0.65rem", fontWeight: 600, textDecoration: "none" }}>
+              <Link href="/logiciel-batiment" style={{ color: "#BFD8FF", fontSize: "0.65rem", fontWeight: 700, textDecoration: "none" }}>
                 Voir les 200+ villes couvertes →
               </Link>
             </div>

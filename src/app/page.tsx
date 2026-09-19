@@ -113,6 +113,7 @@ export default function Home() {
               <Link
                 key={l.href}
                 href={l.href}
+                className="go-further-card"
                 style={{
                   display: "block",
                   padding: "1.1rem 1.3rem",
@@ -120,15 +121,32 @@ export default function Home() {
                   border: "1px solid rgba(36,85,214,0.16)",
                   background: "rgba(36,85,214,0.04)",
                   textDecoration: "none",
+                  transition: "transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease",
                 }}
               >
-                <span style={{ display: "block", color: "#2455D6", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.2rem" }}>
-                  {l.label} →
+                <span style={{ display: "flex", alignItems: "baseline", gap: "0.35rem", color: "#2455D6", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.2rem" }}>
+                  {l.label}
+                  {/* La fleche est sortie du texte : collee au libelle, elle
+                      partait a la ligne toute seule sur les titres longs. */}
+                  <span className="go-further-arrow" aria-hidden style={{ transition: "transform .22s ease" }}>→</span>
                 </span>
                 <span style={{ display: "block", color: "rgba(27,42,74,0.5)", fontSize: "0.78rem" }}>{l.sub}</span>
               </Link>
             ))}
           </div>
+          <style>{`
+            .go-further-card:hover {
+              transform: translateY(-3px);
+              background: rgba(36,85,214,0.08);
+              border-color: rgba(36,85,214,0.4);
+              box-shadow: 0 10px 22px -12px rgba(36,85,214,0.45);
+            }
+            .go-further-card:hover .go-further-arrow { transform: translateX(4px); }
+            @media (prefers-reduced-motion: reduce) {
+              .go-further-card, .go-further-arrow { transition: none !important; }
+              .go-further-card:hover { transform: none; }
+            }
+          `}</style>
         </section>
 
         {/* 6 — Passage a l'acte */}

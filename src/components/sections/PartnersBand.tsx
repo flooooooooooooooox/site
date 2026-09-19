@@ -93,17 +93,33 @@ const PARTNERS = [
 
 export default function PartnersBand() {
   const sectionRef = useRef<HTMLElement>(null);
+  const railRef = useRef<HTMLDivElement>(null);
+
+  // Defilement infini sans animation permanente : la liste est repetee trois
+  // fois et, des qu'on approche d'un bord, on saute silencieusement d'une
+  // longueur de liste. Le defilement natif du navigateur fait le reste — rien
+  // ne tourne tant que personne ne clique.
+  const loop = () => {
+    const rail = railRef.current;
+    if (!rail) return;
+    const span = rail.scrollWidth / 3;
+    if (rail.scrollLeft < span * 0.5) rail.scrollLeft += span;
+    else if (rail.scrollLeft > span * 1.5) rail.scrollLeft -= span;
+  };
 
   useEffect(() => {
-    const node = sectionRef.current;
-    if (!node) return;
-    const io = new IntersectionObserver(
-      ([entry]) => node.classList.toggle("partners-offscreen", !entry?.isIntersecting),
-      { rootMargin: "120px" }
-    );
-    io.observe(node);
-    return () => io.disconnect();
+    const rail = railRef.current;
+    if (!rail) return;
+    // On demarre sur la copie du milieu : il y a de la matiere des deux cotes.
+    rail.scrollLeft = rail.scrollWidth / 3;
   }, []);
+
+  const nudge = (dir: 1 | -1) => {
+    const rail = railRef.current;
+    if (!rail) return;
+    loop();
+    rail.scrollBy({ left: dir * Math.min(rail.clientWidth * 0.8, 420), behavior: "smooth" });
+  };
 
   return (
     <section ref={sectionRef} style={{ background: "transparent", padding: "3rem 0", borderTop: "1px solid rgba(var(--surface-rgb),0.05)", borderBottom: "1px solid rgba(var(--surface-rgb),0.05)" }}>
@@ -116,18 +132,32 @@ export default function PartnersBand() {
         >
           Nos partenaires
         </motion.p>
-        <div className="partners-marquee-viewport" style={{ position: "relative", width: "100%", overflow: "hidden", maskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)" }}>
-          <div className="partners-marquee-track" style={{ display: "flex", gap: "0.75rem", width: "max-content", willChange: "transform", backfaceVisibility: "hidden" }}>
-            {[...PARTNERS, ...PARTNERS].map((p, i) => (
+        <div style={{ position: "relative", width: "100%" }}>
+          <div
+            ref={railRef}
+            className="partners-rail"
+            onScroll={loop}
+            style={{
+              display: "flex",
+              gap: "0.75rem",
+              overflowX: "auto",
+              scrollbarWidth: "none",
+              padding: "0.25rem 0",
+              maskImage: "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)",
+              WebkitMaskImage: "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)",
+            }}
+          >
+            {[...PARTNERS, ...PARTNERS, ...PARTNERS].map((p, i) => (
               <div
                 key={`${p.name}-${i}`}
+                className="partners-chip"
                 style={{
                   display: "inline-flex", alignItems: "center", gap: "0.65rem",
                   padding: "0.65rem 1.2rem", borderRadius: "999px",
                   border: "1px solid rgba(var(--surface-rgb),0.08)",
                   background: "rgba(var(--surface-rgb),0.03)",
-                  backdropFilter: "blur(8px)",
-                  whiteSpace: "nowrap",
+                  whiteSpace: "nowrap", flexShrink: 0,
+                  transition: "transform .2s ease, border-color .2s ease, background .2s ease",
                 }}
               >
                 <div style={{ flexShrink: 0 }}>{p.svg}</div>
@@ -138,19 +168,45 @@ export default function PartnersBand() {
               </div>
             ))}
           </div>
+
+          <button type="button" aria-label="Partenaires precedents" className="partners-arrow partners-arrow-l" onClick={() => nudge(-1)}>←</button>
+          <button type="button" aria-label="Partenaires suivants" className="partners-arrow partners-arrow-r" onClick={() => nudge(1)}>→</button>
         </div>
+
         <style>{`
-          .partners-marquee-track { animation: partners-marquee-scroll 32s linear infinite; }
-          /* Hors ecran, l'animation est suspendue : une animation qui tourne
-             force le compositeur a redessiner a chaque frame, meme si personne
-             ne la regarde. */
-          .partners-offscreen .partners-marquee-track { animation-play-state: paused; }
-          @media (prefers-reduced-motion: reduce) {
-            .partners-marquee-track { animation: none !important; }
+          .partners-rail::-webkit-scrollbar { display: none; }
+          .partners-chip:hover {
+            transform: translateY(-2px);
+            border-color: rgba(36,85,214,0.35);
+            background: rgba(36,85,214,0.06);
           }
-          @keyframes partners-marquee-scroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
+          .partners-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(36,85,214,0.22);
+            background: rgba(255,255,255,0.92);
+            color: #2455D6;
+            font-size: 0.95rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px -4px rgba(27,42,74,0.18);
+            transition: background .2s ease, border-color .2s ease, transform .2s ease;
+            z-index: 2;
+          }
+          .partners-arrow:hover { background: #2455D6; color: #FFFFFF; border-color: #2455D6; }
+          .partners-arrow:active { transform: translateY(-50%) scale(0.94); }
+          .partners-arrow-l { left: -6px; }
+          .partners-arrow-r { right: -6px; }
+          @media (max-width: 640px) {
+            .partners-arrow-l { left: -2px; }
+            .partners-arrow-r { right: -2px; }
           }
         `}</style>
         <motion.p
