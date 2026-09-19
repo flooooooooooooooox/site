@@ -99,16 +99,17 @@ const STYLES = `
 }
 
 .footer-glass-pill {
-  background: linear-gradient(145deg, var(--pill-bg-1) 0%, var(--pill-bg-2) 100%);
+  /* Sur la bande nuageuse claire du haut, un fond a 4 % d'opacite rendait les
+     liens invisibles. Ils portent maintenant leur propre fond. */
+  background: rgba(13, 47, 105, 0.42);
+  color: #FFFFFF;
   box-shadow: 0 10px 30px -10px var(--pill-shadow), inset 0 1px 1px var(--pill-highlight), inset 0 -1px 2px var(--pill-inset-shadow);
-  border: 1px solid var(--pill-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .footer-glass-pill:hover {
-  background: linear-gradient(145deg, var(--pill-bg-1-hover) 0%, var(--pill-bg-2-hover) 100%);
-  border-color: var(--pill-border-hover);
+  background: rgba(13, 47, 105, 0.62);
+  border-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 20px 40px -10px var(--pill-shadow-hover), inset 0 1px 1px var(--pill-highlight-hover);
   color: var(--foreground);
 }

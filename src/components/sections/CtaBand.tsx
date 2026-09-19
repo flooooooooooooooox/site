@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
-import { CloudDecor, CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
+import { cloudBand } from "@/components/ui/cloudArt";
 
 export default function CtaBand() {
   return (
@@ -13,21 +13,40 @@ export default function CtaBand() {
         padding: "clamp(2.5rem, 6vw, 4.5rem) 0",
       }}
     >
-      <style>{CLOUD_DECOR_STYLES}</style>
       {/* Fond clair — dégradé bleu doux, pas de photo */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(135deg, #E4ECFF 0%, #EFF4FF 50%, #FFF3DE 100%)",
+          background: "linear-gradient(180deg, #CFE0FA 0%, #E4ECFF 38%, #EFF4FF 72%, #FFF6E6 100%)",
           zIndex: 0,
         }}
       />
-      <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
-        <CloudDecor size={140} opacity={0.1} style={{ top: "8%", left: "4%" }} />
-        <CloudDecor size={90} opacity={0.12} style={{ bottom: "10%", right: "8%" }} />
-        <CloudDecor size={60} opacity={0.08} style={{ top: "58%", right: "22%" }} float={false} />
-      </div>
+      {/* Memes volumes nuageux que le hero : on entre dans la couche par le
+          haut du bandeau, et elle se referme en bas. */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute", left: "-10%", right: "-10%", top: "-16%", height: "46%",
+          backgroundImage: cloudBand("light"),
+          backgroundSize: "150% 100%", backgroundPosition: "0% 0%", backgroundRepeat: "no-repeat",
+          opacity: 0.85, zIndex: 0, pointerEvents: "none",
+          maskImage: "linear-gradient(180deg, #000 0%, #000 58%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 58%, rgba(0,0,0,0) 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute", left: "-14%", right: "-14%", bottom: "-18%", height: "40%",
+          backgroundImage: cloudBand("light"),
+          backgroundSize: "125% 100%", backgroundPosition: "100% 0%", backgroundRepeat: "no-repeat",
+          transform: "scaleY(-1)",
+          opacity: 0.7, zIndex: 0, pointerEvents: "none",
+          maskImage: "linear-gradient(180deg, #000 0%, #000 55%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(180deg, #000 0%, #000 55%, rgba(0,0,0,0) 100%)",
+        }}
+      />
       <div
         style={{
           position: "absolute",

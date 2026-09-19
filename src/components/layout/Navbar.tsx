@@ -40,9 +40,10 @@ export default function Navbar() {
           top: 0,
           width: "100%",
           padding: "0.9rem 5vw",
-          background: "rgba(239,244,255,0.85)",
-          backdropFilter: "blur(20px) saturate(160%)",
-          WebkitBackdropFilter: "blur(20px) saturate(160%)",
+          // Fond quasi opaque : le flou de verre a ete neutralise pour la
+          // performance, et un fond translucide laissait alors lire le contenu
+          // qui passe dessous.
+          background: "rgba(244,248,255,0.97)",
           borderBottom: "1px solid rgba(36,85,214,0.12)",
         }}
       >
