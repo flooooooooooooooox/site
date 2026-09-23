@@ -235,7 +235,7 @@ export default function Comparatif() {
                 ))}
               </ul>
               <div style={{ marginTop: "1.3rem", textAlign: "center" }}>
-                <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"
+                <a href="https://calendly.com/cirrion-pro/30min" target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.8rem 1.8rem", borderRadius: "999px", background: "#2455D6", color: "#fff", fontWeight: 700, fontSize: "0.88rem", textDecoration: "none" }}>
                   Voir la différence en démo — 30 min →
                 </a>

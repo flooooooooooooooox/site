@@ -114,7 +114,7 @@ export default function Navbar() {
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
           {/* CTA masqué sur mobile (remplacé dans le menu) */}
           <a
-            href="https://calendly.com/afele1845/30min"
+            href="https://calendly.com/cirrion-pro/30min"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-cta-desktop"
@@ -198,7 +198,7 @@ export default function Navbar() {
           ))}
           {/* CTA dans le menu mobile */}
           <a
-            href="https://calendly.com/afele1845/30min"
+            href="https://calendly.com/cirrion-pro/30min"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}

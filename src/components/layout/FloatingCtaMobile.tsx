@@ -66,7 +66,7 @@ export default function FloatingCtaMobile() {
         </div>
 
         <a
-          href="https://calendly.com/afele1845/30min"
+          href="https://calendly.com/cirrion-pro/30min"
           target="_blank"
           rel="noopener noreferrer"
           style={{

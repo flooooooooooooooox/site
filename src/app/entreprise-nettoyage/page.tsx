@@ -70,7 +70,7 @@ export default function NettoyagePage() {
       </p>
 
       <a
-        href="https://calendly.com/afele1845/30min"
+        href="https://calendly.com/cirrion-pro/30min"
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -116,7 +116,7 @@ export default function NettoyagePage() {
           client. Vous démarrez organisé, vous gagnez du temps, vous paraissez sérieux face à vos clients.
         </p>
         <a
-          href="https://calendly.com/afele1845/30min"
+          href="https://calendly.com/cirrion-pro/30min"
           target="_blank"
           rel="noopener noreferrer"
           style={{

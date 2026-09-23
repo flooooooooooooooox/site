@@ -220,7 +220,7 @@ const organizationJsonLd = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    url: "https://calendly.com/afele1845/30min",
+    url: "https://calendly.com/cirrion-pro/30min",
     availableLanguage: "French",
     contactOption: "TollFree",
   },

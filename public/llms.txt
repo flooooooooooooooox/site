@@ -5,7 +5,7 @@
 Cirrion automatise la gestion administrative des artisans : devis, factures, relances, planning, rentabilité par chantier, gestion de stock automatique, tarification produit éditable, recherche globale, coordonnées et conformité légale, suivi des heures salariés, rapprochement bancaire et facturation électronique conforme 2026 (Factur-X). Le service s'adresse aux électriciens, plombiers, maçons, peintres, couvreurs, menuisiers, carreleurs, chauffagistes, ainsi qu'aux TPE de services (nettoyage, paysagisme, déménagement, aide à domicile).
 
 - Site web : https://www.cirrion.eu
-- Contact commercial : https://calendly.com/afele1845/30min
+- Contact commercial : https://calendly.com/cirrion-pro/30min
 - Zone d'activité : France (100% hébergé en France, conforme RGPD)
 - Offres : Essentiel, Artisan Pro, PME Premium — tarification sur devis, établie après une démonstration
 - Fondateur : Florian Gagnebien, ingénieur en automatisation (stage à la Fondation ANAIS, ETI à Alençon)

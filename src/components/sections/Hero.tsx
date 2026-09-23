@@ -355,7 +355,7 @@ export default function Hero() {
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.62 }}
             style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
-            <MagneticBtn href="https://calendly.com/afele1845/30min" className="hero-solid-btn"
+            <MagneticBtn href="https://calendly.com/cirrion-pro/30min" className="hero-solid-btn"
               style={{ padding: "0.8rem 1.7rem", borderRadius: "999px", fontSize: "0.85rem", display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
               Réserver une démo — 30 min
             </MagneticBtn>

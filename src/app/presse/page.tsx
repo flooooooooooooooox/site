@@ -126,7 +126,7 @@ export default function Presse() {
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.8, marginBottom: "2rem" }}>
           Pour toute demande d&apos;interview, de démonstration produit ou d&apos;information complémentaire, prenez rendez-vous directement via notre calendrier en ligne.
         </p>
-        <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"
+        <a href="https://calendly.com/cirrion-pro/30min" target="_blank" rel="noopener noreferrer"
           style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "0.9rem 1.8rem", borderRadius: "0.85rem", background: "#2455D6", color: "#FFFFFF", fontWeight: 700, fontSize: ".95rem", textDecoration: "none", marginBottom: "4rem" }}>
           Prendre rendez-vous
         </a>

@@ -128,7 +128,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
             Essayez Cirrion {ville.prepo} {ville.nom}
           </h2>
           <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · Sans engagement</p>
-          <a href="https://calendly.com/afele1845/30min" target="_blank" rel="noopener noreferrer"
+          <a href="https://calendly.com/cirrion-pro/30min" target="_blank" rel="noopener noreferrer"
             style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "1rem 2rem", borderRadius: "0.85rem", background: "#2455D6", color: "#FFFFFF", fontWeight: 700, fontSize: ".95rem", textDecoration: "none" }}>
             Réserver une démo gratuite
           </a>

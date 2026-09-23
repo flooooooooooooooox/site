@@ -120,7 +120,7 @@ export default function BlogArticle({ title, description, date, readTime, badge,
                       {block.content}
                     </p>
                     <a
-                      href="https://calendly.com/afele1845/30min"
+                      href="https://calendly.com/cirrion-pro/30min"
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{

@@ -114,7 +114,7 @@ export default function CtaBand() {
 
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
             <a
-              href="https://calendly.com/afele1845/30min"
+              href="https://calendly.com/cirrion-pro/30min"
               target="_blank"
               rel="noopener noreferrer"
               style={{
