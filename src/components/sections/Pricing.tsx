@@ -8,13 +8,14 @@ import { CloudSupport, CLOUD_SUPPORT_STYLES } from "@/components/ui/CloudSupport
 const PLANS = [
   {
     name: "Essentiel",
-    tagline: "Pour démarrer sans prise de tête",
+    tagline: "Pour l'artisan seul ou avec un salarié",
+    criteria: "EI ou micro · 0 à 1 salarié · TVA trimestrielle",
     icon: Zap,
-    price: 99,
-    setup: 299,
+    price: 199,
     popular: false,
     accentColor: "rgba(96,165,250,0.8)",
     features: [
+      "Comptabilité complète incluse : TVA, bilan et liasse fiscale",
       "Devis & factures WhatsApp + app ERP",
       "Documents illimités",
       "Rentabilité par chantier",
@@ -69,14 +70,15 @@ const PLANS = [
   },
   {
     name: "Artisan Pro",
-    tagline: "Le choix des artisans qui veulent scaler",
+    tagline: "Pour la société qui a une petite équipe",
+    criteria: "SASU, EURL ou SARL · 2 à 5 salariés · TVA mensuelle",
     icon: Star,
-    price: 179,
-    setup: 349,
+    price: 279,
     popular: true,
     accentColor: "#2455D6",
     features: [
       "Tout Essentiel inclus",
+      "Paie et DSN mensuelles pour vos salariés",
       "Standard IA 24h/24",
       "Agent IA WhatsApp 24h/24",
       "Relances auto + validation paiement en 1 clic",
@@ -119,8 +121,8 @@ const PLANS = [
           "Scan OCR tickets / factures fournisseurs (WhatsApp)",
           "Dashboard dépenses & TVA récupérable",
           "TVA à décaisser calculée automatiquement (mois ou trimestre)",
-          "Déclaration CA3 préparée et transmise à votre comptable",
-          "Télétransmission à la DGFiP via ASPOne après validation du comptable",
+          "Déclaration CA3 préparée, vérifiée puis télétransmise pour vous",
+          "Télétransmission à la DGFiP via ASPOne, partenaire EDI agréé",
         ],
       },
       { category: "Avis & réputation", items: ["Demandes automatiques d'avis Google"] },
@@ -128,10 +130,10 @@ const PLANS = [
   },
   {
     name: "PME Premium",
-    tagline: "Pour les entreprises avec équipe et multi-chantiers",
+    tagline: "Pour l'entreprise multi-chantiers",
+    criteria: "Société · 6 à 15 salariés · paie complète",
     icon: Building2,
     price: 349,
-    setup: 499,
     popular: false,
     accentColor: "rgba(74,222,128,0.9)",
     features: [
@@ -392,16 +394,22 @@ export default function Pricing() {
                       border: "1px solid rgba(var(--surface-rgb),0.06)",
                       marginBottom: "1.5rem",
                     }}>
-                      <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: "6px", flexWrap: "wrap" }}>
                         <span style={{
                           fontFamily: "var(--font-nunito)", fontWeight: 900,
                           fontSize: "2.1rem", color: "var(--text)", lineHeight: 1.1, letterSpacing: "-0.03em",
                         }}>
-                          Sur devis
+                          {plan.price} €
+                        </span>
+                        <span style={{ color: "rgba(var(--text-rgb),0.45)", fontSize: ".82rem", fontWeight: 600 }}>
+                          HT / mois
                         </span>
                       </div>
-                      <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".75rem", marginTop: "0.45rem", lineHeight: 1.5 }}>
-                        Tarif établi selon votre activité et le nombre de comptes. Réponse sous 24 h après la démo.
+                      <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: ".78rem", marginTop: "0.45rem", lineHeight: 1.5, fontWeight: 600 }}>
+                        Tout compris — logiciel, TVA, paie et bilan annuel.
+                      </p>
+                      <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".72rem", marginTop: "0.3rem", lineHeight: 1.5 }}>
+                        {plan.criteria}
                       </p>
                     </div>
 

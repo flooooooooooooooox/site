@@ -47,8 +47,8 @@ const STEPS: Step[] = [
   {
     icon: TrendingUp,
     tag: "Étape 6",
-    title: "Votre comptable valide, vous encaissez",
-    desc: "Il reçoit des pièces déjà qualifiées et un export FEC normé. Rien n'est transmis à l'administration sans sa validation. Vous, vous suivez votre trésorerie en temps réel.",
+    title: "Tout est déclaré, vous encaissez",
+    desc: "TVA télétransmise à la DGFiP, DSN déposée, bilan et liasse préparés puis signés par notre cabinet partenaire en fin d'exercice. Vous n'avez plus de comptable à relancer : vous suivez votre trésorerie en temps réel.",
   },
 ];
 

@@ -107,8 +107,8 @@ const CATEGORIES: Category[] = [
   },
   {
     icon: Receipt,
-    title: "Comptabilité & Dépenses",
-    subtitle: "Une photo suffit. Votre comptable reçoit tout, prêt.",
+    title: "Comptabilité complète",
+    subtitle: "Une photo suffit. Tout est traité, déclaré et déposé pour vous.",
     color: "#60A5FA",
     features: [
       "Scan tickets & factures fournisseurs via WhatsApp",
@@ -116,9 +116,10 @@ const CATEGORIES: Category[] = [
       "Dashboard dépenses & TVA récupérable",
       "TVA à décaisser calculée automatiquement (mois ou trimestre)",
       "TVA collectée et TVA déductible détaillées",
-      "Déclaration CA3 préparée et transmise à votre comptable",
-      "Après validation du comptable, télétransmission à la DGFiP via ASPOne",
-      "Export comptabilité en 1 clic",
+      "Déclaration CA3 établie puis télétransmise à la DGFiP via ASPOne",
+      "DSN mensuelle et bulletins de paie via OpenPaye",
+      "Bilan et liasse fiscale une fois par an, avec notre cabinet partenaire",
+      "Provision du bilan lissée sur votre abonnement : rien à sortir en fin d'année",
     ],
   },
   {

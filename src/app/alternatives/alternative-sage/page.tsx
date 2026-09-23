@@ -36,7 +36,7 @@ export default function AlternativeSage() {
         whyTitle="Pourquoi Cirrion est une meilleure alternative à Sage pour le bâtiment"
         whyParagraphs={[
           "Sage couvre la comptabilité, la paie et la gestion d'entreprise au sens large. C'est pertinent pour des structures importantes avec un service administratif dédié, mais c'est un investissement lourd pour un artisan.",
-          "Cirrion se concentre sur le quotidien d'un professionnel du bâtiment : générer un devis depuis le terrain par vocal WhatsApp, relancer automatiquement, encaisser plus vite. Pour la comptabilité, Cirrion exporte vos données en un clic vers votre expert-comptable. C'est l'alternative à Sage qui correspond à votre métier, sans payer pour des modules que vous n'utiliserez jamais.",
+          "Cirrion se concentre sur le quotidien d'un professionnel du bâtiment : générer un devis depuis le terrain par vocal WhatsApp, relancer automatiquement, encaisser plus vite. La comptabilité est comprise : TVA télétransmise, paie, DSN, bilan et liasse fiscale une fois par an avec notre cabinet partenaire. C'est l'alternative à Sage qui correspond à votre métier, sans payer pour des modules que vous n'utiliserez jamais.",
         ]}
         rows={[
           { feature: "Spécialisé bâtiment / artisan", floxia: true, competitor: "partial" },

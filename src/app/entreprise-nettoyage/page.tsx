@@ -43,7 +43,7 @@ const FEATURES = [
   },
   {
     title: "Comptabilité simplifiée",
-    desc: "Scannez vos dépenses (produits, matériel) d'une photo, exportez tout à votre comptable en 1 clic.",
+    desc: "Scannez vos dépenses (produits, matériel) d'une photo : TVA, paie et bilan annuel sont compris dans l'abonnement.",
   },
 ];
 
