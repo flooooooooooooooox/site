@@ -11,7 +11,6 @@ const PLANS = [
     tagline: "Pour l'artisan seul ou avec un salarié",
     criteria: "EI ou micro · 0 à 1 salarié · TVA trimestrielle",
     icon: Zap,
-    price: 199,
     popular: false,
     accentColor: "rgba(96,165,250,0.8)",
     features: [
@@ -73,7 +72,6 @@ const PLANS = [
     tagline: "Pour la société qui a une petite équipe",
     criteria: "SASU, EURL ou SARL · 2 à 5 salariés · TVA mensuelle",
     icon: Star,
-    price: 279,
     popular: true,
     accentColor: "#2455D6",
     features: [
@@ -133,7 +131,6 @@ const PLANS = [
     tagline: "Pour l'entreprise multi-chantiers",
     criteria: "Société · 6 à 15 salariés · paie complète",
     icon: Building2,
-    price: 349,
     popular: false,
     accentColor: "rgba(74,222,128,0.9)",
     features: [
@@ -394,22 +391,19 @@ export default function Pricing() {
                       border: "1px solid rgba(var(--surface-rgb),0.06)",
                       marginBottom: "1.5rem",
                     }}>
-                      <div style={{ display: "flex", alignItems: "baseline", gap: "6px", flexWrap: "wrap" }}>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
                         <span style={{
                           fontFamily: "var(--font-nunito)", fontWeight: 900,
                           fontSize: "2.1rem", color: "var(--text)", lineHeight: 1.1, letterSpacing: "-0.03em",
                         }}>
-                          {plan.price} €
-                        </span>
-                        <span style={{ color: "rgba(var(--text-rgb),0.45)", fontSize: ".82rem", fontWeight: 600 }}>
-                          HT / mois
+                          Sur devis
                         </span>
                       </div>
                       <p style={{ color: "rgba(var(--text-rgb),0.55)", fontSize: ".78rem", marginTop: "0.45rem", lineHeight: 1.5, fontWeight: 600 }}>
                         Tout compris — logiciel, TVA, paie et bilan annuel.
                       </p>
                       <p style={{ color: "rgba(var(--text-rgb),0.4)", fontSize: ".72rem", marginTop: "0.3rem", lineHeight: 1.5 }}>
-                        {plan.criteria}
+                        {plan.criteria} · Réponse sous 24 h après la démo.
                       </p>
                     </div>
 
