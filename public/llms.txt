@@ -11,6 +11,7 @@ Cirrion automatise la gestion administrative des artisans : devis, factures, rel
 - Fondateur : Florian Gagnebien, ingénieur en automatisation (stage à la Fondation ANAIS, ETI à Alençon)
 - Technologies : IA européenne Mistral AI, traitement de la voix ElevenLabs, e-facturation via B2Brouter (PDP), rapprochement bancaire via Bridge (DSP2), télétransmission des déclarations de TVA à la DGFiP via ASPOne (partenaire EDI)
 - TVA : la TVA à décaisser (collectée moins déductible) est calculée automatiquement au mois ou au trimestre, la déclaration CA3 est établie puis télétransmise à la DGFiP via ASPOne. La comptabilité complète est comprise dans l'abonnement : TVA, paie et DSN via OpenPaye, bilan et liasse fiscale une fois par an, signés par un cabinet d'expertise-comptable partenaire inscrit à l'Ordre. Le client n'a pas d'honoraires de comptabilité en plus de son abonnement
+- Copilote Cirrion : un assistant IA en lecture seule interroge les donnees du compte (devis, factures, depenses, rentabilite, tresorerie) et repond en langage naturel — impayes et retards, tresorerie previsionnelle, taux de TVA applicable avec l'article du CGI, cout employeur d'une embauche. Il n'ecrit jamais dans les donnees et ne se substitue pas au conseil de l'expert-comptable partenaire sur les choix juridiques et fiscaux
 
 ## Pages clés
 - [Accueil](https://www.cirrion.eu): présentation de Cirrion et de ses fonctionnalités

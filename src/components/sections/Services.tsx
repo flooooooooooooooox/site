@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   FileText, Bell, PhoneIncoming, Mic, Receipt,
   Star, Monitor, Shield, LucideIcon,
-  TrendingUp, Tags, MapPin, GraduationCap, Landmark,
+  TrendingUp, Tags, MapPin, GraduationCap, Landmark, Sparkles,
 } from "lucide-react";
 import { CloudBadge } from "@/components/ui/CloudBadge";
 
@@ -79,6 +79,23 @@ const CATEGORIES: Category[] = [
       "Suivi hebdomadaire : CA, chantiers, devis signés",
       "Envoi factures à date calculée automatiquement",
       "Notification devis signé en temps réel",
+    ],
+  },
+  {
+    icon: Sparkles,
+    title: "Copilote Cirrion",
+    // L'interet n'est pas qu'une IA reponde : c'est qu'elle reponde sur les
+    // chiffres du compte, pas sur des generalites. La formulation le dit, et
+    // ne promet pas un conseil juridique que l'outil ne peut pas engager.
+    subtitle: "Posez votre question, il lit vos chiffres et répond.",
+    color: "#7C6CF5",
+    features: [
+      "« Combien j'ai d'impayés ? » — le montant, les clients, les retards",
+      "« Ma trésorerie sur 30 jours ? » — encaissements attendus, échéance par échéance",
+      "« Quel taux de TVA pour cette rénovation ? » — avec l'article du CGI",
+      "« Je peux embaucher à 2 000 € net ? » — coût employeur chargé, confronté à votre trésorerie",
+      "Analyse en lecture seule : il ne modifie jamais vos données",
+      "Réponses sourcées sur vos devis, factures, dépenses et rentabilité",
     ],
   },
   {

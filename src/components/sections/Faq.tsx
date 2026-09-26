@@ -62,7 +62,7 @@ const FAQS = [
   },
   {
     q: "Cirrion remplace-t-il mon expert-comptable ?",
-    a: "Oui. L'abonnement couvre toute votre comptabilité : justificatifs scannés et classés, rapprochement bancaire via Bridge, TVA établie et télétransmise à la DGFiP via ASPOne, paie et DSN via OpenPaye, puis le bilan et la liasse fiscale une fois par an. Le bilan et la liasse sont signés par un cabinet d'expertise-comptable partenaire, inscrit à l'Ordre — la loi le réserve à un professionnel inscrit, et nous ne prétendons pas le contraire. La différence : vous n'avez qu'un seul abonnement mensuel, sans honoraires en plus au moment du bilan.",
+    a: "Oui. L'abonnement couvre toute votre comptabilité : justificatifs scannés et classés, rapprochement bancaire via Bridge, TVA établie et télétransmise à la DGFiP via ASPOne, paie et DSN via OpenPaye, puis le bilan et la liasse fiscale une fois par an. Le bilan et la liasse sont signés par un cabinet d'expertise-comptable partenaire, inscrit à l'Ordre — la loi le réserve à un professionnel inscrit, et nous ne prétendons pas le contraire. La différence : vous n'avez qu'un seul abonnement mensuel, sans honoraires en plus au moment du bilan, et le Copilote Cirrion répond à vos questions sur vos chiffres à toute heure, sans attendre un rendez-vous.",
   },
   {
     q: "Combien de temps un artisan gagne-t-il réellement avec Cirrion ?",
