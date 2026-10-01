@@ -3,6 +3,11 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { Mic, PenLine, CalendarClock, Receipt, Landmark, TrendingUp, LucideIcon } from "lucide-react";
 import { STORY_FRAMES } from "@/components/ui/storyFrames";
+import { cloudBand } from "@/components/ui/cloudArt";
+
+// Rasterise une fois au chargement : au defilement il ne reste qu'une image de
+// fond a composer, jamais un filtre a recalculer.
+const BAND = cloudBand("light");
 
 interface Step {
   icon: LucideIcon;
@@ -94,8 +99,14 @@ export default function StorySection() {
   const skyDepth = useTransform(scrollYProgress, [0, 0.45, 1], [0, 0.85, 0.35]);
   const haloY = useTransform(scrollYProgress, [0, 1], ["18%", "-14%"]);
   const haloScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 1.12, 0.95]);
-  const veilA = useTransform(scrollYProgress, [0, 1], ["-12%", "14%"]);
-  const veilB = useTransform(scrollYProgress, [0, 1], ["10%", "-16%"]);
+  // Deux bandes de nuages a des vitesses differentes : c'est l'ecart entre les
+  // deux qui fait la profondeur. La bande proche grossit en plus de glisser,
+  // comme si on la traversait.
+  const farX = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const farY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+  const nearX = useTransform(scrollYProgress, [0, 1], ["12%", "-14%"]);
+  const nearY = useTransform(scrollYProgress, [0, 1], ["-8%", "14%"]);
+  const nearScale = useTransform(scrollYProgress, [0, 1], [1, 1.24]);
 
   return (
     <section
@@ -105,9 +116,15 @@ export default function StorySection() {
       {/* Le ciel de la section, pilote par le defilement */}
       <div className="story-ambience" aria-hidden>
         <motion.div className="story-sky" style={{ opacity: skyDepth }} />
+        <motion.div
+          className="story-band story-band-far"
+          style={{ x: farX, y: farY, backgroundImage: BAND }}
+        />
         <motion.div className="story-halo" style={{ y: haloY, scale: haloScale }} />
-        <motion.div className="story-veil story-veil-a" style={{ x: veilA }} />
-        <motion.div className="story-veil story-veil-b" style={{ x: veilB }} />
+        <motion.div
+          className="story-band story-band-near"
+          style={{ x: nearX, y: nearY, scale: nearScale, backgroundImage: BAND }}
+        />
       </div>
 
       <div style={{ maxWidth: "1150px", margin: "0 auto", padding: "0 6vw", position: "relative", zIndex: 1 }}>
@@ -241,11 +258,11 @@ export default function StorySection() {
         .story-sky {
           position: absolute; inset: 0;
           background: linear-gradient(180deg,
-            rgba(206,224,250,0) 0%,
-            rgba(186,212,248,0.55) 32%,
-            rgba(160,196,245,0.62) 58%,
-            rgba(206,224,250,0.28) 86%,
-            rgba(206,224,250,0) 100%);
+            rgba(214,228,249,0) 0%,
+            rgba(168,199,243,0.68) 26%,
+            rgba(120,167,232,0.72) 52%,
+            rgba(170,201,244,0.42) 78%,
+            rgba(222,234,252,0) 100%);
           will-change: opacity;
         }
         /* Le halo suit la pile : c'est lui qui donne l'impression de traverser
@@ -261,13 +278,25 @@ export default function StorySection() {
             rgba(214,231,252,0) 100%);
           will-change: transform;
         }
-        .story-veil {
-          position: absolute; border-radius: 50%;
-          background: radial-gradient(closest-side, rgba(255,255,255,0.8), rgba(255,255,255,0));
+        /* De vrais volumes nuageux, et non des taches floues : des disques
+           fondus remplis d'un degrade vertical, lumiere au-dessus et ombre
+           bleutee dessous. Le navigateur les rasterise une fois, puis il n'y a
+           plus qu'une image de fond a deplacer. */
+        .story-band {
+          position: absolute;
+          left: -18%; right: -18%;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
           will-change: transform;
+          backface-visibility: hidden;
+          /* La bande est une boite : sans ce fondu, son bord bas tranche net
+             en travers de la page. Le masque est rasterise avec le calque, il
+             n'est pas recalcule au defilement. */
+          -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 68%, transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 68%, transparent 100%);
         }
-        .story-veil-a { width: 52%; aspect-ratio: 1.6; left: -12%; top: 6%; }
-        .story-veil-b { width: 46%; aspect-ratio: 1.8; left: 18%; bottom: 4%; }
+        .story-band-far { top: 0; height: 46%; opacity: .42; }
+        .story-band-near { bottom: -10%; height: 58%; opacity: .78; transform-origin: 50% 100%; }
 
         .story-stage {
           display: grid;
