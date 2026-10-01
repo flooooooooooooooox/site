@@ -5,6 +5,7 @@ import {
   FileText, Landmark, MapPin, Monitor, Bell, Sparkles, PhoneIncoming,
   Mic, Receipt, TrendingUp, Tags, GraduationCap, Star, Shield, LucideIcon,
 } from "lucide-react";
+import { FrameVocal, FrameDeclarations, FramePlanning } from "@/components/ui/storyFrames";
 
 /**
  * Les fonctionnalites en bento.
@@ -31,14 +32,16 @@ type Tile = {
   items: string[];
   /** Colonnes occupees sur la grille de quatre. */
   c?: number;
-  /** Les trois promesses : fond bleu profond, texte blanc. */
+  /** Les trois promesses : fond bleu profond, texte blanc, et un visuel. */
   hero?: boolean;
+  art?: () => React.JSX.Element;
 };
 
 const TILES: Tile[] = [
   {
     icon: FileText,
     title: "Vous dictez, c'est écrit",
+    art: FrameVocal,
     lead: "Facturez en 3 minutes, sans jamais ressaisir.",
     c: 2, hero: true,
     items: [
@@ -59,6 +62,7 @@ const TILES: Tile[] = [
   {
     icon: Landmark,
     title: "Vous ne touchez plus à l'administratif",
+    art: FrameDeclarations,
     lead: "Une photo suffit. Tout est traité, déclaré et déposé pour vous.",
     c: 2, hero: true,
     items: [
@@ -76,6 +80,7 @@ const TILES: Tile[] = [
   {
     icon: MapPin,
     title: "Vous prouvez chaque intervention",
+    art: FramePlanning,
     lead: "Les autres pointent des heures. Vous prouvez le travail.",
     c: 2, hero: true,
     items: [
@@ -240,11 +245,14 @@ const TILES: Tile[] = [
   },
 ];
 
-const PREVIEW = 4;
+const PREVIEW = 3;
 const TOTAL = TILES.reduce((n, t) => n + t.items.length, 0);
+const HEROES = TILES.filter((t) => t.hero);
+const REST = TILES.filter((t) => !t.hero);
 
 export default function Services() {
   const [open, setOpen] = useState<string[]>([]);
+  const [showAll, setShowAll] = useState(false);
   const toggle = (k: string) =>
     setOpen((o) => (o.includes(k) ? o.filter((x) => x !== k) : [...o, k]));
 
@@ -278,69 +286,149 @@ export default function Services() {
             color: "rgba(var(--text-rgb),0.58)", fontSize: "1rem",
             maxWidth: "34rem", margin: "0.9rem auto 0", lineHeight: 1.55,
           }}>
-            {TILES.length} modules, {TOTAL}&nbsp;fonctions. Dépliez une tuile
-            pour voir tout ce qu&apos;elle contient.
+            Trois promesses qu&apos;aucun logiciel du bâtiment ne tient, et{" "}
+            {TILES.length} modules derrière — {TOTAL}&nbsp;fonctions en tout.
           </p>
         </motion.div>
 
-        <div className="bento">
-          {TILES.map((t, i) => {
+        {/* Les trois promesses, chacune avec sa vue : c'est ce qu'on retient
+            de la section, le reste n'est la que pour rassurer. */}
+        <div className="bento bento-heroes">
+          {HEROES.map((t, i) => {
             const Icon = t.icon;
+            const Art = t.art;
             const isOpen = open.includes(t.title);
-            // Les trois promesses portent l'argument : elles montrent un
-            // apercu. Les onze autres ne montrent que leur titre tant qu'on ne
-            // les ouvre pas — c'est ce qui rend la section lisible d'un coup
-            // d'oeil au lieu d'etre un mur de cent puces.
-            const shown = isOpen ? t.items : t.hero ? t.items.slice(0, PREVIEW) : [];
+            const shown = isOpen ? t.items : t.items.slice(0, PREVIEW);
             const rest = t.items.length - PREVIEW;
             return (
               <motion.div
                 key={t.title}
-                className={`bento-tile${t.hero ? " is-hero" : ""}`}
-                style={{ ["--c" as string]: t.c ?? 1 }}
-                initial={{ opacity: 0, y: 22 }}
+                className="bento-tile is-hero"
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: Math.min(i, 5) * 0.05 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
               >
+                {Art && (
+                  <div className="bento-art" aria-hidden>
+                    <Art />
+                  </div>
+                )}
                 <span className="bento-icon">
-                  <Icon size={t.hero ? 22 : 18} strokeWidth={1.8} />
+                  <Icon size={20} strokeWidth={1.8} />
                 </span>
                 <h3 className="bento-title">{t.title}</h3>
                 <p className="bento-lead">{t.lead}</p>
-
-                {shown.length > 0 && (
-                  <ul className="bento-points">
-                    {shown.map((p) => (
-                      <li key={p}>{p}</li>
-                    ))}
-                  </ul>
-                )}
-
+                <ul className="bento-points">
+                  {shown.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ul>
                 <button
                   type="button"
                   className="bento-more"
                   onClick={() => toggle(t.title)}
                   aria-expanded={isOpen}
                 >
-                  {isOpen
-                    ? "Replier"
-                    : t.hero
-                      ? `+ ${rest} autre${rest > 1 ? "s" : ""} fonction${rest > 1 ? "s" : ""}`
-                      : `${t.items.length} fonctions`}
+                  {isOpen ? "Replier" : `+ ${rest} autres fonctions`}
                 </button>
               </motion.div>
             );
           })}
         </div>
+
+        {/* Le reste du produit tient sur une ligne tant qu'on ne l'ouvre pas. */}
+        <button
+          type="button"
+          className="bento-reveal"
+          onClick={() => setShowAll((v) => !v)}
+          aria-expanded={showAll}
+        >
+          <span>
+            {REST.length} autres modules — ERP, relances, Copilote, trésorerie,
+            rentabilité, formation…
+          </span>
+          <span className="bento-reveal-cta">{showAll ? "Masquer" : "Tout afficher"}</span>
+        </button>
+
+        {showAll && (
+          <div className="bento bento-rest">
+            {REST.map((t, i) => {
+              const Icon = t.icon;
+              const isOpen = open.includes(t.title);
+              return (
+                <motion.div
+                  key={t.title}
+                  className="bento-tile"
+                  style={{ ["--c" as string]: t.c ?? 1 }}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: Math.min(i, 7) * 0.03 }}
+                >
+                  <span className="bento-icon">
+                    <Icon size={18} strokeWidth={1.8} />
+                  </span>
+                  <h3 className="bento-title">{t.title}</h3>
+                  <p className="bento-lead">{t.lead}</p>
+                  {isOpen && (
+                    <ul className="bento-points">
+                      {t.items.map((p) => (
+                        <li key={p}>{p}</li>
+                      ))}
+                    </ul>
+                  )}
+                  <button
+                    type="button"
+                    className="bento-more"
+                    onClick={() => toggle(t.title)}
+                    aria-expanded={isOpen}
+                  >
+                    {isOpen ? "Replier" : `${t.items.length} fonctions`}
+                  </button>
+                </motion.div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <style>{`
-        .bento {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 0.9rem;
-          align-items: start;
+        .bento { display: grid; gap: 0.9rem; align-items: start; }
+        .bento-heroes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .bento-rest { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 0.9rem; }
+
+        /* La vue dans la carte : un ecran pose dans la promesse. C'est elle
+           qui porte l'immersion, le texte ne fait que la nommer. */
+        .bento-art {
+          border-radius: .9rem;
+          background: linear-gradient(170deg, #FFFFFF 0%, #F5F9FF 100%);
+          border: 1px solid rgba(255,255,255,0.2);
+          box-shadow: 0 14px 30px -20px rgba(10,28,70,0.6);
+          padding: .5rem;
+          margin-bottom: 1.1rem;
+          aspect-ratio: 1.26;
+          overflow: hidden;
+        }
+        .bento-art > svg { display: block; width: 100%; height: 100%; }
+
+        /* La barre qui garde le reste du produit replie. */
+        .bento-reveal {
+          width: 100%;
+          margin-top: 0.9rem;
+          display: flex; align-items: center; justify-content: space-between;
+          gap: 1rem; flex-wrap: wrap;
+          padding: .95rem 1.3rem;
+          border-radius: 1rem;
+          border: 1px dashed rgba(36,85,214,0.32);
+          background: rgba(255,255,255,0.55);
+          color: rgba(var(--text-rgb),0.6);
+          font-family: inherit; font-size: .88rem; text-align: left;
+          cursor: pointer;
+          transition: background .2s ease, border-color .2s ease;
+        }
+        .bento-reveal:hover { background: rgba(255,255,255,0.85); border-color: rgba(36,85,214,0.5); }
+        .bento-reveal-cta {
+          color: #2455D6; font-weight: 800; font-size: .82rem; white-space: nowrap;
         }
         .bento-tile {
           grid-column: span var(--c);
@@ -436,13 +524,16 @@ export default function Services() {
         }
         .is-hero .bento-more:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
 
-        @media (max-width: 860px) {
-          .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @media (max-width: 980px) {
+          .bento-heroes { grid-template-columns: 1fr; }
+          .bento-rest { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .bento-tile { grid-column: span min(var(--c), 2); }
+          .bento-art { aspect-ratio: 1.7; }
         }
         @media (max-width: 560px) {
-          .bento { grid-template-columns: 1fr; }
+          .bento-rest { grid-template-columns: 1fr; }
           .bento-tile { grid-column: span 1; }
+          .bento-art { aspect-ratio: 1.3; }
         }
         @media (prefers-reduced-motion: reduce) {
           .bento-tile { transition: none !important; }
