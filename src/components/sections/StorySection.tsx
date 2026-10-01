@@ -1,8 +1,8 @@
 "use client";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { Mic, PenLine, CalendarClock, Receipt, Landmark, TrendingUp, LucideIcon } from "lucide-react";
-import { CloudBadge } from "@/components/ui/CloudBadge";
+import { STORY_FRAMES } from "@/components/ui/storyFrames";
 
 interface Step {
   icon: LucideIcon;
@@ -52,217 +52,278 @@ const STEPS: Step[] = [
   },
 ];
 
-
-// Pastille nuage synchronisee avec la ligne de progression : elle se remplit
-// de bleu au moment exact ou la ligne animee atteint sa position verticale.
-function StepCloud({ index, total, progress }: {
-  index: number;
-  total: number;
-  progress: import("framer-motion").MotionValue<number>;
-}) {
-  // position verticale du centre de la pastille dans la colonne (0 → 1)
-  const t = total > 1 ? index / (total - 1) : 0;
-  const start = Math.max(t - 0.08, 0);
-  const opacity = useTransform(progress, [start, Math.max(t, 0.02)], [0, 1]);
-  const scale = useTransform(opacity, [0, 1], [0.75, 1]);
-
-  return (
-    <div style={{ position: "relative", zIndex: 1, flexShrink: 0, filter: "drop-shadow(0 4px 12px rgba(36,85,214,0.3))" }}>
-      <CloudBadge size={44} fill="rgba(255,255,255,0.9)" border="rgba(36,85,214,0.3)">
-        <span style={{ color: "#2455D6", fontWeight: 900, fontSize: ".82rem", fontFamily: "var(--font-nunito)" }}>{index + 1}</span>
-      </CloudBadge>
-      <motion.div style={{ position: "absolute", inset: 0, opacity, scale }}>
-        <CloudBadge size={44} fill="#2455D6">
-          <span style={{ color: "#FFFFFF", fontWeight: 900, fontSize: ".82rem", fontFamily: "var(--font-nunito)" }}>{index + 1}</span>
-        </CloudBadge>
-      </motion.div>
-    </div>
-  );
-}
-
+/**
+ * La chaine, montree plutot que racontee.
+ *
+ * Six cartes identiques empilees se lisaient comme une notice : tout etait
+ * visible d'un coup et rien ne se transformait. Ici le panneau de droite reste
+ * a l'ecran et change de vue a chaque etape, pendant que l'etape lue s'allume
+ * et que les autres s'effacent — on voit la machine tourner au lieu de lire
+ * qu'elle tourne.
+ *
+ * Cout : le fondu entre deux vues est une opacity sur un calque promu, les
+ * etapes ne bougent qu'en transform, et la derive des nuages est tiree du
+ * defilement au lieu de tourner en boucle. Rien ne s'anime a l'arret.
+ *
+ * Sur mobile il n'y a pas de panneau collant : chaque etape porte sa propre
+ * vue, au-dessus de son texte.
+ */
 export default function StorySection() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
 
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start center", "end center"],
+    target: stageRef,
+    offset: ["start 65%", "end 85%"],
   });
 
-  // Map scroll progress to line height percentage
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    const i = Math.min(STEPS.length - 1, Math.max(0, Math.floor(v * STEPS.length)));
+    setActive((prev) => (prev === i ? prev : i));
+  });
 
-  // La lumiere descend avec la lecture : le fond bleuit a mesure qu'on avance
-  // dans la chaine, et un halo suit la progression. Seules l'opacite et la
-  // translation sont animees — rien qui touche la mise en page.
-  const blueVeil = useTransform(scrollYProgress, [0, 0.25, 1], [0, 0.35, 1]);
-  const glowY = useTransform(scrollYProgress, [0, 1], ["-10%", "92%"]);
-  const glowFade = useTransform(scrollYProgress, [0, 0.08, 0.9, 1], [0, 1, 1, 0]);
+  // La traversee : les nuages du panneau derivent avec le defilement, ils ne
+  // tournent pas en boucle. Hors ecran, plus rien ne bouge.
+  const driftA = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
+  const driftB = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section
-      ref={sectionRef}
-      style={{
-        background: "transparent",
-        padding: "clamp(1.5rem, 4vw, 3rem) 0 clamp(1.5rem, 4vw, 2.5rem)",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      id="comment-ca-marche"
+      style={{ position: "relative", padding: "clamp(3.5rem,8vw,6rem) 0 clamp(2rem,5vw,4rem)" }}
     >
-      {/* Le bleu monte au fil du scroll. */}
-      <motion.div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          opacity: blueVeil,
-          // Le degrade redescend vers le transparent sur les dix derniers
-          // pour cent : sans cela le bleu se coupait net sur la section
-          // suivante.
-          background:
-            "linear-gradient(180deg, rgba(219,232,252,0) 0%, rgba(206,224,250,0.75) 40%, rgba(176,205,248,0.95) 72%, rgba(186,212,250,0.7) 88%, rgba(219,232,252,0) 100%)",
-          pointerEvents: "none",
-          willChange: "opacity",
-        }}
-      />
-      {/* Halo qui descend avec la lecture : c'est lui qui fait "jouer" la
-          lumiere le long de la colonne. */}
-      <motion.div
-        aria-hidden
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: 0,
-          y: glowY,
-          opacity: glowFade,
-          width: "min(1100px, 92vw)",
-          height: "38vh",
-          marginLeft: "min(-550px, -46vw)",
-          background:
-            "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%)",
-          pointerEvents: "none",
-          willChange: "transform, opacity",
-        }}
-      />
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 6vw", position: "relative", zIndex: 1 }}>
+      <div style={{ maxWidth: "1150px", margin: "0 auto", padding: "0 6vw" }}>
+
+        {/* Titre */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: "3rem" }}
+          style={{ textAlign: "center", marginBottom: "clamp(2rem,5vw,3.5rem)" }}
         >
-          <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "var(--text)", marginBottom: ".75rem" }}>
-            Comment ça <span style={{ color: "#2455D6" }}>marche</span>
+          <span style={{
+            display: "inline-block", padding: "6px 20px", borderRadius: "999px",
+            border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)",
+            color: "#2455D6", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em",
+            textTransform: "uppercase", marginBottom: "1.2rem",
+          }}>
+            Comment ça marche
+          </span>
+          <h2 style={{
+            fontFamily: "var(--font-nunito)", fontWeight: 900,
+            fontSize: "clamp(1.9rem,4vw,2.8rem)", color: "var(--text)", lineHeight: 1.15,
+          }}>
+            Du devis dicté à la TVA déclarée
           </h2>
-          <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: "1.05rem" }}>
-            Du devis dicté à la TVA déclarée — vous n&apos;intervenez qu&apos;à la première étape.
+          <p style={{
+            color: "rgba(var(--text-rgb),0.58)", fontSize: "1rem",
+            maxWidth: "32rem", margin: "0.9rem auto 0", lineHeight: 1.55,
+          }}>
+            Vous n&apos;intervenez qu&apos;à la première étape. Le reste s&apos;enchaîne tout seul.
           </p>
         </motion.div>
 
-        <div style={{ position: "relative" }}>
-          {/* Base line — traverse les pastilles numérotées */}
-          <div className="story-line" style={{
-            position: "absolute",
-            top: "20px",
-            bottom: "20px",
-            width: "2px",
-            background: "rgba(var(--surface-rgb),0.1)",
-            borderRadius: "2px",
-          }} />
-          {/* Ligne dorée animée au scroll */}
-          <motion.div className="story-line" style={{
-            position: "absolute",
-            top: "20px",
-            maxHeight: "calc(100% - 40px)",
-            width: "2px",
-            height: lineHeight,
-            background: "linear-gradient(to bottom, #2455D6, rgba(36,85,214,0.35))",
-            borderRadius: "2px",
-            boxShadow: "0 0 12px rgba(36,85,214,0.35)",
-          }} />
+        {/* Scene : les etapes a gauche, la vue qui change a droite */}
+        <div ref={stageRef} className="story-stage">
 
-          {/* Step rows : pastille + carte alignées */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          {/* Colonne des etapes */}
+          <div className="story-steps">
+            {/* Le fil et sa progression */}
+            <div className="story-rail" aria-hidden>
+              <div className="story-rail-track" />
+              <motion.div className="story-rail-fill" style={{ height: lineHeight }} />
+            </div>
+
             {STEPS.map((step, i) => {
               const Icon = step.icon;
+              const Frame = STORY_FRAMES[i];
+              const on = i === active;
               return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -32 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.55, delay: i * 0.12 }}
-                  className="story-row"
-                >
-                  {/* Nuage numéroté sur la ligne — se remplit quand la ligne bleue l'atteint */}
-                  <StepCloud index={i} total={STEPS.length} progress={scrollYProgress} />
+                <div key={i} className={`story-step${on ? " is-on" : ""}`}>
+                  <span className="story-dot" aria-hidden>{i + 1}</span>
 
-                  {/* Carte */}
-                  <div className="story-card" style={{
-                    flex: 1,
-                    minWidth: 0,
-                    position: "relative",
-                    background: "rgba(255,255,255,0.6)",
-                    border: "1px solid rgba(255,255,255,0.7)",
-                    borderRadius: "1.1rem",
-                    padding: "clamp(1.2rem, 3vw, 1.75rem) clamp(1.2rem, 3.5vw, 2rem)",
-                    display: "flex",
-                    gap: "1.25rem",
-                    alignItems: "flex-start",
-                    backdropFilter: "blur(14px)",
-                    boxShadow: "0 6px 16px -8px rgba(27,42,74,0.14)",
-                    transition: "transform 0.25s ease, box-shadow 0.25s ease",
-                  }}>
-                  <CloudBadge size={48} fill="rgba(36,85,214,0.08)" border="rgba(36,85,214,0.15)">
-                    <Icon size={22} color="#2455D6" strokeWidth={1.5} />
-                  </CloudBadge>
-                  <div>
-                    <span style={{
-                      display: "inline-block",
-                      fontSize: ".72rem",
-                      fontWeight: 700,
-                      letterSpacing: ".1em",
-                      textTransform: "uppercase" as const,
-                      color: "rgba(36,85,214,0.7)",
-                      background: "rgba(36,85,214,0.06)",
-                      border: "1px solid rgba(36,85,214,0.15)",
-                      borderRadius: "100px",
-                      padding: ".2rem .75rem",
-                      marginBottom: ".6rem",
-                    }}>
+                  <div className="story-step-body">
+                    <span className="story-tag">
+                      <Icon size={13} strokeWidth={2} aria-hidden />
                       {step.tag}
                     </span>
-                    <h3 style={{
-                      fontFamily: "var(--font-nunito)",
-                      fontWeight: 800,
-                      fontSize: "1.15rem",
-                      color: "var(--text)",
-                      marginBottom: ".5rem",
-                    }}>
-                      {step.title}
-                    </h3>
-                    <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".92rem", lineHeight: 1.65 }}>
-                      {step.desc}
-                    </p>
+                    <h3 className="story-title">{step.title}</h3>
+                    <p className="story-desc">{step.desc}</p>
+
+                    {/* Sur mobile, chaque etape porte sa propre vue */}
+                    <div className="story-frame-inline" aria-hidden={false}>
+                      <Frame />
+                    </div>
                   </div>
-                  </div>
-                </motion.div>
+                </div>
               );
             })}
+          </div>
+
+          {/* Panneau colle : la vue change, le cadre reste */}
+          <div className="story-panel-col">
+            <div className="story-panel">
+              <motion.span className="story-cloud story-cloud-a" style={{ x: driftA }} aria-hidden />
+              <motion.span className="story-cloud story-cloud-b" style={{ x: driftB }} aria-hidden />
+
+              <div className="story-frames">
+                {STORY_FRAMES.map((Frame, i) => (
+                  <div key={i} className={`story-frame${i === active ? " is-on" : ""}`}>
+                    <Frame />
+                  </div>
+                ))}
+              </div>
+
+              <div className="story-panel-foot">
+                <span className="story-panel-count">
+                  {String(active + 1).padStart(2, "0")} <span>/ 06</span>
+                </span>
+                <span className="story-panel-label">{STEPS[active].title}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <style>{`
-        .story-row {
-          display: flex;
-          gap: 1.5rem;
-          align-items: flex-start;
+        .story-stage {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          gap: clamp(2rem, 5vw, 4rem);
+          /* Pas de align-items: start — la colonne de droite doit faire toute
+             la hauteur de la rangee, sinon le panneau colle n'a aucune course
+             et sort de l'ecran des la premiere etape. */
         }
-        .story-line { left: 21px; }
-        .story-card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px -8px rgba(36,85,214,0.22); }
-        @media (max-width: 640px) {
-          .story-row { gap: 0.9rem; }
+
+        /* --- Les etapes --- */
+        .story-steps { position: relative; padding-left: 2.6rem; }
+        .story-rail { position: absolute; left: 13px; top: 18px; bottom: 18px; width: 2px; }
+        .story-rail-track { position: absolute; inset: 0; background: rgba(36,85,214,0.14); border-radius: 2px; }
+        .story-rail-fill {
+          position: absolute; left: 0; top: 0; width: 100%;
+          background: linear-gradient(180deg, #2455D6, #6C7CFF);
+          border-radius: 2px;
+        }
+
+        .story-step { position: relative; padding: 1.1rem 0 2.6rem; }
+        .story-step:last-child { padding-bottom: 0; }
+
+        .story-dot {
+          position: absolute; left: -2.6rem; top: 1.25rem;
+          width: 28px; height: 28px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          font-size: .78rem; font-weight: 800; font-family: var(--font-nunito);
+          color: rgba(27,42,74,0.4);
+          background: #EEF3FD;
+          border: 2px solid rgba(36,85,214,0.18);
+          transition: background .35s ease, color .35s ease, border-color .35s ease, transform .35s cubic-bezier(.2,.7,.3,1);
+          will-change: transform;
+        }
+        .story-step.is-on .story-dot {
+          background: #2455D6; color: #FFFFFF;
+          border-color: rgba(36,85,214,0.3);
+          transform: scale(1.14);
+        }
+
+        /* Les etapes non lues s'effacent : une seule chose a lire a la fois. */
+        .story-step-body {
+          opacity: .38;
+          transform: translateX(-4px);
+          transition: opacity .4s ease, transform .4s cubic-bezier(.2,.7,.3,1);
+          will-change: opacity, transform;
+        }
+        .story-step.is-on .story-step-body { opacity: 1; transform: none; }
+
+        .story-tag {
+          display: inline-flex; align-items: center; gap: .4rem;
+          font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+          color: rgba(36,85,214,0.8);
+          background: rgba(36,85,214,0.07);
+          border: 1px solid rgba(36,85,214,0.16);
+          border-radius: 100px; padding: .22rem .7rem; margin-bottom: .65rem;
+        }
+        .story-title {
+          font-family: var(--font-nunito); font-weight: 800;
+          font-size: clamp(1.1rem, 2.2vw, 1.3rem); color: var(--text);
+          line-height: 1.3; margin-bottom: .5rem;
+        }
+        .story-desc { color: rgba(var(--text-rgb),0.6); font-size: .93rem; line-height: 1.65; }
+
+        /* --- Le panneau colle --- */
+        /* Le collant porte sur le panneau, pas sur la colonne : une colonne
+           etiree a la hauteur de la rangee est deja immobile. */
+        .story-panel {
+          position: sticky;
+          top: 6.5rem;
+          border-radius: 1.6rem;
+          background: linear-gradient(165deg, #FFFFFF 0%, #F7FAFF 55%, #EFF4FE 100%);
+          border: 1px solid rgba(36,85,214,0.16);
+          box-shadow: 0 18px 40px -28px rgba(36,85,214,0.5);
+          padding: clamp(1.2rem, 3vw, 2rem);
+          overflow: hidden;
+        }
+
+        /* Deux voiles nuageux tires du defilement : la traversee, sans boucle. */
+        .story-cloud {
+          position: absolute; border-radius: 50%; pointer-events: none;
+          background: radial-gradient(closest-side, rgba(255,255,255,0.95), rgba(255,255,255,0));
+          will-change: transform;
+        }
+        .story-cloud-a { width: 70%; aspect-ratio: 1; left: -14%; top: -12%; }
+        .story-cloud-b { width: 58%; aspect-ratio: 1; right: -12%; bottom: -8%;
+          background: radial-gradient(closest-side, rgba(36,85,214,0.12), rgba(36,85,214,0)); }
+
+        .story-frames { position: relative; aspect-ratio: 1; }
+        .story-frame {
+          position: absolute; inset: 0;
+          opacity: 0;
+          transform: scale(.965);
+          transition: opacity .45s ease, transform .55s cubic-bezier(.2,.7,.3,1);
+          will-change: opacity, transform;
+          backface-visibility: hidden;
+        }
+        .story-frame.is-on { opacity: 1; transform: none; }
+
+        .story-panel-foot {
+          position: relative;
+          display: flex; align-items: baseline; gap: .7rem;
+          margin-top: .6rem; padding-top: .9rem;
+          border-top: 1px solid rgba(36,85,214,0.12);
+        }
+        .story-panel-count {
+          font-family: var(--font-nunito); font-weight: 900; font-size: 1.1rem;
+          color: #2455D6; letter-spacing: -.02em;
+        }
+        .story-panel-count span { color: rgba(27,42,74,0.3); font-size: .8rem; font-weight: 700; }
+        .story-panel-label {
+          color: rgba(var(--text-rgb),0.55); font-size: .84rem; font-weight: 600;
+          overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+
+        /* La vue inline n'existe que sur mobile. */
+        .story-frame-inline { display: none; }
+
+        @media (max-width: 900px) {
+          .story-stage { grid-template-columns: 1fr; }
+          .story-panel-col { display: none; }
+          .story-steps { padding-left: 2.3rem; }
+          .story-dot { left: -2.3rem; }
+          .story-step-body { opacity: 1; transform: none; }
+          .story-frame-inline {
+            display: block;
+            margin-top: 1.1rem;
+            border-radius: 1.1rem;
+            border: 1px solid rgba(36,85,214,0.16);
+            background: linear-gradient(165deg, #FFFFFF 0%, #F7FAFF 60%, #EFF4FE 100%);
+            padding: .8rem;
+            max-width: 22rem;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .story-dot, .story-step-body, .story-frame { transition: none !important; }
         }
       `}</style>
     </section>
