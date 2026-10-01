@@ -186,8 +186,8 @@ export default function StorySection() {
                         zIndex: 10 - Math.max(d, 0),
                         opacity: visible ? 1 - d * 0.34 : 0,
                         transform: future
-                          ? "translate3d(0, 18%, -30px) rotateX(12deg) scale(.96)"
-                          : `translate3d(0, ${-d * 11}%, ${-d * 46}px) rotateX(${d === 0 ? 2 : 11}deg) scale(${1 - d * 0.03})`,
+                          ? "translate3d(0, 20%, -40px) rotateX(16deg) scale(.95)"
+                          : `translate3d(0, ${-d * 12}%, ${-d * 52}px) rotateX(${d === 0 ? 6 : 15}deg) scale(${1 - d * 0.028})`,
                       }}
                     >
                       <div className="story-win-bar">
@@ -218,7 +218,7 @@ export default function StorySection() {
       <style>{`
         .story-stage {
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
           gap: clamp(2rem, 5vw, 4rem);
           /* Pas de align-items: start — la colonne de droite doit faire toute
              la hauteur de la rangee, sinon le panneau colle n'a aucune course
@@ -282,15 +282,16 @@ export default function StorySection() {
         /* --- Le panneau colle --- */
         /* Le collant porte sur le panneau, pas sur la colonne : une colonne
            etiree a la hauteur de la rangee est deja immobile. */
+        /* Centre dans la fenetre : top 50% colle quand le haut du panneau
+           atteint le milieu de l'ecran, la remontee de la moitie de sa hauteur
+           acheve de le centrer. Sans ca, la pile reste collee en haut et on
+           regarde du vide en dessous.
+           Et plus de boite : les fenetres flottent sur le ciel de la page, ce
+           qui est tout l'effet recherche. */
         .story-panel {
           position: sticky;
-          top: 6.5rem;
-          border-radius: 1.6rem;
-          background: linear-gradient(165deg, #FFFFFF 0%, #F7FAFF 55%, #EFF4FE 100%);
-          border: 1px solid rgba(36,85,214,0.16);
-          box-shadow: 0 18px 40px -28px rgba(36,85,214,0.5);
-          padding: clamp(1.2rem, 3vw, 2rem);
-          overflow: hidden;
+          top: 50%;
+          transform: translateY(-50%);
         }
 
         /* Deux voiles nuageux tires du defilement : la traversee, sans boucle. */
@@ -299,9 +300,9 @@ export default function StorySection() {
           background: radial-gradient(closest-side, rgba(255,255,255,0.95), rgba(255,255,255,0));
           will-change: transform;
         }
-        .story-cloud-a { width: 70%; aspect-ratio: 1; left: -14%; top: -12%; }
-        .story-cloud-b { width: 58%; aspect-ratio: 1; right: -12%; bottom: -8%;
-          background: radial-gradient(closest-side, rgba(36,85,214,0.12), rgba(36,85,214,0)); }
+        .story-cloud-a { width: 88%; aspect-ratio: 1; left: -18%; top: -6%; z-index: 0; }
+        .story-cloud-b { width: 72%; aspect-ratio: 1; right: -16%; bottom: 2%; z-index: 0;
+          background: radial-gradient(closest-side, rgba(36,85,214,0.14), rgba(36,85,214,0)); }
 
         /* --- La pile en perspective --- */
         .story-deck {
@@ -309,9 +310,8 @@ export default function StorySection() {
           aspect-ratio: 1;
           /* Les fenetres passees remontent : sans cette marge, le panneau les
              rogne et la pile ne se voit plus. */
-          margin-top: 4.2rem;
-          perspective: 1300px;
-          perspective-origin: 50% 32%;
+          perspective: 1000px;
+          perspective-origin: 50% 36%;
           transform-style: preserve-3d;
         }
         .story-win {
@@ -321,7 +321,7 @@ export default function StorySection() {
           overflow: hidden;
           background: #FFFFFF;
           border: 1px solid rgba(27,42,74,0.1);
-          box-shadow: 0 22px 44px -26px rgba(27,42,74,0.45);
+          box-shadow: 0 30px 60px -28px rgba(27,42,74,0.4);
           transform-origin: 50% 100%;
           transition: transform .62s cubic-bezier(.22,.68,.26,1), opacity .45s ease;
           will-change: transform, opacity;
@@ -352,10 +352,10 @@ export default function StorySection() {
         .story-win-body > svg { display: block; width: 100%; height: 100%; }
 
         .story-panel-foot {
-          position: relative;
+          position: relative; z-index: 20;
           display: flex; align-items: baseline; gap: .7rem;
-          margin-top: .6rem; padding-top: .9rem;
-          border-top: 1px solid rgba(36,85,214,0.12);
+          margin-top: 1.6rem; padding-top: .9rem;
+          border-top: 1px solid rgba(36,85,214,0.14);
         }
         .story-panel-count {
           font-family: var(--font-nunito); font-weight: 900; font-size: 1.1rem;
