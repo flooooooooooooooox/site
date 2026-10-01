@@ -88,12 +88,29 @@ export default function StorySection() {
   const driftB = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
+  // Le fond monte avec la traversee : le ciel se charge de bleu au fil des
+  // etapes puis s'eclaircit a l'arrivee, et un halo suit la pile. Tout est
+  // tire du defilement, rien ne tourne en boucle.
+  const skyDepth = useTransform(scrollYProgress, [0, 0.45, 1], [0, 0.85, 0.35]);
+  const haloY = useTransform(scrollYProgress, [0, 1], ["18%", "-14%"]);
+  const haloScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 1.12, 0.95]);
+  const veilA = useTransform(scrollYProgress, [0, 1], ["-12%", "14%"]);
+  const veilB = useTransform(scrollYProgress, [0, 1], ["10%", "-16%"]);
+
   return (
     <section
       id="comment-ca-marche"
       style={{ position: "relative", padding: "clamp(3.5rem,8vw,6rem) 0 clamp(2rem,5vw,4rem)" }}
     >
-      <div style={{ maxWidth: "1150px", margin: "0 auto", padding: "0 6vw" }}>
+      {/* Le ciel de la section, pilote par le defilement */}
+      <div className="story-ambience" aria-hidden>
+        <motion.div className="story-sky" style={{ opacity: skyDepth }} />
+        <motion.div className="story-halo" style={{ y: haloY, scale: haloScale }} />
+        <motion.div className="story-veil story-veil-a" style={{ x: veilA }} />
+        <motion.div className="story-veil story-veil-b" style={{ x: veilB }} />
+      </div>
+
+      <div style={{ maxWidth: "1150px", margin: "0 auto", padding: "0 6vw", position: "relative", zIndex: 1 }}>
 
         {/* Titre */}
         <motion.div
@@ -216,6 +233,42 @@ export default function StorySection() {
       </div>
 
       <style>{`
+        /* --- Le ciel de la section --- */
+        .story-ambience {
+          position: absolute; inset: -6% 0 -4%;
+          pointer-events: none; z-index: 0; overflow: hidden;
+        }
+        .story-sky {
+          position: absolute; inset: 0;
+          background: linear-gradient(180deg,
+            rgba(206,224,250,0) 0%,
+            rgba(186,212,248,0.55) 32%,
+            rgba(160,196,245,0.62) 58%,
+            rgba(206,224,250,0.28) 86%,
+            rgba(206,224,250,0) 100%);
+          will-change: opacity;
+        }
+        /* Le halo suit la pile : c'est lui qui donne l'impression de traverser
+           une couche lumineuse plutot que de defiler devant un aplat. */
+        .story-halo {
+          position: absolute;
+          right: -4%; top: 22%;
+          width: 58%; aspect-ratio: 1;
+          border-radius: 50%;
+          background: radial-gradient(closest-side,
+            rgba(255,255,255,0.92) 0%,
+            rgba(214,231,252,0.5) 48%,
+            rgba(214,231,252,0) 100%);
+          will-change: transform;
+        }
+        .story-veil {
+          position: absolute; border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(255,255,255,0.8), rgba(255,255,255,0));
+          will-change: transform;
+        }
+        .story-veil-a { width: 52%; aspect-ratio: 1.6; left: -12%; top: 6%; }
+        .story-veil-b { width: 46%; aspect-ratio: 1.8; left: 18%; bottom: 4%; }
+
         .story-stage {
           display: grid;
           grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -282,16 +335,19 @@ export default function StorySection() {
         /* --- Le panneau colle --- */
         /* Le collant porte sur le panneau, pas sur la colonne : une colonne
            etiree a la hauteur de la rangee est deja immobile. */
-        /* Centre dans la fenetre : top 50% colle quand le haut du panneau
-           atteint le milieu de l'ecran, la remontee de la moitie de sa hauteur
-           acheve de le centrer. Sans ca, la pile reste collee en haut et on
-           regarde du vide en dessous.
+        /* Le panneau fait une hauteur d'ecran et centre son contenu : la pile
+           est au milieu du regard sans qu'aucun transform ne la fasse sortir
+           de la scene. Un translateY(-50%) la faisait deborder par le haut et
+           recouvrir le titre de la section.
            Et plus de boite : les fenetres flottent sur le ciel de la page, ce
            qui est tout l'effet recherche. */
         .story-panel {
           position: sticky;
-          top: 50%;
-          transform: translateY(-50%);
+          top: 4.5rem;
+          height: calc(100vh - 7rem);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
 
         /* Deux voiles nuageux tires du defilement : la traversee, sans boucle. */
@@ -308,6 +364,10 @@ export default function StorySection() {
         .story-deck {
           position: relative;
           aspect-ratio: 1;
+          max-height: 62vh;
+          width: 100%;
+          max-width: 62vh;
+          margin-inline: auto;
           /* Les fenetres passees remontent : sans cette marge, le panneau les
              rogne et la pile ne se voit plus. */
           perspective: 1000px;
