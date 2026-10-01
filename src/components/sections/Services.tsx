@@ -101,7 +101,6 @@ const TILES: Tile[] = [
     icon: Monitor,
     title: "ERP & Gestion",
     lead: "Chantiers, équipes et heures : tout piloté d'un seul écran.",
-    c: 2,
     items: [
       "Interface unique : devis, factures, chantiers, planning",
       "Suivi multi-chantiers simultanés",
@@ -119,7 +118,6 @@ const TILES: Tile[] = [
     icon: Bell,
     title: "Relances & Suivi",
     lead: "Plus aucun devis oublié, plus aucune facture impayée.",
-    c: 2,
     items: [
       "Relances devis non signés : J+3 / J+7 / J+14",
       "Relances factures impayées automatiques",
@@ -135,7 +133,6 @@ const TILES: Tile[] = [
     icon: Sparkles,
     title: "Copilote Cirrion",
     lead: "Posez votre question, il lit vos chiffres et répond.",
-    c: 2,
     items: [
       "« Combien j'ai d'impayés ? » — montant, clients, retards",
       "« Ma trésorerie sur 30 jours ? » — échéance par échéance",
@@ -171,7 +168,6 @@ const TILES: Tile[] = [
     icon: Receipt,
     title: "Trésorerie & Banque",
     lead: "Les paiements se rapprochent seuls, les relances s'arrêtent.",
-    c: 2,
     items: [
       "Connexion bancaire sécurisée (Bridge · DSP2)",
       "Détection des paiements 100 % automatique",
@@ -291,7 +287,11 @@ export default function Services() {
           {TILES.map((t, i) => {
             const Icon = t.icon;
             const isOpen = open.includes(t.title);
-            const shown = isOpen ? t.items : t.items.slice(0, PREVIEW);
+            // Les trois promesses portent l'argument : elles montrent un
+            // apercu. Les onze autres ne montrent que leur titre tant qu'on ne
+            // les ouvre pas — c'est ce qui rend la section lisible d'un coup
+            // d'oeil au lieu d'etre un mur de cent puces.
+            const shown = isOpen ? t.items : t.hero ? t.items.slice(0, PREVIEW) : [];
             const rest = t.items.length - PREVIEW;
             return (
               <motion.div
@@ -309,22 +309,26 @@ export default function Services() {
                 <h3 className="bento-title">{t.title}</h3>
                 <p className="bento-lead">{t.lead}</p>
 
-                <ul className="bento-points">
-                  {shown.map((p) => (
-                    <li key={p}>{p}</li>
-                  ))}
-                </ul>
-
-                {rest > 0 && (
-                  <button
-                    type="button"
-                    className="bento-more"
-                    onClick={() => toggle(t.title)}
-                    aria-expanded={isOpen}
-                  >
-                    {isOpen ? "Replier" : `+ ${rest} autres fonctions`}
-                  </button>
+                {shown.length > 0 && (
+                  <ul className="bento-points">
+                    {shown.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
                 )}
+
+                <button
+                  type="button"
+                  className="bento-more"
+                  onClick={() => toggle(t.title)}
+                  aria-expanded={isOpen}
+                >
+                  {isOpen
+                    ? "Replier"
+                    : t.hero
+                      ? `+ ${rest} autre${rest > 1 ? "s" : ""} fonction${rest > 1 ? "s" : ""}`
+                      : `${t.items.length} fonctions`}
+                </button>
               </motion.div>
             );
           })}
