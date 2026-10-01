@@ -162,18 +162,46 @@ export default function StorySection() {
             })}
           </div>
 
-          {/* Panneau colle : la vue change, le cadre reste */}
+          {/* Panneau colle : la pile change, le cadre reste */}
           <div className="story-panel-col">
             <div className="story-panel">
               <motion.span className="story-cloud story-cloud-a" style={{ x: driftA }} aria-hidden />
               <motion.span className="story-cloud story-cloud-b" style={{ x: driftB }} aria-hidden />
 
-              <div className="story-frames">
-                {STORY_FRAMES.map((Frame, i) => (
-                  <div key={i} className={`story-frame${i === active ? " is-on" : ""}`}>
-                    <Frame />
-                  </div>
-                ))}
+              {/* La pile : l'etape lue est devant et droite, les precedentes
+                  reculent et s'inclinent derriere, la suivante attend en bas.
+                  Quatre calques au plus restent composes — au-dela on ne voit
+                  plus rien et chaque calque coute. */}
+              <div className="story-deck">
+                {STORY_FRAMES.map((Frame, i) => {
+                  const d = active - i;
+                  const future = d < 0;
+                  const visible = d >= 0 && d <= 2;
+                  return (
+                    <div
+                      key={i}
+                      className="story-win"
+                      aria-hidden={i !== active}
+                      style={{
+                        zIndex: 10 - Math.max(d, 0),
+                        opacity: visible ? 1 - d * 0.34 : 0,
+                        transform: future
+                          ? "translate3d(0, 18%, -30px) rotateX(12deg) scale(.96)"
+                          : `translate3d(0, ${-d * 11}%, ${-d * 46}px) rotateX(${d === 0 ? 2 : 11}deg) scale(${1 - d * 0.03})`,
+                      }}
+                    >
+                      <div className="story-win-bar">
+                        <span className="story-win-dot" />
+                        <span className="story-win-dot" />
+                        <span className="story-win-dot" />
+                        <span className="story-win-name">{STEPS[i].tag} — Cirrion</span>
+                      </div>
+                      <div className="story-win-body">
+                        <Frame />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
               <div className="story-panel-foot">
@@ -275,16 +303,53 @@ export default function StorySection() {
         .story-cloud-b { width: 58%; aspect-ratio: 1; right: -12%; bottom: -8%;
           background: radial-gradient(closest-side, rgba(36,85,214,0.12), rgba(36,85,214,0)); }
 
-        .story-frames { position: relative; aspect-ratio: 1; }
-        .story-frame {
+        /* --- La pile en perspective --- */
+        .story-deck {
+          position: relative;
+          aspect-ratio: 1;
+          /* Les fenetres passees remontent : sans cette marge, le panneau les
+             rogne et la pile ne se voit plus. */
+          margin-top: 4.2rem;
+          perspective: 1300px;
+          perspective-origin: 50% 32%;
+          transform-style: preserve-3d;
+        }
+        .story-win {
           position: absolute; inset: 0;
-          opacity: 0;
-          transform: scale(.965);
-          transition: opacity .45s ease, transform .55s cubic-bezier(.2,.7,.3,1);
-          will-change: opacity, transform;
+          display: flex; flex-direction: column;
+          border-radius: 1rem;
+          overflow: hidden;
+          background: #FFFFFF;
+          border: 1px solid rgba(27,42,74,0.1);
+          box-shadow: 0 22px 44px -26px rgba(27,42,74,0.45);
+          transform-origin: 50% 100%;
+          transition: transform .62s cubic-bezier(.22,.68,.26,1), opacity .45s ease;
+          will-change: transform, opacity;
           backface-visibility: hidden;
         }
-        .story-frame.is-on { opacity: 1; transform: none; }
+        /* Barre de fenetre : ce qui fait lire le dessin comme un ecran. */
+        .story-win-bar {
+          display: flex; align-items: center; gap: .32rem;
+          padding: .55rem .8rem;
+          background: #F3F6FC;
+          border-bottom: 1px solid rgba(27,42,74,0.07);
+          flex-shrink: 0;
+        }
+        .story-win-dot {
+          width: 8px; height: 8px; border-radius: 50%;
+          background: rgba(27,42,74,0.14);
+        }
+        .story-win-dot:first-child { background: rgba(245,84,79,0.5); }
+        .story-win-dot:nth-child(2) { background: rgba(245,184,79,0.55); }
+        .story-win-dot:nth-child(3) { background: rgba(54,194,122,0.5); }
+        .story-win-name {
+          margin-left: .55rem;
+          font-size: .66rem; font-weight: 700; letter-spacing: .05em;
+          color: rgba(27,42,74,0.35); text-transform: uppercase;
+          white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .story-win-body { flex: 1; min-height: 0; padding: .5rem; }
+        .story-win-body > svg { display: block; width: 100%; height: 100%; }
 
         .story-panel-foot {
           position: relative;
@@ -314,16 +379,30 @@ export default function StorySection() {
           .story-frame-inline {
             display: block;
             margin-top: 1.1rem;
-            border-radius: 1.1rem;
-            border: 1px solid rgba(36,85,214,0.16);
-            background: linear-gradient(165deg, #FFFFFF 0%, #F7FAFF 60%, #EFF4FE 100%);
-            padding: .8rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(27,42,74,0.1);
+            background: #FFFFFF;
+            box-shadow: 0 14px 30px -22px rgba(27,42,74,0.4);
+            overflow: hidden;
             max-width: 22rem;
           }
+          /* Meme barre de fenetre que sur la pile : un seul langage visuel. */
+          .story-frame-inline::before {
+            content: "";
+            display: block;
+            height: 26px;
+            background:
+              radial-gradient(circle at 16px 13px, rgba(245,84,79,.5) 4px, transparent 4.5px),
+              radial-gradient(circle at 32px 13px, rgba(245,184,79,.55) 4px, transparent 4.5px),
+              radial-gradient(circle at 48px 13px, rgba(54,194,122,.5) 4px, transparent 4.5px),
+              #F3F6FC;
+            border-bottom: 1px solid rgba(27,42,74,0.07);
+          }
+          .story-frame-inline > svg { display: block; width: 100%; padding: .6rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .story-dot, .story-step-body, .story-frame { transition: none !important; }
+          .story-dot, .story-step-body, .story-win { transition: none !important; }
         }
       `}</style>
     </section>
