@@ -589,13 +589,24 @@ export default function Services() {
            large, comme le bandeau d'appel a l'action, pour que les volumes
            restent ronds et bien visibles. */
         @media (max-width: 900px) {
+          /* Meme raison que dans la section du dessus : sans un ciel assez
+             soutenu, des volumes blancs sur un fond quasi blanc ne se lisent
+             pas. */
+          .services-sky {
+            background: linear-gradient(180deg,
+              rgba(222,234,252,0) 0%,
+              rgba(170,201,245,0.9) 14%,
+              rgba(138,180,238,0.95) 50%,
+              rgba(170,201,245,0.85) 86%,
+              rgba(222,234,252,0) 100%);
+          }
           .services-band {
             background-image: var(--row);
             top: 0; bottom: 0; height: auto; left: -12%; right: -12%;
             background-repeat: repeat-y;
           }
-          .services-band-top { background-size: 150% auto; background-position: 0% 0; opacity: .72; transform: none; }
-          .services-band-bottom { background-size: 215% auto; background-position: 100% 150px; opacity: .95; }
+          .services-band-top { background-size: 300% auto; background-position: 12% 0; opacity: .75; transform: none; }
+          .services-band-bottom { background-size: 430% auto; background-position: 78% 180px; opacity: 1; }
           .services-band-mid { display: none; }
         }
 

@@ -490,6 +490,12 @@ export default function StorySection() {
              faisait apparaitre leurs bords. Le ciel mobile est porte par les
              deux calques fixes, qui repetent une tuile conçue pour ça. */
           .story-band-far, .story-band-near { display: none; }
+
+          /* Le voile bleu est tire du defilement, donc presque transparent en
+             haut de section : des nuages blancs sur un ciel blanc ne se
+             voyaient pas. Sur mobile il reste constant — c'est lui qui donne
+             aux volumes de quoi se detacher. */
+          .story-sky { opacity: .92 !important; }
           .story-band-mid {
             display: block;
             background-image: var(--row);
@@ -500,9 +506,11 @@ export default function StorySection() {
           }
           /* Proportions conservees — une hauteur en pixels reaplatirait les
              volumes — et deux pas differents, pour que la repetition ne se
-             lise pas. */
-          .story-band-mid-a { background-size: 150% auto; background-position: 0% 0; opacity: .72; }
-          .story-band-mid-b { background-size: 215% auto; background-position: 100% 150px; opacity: .95; }
+             lise pas. La tuile est posee tres large : a l'echelle d'un
+             telephone, cinq nuages dans la largeur de l'ecran donnent des
+             taches eparpillees, pas des volumes. */
+          .story-band-mid-a { background-size: 300% auto; background-position: 12% 0; opacity: .75; }
+          .story-band-mid-b { background-size: 430% auto; background-position: 78% 180px; opacity: 1; }
 
           .story-stage { grid-template-columns: 1fr; }
           .story-panel-col { display: none; }

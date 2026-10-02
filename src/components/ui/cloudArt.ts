@@ -69,32 +69,52 @@ export function cloudBand(tone: "light" | "onDark" = "light") {
 /**
  * Rangee de nuages concue pour se repeter verticalement.
  *
- * Les volumes sont aussi gros que ceux de `cloudBand` — c'est ce qui donne un
- * vrai ciel et non une trame pale — mais places de facon a tenir entierement
- * dans le cadre.
+ * Deux differences avec `cloudBand`, et elles comptent toutes les deux :
  *
- * `cloudBand` ne peut pas etre repetee : ses volumes debordent du bas de leur
- * cadre, donc la repetition empile un bord coupe et dessine une ligne nette en
- * travers de la page. Ici chaque volume tient entierement a l'interieur, avec
- * du ciel transparent au-dessus et au-dessous : deux tuiles mises bout a bout
- * ne se touchent jamais.
+ * 1. Les volumes tiennent entierement dans le cadre, avec du ciel transparent
+ *    au-dessus et au-dessous. Deux tuiles mises bout a bout ne se touchent
+ *    donc jamais : il n'y a pas de bord a raccorder, donc pas de ligne.
+ *
+ * 2. Le degrade est en `userSpaceOnUse`, partage par toutes les formes d'un
+ *    meme nuage. Avec le degrade par defaut, chaque disque recoit son propre
+ *    ombrage et on voit les ronds les uns a cote des autres ; ici la lumiere
+ *    traverse la masse entiere, et le nuage se lit comme un seul volume.
  */
 export function cloudRow() {
-  const stops: Stop[] = [
-    { o: 0, c: "#FFFFFF", a: 0.98 },
-    { o: 55, c: "#EAF2FD", a: 0.9 },
-    { o: 100, c: "#B9D2F1", a: 0.75 },
+  // Lobes de rayons varies et de centres decales : une silhouette reguliere
+  // trahit tout de suite le dessin geometrique.
+  const PUFFS: [number, number, number][][] = [
+    [[-250, 42, 128], [-130, -18, 168], [-10, -46, 196], [112, -8, 162], [226, 48, 120], [38, 70, 178]],
+    [[-210, 36, 112], [-80, -30, 156], [52, -12, 184], [184, 34, 128], [-20, 76, 160]],
+    [[-190, 50, 104], [-62, -22, 148], [78, -40, 170], [198, 20, 132], [10, 68, 152]],
   ];
 
-  const body = `<defs>${gradient("v", stops)}${gradient(
-    "vs",
-    stops.map((s) => ({ ...s, a: s.a * 0.5 }))
-  )}</defs>
-    ${volume(360, 390, 0.7, "url(#vs)", 0.72)}
-    ${volume(1060, 355, 0.6, "url(#vs)", 0.6)}
-    ${volume(260, 600, 0.85, "url(#v)")}
-    ${volume(820, 630, 0.75, "url(#v)", 0.95)}
-    ${volume(1340, 590, 0.8, "url(#v)", 0.9)}`;
+  const puff = (cx: number, cy: number, sc: number, fill: string, o = 1, k = 0) =>
+    `<g transform="translate(${cx} ${cy}) scale(${sc})" opacity="${o}">
+      ${PUFFS[k % PUFFS.length]
+        .map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}"/>`)
+        .join("")}
+      <ellipse cx="0" cy="132" rx="316" ry="104" fill="${fill}"/>
+    </g>`;
+
+  // Le degrade est pose dans l'espace du dessin, pas dans celui de chaque
+  // forme : c'est ce qui fait disparaitre les contours de disques. L'ombre du
+  // dessous reste franche, sinon la masse se dilue dans le ciel et le nuage
+  // perd son volume.
+  const shade = (id: string, y1: number, y2: number, a: number) =>
+    `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" y1="${y1}" x2="0" y2="${y2}">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="${0.99 * a}"/>
+      <stop offset="42%" stop-color="#F2F7FE" stop-opacity="${0.96 * a}"/>
+      <stop offset="78%" stop-color="#C6DAF4" stop-opacity="${0.95 * a}"/>
+      <stop offset="100%" stop-color="#8FB4E4" stop-opacity="${0.92 * a}"/>
+    </linearGradient>`;
+
+  const body = `<defs>${shade("rf", 170, 560, 0.62)}${shade("rn", 380, 850, 1)}</defs>
+    ${puff(380, 390, 0.72, "url(#rf)", 0.85, 1)}
+    ${puff(1120, 352, 0.6, "url(#rf)", 0.7, 2)}
+    ${puff(250, 605, 0.86, "url(#rn)", 1, 0)}
+    ${puff(840, 632, 0.76, "url(#rn)", 0.96, 2)}
+    ${puff(1360, 592, 0.8, "url(#rn)", 0.92, 1)}`;
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="none">${body}</svg>`;
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
