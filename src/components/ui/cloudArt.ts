@@ -65,3 +65,33 @@ export function cloudBand(tone: "light" | "onDark" = "light") {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" preserveAspectRatio="none">${body}</svg>`;
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
 }
+
+/**
+ * Rangee de nuages concue pour se repeter verticalement.
+ *
+ * `cloudBand` ne peut pas etre repetee : ses volumes debordent du bas de leur
+ * cadre, donc la repetition empile un bord coupe et dessine une ligne nette en
+ * travers de la page. Ici chaque volume tient entierement a l'interieur, avec
+ * du ciel transparent au-dessus et au-dessous : deux tuiles mises bout a bout
+ * ne se touchent jamais.
+ */
+export function cloudRow() {
+  const stops: Stop[] = [
+    { o: 0, c: "#FFFFFF", a: 0.98 },
+    { o: 55, c: "#EAF2FD", a: 0.9 },
+    { o: 100, c: "#B9D2F1", a: 0.75 },
+  ];
+
+  const body = `<defs>${gradient("v", stops)}${gradient(
+    "vs",
+    stops.map((s) => ({ ...s, a: s.a * 0.5 }))
+  )}</defs>
+    ${volume(380, 400, 0.52, "url(#vs)", 0.7)}
+    ${volume(1020, 370, 0.44, "url(#vs)", 0.6)}
+    ${volume(300, 560, 0.62, "url(#v)")}
+    ${volume(820, 590, 0.54, "url(#v)", 0.95)}
+    ${volume(1300, 555, 0.58, "url(#v)", 0.9)}`;
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="none">${body}</svg>`;
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}

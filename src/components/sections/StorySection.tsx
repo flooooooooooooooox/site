@@ -3,11 +3,12 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { Mic, PenLine, CalendarClock, Receipt, Landmark, TrendingUp, LucideIcon } from "lucide-react";
 import { STORY_FRAMES } from "@/components/ui/storyFrames";
-import { cloudBand } from "@/components/ui/cloudArt";
+import { cloudBand, cloudRow } from "@/components/ui/cloudArt";
 
 // Rasterise une fois au chargement : au defilement il ne reste qu'une image de
 // fond a composer, jamais un filtre a recalculer.
 const BAND = cloudBand("light");
+const ROW = cloudRow();
 
 interface Step {
   icon: LucideIcon;
@@ -114,22 +115,26 @@ export default function StorySection() {
       style={{ position: "relative", padding: "clamp(3.5rem,8vw,6rem) 0 clamp(2rem,5vw,4rem)" }}
     >
       {/* Le ciel de la section, pilote par le defilement */}
-      <div className="story-ambience" aria-hidden>
+      <div
+        className="story-ambience"
+        aria-hidden
+        style={{ ["--band" as string]: BAND, ["--row" as string]: ROW }}
+      >
         <motion.div className="story-sky" style={{ opacity: skyDepth }} />
         <motion.div
           className="story-band story-band-far"
-          style={{ x: farX, y: farY, backgroundImage: BAND }}
+          style={{ x: farX, y: farY }}
         />
         <motion.div className="story-halo" style={{ y: haloY, scale: haloScale }} />
         <motion.div
           className="story-band story-band-near"
-          style={{ x: nearX, y: nearY, scale: nearScale, backgroundImage: BAND }}
+          style={{ x: nearX, y: nearY, scale: nearScale }}
         />
         {/* Bandes intermediaires, mobiles uniquement : sur un telephone la
             section fait plusieurs milliers de pixels et deux bandes aux
             extremites ne se voient jamais au milieu du defilement. */}
-        <motion.div className="story-band story-band-mid story-band-mid-a" style={{ x: nearX, backgroundImage: BAND }} />
-        <motion.div className="story-band story-band-mid story-band-mid-b" style={{ x: farX, backgroundImage: BAND }} />
+        <motion.div className="story-band story-band-mid story-band-mid-a" style={{ x: nearX }} />
+        <motion.div className="story-band story-band-mid story-band-mid-b" style={{ x: farX }} />
       </div>
 
       <div style={{ maxWidth: "1150px", margin: "0 auto", padding: "0 6vw", position: "relative", zIndex: 1 }}>
@@ -290,6 +295,7 @@ export default function StorySection() {
         .story-band {
           position: absolute;
           left: -18%; right: -18%;
+          background-image: var(--band);
           background-size: 100% 100%;
           background-repeat: no-repeat;
           will-change: transform;
@@ -478,19 +484,17 @@ export default function StorySection() {
              310 px — ne se realignent qu'au bout de 7 000 px : le motif ne se
              lit jamais. */
           .story-band {
+            /* Tuile conçue pour se repeter, et dimensionnee en gardant ses
+               proportions : une hauteur imposee en pixels reaplatirait les
+               volumes. Deux pas differents, donc aucun realignement visible. */
+            background-image: var(--row);
             top: 0; bottom: 0; height: auto;
             background-repeat: repeat-y;
             -webkit-mask-image: none;
             mask-image: none;
           }
-          .story-band-far {
-            background-size: 180% 230px; background-position: 0% 0;
-            opacity: .5;
-          }
-          .story-band-near {
-            background-size: 145% 310px; background-position: 100% 60px;
-            opacity: .75;
-          }
+          .story-band-far { background-size: 170% auto; background-position: 0% 0; opacity: .55; }
+          .story-band-near { background-size: 245% auto; background-position: 100% 120px; opacity: .8; }
           .story-band-mid { display: none; }
 
           .story-stage { grid-template-columns: 1fr; }

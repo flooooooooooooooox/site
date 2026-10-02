@@ -6,9 +6,10 @@ import {
   Mic, Receipt, TrendingUp, Tags, GraduationCap, Star, Shield, LucideIcon,
 } from "lucide-react";
 import { FrameVocal, FrameDeclarations, FramePlanning } from "@/components/ui/storyFrames";
-import { cloudBand } from "@/components/ui/cloudArt";
+import { cloudBand, cloudRow } from "@/components/ui/cloudArt";
 
 const BAND = cloudBand("light");
+const ROW = cloudRow();
 
 /**
  * Les fonctionnalites en bento.
@@ -264,10 +265,14 @@ export default function Services() {
       {/* Le ciel de la section. Fixe : rien ne bouge, donc rien ne coute au
           defilement — c'est la profondeur du degrade et les volumes nuageux qui
           font le travail, pas le mouvement. */}
-      <div className="services-sky" aria-hidden>
-        <span className="services-band services-band-top" style={{ backgroundImage: BAND }} />
-        <span className="services-band services-band-mid" style={{ backgroundImage: BAND }} />
-        <span className="services-band services-band-bottom" style={{ backgroundImage: BAND }} />
+      <div
+        className="services-sky"
+        aria-hidden
+        style={{ ["--band" as string]: BAND, ["--row" as string]: ROW }}
+      >
+        <span className="services-band services-band-top" />
+        <span className="services-band services-band-mid" />
+        <span className="services-band services-band-bottom" />
       </div>
 
       <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "0 6vw", position: "relative", zIndex: 1 }}>
@@ -417,6 +422,7 @@ export default function Services() {
         }
         .services-band {
           position: absolute; left: -14%; right: -14%;
+          background-image: var(--band);
           background-size: 100% 100%; background-repeat: no-repeat;
         }
         .services-band-top { top: -2%; height: 34%; opacity: .5; transform: scaleY(-1); }
@@ -584,11 +590,12 @@ export default function Services() {
            restent ronds et bien visibles. */
         @media (max-width: 900px) {
           .services-band {
+            background-image: var(--row);
             top: 0; bottom: 0; height: auto; left: -12%; right: -12%;
             background-repeat: repeat-y;
           }
-          .services-band-top { background-size: 180% 230px; background-position: 0% 0; opacity: .5; transform: none; }
-          .services-band-bottom { background-size: 145% 310px; background-position: 100% 60px; opacity: .72; }
+          .services-band-top { background-size: 170% auto; background-position: 0% 0; opacity: .55; transform: none; }
+          .services-band-bottom { background-size: 245% auto; background-position: 100% 120px; opacity: .78; }
           .services-band-mid { display: none; }
         }
 
