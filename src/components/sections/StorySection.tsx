@@ -488,10 +488,29 @@ export default function StorySection() {
              Deux couches qui se repetent a des hauteurs differentes — 230 et
              310 px — ne se realignent qu'au bout de 7 000 px : le motif ne se
              lit jamais. */
-          /* Pas de nuages sur mobile : repetes sur une section de plusieurs
-             milliers de pixels, ils donnaient un ciel charge et sale. Le
-             degrade seul reste net a toutes les tailles. */
-          .story-band { display: none; }
+          /* Une bande en entrant dans la section, une en sortant, et rien
+             entre les deux : c'est la recette du bandeau d'appel a l'action,
+             la seule qui tienne sur un telephone. Un motif repete sur des
+             milliers de pixels fait un papier peint, pas un ciel.
+             Ce sont les calques fixes qui les portent : les deux autres sont
+             deplaces par le defilement et montreraient leur bord. */
+          .story-band-far, .story-band-near { display: none; }
+          .story-band-mid {
+            display: block;
+            background-repeat: no-repeat;
+          }
+          /* Hauteurs calees sur le rapport de forme du dessin a cette largeur :
+             une bande plus plate ecraserait les volumes. */
+          .story-band-mid-a {
+            top: 0; height: 320px;
+            background-size: 150% 100%; background-position: 0% 0%;
+            opacity: .85;
+          }
+          .story-band-mid-b {
+            top: auto; bottom: 0; height: 265px;
+            background-size: 125% 100%; background-position: 100% 0%;
+            opacity: .7;
+          }
 
           .story-stage { grid-template-columns: 1fr; }
           .story-panel-col { display: none; }

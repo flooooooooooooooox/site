@@ -589,9 +589,20 @@ export default function Services() {
            large, comme le bandeau d'appel a l'action, pour que les volumes
            restent ronds et bien visibles. */
         @media (max-width: 900px) {
-          /* Meme choix que dans la section du dessus : pas de nuages repetes
-             sur mobile, seulement le degrade. */
-          .services-band { display: none; }
+          /* Meme recette que dans la section du dessus : une bande en haut,
+             une en bas, rien au milieu. */
+          .services-band { background-repeat: no-repeat; }
+          .services-band-mid { display: none; }
+          .services-band-top {
+            top: 0; height: 300px;
+            background-size: 150% 100%; background-position: 0% 0%;
+            opacity: .8; transform: scaleY(-1);
+          }
+          .services-band-bottom {
+            bottom: 0; height: 265px;
+            background-size: 125% 100%; background-position: 100% 0%;
+            opacity: .72;
+          }
           .services-sky {
             background: linear-gradient(180deg,
               rgba(222,234,252,0) 0%,
