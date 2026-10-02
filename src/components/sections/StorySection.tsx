@@ -488,31 +488,10 @@ export default function StorySection() {
              Deux couches qui se repetent a des hauteurs differentes — 230 et
              310 px — ne se realignent qu'au bout de 7 000 px : le motif ne se
              lit jamais. */
-          /* Les deux calques animes sont retires : c'est leur deplacement qui
-             faisait apparaitre leurs bords. Le ciel mobile est porte par les
-             deux calques fixes, qui repetent une tuile conçue pour ça. */
-          .story-band-far, .story-band-near { display: none; }
-
-          /* Le voile bleu est tire du defilement, donc presque transparent en
-             haut de section : des nuages blancs sur un ciel blanc ne se
-             voyaient pas. Sur mobile il reste constant — c'est lui qui donne
-             aux volumes de quoi se detacher. */
-          .story-sky { opacity: 1 !important; }
-          .story-band-mid {
-            display: block;
-            background-image: var(--row);
-            top: 0; bottom: 0; height: auto;
-            background-repeat: repeat-y;
-            -webkit-mask-image: none;
-            mask-image: none;
-          }
-          /* Proportions conservees — une hauteur en pixels reaplatirait les
-             volumes — et deux pas differents, pour que la repetition ne se
-             lise pas. La tuile est posee tres large : a l'echelle d'un
-             telephone, cinq nuages dans la largeur de l'ecran donnent des
-             taches eparpillees, pas des volumes. */
-          .story-band-mid-a { background-size: 230% auto; background-position: 14% 0; opacity: .8; }
-          .story-band-mid-b { background-size: 330% auto; background-position: 76% 210px; opacity: 1; }
+          /* Pas de nuages sur mobile : repetes sur une section de plusieurs
+             milliers de pixels, ils donnaient un ciel charge et sale. Le
+             degrade seul reste net a toutes les tailles. */
+          .story-band { display: none; }
 
           .story-stage { grid-template-columns: 1fr; }
           .story-panel-col { display: none; }
