@@ -6,6 +6,9 @@ import {
   Mic, Receipt, TrendingUp, Tags, GraduationCap, Star, Shield, LucideIcon,
 } from "lucide-react";
 import { FrameVocal, FrameDeclarations, FramePlanning } from "@/components/ui/storyFrames";
+import { cloudBand } from "@/components/ui/cloudArt";
+
+const BAND = cloudBand("light");
 
 /**
  * Les fonctionnalites en bento.
@@ -257,8 +260,16 @@ export default function Services() {
     setOpen((o) => (o.includes(k) ? o.filter((x) => x !== k) : [...o, k]));
 
   return (
-    <section id="services" style={{ background: "transparent", padding: "clamp(3.5rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 3.5rem)" }}>
-      <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "0 6vw" }}>
+    <section id="services" className="services" style={{ padding: "clamp(3.5rem, 8vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem)" }}>
+      {/* Le ciel de la section. Fixe : rien ne bouge, donc rien ne coute au
+          defilement — c'est la profondeur du degrade et les volumes nuageux qui
+          font le travail, pas le mouvement. */}
+      <div className="services-sky" aria-hidden>
+        <span className="services-band services-band-top" style={{ backgroundImage: BAND }} />
+        <span className="services-band services-band-bottom" style={{ backgroundImage: BAND }} />
+      </div>
+
+      <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "0 6vw", position: "relative", zIndex: 1 }}>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -393,22 +404,43 @@ export default function Services() {
       </div>
 
       <style>{`
-        .bento { display: grid; gap: 0.9rem; align-items: start; }
+        .services { position: relative; overflow: hidden; }
+        .services-sky {
+          position: absolute; inset: 0; pointer-events: none; z-index: 0;
+          background: linear-gradient(180deg,
+            rgba(222,234,252,0) 0%,
+            rgba(186,212,248,0.75) 18%,
+            rgba(150,188,242,0.85) 50%,
+            rgba(186,212,248,0.7) 82%,
+            rgba(222,234,252,0) 100%);
+        }
+        .services-band {
+          position: absolute; left: -14%; right: -14%;
+          background-size: 100% 100%; background-repeat: no-repeat;
+        }
+        .services-band-top { top: -2%; height: 34%; opacity: .5; transform: scaleY(-1); }
+        .services-band-bottom { bottom: -4%; height: 38%; opacity: .72; }
+
+        .bento { display: grid; gap: 1rem; align-items: stretch; }
         .bento-heroes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .bento-rest { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 0.9rem; }
 
         /* La vue dans la carte : un ecran pose dans la promesse. C'est elle
            qui porte l'immersion, le texte ne fait que la nommer. */
         .bento-art {
-          border-radius: .9rem;
-          background: linear-gradient(170deg, #FFFFFF 0%, #F5F9FF 100%);
-          border: 1px solid rgba(255,255,255,0.2);
-          box-shadow: 0 14px 30px -20px rgba(10,28,70,0.6);
-          padding: .5rem;
-          margin-bottom: 1.1rem;
+          border-radius: 1rem;
+          background: linear-gradient(172deg, #FFFFFF 0%, #F4F8FF 62%, #E9F0FD 100%);
+          box-shadow:
+            inset 0 0 0 1px rgba(255,255,255,0.55),
+            0 18px 34px -22px rgba(8,24,66,0.85);
+          padding: .55rem;
+          margin-bottom: 1.2rem;
           aspect-ratio: 1.26;
           overflow: hidden;
+          transition: transform .3s cubic-bezier(.2,.7,.3,1);
+          will-change: transform;
         }
+        .bento-tile:hover .bento-art { transform: translateY(-3px) scale(1.015); }
         .bento-art > svg { display: block; width: 100%; height: 100%; }
 
         /* La barre qui garde le reste du produit replie. */
@@ -449,15 +481,35 @@ export default function Services() {
         }
 
         /* Les trois promesses : c'est leur poids visuel qui fait la hierarchie,
-           pas un badge "le plus populaire". */
+           pas un badge "le plus populaire". Et leur teinte s'assombrit de
+           gauche a droite — la chaine avance, le bleu descend avec elle. */
         .bento-tile.is-hero {
-          background: linear-gradient(155deg, #2A5FE0 0%, #2149B4 52%, #16327F 100%);
-          border-color: rgba(255,255,255,0.14);
-          box-shadow: 0 20px 44px -24px rgba(22,50,127,0.72);
+          position: relative;
+          overflow: hidden;
+          border: none;
+          box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.26),
+            inset 0 0 0 1px rgba(255,255,255,0.09),
+            0 24px 50px -26px rgba(12,32,86,0.8);
         }
+        .bento-heroes .bento-tile:nth-child(1) { background: linear-gradient(158deg, #3D77EC 0%, #2A5CCF 54%, #1C43AC 100%); }
+        .bento-heroes .bento-tile:nth-child(2) { background: linear-gradient(158deg, #2C62E2 0%, #1F4CB8 54%, #143485 100%); }
+        .bento-heroes .bento-tile:nth-child(3) { background: linear-gradient(158deg, #2050C9 0%, #163C9B 54%, #0D2765 100%); }
+
+        /* Un reflet diffus en haut a gauche : sans lui, l'aplat reste plat. */
+        .bento-tile.is-hero::before {
+          content: "";
+          position: absolute; left: -25%; top: -35%;
+          width: 85%; aspect-ratio: 1; border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(255,255,255,0.2), rgba(255,255,255,0));
+          pointer-events: none;
+        }
+        .bento-tile.is-hero > * { position: relative; z-index: 1; }
         .bento-tile.is-hero:hover {
-          border-color: rgba(255,255,255,0.32);
-          box-shadow: 0 28px 54px -22px rgba(22,50,127,0.78);
+          box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.32),
+            inset 0 0 0 1px rgba(255,255,255,0.14),
+            0 32px 60px -24px rgba(12,32,86,0.85);
         }
 
         .bento-icon {
@@ -486,7 +538,7 @@ export default function Services() {
 
         .bento-points {
           list-style: none; padding: 0;
-          margin: 1rem 0 0;
+          margin: 1rem 0 1.1rem;
           display: grid; gap: .45rem;
         }
         .bento-points li {
@@ -505,7 +557,7 @@ export default function Services() {
 
         .bento-more {
           align-self: flex-start;
-          margin-top: .9rem;
+          margin-top: 1.1rem;
           padding: .35rem .8rem;
           border-radius: 999px;
           border: 1px solid rgba(36,85,214,0.22);
@@ -518,6 +570,7 @@ export default function Services() {
         }
         .bento-more:hover { background: rgba(36,85,214,0.11); border-color: rgba(36,85,214,0.4); }
         .is-hero .bento-more {
+          margin-top: auto;
           border-color: rgba(255,255,255,0.3);
           background: rgba(255,255,255,0.12);
           color: #FFFFFF;
