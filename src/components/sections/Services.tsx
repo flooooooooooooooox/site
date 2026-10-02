@@ -594,8 +594,8 @@ export default function Services() {
             top: 0; bottom: 0; height: auto; left: -12%; right: -12%;
             background-repeat: repeat-y;
           }
-          .services-band-top { background-size: 170% auto; background-position: 0% 0; opacity: .55; transform: none; }
-          .services-band-bottom { background-size: 245% auto; background-position: 100% 120px; opacity: .78; }
+          .services-band-top { background-size: 150% auto; background-position: 0% 0; opacity: .72; transform: none; }
+          .services-band-bottom { background-size: 215% auto; background-position: 100% 150px; opacity: .95; }
           .services-band-mid { display: none; }
         }
 

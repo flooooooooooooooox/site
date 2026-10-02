@@ -69,6 +69,10 @@ export function cloudBand(tone: "light" | "onDark" = "light") {
 /**
  * Rangee de nuages concue pour se repeter verticalement.
  *
+ * Les volumes sont aussi gros que ceux de `cloudBand` — c'est ce qui donne un
+ * vrai ciel et non une trame pale — mais places de facon a tenir entierement
+ * dans le cadre.
+ *
  * `cloudBand` ne peut pas etre repetee : ses volumes debordent du bas de leur
  * cadre, donc la repetition empile un bord coupe et dessine une ligne nette en
  * travers de la page. Ici chaque volume tient entierement a l'interieur, avec
@@ -86,11 +90,11 @@ export function cloudRow() {
     "vs",
     stops.map((s) => ({ ...s, a: s.a * 0.5 }))
   )}</defs>
-    ${volume(380, 400, 0.52, "url(#vs)", 0.7)}
-    ${volume(1020, 370, 0.44, "url(#vs)", 0.6)}
-    ${volume(300, 560, 0.62, "url(#v)")}
-    ${volume(820, 590, 0.54, "url(#v)", 0.95)}
-    ${volume(1300, 555, 0.58, "url(#v)", 0.9)}`;
+    ${volume(360, 390, 0.7, "url(#vs)", 0.72)}
+    ${volume(1060, 355, 0.6, "url(#vs)", 0.6)}
+    ${volume(260, 600, 0.85, "url(#v)")}
+    ${volume(820, 630, 0.75, "url(#v)", 0.95)}
+    ${volume(1340, 590, 0.8, "url(#v)", 0.9)}`;
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="none">${body}</svg>`;
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;

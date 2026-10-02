@@ -501,8 +501,8 @@ export default function StorySection() {
           /* Proportions conservees — une hauteur en pixels reaplatirait les
              volumes — et deux pas differents, pour que la repetition ne se
              lise pas. */
-          .story-band-mid-a { background-size: 170% auto; background-position: 0% 0; opacity: .55; }
-          .story-band-mid-b { background-size: 245% auto; background-position: 100% 120px; opacity: .8; }
+          .story-band-mid-a { background-size: 150% auto; background-position: 0% 0; opacity: .72; }
+          .story-band-mid-b { background-size: 215% auto; background-position: 100% 150px; opacity: .95; }
 
           .story-stage { grid-template-columns: 1fr; }
           .story-panel-col { display: none; }
