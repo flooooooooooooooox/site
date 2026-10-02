@@ -4,11 +4,11 @@ import BlogArticle from "@/components/sections/BlogArticle";
 export const metadata: Metadata = {
   title: "E-facturation 2026 artisan bâtiment : tout ce qu'il faut savoir",
   description:
-    "Obligation e-facturation 2026 pour artisans et PME du bâtiment. Ce qui change, les délais, les sanctions, et comment se mettre en conformité simplement.",
+    "Facturation électronique 2026-2027 pour artisans et PME : réception obligatoire depuis septembre 2026, émission et e-reporting des PME et micro-entreprises en 2027.",
   keywords: ["e-facturation 2026 artisan", "facturation électronique bâtiment", "obligation facture électronique artisan", "conformité e-facturation PME"],
   openGraph: {
     title: "E-facturation 2026 pour artisans — Guide complet",
-    description: "Obligation e-facturation 2026 : ce qui change pour les artisans du bâtiment, les délais, et comment se conformer simplement.",
+    description: "Facturation électronique : calendrier 2026-2027 pour les artisans, obligations de réception, émission et e-reporting.",
     url: "https://www.cirrion.eu/ressources/facturation-electronique-2026",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/facturation-electronique-2026" },
@@ -18,10 +18,11 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "E-facturation 2026 artisan bâtiment : tout ce qu'il faut savoir",
-  description: "Obligation e-facturation 2026 pour artisans et PME du bâtiment. Ce qui change, les délais, et comment se conformer.",
+  description: "Calendrier 2026-2027 de la facturation électronique pour artisans et PME du bâtiment.",
   author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
   publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
   datePublished: "2026-06-18",
+  dateModified: "2026-10-02",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/facturation-electronique-2026",
   keywords: "e-facturation 2026, facturation électronique artisan, conformité TVA bâtiment",
 };
@@ -44,14 +45,14 @@ export default function EFacturation() {
       <BlogArticle
         badge="Conformité & Légal"
         title="E-facturation 2026 pour artisans et PME du bâtiment"
-        description="Obligation e-facturation 2026 : ce qui change pour les artisans et PME du bâtiment, les délais à respecter, les sanctions, et comment se mettre en conformité sans effort."
-        date="18 juin 2026"
+        description="La réforme est entrée en vigueur le 1er septembre 2026. Voici le calendrier exact pour les artisans et PME, les obligations de réception et d'émission, ainsi que les sanctions prévues."
+        date="Mis à jour le 2 octobre 2026"
         readTime="5 min de lecture"
         blocks={[
           {
             type: "p",
             content:
-              "Depuis 2026, la facturation électronique n'est plus une option pour les entreprises françaises — c'est une obligation légale. Pour les artisans et PME du bâtiment, cela signifie que vos factures doivent être émises dans un format électronique structuré et transmises via une plateforme de dématérialisation partenaire (PDP) ou via le portail public Chorus Pro.",
+              "La réforme de la facturation électronique est entrée en vigueur le 1er septembre 2026. Depuis cette date, toutes les entreprises doivent être capables de recevoir des factures électroniques. Les grandes entreprises et les ETI doivent aussi les émettre et transmettre leur e-reporting. Pour les PME et micro-entreprises, dont la majorité des artisans, l'obligation d'émission et d'e-reporting débute le 1er septembre 2027.",
           },
           {
             type: "h2",
@@ -60,7 +61,7 @@ export default function EFacturation() {
           {
             type: "p",
             content:
-              "La réforme e-facturation 2026 (aussi appelée facturation électronique obligatoire ou e-invoicing) impose à toutes les entreprises assujetties à la TVA en France d'émettre et de recevoir leurs factures dans un format électronique standardisé (Factur-X, UBL, CII). L'objectif de l'État est de lutter contre la fraude fiscale et de moderniser le traitement de la TVA.",
+              "La réforme concerne les entreprises établies en France et assujetties à la TVA. Une facture électronique n'est pas un simple PDF envoyé par e-mail : elle comporte des données structurées et transite par une plateforme agréée. Le calendrier d'émission dépend de la taille de l'entreprise.",
           },
           {
             type: "h2",
@@ -70,9 +71,8 @@ export default function EFacturation() {
             type: "ul",
             items: [
               "1er septembre 2026 : obligation de recevoir des factures électroniques pour toutes les entreprises (grandes entreprises ET PME ET micro-entreprises).",
-              "1er septembre 2026 : obligation d'émettre des factures électroniques pour les grandes entreprises (plus de 250 salariés ou 50M€ de CA).",
-              "1er septembre 2027 : obligation d'émettre pour les ETI (entre 50 et 250 salariés).",
-              "1er septembre 2027 : obligation d'émettre pour les PME et micro-entreprises du bâtiment (la majorité des artisans).",
+              "1er septembre 2026 : obligation d'émettre des factures électroniques et de transmettre l'e-reporting pour les grandes entreprises et les ETI.",
+              "1er septembre 2027 : obligation d'émettre des factures électroniques et de transmettre l'e-reporting pour les PME et micro-entreprises du bâtiment (la majorité des artisans).",
             ],
           },
           {
@@ -82,7 +82,7 @@ export default function EFacturation() {
           {
             type: "p",
             content:
-              "Les sanctions en cas de non-émission de facture électronique s'élèvent à 15€ par facture non conforme, dans la limite de 15 000€ par an. Au-delà des sanctions financières, les entreprises non conformes risquent de se voir refuser le paiement de leurs factures par leurs clients professionnels, qui ne pourront plus les déduire en TVA.",
+              "Une amende forfaitaire de 15 € par facture est prévue en cas de non-respect de l'obligation d'émission électronique, dans la limite de 15 000 € par année civile. La première infraction n'est pas sanctionnée. Les obligations ne s'appliquent naturellement qu'à partir de la date prévue pour la catégorie d'entreprise concernée.",
           },
           {
             type: "h2",
@@ -103,14 +103,14 @@ export default function EFacturation() {
           {
             type: "p",
             content:
-              "La bonne nouvelle : si vous utilisez Cirrion, vous êtes automatiquement conforme. Cirrion génère vos factures dans le format Factur-X (PDF avec données structurées intégrées), les transmet via une PDP immatriculée, et gère le reporting TVA automatiquement. Pas besoin de comprendre les normes techniques — Cirrion s'en charge.",
+              "Pour être conforme, l'entreprise doit choisir une plateforme agréée pour recevoir les factures et, lorsque son échéance d'émission s'applique, transmettre les factures électroniques et les données de e-reporting. Si Cirrion est utilisé comme outil de facturation, l'intégration exacte avec la plateforme agréée choisie doit être vérifiée dans la configuration du compte.",
           },
           {
             type: "ul",
             items: [
               "Factur-X intégré : chaque facture Cirrion est automatiquement au format Factur-X conforme.",
-              "Transmission PDP : vos factures sont transmises via la plateforme de dématérialisation partenaire certifiée.",
-              "E-reporting automatique : les données de vos ventes aux particuliers sont déclarées automatiquement.",
+              "Transmission : les factures électroniques B2B passent par une plateforme agréée.",
+              "E-reporting : les données concernées sont transmises selon le calendrier applicable à votre entreprise.",
               "Archivage légal : vos factures sont archivées pendant 10 ans conformément aux obligations légales.",
             ],
           },

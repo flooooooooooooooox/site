@@ -315,7 +315,6 @@ export default function Services() {
             const Icon = t.icon;
             const Art = t.art;
             const isOpen = open.includes(t.title);
-            const shown = isOpen ? t.items : t.items.slice(0, PREVIEW);
             const rest = t.items.length - PREVIEW;
             return (
               <motion.div
@@ -336,9 +335,15 @@ export default function Services() {
                 </span>
                 <h3 className="bento-title">{t.title}</h3>
                 <p className="bento-lead">{t.lead}</p>
+                {/* Toutes les lignes sont dans le HTML ; celles au-dela de
+                    l'apercu sont masquees en CSS tant que la tuile est
+                    repliee. Rendues conditionnellement, elles etaient
+                    invisibles pour Google et pour les IA. */}
                 <ul className="bento-points">
-                  {shown.map((p) => (
-                    <li key={p}>{p}</li>
+                  {t.items.map((p, k) => (
+                    <li key={p} className={!isOpen && k >= PREVIEW ? "is-folded" : undefined}>
+                      {p}
+                    </li>
                   ))}
                 </ul>
                 <button
@@ -368,9 +373,8 @@ export default function Services() {
           <span className="bento-reveal-cta">{showAll ? "Masquer" : "Tout afficher"}</span>
         </button>
 
-        {showAll && (
-          <div className="bento bento-rest">
-            {REST.map((t, i) => {
+        <div className="bento bento-rest" hidden={!showAll}>
+          {REST.map((t, i) => {
               const Icon = t.icon;
               const isOpen = open.includes(t.title);
               return (
@@ -387,13 +391,11 @@ export default function Services() {
                   </span>
                   <h3 className="bento-title">{t.title}</h3>
                   <p className="bento-lead">{t.lead}</p>
-                  {isOpen && (
-                    <ul className="bento-points">
-                      {t.items.map((p) => (
-                        <li key={p}>{p}</li>
-                      ))}
-                    </ul>
-                  )}
+                  <ul className="bento-points" hidden={!isOpen}>
+                    {t.items.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
                   <button
                     type="button"
                     className="bento-more"
@@ -405,8 +407,7 @@ export default function Services() {
                 </motion.div>
               );
             })}
-          </div>
-        )}
+        </div>
       </div>
 
       <style>{`
@@ -430,6 +431,10 @@ export default function Services() {
         .services-band-mid { display: none; }
 
         .bento { display: grid; gap: 1rem; align-items: stretch; }
+        /* Le contenu replie reste dans le document et n'est que masque :
+           la regle display: grid l'emporterait sinon sur [hidden]. */
+        .bento[hidden], .bento-points[hidden] { display: none; }
+        .bento-points li.is-folded { display: none; }
         .bento-heroes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .bento-rest { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 0.9rem; }
 

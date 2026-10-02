@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <main style={{ position: "relative", zIndex: 1, paddingTop: "5rem" }}>
-      <Faq />
+      <Faq headingLevel="h1" />
     </main>
   );
 }

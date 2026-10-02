@@ -53,21 +53,9 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
     description: `Logiciel de gestion, devis et facturation pour artisans et PME du bâtiment ${ville.prepo} ${ville.nom}.`,
   };
 
-  const localBusinessLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: `Cirrion — Logiciel de devis bâtiment ${ville.prepo} ${ville.nom}`,
-    url: `https://www.cirrion.eu/logiciel-batiment/${ville.slug}`,
-    description: `Logiciel ERP nouvelle génération de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom}. Créez vos devis depuis WhatsApp en 3 minutes.`,
-    areaServed: {
-      "@type": "City",
-      name: ville.nom,
-      containedInPlace: { "@type": "AdministrativeArea", name: ville.region },
-    },
-    priceRange: "€€",
-    telephone: null,
-    sameAs: ["https://www.cirrion.eu", "https://www.instagram.com/floxia.pro", "https://www.linkedin.com/in/cirrion-pro-9360333aa"],
-  };
+  // Pas de LocalBusiness par ville : Cirrion n'a qu'un etablissement, a Caen,
+  // declare une fois dans le layout. En declarer un par page de ville
+  // annoncerait des dizaines d'etablissements qui n'existent pas.
 
   const autres = VILLES.filter((v) => v.slug !== ville.slug).slice(0, 6);
 
@@ -75,7 +63,6 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }} />
 
       <div style={{ maxWidth: "52rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <Link href="/logiciel-batiment" style={{ color: "rgba(var(--text-rgb),0.45)", fontSize: ".82rem", textDecoration: "none", marginBottom: "2rem", display: "inline-block" }}>

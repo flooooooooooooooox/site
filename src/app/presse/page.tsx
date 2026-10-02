@@ -55,7 +55,7 @@ const ANGLES = [
   },
   {
     titre: "La e-facturation 2026 sans effort",
-    desc: "Cirrion prépare nativement les artisans et PME à l'obligation de facturation électronique 2026, sans module supplémentaire.",
+    desc: "La réforme de la facturation électronique est entrée en vigueur en septembre 2026. Cirrion prépare les artisans et PME aux nouveaux flux de réception, d'émission et d'e-reporting selon leur calendrier légal.",
   },
   {
     titre: "L'ERP des artisans vs les mastodontes",

@@ -34,6 +34,10 @@ function Counter({ target, suffix, color, trigger, index }: {
     if (!trigger || started.current || !node) return;
     started.current = true;
 
+    // Le HTML rendu cote serveur contient toujours la vraie valeur.
+    // On ne repasse a 0 qu'au moment ou l'animation devient visible.
+    node.textContent = `0${suffix}`;
+
     let raf = 0;
     let t0 = 0;
     const delay = index * STAGGER_MS;
@@ -51,7 +55,7 @@ function Counter({ target, suffix, color, trigger, index }: {
     return () => cancelAnimationFrame(raf);
   }, [trigger, target, suffix, index]);
 
-  return <span ref={ref} style={{ color }}>{`0${suffix}`}</span>;
+  return <span ref={ref} style={{ color }}>{`${target}${suffix}`}</span>;
 }
 
 const cardVariants: Variants = {

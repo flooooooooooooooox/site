@@ -96,6 +96,52 @@ const ARTICLES = [
     date: "Juin 2026",
     readTime: "5 min",
   },
+
+  {
+    href: "/ressources/facturation-electronique-2026",
+    badge: "Conformité",
+    title: "Facturation électronique 2026-2027 : calendrier pour artisans et PME",
+    description:
+      "Réception obligatoire depuis septembre 2026, émission et e-reporting en 2027 pour les PME et micro-entreprises : le calendrier à connaître.",
+    date: "Octobre 2026",
+    readTime: "5 min",
+  },
+  {
+    href: "/ressources/devis-signe-valeur-legale",
+    badge: "Juridique",
+    title: "Devis signé : valeur légale et signature électronique",
+    description:
+      "Quand un devis engage-t-il le client ? Valeur juridique, signature électronique et recours : les points essentiels pour un artisan.",
+    date: "Juin 2026",
+    readTime: "6 min",
+  },
+  {
+    href: "/ressources/acompte-devis-artisan",
+    badge: "Devis",
+    title: "Acompte sur devis artisan : montant et bonnes pratiques",
+    description:
+      "Quel acompte demander avant un chantier, quelles mentions prévoir et comment établir la facture d'acompte.",
+    date: "Juin 2026",
+    readTime: "5 min",
+  },
+  {
+    href: "/ressources/logiciel-devis-gratuit-artisan",
+    badge: "Logiciels",
+    title: "Logiciel de devis gratuit pour artisan : avantages et limites",
+    description:
+      "Ce que permettent réellement les outils gratuits, leurs limites et les critères à comparer avant de choisir un logiciel de devis.",
+    date: "Juin 2026",
+    readTime: "5 min",
+  },
+  {
+    href: "/ressources/relances-devis-artisan",
+    badge: "Relances",
+    title: "Relances devis artisan : structurer son suivi client",
+    description:
+      "Une méthode simple pour suivre les devis sans réponse, organiser les relances et éviter que des opportunités restent oubliées.",
+    date: "Juin 2026",
+    readTime: "4 min",
+  },
 ];
 
 export default function Ressources() {

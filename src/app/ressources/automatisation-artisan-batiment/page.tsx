@@ -92,7 +92,7 @@ export default function AutomatisationArtisan() {
           {
             type: "p",
             content:
-              "Depuis 2026, toutes les entreprises françaises — y compris les artisans en micro-entreprise — doivent émettre des factures électroniques conformes (e-reporting, e-invoicing). Se mettre en conformité manuellement nécessite un comptable ou des heures de paramétrage. Cirrion gère cette conformité nativement : chaque facture est générée au bon format, déclarée automatiquement.",
+              "Depuis le 1er septembre 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques. Les grandes entreprises et ETI doivent aussi les émettre et transmettre leur e-reporting depuis cette date ; pour les PME et micro-entreprises, l'obligation d'émission et d'e-reporting démarre le 1er septembre 2027. Un logiciel de gestion peut préparer les données et les formats, mais la transmission réglementaire passe par une plateforme agréée.",
           },
           {
             type: "h2",

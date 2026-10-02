@@ -69,6 +69,12 @@ const TRADES = [
     title: "Plaquiste",
     keywords: "Cloisons · Doublage · Plafonds · Isolation",
   },
+  {
+    href: "/artisans/serrurier",
+    emoji: "🔐",
+    title: "Serrurier-métallier",
+    keywords: "Dépannage · Portes blindées · Garde-corps · Métallerie",
+  },
 ];
 
 export default function Artisans() {
@@ -108,7 +114,7 @@ export default function Artisans() {
 
         <div style={{ marginTop: "4rem", padding: "2rem", borderRadius: "1.25rem", border: "1px solid rgba(36,85,214,0.15)", background: "rgba(36,85,214,0.04)", textAlign: "center" }}>
           <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".92rem", marginBottom: "1rem" }}>
-            Votre métier n&apos;est pas dans la liste ? Cirrion fonctionne pour tous les artisans et PME du bâtiment : menuisier, couvreur, carreleur, serrurier, paysagiste, multi-corps d&apos;état.
+            Votre métier n&apos;est pas dans la liste ? Cirrion fonctionne pour tous les artisans et PME du bâtiment : paysagiste, façadier, terrassier, multi-corps d&apos;état.
           </p>
           <Link href="/#tarifs" style={{ color: "#2455D6", fontWeight: 700, fontSize: ".9rem", textDecoration: "none" }}>
             Voir les tarifs →

@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 const FAQS = [
@@ -22,7 +21,7 @@ const FAQS = [
   },
   {
     q: "Cirrion gère-t-il la facturation électronique 2026 ?",
-    a: "Oui, nativement. Cirrion est conforme à la réglementation e-facturation et e-reporting 2026 obligatoire pour toutes les entreprises françaises. Chaque facture est générée au bon format sans action supplémentaire de votre part, que vous travailliez depuis WhatsApp ou l'application web.",
+    a: "La réforme est entrée en vigueur le 1er septembre 2026 : toutes les entreprises doivent pouvoir recevoir des factures électroniques. Les grandes entreprises et ETI doivent aussi les émettre et transmettre leur e-reporting depuis cette date. Pour les PME et micro-entreprises, dont la majorité des artisans, l'obligation d'émission et d'e-reporting débute le 1er septembre 2027. Cirrion est conçu pour accompagner ces flux de facturation électronique depuis l'application.",
   },
   {
     q: "Mes données sont-elles sécurisées ?",
@@ -62,7 +61,7 @@ const FAQS = [
   },
   {
     q: "Cirrion remplace-t-il mon expert-comptable ?",
-    a: "Oui. L'abonnement couvre toute votre comptabilité : justificatifs scannés et classés, rapprochement bancaire via Bridge, TVA établie et télétransmise à la DGFiP via ASPOne, paie et DSN via OpenPaye, puis le bilan et la liasse fiscale une fois par an. Le bilan et la liasse sont signés par un cabinet d'expertise-comptable partenaire, inscrit à l'Ordre — la loi le réserve à un professionnel inscrit, et nous ne prétendons pas le contraire. La différence : vous n'avez qu'un seul abonnement mensuel, sans honoraires en plus au moment du bilan, et le Copilote Cirrion répond à vos questions sur vos chiffres à toute heure, sans attendre un rendez-vous.",
+    a: "Non, et ce n'est pas l'objectif. Cirrion fait la pré-comptabilité : factures au bon format, justificatifs scannés et classés, rapprochement bancaire automatique via Bridge, export comptable propre. Votre expert-comptable reçoit un dossier déjà en ordre, ce qui réduit son temps de traitement — mais le conseil fiscal et la liasse restent son métier.",
   },
   {
     q: "Combien de temps un artisan gagne-t-il réellement avec Cirrion ?",
@@ -80,8 +79,21 @@ const faqJsonLd = {
   })),
 };
 
-export default function Faq() {
-  const [open, setOpen] = useState<number | null>(null);
+type FaqProps = {
+  /** La page /faq n'a pas d'autre titre : la FAQ y porte le h1. */
+  headingLevel?: "h1" | "h2";
+};
+
+/**
+ * Les reponses sont dans le HTML des le premier rendu.
+ *
+ * L'accordeon precedent montait la reponse seulement apres le clic
+ * (`{isOpen && ...}`) : un robot d'indexation, et une IA qui lit la page, n'y
+ * voyaient que les questions. `<details>` replie la reponse sans la retirer du
+ * document, et le navigateur gere l'ouverture sans etat React.
+ */
+export default function Faq({ headingLevel = "h2" }: FaqProps) {
+  const Heading = headingLevel;
 
   return (
     <section style={{ background: "transparent", padding: "clamp(3rem, 8vw, 6rem) 0" }}>
@@ -114,96 +126,79 @@ export default function Faq() {
           >
             FAQ
           </span>
-          <h2
+          <Heading
             style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4vw,3rem)", color: "var(--text)", lineHeight: 1.1 }}
           >
-            Questions{" "}
-            <span style={{ color: "#2455D6" }}>fréquentes</span>
-          </h2>
+            Questions <span style={{ color: "#2455D6" }}>fréquentes</span>
+          </Heading>
         </motion.div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          {FAQS.map((faq, i) => {
-            const isOpen = open === i;
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.05 }}
-                style={{
-                  background: isOpen ? "rgba(36,85,214,0.04)" : "rgba(var(--surface-rgb),0.03)",
-                  border: isOpen ? "1px solid rgba(36,85,214,0.2)" : "1px solid rgba(var(--surface-rgb),0.07)",
-                  borderRadius: "1rem",
-                  overflow: "hidden",
-                  transition: "border-color 0.3s, background 0.3s",
-                }}
-              >
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding: "1.2rem 1.5rem",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    textAlign: "left",
-                    gap: "1rem",
-                  }}
-                  aria-expanded={isOpen}
-                >
-                  <span
-                    style={{
-                      color: isOpen ? "#2455D6" : "var(--text)",
-                      fontWeight: 600,
-                      fontSize: ".95rem",
-                      lineHeight: 1.4,
-                      transition: "color 0.3s",
-                    }}
-                  >
-                    {faq.q}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ flexShrink: 0 }}
-                  >
-                    <ChevronDown size={18} color={isOpen ? "#2455D6" : "rgba(var(--text-rgb),0.4)"} />
-                  </motion.div>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      style={{ overflow: "hidden" }}
-                    >
-                      <p
-                        style={{
-                          padding: "0 1.5rem 1.4rem",
-                          color: "rgba(var(--text-rgb),0.65)",
-                          fontSize: ".88rem",
-                          lineHeight: 1.7,
-                        }}
-                      >
-                        {faq.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+          {FAQS.map((faq, i) => (
+            <motion.div
+              key={faq.q}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: i * 0.03 }}
+            >
+              <details className="faq-item">
+                <summary className="faq-summary">
+                  <span>{faq.q}</span>
+                  <ChevronDown className="faq-chevron" size={18} aria-hidden />
+                </summary>
+                <p className="faq-answer">{faq.a}</p>
+              </details>
+            </motion.div>
+          ))}
         </div>
       </div>
+
+      <style>{`
+        .faq-item {
+          background: rgba(var(--surface-rgb),0.03);
+          border: 1px solid rgba(var(--surface-rgb),0.07);
+          border-radius: 1rem;
+          overflow: hidden;
+          transition: border-color .3s, background .3s;
+        }
+        .faq-item[open] {
+          background: rgba(36,85,214,0.04);
+          border-color: rgba(36,85,214,0.2);
+        }
+        .faq-summary {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1.2rem 1.5rem;
+          cursor: pointer;
+          text-align: left;
+          gap: 1rem;
+          color: var(--text);
+          font-weight: 600;
+          font-size: .95rem;
+          line-height: 1.4;
+          list-style: none;
+        }
+        .faq-summary::-webkit-details-marker { display: none; }
+        .faq-item[open] .faq-summary { color: #2455D6; }
+        .faq-chevron {
+          flex-shrink: 0;
+          color: rgba(var(--text-rgb),0.4);
+          transition: transform .25s, color .25s;
+        }
+        .faq-item[open] .faq-chevron {
+          color: #2455D6;
+          transform: rotate(180deg);
+        }
+        .faq-answer {
+          padding: 0 1.5rem 1.4rem;
+          color: rgba(var(--text-rgb),0.65);
+          font-size: .88rem;
+          line-height: 1.7;
+        }
+      `}</style>
     </section>
   );
 }
