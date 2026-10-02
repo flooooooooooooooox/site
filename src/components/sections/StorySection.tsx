@@ -459,7 +459,15 @@ export default function StorySection() {
         /* La vue inline n'existe que sur mobile. */
         .story-frame-inline { display: none; }
 
+        /* Sur un ecran etroit, une bande large de 100% et haute de moitie
+           n'a plus du tout le rapport de forme de son dessin : les volumes
+           s'etirent en trainees verticales. On impose la largeur en gardant
+           la hauteur proportionnelle, et on recadre sur le bord. */
         @media (max-width: 900px) {
+          .story-band { background-size: 300% auto; }
+          .story-band-far { height: 26%; background-position: 50% 0; opacity: .3; }
+          .story-band-near { height: 32%; background-position: 50% 100%; opacity: .58; }
+
           .story-stage { grid-template-columns: 1fr; }
           .story-panel-col { display: none; }
           .story-steps { padding-left: 2.3rem; }

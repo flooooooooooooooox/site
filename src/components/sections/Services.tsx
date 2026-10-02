@@ -577,6 +577,14 @@ export default function Services() {
         }
         .is-hero .bento-more:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
 
+        /* Meme correction que dans la section du dessus : sans elle, les
+           volumes nuageux deviennent des trainees verticales sur mobile. */
+        @media (max-width: 900px) {
+          .services-band { background-size: 300% auto; }
+          .services-band-top { height: 20%; background-position: 50% 0; opacity: .4; }
+          .services-band-bottom { height: 26%; background-position: 50% 100%; opacity: .6; }
+        }
+
         @media (max-width: 980px) {
           .bento-heroes { grid-template-columns: 1fr; }
           .bento-rest { grid-template-columns: repeat(2, minmax(0, 1fr)); }
