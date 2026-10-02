@@ -125,6 +125,11 @@ export default function StorySection() {
           className="story-band story-band-near"
           style={{ x: nearX, y: nearY, scale: nearScale, backgroundImage: BAND }}
         />
+        {/* Bandes intermediaires, mobiles uniquement : sur un telephone la
+            section fait plusieurs milliers de pixels et deux bandes aux
+            extremites ne se voient jamais au milieu du defilement. */}
+        <motion.div className="story-band story-band-mid story-band-mid-a" style={{ x: nearX, backgroundImage: BAND }} />
+        <motion.div className="story-band story-band-mid story-band-mid-b" style={{ x: farX, backgroundImage: BAND }} />
       </div>
 
       <div style={{ maxWidth: "1150px", margin: "0 auto", padding: "0 6vw", position: "relative", zIndex: 1 }}>
@@ -296,6 +301,7 @@ export default function StorySection() {
           mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 68%, transparent 100%);
         }
         .story-band-far { top: 0; height: 46%; opacity: .42; }
+        .story-band-mid { display: none; }
         .story-band-near { bottom: -10%; height: 58%; opacity: .78; transform-origin: 50% 100%; }
 
         .story-stage {
@@ -459,14 +465,33 @@ export default function StorySection() {
         /* La vue inline n'existe que sur mobile. */
         .story-frame-inline { display: none; }
 
-        /* Sur un ecran etroit, une bande large de 100% et haute de moitie
-           n'a plus du tout le rapport de forme de son dessin : les volumes
-           s'etirent en trainees verticales. On impose la largeur en gardant
-           la hauteur proportionnelle, et on recadre sur le bord. */
+        /* Sur un ecran etroit, une bande haute de 46% de la section devient
+           etroite et longue : les volumes s'etirent en trainees verticales.
+           On la raccourcit en pixels et on la fait deborder en largeur, comme
+           le bandeau d'appel a l'action — c'est une bande courte et large qui
+           garde des nuages ronds. */
         @media (max-width: 900px) {
-          .story-band { background-size: 300% auto; }
-          .story-band-far { height: 26%; background-position: 50% 0; opacity: .3; }
-          .story-band-near { height: 32%; background-position: 50% 100%; opacity: .58; }
+          /* Un ciel continu plutot que deux bandes aux extremites : sur un
+             telephone la section fait plusieurs milliers de pixels, et une
+             bande posee en haut ne se voit plus des le deuxieme ecran.
+             Deux couches qui se repetent a des hauteurs differentes — 230 et
+             310 px — ne se realignent qu'au bout de 7 000 px : le motif ne se
+             lit jamais. */
+          .story-band {
+            top: 0; bottom: 0; height: auto;
+            background-repeat: repeat-y;
+            -webkit-mask-image: none;
+            mask-image: none;
+          }
+          .story-band-far {
+            background-size: 180% 230px; background-position: 0% 0;
+            opacity: .5;
+          }
+          .story-band-near {
+            background-size: 145% 310px; background-position: 100% 60px;
+            opacity: .75;
+          }
+          .story-band-mid { display: none; }
 
           .story-stage { grid-template-columns: 1fr; }
           .story-panel-col { display: none; }

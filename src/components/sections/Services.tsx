@@ -266,6 +266,7 @@ export default function Services() {
           font le travail, pas le mouvement. */}
       <div className="services-sky" aria-hidden>
         <span className="services-band services-band-top" style={{ backgroundImage: BAND }} />
+        <span className="services-band services-band-mid" style={{ backgroundImage: BAND }} />
         <span className="services-band services-band-bottom" style={{ backgroundImage: BAND }} />
       </div>
 
@@ -420,6 +421,7 @@ export default function Services() {
         }
         .services-band-top { top: -2%; height: 34%; opacity: .5; transform: scaleY(-1); }
         .services-band-bottom { bottom: -4%; height: 38%; opacity: .72; }
+        .services-band-mid { display: none; }
 
         .bento { display: grid; gap: 1rem; align-items: stretch; }
         .bento-heroes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -577,12 +579,17 @@ export default function Services() {
         }
         .is-hero .bento-more:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
 
-        /* Meme correction que dans la section du dessus : sans elle, les
-           volumes nuageux deviennent des trainees verticales sur mobile. */
+        /* Meme correction que dans la section du dessus : une bande courte et
+           large, comme le bandeau d'appel a l'action, pour que les volumes
+           restent ronds et bien visibles. */
         @media (max-width: 900px) {
-          .services-band { background-size: 300% auto; }
-          .services-band-top { height: 20%; background-position: 50% 0; opacity: .4; }
-          .services-band-bottom { height: 26%; background-position: 50% 100%; opacity: .6; }
+          .services-band {
+            top: 0; bottom: 0; height: auto; left: -12%; right: -12%;
+            background-repeat: repeat-y;
+          }
+          .services-band-top { background-size: 180% 230px; background-position: 0% 0; opacity: .5; transform: none; }
+          .services-band-bottom { background-size: 145% 310px; background-position: 100% 60px; opacity: .72; }
+          .services-band-mid { display: none; }
         }
 
         @media (max-width: 980px) {
