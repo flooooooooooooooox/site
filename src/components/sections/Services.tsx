@@ -595,9 +595,9 @@ export default function Services() {
           .services-sky {
             background: linear-gradient(180deg,
               rgba(222,234,252,0) 0%,
-              rgba(170,201,245,0.9) 14%,
-              rgba(138,180,238,0.95) 50%,
-              rgba(170,201,245,0.85) 86%,
+              rgba(150,189,243,0.95) 14%,
+              rgba(112,163,232,0.98) 50%,
+              rgba(150,189,243,0.92) 86%,
               rgba(222,234,252,0) 100%);
           }
           .services-band {
@@ -605,8 +605,8 @@ export default function Services() {
             top: 0; bottom: 0; height: auto; left: -12%; right: -12%;
             background-repeat: repeat-y;
           }
-          .services-band-top { background-size: 300% auto; background-position: 12% 0; opacity: .75; transform: none; }
-          .services-band-bottom { background-size: 430% auto; background-position: 78% 180px; opacity: 1; }
+          .services-band-top { background-size: 230% auto; background-position: 14% 0; opacity: .8; transform: none; }
+          .services-band-bottom { background-size: 330% auto; background-position: 76% 210px; opacity: 1; }
           .services-band-mid { display: none; }
         }
 

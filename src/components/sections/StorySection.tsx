@@ -276,6 +276,8 @@ export default function StorySection() {
             rgba(120,167,232,0.72) 52%,
             rgba(170,201,244,0.42) 78%,
             rgba(222,234,252,0) 100%);
+          /* Sur mobile ce voile est fige a 1 (voir plus bas) : c'est lui qui
+             donne aux nuages blancs de quoi se detacher. */
           will-change: opacity;
         }
         /* Le halo suit la pile : c'est lui qui donne l'impression de traverser
@@ -495,7 +497,7 @@ export default function StorySection() {
              haut de section : des nuages blancs sur un ciel blanc ne se
              voyaient pas. Sur mobile il reste constant — c'est lui qui donne
              aux volumes de quoi se detacher. */
-          .story-sky { opacity: .92 !important; }
+          .story-sky { opacity: 1 !important; }
           .story-band-mid {
             display: block;
             background-image: var(--row);
@@ -509,8 +511,8 @@ export default function StorySection() {
              lise pas. La tuile est posee tres large : a l'echelle d'un
              telephone, cinq nuages dans la largeur de l'ecran donnent des
              taches eparpillees, pas des volumes. */
-          .story-band-mid-a { background-size: 300% auto; background-position: 12% 0; opacity: .75; }
-          .story-band-mid-b { background-size: 430% auto; background-position: 78% 180px; opacity: 1; }
+          .story-band-mid-a { background-size: 230% auto; background-position: 14% 0; opacity: .8; }
+          .story-band-mid-b { background-size: 330% auto; background-position: 76% 210px; opacity: 1; }
 
           .story-stage { grid-template-columns: 1fr; }
           .story-panel-col { display: none; }

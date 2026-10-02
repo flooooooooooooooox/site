@@ -69,53 +69,63 @@ export function cloudBand(tone: "light" | "onDark" = "light") {
 /**
  * Rangee de nuages concue pour se repeter verticalement.
  *
- * Deux differences avec `cloudBand`, et elles comptent toutes les deux :
+ * Trois choses la distinguent de `cloudBand`, et chacune repond a un defaut
+ * constate a l'ecran :
  *
- * 1. Les volumes tiennent entierement dans le cadre, avec du ciel transparent
- *    au-dessus et au-dessous. Deux tuiles mises bout a bout ne se touchent
- *    donc jamais : il n'y a pas de bord a raccorder, donc pas de ligne.
+ * 1. **La silhouette est une courbe, pas des disques.** Un nuage fait de
+ *    cercles empiles se reconnait tout de suite : bosses de meme rayon,
+ *    contours visibles la ou deux disques se recouvrent. Ici chaque nuage est
+ *    un seul trace en arcs de cercle, avec des bosses de rayons inegaux et
+ *    une base posee a plat.
  *
- * 2. Le degrade est en `userSpaceOnUse`, partage par toutes les formes d'un
- *    meme nuage. Avec le degrade par defaut, chaque disque recoit son propre
- *    ombrage et on voit les ronds les uns a cote des autres ; ici la lumiere
- *    traverse la masse entiere, et le nuage se lit comme un seul volume.
+ * 2. **L'ombre est posee dans l'espace du dessin**, partagee par tout le
+ *    nuage : la lumiere traverse la masse entiere au lieu d'eclairer chaque
+ *    forme separement.
+ *
+ * 3. **Tout tient a l'interieur du cadre**, avec une marge en haut et en bas :
+ *    deux tuiles mises bout a bout ne se touchent jamais, donc aucune ligne au
+ *    raccord et aucun nuage tranche.
  */
 export function cloudRow() {
-  // Lobes de rayons varies et de centres decales : une silhouette reguliere
-  // trahit tout de suite le dessin geometrique.
-  const PUFFS: [number, number, number][][] = [
-    [[-250, 42, 128], [-130, -18, 168], [-10, -46, 196], [112, -8, 162], [226, 48, 120], [38, 70, 178]],
-    [[-210, 36, 112], [-80, -30, 156], [52, -12, 184], [184, 34, 128], [-20, 76, 160]],
-    [[-190, 50, 104], [-62, -22, 148], [78, -40, 170], [198, 20, 132], [10, 68, 152]],
+  // Contours traces a l'arc de cercle et non a la courbe de Bezier : des
+  // points de controle mal places font des pointes la ou on attend des bosses,
+  // ce qui donnait des nuages en dents de scie. Un arc dont le rayon depasse
+  // la moitie de la corde est toujours rond. Rayons volontairement inegaux :
+  // des bosses identiques trahissent le dessin.
+  const SHAPES = [
+    // large, quatre bosses
+    "M 0 220 A 62 62 0 0 1 96 160 A 92 92 0 0 1 272 128 A 78 78 0 0 1 418 156 A 58 58 0 0 1 520 206 L 520 220 Z",
+    // moyen, trois bosses
+    "M 0 180 A 50 50 0 0 1 78 128 A 76 76 0 0 1 222 104 A 76 76 0 0 1 350 166 L 350 180 Z",
+    // long, cinq bosses
+    "M 0 250 A 58 58 0 0 1 90 192 A 80 80 0 0 1 240 160 A 66 66 0 0 1 368 182 A 88 88 0 0 1 540 150 A 78 78 0 0 1 660 232 L 660 250 Z",
   ];
 
-  const puff = (cx: number, cy: number, sc: number, fill: string, o = 1, k = 0) =>
-    `<g transform="translate(${cx} ${cy}) scale(${sc})" opacity="${o}">
-      ${PUFFS[k % PUFFS.length]
-        .map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}"/>`)
-        .join("")}
-      <ellipse cx="0" cy="132" rx="316" ry="104" fill="${fill}"/>
-    </g>`;
+  const cloud = (i: number, x: number, y: number, sc: number, fill: string, o = 1) =>
+    `<path d="${SHAPES[i]}" transform="translate(${x} ${y}) scale(${sc})" fill="${fill}" opacity="${o}"/>`;
 
-  // Le degrade est pose dans l'espace du dessin, pas dans celui de chaque
-  // forme : c'est ce qui fait disparaitre les contours de disques. L'ombre du
-  // dessous reste franche, sinon la masse se dilue dans le ciel et le nuage
-  // perd son volume.
-  const shade = (id: string, y1: number, y2: number, a: number) =>
+  const shade = (id: string, y1: number, y2: number) =>
     `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="0" y1="${y1}" x2="0" y2="${y2}">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="${0.99 * a}"/>
-      <stop offset="42%" stop-color="#F2F7FE" stop-opacity="${0.96 * a}"/>
-      <stop offset="78%" stop-color="#C6DAF4" stop-opacity="${0.95 * a}"/>
-      <stop offset="100%" stop-color="#8FB4E4" stop-opacity="${0.92 * a}"/>
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="46%" stop-color="#F3F8FF" stop-opacity="0.99"/>
+      <stop offset="82%" stop-color="#CBDFF7" stop-opacity="0.97"/>
+      <stop offset="100%" stop-color="#9DC0EA" stop-opacity="0.95"/>
     </linearGradient>`;
 
-  const body = `<defs>${shade("rf", 170, 560, 0.62)}${shade("rn", 380, 850, 1)}</defs>
-    ${puff(380, 390, 0.72, "url(#rf)", 0.85, 1)}
-    ${puff(1120, 352, 0.6, "url(#rf)", 0.7, 2)}
-    ${puff(250, 605, 0.86, "url(#rn)", 1, 0)}
-    ${puff(840, 632, 0.76, "url(#rn)", 0.96, 2)}
-    ${puff(1360, 592, 0.8, "url(#rn)", 0.92, 1)}`;
+  // Deux plans : des nuages lointains plus hauts et plus pales, des nuages
+  // proches plus bas et pleins. Marges : rien avant y=200 ni apres y=860, pour
+  // que deux tuiles bout a bout ne se touchent jamais.
+  const body = `<defs>${shade("rf", 200, 480)}${shade("rn", 500, 860)}</defs>
+    ${cloud(1, 300, 260, 1.05, "url(#rf)", 0.5)}
+    ${cloud(2, 980, 230, 0.78, "url(#rf)", 0.42)}
+    ${cloud(2, 60, 560, 1.15, "url(#rn)")}
+    ${cloud(0, 760, 580, 1.08, "url(#rn)", 0.96)}
+    ${cloud(1, 1220, 540, 0.95, "url(#rn)", 0.9)}`;
 
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="none">${body}</svg>`;
+  // Les dimensions sont declarees et le rapport de forme conserve. Sans elles,
+  // le navigateur ne connait pas le rapport de l'image : avec une hauteur de
+  // fond en `auto`, il prend alors toute la hauteur du calque et etire le
+  // dessin — les nuages devenaient des pics verticaux.
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" preserveAspectRatio="xMidYMid meet">${body}</svg>`;
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
 }
