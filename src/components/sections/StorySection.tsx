@@ -130,11 +130,14 @@ export default function StorySection() {
           className="story-band story-band-near"
           style={{ x: nearX, y: nearY, scale: nearScale }}
         />
-        {/* Bandes intermediaires, mobiles uniquement : sur un telephone la
-            section fait plusieurs milliers de pixels et deux bandes aux
-            extremites ne se voient jamais au milieu du defilement. */}
-        <motion.div className="story-band story-band-mid story-band-mid-a" style={{ x: nearX }} />
-        <motion.div className="story-band story-band-mid story-band-mid-b" style={{ x: farX }} />
+        {/* Ciel mobile : deux calques fixes, sans aucune transformation.
+            Les deux calques du dessus sont deplaces et agrandis par le
+            defilement ; etendus a toute la hauteur de la section, leurs bords
+            entrent dans l'ecran et la tuile s'arrete net — c'est ce qui
+            dessinait une ligne en travers de la page. Ceux-ci ne bougent pas,
+            donc ils n'ont pas de bord a montrer. */}
+        <span className="story-band story-band-mid story-band-mid-a" />
+        <span className="story-band story-band-mid story-band-mid-b" />
       </div>
 
       <div style={{ maxWidth: "1150px", margin: "0 auto", padding: "0 6vw", position: "relative", zIndex: 1 }}>
@@ -483,19 +486,23 @@ export default function StorySection() {
              Deux couches qui se repetent a des hauteurs differentes — 230 et
              310 px — ne se realignent qu'au bout de 7 000 px : le motif ne se
              lit jamais. */
-          .story-band {
-            /* Tuile conçue pour se repeter, et dimensionnee en gardant ses
-               proportions : une hauteur imposee en pixels reaplatirait les
-               volumes. Deux pas differents, donc aucun realignement visible. */
+          /* Les deux calques animes sont retires : c'est leur deplacement qui
+             faisait apparaitre leurs bords. Le ciel mobile est porte par les
+             deux calques fixes, qui repetent une tuile conçue pour ça. */
+          .story-band-far, .story-band-near { display: none; }
+          .story-band-mid {
+            display: block;
             background-image: var(--row);
             top: 0; bottom: 0; height: auto;
             background-repeat: repeat-y;
             -webkit-mask-image: none;
             mask-image: none;
           }
-          .story-band-far { background-size: 170% auto; background-position: 0% 0; opacity: .55; }
-          .story-band-near { background-size: 245% auto; background-position: 100% 120px; opacity: .8; }
-          .story-band-mid { display: none; }
+          /* Proportions conservees — une hauteur en pixels reaplatirait les
+             volumes — et deux pas differents, pour que la repetition ne se
+             lise pas. */
+          .story-band-mid-a { background-size: 170% auto; background-position: 0% 0; opacity: .55; }
+          .story-band-mid-b { background-size: 245% auto; background-position: 100% 120px; opacity: .8; }
 
           .story-stage { grid-template-columns: 1fr; }
           .story-panel-col { display: none; }
