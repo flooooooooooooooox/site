@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Cpu, Heart, ShieldCheck, Sparkles, Users, Wrench } from "lucide-react";
+import { Cpu, ExternalLink, Handshake, Heart, ShieldCheck, Sparkles, Users, Wrench } from "lucide-react";
 import { CloudBadge } from "@/components/ui/CloudBadge";
 
 const fadeUp = {
@@ -40,20 +40,35 @@ const STATS = [
   { value: "100 %", label: "hébergé et conçu en France" },
 ];
 
-const TEAM = [
+type Member = {
+  icon: typeof Wrench;
+  role: string;
+  name: string;
+  text: string;
+  link: { href: string; label: string; rel: string; linkedin?: boolean } | null;
+};
+
+const TEAM: Member[] = [
   {
     icon: Wrench,
     role: "Fondateur & CEO",
     name: "Florian Gagnebien",
     text: "Ingénieur en automatisation, formé lors d'un stage à la Fondation ANAIS (ETI, Alençon) où il a conçu des automatisations de processus internes. Il pilote la vision produit et le développement de Cirrion.",
-    linkedin: "https://www.linkedin.com/in/cirrion-pro-9360333aa",
+    link: { href: "https://www.linkedin.com/in/cirrion-pro-9360333aa", label: "Profil LinkedIn", rel: "noopener noreferrer me", linkedin: true },
+  },
+  {
+    icon: Handshake,
+    role: "Associé",
+    name: "Josslyn",
+    text: "Dirigeant de Propre Éclat, entreprise de nettoyage près de Caen. Il a amené Cirrion sur le terrain : paie, prestations, pointage des équipes et comptabilité, éprouvés chaque jour dans une entreprise qui tourne.",
+    link: { href: "https://www.propre-eclat.fr/", label: "Propre Éclat", rel: "noopener noreferrer" },
   },
   {
     icon: Users,
     role: "Réseau",
     name: "Nos apporteurs d'affaires",
-    text: "Un réseau de partenaires de confiance qui font découvrir Cirrion aux artisans partout en France.",
-    linkedin: null,
+    text: "Un réseau de partenaires de confiance qui font découvrir Cirrion aux artisans partout en France, dont Propre Éclat, notre entreprise pilote.",
+    link: null,
   },
 ];
 
@@ -120,7 +135,19 @@ export default function AboutContent() {
               bénéficient les grandes structures.
             </p>
             <p>
-              De cette réflexion naît <strong style={{ color: "#2455D6" }}>Cirrion</strong> : amener
+              Puis <strong style={{ color: "var(--text)" }}>Josslyn</strong>{" "}rejoint l&apos;aventure en tant
+              qu&apos;associé. Il dirige{" "}
+              <a href="https://www.propre-eclat.fr/" target="_blank" rel="noopener noreferrer" style={{ color: "#2455D6", fontWeight: 700, textDecoration: "none" }}>
+                Propre Éclat
+              </a>
+              , une entreprise de nettoyage installée près de Caen, et c&apos;est sur son terrain que Cirrion
+              a été mis à l&apos;épreuve : la paie et la comptabilité des salariés, le suivi des prestations, le
+              pointage des équipes sur site et l&apos;automatisation de la comptabilité. Grâce à lui,
+              l&apos;application répond aux vraies contraintes d&apos;une entreprise de terrain — et permet de
+              payer moins cher qu&apos;un cabinet comptable classique, pour le même résultat.
+            </p>
+            <p>
+              Ensemble, ils portent <strong style={{ color: "#2455D6" }}>Cirrion</strong> : amener
               l&apos;automatisation et l&apos;intelligence artificielle, éprouvées en entreprise, aux
               artisans et aux PME du bâtiment. Aujourd&apos;hui, Cirrion grandit dans ce domaine avec une
               mission claire — rendre aux artisans le temps qu&apos;ils consacrent à l&apos;administratif.
@@ -179,14 +206,14 @@ export default function AboutContent() {
       </section>
 
       {/* L'équipe */}
-      <section style={{ padding: "clamp(3rem,6vh,5rem) 6vw", maxWidth: "60rem", margin: "0 auto" }}>
+      <section style={{ padding: "clamp(3rem,6vh,5rem) 6vw", maxWidth: "68rem", margin: "0 auto" }}>
         <motion.h2 {...fadeUp} style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.8rem,4vw,2.6rem)", color: "var(--text)", marginBottom: "0.6rem", textAlign: "center" }}>
           L&apos;<span style={{ color: "#2455D6" }}>équipe</span>
         </motion.h2>
         <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.05 }} style={{ textAlign: "center", color: "rgba(var(--text-rgb),0.6)", marginBottom: "3rem", fontSize: "1.05rem" }}>
           Une équipe à taille humaine, proche de ses clients.
         </motion.p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.25rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.25rem" }}>
           {TEAM.map((m, i) => (
             <motion.div
               key={m.name}
@@ -207,11 +234,11 @@ export default function AboutContent() {
               <div style={{ color: "#2455D6", fontSize: "0.72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "0.4rem" }}>{m.role}</div>
               <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.2rem", color: "var(--text)", marginBottom: "0.7rem" }}>{m.name}</h3>
               <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: "0.92rem", lineHeight: 1.6 }}>{m.text}</p>
-              {m.linkedin && (
+              {m.link && (
                 <a
-                  href={m.linkedin}
+                  href={m.link.href}
                   target="_blank"
-                  rel="noopener noreferrer me"
+                  rel={m.link.rel}
                   style={{
                     display: "inline-flex", alignItems: "center", gap: "0.4rem",
                     marginTop: "1rem", padding: "0.5rem 1.1rem", borderRadius: "999px",
@@ -219,10 +246,14 @@ export default function AboutContent() {
                     color: "#2455D6", fontSize: "0.78rem", fontWeight: 700, textDecoration: "none",
                   }}
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                    <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
-                  </svg>
-                  Profil LinkedIn
+                  {m.link.linkedin ? (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+                    </svg>
+                  ) : (
+                    <ExternalLink size={13} aria-hidden />
+                  )}
+                  {m.link.label}
                 </a>
               )}
             </motion.div>

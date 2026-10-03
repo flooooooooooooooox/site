@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
 
 /**
  * Chaque chiffre, et le partenaire qui le rend vrai.
@@ -270,6 +271,26 @@ export default function ProofSection() {
             ))}
           </div>
 
+          {/* L'entreprise pilote : le produit a ete eprouve chez elle. */}
+          <motion.a
+            href="https://www.propre-eclat.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="proof-field"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.3 }}
+          >
+            <span className="proof-field-icon"><Sparkles size={20} color="#2455D6" strokeWidth={2} aria-hidden /></span>
+            <span>
+              <strong>Développé sur le terrain avec Propre Éclat</strong>, entreprise de nettoyage près
+              de Caen dirigée par Josslyn, notre associé : paie, prestations, pointage et comptabilité
+              éprouvés chaque jour.
+            </span>
+            <span className="proof-field-arrow" aria-hidden>→</span>
+          </motion.a>
+
           <p className="proof-note">
             <LogoGmail />
             <span>
@@ -284,7 +305,7 @@ export default function ProofSection() {
         .proof { padding: clamp(2.5rem, 6vw, 4.5rem) 6vw; }
 
         .proof-stage {
-          position: relative; isolation: isolate; overflow: hidden;
+          position: relative; isolation: isolate; overflow: clip;
           max-width: 1180px; margin: 0 auto;
           border-radius: 2rem;
           padding: clamp(2.6rem, 5vw, 4rem) clamp(1.1rem, 3.4vw, 3rem) clamp(2rem, 4vw, 3rem);
@@ -412,6 +433,24 @@ export default function ProofSection() {
         .proof-tile-name { display: block; font-size: .82rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; }
         .proof-tile-sub { display: block; font-size: .7rem; color: rgba(255,255,255,0.62); line-height: 1.35; }
 
+        .proof-field {
+          margin-top: .75rem;
+          display: flex; align-items: center; gap: .9rem;
+          padding: .95rem 1.2rem; border-radius: 1.1rem;
+          background: rgba(255,255,255,0.96); text-decoration: none;
+          box-shadow: 0 18px 34px -24px rgba(6,20,60,0.6);
+          transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
+        }
+        .proof-field:hover { transform: translateY(-2px); box-shadow: 0 22px 40px -22px rgba(6,20,60,0.7); }
+        .proof-field-icon {
+          flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px;
+          display: grid; place-items: center; background: rgba(36,85,214,0.08);
+        }
+        .proof-field > span:nth-child(2) { font-size: .88rem; line-height: 1.5; color: rgba(var(--text-rgb),0.72); }
+        .proof-field strong { color: var(--text); font-weight: 800; }
+        .proof-field-arrow { margin-left: auto; color: #2455D6; font-weight: 800; transition: transform .25s ease; }
+        .proof-field:hover .proof-field-arrow { transform: translateX(3px); }
+
         .proof-note {
           margin: 1.5rem auto 0; max-width: 40rem;
           display: flex; align-items: flex-start; justify-content: center; gap: .5rem;
@@ -426,11 +465,12 @@ export default function ProofSection() {
           .proof { padding-inline: 16px; }
           .proof-stage { border-radius: 1.5rem; }
           .proof-grid, .proof-back { grid-template-columns: 1fr; }
-          .proof-efacture { align-items: flex-start; }
+          .proof-efacture, .proof-field { align-items: flex-start; }
+          .proof-field-arrow { display: none; }
         }
         @media (hover: none) { .proof-card:hover { transform: none; } }
         @media (prefers-reduced-motion: reduce) {
-          .proof-card, .proof-tile { transition: none; }
+          .proof-card, .proof-tile, .proof-field { transition: none; }
           .proof-card:hover { transform: none; }
         }
       `}</style>
