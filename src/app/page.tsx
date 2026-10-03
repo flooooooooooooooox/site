@@ -5,8 +5,7 @@ import StorySection from "@/components/sections/StorySection";
 import Link from "next/link";
 import Pricing from "@/components/sections/Pricing";
 import CtaBand from "@/components/sections/CtaBand";
-import PartnersBand from "@/components/sections/PartnersBand";
-import StatsSection from "@/components/sections/StatsSection";
+import ProofSection from "@/components/sections/ProofSection";
 import GmailDisclosure from "@/components/sections/GmailDisclosure";
 
 export const metadata: Metadata = {
@@ -72,10 +71,7 @@ export default function Home() {
 
         {/* 3 — Le bandeau de confiance. Aucun filet ni aplat : le ciel de
                fond doit rester une seule etendue, du haut au bas de la page. */}
-        <div style={{ padding: "clamp(1rem,3vw,2rem) 0" }}>
-          <PartnersBand />
-          <StatsSection />
-        </div>
+        <ProofSection />
 
         {/* 4 — Ce que ça couvre. La section porte desormais son propre ciel :
                un aplat de plus ici l'assombrirait deux fois. */}
