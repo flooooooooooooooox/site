@@ -185,8 +185,8 @@ export default function ProofSection() {
 
   return (
     <section ref={sectionRef} className="proof">
-      {/* Un plateau bleu profond pose sur le ciel clair : les cartes blanches
-          s'y detachent, et la section se lit comme un seul objet. */}
+      {/* Un plateau clair, du ciel du site un ton plus dense : la section se
+          lit comme un seul objet sans trancher avec le reste de la page. */}
       <div className="proof-stage">
         <div className="proof-sky" aria-hidden>
           <span className="proof-glow proof-glow-a" />
@@ -302,18 +302,36 @@ export default function ProofSection() {
       </div>
 
       <style>{`
-        .proof { padding: clamp(2.5rem, 6vw, 4.5rem) 6vw; }
+        /* Ce que le verre laisse voir : des nappes de couleur posees derriere
+           le plateau. Ce sont de simples degrades — aucun flou calcule. */
+        .proof {
+          position: relative;
+          padding: clamp(2.5rem, 6vw, 4.5rem) 6vw;
+          background:
+            radial-gradient(38% 46% at 18% 30%, rgba(80,140,255,0.32), rgba(80,140,255,0) 70%),
+            radial-gradient(34% 42% at 84% 64%, rgba(110,96,255,0.22), rgba(110,96,255,0) 70%),
+            radial-gradient(30% 36% at 60% 8%, rgba(56,189,248,0.2), rgba(56,189,248,0) 70%);
+        }
 
         .proof-stage {
           position: relative; isolation: isolate; overflow: clip;
           max-width: 1180px; margin: 0 auto;
           border-radius: 2rem;
           padding: clamp(2.6rem, 5vw, 4rem) clamp(1.1rem, 3.4vw, 3rem) clamp(2rem, 4vw, 3rem);
-          background: linear-gradient(165deg, #2F66E3 0%, #1E4BBE 42%, #12317F 100%);
+          /* Verre teinte bleu, facon Apple : une teinte translucide, un liseré
+             clair qui accroche la lumiere, et un reflet en haut. Le flou de
+             fond (backdrop-filter) est volontairement absent : derriere, il
+             n'y a que des degrades lisses, le flouter ne changerait rien a
+             l'oeil et doublerait le cout de chaque image au defilement. */
+          background:
+            linear-gradient(160deg, rgba(150,186,255,0.34) 0%, rgba(96,140,240,0.16) 45%, rgba(170,200,255,0.26) 100%);
+          border: 1px solid rgba(255,255,255,0.75);
           box-shadow:
-            inset 0 1px 0 rgba(255,255,255,0.22),
-            inset 0 0 0 1px rgba(255,255,255,0.06),
-            0 40px 80px -40px rgba(18,49,127,0.65);
+            inset 0 1px 0 rgba(255,255,255,0.95),
+            inset 0 -1px 0 rgba(255,255,255,0.45),
+            inset 0 24px 48px -28px rgba(255,255,255,0.75),
+            inset 0 -30px 60px -40px rgba(36,85,214,0.25),
+            0 30px 70px -40px rgba(36,85,214,0.5);
         }
 
         /* Atmosphere du plateau : deux lueurs et une bande de nuages en bas.
@@ -321,33 +339,35 @@ export default function ProofSection() {
         .proof-sky { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
         .proof-glow { position: absolute; border-radius: 50%; }
         .proof-glow-a {
-          width: 70%; aspect-ratio: 1; top: -45%; left: -15%;
-          background: radial-gradient(closest-side, rgba(120,170,255,0.45), rgba(120,170,255,0));
+          /* Reflet speculaire : une bande de lumiere oblique en haut a gauche. */
+          width: 70%; height: 55%; top: -18%; left: -12%; border-radius: 50%;
+          background: radial-gradient(closest-side, rgba(255,255,255,0.7), rgba(255,255,255,0));
+          transform: rotate(-12deg);
         }
         .proof-glow-b {
           width: 55%; aspect-ratio: 1; top: 10%; right: -20%;
-          background: radial-gradient(closest-side, rgba(92,140,255,0.35), rgba(92,140,255,0));
+          background: radial-gradient(closest-side, rgba(255,255,255,0.35), rgba(255,255,255,0));
         }
         /* Lueur d'horizon sous les tuiles du bas : la lumiere monte du sol
            du plateau, sans dessin de nuage (les disques empiles se voyaient). */
         .proof-horizon {
           width: 130%; height: 60%; left: -15%; bottom: -38%;
-          background: radial-gradient(closest-side, rgba(168,200,255,0.42), rgba(168,200,255,0));
+          background: radial-gradient(closest-side, rgba(36,85,214,0.16), rgba(36,85,214,0));
         }
 
         .proof-head { text-align: center; margin-bottom: clamp(1.8rem, 4vw, 2.6rem); }
         .proof-eyebrow {
           display: inline-block; padding: 6px 20px; border-radius: 999px;
-          border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.1);
-          color: #FFFFFF; font-size: .76rem; font-weight: 600; letter-spacing: .12em;
+          border: 1px solid rgba(36,85,214,0.25); background: rgba(36,85,214,0.07);
+          color: #2455D6; font-size: .76rem; font-weight: 600; letter-spacing: .12em;
           text-transform: uppercase; margin-bottom: 1rem;
         }
         .proof-title {
           font-family: var(--font-nunito); font-weight: 800;
           font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.15; letter-spacing: -0.02em;
-          color: #FFFFFF; text-wrap: balance;
+          color: var(--text); text-wrap: balance;
         }
-        .proof-title-accent { color: #A9C8FF; }
+        .proof-title-accent { color: #2455D6; }
 
         .proof-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
         .proof-card {
@@ -355,13 +375,15 @@ export default function ProofSection() {
           position: relative; display: flex; flex-direction: column;
           padding: 1.6rem 1.35rem 1.35rem;
           border-radius: 1.3rem;
-          background: linear-gradient(175deg, #FFFFFF 0%, #F4F8FF 100%);
-          box-shadow: 0 1px 0 #FFFFFF inset, 0 22px 40px -24px rgba(6,20,60,0.55);
+          background: linear-gradient(170deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.74) 100%);
+          border: 1px solid rgba(255,255,255,0.9);
+          box-shadow: 0 1px 0 #FFFFFF inset, 0 18px 36px -26px rgba(36,85,214,0.45);
           transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
         }
         .proof-card:hover {
           transform: translateY(-5px);
-          box-shadow: 0 1px 0 #FFFFFF inset, 0 30px 50px -22px rgba(6,20,60,0.7);
+          border-color: #FFFFFF;
+          box-shadow: 0 1px 0 #FFFFFF inset, 0 26px 46px -22px rgba(36,85,214,0.55);
         }
         /* La taille suit la largeur de la carte : « 24 h/24 » ne deborde plus. */
         .proof-value {
@@ -398,21 +420,22 @@ export default function ProofSection() {
         .proof-sub {
           margin: clamp(1.8rem, 4vw, 2.4rem) 0 .9rem; text-align: center;
           font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-          color: rgba(255,255,255,0.6);
+          color: rgba(var(--text-rgb),0.42);
         }
 
         .proof-efacture {
           display: flex; align-items: center; gap: .9rem;
           padding: .95rem 1.2rem; border-radius: 1.1rem;
-          background: rgba(74,222,128,0.12);
-          border: 1px solid rgba(134,239,172,0.4);
+          background: linear-gradient(100deg, rgba(220,252,231,0.75), rgba(255,255,255,0.6));
+          border: 1px solid rgba(255,255,255,0.85);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
         }
         .proof-efacture-icon {
           flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px;
-          display: grid; place-items: center; background: #FFFFFF;
+          display: grid; place-items: center; background: #FFFFFF; border: 1px solid rgba(22,163,74,0.22);
         }
-        .proof-efacture p { font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,0.86); }
-        .proof-efacture strong { color: #86EFAC; font-weight: 800; }
+        .proof-efacture p { font-size: .88rem; line-height: 1.5; color: rgba(var(--text-rgb),0.7); }
+        .proof-efacture strong { color: #15803D; font-weight: 800; }
 
         .proof-back {
           margin-top: .75rem;
@@ -421,27 +444,29 @@ export default function ProofSection() {
         .proof-tile {
           display: flex; align-items: center; gap: .7rem;
           padding: .8rem .95rem; border-radius: 1rem;
-          background: rgba(255,255,255,0.08);
-          border: 1px solid rgba(255,255,255,0.14);
+          background: rgba(255,255,255,0.55);
+          border: 1px solid rgba(255,255,255,0.8);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
           transition: background .25s ease, border-color .25s ease;
         }
-        .proof-tile:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.26); }
+        .proof-tile:hover { background: #FFFFFF; border-color: rgba(36,85,214,0.22); }
         .proof-tile-logo {
           flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px;
           display: grid; place-items: center; background: #FFFFFF;
         }
-        .proof-tile-name { display: block; font-size: .82rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; }
-        .proof-tile-sub { display: block; font-size: .7rem; color: rgba(255,255,255,0.62); line-height: 1.35; }
+        .proof-tile-name { display: block; font-size: .82rem; font-weight: 700; color: var(--text); line-height: 1.25; }
+        .proof-tile-sub { display: block; font-size: .7rem; color: rgba(var(--text-rgb),0.5); line-height: 1.35; }
 
         .proof-field {
           margin-top: .75rem;
           display: flex; align-items: center; gap: .9rem;
           padding: .95rem 1.2rem; border-radius: 1.1rem;
-          background: rgba(255,255,255,0.96); text-decoration: none;
-          box-shadow: 0 18px 34px -24px rgba(6,20,60,0.6);
+          background: rgba(255,255,255,0.82); text-decoration: none;
+          border: 1px solid rgba(255,255,255,0.9); border-left: 3px solid #2455D6;
+          box-shadow: 0 14px 30px -24px rgba(27,42,74,0.35);
           transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
         }
-        .proof-field:hover { transform: translateY(-2px); box-shadow: 0 22px 40px -22px rgba(6,20,60,0.7); }
+        .proof-field:hover { transform: translateY(-2px); box-shadow: 0 20px 36px -22px rgba(36,85,214,0.4); }
         .proof-field-icon {
           flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px;
           display: grid; place-items: center; background: rgba(36,85,214,0.08);
@@ -454,7 +479,7 @@ export default function ProofSection() {
         .proof-note {
           margin: 1.5rem auto 0; max-width: 40rem;
           display: flex; align-items: flex-start; justify-content: center; gap: .5rem;
-          font-size: .74rem; line-height: 1.55; color: rgba(255,255,255,0.6);
+          font-size: .74rem; line-height: 1.55; color: rgba(var(--text-rgb),0.48);
         }
         .proof-note svg { flex-shrink: 0; margin-top: 1px; width: 15px; height: 15px; }
 
