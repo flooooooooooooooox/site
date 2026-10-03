@@ -18,7 +18,7 @@ import { CloudSupport, CLOUD_SUPPORT_STYLES } from "@/components/ui/CloudSupport
 
 const GUARANTEES = [
   "Prix annoncé pendant l'appel",
-  "Sans engagement au-delà de 3 mois",
+  "Logiciel et comptabilité compris",
   "Mise en route accompagnée",
 ];
 

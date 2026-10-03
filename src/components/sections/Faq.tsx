@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "Combien coûte Cirrion ?",
-    a: "Le tarif est établi sur devis. Cirrion propose trois formules — Essentiel, Artisan Pro et PME Premium — dont le prix dépend de votre activité, du nombre de comptes et des modules retenus. Réservez une démonstration de 30 minutes : vous recevez une proposition chiffrée sous 24 h, sans engagement.",
+    a: "Le tarif est établi sur devis, et il n'y a qu'une seule offre : logiciel et comptabilité compris, sans option à cocher. Le prix dépend de votre activité et de la taille de votre équipe ; il vous est annoncé pendant l'appel de 30 minutes.",
   },
   {
     q: "Cirrion fonctionne-t-il pour tous les corps de métier du bâtiment ?",
@@ -61,7 +61,7 @@ const FAQS = [
   },
   {
     q: "Cirrion remplace-t-il mon expert-comptable ?",
-    a: "Non, et ce n'est pas l'objectif. Cirrion fait la pré-comptabilité : factures au bon format, justificatifs scannés et classés, rapprochement bancaire automatique via Bridge, export comptable propre. Votre expert-comptable reçoit un dossier déjà en ordre, ce qui réduit son temps de traitement — mais le conseil fiscal et la liasse restent son métier.",
+    a: "Oui. L'abonnement couvre toute votre comptabilité : justificatifs scannés et classés, rapprochement bancaire via Bridge, TVA établie et télétransmise à la DGFiP, paie et DSN via OpenPaye, puis le bilan et la liasse fiscale une fois par an avec Clementine. Le bilan et la liasse sont signés par Clementine, cabinet d'expertise-comptable inscrit à l'Ordre — la loi le réserve à un professionnel inscrit, et nous ne prétendons pas le contraire. La différence : vous n'avez qu'un seul abonnement mensuel, sans honoraires en plus au moment du bilan, et le Copilote Cirrion répond à vos questions sur vos chiffres à toute heure, sans attendre un rendez-vous.",
   },
   {
     q: "Combien de temps un artisan gagne-t-il réellement avec Cirrion ?",

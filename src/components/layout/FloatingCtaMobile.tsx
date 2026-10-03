@@ -61,7 +61,7 @@ export default function FloatingCtaMobile() {
             Démo gratuite
           </div>
           <div style={{ fontSize: "0.74rem", color: "rgba(27,42,74,0.6)", fontWeight: 500, whiteSpace: "nowrap" }}>
-            Sans engagement · 30 min
+            Appel gratuit · 30 min
           </div>
         </div>
 

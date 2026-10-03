@@ -61,14 +61,6 @@ const LogoBridge = () => (
   </svg>
 );
 
-const LogoAspOne = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-    <path d="M5 19h14" stroke="#1C43AC" strokeWidth="1.6" strokeLinecap="round" />
-    <path d="M6.5 19V10M10 19V10M14 19V10M17.5 19V10" stroke="#1C43AC" strokeWidth="1.6" strokeLinecap="round" />
-    <path d="M12 4l7 4H5l7-4z" fill="#1C43AC" />
-  </svg>
-);
-
 /** Facture electronique : un document et sa coche de validation. */
 const LogoEFacture = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -78,14 +70,31 @@ const LogoEFacture = () => (
   </svg>
 );
 
+/** Pas le logo officiel : une clementine, pour reconnaitre le cabinet d'un coup d'oeil. */
+const LogoClementine = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <circle cx="12" cy="13.5" r="8" fill="#F97316" />
+    <circle cx="9.5" cy="11" r="2.2" fill="#FDBA74" fillOpacity=".7" />
+    <path d="M12 5.5c.6-2 2.4-3 4.6-2.8-.4 2-2.3 3.2-4.6 2.8z" fill="#16A34A" />
+  </svg>
+);
+
+/** Fiche de paie : la DSN part du meme calcul. */
+const LogoOpenPaye = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <rect x="4.5" y="2.5" width="15" height="19" rx="2" fill="#fff" stroke="#7C3AED" strokeWidth="1.5" />
+    <path d="M8 7.5h8M8 11h8M8 14.5h4.5" stroke="#7C3AED" strokeWidth="1.5" strokeLinecap="round" />
+    <circle cx="16" cy="17" r="2" fill="#7C3AED" />
+  </svg>
+);
+
 /* ----- Donnees ----- */
 
 type Proof = {
   value: number;
-  prefix?: string;
   suffix: string;
   label: string;
-  Logo: () => React.JSX.Element;
+  logos: (() => React.JSX.Element)[];
   partner: string;
   detail: string;
 };
@@ -93,26 +102,30 @@ type Proof = {
 const PROOFS: Proof[] = [
   {
     value: 3, suffix: " min", label: "pour créer un devis",
-    Logo: LogoWhatsApp, partner: "WhatsApp Business", detail: "API officielle Meta, par vocal ou écrit",
+    logos: [LogoWhatsApp], partner: "WhatsApp Business", detail: "API officielle Meta, par vocal ou écrit",
   },
   {
     value: 100, suffix: "", label: "fonctions dans un seul outil",
-    Logo: LogoModules, partner: "Tout-en-un", detail: "Devis, factures, TVA, planning, trésorerie…",
+    logos: [LogoModules], partner: "Tout-en-un", detail: "Devis, factures, TVA, planning, trésorerie…",
   },
   {
     value: 100, suffix: " %", label: "de vos données en Europe",
-    Logo: LogoMistral, partner: "Mistral AI", detail: "IA française, hébergement en France",
+    logos: [LogoMistral], partner: "Mistral AI", detail: "IA française, hébergement en France",
   },
   {
     value: 24, suffix: " h/24", label: "un agent IA décroche pour vous",
-    Logo: LogoElevenLabs, partner: "ElevenLabs", detail: "La voix de votre réceptionniste",
+    logos: [LogoMistral, LogoWhatsApp, LogoElevenLabs],
+    partner: "Mistral · WhatsApp · ElevenLabs",
+    detail: "Il comprend, répond par écrit et au téléphone",
   },
 ];
 
-const ALSO = [
+/** Ceux qui tiennent la partie administrative, derriere l'ecran. */
+const BACKOFFICE = [
+  { Logo: LogoClementine, name: "Clementine", sub: "Bilan et liasse de fin d'année" },
+  { Logo: LogoOpenPaye, name: "OpenPaye", sub: "Paie et DSN" },
+  { Logo: LogoBridge, name: "Bridge", sub: "Banque connectée · DSP2" },
   { Logo: LogoGmail, name: "Gmail", sub: "Envoi en votre nom" },
-  { Logo: LogoBridge, name: "Bridge", sub: "Banque · DSP2" },
-  { Logo: LogoAspOne, name: "ASPOne", sub: "Partenaire EDI DGFiP" },
 ];
 
 /* ----- Compteur ----- */
@@ -163,7 +176,7 @@ export default function ProofSection() {
     if (!node) return;
     const io = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setTrigger(true); io.disconnect(); } },
-      { threshold: 0.3 }
+      { threshold: 0.25 }
     );
     io.observe(node);
     return () => io.disconnect();
@@ -171,194 +184,253 @@ export default function ProofSection() {
 
   return (
     <section ref={sectionRef} className="proof">
-      <div className="proof-inner">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="proof-head"
-        >
-          <span className="proof-eyebrow">Nos partenaires</span>
-          <h2 className="proof-title">
-            Chaque promesse a <span style={{ color: "#2455D6" }}>quelqu&apos;un derrière</span>
-          </h2>
-        </motion.div>
+      {/* Un plateau bleu profond pose sur le ciel clair : les cartes blanches
+          s'y detachent, et la section se lit comme un seul objet. */}
+      <div className="proof-stage">
+        <div className="proof-sky" aria-hidden>
+          <span className="proof-glow proof-glow-a" />
+          <span className="proof-glow proof-glow-b" />
+          <span className="proof-glow proof-horizon" />
+        </div>
 
-        <div className="proof-grid">
-          {PROOFS.map((p, i) => (
-            <motion.div
-              key={p.label}
-              className="proof-card"
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className="proof-value">
-                <Counter target={p.value} suffix={p.suffix} trigger={trigger} index={i} />
-              </p>
-              <p className="proof-label">{p.label}</p>
-              <div className="proof-partner">
-                <span className="proof-logo"><p.Logo /></span>
-                <span>
+        <div className="proof-content">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="proof-head"
+          >
+            <span className="proof-eyebrow">Nos partenaires</span>
+            <h2 className="proof-title">
+              Chaque promesse a <span className="proof-title-accent">quelqu&apos;un derrière</span>
+            </h2>
+          </motion.div>
+
+          <div className="proof-grid">
+            {PROOFS.map((p, i) => (
+              <motion.div
+                key={p.label}
+                className="proof-card"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <p className="proof-value">
+                  <Counter target={p.value} suffix={p.suffix} trigger={trigger} index={i} />
+                </p>
+                <p className="proof-label">{p.label}</p>
+                <div className="proof-partner">
+                  <span className="proof-logos">
+                    {p.logos.map((Logo, k) => (
+                      <span key={k} className="proof-logo"><Logo /></span>
+                    ))}
+                  </span>
                   <span className="proof-partner-name">{p.partner}</span>
                   <span className="proof-partner-detail">{p.detail}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <p className="proof-sub">Et derrière vos papiers</p>
+
+          {/* E-facture : pas un chiffre, une habilitation. Elle a sa propre ligne. */}
+          <motion.div
+            className="proof-efacture"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <span className="proof-efacture-icon"><LogoEFacture /></span>
+            <p>
+              <strong>E-facture via B2Brouter</strong>, plateforme agréée par l&apos;administration
+              fiscale : vos factures électroniques passent par un canal approuvé par l&apos;État.
+            </p>
+          </motion.div>
+
+          <div className="proof-back">
+            {BACKOFFICE.map(({ Logo, name, sub }, i) => (
+              <motion.div
+                key={name}
+                className="proof-tile"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.2 + i * 0.06 }}
+              >
+                <span className="proof-tile-logo"><Logo /></span>
+                <span>
+                  <span className="proof-tile-name">{name}</span>
+                  <span className="proof-tile-sub">{sub}</span>
                 </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
 
-        {/* E-facture : pas un chiffre, une habilitation. Elle a sa propre ligne. */}
-        <motion.div
-          className="proof-efacture"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <span className="proof-efacture-icon"><LogoEFacture /></span>
-          <p>
-            <strong>E-facture via B2Brouter</strong>, plateforme agréée par l&apos;administration
-            fiscale : vos factures électroniques passent par un canal approuvé par l&apos;État.
-          </p>
-        </motion.div>
-
-        <div className="proof-also">
-          {ALSO.map(({ Logo, name, sub }) => (
-            <span key={name} className="proof-chip">
-              <Logo />
-              <span>
-                <span className="proof-chip-name">{name}</span>
-                <span className="proof-chip-sub">{sub}</span>
-              </span>
+          <p className="proof-note">
+            <LogoGmail />
+            <span>
+              Cirrion utilise votre compte Gmail pour envoyer automatiquement vos devis, factures et
+              e-mails professionnels à vos clients, en votre nom.
             </span>
-          ))}
+          </p>
         </div>
-
-        <p className="proof-note">
-          <LogoGmail />
-          <span>
-            Cirrion utilise votre compte Gmail pour envoyer automatiquement vos devis, factures et
-            e-mails professionnels à vos clients, en votre nom.
-          </span>
-        </p>
       </div>
 
       <style>{`
-        .proof { padding: clamp(3rem, 7vw, 5rem) 0 clamp(2.5rem, 6vw, 4rem); }
-        .proof-inner { max-width: 1120px; margin: 0 auto; padding: 0 6vw; }
+        .proof { padding: clamp(2.5rem, 6vw, 4.5rem) 6vw; }
 
-        .proof-head { text-align: center; margin-bottom: 2.4rem; }
+        .proof-stage {
+          position: relative; isolation: isolate; overflow: hidden;
+          max-width: 1180px; margin: 0 auto;
+          border-radius: 2rem;
+          padding: clamp(2.6rem, 5vw, 4rem) clamp(1.1rem, 3.4vw, 3rem) clamp(2rem, 4vw, 3rem);
+          background: linear-gradient(165deg, #2F66E3 0%, #1E4BBE 42%, #12317F 100%);
+          box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.22),
+            inset 0 0 0 1px rgba(255,255,255,0.06),
+            0 40px 80px -40px rgba(18,49,127,0.65);
+        }
+
+        /* Atmosphere du plateau : deux lueurs et une bande de nuages en bas.
+           Tout est fixe — rien ne se recalcule au defilement. */
+        .proof-sky { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+        .proof-glow { position: absolute; border-radius: 50%; }
+        .proof-glow-a {
+          width: 70%; aspect-ratio: 1; top: -45%; left: -15%;
+          background: radial-gradient(closest-side, rgba(120,170,255,0.45), rgba(120,170,255,0));
+        }
+        .proof-glow-b {
+          width: 55%; aspect-ratio: 1; top: 10%; right: -20%;
+          background: radial-gradient(closest-side, rgba(92,140,255,0.35), rgba(92,140,255,0));
+        }
+        /* Lueur d'horizon sous les tuiles du bas : la lumiere monte du sol
+           du plateau, sans dessin de nuage (les disques empiles se voyaient). */
+        .proof-horizon {
+          width: 130%; height: 60%; left: -15%; bottom: -38%;
+          background: radial-gradient(closest-side, rgba(168,200,255,0.42), rgba(168,200,255,0));
+        }
+
+        .proof-head { text-align: center; margin-bottom: clamp(1.8rem, 4vw, 2.6rem); }
         .proof-eyebrow {
           display: inline-block; padding: 6px 20px; border-radius: 999px;
-          border: 1px solid rgba(36,85,214,0.25); background: rgba(36,85,214,0.07);
-          color: #2455D6; font-size: .78rem; font-weight: 600; letter-spacing: .1em;
-          text-transform: uppercase; margin-bottom: 1.1rem;
+          border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.1);
+          color: #FFFFFF; font-size: .76rem; font-weight: 600; letter-spacing: .12em;
+          text-transform: uppercase; margin-bottom: 1rem;
         }
         .proof-title {
-          font-family: var(--font-nunito); font-weight: 900;
-          font-size: clamp(1.7rem, 3.6vw, 2.5rem); line-height: 1.15;
-          color: var(--text); text-wrap: balance;
+          font-family: var(--font-nunito); font-weight: 800;
+          font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.15; letter-spacing: -0.02em;
+          color: #FFFFFF; text-wrap: balance;
         }
+        .proof-title-accent { color: #A9C8FF; }
 
-        .proof-grid {
-          display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem;
-        }
+        .proof-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
         .proof-card {
-          position: relative;
-          display: flex; flex-direction: column;
-          padding: 1.7rem 1.4rem 1.3rem;
-          border-radius: 1.25rem;
-          background: linear-gradient(175deg, #FFFFFF 0%, #F7FAFF 100%);
-          border: 1px solid rgba(36,85,214,0.12);
-          box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 18px 40px -28px rgba(27,42,74,0.35);
-          transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease, border-color .3s ease;
+          container-type: inline-size;
+          position: relative; display: flex; flex-direction: column;
+          padding: 1.6rem 1.35rem 1.35rem;
+          border-radius: 1.3rem;
+          background: linear-gradient(175deg, #FFFFFF 0%, #F4F8FF 100%);
+          box-shadow: 0 1px 0 #FFFFFF inset, 0 22px 40px -24px rgba(6,20,60,0.55);
+          transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
         }
         .proof-card:hover {
-          transform: translateY(-4px);
-          border-color: rgba(36,85,214,0.3);
-          box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 24px 46px -26px rgba(36,85,214,0.45);
+          transform: translateY(-5px);
+          box-shadow: 0 1px 0 #FFFFFF inset, 0 30px 50px -22px rgba(6,20,60,0.7);
         }
+        /* La taille suit la largeur de la carte : « 24 h/24 » ne deborde plus. */
         .proof-value {
           font-family: var(--font-nunito); font-weight: 800;
-          font-size: clamp(2.3rem, 4.2vw, 3.1rem); line-height: 1; letter-spacing: -0.035em;
+          font-size: clamp(2rem, 21cqi, 3.2rem); line-height: 1; letter-spacing: -0.035em;
           font-variant-numeric: tabular-nums; white-space: nowrap;
           background: linear-gradient(120deg, #16264A 0%, #2455D6 100%);
           -webkit-background-clip: text; background-clip: text;
           -webkit-text-fill-color: transparent; color: transparent;
         }
+        /* Deux lignes reservees : les separateurs tombent a la meme hauteur
+           sur les quatre cartes. */
         .proof-label {
-          margin-top: .55rem; font-size: .88rem; font-weight: 600;
+          min-height: 2.7em;
+          margin: .55rem 0 1.3rem; font-size: .88rem; font-weight: 600;
           color: rgba(var(--text-rgb),0.62); line-height: 1.35;
         }
         .proof-partner {
-          margin-top: auto; padding-top: 1.1rem;
-          display: flex; align-items: center; gap: .65rem;
+          padding-top: 1rem;
+          display: flex; flex-direction: column; gap: .15rem;
           border-top: 1px solid rgba(36,85,214,0.1);
         }
-        .proof-label { margin-bottom: 1.2rem; }
+        .proof-logos { display: flex; margin-bottom: .55rem; }
         .proof-logo {
-          flex-shrink: 0; width: 38px; height: 38px; border-radius: 11px;
+          width: 36px; height: 36px; border-radius: 11px;
           display: grid; place-items: center;
-          background: rgba(36,85,214,0.06); border: 1px solid rgba(36,85,214,0.1);
+          background: #FFFFFF; border: 1px solid rgba(36,85,214,0.14);
+          box-shadow: 0 4px 10px -6px rgba(27,42,74,0.35);
         }
-        .proof-partner-name {
-          display: block; font-size: .8rem; font-weight: 700; color: var(--text); line-height: 1.25;
-        }
-        .proof-partner-detail {
-          display: block; font-size: .7rem; color: rgba(var(--text-rgb),0.5); line-height: 1.35;
+        .proof-logo + .proof-logo { margin-left: -8px; }
+        .proof-partner-name { font-size: .8rem; font-weight: 700; color: var(--text); line-height: 1.3; }
+        .proof-partner-detail { font-size: .72rem; color: rgba(var(--text-rgb),0.52); line-height: 1.4; }
+
+        .proof-sub {
+          margin: clamp(1.8rem, 4vw, 2.4rem) 0 .9rem; text-align: center;
+          font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+          color: rgba(255,255,255,0.6);
         }
 
         .proof-efacture {
-          margin: 1.4rem auto 0; max-width: 46rem;
           display: flex; align-items: center; gap: .9rem;
-          padding: .9rem 1.3rem; border-radius: 1rem;
-          background: linear-gradient(100deg, rgba(22,163,74,0.08), rgba(36,85,214,0.05));
-          border: 1px solid rgba(22,163,74,0.22);
+          padding: .95rem 1.2rem; border-radius: 1.1rem;
+          background: rgba(74,222,128,0.12);
+          border: 1px solid rgba(134,239,172,0.4);
         }
         .proof-efacture-icon {
           flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px;
           display: grid; place-items: center; background: #FFFFFF;
-          border: 1px solid rgba(22,163,74,0.25);
         }
-        .proof-efacture p {
-          font-size: .86rem; line-height: 1.5; color: rgba(var(--text-rgb),0.7);
-        }
-        .proof-efacture strong { color: #15803D; font-weight: 800; }
+        .proof-efacture p { font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,0.86); }
+        .proof-efacture strong { color: #86EFAC; font-weight: 800; }
 
-        .proof-also {
-          margin-top: 1.4rem;
-          display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem;
+        .proof-back {
+          margin-top: .75rem;
+          display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem;
         }
-        .proof-chip {
-          display: inline-flex; align-items: center; gap: .55rem;
-          padding: .5rem 1rem .5rem .75rem; border-radius: 999px;
-          background: rgba(255,255,255,0.7); border: 1px solid rgba(36,85,214,0.1);
+        .proof-tile {
+          display: flex; align-items: center; gap: .7rem;
+          padding: .8rem .95rem; border-radius: 1rem;
+          background: rgba(255,255,255,0.08);
+          border: 1px solid rgba(255,255,255,0.14);
+          transition: background .25s ease, border-color .25s ease;
         }
-        .proof-chip-name { display: block; font-size: .76rem; font-weight: 700; color: var(--text); line-height: 1.2; }
-        .proof-chip-sub { display: block; font-size: .64rem; color: rgba(var(--text-rgb),0.48); }
+        .proof-tile:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.26); }
+        .proof-tile-logo {
+          flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px;
+          display: grid; place-items: center; background: #FFFFFF;
+        }
+        .proof-tile-name { display: block; font-size: .82rem; font-weight: 700; color: #FFFFFF; line-height: 1.25; }
+        .proof-tile-sub { display: block; font-size: .7rem; color: rgba(255,255,255,0.62); line-height: 1.35; }
 
         .proof-note {
-          margin: 1.3rem auto 0; max-width: 40rem;
+          margin: 1.5rem auto 0; max-width: 40rem;
           display: flex; align-items: flex-start; justify-content: center; gap: .5rem;
-          font-size: .74rem; line-height: 1.55; color: rgba(var(--text-rgb),0.48); text-align: left;
+          font-size: .74rem; line-height: 1.55; color: rgba(255,255,255,0.6);
         }
         .proof-note svg { flex-shrink: 0; margin-top: 1px; width: 15px; height: 15px; }
 
         @media (max-width: 980px) {
-          .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .proof-grid, .proof-back { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
-        @media (max-width: 460px) {
-          .proof-grid { grid-template-columns: 1fr; }
+        @media (max-width: 520px) {
+          .proof { padding-inline: 16px; }
+          .proof-stage { border-radius: 1.5rem; }
+          .proof-grid, .proof-back { grid-template-columns: 1fr; }
           .proof-efacture { align-items: flex-start; }
         }
-        @media (hover: none) {
-          .proof-card:hover { transform: none; }
-        }
+        @media (hover: none) { .proof-card:hover { transform: none; } }
         @media (prefers-reduced-motion: reduce) {
-          .proof-card { transition: none; }
+          .proof-card, .proof-tile { transition: none; }
           .proof-card:hover { transform: none; }
         }
       `}</style>

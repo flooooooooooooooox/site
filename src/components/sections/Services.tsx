@@ -70,7 +70,7 @@ const TILES: Tile[] = [
     lead: "Une photo suffit. Tout est traité, déclaré et déposé pour vous.",
     c: 2, hero: true,
     items: [
-      "Déclaration CA3 établie puis télétransmise à la DGFiP via ASPOne",
+      "Déclaration CA3 établie puis télétransmise à la DGFiP",
       "DSN mensuelle et bulletins de paie via OpenPaye",
       "Bilan et liasse fiscale signés par notre cabinet partenaire",
       "Provision du bilan lissée : rien à sortir en fin d'année",

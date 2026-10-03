@@ -74,7 +74,7 @@ export default function AlternativePage({ competitor, badge, title, intro, whyTi
             <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.4rem", color: "var(--text)", marginBottom: "0.6rem" }}>
               Découvrez pourquoi Cirrion est l&apos;alternative à {competitor}
             </h3>
-            <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · Sans engagement</p>
+            <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · 30 minutes</p>
             <a href="https://calendly.com/cirrion-pro/30min" target="_blank" rel="noopener noreferrer"
               style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "1rem 2rem", borderRadius: "0.85rem", background: "#2455D6", color: "#FFFFFF", fontWeight: 700, fontSize: ".95rem", textDecoration: "none" }}>
               <CalendarDays size={17} /> Réserver une démo gratuite
