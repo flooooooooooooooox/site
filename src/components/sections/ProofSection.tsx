@@ -302,16 +302,7 @@ export default function ProofSection() {
       </div>
 
       <style>{`
-        /* Ce que le verre laisse voir : des nappes de couleur posees derriere
-           le plateau. Ce sont de simples degrades — aucun flou calcule. */
-        .proof {
-          position: relative;
-          padding: clamp(2.5rem, 6vw, 4.5rem) 6vw;
-          background:
-            radial-gradient(38% 46% at 18% 30%, rgba(80,140,255,0.32), rgba(80,140,255,0) 70%),
-            radial-gradient(34% 42% at 84% 64%, rgba(110,96,255,0.22), rgba(110,96,255,0) 70%),
-            radial-gradient(30% 36% at 60% 8%, rgba(56,189,248,0.2), rgba(56,189,248,0) 70%);
-        }
+        .proof { position: relative; padding: clamp(2.5rem, 6vw, 4.5rem) 6vw; }
 
         .proof-stage {
           position: relative; isolation: isolate; overflow: clip;
@@ -324,7 +315,7 @@ export default function ProofSection() {
              n'y a que des degrades lisses, le flouter ne changerait rien a
              l'oeil et doublerait le cout de chaque image au defilement. */
           background:
-            linear-gradient(160deg, rgba(150,186,255,0.34) 0%, rgba(96,140,240,0.16) 45%, rgba(170,200,255,0.26) 100%);
+            linear-gradient(160deg, rgba(196,214,250,0.5) 0%, rgba(176,200,246,0.32) 50%, rgba(200,218,250,0.46) 100%);
           border: 1px solid rgba(255,255,255,0.75);
           box-shadow:
             inset 0 1px 0 rgba(255,255,255,0.95),
@@ -346,13 +337,13 @@ export default function ProofSection() {
         }
         .proof-glow-b {
           width: 55%; aspect-ratio: 1; top: 10%; right: -20%;
-          background: radial-gradient(closest-side, rgba(255,255,255,0.35), rgba(255,255,255,0));
+          background: radial-gradient(closest-side, rgba(255,255,255,0.3), rgba(255,255,255,0));
         }
         /* Lueur d'horizon sous les tuiles du bas : la lumiere monte du sol
            du plateau, sans dessin de nuage (les disques empiles se voyaient). */
         .proof-horizon {
           width: 130%; height: 60%; left: -15%; bottom: -38%;
-          background: radial-gradient(closest-side, rgba(36,85,214,0.16), rgba(36,85,214,0));
+          background: radial-gradient(closest-side, rgba(120,150,220,0.14), rgba(120,150,220,0));
         }
 
         .proof-head { text-align: center; margin-bottom: clamp(1.8rem, 4vw, 2.6rem); }
