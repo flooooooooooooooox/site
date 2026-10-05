@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { VILLES, getVille } from "@/lib/villes";
+import { getCitySeo } from "@/lib/local-seo";
 
 export function generateStaticParams() {
   return VILLES.map((v) => ({ ville: v.slug }));
@@ -11,11 +12,12 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const { ville: slug } = await params;
   const ville = getVille(slug);
   if (!ville) return {};
+  const seo = getCitySeo(ville);
   const url = `https://www.cirrion.eu/logiciel-batiment/${ville.slug}`;
-  const title = `Logiciel de devis bâtiment ${ville.prepo} ${ville.nom} — Cirrion`;
-  const description = `Logiciel de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Créez vos devis depuis WhatsApp ou sur l'application Cirrion ERP. E-facturation 2026.`;
+  const title = seo?.title ?? `Logiciel de devis bâtiment ${ville.prepo} ${ville.nom} — Cirrion`;
+  const description = seo?.description ?? `Logiciel de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Créez vos devis depuis WhatsApp ou sur l'application Cirrion ERP. E-facturation 2026.`;
   return {
-    title,
+    title: seo ? { absolute: title } : title,
     description,
     keywords: [
       `logiciel devis bâtiment ${ville.nom}`,
@@ -33,6 +35,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
   const { ville: slug } = await params;
   const ville = getVille(slug);
   if (!ville) notFound();
+  const seo = getCitySeo(ville);
 
   const url = `https://www.cirrion.eu/logiciel-batiment/${ville.slug}`;
   const breadcrumb = {
@@ -74,12 +77,13 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         </span>
 
         <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(1.9rem,4vw,2.9rem)", color: "var(--text)", lineHeight: 1.12, letterSpacing: "-0.03em", marginBottom: "1.5rem" }}>
-          Logiciel de devis bâtiment {ville.prepo} <span style={{ color: "#2455D6" }}>{ville.nom}</span>
+          {seo ? seo.heading : <>Logiciel de devis bâtiment {ville.prepo} <span style={{ color: "#2455D6" }}>{ville.nom}</span></>}
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Cirrion est le système d&apos;exploitation des artisans et PME du bâtiment — bien plus qu&apos;un ERP, disponible partout en France — y compris {ville.prepo} {ville.nom}.
+          {seo ? seo.introduction : <>Cirrion est le système d&apos;exploitation des artisans et PME du bâtiment — bien plus qu&apos;un ERP, disponible partout en France — y compris {ville.prepo} {ville.nom}.
           Créez vos devis et factures depuis WhatsApp en 3 minutes, ou directement sur l&apos;application Cirrion ERP grâce aux modèles de devis que vous créez.
+          </>}
         </p>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
