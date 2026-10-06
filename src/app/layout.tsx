@@ -397,7 +397,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Execute avant le premier affichage : si le logo d'intro a deja ete
             vu dans cette session, il est masque d'emblee. Sans cela, chaque
             rechargement complet de page le rejouait un instant. */}
-        <script dangerouslySetInnerHTML={{ __html: "try{if(sessionStorage.getItem('cirrion-intro-seen'))document.documentElement.setAttribute('data-intro-seen','1')}catch(e){}" }} />
+        <script dangerouslySetInnerHTML={{ __html: "try{var t=+localStorage.getItem('cirrion-intro-at');if(t&&Date.now()-t<108e5)document.documentElement.setAttribute('data-intro-seen','1')}catch(e){}" }} />
         <style>{"html[data-intro-seen] .intro-loader{display:none!important}"}</style>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />

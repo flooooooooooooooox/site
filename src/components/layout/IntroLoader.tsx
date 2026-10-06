@@ -2,7 +2,19 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const SEEN_KEY = "cirrion-intro-seen";
+// Le logo ne rejoue pas pendant 3 h apres sa premiere lecture, quelle que soit
+// la page, le rechargement ou l'onglet. Meme duree dans le script de layout.tsx.
+const SEEN_KEY = "cirrion-intro-at";
+const SEEN_FOR_MS = 3 * 60 * 60 * 1000;
+
+const recentlySeen = () => {
+  try {
+    const t = Number(localStorage.getItem(SEEN_KEY));
+    return !!t && Date.now() - t < SEEN_FOR_MS;
+  } catch {
+    return false;
+  }
+};
 
 // Traces extraits du vrai logo (squelette du PNG public/logo-cirrion.png, viewBox 421x287).
 // 5 segments — dessines dans l'ordre d'ecriture naturel, avec les interruptions du logo.
@@ -41,14 +53,13 @@ export default function IntroLoader() {
 
   useEffect(() => {
     // Deja vue dans cette session : on masque des la frame suivante.
-    if (sessionStorage.getItem(SEEN_KEY)) {
+    if (recentlySeen()) {
       const raf = requestAnimationFrame(() => setShow(false));
       return () => cancelAnimationFrame(raf);
     }
-    const t = setTimeout(() => {
-      sessionStorage.setItem(SEEN_KEY, "1");
-      setShow(false);
-    }, 1500);
+    // Note des le debut : un rafraichissement pendant l'animation ne la relance pas.
+    try { localStorage.setItem(SEEN_KEY, String(Date.now())); } catch {}
+    const t = setTimeout(() => setShow(false), 1500);
     return () => clearTimeout(t);
   }, []);
 
