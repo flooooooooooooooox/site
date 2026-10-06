@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 // Quatre entrees seulement : au-dela, le menu devient une table des matieres
 // et plus personne ne clique. Comparatif, ROI et Qui sommes-nous restent
@@ -25,6 +26,9 @@ function scrollTo(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  // Sur l'accueil le bouton demande un devis ; partout ailleurs il ramene a l'accueil.
+  const isHome = usePathname() === "/";
+  const ctaHref = isHome ? "/devis" : "/";
 
   return (
     <>
@@ -115,7 +119,7 @@ export default function Navbar() {
           {/* Action principale : demander un devis. Visible partout, y compris
               sur mobile en version compacte. */}
           <Link
-            href="/devis"
+            href={ctaHref}
             className="nav-cta-desktop"
             style={{
               display: "inline-flex",
@@ -134,10 +138,10 @@ export default function Navbar() {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#1e46c2"; e.currentTarget.style.transform = "scale(1.04)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#2455D6"; e.currentTarget.style.transform = "scale(1)"; }}
           >
-            Demander un devis
+            {isHome ? "Demander un devis" : "← Accueil"}
           </Link>
-          <Link href="/devis" className="nav-cta-mobile" aria-label="Demander un devis">
-            Devis
+          <Link href={ctaHref} className="nav-cta-mobile" aria-label={isHome ? "Demander un devis" : "Retour à l'accueil"}>
+            {isHome ? "Devis" : "← Accueil"}
           </Link>
           {/* Mobile hamburger */}
           <button
