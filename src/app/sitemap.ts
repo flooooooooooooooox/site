@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/qui-sommes-nous`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/comparatif`, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/devis`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/faq`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/roi`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/entreprise-nettoyage`, changeFrequency: "monthly", priority: 0.85 },

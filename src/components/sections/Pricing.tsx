@@ -244,6 +244,12 @@ export default function Pricing() {
                 <span className="pricing-cta-arrow" aria-hidden>→</span>
               </a>
 
+              <p style={{ marginTop: "0.9rem", fontSize: "0.85rem" }}>
+                <a href="/devis" style={{ color: "#2455D6", fontWeight: 700, textDecoration: "none" }}>
+                  ou recevoir une proposition par e-mail →
+                </a>
+              </p>
+
               <div style={{
                 display: "flex", flexWrap: "wrap", justifyContent: "center",
                 gap: "0.6rem 1.4rem", marginTop: "1.5rem",
