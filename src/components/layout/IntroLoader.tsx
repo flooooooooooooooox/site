@@ -57,6 +57,7 @@ export default function IntroLoader() {
       {show && (
         <motion.div
           key="intro"
+          className="intro-loader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.08, filter: "blur(10px)", transition: { duration: 0.5, ease: [0.65, 0, 0.35, 1] } }}
           aria-hidden

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { CLOUD_DECOR_STYLES } from "@/components/ui/CloudDecor";
 import { CloudBadge } from "@/components/ui/CloudBadge";
@@ -190,6 +191,15 @@ function MagneticBtn({ children, className, style, href }: {
     e.preventDefault();
     document.querySelector(href!)?.scrollIntoView({ behavior: "smooth", block: "start" });
   } : undefined;
+
+  // Page du site : navigation interne, dans le meme onglet et sans rechargement.
+  if (href?.startsWith("/")) {
+    return (
+      <Link ref={ref as React.Ref<HTMLAnchorElement>} href={href} className={className} style={{ ...style, textDecoration: "none", cursor: "pointer" }}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <a ref={ref} href={href} onClick={handleClick} className={className} style={{ ...style, textDecoration: "none", cursor: "pointer" }}

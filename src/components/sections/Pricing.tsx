@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import { CloudSupport, CLOUD_SUPPORT_STYLES } from "@/components/ui/CloudSupport";
@@ -234,10 +235,10 @@ export default function Pricing() {
                 une proposition à attendre.
               </p>
 
-              <a href="/devis" className="pricing-cta">
+              <Link href="/devis" className="pricing-cta">
                 Demander un devis
                 <span className="pricing-cta-arrow" aria-hidden>→</span>
-              </a>
+              </Link>
 
               <p style={{ marginTop: "0.9rem", fontSize: "0.85rem" }}>
                 <a
