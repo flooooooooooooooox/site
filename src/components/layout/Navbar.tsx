@@ -112,11 +112,10 @@ export default function Navbar() {
 
         {/* Right side */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
-          {/* CTA masqué sur mobile (remplacé dans le menu) */}
-          <a
-            href="https://calendly.com/cirrion-pro/30min"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Action principale : demander un devis. Visible partout, y compris
+              sur mobile en version compacte. */}
+          <Link
+            href="/devis"
             className="nav-cta-desktop"
             style={{
               display: "inline-flex",
@@ -135,8 +134,11 @@ export default function Navbar() {
             onMouseEnter={(e) => { e.currentTarget.style.background = "#1e46c2"; e.currentTarget.style.transform = "scale(1.04)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#2455D6"; e.currentTarget.style.transform = "scale(1)"; }}
           >
-            Réserver une démo
-          </a>
+            Demander un devis
+          </Link>
+          <Link href="/devis" className="nav-cta-mobile" aria-label="Demander un devis">
+            Devis
+          </Link>
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -161,14 +163,21 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div
+          aria-hidden
+          onClick={() => setMenuOpen(false)}
+          style={{ position: "fixed", inset: 0, zIndex: 9997, background: "rgba(27,42,74,0.28)" }}
+        />
+      )}
+      {menuOpen && (
+        <div
           style={{
             position: "fixed",
             top: "72px",
             left: "1rem",
             right: "1rem",
             zIndex: 9998,
-            background: "rgba(255,255,255,0.97)",
-            backdropFilter: "blur(32px)",
+            background: "#FFFFFF",
+            boxShadow: "0 24px 48px -20px rgba(27,42,74,0.45)",
             borderRadius: "1rem",
             border: "1px solid rgba(36,85,214,0.15)",
             padding: "1.25rem",
@@ -196,26 +205,34 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          {/* CTA dans le menu mobile */}
+          {/* CTA dans le menu mobile : le devis d'abord, la demo ensuite. */}
+          <Link
+            href="/devis"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              display: "block", marginTop: "0.9rem", padding: "1rem",
+              borderRadius: "0.9rem",
+              background: "linear-gradient(135deg,#2A5FE0,#1C46BE)",
+              color: "#FFFFFF", fontWeight: 800, fontSize: "1rem",
+              textDecoration: "none", textAlign: "center",
+              boxShadow: "0 12px 24px -14px rgba(36,85,214,.9)",
+            }}
+          >
+            Demander un devis
+          </Link>
           <a
             href="https://calendly.com/cirrion-pro/30min"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
             style={{
-              display: "block",
-              marginTop: "0.75rem",
-              padding: "0.85rem",
-              borderRadius: "0.75rem",
-              background: "#2455D6",
-              color: "#FFFFFF",
-              fontWeight: 700,
-              fontSize: ".9rem",
-              textDecoration: "none",
-              textAlign: "center",
+              display: "block", marginTop: "0.5rem", padding: "0.85rem",
+              borderRadius: "0.9rem", border: "1px solid rgba(36,85,214,0.25)",
+              color: "#2455D6", fontWeight: 700, fontSize: ".9rem",
+              textDecoration: "none", textAlign: "center",
             }}
           >
-            Réserver une démo gratuite
+            Réserver une démo · 30 min
           </a>
         </div>
       )}
@@ -225,8 +242,19 @@ export default function Navbar() {
           .nav-links-desktop { display: none !important; }
           .nav-hamburger { display: flex !important; flex-direction: column; }
         }
+        .nav-cta-mobile { display: none; }
         @media (max-width: 720px) {
           .nav-cta-desktop { display: none !important; }
+          .nav-cta-mobile {
+            display: inline-flex; align-items: center; min-height: 40px;
+            padding: 0 1.05rem; border-radius: 9999px;
+            background: linear-gradient(135deg,#2A5FE0,#1C46BE); color: #fff;
+            font-weight: 800; font-size: .85rem; text-decoration: none;
+            box-shadow: 0 8px 16px -10px rgba(36,85,214,.9);
+          }
+          /* Cibles de toucher de 44 px dans le menu. */
+          .nav-mobile-menu a { min-height: 44px; display: flex; align-items: center; }
+          .nav-mobile-menu a[href="/devis"] { justify-content: center; }
         }
       `}</style>
     </>

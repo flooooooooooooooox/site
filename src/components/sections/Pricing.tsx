@@ -17,7 +17,7 @@ import { CloudSupport, CLOUD_SUPPORT_STYLES } from "@/components/ui/CloudSupport
  */
 
 const GUARANTEES = [
-  "Prix annoncé pendant l'appel",
+  "Prix annoncé dès la première réponse",
   "Logiciel et comptabilité compris",
   "Mise en route accompagnée",
 ];
@@ -234,19 +234,19 @@ export default function Pricing() {
                 une proposition à attendre.
               </p>
 
-              <a
-                href="https://calendly.com/cirrion-pro/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pricing-cta"
-              >
-                Réserver un appel de 30 min
+              <a href="/devis" className="pricing-cta">
+                Demander un devis
                 <span className="pricing-cta-arrow" aria-hidden>→</span>
               </a>
 
               <p style={{ marginTop: "0.9rem", fontSize: "0.85rem" }}>
-                <a href="/devis" style={{ color: "#2455D6", fontWeight: 700, textDecoration: "none" }}>
-                  ou recevoir une proposition par e-mail →
+                <a
+                  href="https://calendly.com/cirrion-pro/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#2455D6", fontWeight: 700, textDecoration: "none" }}
+                >
+                  ou réserver un appel de 30 min →
                 </a>
               </p>
 

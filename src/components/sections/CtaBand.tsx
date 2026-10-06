@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, CalendarDays } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import { cloudBand } from "@/components/ui/cloudArt";
 
 export default function CtaBand() {
@@ -113,10 +113,8 @@ export default function CtaBand() {
           </p>
 
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <a
-              href="https://calendly.com/cirrion-pro/30min"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/devis"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -134,9 +132,9 @@ export default function CtaBand() {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#1e46c2"; e.currentTarget.style.transform = "translateY(-2px)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#2455D6"; e.currentTarget.style.transform = "translateY(0)"; }}
             >
-              <CalendarDays size={18} />
-              Réserver une démo gratuite
-            </a>
+              <FileText size={18} />
+              Demander un devis
+            </Link>
 
             <Link
               href="/#tarifs"

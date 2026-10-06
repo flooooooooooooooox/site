@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function DevisPage() {
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
-      <div style={{ maxWidth: "46rem", margin: "0 auto", padding: "8rem 6vw 5rem" }}>
+      <div style={{ maxWidth: "46rem", margin: "0 auto", padding: "clamp(6.5rem,16vw,8rem) max(16px,6vw) 5rem" }}>
         <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4.5vw,3rem)", lineHeight: 1.1, color: "var(--text)", textAlign: "center", marginBottom: "0.9rem" }}>
           Demandez votre <span style={{ color: "#2455D6" }}>devis</span>
         </h1>
@@ -31,7 +31,13 @@ export default function DevisPage() {
         .dv-error { color: #B91C1C; font-size: .88rem; }
         .dv-done h2 { font-family: var(--font-nunito); font-weight: 900; color: var(--text); }
         .dv-done p { color: rgba(var(--text-rgb),0.7); }
-        @media (max-width: 560px) { .dv-grid { grid-template-columns: 1fr; } .dv-card button { align-self: stretch; } }
+        @media (max-width: 560px) {
+          .dv-grid { grid-template-columns: 1fr; }
+          /* 16 px minimum : en dessous, iOS zoome la page au toucher d'un champ. */
+          .dv-card input, .dv-card select, .dv-card textarea { font-size: 16px; padding: .85rem .95rem; min-height: 48px; }
+          .dv-card textarea { min-height: 120px; }
+          .dv-card button { align-self: stretch; min-height: 56px; font-size: 1.05rem; }
+        }
       `}</style>
     </main>
   );

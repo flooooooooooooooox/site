@@ -1,110 +1,118 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ArrowUp, FileText } from "lucide-react";
 
+/**
+ * Mobile uniquement : le bouton « Demander un devis » colle en bas d'ecran,
+ * et un bouton rond remet en haut de page. Masque sur /devis, ou il serait
+ * redondant avec le formulaire lui-meme.
+ */
 export default function FloatingCtaMobile() {
-  const [visible, setVisible] = useState(false);
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [far, setFar] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const onDevis = pathname === "/devis";
 
   useEffect(() => {
     const onScroll = () => {
-      if (window.scrollY > 320) setVisible(true);
+      setScrolled(window.scrollY > 320);
+      setFar(window.scrollY > 1400);
     };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const showBar = scrolled && !dismissed && !onDevis;
+
   // Le bandeau est fixe : sans reserve de place en bas de document, il
   // recouvre en permanence la fin du contenu.
   useEffect(() => {
-    const shown = visible && !dismissed;
     const mobile = window.matchMedia("(max-width: 768px)").matches;
-    document.body.style.paddingBottom = shown && mobile ? "5.5rem" : "";
+    document.body.style.paddingBottom = showBar && mobile ? "5.5rem" : "";
     return () => { document.body.style.paddingBottom = ""; };
-  }, [visible, dismissed]);
-
-  if (dismissed || !visible) return null;
+  }, [showBar]);
 
   return (
     <>
-      <div
-        className="floating-cta-mobile"
-        style={{
-          position: "fixed",
-          bottom: "1.25rem",
-          left: "1rem",
-          right: "1rem",
-          zIndex: 8888,
-          display: "flex",
-          alignItems: "center",
-          gap: "0.6rem",
-          padding: "0.7rem 0.85rem",
-          borderRadius: "1rem",
-          background: "rgba(255,255,255,0.97)",
-          border: "1px solid rgba(36,85,214,0.3)",
-          backdropFilter: "blur(24px)",
-          boxShadow: "0 6px 20px rgba(27,42,74,0.18), 0 0 0 1px rgba(36,85,214,0.1)",
-          animation: "slideUpCta 0.4s cubic-bezier(0.16,1,0.3,1) both",
-        }}
-      >
-        {/* Pulse dot */}
-        <div style={{ position: "relative", flexShrink: 0 }}>
-          <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#4ADE80" }} />
-          <div style={{
-            position: "absolute", inset: -3, borderRadius: "50%",
-            border: "2px solid #4ADE80", opacity: 0.4,
-            animation: "pulseDot 1.8s ease-in-out infinite",
-          }} />
-        </div>
-
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: "0.66rem", fontWeight: 700, color: "#16A34A", letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: "0.1rem", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-            Démo gratuite
-          </div>
-          <div style={{ fontSize: "0.74rem", color: "rgba(27,42,74,0.6)", fontWeight: 500, whiteSpace: "nowrap" }}>
-            Appel gratuit · 30 min
-          </div>
-        </div>
-
-        <a
-          href="https://calendly.com/cirrion-pro/30min"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-flex", alignItems: "center", gap: "0.35rem",
-            padding: "0.55rem 0.9rem", borderRadius: "0.6rem",
-            background: "#2455D6", color: "#FFFFFF",
-            fontWeight: 700, fontSize: "0.8rem", textDecoration: "none",
-            whiteSpace: "nowrap", flexShrink: 0,
-          }}
-        >
-          Réserver →
-        </a>
-
+      {far && (
         <button
-          onClick={() => setDismissed(true)}
-          aria-label="Fermer"
-          style={{
-            background: "none", border: "none", cursor: "pointer",
-            color: "rgba(27,42,74,0.35)", padding: "0.2rem",
-            fontSize: "1.1rem", lineHeight: 1, flexShrink: 0,
-          }}
+          type="button"
+          className="mob-top"
+          aria-label="Remonter en haut de la page"
+          style={{ bottom: showBar ? "5.9rem" : "1.25rem" }}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          ×
+          <ArrowUp size={20} strokeWidth={2.4} />
         </button>
-      </div>
+      )}
+
+      {showBar && (
+        <div className="floating-cta-mobile">
+          <Link href="/devis" className="mob-cta-main">
+            <FileText size={18} strokeWidth={2.2} aria-hidden />
+            <span>
+              <strong>Demander un devis</strong>
+              <small>Réponse sous 24 h</small>
+            </span>
+            <span className="mob-cta-arrow" aria-hidden>→</span>
+          </Link>
+          <button type="button" className="mob-cta-close" aria-label="Fermer" onClick={() => setDismissed(true)}>
+            ×
+          </button>
+        </div>
+      )}
 
       <style>{`
+        .floating-cta-mobile {
+          position: fixed; left: 12px; right: 12px; z-index: 8888;
+          bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+          display: flex; align-items: center; gap: .4rem;
+          padding: .4rem .4rem .4rem .4rem; border-radius: 1.2rem;
+          background: rgba(255,255,255,0.96);
+          border: 1px solid rgba(36,85,214,0.22);
+          box-shadow: 0 14px 30px -12px rgba(27,42,74,0.35);
+          animation: slideUpCta .4s cubic-bezier(.16,1,.3,1) both;
+        }
+        .mob-cta-main {
+          flex: 1; min-width: 0; min-height: 52px;
+          display: flex; align-items: center; gap: .7rem;
+          padding: .55rem 1rem; border-radius: .95rem;
+          background: linear-gradient(135deg,#2A5FE0,#1C46BE); color: #fff;
+          text-decoration: none;
+          box-shadow: 0 10px 20px -12px rgba(36,85,214,.9);
+        }
+        .mob-cta-main > span:nth-of-type(1) { flex: 1; display: flex; flex-direction: column; line-height: 1.2; }
+        .mob-cta-main strong { font-size: .95rem; font-weight: 800; }
+        .mob-cta-main small { font-size: .7rem; opacity: .8; font-weight: 500; }
+        .mob-cta-arrow { font-size: 1.15rem; font-weight: 800; }
+        .mob-cta-close {
+          flex-shrink: 0; width: 44px; height: 44px; border: 0; background: none;
+          color: rgba(27,42,74,.45); font-size: 1.5rem; line-height: 1; cursor: pointer;
+        }
+        .mob-top {
+          position: fixed; right: 12px; z-index: 8887;
+          margin-bottom: env(safe-area-inset-bottom, 0px);
+          width: 48px; height: 48px; border-radius: 50%;
+          display: grid; place-items: center; cursor: pointer;
+          background: rgba(255,255,255,0.96); color: #2455D6;
+          border: 1px solid rgba(36,85,214,0.22);
+          box-shadow: 0 10px 22px -10px rgba(27,42,74,0.4);
+          animation: slideUpCta .3s cubic-bezier(.16,1,.3,1) both;
+        }
+        .mob-top:active { transform: scale(.94); }
         @keyframes slideUpCta {
           from { transform: translateY(120%); opacity: 0; }
           to { transform: translateY(0); opacity: 1; }
         }
-        @keyframes pulseDot {
-          0%, 100% { transform: scale(1); opacity: 0.4; }
-          50% { transform: scale(1.6); opacity: 0; }
-        }
-        /* Desktop : masqué */
         @media (min-width: 769px) {
-          .floating-cta-mobile { display: none !important; }
+          .floating-cta-mobile, .mob-top { display: none !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .floating-cta-mobile, .mob-top { animation: none; }
         }
       `}</style>
     </>
