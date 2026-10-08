@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Pourquoi j'ai créé Cirrion — par Florian Gagnebien, fondateur",
   description:
     "De l'automatisation en ETI à l'ERP des artisans : Florian Gagnebien, fondateur de Cirrion, raconte pourquoi il a créé un logiciel de devis et facturation piloté par IA pour les artisans du bâtiment.",
@@ -23,14 +24,14 @@ export const metadata: Metadata = {
     description: "L'histoire de Cirrion, racontée par son fondateur.",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/pourquoi-jai-cree-cirrion" },
-};
+});
 
 const authorJsonLd = {
   "@type": "Person",
   name: "Florian Gagnebien",
   jobTitle: "Fondateur & CEO de Cirrion",
   url: "https://www.cirrion.eu/qui-sommes-nous",
-  worksFor: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  worksFor: organizationReference,
   knowsAbout: [
     "Automatisation des processus",
     "Intelligence artificielle appliquée",
@@ -79,8 +80,8 @@ const breadcrumb = {
 export default function PourquoiCirrion() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Le mot du fondateur"
         title="Pourquoi j'ai créé Cirrion"

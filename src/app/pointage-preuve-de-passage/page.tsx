@@ -1,8 +1,9 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PointageSection from "@/components/sections/PointageSection";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel de pointage et preuve de passage pour sous-traitants — Cirrion",
   description:
     "Pointage sur site par QR code et géolocalisation, check-list obligatoire, photos horodatées prises dans l'application, clôture bloquée si l'intervention est incomplète. Vos clients suivent le travail en temps réel. Hébergé en France.",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     description: "QR code, géolocalisation, check-list bloquante, photos horodatées, suivi client en direct.",
   },
   alternates: { canonical: "https://www.cirrion.eu/pointage-preuve-de-passage" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -83,7 +84,7 @@ const moduleJsonLd = {
     name: "PME Premium",
     availability: "https://schema.org/InStock",
   },
-  provider: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  provider: organizationReference,
 };
 
 const faqJsonLd = {
@@ -186,9 +187,9 @@ const CIBLES = [
 export default function PointagePage() {
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(moduleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(moduleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }} />
 
       {/* En-tête */}
       <div style={{ maxWidth: "60rem", margin: "0 auto", padding: "8rem 6vw 0" }}>

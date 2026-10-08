@@ -1,7 +1,8 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import AlternativePage from "@/components/sections/AlternativePage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Alternative à Sage : logiciel devis & facture bâtiment IA — Cirrion",
   description:
     "Une alternative à Sage plus simple pour les artisans du bâtiment : devis WhatsApp, IA, e-facturation 2026, vos modèles de devis. Comparatif Cirrion vs Sage.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/alternatives/alternative-sage",
   },
   alternates: { canonical: "https://www.cirrion.eu/alternatives/alternative-sage" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -27,7 +28,7 @@ const breadcrumb = {
 export default function AlternativeSage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <AlternativePage
         competitor="Sage"
         badge="Alternative"

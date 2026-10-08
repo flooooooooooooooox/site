@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Automatiser sa facturation avant 2026 : la méthode en 5 étapes",
   description:
     "Par Florian Gagnebien, ingénieur en automatisation. La méthode concrète pour automatiser sa facturation d'artisan avant l'échéance e-facturation : cartographier, structurer, automatiser, connecter, contrôler.",
@@ -24,14 +25,14 @@ export const metadata: Metadata = {
     description: "Cartographier, structurer, automatiser, connecter, contrôler.",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/automatiser-facturation-avant-2026" },
-};
+});
 
 const authorJsonLd = {
   "@type": "Person",
   name: "Florian Gagnebien",
   jobTitle: "Fondateur & CEO de Cirrion",
   url: "https://www.cirrion.eu/qui-sommes-nous",
-  worksFor: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  worksFor: organizationReference,
   knowsAbout: [
     "Automatisation des processus",
     "Facturation électronique",
@@ -80,8 +81,8 @@ const breadcrumb = {
 export default function AutomatiserFacturation() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Méthode · Automatisation"
         title="Automatiser sa facturation avant 2026 : la méthode en 5 étapes"

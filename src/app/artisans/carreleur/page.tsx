@@ -1,7 +1,8 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel devis carreleur WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour carreleurs. Créez vos devis carrelage depuis WhatsApp ou sur l'application Cirrion ERP : faïence, sol, terrasse, e-facturation 2026.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/artisans/carreleur",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans/carreleur" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -27,7 +28,7 @@ const breadcrumb = {
 export default function Carreleur() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <TradeLanding
         trade="carreleur"
         badge="Carrelage & Revêtements"

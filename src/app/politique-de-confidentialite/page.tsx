@@ -1,11 +1,12 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Politique de confidentialité — Cirrion",
   description: "Politique de confidentialité et traitement des données personnelles chez Cirrion.",
   alternates: { canonical: "https://www.cirrion.eu/politique-de-confidentialite" },
-};
+});
 
 export default function Confidentialite() {
   return (

@@ -1,7 +1,8 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel devis maçon WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour maçons. Créez vos devis maçonnerie depuis WhatsApp en 3 min : gros œuvre, ravalement, extension, rénovation, e-facturation 2026.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/artisans/macon",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans/macon" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -27,7 +28,7 @@ const breadcrumb = {
 export default function Macon() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <TradeLanding
         trade="maçon"
         badge="Maçonnerie & Gros œuvre"

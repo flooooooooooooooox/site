@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel auto-entrepreneur bâtiment : devis & factures simples — Cirrion",
   description:
     "Le logiciel de devis et facturation idéal pour les auto-entrepreneurs et artisans du bâtiment en micro-entreprise. Simple, conforme, depuis WhatsApp. Guide complet 2026.",
@@ -15,15 +16,15 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/logiciel-auto-entrepreneur-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/logiciel-auto-entrepreneur-batiment" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Logiciel auto-entrepreneur bâtiment : devis & factures simples",
   description: "Le logiciel de devis et facturation idéal pour les auto-entrepreneurs et artisans du bâtiment en micro-entreprise.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/logiciel-auto-entrepreneur-batiment",
   keywords: "logiciel auto-entrepreneur bâtiment, micro-entreprise BTP, devis artisan indépendant",
@@ -42,8 +43,8 @@ const breadcrumb = {
 export default function AutoEntrepreneur() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Artisan indépendant"
         title="Logiciel auto-entrepreneur bâtiment : devis et factures sans prise de tête"

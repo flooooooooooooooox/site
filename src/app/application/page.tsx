@@ -1,12 +1,13 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Cirrion — Application de gestion pour artisans du bâtiment",
   description:
     "Cirrion est une application de gestion pour les artisans du bâtiment : création de devis et factures, envoi par e-mail via votre compte Gmail, relances automatiques.",
   alternates: { canonical: "https://www.cirrion.eu/application" },
-};
+});
 
 export default function ApplicationPage() {
   return (

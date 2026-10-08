@@ -1,11 +1,12 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Conditions générales de vente — Cirrion",
   description: "Conditions générales de vente des services Cirrion.",
   alternates: { canonical: "https://www.cirrion.eu/cgv" },
-};
+});
 
 export default function Cgv() {
   return (

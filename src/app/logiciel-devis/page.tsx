@@ -1,9 +1,10 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { METIERS } from "@/lib/metiers";
 import { VILLES } from "@/lib/villes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel de devis bâtiment par métier et ville — Cirrion",
   description:
     "Logiciel de devis et facturation pour tous les artisans du bâtiment : électricien, plombier, chauffagiste, maçon, peintre, menuisier, couvreur, carreleur, plaquiste, serrurier. Disponible dans toutes les grandes villes de France.",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/logiciel-devis",
   },
   alternates: { canonical: "https://www.cirrion.eu/logiciel-devis" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -37,7 +38,7 @@ const breadcrumb = {
 export default function LogicielDevisIndex() {
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
 
       <div style={{ maxWidth: "60rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <span style={{ display: "inline-block", padding: "5px 16px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>

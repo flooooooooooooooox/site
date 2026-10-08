@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import DevisForm from "./DevisForm";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Demande de devis — Cirrion",
   description: "Décrivez votre activité : vous recevez une proposition chiffrée de Cirrion sous 24 h.",
   alternates: { canonical: "https://www.cirrion.eu/devis" },
-};
+});
 
 export default function DevisPage() {
   return (

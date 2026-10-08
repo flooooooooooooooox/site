@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Relances devis artisan : comment ne plus perdre de clients — Cirrion",
   description:
     "30% des devis artisan ne reçoivent jamais de réponse. Guide pratique pour automatiser vos relances devis et récupérer des chantiers sans effort.",
@@ -12,15 +13,15 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/relances-devis-artisan",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/relances-devis-artisan" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Relances devis artisan : comment ne plus perdre de clients",
   description: "30% des devis artisan ne reçoivent jamais de réponse. Guide pratique pour automatiser vos relances.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/relances-devis-artisan",
   keywords: "relances devis artisan, suivi devis bâtiment, automatisation relances",
@@ -39,8 +40,8 @@ const breadcrumb = {
 export default function RelancesDevis() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Devis & Relances"
         title="Relances devis artisan : comment ne plus perdre de clients"

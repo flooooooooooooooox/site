@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel de devis gratuit artisan : ce qu'il faut vraiment savoir — Cirrion",
   description:
     "Logiciel de devis gratuit pour artisan : avantages, limites et alternatives payantes. Découvrez pourquoi un logiciel de devis IA comme Cirrion vous fait gagner plus qu'un outil gratuit.",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/logiciel-devis-gratuit-artisan",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/logiciel-devis-gratuit-artisan" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -29,8 +30,8 @@ const articleJsonLd = {
   headline: "Logiciel de devis gratuit artisan : ce qu'il faut vraiment savoir",
   description:
     "Logiciel de devis gratuit pour artisan : avantages, limites et alternatives. Comparatif pour choisir le bon outil.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-19",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/logiciel-devis-gratuit-artisan",
   keywords: "logiciel devis gratuit artisan, application devis artisan, meilleur logiciel devis artisan",
@@ -80,9 +81,9 @@ const faqJsonLd = {
 export default function LogicielDevisGratuitArtisan() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }} />
       <BlogArticle
         badge="Logiciels & Outils"
         title="Logiciel de devis gratuit artisan : avantages, limites et ce qui vaut vraiment le coup"

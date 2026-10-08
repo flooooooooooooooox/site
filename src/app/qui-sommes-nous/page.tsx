@@ -1,9 +1,10 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import AboutContent from "@/components/sections/AboutContent";
 import Faq from "@/components/sections/Faq";
 import CtaBand from "@/components/sections/CtaBand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Qui sommes-nous — Cirrion | L'automatisation au service des artisans",
   description:
     "Découvrez l'histoire de Cirrion : fondée par Florian, ingénieur en automatisation, pour apporter l'IA et l'ERP aux artisans et PME du bâtiment. Devis, factures, gestion depuis WhatsApp ou l'application Cirrion.",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/qui-sommes-nous",
   },
   alternates: { canonical: "https://www.cirrion.eu/qui-sommes-nous" },
-};
+});
 
 const aboutJsonLd = {
   "@context": "https://schema.org",
@@ -62,8 +63,8 @@ const breadcrumb = {
 export default function QuiSommesNous() {
   return (
     <main style={{ position: "relative", zIndex: 1 }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(aboutJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <AboutContent />
       <Faq />
       <CtaBand />

@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Tarif horaire artisan bâtiment 2026 : comment fixer ses prix",
   description:
     "Quel tarif horaire pratiquer en tant qu'artisan du bâtiment en 2026 ? Méthode de calcul, fourchettes par métier (électricien, plombier, maçon) et conseils pour des devis rentables.",
@@ -15,15 +16,15 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/tarif-horaire-artisan-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/tarif-horaire-artisan-batiment" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Tarif horaire artisan bâtiment 2026 : comment fixer ses prix",
   description: "Méthode de calcul du tarif horaire, fourchettes par métier et conseils pour des devis rentables.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/tarif-horaire-artisan-batiment",
   keywords: "tarif horaire artisan, prix horaire bâtiment, calcul prix de revient",
@@ -42,8 +43,8 @@ const breadcrumb = {
 export default function TarifHoraire() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Gestion & Prix"
         title="Tarif horaire artisan bâtiment : comment fixer ses prix en 2026"

@@ -1,7 +1,8 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import AlternativePage from "@/components/sections/AlternativePage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Alternative à Batigest : logiciel devis bâtiment simple et IA — Cirrion",
   description:
     "Vous cherchez une alternative à Batigest plus simple et moins chère ? Cirrion : devis WhatsApp, IA, e-facturation 2026, sans formation. Comparatif complet.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/alternatives/alternative-batigest",
   },
   alternates: { canonical: "https://www.cirrion.eu/alternatives/alternative-batigest" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -27,7 +28,7 @@ const breadcrumb = {
 export default function AlternativeBatigest() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <AlternativePage
         competitor="Batigest"
         badge="Alternative"

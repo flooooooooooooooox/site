@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Comment envoyer un devis depuis WhatsApp en 3 minutes",
   description:
     "Guide pratique : créez et envoyez un devis PDF professionnel directement depuis WhatsApp en moins de 3 minutes. Solution idéale pour artisans du bâtiment.",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/devis-depuis-whatsapp",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/devis-depuis-whatsapp" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -24,8 +25,8 @@ const articleJsonLd = {
   headline: "Comment envoyer un devis depuis WhatsApp en 3 minutes",
   description:
     "Guide pratique : créez et envoyez un devis PDF professionnel directement depuis WhatsApp en moins de 3 minutes.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/devis-depuis-whatsapp",
   keywords: "devis WhatsApp artisan, logiciel devis bâtiment, Cirrion",
@@ -72,9 +73,9 @@ const howToJsonLd = {
 export default function DevisWhatsApp() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(howToJsonLd) }} />
       <BlogArticle
         badge="Devis & Facturation"
         title="Comment envoyer un devis depuis WhatsApp en 3 minutes"

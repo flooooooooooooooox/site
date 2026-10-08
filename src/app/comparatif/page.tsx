@@ -1,7 +1,8 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Comparatif from "@/components/sections/Comparatif";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Comparatif — Cirrion vs Obat, Sage, EBP",
   description:
     "Comparez Cirrion aux logiciels bâtiment Obat, Sage et EBP : devis par vocal WhatsApp, agent IA 24h/24, relances automatiques, e-facturation 2026. 28 critères comparés.",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     "meilleur logiciel devis bâtiment",
   ],
   alternates: { canonical: "https://www.cirrion.eu/comparatif" },
-};
+});
 
 export default function ComparatifPage() {
   return (

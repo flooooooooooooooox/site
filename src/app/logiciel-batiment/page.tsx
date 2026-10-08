@@ -1,8 +1,9 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { VILLES } from "@/lib/villes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel de devis bâtiment par ville — Cirrion partout en France",
   description:
     "Cirrion, le logiciel de devis et facturation IA pour artisans du bâtiment, est disponible partout en France : Paris, Lyon, Marseille, Toulouse, Bordeaux et plus.",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/logiciel-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/logiciel-batiment" },
-};
+});
 
 export default function LogicielBatimentIndex() {
   return (

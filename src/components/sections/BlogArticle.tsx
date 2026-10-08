@@ -4,9 +4,10 @@ import { ArrowLeft, Clock, CalendarDays } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface BlogBlock {
-  type: "h2" | "h3" | "p" | "ul" | "cta";
+  type: "h2" | "h3" | "p" | "ul" | "cta" | "links";
   content?: string;
   items?: string[];
+  links?: { href: string; label: string }[];
 }
 
 interface BlogArticleProps {
@@ -15,10 +16,11 @@ interface BlogArticleProps {
   date: string;
   readTime: string;
   badge: string;
+  updatedDate?: string;
   blocks: BlogBlock[];
 }
 
-export default function BlogArticle({ title, description, date, readTime, badge, blocks }: BlogArticleProps) {
+export default function BlogArticle({ title, description, date, readTime, badge, blocks, updatedDate }: BlogArticleProps) {
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
       <div style={{ maxWidth: "48rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
@@ -56,10 +58,11 @@ export default function BlogArticle({ title, description, date, readTime, badge,
             {description}
           </p>
 
-          <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", marginBottom: "3.5rem", paddingBottom: "2rem", borderBottom: "1px solid rgba(var(--surface-rgb),0.08)" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", alignItems: "center", marginBottom: "3.5rem", paddingBottom: "2rem", borderBottom: "1px solid rgba(var(--surface-rgb),0.08)" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "rgba(var(--text-rgb),0.4)", fontSize: ".8rem" }}>
               <CalendarDays size={13} />
               {date}
+              {updatedDate && ` · Mis à jour le ${updatedDate}`}
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "rgba(var(--text-rgb),0.4)", fontSize: ".8rem" }}>
               <Clock size={13} />
@@ -108,6 +111,11 @@ export default function BlogArticle({ title, description, date, readTime, badge,
                     ))}
                   </ul>
                 );
+              }
+              if (block.type === "links" && block.links) {
+                return <nav key={i} aria-label={block.content ?? "Pour approfondir"} style={{ display: "flex", flexWrap: "wrap", gap: "1rem", fontSize: ".9rem", lineHeight: 1.7 }}>
+                  {block.links.map(l => <Link key={l.href} href={l.href} style={{ color: "#2455D6", textUnderlineOffset: ".2em" }}>{l.label}</Link>)}
+                </nav>;
               }
               if (block.type === "cta") {
                 return (
