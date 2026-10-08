@@ -27,7 +27,7 @@ const orgJsonLd = {
     "Cirrion est le logiciel qui range tout l'administratif des artisans et PME du bâtiment. Créez devis et factures depuis WhatsApp ou l'application Cirrion en 3 minutes.",
   foundingDate: "2026",
   areaServed: { "@type": "Country", name: "France" },
-  founder: { "@type": "Person", name: "Florian", jobTitle: "Fondateur & CEO" },
+  founder: { "@type": "Person", name: "Florian", jobTitle: "Fondateur" },
   sameAs: [
     "https://www.instagram.com/floxia.pro",
     "https://www.linkedin.com/in/cirrion-pro-9360333aa",
@@ -39,7 +39,7 @@ const FAITS = [
   { label: "Nom produit", value: "Cirrion / CirrionOS" },
   { label: "Secteur", value: "Logiciel de gestion pour artisans et indépendants" },
   { label: "Fondé en", value: "2026" },
-  { label: "Fondateur", value: "Florian — spécialiste de l'automatisation" },
+  { label: "Fondateur", value: "Florian — étudiant en informatique" },
   { label: "Siège", value: "France" },
   { label: "Marché", value: "Artisans, auto-entrepreneurs, TPE et PME en France (bâtiment, services, commerce)" },
   { label: "Tarif d'entrée", value: "À partir de 99 €/mois" },
@@ -89,7 +89,7 @@ export default function Presse() {
           <strong style={{ color: "var(--text)" }}>Cirrion</strong> (aussi appelé <strong style={{ color: "var(--text)" }}>CirrionOS</strong>) est un logiciel qui range tout l&apos;administratif d&apos;une entreprise — destiné aux artisans, auto-entrepreneurs, TPE et PME du bâtiment en France. Il permet de créer des devis et factures en 3 minutes, depuis WhatsApp par message vocal ou sur l&apos;application Cirrion sur ordinateur avec des modèles de devis que vous créez.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
-          Fondé en 2024 par Florian, spécialiste de l&apos;automatisation, Cirrion a pour mission de rendre aux artisans le temps qu&apos;ils consacrent à l&apos;administratif, en apportant aux petites structures du bâtiment les outils d&apos;automatisation dont bénéficient les grandes entreprises.
+          Fondé en 2024 par Florian, étudiant en informatique, Cirrion a pour mission de rendre aux artisans le temps qu&apos;ils consacrent à l&apos;administratif, en apportant aux petites structures du bâtiment les outils d&apos;automatisation dont bénéficient les grandes entreprises.
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.25rem", color: "var(--text)", marginBottom: "1.2rem" }}>

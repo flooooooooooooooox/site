@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata({
     "De l'automatisation en ETI à le logiciel des artisans : Florian Gagnebien, fondateur de Cirrion, raconte pourquoi il a créé un logiciel de devis et facturation piloté par IA pour les artisans du bâtiment.",
   keywords: [
     "Florian Gagnebien", "fondateur Cirrion", "histoire Cirrion", "pourquoi Cirrion",
-    "spécialiste automatisation", "ERP artisan français", "IA souveraine artisan",
+    "étudiant informatique", "ERP artisan français", "IA souveraine artisan",
     "logiciel artisan fondateur", "Cirrion avis",
   ],
   openGraph: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = pageMetadata({
 const authorJsonLd = {
   "@type": "Person",
   name: "Florian Gagnebien",
-  jobTitle: "Fondateur & CEO de Cirrion",
+  jobTitle: "Fondateur de Cirrion",
   url: "https://www.cirrion.eu/qui-sommes-nous",
   worksFor: organizationReference,
   knowsAbout: [
@@ -85,14 +85,14 @@ export default function PourquoiCirrion() {
       <BlogArticle
         badge="Le mot du fondateur"
         title="Pourquoi j'ai créé Cirrion"
-        description="Par Florian Gagnebien, fondateur & CEO. J'ai passé des mois à automatiser les processus d'une ETI. Puis j'ai regardé le quotidien administratif d'un artisan, et j'ai compris qu'il y avait un fossé à combler."
+        description="Par Florian Gagnebien, fondateur. J'ai passé des mois à automatiser les processus d'une ETI. Puis j'ai regardé le quotidien administratif d'un artisan, et j'ai compris qu'il y avait un fossé à combler."
         date="26 juillet 2026"
         readTime="6 min de lecture"
         blocks={[
           {
             type: "p",
             content:
-              "Je m'appelle Florian Gagnebien, je suis spécialiste de l'automatisation et je suis le fondateur de Cirrion. On me demande souvent pourquoi j'ai choisi les artisans du bâtiment plutôt qu'un marché plus « tech ». La réponse tient en une observation que j'ai faite en passant d'un monde à l'autre en quelques semaines.",
+              "Je m'appelle Florian Gagnebien, je suis étudiant en informatique et je suis le fondateur de Cirrion. On me demande souvent pourquoi j'ai choisi les artisans du bâtiment plutôt qu'un marché plus « tech ». La réponse tient en une observation que j'ai faite en passant d'un monde à l'autre en quelques semaines.",
           },
           {
             type: "h2",

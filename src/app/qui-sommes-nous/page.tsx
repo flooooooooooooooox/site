@@ -7,7 +7,7 @@ import CtaBand from "@/components/sections/CtaBand";
 export const metadata: Metadata = pageMetadata({
   title: "Qui sommes-nous — Cirrion | L'automatisation au service des artisans",
   description:
-    "Découvrez l'histoire de Cirrion : fondée par Florian, spécialiste de l'automatisation, pour apporter l'IA et l'ERP aux artisans et PME du bâtiment. Devis, factures, gestion depuis WhatsApp ou l'application Cirrion.",
+    "Découvrez l'histoire de Cirrion : fondée par Florian, étudiant en informatique, pour apporter l'IA et l'ERP aux artisans et PME du bâtiment. Devis, factures, gestion depuis WhatsApp ou l'application Cirrion.",
   keywords: [
     "Cirrion",
     "qui est Cirrion",
@@ -43,8 +43,8 @@ const aboutJsonLd = {
     founder: {
       "@type": "Person",
       name: "Florian",
-      jobTitle: "Fondateur & CEO",
-      description: "Spécialiste de l'automatisation, Florian a conçu Cirrion pour apporter aux artisans du bâtiment les outils d'automatisation et d'IA dont bénéficient les grandes entreprises.",
+      jobTitle: "Fondateur",
+      description: "Étudiant en informatique, Florian a conçu Cirrion pour apporter aux artisans du bâtiment les outils d'automatisation et d'IA dont bénéficient les grandes entreprises.",
     },
     areaServed: { "@type": "Country", name: "France" },
     slogan: "Rendre aux artisans le temps qu'ils consacrent à l'administratif.",

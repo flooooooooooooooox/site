@@ -51,9 +51,9 @@ type Member = {
 const TEAM: Member[] = [
   {
     icon: Wrench,
-    role: "Fondateur & CEO",
+    role: "Fondateur",
     name: "Florian Gagnebien",
-    text: "Spécialiste de l'automatisation, formé lors d'un stage à la Fondation ANAIS (ETI, Alençon) où il a conçu des automatisations de processus internes. Il pilote la vision produit et le développement de Cirrion.",
+    text: "Étudiant en informatique, formé lors d'un stage à la Fondation ANAIS (ETI, Alençon) où il a conçu des automatisations de processus internes. Il pilote la vision produit et le développement de Cirrion.",
     link: { href: "https://www.linkedin.com/in/cirrion-pro-9360333aa", label: "Profil LinkedIn", rel: "noopener noreferrer me", linkedin: true },
   },
   {
@@ -121,8 +121,7 @@ export default function AboutContent() {
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.3rem", color: "rgba(var(--text-rgb),0.75)", fontSize: "1.08rem", lineHeight: 1.8 }}>
             <p>
-              Tout commence avec <strong style={{ color: "var(--text)" }}>Florian Gagnebien</strong>, spécialiste
-              de l&apos;automatisation. Lors d&apos;un stage au sein de la{" "}
+              Tout commence avec <strong style={{ color: "var(--text)" }}>Florian Gagnebien</strong>, étudiant en informatique. Lors d&apos;un stage au sein de la{" "}
               <strong style={{ color: "var(--text)" }}>Fondation ANAIS</strong>, une ETI basée à Alençon, il
               conçoit et met en place des automatisations de processus qui font gagner des centaines d&apos;heures
               aux équipes — et il mesure concrètement l&apos;impact que ces outils peuvent avoir sur le quotidien
