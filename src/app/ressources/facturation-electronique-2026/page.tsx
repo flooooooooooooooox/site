@@ -3,13 +3,13 @@ import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
 export const metadata: Metadata = pageMetadata({
-  title: "E-facturation 2026 artisan bâtiment : tout ce qu'il faut savoir",
+  title: "Facture électronique 2026 artisan bâtiment : tout ce qu'il faut savoir",
   description:
-    "Facturation électronique 2026-2027 pour artisans et PME : réception obligatoire depuis septembre 2026, émission et e-reporting des PME et micro-entreprises en 2027.",
+    "Facturation électronique 2026-2027 pour artisans et PME : réception obligatoire depuis septembre 2026, émission et transmission des ventes des PME et micro-entreprises en 2027.",
   keywords: ["e-facturation 2026 artisan", "facturation électronique bâtiment", "obligation facture électronique artisan", "conformité e-facturation PME"],
   openGraph: {
-    title: "E-facturation 2026 pour artisans — Guide complet",
-    description: "Facturation électronique : calendrier 2026-2027 pour les artisans, obligations de réception, émission et e-reporting.",
+    title: "Facture électronique 2026 pour artisans — Guide complet",
+    description: "Facturation électronique : calendrier 2026-2027 pour les artisans, obligations de réception, émission et transmission des ventes.",
     url: "https://www.cirrion.eu/ressources/facturation-electronique-2026",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/facturation-electronique-2026" },
@@ -18,7 +18,7 @@ export const metadata: Metadata = pageMetadata({
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "E-facturation 2026 artisan bâtiment : tout ce qu'il faut savoir",
+  headline: "Facture électronique 2026 artisan bâtiment : tout ce qu'il faut savoir",
   description: "Calendrier 2026-2027 de la facturation électronique pour artisans et PME du bâtiment.",
   author: organizationReference,
   publisher: organizationReference,
@@ -45,7 +45,7 @@ export default function EFacturation() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Conformité & Légal"
-        title="E-facturation 2026 pour artisans et PME du bâtiment"
+        title="Facture électronique 2026 pour artisans et PME du bâtiment"
         description="La réforme est entrée en vigueur le 1er septembre 2026. Voici le calendrier exact pour les artisans et PME, les obligations de réception et d'émission, ainsi que les sanctions prévues."
         date="Mis à jour le 2 octobre 2026"
         readTime="5 min de lecture"
@@ -53,11 +53,11 @@ export default function EFacturation() {
           {
             type: "p",
             content:
-              "La réforme de la facturation électronique est entrée en vigueur le 1er septembre 2026. Depuis cette date, toutes les entreprises doivent être capables de recevoir des factures électroniques. Les grandes entreprises et les ETI doivent aussi les émettre et transmettre leur e-reporting. Pour les PME et micro-entreprises, dont la majorité des artisans, l'obligation d'émission et d'e-reporting débute le 1er septembre 2027.",
+              "La réforme de la facturation électronique est entrée en vigueur le 1er septembre 2026. Depuis cette date, toutes les entreprises doivent être capables de recevoir des factures électroniques. Les grandes entreprises et les ETI doivent aussi les émettre et transmettre leur transmission des ventes. Pour les PME et micro-entreprises, dont la majorité des artisans, l'obligation d'émission et d'transmission des ventes débute le 1er septembre 2027.",
           },
           {
             type: "h2",
-            content: "Qu'est-ce que la réforme e-facturation 2026 ?",
+            content: "Qu'est-ce que la réforme facture électronique 2026 ?",
           },
           {
             type: "p",
@@ -72,8 +72,8 @@ export default function EFacturation() {
             type: "ul",
             items: [
               "1er septembre 2026 : obligation de recevoir des factures électroniques pour toutes les entreprises (grandes entreprises ET PME ET micro-entreprises).",
-              "1er septembre 2026 : obligation d'émettre des factures électroniques et de transmettre l'e-reporting pour les grandes entreprises et les ETI.",
-              "1er septembre 2027 : obligation d'émettre des factures électroniques et de transmettre l'e-reporting pour les PME et micro-entreprises du bâtiment (la majorité des artisans).",
+              "1er septembre 2026 : obligation d'émettre des factures électroniques et de transmettre la transmission des ventes pour les grandes entreprises et les ETI.",
+              "1er septembre 2027 : obligation d'émettre des factures électroniques et de transmettre la transmission des ventes pour les PME et micro-entreprises du bâtiment (la majorité des artisans).",
             ],
           },
           {
@@ -87,12 +87,12 @@ export default function EFacturation() {
           },
           {
             type: "h2",
-            content: "E-facturation et e-reporting : quelle différence ?",
+            content: "Facture électronique et transmission des ventes : quelle différence ?",
           },
           {
             type: "ul",
             items: [
-              "E-facturation (e-invoicing) : concerne les factures B2B entre entreprises françaises. Le format électronique structuré remplace la facture PDF traditionnelle.",
+              "Facture électronique (e-invoicing) : concerne les factures entre entreprises entre entreprises françaises. Le format électronique structuré remplace la facture PDF traditionnelle.",
               "E-reporting : concerne les transactions avec des particuliers (B2C) et les opérations internationales. Vous devez transmettre à l'administration les données de vos ventes, même si elles ne sont pas dématérialisées.",
               "Pour un artisan du bâtiment qui travaille à la fois pour des particuliers (rénovation) et des professionnels (sous-traitance), les deux obligations s'appliquent.",
             ],
@@ -104,13 +104,13 @@ export default function EFacturation() {
           {
             type: "p",
             content:
-              "Pour être conforme, l'entreprise doit choisir une plateforme agréée pour recevoir les factures et, lorsque son échéance d'émission s'applique, transmettre les factures électroniques et les données de e-reporting. Si Cirrion est utilisé comme outil de facturation, l'intégration exacte avec la plateforme agréée choisie doit être vérifiée dans la configuration du compte.",
+              "Pour être conforme, l'entreprise doit choisir une plateforme agréée pour recevoir les factures et, lorsque son échéance d'émission s'applique, transmettre les factures électroniques et les données de transmission des ventes. Si Cirrion est utilisé comme outil de facturation, l'intégration exacte avec la plateforme agréée choisie doit être vérifiée dans la configuration du compte.",
           },
           {
             type: "ul",
             items: [
-              "Factur-X intégré : chaque facture Cirrion est automatiquement au format Factur-X conforme.",
-              "Transmission : les factures électroniques B2B passent par une plateforme agréée.",
+              "Bon format d'office : chaque facture Cirrion est faite dans le format de la facture électronique.",
+              "Transmission : les factures électroniques entre entreprises passent par une plateforme agréée.",
               "E-reporting : les données concernées sont transmises selon le calendrier applicable à votre entreprise.",
               "Archivage légal : vos factures sont archivées pendant 10 ans conformément aux obligations légales.",
             ],
@@ -122,11 +122,11 @@ export default function EFacturation() {
           {
             type: "p",
             content:
-              "Les artisans du bâtiment sont doublement concernés par la réforme : ils facturent à la fois des particuliers (e-reporting obligatoire) et des professionnels — promoteurs, syndics, entreprises générales — (e-facturation obligatoire). Sans logiciel adapté, la conformité manuelle représente plusieurs heures de travail supplémentaire par mois.",
+              "Les artisans du bâtiment sont doublement concernés par la réforme : ils facturent à la fois des particuliers (transmission des ventes obligatoire) et des professionnels — promoteurs, syndics, entreprises générales — (facture électronique obligatoire). Sans logiciel adapté, la conformité manuelle représente plusieurs heures de travail supplémentaire par mois.",
           },
           {
             type: "cta",
-            content: "Cirrion vous met en conformité e-facturation 2026 automatiquement",
+            content: "Cirrion vous met en conformité facture électronique 2026 automatiquement",
           },
         ]}
       />

@@ -34,11 +34,11 @@ export default function Peintre() {
         trade="peintre"
         badge="Peinture & Décoration"
         title="Logiciel de devis et facturation pour peintres en bâtiment"
-        subtitle="Devis peinture depuis WhatsApp ou sur l'application Cirrion ERP."
+        subtitle="Devis peinture depuis WhatsApp ou sur l'application Cirrion."
         intro="Cirrion est un logiciel de devis et facturation pour peintres en bâtiment. Vous préparez vos prestations de peinture intérieure, ravalement et préparation des supports avec votre catalogue de prix et vos modèles. Depuis WhatsApp sur le chantier ou l’application web au bureau, retrouvez vos devis, factures et dossiers clients au même endroit."
         features={[
           { title: "Devis peinture par vocal en 3 min", desc: "Dictez la prestation par vocal — ravalement, rénovation intérieure, décoration — Cirrion génère le devis PDF avec vos prix du catalogue." },
-          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis peinture, créés avec vos prestations types." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion, vous réutilisez vos modèles de devis peinture, créés avec vos prestations types." },
           { title: "TVA sur chaque prestation", desc: "Vous choisissez le taux sur chaque ligne selon la nature des travaux et les conditions applicables. Cirrion applique le taux sélectionné sur le devis." },
           { title: "Catalogue de prestations", desc: "Enregistrez vos prix par type de prestation : préparation des supports, lessivage, enduit, peinture, papier peint, revêtement de sol." },
           { title: "Envoi et signature électronique", desc: "Le client reçoit le devis par WhatsApp ou email et peut signer depuis son téléphone en un clic, avec valeur légale." },

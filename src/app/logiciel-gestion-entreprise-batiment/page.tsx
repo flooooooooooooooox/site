@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
   ],
   openGraph: {
     title: "Logiciel de gestion d'entreprise du bâtiment — Cirrion",
-    description: "La solution B2B de gestion pour les entreprises du bâtiment : devis, facturation, chantiers, équipes et pilotage.",
+    description: "La solution entre entreprises de gestion pour les entreprises du bâtiment : devis, facturation, chantiers, équipes et pilotage.",
     url: "https://www.cirrion.eu/logiciel-gestion-entreprise-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/logiciel-gestion-entreprise-batiment" },
@@ -23,12 +23,12 @@ export const metadata: Metadata = pageMetadata({
 const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "Logiciel de gestion d'entreprise pour le bâtiment (B2B)",
+  serviceType: "Logiciel de gestion d'entreprise pour le bâtiment (entre entreprises)",
   provider: organizationReference,
   areaServed: "FR",
   audience: { "@type": "BusinessAudience", name: "Artisans, auto-entrepreneurs, TPE et PME du bâtiment et du BTP" },
   description:
-    "Solution B2B de gestion, devis, facturation et pilotage pour les entreprises du bâtiment et du BTP.",
+    "Pour les entreprises du bâtiment de gestion, devis, facturation et pilotage pour les entreprises du bâtiment et du BTP.",
 };
 
 const breadcrumb = {
@@ -41,12 +41,12 @@ const breadcrumb = {
 };
 
 const PILLARS = [
-  { title: "Devis & facturation centralisés", desc: "Toute l'entreprise produit des devis conformes depuis WhatsApp ou l'application, avec une numérotation automatique et la TVA 5,5/10/20% au choix sur chaque ligne." },
+  { title: "Devis & facturation au même endroit", desc: "Toute l'entreprise produit des devis conformes depuis WhatsApp ou l'application, avec une numérotation automatique et la TVA 5,5/10/20% au choix sur chaque ligne." },
   { title: "Pilotage en temps réel", desc: "Tableau de bord du chiffre d'affaires, des chantiers en cours, des devis signés et des factures impayées — pour décider vite." },
   { title: "Gestion des équipes", desc: "Plannings, suivi des heures et gestion de vos salariés depuis un seul outil." },
   { title: "Trésorerie & dépenses", desc: "Prévisions de trésorerie, dashboard des dépenses et du chiffre d'affaires mois par mois pour protéger votre rentabilité." },
   { title: "Préparer la facturation électronique", desc: "Vérifiez en démonstration les flux de réception et d'émission, la plateforme agréée et le calendrier applicable à votre entreprise." },
-  { title: "Hébergement souverain", desc: "Données chiffrées, hébergées en France, conformité RGPD — un point clé pour les marchés et la sous-traitance B2B." },
+  { title: "Hébergé en France", desc: "Données chiffrées, hébergées en France, conformité RGPD — un point clé pour les marchés et la sous-traitance entre entreprises." },
 ];
 
 export default function LogicielGestionEntreprise() {
@@ -57,7 +57,7 @@ export default function LogicielGestionEntreprise() {
 
       <div style={{ maxWidth: "56rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <span style={{ display: "inline-block", padding: "5px 16px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
-          Solution B2B
+          Pour les entreprises du bâtiment
         </span>
         <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2rem,4.5vw,3rem)", color: "var(--text)", lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: "1.5rem" }}>
           Le logiciel de gestion des <span style={{ color: "#2455D6" }}>artisans et entreprises du bâtiment</span>
@@ -70,7 +70,7 @@ export default function LogicielGestionEntreprise() {
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.3rem,2.5vw,1.7rem)", color: "var(--text)", marginBottom: "1.5rem" }}>
-          Une solution complète pour piloter votre entreprise
+          Un seul logiciel pour mener toute votre entreprise
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1rem", marginBottom: "3rem" }}>
           {PILLARS.map((p) => (
@@ -89,11 +89,11 @@ export default function LogicielGestionEntreprise() {
           Pour un artisan comme pour une entreprise, le temps administratif coûte cher : chaque heure passée sur un devis ou une relance est une heure qui ne génère pas de chiffre d&apos;affaires. Cirrion automatise ces tâches grâce à l&apos;IA, ce qui permet à l&apos;artisan indépendant comme à toute l&apos;équipe — du chef de chantier au dirigeant — de se concentrer sur la production et le développement commercial.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
-          Pour vos relations B2B, vérifiez le parcours complet : devis, factures, suivi des paiements, traçabilité des documents et exports. Le calendrier de facturation électronique dépend de la taille de l&apos;entreprise ; le guide ERP ci-dessous renvoie aux échéances officielles de la DGFiP.
+          Pour vos relations entre entreprises, vérifiez le parcours complet : devis, factures, suivi des paiements, traçabilité des documents et exports. Le calendrier de facturation électronique dépend de la taille de l&apos;entreprise ; le guide ERP ci-dessous renvoie aux échéances officielles de la DGFiP.
         </p>
 
         <AnswerSection title="Comprendre le logiciel de gestion bâtiment" answers={[
-          { question: "À quoi sert un ERP pour une entreprise du bâtiment ?", answer: "Un ERP bâtiment relie la gestion commerciale et le suivi de l’activité : clients, devis, factures, chantiers, dépenses et équipes. Dans Cirrion, ces informations sont centralisées pour retrouver un dossier et suivre les documents sans multiplier les outils." },
+          { question: "À quoi sert un ERP pour une entreprise du bâtiment ?", answer: "Un ERP bâtiment relie la gestion commerciale et le suivi de l’activité : clients, devis, factures, chantiers, dépenses et équipes. Dans Cirrion, ces informations sont au même endroites pour retrouver un dossier et suivre les documents sans multiplier les outils." },
           { question: "Cirrion convient-il à un artisan indépendant ?", answer: "Cirrion s’adresse aux artisans indépendants comme aux TPE et PME du bâtiment. La démonstration permet de vérifier les fonctions utiles à votre métier, votre catalogue de prestations et votre organisation avant de choisir une offre." },
           { question: "Comment vérifier que le logiciel correspond à mon entreprise ?", answer: "Présentez un exemple de devis, votre façon de suivre un chantier et vos besoins de facturation. Pendant la démonstration, vérifiez la création des documents, les rôles de votre équipe, les exports et les connexions nécessaires. Le tarif est ensuite établi sur devis." },
         ]} links={[

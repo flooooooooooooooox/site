@@ -55,7 +55,7 @@ export const metadata: Metadata = pageMetadata({
   twitter: {
     card: "summary_large_image",
     title: "Cirrion — Devis artisan en 3 min depuis WhatsApp",
-    description: "Logiciel de devis et facturation pour artisans du bâtiment. Vos modèles de devis, TVA auto, e-facturation 2026.",
+    description: "Logiciel de devis et facturation pour artisans du bâtiment. Vos modèles de devis, TVA auto, facture électronique 2026.",
     images: ["https://www.cirrion.eu/dashboard-cirrion.jpg"],
   },
 });

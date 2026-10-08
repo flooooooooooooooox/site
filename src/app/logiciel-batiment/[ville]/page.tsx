@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const seo = getCitySeo(ville);
   const url = `https://www.cirrion.eu/logiciel-batiment/${ville.slug}`;
   const title = seo?.title ?? `Logiciel de devis bâtiment ${ville.prepo} ${ville.nom} — Cirrion`;
-  const description = seo?.description ?? `Logiciel de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Créez vos devis depuis WhatsApp ou sur l'application Cirrion ERP. E-facturation 2026.`;
+  const description = seo?.description ?? `Logiciel de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Créez vos devis depuis WhatsApp ou sur l'application Cirrion. Facture électronique 2026.`;
   return pageMetadata({
     title: seo ? { absolute: title } : title,
     description,
@@ -82,8 +82,8 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          {seo ? seo.introduction : <>Cirrion est le système d&apos;exploitation des artisans et PME du bâtiment — bien plus qu&apos;un ERP, disponible partout en France — y compris {ville.prepo} {ville.nom}.
-          Créez vos devis et factures depuis WhatsApp en 3 minutes, ou directement sur l&apos;application Cirrion ERP grâce aux modèles de devis que vous créez.
+          {seo ? seo.introduction : <>Cirrion est le logiciel qui range tout l&apos;administratif des artisans et PME du bâtiment, disponible partout en France — y compris {ville.prepo} {ville.nom}.
+          Créez vos devis et factures depuis WhatsApp en 3 minutes, ou directement sur l&apos;application Cirrion grâce aux modèles de devis que vous créez.
           </>}
         </p>
 
@@ -97,9 +97,9 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "0.7rem", marginBottom: "2.5rem" }}>
           {[
             "Devis créé depuis WhatsApp par message vocal, directement sur le chantier.",
-            "Vos modèles de devis réutilisables sur l'application Cirrion ERP, idéal au bureau.",
+            "Vos modèles de devis réutilisables sur l'application Cirrion, idéal au bureau.",
             "Relances automatiques des devis et factures pour ne plus perdre de chantiers.",
-            "Conformité e-facturation 2026 native, sans paperasse supplémentaire.",
+            "Conformité facture électronique 2026 native, sans paperasse supplémentaire.",
             "Hébergement 100% France et conformité RGPD.",
           ].map((b) => (
             <li key={b} style={{ display: "flex", gap: "0.7rem", color: "rgba(var(--text-rgb),0.7)", fontSize: ".92rem", lineHeight: 1.7 }}>

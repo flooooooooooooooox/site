@@ -69,7 +69,7 @@ export default function ErpBatiment() {
           {
             type: "p",
             content:
-              "Un ERP (Enterprise Resource Planning) est un logiciel de gestion centralisé. Pour un artisan ou une PME du bâtiment, il regroupe en un seul outil : la création de devis, la facturation, la gestion des clients et des chantiers, le suivi des paiements, et parfois la gestion des stocks et des équipes. L'objectif : tout gérer depuis un seul endroit, sans ressaisie manuelle.",
+              "Un ERP (Enterprise Resource Planning) est un logiciel de gestion au même endroit. Pour un artisan ou une PME du bâtiment, il regroupe en un seul outil : la création de devis, la facturation, la gestion des clients et des chantiers, le suivi des paiements, et parfois la gestion des stocks et des équipes. L'objectif : tout gérer depuis un seul endroit, sans ressaisie manuelle.",
           },
           {
             type: "h2",
@@ -109,7 +109,7 @@ export default function ErpBatiment() {
           {
             type: "p",
             content:
-              "Les ERP traditionnels demandent de saisir manuellement chaque ligne de devis, chaque prestation, chaque montant. Avec un ERP nouvelle génération comme Cirrion, vous décrivez votre chantier à voix haute depuis WhatsApp — \"installation salle de bain 8m², faïence, plomberie, sanitaires\" — et le logiciel génère automatiquement le devis complet avec votre grille tarifaire et la TVA de votre choix sur chaque ligne.",
+              "Les ERP traditionnels demandent de saisir manuellement chaque ligne de devis, chaque prestation, chaque montant. Avec un logiciel nouvelle génération comme Cirrion, vous décrivez votre chantier à voix haute depuis WhatsApp — \"installation salle de bain 8m², faïence, plomberie, sanitaires\" — et le logiciel génère automatiquement le devis complet avec votre grille tarifaire et la TVA de votre choix sur chaque ligne.",
           },
           {
             type: "h2",
@@ -125,12 +125,12 @@ export default function ErpBatiment() {
           },
           {
             type: "h2",
-            content: "Conformité e-facturation 2026 : l'ERP doit être prêt",
+            content: "Conformité facture électronique 2026 : l'ERP doit être prêt",
           },
           {
             type: "p",
             content:
-              "Selon le calendrier de la DGFiP, la réception des factures électroniques s’applique depuis le 1er septembre 2026. L’émission et l’e-reporting s’appliquent depuis cette date aux grandes entreprises et ETI, puis à partir du 1er septembre 2027 aux PME et micro-entreprises. Vérifiez le périmètre applicable à votre activité et les flux effectivement pris en charge par le logiciel et la plateforme agréée.",
+              "Selon le calendrier de la DGFiP, la réception des factures électroniques s’applique depuis le 1er septembre 2026. L’émission et la transmission des ventes s’appliquent depuis cette date aux grandes entreprises et ETI, puis à partir du 1er septembre 2027 aux PME et micro-entreprises. Vérifiez le périmètre applicable à votre activité et les flux effectivement pris en charge par le logiciel et la plateforme agréée.",
           },
           { type: "links", content: "Sources et guides", links: [
             { href: "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation", label: "Calendrier officiel de la DGFiP" },
@@ -140,7 +140,7 @@ export default function ErpBatiment() {
           ] },
           {
             type: "cta",
-            content: "Découvrez Cirrion, l'ERP nouvelle génération conçu pour les artisans du bâtiment",
+            content: "Découvrez Cirrion, le logiciel nouvelle génération conçu pour les artisans du bâtiment",
           },
         ]}
       />

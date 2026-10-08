@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ metier: s
   if (!m || !v) return {};
   const url = `https://www.cirrion.eu/logiciel-devis/${m.slug}/${v.slug}`;
   const title = `Logiciel de devis ${m.nom} ${v.prepo} ${v.nom} — Cirrion`;
-  const description = `Logiciel de devis et facturation pour ${m.nom} ${v.prepo} ${v.nom} (${v.region}). Créez vos devis ${m.label.toLowerCase()} depuis WhatsApp ou sur l'application Cirrion ERP. TVA 5,5/10/20% au choix, e-facturation 2026.`;
+  const description = `Logiciel de devis et facturation pour ${m.nom} ${v.prepo} ${v.nom} (${v.region}). Créez vos devis ${m.label.toLowerCase()} depuis WhatsApp ou sur l'application Cirrion. TVA 5,5/10/20% au choix, facture électronique 2026.`;
   return pageMetadata({
     title,
     description,
@@ -82,7 +82,7 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
         </h1>
 
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Vous êtes {m.nom} {v.prepo} {v.nom} ou dans {v.region} ? Cirrion vous permet de créer vos devis et factures en quelques minutes, depuis WhatsApp par message vocal ou sur l&apos;application Cirrion ERP avec des modèles de devis que vous créez. Spécialisé dans {m.domaine}, Cirrion génère des documents conformes avec la TVA de votre choix sur chaque ligne.
+          Vous êtes {m.nom} {v.prepo} {v.nom} ou dans {v.region} ? Cirrion vous permet de créer vos devis et factures en quelques minutes, depuis WhatsApp par message vocal ou sur l&apos;application Cirrion avec des modèles de devis que vous créez. Spécialisé dans {m.domaine}, Cirrion génère des documents conformes avec la TVA de votre choix sur chaque ligne.
         </p>
 
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "1rem" }}>
@@ -109,7 +109,7 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
           Pourquoi Cirrion pour un {m.nom} {v.prepo} {v.nom}
         </h2>
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "0.8rem" }}>
-          {v.zones} Cirrion étant 100% en ligne, vous l&apos;utilisez où que soit votre chantier. Les relances de devis et factures sont automatiques, et la conformité e-facturation 2026 est native.
+          {v.zones} Cirrion étant 100% en ligne, vous l&apos;utilisez où que soit votre chantier. Les relances de devis et factures sont automatiques, et la conformité facture électronique 2026 est native.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
           Que vous soyez {m.nom} indépendant, auto-entrepreneur ou à la tête d&apos;une entreprise de {m.domaine}, Cirrion s&apos;adapte à votre activité {v.prepo} {v.nom}.
