@@ -1,7 +1,8 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel devis chauffagiste WhatsApp — Cirrion | Plus qu'un ERP",
   description:
     "Logiciel de devis et facturation pour chauffagistes. Créez vos devis chauffage depuis WhatsApp ou sur l'application Cirrion ERP : pompe à chaleur, chaudière, RGE, e-facturation 2026.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/artisans/chauffagiste",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans/chauffagiste" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -27,7 +28,7 @@ const breadcrumb = {
 export default function Chauffagiste() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <TradeLanding
         trade="chauffagiste"
         badge="Chauffage & Énergie"

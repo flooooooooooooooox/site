@@ -1,12 +1,13 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Support — Cirrion",
   description: "Besoin d'aide ? Contactez le support Cirrion.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.cirrion.eu/support" },
-};
+});
 
 export default function Support() {
   return (

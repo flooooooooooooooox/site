@@ -1,7 +1,8 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import TradeLanding from "@/components/sections/TradeLanding";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel devis serrurier-métallier WhatsApp — Cirrion",
   description:
     "Logiciel de devis et facturation pour serruriers-métalliers. Chiffrez dépannage, portes blindées, garde-corps et ouvrages métalliques depuis WhatsApp ou l'app Cirrion.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/artisans/serrurier",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans/serrurier" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -33,7 +34,7 @@ const breadcrumb = {
 export default function Serrurier() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <TradeLanding
         trade="serrurier-métallier"
         badge="Serrurerie & Métallerie"

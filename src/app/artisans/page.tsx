@@ -1,7 +1,8 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel de gestion pour artisans du bâtiment — Cirrion par métier",
   description:
     "Cirrion s'adapte à chaque corps de métier du bâtiment : électricien, plombier, maçon, peintre. Devis, factures et gestion depuis WhatsApp — spécialisé par métier.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/artisans",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans" },
-};
+});
 
 const TRADES = [
   {

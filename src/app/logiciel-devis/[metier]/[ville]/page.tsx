@@ -1,3 +1,4 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ metier: s
   const url = `https://www.cirrion.eu/logiciel-devis/${m.slug}/${v.slug}`;
   const title = `Logiciel de devis ${m.nom} ${v.prepo} ${v.nom} — Cirrion`;
   const description = `Logiciel de devis et facturation pour ${m.nom} ${v.prepo} ${v.nom} (${v.region}). Créez vos devis ${m.label.toLowerCase()} depuis WhatsApp ou sur l'application Cirrion ERP. TVA 5,5/10/20% au choix, e-facturation 2026.`;
-  return {
+  return pageMetadata({
     title,
     description,
     keywords: [
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ metier: s
     ],
     openGraph: { title, description, url },
     alternates: { canonical: url },
-  };
+  });
 }
 
 export default async function MetierVillePage({ params }: { params: Promise<{ metier: string; ville: string }> }) {
@@ -51,7 +52,7 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: `Logiciel de devis et facturation pour ${m.nom}`,
-    provider: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+    provider: organizationReference,
     areaServed: { "@type": "City", name: v.nom },
     description: `Logiciel de devis, facturation et gestion pour ${m.pluriel} ${v.prepo} ${v.nom}.`,
   };
@@ -62,8 +63,8 @@ export default async function MetierVillePage({ params }: { params: Promise<{ me
 
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceLd) }} />
 
       <div style={{ maxWidth: "52rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2rem", fontSize: ".8rem" }}>

@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "E-facturation 2026 artisan bâtiment : tout ce qu'il faut savoir",
   description:
     "Facturation électronique 2026-2027 pour artisans et PME : réception obligatoire depuis septembre 2026, émission et e-reporting des PME et micro-entreprises en 2027.",
@@ -12,15 +13,15 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/facturation-electronique-2026",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/facturation-electronique-2026" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "E-facturation 2026 artisan bâtiment : tout ce qu'il faut savoir",
   description: "Calendrier 2026-2027 de la facturation électronique pour artisans et PME du bâtiment.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-18",
   dateModified: "2026-10-02",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/facturation-electronique-2026",
@@ -40,8 +41,8 @@ const breadcrumb = {
 export default function EFacturation() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Conformité & Légal"
         title="E-facturation 2026 pour artisans et PME du bâtiment"

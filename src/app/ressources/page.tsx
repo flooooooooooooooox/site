@@ -1,7 +1,8 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Ressources — Guides & conseils pour artisans du bâtiment",
   description:
     "Guides pratiques pour artisans et PME du bâtiment : devis WhatsApp, logiciel ERP, automatisation administrative. Gagnez du temps sur votre gestion.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources" },
-};
+});
 
 const ARTICLES = [
   {

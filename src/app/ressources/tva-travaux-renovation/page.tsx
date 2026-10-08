@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "TVA travaux de rénovation 2026 : 5,5%, 10% ou 20% ? Le guide",
   description:
     "Quel taux de TVA appliquer sur vos travaux de rénovation en 2026 ? 5,5%, 10% ou 20% : règles, conditions, attestation et exemples par type de travaux pour les artisans du bâtiment.",
@@ -15,15 +16,15 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/tva-travaux-renovation",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/tva-travaux-renovation" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "TVA travaux de rénovation 2026 : 5,5%, 10% ou 20% ?",
   description: "Quel taux de TVA appliquer sur vos travaux de rénovation : règles, conditions, attestation et exemples.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/tva-travaux-renovation",
   keywords: "TVA travaux rénovation, TVA 5.5, TVA 10, attestation TVA réduite",
@@ -42,8 +43,8 @@ const breadcrumb = {
 export default function TvaTravaux() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Conformité & TVA"
         title="TVA travaux de rénovation : 5,5%, 10% ou 20% ? Le guide 2026"

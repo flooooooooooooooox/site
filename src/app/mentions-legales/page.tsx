@@ -1,11 +1,12 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import LegalPage from "@/components/sections/LegalPage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Mentions légales — Cirrion",
   description: "Mentions légales du site Cirrion.",
   alternates: { canonical: "https://www.cirrion.eu/mentions-legales" },
-};
+});
 
 export default function MentionsLegales() {
   return (

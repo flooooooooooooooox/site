@@ -7,11 +7,13 @@ import Pricing from "@/components/sections/Pricing";
 import CtaBand from "@/components/sections/CtaBand";
 import ProofSection from "@/components/sections/ProofSection";
 import GmailDisclosure from "@/components/sections/GmailDisclosure";
+import JsonLd from "@/components/seo/JsonLd";
+import { pageMetadata, softwareJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | Plus qu'un ERP",
   description:
-    "Cirrion : créez vos devis et factures en 3 minutes depuis WhatsApp (vocal) ou l'application ERP avec vos modèles de devis. Logiciel pour électriciens, plombiers, maçons, couvreurs et tous les artisans du bâtiment. Conforme e-facturation 2026.",
+    "Créez vos devis et factures avec Cirrion depuis WhatsApp ou l’application web. Un logiciel pour artisans du bâtiment : chantiers, paiements et relances.",
   keywords: [
     "Cirrion",
     "logiciel devis artisan",
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment",
     description:
-      "Créez vos devis en 3 minutes depuis WhatsApp ou l'application Cirrion ERP. Vos modèles de devis, TVA 5,5/10/20% au choix, e-facturation 2026. Pour tous les artisans du bâtiment.",
+      "Devis et facturation depuis WhatsApp ou l’application web. Centralisez les chantiers, paiements et relances avec Cirrion.",
     url: "https://www.cirrion.eu",
     images: [{ url: "https://www.cirrion.eu/dashboard-cirrion.jpg", width: 1600, height: 787, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
   },
@@ -56,11 +58,12 @@ export const metadata: Metadata = {
     description: "Logiciel de devis et facturation pour artisans du bâtiment. Vos modèles de devis, TVA auto, e-facturation 2026.",
     images: ["https://www.cirrion.eu/dashboard-cirrion.jpg"],
   },
-};
+});
 
 export default function Home() {
   return (
     <main style={{ position: "relative", zIndex: 1 }}>
+      <JsonLd data={softwareJsonLd} />
       {/* Six sections, pas onze : promesse → mecanique → preuve → couverture →
           prix → passage a l'acte. Le comparatif, le calculateur de ROI, le
           pointage et la FAQ ont leurs pages dediees, rassemblees plus bas. */}

@@ -1,24 +1,27 @@
 # Cirrion
 
-> Cirrion est un ERP nouvelle génération pour artisans et TPE de services (bâtiment, nettoyage, prestations de services). Créez vos devis et factures depuis WhatsApp (par message vocal) ou l'application Cirrion en 3 minutes, grâce à des modèles que vous créez.
+> Logiciel de devis, facturation et gestion pour artisans du bâtiment et TPE de services en France. Cirrion permet de préparer des devis depuis WhatsApp ou l’application web avec un catalogue de prestations et des modèles réutilisables.
 
-Cirrion automatise la gestion administrative des artisans : devis, factures, relances, planning, rentabilité par chantier, gestion de stock automatique, tarification produit éditable, recherche globale, coordonnées et conformité légale, suivi des heures salariés, rapprochement bancaire et facturation électronique conforme 2026 (Factur-X). Le service s'adresse aux électriciens, plombiers, maçons, peintres, couvreurs, menuisiers, carreleurs, chauffagistes, ainsi qu'aux TPE de services (nettoyage, paysagisme, déménagement, aide à domicile).
+Le site présente les fonctions de devis, facturation, suivi des chantiers, paiements, relances et équipes. Les fonctions comprises dans une offre, les connexions et le tarif sont à vérifier pendant une démonstration. La tarification est établie sur devis.
 
-- Site web : https://www.cirrion.eu
-- Contact commercial : https://calendly.com/cirrion-pro/30min
-- Zone d'activité : France (100% hébergé en France, conforme RGPD)
-- Offres : Essentiel, Artisan Pro, PME Premium — tarification sur devis, établie après une démonstration
-- Fondateur : Florian Gagnebien, ingénieur en automatisation (stage à la Fondation ANAIS, ETI à Alençon)
-- Technologies : IA européenne Mistral AI, traitement de la voix ElevenLabs, e-facturation via B2Brouter (PDP), rapprochement bancaire via Bridge (DSP2), télétransmission des déclarations de TVA à la DGFiP via ASPOne (partenaire EDI)
-- TVA : la TVA à décaisser (collectée moins déductible) est calculée automatiquement au mois ou au trimestre, la déclaration CA3 est établie puis télétransmise à la DGFiP via ASPOne. La comptabilité complète est comprise dans l'abonnement : TVA, paie et DSN via OpenPaye, bilan et liasse fiscale une fois par an, signés par un cabinet d'expertise-comptable partenaire inscrit à l'Ordre. Le client n'a pas d'honoraires de comptabilité en plus de son abonnement
-- Copilote Cirrion : un assistant IA en lecture seule interroge les donnees du compte (devis, factures, depenses, rentabilite, tresorerie) et repond en langage naturel — impayes et retards, tresorerie previsionnelle, taux de TVA applicable avec l'article du CGI, cout employeur d'une embauche. Il n'ecrit jamais dans les donnees et ne se substitue pas au conseil de l'expert-comptable partenaire sur les choix juridiques et fiscaux
+- Site : https://www.cirrion.eu/
+- Démonstration : https://calendly.com/cirrion-pro/30min
+- Fondateur : Florian Gagnebien
+- Zone d’activité : France
 
-## Pages clés
-- [Accueil](https://www.cirrion.eu): présentation de Cirrion et de ses fonctionnalités
-- [Comparatif](https://www.cirrion.eu/comparatif): comparaison avec Obat, Sage/Batigest, EBP
-- [Pointage & preuve de passage](https://www.cirrion.eu/pointage-preuve-de-passage): module de contrôle des interventions de sous-traitants — QR code, géolocalisation, check-list bloquante, chronomètre par section et par tâche lancé par le salarié (comparaison des temps entre intervenants), photos horodatées qui cochent automatiquement la tâche, dépôt et signature électronique du contrat de travail, espace client temps réel, onglet Cours de formation interne (offre PME Premium)
-- [Qui sommes-nous](https://www.cirrion.eu/qui-sommes-nous): l'histoire et la mission de Cirrion
-- [Ressources](https://www.cirrion.eu/ressources): guides sur la facturation électronique 2026, les devis, la TVA travaux
-- [Pourquoi j'ai créé Cirrion](https://www.cirrion.eu/ressources/pourquoi-jai-cree-cirrion): article du fondateur Florian Gagnebien, ingénieur en automatisation, sur l'origine de Cirrion
-- [Automatiser sa facturation avant 2026](https://www.cirrion.eu/ressources/automatiser-facturation-avant-2026): méthode en 5 étapes signée Florian Gagnebien
-- [FAQ](https://www.cirrion.eu/faq): questions fréquentes sur le service
+## Produit et métiers
+- [Gestion d’entreprise du bâtiment](https://www.cirrion.eu/logiciel-gestion-entreprise-batiment): devis, factures, chantiers et équipes pour artisans, TPE et PME.
+- [Devis pour peintres](https://www.cirrion.eu/artisans/peintre): préparation des prestations, modèles de devis et questions sur le logiciel.
+- [Métiers du bâtiment](https://www.cirrion.eu/artisans): usages par métier.
+- [Pointage et preuve de passage](https://www.cirrion.eu/pointage-preuve-de-passage): présentation du suivi des interventions.
+- [FAQ](https://www.cirrion.eu/faq): questions sur les usages, les offres et les connexions.
+
+## Guides et identité
+- [Choisir un ERP bâtiment](https://www.cirrion.eu/ressources/logiciel-erp-batiment): définition, critères de choix, coûts à vérifier et source officielle du calendrier de facturation électronique.
+- [Préparer un modèle de devis](https://www.cirrion.eu/ressources/modele-devis-batiment): guide pratique.
+- [Créer un devis depuis WhatsApp](https://www.cirrion.eu/ressources/devis-depuis-whatsapp): parcours de création de devis.
+- [Qui sommes-nous](https://www.cirrion.eu/qui-sommes-nous): histoire et mission de Cirrion.
+- [Pourquoi j’ai créé Cirrion](https://www.cirrion.eu/ressources/pourquoi-jai-cree-cirrion): article du fondateur.
+
+## Source réglementaire
+- [Calendrier de la DGFiP](https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation): réception à partir du 1er septembre 2026 ; émission et e-reporting en 2026 pour les grandes entreprises et ETI, en 2027 pour les PME et micro-entreprises, dans le périmètre de la réforme. Ce calendrier ne constitue pas une certification du logiciel.

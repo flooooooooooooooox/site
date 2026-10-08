@@ -1,10 +1,11 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Faq from "@/components/sections/Faq";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "FAQ — Questions fréquentes sur Cirrion",
   description:
-    "Toutes les réponses sur Cirrion : création de devis par vocal WhatsApp, facturation électronique 2026, sécurité des données, tarifs, corps de métier du bâtiment couverts.",
+    "Vos questions sur Cirrion : devis depuis WhatsApp, application web, tarifs sur devis, facturation électronique et sécurité des données.",
   keywords: [
     "Cirrion FAQ",
     "questions Cirrion",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     "Cirrion tarifs",
   ],
   alternates: { canonical: "https://www.cirrion.eu/faq" },
-};
+});
 
 export default function FaqPage() {
   return (

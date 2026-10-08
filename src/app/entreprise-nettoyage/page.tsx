@@ -1,7 +1,8 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Logiciel pour entreprise de nettoyage — Devis, factures récurrentes & planning | Cirrion",
   description:
     "Cirrion, l'ERP nouvelle génération pour les entreprises de nettoyage : devis en 3 min depuis WhatsApp, factures récurrentes automatiques (contrats mensuels), relances, planning des agents et suivi des heures. Idéal pour lancer et gérer votre société de nettoyage.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     "gérer une entreprise de nettoyage",
   ],
   alternates: { canonical: "https://www.cirrion.eu/entreprise-nettoyage" },
-};
+});
 
 const FEATURES = [
   {

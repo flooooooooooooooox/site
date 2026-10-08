@@ -1,3 +1,4 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const url = `https://www.cirrion.eu/logiciel-batiment/${ville.slug}`;
   const title = seo?.title ?? `Logiciel de devis bâtiment ${ville.prepo} ${ville.nom} — Cirrion`;
   const description = seo?.description ?? `Logiciel de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Créez vos devis depuis WhatsApp ou sur l'application Cirrion ERP. E-facturation 2026.`;
-  return {
+  return pageMetadata({
     title: seo ? { absolute: title } : title,
     description,
     keywords: [
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
     ],
     openGraph: { title, description, url },
     alternates: { canonical: url },
-  };
+  });
 }
 
 export default async function VillePage({ params }: { params: Promise<{ ville: string }> }) {
@@ -51,7 +52,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Logiciel de devis et facturation pour le bâtiment",
-    provider: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+    provider: organizationReference,
     areaServed: { "@type": "City", name: ville.nom },
     description: `Logiciel de gestion, devis et facturation pour artisans et PME du bâtiment ${ville.prepo} ${ville.nom}.`,
   };
@@ -64,8 +65,8 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
 
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceLd) }} />
 
       <div style={{ maxWidth: "52rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <Link href="/logiciel-batiment" style={{ color: "rgba(var(--text-rgb),0.45)", fontSize: ".82rem", textDecoration: "none", marginBottom: "2rem", display: "inline-block" }}>

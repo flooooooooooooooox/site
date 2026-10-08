@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Acompte sur devis artisan : montant, mentions légales et bonnes pratiques — Cirrion",
   description:
     "Combien demander comme acompte sur un devis artisan ? Quelles mentions obligatoires ? Comment le facturer ? Tout ce qu'il faut savoir sur l'acompte pour artisans et indépendants.",
@@ -21,15 +22,15 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/acompte-devis-artisan",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/acompte-devis-artisan" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Acompte sur devis artisan : montant, mentions légales et bonnes pratiques",
   description: "Combien demander comme acompte sur un devis ? Mentions légales et bonnes pratiques pour artisans.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-19",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/acompte-devis-artisan",
   keywords: "acompte devis artisan, acompte travaux, facturer acompte artisan",
@@ -79,9 +80,9 @@ const faqJsonLd = {
 export default function AcompteDevisArtisan() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }} />
       <BlogArticle
         badge="Devis & Facturation"
         title="Acompte sur devis artisan : combien demander et comment le facturer ?"

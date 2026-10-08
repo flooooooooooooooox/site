@@ -1,7 +1,8 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import AlternativePage from "@/components/sections/AlternativePage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Alternative à EBP : logiciel devis bâtiment moderne et IA — Cirrion",
   description:
     "Une alternative à EBP plus moderne pour artisans du bâtiment : devis WhatsApp, IA, e-facturation 2026, vos modèles de devis. Comparatif Cirrion vs EBP.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/alternatives/alternative-ebp",
   },
   alternates: { canonical: "https://www.cirrion.eu/alternatives/alternative-ebp" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -27,7 +28,7 @@ const breadcrumb = {
 export default function AlternativeEbp() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <AlternativePage
         competitor="EBP"
         badge="Alternative"

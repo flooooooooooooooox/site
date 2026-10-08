@@ -14,9 +14,10 @@ export interface TradeLandingProps {
   useCases: string[];
   closing: string;
   relatedTrades: { label: string; href: string }[];
+  children?: React.ReactNode;
 }
 
-export default function TradeLanding({ trade, badge, title, subtitle, intro, features, useCases, closing, relatedTrades }: TradeLandingProps) {
+export default function TradeLanding({ trade, badge, title, subtitle, intro, features, useCases, closing, relatedTrades, children }: TradeLandingProps) {
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
       <div style={{ maxWidth: "56rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
@@ -64,6 +65,8 @@ export default function TradeLanding({ trade, badge, title, subtitle, intro, fea
           </ul>
 
           <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".95rem", lineHeight: 1.8, marginBottom: "3rem" }}>{closing}</p>
+
+          {children}
 
           {/* CTA */}
           <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center", marginBottom: "4rem" }}>

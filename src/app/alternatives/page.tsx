@@ -1,7 +1,8 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Alternatives aux logiciels de devis bâtiment — Comparatifs Cirrion",
   description:
     "Cirrion comparé aux principaux logiciels de devis et facturation du bâtiment : Obat, Batigest, Sage, EBP. Découvrez quelle solution choisir pour votre entreprise.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/alternatives",
   },
   alternates: { canonical: "https://www.cirrion.eu/alternatives" },
-};
+});
 
 const ALTS = [
   { href: "/alternatives/cirrion-vs-obat", title: "Cirrion vs Obat", desc: "Devis en ligne et IA : le comparatif complet entre Cirrion et Obat." },

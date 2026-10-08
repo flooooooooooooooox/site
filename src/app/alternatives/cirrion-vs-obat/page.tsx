@@ -1,7 +1,8 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import AlternativePage from "@/components/sections/AlternativePage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Cirrion vs Obat : quel logiciel de devis pour artisans choisir ?",
   description:
     "Comparatif Cirrion vs Obat pour les artisans du bâtiment. Devis WhatsApp, IA, e-facturation 2026, vos modèles de devis. Découvrez quelle solution choisir.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/alternatives/cirrion-vs-obat",
   },
   alternates: { canonical: "https://www.cirrion.eu/alternatives/cirrion-vs-obat" },
-};
+});
 
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -27,7 +28,7 @@ const breadcrumb = {
 export default function CirrionVsObat() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <AlternativePage
         competitor="Obat"
         badge="Comparatif"

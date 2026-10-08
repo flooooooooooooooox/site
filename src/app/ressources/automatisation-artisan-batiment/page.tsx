@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Automatisation artisan : gagnez 10h par semaine sur votre gestion",
   description:
     "5 tâches administratives que tout artisan du bâtiment peut automatiser aujourd'hui : devis, relances, facturation, conformité 2026, suivi chantier.",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/automatisation-artisan-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/automatisation-artisan-batiment" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -24,8 +25,8 @@ const articleJsonLd = {
   headline: "Automatisation artisan : gagnez 10h par semaine sur votre gestion",
   description:
     "5 tâches administratives que tout artisan du bâtiment peut automatiser aujourd'hui : devis, relances, facturation, conformité 2026.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/automatisation-artisan-batiment",
   keywords: "automatisation artisan, gestion administrative bâtiment, logiciel artisan",
@@ -44,8 +45,8 @@ const breadcrumb = {
 export default function AutomatisationArtisan() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Gestion & Productivité"
         title="Automatisation : comment les artisans gagnent 10h par semaine"

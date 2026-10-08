@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Devis signé : valeur légale, engagement et signature électronique artisan — Cirrion",
   description:
     "Un devis signé a-t-il une valeur légale pour un artisan ? Quand le client est-il engagé ? Tout sur la signature de devis artisan, la signature électronique et les recours en cas de litige.",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/devis-signe-valeur-legale",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/devis-signe-valeur-legale" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -29,8 +30,8 @@ const articleJsonLd = {
   headline: "Devis signé : valeur légale, engagement et signature électronique artisan",
   description:
     "Un devis signé a-t-il une valeur légale pour un artisan ? Quand le client est-il engagé ?",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-19",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/devis-signe-valeur-legale",
   keywords: "devis signé valeur légale, signature électronique devis artisan, engagement client devis",
@@ -80,9 +81,9 @@ const faqJsonLd = {
 export default function DevisSigneValeurLegale() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }} />
       <BlogArticle
         badge="Juridique & Devis"
         title="Devis signé : valeur légale, engagement du client et signature électronique"

@@ -1,10 +1,12 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
+import AnswerSection from "@/components/seo/AnswerSection";
 
-export const metadata: Metadata = {
-  title: "Logiciel de gestion d'entreprise du bâtiment — Solution B2B | Cirrion",
+export const metadata: Metadata = pageMetadata({
+  title: "Logiciel de gestion entreprise bâtiment et BTP | Cirrion",
   description:
-    "Cirrion, la solution de gestion pour les artisans et entreprises du bâtiment : indépendants, auto-entrepreneurs, TPE et PME du BTP. Devis, facturation, chantiers, équipes et pilotage dans un seul logiciel.",
+    "Gérez les devis, factures, chantiers et équipes de votre entreprise du bâtiment avec Cirrion. WhatsApp sur le terrain, application web au bureau.",
   keywords: [
     "logiciel gestion entreprise bâtiment", "logiciel gestion artisan bâtiment", "logiciel B2B bâtiment",
     "solution gestion BTP", "logiciel artisan indépendant", "logiciel auto-entrepreneur bâtiment",
@@ -16,13 +18,13 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/logiciel-gestion-entreprise-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/logiciel-gestion-entreprise-batiment" },
-};
+});
 
 const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   serviceType: "Logiciel de gestion d'entreprise pour le bâtiment (B2B)",
-  provider: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  provider: organizationReference,
   areaServed: "FR",
   audience: { "@type": "BusinessAudience", name: "Artisans, auto-entrepreneurs, TPE et PME du bâtiment et du BTP" },
   description:
@@ -43,15 +45,15 @@ const PILLARS = [
   { title: "Pilotage en temps réel", desc: "Tableau de bord du chiffre d'affaires, des chantiers en cours, des devis signés et des factures impayées — pour décider vite." },
   { title: "Gestion des équipes", desc: "Plannings, suivi des heures et gestion de vos salariés depuis un seul outil." },
   { title: "Trésorerie & dépenses", desc: "Prévisions de trésorerie, dashboard des dépenses et du chiffre d'affaires mois par mois pour protéger votre rentabilité." },
-  { title: "Conformité e-facturation 2026", desc: "Votre entreprise est nativement conforme à l'obligation de facturation électronique, sans module supplémentaire." },
+  { title: "Préparer la facturation électronique", desc: "Vérifiez en démonstration les flux de réception et d'émission, la plateforme agréée et le calendrier applicable à votre entreprise." },
   { title: "Hébergement souverain", desc: "Données chiffrées, hébergées en France, conformité RGPD — un point clé pour les marchés et la sous-traitance B2B." },
 ];
 
 export default function LogicielGestionEntreprise() {
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
 
       <div style={{ maxWidth: "56rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <span style={{ display: "inline-block", padding: "5px 16px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>
@@ -61,7 +63,7 @@ export default function LogicielGestionEntreprise() {
           Le logiciel de gestion des <span style={{ color: "#2455D6" }}>artisans et entreprises du bâtiment</span>
         </h1>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "2rem" }}>
-          Cirrion est la solution de gestion pensée d&apos;abord pour les artisans du bâtiment — indépendants, auto-entrepreneurs, micro-entreprises — comme pour les TPE et PME du BTP. De la création du devis au pilotage de l&apos;activité, vous centralisez toute votre gestion dans un seul outil, accessible depuis WhatsApp sur le terrain et sur l&apos;application au bureau.
+          Cirrion est un logiciel de gestion pour les artisans, TPE et PME du bâtiment. Il centralise les devis, la facturation, les clients, les chantiers et le suivi des équipes. Vous préparez vos documents depuis WhatsApp sur le terrain ou depuis l&apos;application web au bureau, puis retrouvez les paiements et les relances dans le même dossier.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
           Que vous soyez artisan seul, en auto-entreprise, à la tête d&apos;une entreprise générale du bâtiment ou d&apos;une PME multi-corps d&apos;état, Cirrion s&apos;adapte à votre organisation et grandit avec vous — de l&apos;artisan indépendant jusqu&apos;aux structures de 50 collaborateurs.
@@ -87,8 +89,18 @@ export default function LogicielGestionEntreprise() {
           Pour un artisan comme pour une entreprise, le temps administratif coûte cher : chaque heure passée sur un devis ou une relance est une heure qui ne génère pas de chiffre d&apos;affaires. Cirrion automatise ces tâches grâce à l&apos;IA, ce qui permet à l&apos;artisan indépendant comme à toute l&apos;équipe — du chef de chantier au dirigeant — de se concentrer sur la production et le développement commercial.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
-          La conformité e-facturation 2026, l&apos;hébergement souverain en France et la traçabilité des documents font de Cirrion un partenaire fiable pour les relations B2B, les marchés et la sous-traitance, où la rigueur documentaire est exigée.
+          Pour vos relations B2B, vérifiez le parcours complet : devis, factures, suivi des paiements, traçabilité des documents et exports. Le calendrier de facturation électronique dépend de la taille de l&apos;entreprise ; le guide ERP ci-dessous renvoie aux échéances officielles de la DGFiP.
         </p>
+
+        <AnswerSection title="Comprendre le logiciel de gestion bâtiment" answers={[
+          { question: "À quoi sert un ERP pour une entreprise du bâtiment ?", answer: "Un ERP bâtiment relie la gestion commerciale et le suivi de l’activité : clients, devis, factures, chantiers, dépenses et équipes. Dans Cirrion, ces informations sont centralisées pour retrouver un dossier et suivre les documents sans multiplier les outils." },
+          { question: "Cirrion convient-il à un artisan indépendant ?", answer: "Cirrion s’adresse aux artisans indépendants comme aux TPE et PME du bâtiment. La démonstration permet de vérifier les fonctions utiles à votre métier, votre catalogue de prestations et votre organisation avant de choisir une offre." },
+          { question: "Comment vérifier que le logiciel correspond à mon entreprise ?", answer: "Présentez un exemple de devis, votre façon de suivre un chantier et vos besoins de facturation. Pendant la démonstration, vérifiez la création des documents, les rôles de votre équipe, les exports et les connexions nécessaires. Le tarif est ensuite établi sur devis." },
+        ]} links={[
+          { href: "/ressources/logiciel-erp-batiment", label: "Guide pour choisir un ERP bâtiment" },
+          { href: "/artisans/peintre", label: "Devis et facturation pour peintres" },
+          { href: "/pointage-preuve-de-passage", label: "Suivi des interventions" },
+        ]} />
 
         <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center", marginBottom: "3rem" }}>
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.4rem", color: "var(--text)", marginBottom: "0.6rem" }}>

@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/roi`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/entreprise-nettoyage`, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/pointage-preuve-de-passage`, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/application`, changeFrequency: "monthly", priority: 0.75 },
     // Ressources (blog)
     { url: `${base}/ressources`, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/ressources/pourquoi-jai-cree-cirrion`, changeFrequency: "monthly", priority: 0.8 },
@@ -77,5 +78,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticPages, ...villePages, ...matrixPages];
+  const updated = new Map([
+    [base, "2026-10-06"],
+    [`${base}/artisans/peintre`, "2026-10-06"],
+    [`${base}/logiciel-gestion-entreprise-batiment`, "2026-10-06"],
+    [`${base}/ressources/logiciel-erp-batiment`, "2026-10-06"],
+    [`${base}/logiciel-batiment/nice`, "2026-10-05"],
+  ]);
+  return [...staticPages, ...villePages, ...matrixPages].map(page => ({
+    ...page, ...(updated.has(page.url) ? { lastModified: updated.get(page.url) } : {}),
+  }));
 }

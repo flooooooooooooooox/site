@@ -1,10 +1,11 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import RoiCalculator from "@/components/sections/RoiCalculator";
 import CtaBand from "@/components/sections/CtaBand";
 
-export const metadata: Metadata = {
-  title: "Calculateur de ROI — combien Cirrion vous fait gagner | Cirrion",
+export const metadata: Metadata = pageMetadata({
+  title: "Calculateur de ROI : estimez votre gain de temps | Cirrion",
   description:
     "Estimez en quelques secondes le temps administratif et l'argent que Cirrion vous fait récupérer chaque mois : devis, factures, relances d'impayés et TVA automatisés.",
   keywords: [
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
       "Combien de temps et d'argent Cirrion vous fait récupérer chaque mois ? Estimation immédiate.",
     url: "https://www.cirrion.eu/roi",
   },
-};
+});
 
 export default function RoiPage() {
   return (

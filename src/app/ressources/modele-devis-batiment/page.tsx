@@ -1,7 +1,8 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Modèle de devis bâtiment : créez vos modèles réutilisables — Cirrion",
   description:
     "Modèles de devis bâtiment : créez vos propres modèles réutilisables et générez des devis professionnels conformes en quelques clics, sur l'application Cirrion ERP ou depuis WhatsApp.",
@@ -17,15 +18,15 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/modele-devis-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/modele-devis-batiment" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Modèle de devis bâtiment : créez vos modèles réutilisables",
   description: "Créez vos propres modèles de devis bâtiment réutilisables et générez des devis conformes en quelques clics.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-18",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/modele-devis-batiment",
   keywords: "modèle devis bâtiment, modèle devis artisan, logiciel devis en ligne",
@@ -44,8 +45,8 @@ const breadcrumb = {
 export default function ModeleDevis() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="Devis & Modèles"
         title="Modèle de devis bâtiment : créez vos modèles une fois, réutilisez-les toujours"

@@ -1,7 +1,8 @@
+import { pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Presse & médias — Cirrion | Kit de presse logiciel artisan bâtiment",
   description:
     "Kit de presse Cirrion : informations officielles, éléments de langage et visuels pour les journalistes et blogueurs. Cirrion est le système d'exploitation des artisans et PME du bâtiment — bien plus qu'un ERP.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/presse",
   },
   alternates: { canonical: "https://www.cirrion.eu/presse" },
-};
+});
 
 const orgJsonLd = {
   "@context": "https://schema.org",
@@ -66,7 +67,7 @@ const ANGLES = [
 export default function Presse() {
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(orgJsonLd) }} />
 
       <div style={{ maxWidth: "56rem", margin: "0 auto", padding: "8rem 6vw 6rem" }}>
         <span style={{ display: "inline-block", padding: "5px 16px", borderRadius: "999px", border: "1px solid rgba(36,85,214,0.25)", background: "rgba(36,85,214,0.07)", color: "#2455D6", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1.2rem" }}>

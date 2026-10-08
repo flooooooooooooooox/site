@@ -1,10 +1,11 @@
+import { organizationReference, pageMetadata, serializeJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import BlogArticle from "@/components/sections/BlogArticle";
 
-export const metadata: Metadata = {
-  title: "Logiciel ERP Bâtiment : guide complet pour artisans et PME 2026",
+export const metadata: Metadata = pageMetadata({
+  title: "ERP bâtiment : choisir son logiciel de gestion | Cirrion",
   description:
-    "Quel logiciel ERP choisir pour votre entreprise du bâtiment ? Comparatif complet : ERP généraliste vs solution IA spécialisée. Devis, facturation, chantiers.",
+    "Choisir un ERP bâtiment : devis, factures, chantiers, équipes et critères à vérifier en démonstration. Guide pour artisans et PME, avec sources officielles.",
   keywords: [
     "logiciel ERP bâtiment", "ERP artisan", "logiciel gestion artisan", "ERP PME bâtiment",
     "logiciel devis facture artisan", "meilleur logiciel bâtiment", "gestion chantier logiciel",
@@ -16,17 +17,19 @@ export const metadata: Metadata = {
     url: "https://www.cirrion.eu/ressources/logiciel-erp-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/logiciel-erp-batiment" },
-};
+});
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Logiciel ERP Bâtiment : guide complet pour artisans et PME 2026",
+  headline: "Logiciel ERP bâtiment : le guide pour artisans et PME",
   description:
     "Quel logiciel ERP choisir pour votre entreprise du bâtiment ? Comparatif complet et guide pratique.",
-  author: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
-  publisher: { "@type": "Organization", name: "Cirrion", url: "https://www.cirrion.eu" },
+  author: organizationReference,
+  publisher: organizationReference,
   datePublished: "2026-06-18",
+  dateModified: "2026-10-06",
+  image: "https://www.cirrion.eu/dashboard-cirrion.jpg",
   mainEntityOfPage: "https://www.cirrion.eu/ressources/logiciel-erp-batiment",
   keywords: "ERP bâtiment, logiciel artisan, devis facture, gestion chantier",
 };
@@ -44,19 +47,20 @@ const breadcrumb = {
 export default function ErpBatiment() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <BlogArticle
         badge="ERP & Logiciel"
-        title="Logiciel ERP bâtiment : le guide complet pour artisans et PME"
-        description="ERP généraliste ou logiciel spécialisé bâtiment ? On compare les solutions du marché et on explique pourquoi l'IA change tout pour les petites structures en 2026."
+        title="Logiciel ERP bâtiment : le guide pour artisans et PME"
+        description="Comprendre les fonctions d’un ERP bâtiment et vérifier qu’elles correspondent à votre activité : devis, facturation, chantiers, équipes et connexions."
         date="18 juin 2026"
+        updatedDate="6 octobre 2026"
         readTime="6 min de lecture"
         blocks={[
           {
             type: "p",
             content:
-              "En 2026, un artisan ou une PME du bâtiment sans logiciel de gestion perd en moyenne 3 heures par jour sur des tâches administratives. Devis manuels, factures sur Excel, relances oubliées, conformité e-facturation à gérer — tout ça grignote le temps que vous devriez passer sur chantier. Un bon logiciel ERP bâtiment règle ces problèmes. Encore faut-il choisir le bon.",
+              "Un ERP bâtiment est un logiciel qui relie les clients, les devis, les factures et le suivi des chantiers dans une même gestion. Il peut aussi couvrir les dépenses, les stocks ou les équipes selon l’offre. Pour choisir, partez de vos tâches réelles et vérifiez-les avec un dossier concret pendant une démonstration.",
           },
           {
             type: "h2",
@@ -74,14 +78,14 @@ export default function ErpBatiment() {
           {
             type: "p",
             content:
-              "La plupart des artisans commencent avec un ERP généraliste (Sage, Dolibarr, Cegid) ou un logiciel de facturation basique (Factur-X, Freebe). Le problème : ces outils ne parlent pas le langage du bâtiment. Ils ne gèrent pas les TVA multiples propres aux travaux de rénovation (5,5%, 10%, 20%), les PV de réception, ou les factures d'acompte et de solde.",
+              "Un ERP généraliste et un logiciel spécialisé peuvent répondre à des besoins différents. Comparez les fonctions effectivement comprises : catalogue de prestations, acomptes et soldes, suivi des chantiers, documents et accès des équipes. Un format comme Factur-X décrit une facture électronique : ce n’est pas un logiciel de gestion.",
           },
           {
             type: "ul",
             items: [
-              "ERP généraliste — avantage : prix bas. Inconvénient : pas adapté au bâtiment, nécessite des paramétrages complexes et du temps de formation.",
-              "Logiciel bâtiment classique (Batigest, Onaya) — adapté aux grands groupes, trop lourd et trop cher pour un artisan indépendant ou une PME de moins de 20 personnes.",
-              "Solution IA spécialisée (Cirrion) — conçue pour les artisans, fonctionne depuis WhatsApp, automatise toute la chaîne devis → facture → PV de réception.",
+              "ERP généraliste : vérifier les modules et les paramétrages nécessaires à votre métier.",
+              "Logiciel spécialisé bâtiment : vérifier le traitement des devis, des chantiers et des documents propres à vos interventions.",
+              "Cirrion : création de devis depuis WhatsApp ou l’application web, avec vos modèles et votre catalogue. Vérifier pendant la démonstration le parcours qui correspond à votre équipe.",
             ],
           },
           {
@@ -91,11 +95,11 @@ export default function ErpBatiment() {
           {
             type: "ul",
             items: [
-              "Devis PDF automatique avec les TVA bâtiment au choix sur chaque ligne (5,5% rénovation énergétique, 10% travaux sur existant, 20% neuf)",
-              "Facturation électronique conforme e-facturation 2026 (obligation légale pour toutes les entreprises à partir de 2026)",
-              "Signature électronique à valeur légale intégrée — le client signe depuis son téléphone",
-              "Relances automatiques — devis non signé à J+3, facture impayée à J+15",
-              "Gestion multi-chantiers — suivi en temps réel de l'avancement, des dépenses et du chiffre d'affaires",
+              "Devis détaillés : catalogue, quantités, prix, taux de TVA vérifié et modèles réutilisables.",
+              "Facturation : acomptes, soldes, paiements et connexion aux flux de facturation électronique selon les obligations applicables.",
+              "Documents clients : vérifier le parcours d’envoi, de validation et de signature proposé.",
+              "Relances : contrôler les règles, les délais et l’historique avant de les activer.",
+              "Chantiers et équipes : retrouver les dépenses, les interventions et les accès utiles à chaque rôle.",
             ],
           },
           {
@@ -114,9 +118,9 @@ export default function ErpBatiment() {
           {
             type: "ul",
             items: [
-              "ERP généraliste (Sage, Cegid) : 200€ à 800€/mois pour une petite entreprise, plus les coûts de formation et d'implémentation.",
-              "Logiciel bâtiment classique (Batigest, Onaya) : 100€ à 400€/mois, + 1 000€ à 3 000€ de setup.",
-              "Cirrion : tarif sur devis, tout inclus, aucune formation requise — vous l'utilisez depuis WhatsApp ou directement sur l'application Cirrion ERP avec vos modèles de devis.",
+              "Comparer le coût total : abonnement, utilisateurs, modules, paramétrage et accompagnement.",
+              "Demander ce qui est inclus, les limites d’usage, les conditions d’engagement et les possibilités d’export.",
+              "Cirrion : tarif sur devis après une démonstration. Faire préciser le périmètre de l’offre adaptée à votre entreprise.",
             ],
           },
           {
@@ -126,8 +130,14 @@ export default function ErpBatiment() {
           {
             type: "p",
             content:
-              "Depuis 2026, toutes les entreprises françaises (y compris les micro-entreprises du bâtiment) doivent être capables de recevoir et émettre des factures électroniques conformes. Cirrion gère nativement l'e-reporting et l'e-facturation — pas besoin d'un module supplémentaire ou d'un comptable pour s'y conformer.",
+              "Selon le calendrier de la DGFiP, la réception des factures électroniques s’applique depuis le 1er septembre 2026. L’émission et l’e-reporting s’appliquent depuis cette date aux grandes entreprises et ETI, puis à partir du 1er septembre 2027 aux PME et micro-entreprises. Vérifiez le périmètre applicable à votre activité et les flux effectivement pris en charge par le logiciel et la plateforme agréée.",
           },
+          { type: "links", content: "Sources et guides", links: [
+            { href: "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation", label: "Calendrier officiel de la DGFiP" },
+            { href: "/logiciel-gestion-entreprise-batiment", label: "La gestion bâtiment avec Cirrion" },
+            { href: "/artisans/peintre", label: "Devis et factures pour peintres" },
+            { href: "/ressources/facturation-electronique-2026", label: "Comprendre la facturation électronique" },
+          ] },
           {
             type: "cta",
             content: "Découvrez Cirrion, l'ERP nouvelle génération conçu pour les artisans du bâtiment",
