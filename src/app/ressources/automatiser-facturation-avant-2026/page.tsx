@@ -5,7 +5,7 @@ import BlogArticle from "@/components/sections/BlogArticle";
 export const metadata: Metadata = pageMetadata({
   title: "Automatiser sa facturation avant 2026 : la méthode en 5 étapes",
   description:
-    "Par Florian Gagnebien, ingénieur en automatisation. La méthode concrète pour automatiser sa facturation d'artisan avant l'échéance de la facture électronique : cartographier, structurer, automatiser, connecter, contrôler.",
+    "Par Florian Gagnebien, spécialiste de l'automatisation. La méthode concrète pour automatiser sa facturation d'artisan avant l'échéance de la facture électronique : cartographier, structurer, automatiser, connecter, contrôler.",
   keywords: [
     "automatiser facturation artisan", "automatiser facturation avant 2026",
     "e-facturation 2026 artisan", "Factur-X artisan", "automatisation facturation bâtiment",
@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
   openGraph: {
     title: "Automatiser sa facturation avant 2026 : la méthode en 5 étapes",
     description:
-      "La méthode concrète d'un ingénieur en automatisation pour préparer sa facturation à l'échéance de la facture électronique.",
+      "La méthode concrète d'un spécialiste de l'automatisation pour préparer sa facturation à l'échéance de la facture électronique.",
     url: "https://www.cirrion.eu/ressources/automatiser-facturation-avant-2026",
     type: "article",
   },
@@ -48,7 +48,7 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Automatiser sa facturation avant 2026 : la méthode en 5 étapes",
   description:
-    "La méthode concrète pour automatiser la facturation d'une entreprise artisanale avant l'échéance de la facture électronique, par un ingénieur en automatisation.",
+    "La méthode concrète pour automatiser la facturation d'une entreprise artisanale avant l'échéance de la facture électronique, par un spécialiste de l'automatisation.",
   author: authorJsonLd,
   publisher: {
     "@type": "Organization",
@@ -86,7 +86,7 @@ export default function AutomatiserFacturation() {
       <BlogArticle
         badge="Méthode · Automatisation"
         title="Automatiser sa facturation avant 2026 : la méthode en 5 étapes"
-        description="Par Florian Gagnebien, ingénieur en automatisation et fondateur de Cirrion. La réforme de la facture électronique est une contrainte. Bien prise, c'est aussi l'occasion de supprimer définitivement une dizaine d'heures de travail administratif par mois."
+        description="Par Florian Gagnebien, spécialiste de l'automatisation et fondateur de Cirrion. La réforme de la facture électronique est une contrainte. Bien prise, c'est aussi l'occasion de supprimer définitivement une dizaine d'heures de travail administratif par mois."
         date="26 juillet 2026"
         readTime="7 min de lecture"
         blocks={[

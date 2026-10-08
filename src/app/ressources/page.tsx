@@ -30,7 +30,7 @@ const ARTICLES = [
     badge: "Méthode",
     title: "Automatiser sa facturation avant 2026 : la méthode en 5 étapes",
     description:
-      "Cartographier, structurer, automatiser, connecter, contrôler. La méthode d'un ingénieur en automatisation appliquée à la facturation d'une entreprise artisanale.",
+      "Cartographier, structurer, automatiser, connecter, contrôler. La méthode d'un spécialiste de l'automatisation appliquée à la facturation d'une entreprise artisanale.",
     date: "Juillet 2026",
     readTime: "7 min",
   },

@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata({
     "De l'automatisation en ETI à le logiciel des artisans : Florian Gagnebien, fondateur de Cirrion, raconte pourquoi il a créé un logiciel de devis et facturation piloté par IA pour les artisans du bâtiment.",
   keywords: [
     "Florian Gagnebien", "fondateur Cirrion", "histoire Cirrion", "pourquoi Cirrion",
-    "ingénieur automatisation", "ERP artisan français", "IA souveraine artisan",
+    "spécialiste automatisation", "ERP artisan français", "IA souveraine artisan",
     "logiciel artisan fondateur", "Cirrion avis",
   ],
   openGraph: {
@@ -92,7 +92,7 @@ export default function PourquoiCirrion() {
           {
             type: "p",
             content:
-              "Je m'appelle Florian Gagnebien, je suis ingénieur en automatisation et je suis le fondateur de Cirrion. On me demande souvent pourquoi j'ai choisi les artisans du bâtiment plutôt qu'un marché plus « tech ». La réponse tient en une observation que j'ai faite en passant d'un monde à l'autre en quelques semaines.",
+              "Je m'appelle Florian Gagnebien, je suis spécialiste de l'automatisation et je suis le fondateur de Cirrion. On me demande souvent pourquoi j'ai choisi les artisans du bâtiment plutôt qu'un marché plus « tech ». La réponse tient en une observation que j'ai faite en passant d'un monde à l'autre en quelques semaines.",
           },
           {
             type: "h2",
