@@ -5,11 +5,11 @@ import TradeLanding from "@/components/sections/TradeLanding";
 export const metadata: Metadata = pageMetadata({
   title: "Logiciel devis plaquiste WhatsApp — Cirrion | Plus qu'un ERP",
   description:
-    "Logiciel de devis et facturation pour plaquistes. Créez vos devis plâtrerie depuis WhatsApp ou sur l'application Cirrion ERP : cloisons, doublage, isolation, e-facturation 2026.",
+    "Logiciel de devis et facturation pour plaquistes. Créez vos devis plâtrerie depuis WhatsApp ou sur l'application Cirrion : cloisons, doublage, isolation, facture électronique 2026.",
   keywords: ["logiciel devis plaquiste", "devis plaquiste WhatsApp", "logiciel plâtrerie", "ERP plaquiste", "devis cloison placo"],
   openGraph: {
     title: "Logiciel devis plaquiste — Cirrion",
-    description: "Devis plâtrerie depuis WhatsApp ou sur l'application Cirrion ERP. Cloisons, doublage, isolation — devis vocal en 3 minutes.",
+    description: "Devis plâtrerie depuis WhatsApp ou sur l'application Cirrion. Cloisons, doublage, isolation — devis vocal en 3 minutes.",
     url: "https://www.cirrion.eu/artisans/plaquiste",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans/plaquiste" },
@@ -33,11 +33,11 @@ export default function Plaquiste() {
         trade="plaquiste"
         badge="Plâtrerie & Isolation"
         title="Logiciel de devis et facturation pour plaquistes"
-        subtitle="Devis plâtrerie depuis WhatsApp ou sur l'application Cirrion ERP."
+        subtitle="Devis plâtrerie depuis WhatsApp ou sur l'application Cirrion."
         intro="Plaquiste, plâtrier ou spécialiste de l'isolation : vos journées se passent sur les chantiers, pas derrière un bureau. Cirrion génère vos devis plâtrerie par message vocal depuis WhatsApp, ou via vos modèles de devis sur l'application, avec vos prix du catalogue et la TVA de votre choix sur chaque ligne."
         features={[
           { title: "Devis plâtrerie par vocal", desc: "Dictez la prestation — cloisons, doublage, plafonds — Cirrion génère le devis PDF en 3 min avec vos prix du catalogue." },
-          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis plâtrerie, prêts à personnaliser avec vos prestations types." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion, vous réutilisez vos modèles de devis plâtrerie, prêts à personnaliser avec vos prestations types." },
           { title: "TVA isolation 5,5%", desc: "TVA 5,5, 10 ou 20% au choix sur chaque ligne : vous sélectionnez le taux réduit pour les travaux d'isolation thermique éligibles." },
           { title: "Catalogue de prestations", desc: "Plaques, rails, isolant, pose : enregistrez vos prestations et vos prix dans votre bibliothèque, réutilisable sur chaque devis." },
           { title: "Relances automatiques", desc: "Devis non signé relancé à J+3, J+7, J+14. Facture impayée relancée automatiquement." },

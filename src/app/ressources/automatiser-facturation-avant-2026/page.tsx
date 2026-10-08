@@ -5,7 +5,7 @@ import BlogArticle from "@/components/sections/BlogArticle";
 export const metadata: Metadata = pageMetadata({
   title: "Automatiser sa facturation avant 2026 : la méthode en 5 étapes",
   description:
-    "Par Florian Gagnebien, ingénieur en automatisation. La méthode concrète pour automatiser sa facturation d'artisan avant l'échéance e-facturation : cartographier, structurer, automatiser, connecter, contrôler.",
+    "Par Florian Gagnebien, ingénieur en automatisation. La méthode concrète pour automatiser sa facturation d'artisan avant l'échéance de la facture électronique : cartographier, structurer, automatiser, connecter, contrôler.",
   keywords: [
     "automatiser facturation artisan", "automatiser facturation avant 2026",
     "e-facturation 2026 artisan", "Factur-X artisan", "automatisation facturation bâtiment",
@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
   openGraph: {
     title: "Automatiser sa facturation avant 2026 : la méthode en 5 étapes",
     description:
-      "La méthode concrète d'un ingénieur en automatisation pour préparer sa facturation à l'échéance e-facturation.",
+      "La méthode concrète d'un ingénieur en automatisation pour préparer sa facturation à l'échéance de la facture électronique.",
     url: "https://www.cirrion.eu/ressources/automatiser-facturation-avant-2026",
     type: "article",
   },
@@ -48,7 +48,7 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Automatiser sa facturation avant 2026 : la méthode en 5 étapes",
   description:
-    "La méthode concrète pour automatiser la facturation d'une entreprise artisanale avant l'échéance e-facturation, par un ingénieur en automatisation.",
+    "La méthode concrète pour automatiser la facturation d'une entreprise artisanale avant l'échéance de la facture électronique, par un ingénieur en automatisation.",
   author: authorJsonLd,
   publisher: {
     "@type": "Organization",
@@ -86,7 +86,7 @@ export default function AutomatiserFacturation() {
       <BlogArticle
         badge="Méthode · Automatisation"
         title="Automatiser sa facturation avant 2026 : la méthode en 5 étapes"
-        description="Par Florian Gagnebien, ingénieur en automatisation et fondateur de Cirrion. La réforme e-facturation est une contrainte. Bien prise, c'est aussi l'occasion de supprimer définitivement une dizaine d'heures de travail administratif par mois."
+        description="Par Florian Gagnebien, ingénieur en automatisation et fondateur de Cirrion. La réforme de la facture électronique est une contrainte. Bien prise, c'est aussi l'occasion de supprimer définitivement une dizaine d'heures de travail administratif par mois."
         date="26 juillet 2026"
         readTime="7 min de lecture"
         blocks={[
@@ -98,7 +98,7 @@ export default function AutomatiserFacturation() {
           {
             type: "p",
             content:
-              "Un mot sur le calendrier avant de commencer : l'obligation de recevoir des factures électroniques concerne toutes les entreprises dès septembre 2026, et l'obligation d'émettre arrive en septembre 2027 pour les TPE et PME — donc pour la grande majorité des artisans. Les détails réglementaires sont dans notre guide dédié à la réforme e-facturation 2026 ; cet article porte sur la méthode.",
+              "Un mot sur le calendrier avant de commencer : l'obligation de recevoir des factures électroniques concerne toutes les entreprises dès septembre 2026, et l'obligation d'émettre arrive en septembre 2027 pour les TPE et PME — donc pour la grande majorité des artisans. Les détails réglementaires sont dans notre guide dédié à la réforme facture électronique 2026 ; cet article porte sur la méthode.",
           },
           {
             type: "h2",
@@ -136,17 +136,17 @@ export default function AutomatiserFacturation() {
           {
             type: "p",
             content:
-              "C'est l'étape que tout le monde veut sauter, et c'est précisément celle qui fait échouer les projets. Une automatisation ne sait traiter que des données structurées. Un PDF envoyé par e-mail, ce n'est pas de la donnée : c'est une image de donnée. C'est d'ailleurs toute la logique de la réforme e-facturation, qui impose des formats structurés comme Factur-X, UBL ou CII.",
+              "C'est l'étape que tout le monde veut sauter, et c'est précisément celle qui fait échouer les projets. Une machine ne peut traiter que des informations rangées proprement, chacune à sa place. Un PDF envoyé par e-mail, c'est une simple image : la machine ne sait pas y lire un montant. C'est toute la logique de la réforme de la facture électronique, qui impose des formats où chaque information est rangée.",
           },
           {
             type: "p",
             content:
-              "Concrètement, avant d'automatiser quoi que ce soit, il faut que trois choses soient propres et centralisées au même endroit :",
+              "Concrètement, avant d'automatiser quoi que ce soit, il faut que trois choses soient propres et rangées au même endroit :",
           },
           {
             type: "ul",
             items: [
-              "Votre base clients : un client = une fiche unique, avec SIRET pour les professionnels (obligatoire pour l'e-facturation B2B)",
+              "Votre base clients : un client = une fiche unique, avec SIRET pour les professionnels (obligatoire pour facturer une entreprise)",
               "Votre catalogue de prestations : vos ouvrages récurrents avec unité, prix et taux de TVA associé, plutôt que retapés à chaque devis",
               "Vos taux de TVA : 5,5 %, 10 % ou 20 % rattachés au type de travaux et non choisis au cas par cas de mémoire",
             ],
@@ -186,7 +186,7 @@ export default function AutomatiserFacturation() {
           },
           {
             type: "h2",
-            content: "Étape 4 — Pourquoi faut-il connecter sa banque et une plateforme de dématérialisation ?",
+            content: "Étape 4 — Pourquoi connecter sa banque et une plateforme agréée ?",
           },
           {
             type: "p",
@@ -196,7 +196,7 @@ export default function AutomatiserFacturation() {
           {
             type: "p",
             content:
-              "En sortie, la plateforme de dématérialisation. À partir de la réforme, une facture B2B ne se transmet plus par e-mail : elle passe par une plateforme de dématérialisation (PDP) qui la dépose chez votre client au bon format. Chez Cirrion, cette transmission passe par B2Brouter, et la facture est générée directement en Factur-X — c'est-à-dire un PDF lisible par un humain avec les données structurées intégrées dedans.",
+              "À la sortie, une plateforme agréée par l'administration. Avec la réforme, une facture à une entreprise ne s'envoie plus par e-mail : elle passe par une plateforme agréée qui la dépose chez votre client, dans le bon format. Chez Cirrion, cette transmission passe par B2Brouter, et la facture est faite directement au format de la facture électronique — c'est-à-dire un PDF que vous lisez normalement, avec les informations rangées à l'intérieur.",
           },
           {
             type: "p",
@@ -226,7 +226,7 @@ export default function AutomatiserFacturation() {
             items: [
               "L'encours client : combien vous devez encaisser, et depuis combien de temps",
               "Les relances effectivement parties, et à qui",
-              "Les factures rejetées par la plateforme de dématérialisation — cela arrive, et il faut le voir tout de suite",
+              "Les factures refusées par la plateforme agréée — cela arrive, et il faut le voir tout de suite",
               "Les devis en attente de signature depuis plus d'une semaine",
             ],
           },

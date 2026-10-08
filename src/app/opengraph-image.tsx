@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Cirrion — Le système d'exploitation des artisans et PME du bâtiment";
+export const alt = "Cirrion — Le logiciel qui fait l'administratif des artisans du bâtiment";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -65,7 +65,7 @@ export default function Image() {
         </div>
 
         <div style={{ display: "flex", fontSize: 32, color: "rgba(232,237,244,0.7)", marginTop: 28, maxWidth: 900 }}>
-          Plus qu&apos;un ERP — le système d&apos;exploitation des artisans · Hébergé en France
+          Devis, factures, paie, comptabilité · Hébergé en France
         </div>
       </div>
     ),

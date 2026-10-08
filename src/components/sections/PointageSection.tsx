@@ -332,7 +332,7 @@ export default function PointageSection() {
           }}>
             <span style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}>
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80" }} />
-              Cirrion ERP · Intervention en cours
+              Cirrion · Intervention en cours
             </span>
             <span>Données hébergées en France · RGPD</span>
           </div>

@@ -120,7 +120,7 @@ export default function LogicielDevisGratuitArtisan() {
               "Pas de signature électronique : le client doit imprimer, signer, scanner et renvoyer.",
               "Pas d'envoi direct depuis le logiciel : vous devez télécharger le PDF puis l'envoyer par email.",
               "Pas d'accès depuis le téléphone sur chantier : il faut rentrer au bureau ou être sur ordinateur.",
-              "Pas de conformité e-facturation 2026 : vous devrez changer d'outil de toute façon.",
+              "Pas de conformité facture électronique 2026 : vous devrez changer d'outil de toute façon.",
             ],
           },
           {
@@ -151,7 +151,7 @@ export default function LogicielDevisGratuitArtisan() {
               "Création de devis depuis WhatsApp par message vocal en 3 minutes, même sur chantier.",
               "Signature électronique à valeur légale intégrée — votre client signe depuis son téléphone.",
               "Envoi automatique du devis au client par email ou WhatsApp.",
-              "Conformité e-facturation 2026 native — aucun module à ajouter.",
+              "Prêt pour la facture électronique 2026 native — aucun module à ajouter.",
               "Catalogue de prix personnalisé réutilisable sur tous vos devis.",
             ],
           },

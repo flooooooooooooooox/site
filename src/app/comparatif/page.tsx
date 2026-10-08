@@ -5,7 +5,7 @@ import Comparatif from "@/components/sections/Comparatif";
 export const metadata: Metadata = pageMetadata({
   title: "Comparatif — Cirrion vs Obat, Sage, EBP",
   description:
-    "Comparez Cirrion aux logiciels bâtiment Obat, Sage et EBP : devis par vocal WhatsApp, agent IA 24h/24, relances automatiques, e-facturation 2026. 28 critères comparés.",
+    "Comparez Cirrion aux logiciels bâtiment Obat, Sage et EBP : devis par vocal WhatsApp, agent IA 24h/24, relances automatiques, facture électronique 2026. 28 critères comparés.",
   keywords: [
     "Cirrion vs Obat",
     "alternative Obat",

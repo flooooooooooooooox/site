@@ -5,11 +5,11 @@ import TradeLanding from "@/components/sections/TradeLanding";
 export const metadata: Metadata = pageMetadata({
   title: "Logiciel devis électricien WhatsApp — Cirrion | Plus qu'un ERP",
   description:
-    "Logiciel de devis et facturation pour électriciens. Créez vos devis électricité depuis WhatsApp en 3 min : mise aux normes, tableau électrique, domotique, e-facturation 2026.",
+    "Logiciel de devis et facturation pour électriciens. Créez vos devis électricité depuis WhatsApp en 3 min : mise aux normes, tableau électrique, domotique, facture électronique 2026.",
   keywords: ["logiciel devis électricien", "devis électricien WhatsApp", "logiciel électricien bâtiment", "ERP électricien", "gestion électricien"],
   openGraph: {
     title: "Logiciel devis électricien — Cirrion",
-    description: "Devis et factures pour électriciens depuis WhatsApp en 3 minutes. TVA 5,5/10/20% au choix, e-facturation 2026, relances.",
+    description: "Devis et factures pour électriciens depuis WhatsApp en 3 minutes. TVA 5,5/10/20% au choix, facture électronique 2026, relances.",
     url: "https://www.cirrion.eu/artisans/electricien",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans/electricien" },
@@ -33,13 +33,13 @@ export default function Electricien() {
         trade="électricien"
         badge="Électricité"
         title="Logiciel de devis et facturation pour électriciens"
-        subtitle="Devis électricité depuis WhatsApp ou sur l'application Cirrion ERP."
+        subtitle="Devis électricité depuis WhatsApp ou sur l'application Cirrion."
         intro="En tant qu'électricien, vous intervenez sur des chantiers variés : mise aux normes NF C 15-100, installation de tableaux électriques, domotique, bornes de recharge VE. Cirrion comprend le vocabulaire de l'électricité du bâtiment et génère vos devis par vocal avec vos prix du catalogue et la TVA de votre choix, depuis votre téléphone sur chantier."
         features={[
           { title: "Devis électricité par vocal", desc: "Dictez vos prestations depuis WhatsApp — tableau électrique, câblage, prises, éclairage — et recevez le devis PDF en 3 min." },
-          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis électricité et les personnalisez en quelques clics. Idéal au bureau." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion, vous réutilisez vos modèles de devis électricité et les personnalisez en quelques clics. Idéal au bureau." },
           { title: "TVA au choix sur chaque ligne", desc: "5,5% pour rénovation en résidence principale, 10% pour travaux sur existant, 20% pour le neuf. Vous choisissez le taux, Cirrion l'applique sur le devis." },
-          { title: "Conformité e-facturation 2026", desc: "Toutes vos factures sont conformes à l'obligation e-facturation 2026 pour les entreprises du bâtiment." },
+          { title: "Prêt pour la facture électronique 2026", desc: "Vos factures sont préparées pour l'obligation de facture électronique qui arrive pour les entreprises du bâtiment." },
           { title: "Relances automatiques", desc: "Devis non signé à J+3, J+7, J+14. Facture impayée à J+15, J+30. Tout est automatique." },
           { title: "PV de réception", desc: "À la fin du chantier électrique, Cirrion génère et envoie le PV de réception avec signature électronique." },
         ]}

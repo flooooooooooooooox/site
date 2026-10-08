@@ -103,29 +103,29 @@ type Proof = {
 const PROOFS: Proof[] = [
   {
     value: 3, suffix: " min", label: "pour créer un devis",
-    logos: [LogoWhatsApp], partner: "WhatsApp Business", detail: "API officielle Meta, par vocal ou écrit",
+    logos: [LogoWhatsApp], partner: "WhatsApp Business", detail: "Vous écrivez ou vous dictez, depuis votre téléphone",
   },
   {
     value: 100, suffix: "", label: "fonctions dans un seul outil",
-    logos: [LogoModules], partner: "Tout-en-un", detail: "Devis, factures, TVA, planning, trésorerie…",
+    logos: [LogoModules], partner: "Tout au même endroit", detail: "Devis, factures, TVA, planning, argent…",
   },
   {
     value: 100, suffix: " %", label: "de vos données en Europe",
-    logos: [LogoMistral], partner: "Mistral AI", detail: "IA française, hébergement en France",
+    logos: [LogoMistral], partner: "Mistral AI", detail: "Une intelligence artificielle française, hébergée en France",
   },
   {
-    value: 24, suffix: " h/24", label: "un agent IA décroche pour vous",
+    value: 24, suffix: " h/24", label: "quelqu'un décroche pour vous",
     logos: [LogoMistral, LogoWhatsApp, LogoElevenLabs],
     partner: "Mistral · WhatsApp · ElevenLabs",
-    detail: "Il comprend, répond par écrit et au téléphone",
+    detail: "Elle comprend, répond par écrit et au téléphone",
   },
 ];
 
 /** Ceux qui tiennent la partie administrative, derriere l'ecran. */
 const BACKOFFICE = [
-  { Logo: LogoClementine, name: "Clementine", sub: "Bilan et liasse de fin d'année" },
-  { Logo: LogoOpenPaye, name: "OpenPaye", sub: "Paie et DSN" },
-  { Logo: LogoBridge, name: "Bridge", sub: "Banque connectée · DSP2" },
+  { Logo: LogoClementine, name: "Clementine", sub: "Bilan de fin d'année" },
+  { Logo: LogoOpenPaye, name: "OpenPaye", sub: "Fiches de paie" },
+  { Logo: LogoBridge, name: "Bridge", sub: "Votre banque connectée" },
   { Logo: LogoGmail, name: "Gmail", sub: "Envoi en votre nom" },
 ];
 
@@ -235,7 +235,7 @@ export default function ProofSection() {
             ))}
           </div>
 
-          <p className="proof-sub">Et derrière vos papiers</p>
+          <p className="proof-sub">Et pour vos papiers</p>
 
           {/* E-facture : pas un chiffre, une habilitation. Elle a sa propre ligne. */}
           <motion.div

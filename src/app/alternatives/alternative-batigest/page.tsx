@@ -5,11 +5,11 @@ import AlternativePage from "@/components/sections/AlternativePage";
 export const metadata: Metadata = pageMetadata({
   title: "Alternative à Batigest : logiciel devis bâtiment simple et IA — Cirrion",
   description:
-    "Vous cherchez une alternative à Batigest plus simple et moins chère ? Cirrion : devis WhatsApp, IA, e-facturation 2026, sans formation. Comparatif complet.",
+    "Vous cherchez une alternative à Batigest plus simple et moins chère ? Cirrion : devis WhatsApp, IA, facture électronique 2026, sans formation. Comparatif complet.",
   keywords: ["alternative Batigest", "Batigest avis", "logiciel comme Batigest", "remplacer Batigest", "concurrent Batigest"],
   openGraph: {
     title: "Alternative à Batigest — Cirrion, le logiciel devis IA",
-    description: "Une alternative à Batigest plus simple, sans formation : devis WhatsApp, IA, e-facturation 2026.",
+    description: "Une alternative à Batigest plus simple, sans formation : devis WhatsApp, IA, facture électronique 2026.",
     url: "https://www.cirrion.eu/alternatives/alternative-batigest",
   },
   alternates: { canonical: "https://www.cirrion.eu/alternatives/alternative-batigest" },
@@ -37,7 +37,7 @@ export default function AlternativeBatigest() {
         whyTitle="Pourquoi choisir Cirrion plutôt que Batigest"
         whyParagraphs={[
           "Batigest s'adresse historiquement aux entreprises du bâtiment structurées, avec un besoin de formation et un coût d'implémentation non négligeable. C'est un outil riche mais exigeant.",
-          "Cirrion élimine la barrière de la complexité. Vous créez vos devis par message vocal sur WhatsApp ou via vos modèles de devis sur l'application, sans manuel ni formation. L'IA gère les relances, l'accueil client et la conformité e-facturation 2026 automatiquement. C'est l'alternative à Batigest pour ceux qui veulent la puissance sans la lourdeur.",
+          "Cirrion élimine la barrière de la complexité. Vous créez vos devis par message vocal sur WhatsApp ou via vos modèles de devis sur l'application, sans manuel ni formation. L'IA gère les relances, l'accueil client et la conformité facture électronique 2026 automatiquement. C'est l'alternative à Batigest pour ceux qui veulent la puissance sans la lourdeur.",
         ]}
         rows={[
           { feature: "Prise en main sans formation", floxia: true, competitor: false },
@@ -45,7 +45,7 @@ export default function AlternativeBatigest() {
           { feature: "Vos modèles de devis", floxia: true, competitor: "partial" },
           { feature: "Relances automatiques IA", floxia: true, competitor: false },
           { feature: "Gestion de chantier complète", floxia: true, competitor: true },
-          { feature: "E-facturation 2026 conforme", floxia: true, competitor: true },
+          { feature: "Facture électronique 2026 conforme", floxia: true, competitor: true },
           { feature: "Tarif adapté aux indépendants", floxia: true, competitor: "partial" },
           { feature: "Hébergement 100% France / RGPD", floxia: true, competitor: true },
         ]}

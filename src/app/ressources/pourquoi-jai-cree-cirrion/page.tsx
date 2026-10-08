@@ -5,7 +5,7 @@ import BlogArticle from "@/components/sections/BlogArticle";
 export const metadata: Metadata = pageMetadata({
   title: "Pourquoi j'ai créé Cirrion — par Florian Gagnebien, fondateur",
   description:
-    "De l'automatisation en ETI à l'ERP des artisans : Florian Gagnebien, fondateur de Cirrion, raconte pourquoi il a créé un logiciel de devis et facturation piloté par IA pour les artisans du bâtiment.",
+    "De l'automatisation en ETI à le logiciel des artisans : Florian Gagnebien, fondateur de Cirrion, raconte pourquoi il a créé un logiciel de devis et facturation piloté par IA pour les artisans du bâtiment.",
   keywords: [
     "Florian Gagnebien", "fondateur Cirrion", "histoire Cirrion", "pourquoi Cirrion",
     "ingénieur automatisation", "ERP artisan français", "IA souveraine artisan",
@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
   openGraph: {
     title: "Pourquoi j'ai créé Cirrion — par Florian Gagnebien",
     description:
-      "De l'automatisation en ETI à l'ERP des artisans : l'histoire de Cirrion, racontée par son fondateur.",
+      "De l'automatisation en ETI à le logiciel des artisans : l'histoire de Cirrion, racontée par son fondateur.",
     url: "https://www.cirrion.eu/ressources/pourquoi-jai-cree-cirrion",
     type: "article",
   },
@@ -47,7 +47,7 @@ const articleJsonLd = {
   "@type": "Article",
   headline: "Pourquoi j'ai créé Cirrion",
   description:
-    "De l'automatisation en ETI à l'ERP des artisans : l'histoire de Cirrion, racontée par son fondateur Florian Gagnebien.",
+    "De l'automatisation en ETI à le logiciel des artisans : l'histoire de Cirrion, racontée par son fondateur Florian Gagnebien.",
   author: authorJsonLd,
   publisher: {
     "@type": "Organization",
@@ -180,8 +180,8 @@ export default function PourquoiCirrion() {
               "Devis et factures — depuis WhatsApp par vocal, ou depuis l'application avec vos modèles de devis",
               "Signature électronique à valeur légale, pour ne plus courir après un devis signé",
               "Relances automatiques des devis sans réponse et des factures impayées",
-              "Facturation électronique conforme 2026, via B2Brouter (plateforme de dématérialisation)",
-              "Rapprochement bancaire automatique via Bridge (connexion sécurisée DSP2)",
+              "Facture électronique prête pour 2026, via B2Brouter (plateforme agréée par l'administration)",
+              "Paiements rapprochés de votre banque, automatiquement via Bridge (connexion bancaire sécurisée)",
               "Suivi de chantier, planning et heures des salariés",
               "Espace client, pour que le client suive son dossier sans appeler",
               "Suivi des dépenses et scan des tickets et factures fournisseurs",

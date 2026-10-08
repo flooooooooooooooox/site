@@ -5,7 +5,7 @@ import BlogArticle from "@/components/sections/BlogArticle";
 export const metadata: Metadata = pageMetadata({
   title: "Modèle de devis bâtiment : créez vos modèles réutilisables — Cirrion",
   description:
-    "Modèles de devis bâtiment : créez vos propres modèles réutilisables et générez des devis professionnels conformes en quelques clics, sur l'application Cirrion ERP ou depuis WhatsApp.",
+    "Modèles de devis bâtiment : créez vos propres modèles réutilisables et générez des devis professionnels conformes en quelques clics, sur l'application Cirrion ou depuis WhatsApp.",
   keywords: [
     "modèle devis bâtiment", "modèle devis artisan", "exemple devis travaux",
     "modèle devis", "logiciel devis en ligne", "créer devis en ligne artisan",
@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
   openGraph: {
     title: "Modèle de devis bâtiment — Créez vos modèles réutilisables",
     description:
-      "Créez des devis bâtiment professionnels en quelques clics avec vos modèles de devis enregistrés dans Cirrion, sur l'application ERP ou depuis WhatsApp.",
+      "Créez des devis bâtiment professionnels en quelques clics avec vos modèles de devis enregistrés dans Cirrion, sur l'application ou depuis WhatsApp.",
     url: "https://www.cirrion.eu/ressources/modele-devis-batiment",
   },
   alternates: { canonical: "https://www.cirrion.eu/ressources/modele-devis-batiment" },
@@ -87,7 +87,7 @@ export default function ModeleDevis() {
           {
             type: "p",
             content:
-              "Avec Cirrion, vous créez vos devis là où c'est le plus pratique pour vous. Sur l'application Cirrion ERP (ordinateur ou tablette), vous rappelez l'un de vos modèles et vous le personnalisez à l'écran — idéal pour les chantiers complexes à plusieurs postes. Depuis WhatsApp, vous décrivez le chantier par message vocal ou écrit, et Cirrion construit le devis en 3 minutes — idéal sur le terrain.",
+              "Avec Cirrion, vous créez vos devis là où c'est le plus pratique pour vous. Sur l'application Cirrion (ordinateur ou tablette), vous rappelez l'un de vos modèles et vous le personnalisez à l'écran — idéal pour les chantiers complexes à plusieurs postes. Depuis WhatsApp, vous décrivez le chantier par message vocal ou écrit, et Cirrion construit le devis en 3 minutes — idéal sur le terrain.",
           },
           {
             type: "ul",
@@ -115,7 +115,7 @@ export default function ModeleDevis() {
           {
             type: "p",
             content:
-              "Cirrion intègre automatiquement tous ces éléments dans chaque modèle. Vous ne risquez plus d'oublier une mention obligatoire, et chaque devis est conforme à la réglementation, y compris l'e-facturation 2026.",
+              "Cirrion intègre automatiquement tous ces éléments dans chaque modèle. Vous ne risquez plus d'oublier une mention obligatoire, et chaque devis est conforme à la réglementation, y compris la facture électronique 2026.",
           },
           {
             type: "h2",

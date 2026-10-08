@@ -325,7 +325,7 @@ export default function Hero() {
             }}>
             <span className="hero-live-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 8px rgba(22,163,74,0.6)", display: "inline-block", flexShrink: 0 }} />
             <span style={{ color: "#2455D6", fontSize: "0.64rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-              Hébergé en France — Conforme e-facturation 2026
+              Hébergé en France — Prêt pour la facture électronique
             </span>
           </motion.div>
 
@@ -397,7 +397,7 @@ export default function Hero() {
                 sizes="(max-width: 960px) 92vw, 640px"
                 width={1600}
                 height={787}
-                alt="Tableau de bord CirrionOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
+                alt="Tableau de bord CirrionOS — tableau de bord pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"

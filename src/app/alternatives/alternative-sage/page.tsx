@@ -5,11 +5,11 @@ import AlternativePage from "@/components/sections/AlternativePage";
 export const metadata: Metadata = pageMetadata({
   title: "Alternative à Sage : logiciel devis & facture bâtiment IA — Cirrion",
   description:
-    "Une alternative à Sage plus simple pour les artisans du bâtiment : devis WhatsApp, IA, e-facturation 2026, vos modèles de devis. Comparatif Cirrion vs Sage.",
+    "Une alternative à Sage plus simple pour les artisans du bâtiment : devis WhatsApp, IA, facture électronique 2026, vos modèles de devis. Comparatif Cirrion vs Sage.",
   keywords: ["alternative Sage", "Sage bâtiment avis", "logiciel comme Sage", "remplacer Sage artisan", "concurrent Sage"],
   openGraph: {
     title: "Alternative à Sage — Cirrion pour artisans du bâtiment",
-    description: "Une alternative à Sage plus simple et moderne : devis WhatsApp, IA, e-facturation 2026.",
+    description: "Une alternative à Sage plus simple et moderne : devis WhatsApp, IA, facture électronique 2026.",
     url: "https://www.cirrion.eu/alternatives/alternative-sage",
   },
   alternates: { canonical: "https://www.cirrion.eu/alternatives/alternative-sage" },
@@ -46,7 +46,7 @@ export default function AlternativeSage() {
           { feature: "Agent IA réceptionniste 24h/24", floxia: true, competitor: false },
           { feature: "Relances automatiques IA", floxia: true, competitor: false },
           { feature: "Export comptabilité 1 clic", floxia: true, competitor: true },
-          { feature: "E-facturation 2026 conforme", floxia: true, competitor: true },
+          { feature: "Facture électronique 2026 conforme", floxia: true, competitor: true },
           { feature: "Tarif adapté aux indépendants", floxia: true, competitor: false },
         ]}
         forWhom="Cirrion est l'alternative à Sage pour les artisans et PME du bâtiment qui n'ont pas besoin d'un ERP comptable complet, mais d'un outil simple et intelligent pour gérer devis, factures et relations clients au quotidien."

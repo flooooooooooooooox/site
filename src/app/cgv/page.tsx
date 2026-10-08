@@ -19,7 +19,7 @@ export default function Cgv() {
           {
             heading: "1. Objet",
             body: [
-              "Les présentes conditions générales de vente (CGV) régissent l'accès et l'utilisation des services Cirrion, solution de gestion et d'automatisation destinée aux artisans et PME du bâtiment.",
+              "Les présentes conditions générales de vente (CGV) régissent l'accès et l'utilisation des services Cirrion, logiciel de gestion destinée aux artisans et PME du bâtiment.",
               "Toute souscription à un abonnement implique l'acceptation pleine et entière des présentes CGV.",
             ],
           },

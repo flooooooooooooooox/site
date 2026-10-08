@@ -307,7 +307,7 @@ export default function TradesSection() {
           }}>
             <span style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}>
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80" }} />
-              Cirrion ERP · Connecté
+              Cirrion · Connecté
             </span>
             <span>{TRADES.length} métiers disponibles</span>
           </div>

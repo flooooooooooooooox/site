@@ -160,7 +160,7 @@ export function FrameFactures() {
       {line(74, 200, 188)}
       {line(258, 200, 50, 0.3)}
       <rect x="200" y="222" width="108" height="5" rx="2.5" fill={BLUE} opacity="0.3" />
-      <text x="74" y="250" fontSize="11" fill={INK} opacity="0.42" fontFamily="system-ui">Factur-X · conforme 2026</text>
+      <text x="74" y="250" fontSize="11" fill={INK} opacity="0.42" fontFamily="system-ui">Facture électronique · 2026</text>
 
       {/* relance automatique */}
       <rect x="54" y="300" width="274" height="46" rx="14" fill={BLUE} opacity="0.07" />
@@ -194,8 +194,8 @@ export function FrameDeclarations() {
 
       {/* les deux autres declarations, cochees */}
       {[
-        ["URSSAF — cotisations", 288],
-        ["DSN — déclaration sociale", 318],
+        ["Charges sociales", 288],
+        ["Déclaration de paie", 318],
       ].map(([label, y], i) => (
         <g key={i}>
           <circle cx="82" cy={(y as number) - 4} r="9" fill={GREEN} opacity="0.15" />

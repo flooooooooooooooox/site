@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = pageMetadata({
   title: "Presse & médias — Cirrion | Kit de presse logiciel artisan bâtiment",
   description:
-    "Kit de presse Cirrion : informations officielles, éléments de langage et visuels pour les journalistes et blogueurs. Cirrion est le système d'exploitation des artisans et PME du bâtiment — bien plus qu'un ERP.",
+    "Kit de presse Cirrion : informations officielles, éléments de langage et visuels pour les journalistes et blogueurs. Cirrion est le logiciel qui range tout l'administratif des artisans et PME du bâtiment.",
   keywords: ["Cirrion presse", "kit presse Cirrion", "Cirrion médias", "logiciel artisan bâtiment presse"],
   openGraph: {
     title: "Presse & médias — Cirrion",
@@ -24,7 +24,7 @@ const orgJsonLd = {
   logo: "https://www.cirrion.eu/icon.svg",
   image: "https://www.cirrion.eu/dashboard-cirrion.jpg",
   description:
-    "Cirrion est le système d'exploitation des artisans et PME du bâtiment — bien plus qu'un ERP. Créez devis et factures depuis WhatsApp ou l'application Cirrion en 3 minutes.",
+    "Cirrion est le logiciel qui range tout l'administratif des artisans et PME du bâtiment. Créez devis et factures depuis WhatsApp ou l'application Cirrion en 3 minutes.",
   foundingDate: "2026",
   areaServed: { "@type": "Country", name: "France" },
   founder: { "@type": "Person", name: "Florian", jobTitle: "Fondateur & CEO" },
@@ -36,8 +36,8 @@ const orgJsonLd = {
 
 const FAITS = [
   { label: "Nom officiel", value: "Cirrion" },
-  { label: "Nom produit", value: "Cirrion ERP / CirrionOS" },
-  { label: "Secteur", value: "SaaS · Logiciel de gestion pour artisans et indépendants" },
+  { label: "Nom produit", value: "Cirrion / CirrionOS" },
+  { label: "Secteur", value: "Logiciel de gestion pour artisans et indépendants" },
   { label: "Fondé en", value: "2026" },
   { label: "Fondateur", value: "Florian — ingénieur en automatisation" },
   { label: "Siège", value: "France" },
@@ -55,8 +55,8 @@ const ANGLES = [
     desc: "L'artisan décrit son intervention par vocal sur WhatsApp ; Cirrion génère le devis PDF et l'envoie au client — sans ordinateur, sans saisie.",
   },
   {
-    titre: "La e-facturation 2026 sans effort",
-    desc: "La réforme de la facturation électronique est entrée en vigueur en septembre 2026. Cirrion prépare les artisans et PME aux nouveaux flux de réception, d'émission et d'e-reporting selon leur calendrier légal.",
+    titre: "La facture électronique 2026 sans effort",
+    desc: "La réforme de la facturation électronique est entrée en vigueur en septembre 2026. Cirrion prépare les artisans et PME aux nouveaux flux de réception, d'envoi et de transmission des ventes, selon leur calendrier légal.",
   },
   {
     titre: "L'ERP des artisans vs les mastodontes",
@@ -86,7 +86,7 @@ export default function Presse() {
           Cirrion en quelques mots
         </h2>
         <p style={{ color: "rgba(var(--text-rgb),0.7)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "1rem" }}>
-          <strong style={{ color: "var(--text)" }}>Cirrion</strong> (aussi appelé <strong style={{ color: "var(--text)" }}>CirrionOS</strong>) est un système d&apos;exploitation d&apos;entreprise — un ERP nouvelle génération — destiné aux artisans, auto-entrepreneurs, TPE et PME du bâtiment en France. Il permet de créer des devis et factures en 3 minutes, depuis WhatsApp par message vocal ou sur l&apos;application web Cirrion ERP avec des modèles de devis que vous créez.
+          <strong style={{ color: "var(--text)" }}>Cirrion</strong> (aussi appelé <strong style={{ color: "var(--text)" }}>CirrionOS</strong>) est un logiciel qui range tout l&apos;administratif d&apos;une entreprise — destiné aux artisans, auto-entrepreneurs, TPE et PME du bâtiment en France. Il permet de créer des devis et factures en 3 minutes, depuis WhatsApp par message vocal ou sur l&apos;application Cirrion sur ordinateur avec des modèles de devis que vous créez.
         </p>
         <p style={{ color: "rgba(var(--text-rgb),0.65)", fontSize: ".95rem", lineHeight: 1.85, marginBottom: "3rem" }}>
           Fondé en 2024 par Florian, ingénieur en automatisation, Cirrion a pour mission de rendre aux artisans le temps qu&apos;ils consacrent à l&apos;administratif, en apportant aux petites structures du bâtiment les outils d&apos;automatisation dont bénéficient les grandes entreprises.

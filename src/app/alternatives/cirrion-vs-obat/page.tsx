@@ -5,11 +5,11 @@ import AlternativePage from "@/components/sections/AlternativePage";
 export const metadata: Metadata = pageMetadata({
   title: "Cirrion vs Obat : quel logiciel de devis pour artisans choisir ?",
   description:
-    "Comparatif Cirrion vs Obat pour les artisans du bâtiment. Devis WhatsApp, IA, e-facturation 2026, vos modèles de devis. Découvrez quelle solution choisir.",
+    "Comparatif Cirrion vs Obat pour les artisans du bâtiment. Devis WhatsApp, IA, facture électronique 2026, vos modèles de devis. Découvrez quelle solution choisir.",
   keywords: ["Cirrion vs Obat", "alternative Obat", "Obat avis", "comparatif logiciel devis artisan", "logiciel comme Obat"],
   openGraph: {
     title: "Cirrion vs Obat — Comparatif logiciel devis artisan",
-    description: "Devis WhatsApp, IA, e-facturation 2026 : Cirrion vs Obat, le comparatif complet pour artisans du bâtiment.",
+    description: "Devis WhatsApp, IA, facture électronique 2026 : Cirrion vs Obat, le comparatif complet pour artisans du bâtiment.",
     url: "https://www.cirrion.eu/alternatives/cirrion-vs-obat",
   },
   alternates: { canonical: "https://www.cirrion.eu/alternatives/cirrion-vs-obat" },
@@ -45,7 +45,7 @@ export default function CirrionVsObat() {
           { feature: "Bibliothèque d'ouvrages / prix", floxia: true, competitor: true },
           { feature: "Agent IA réceptionniste 24h/24", floxia: true, competitor: false },
           { feature: "Relances automatiques devis / factures", floxia: true, competitor: false },
-          { feature: "E-facturation 2026 conforme", floxia: true, competitor: true },
+          { feature: "Facture électronique 2026 conforme", floxia: true, competitor: true },
           { feature: "Signature électronique légale", floxia: true, competitor: "partial" },
           { feature: "Hébergement 100% France / RGPD", floxia: true, competitor: true },
         ]}

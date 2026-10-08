@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
   ],
   openGraph: {
     title: "Logiciel devis serrurier-métallier — Cirrion",
-    description: "Devis et factures pour serruriers-métalliers depuis WhatsApp ou l'application Cirrion ERP.",
+    description: "Devis et factures pour serruriers-métalliers depuis WhatsApp ou l'application Cirrion.",
     url: "https://www.cirrion.eu/artisans/serrurier",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans/serrurier" },
@@ -39,11 +39,11 @@ export default function Serrurier() {
         trade="serrurier-métallier"
         badge="Serrurerie & Métallerie"
         title="Logiciel de devis et facturation pour serruriers-métalliers"
-        subtitle="Chiffrez vos interventions depuis WhatsApp ou l'application Cirrion ERP."
-        intro="Dépannage urgent, remplacement de serrure, porte blindée, portail ou garde-corps sur mesure : le serrurier-métallier alterne interventions rapides et ouvrages à chiffrer précisément. Cirrion centralise devis, factures et suivi client depuis le terrain ou le bureau."
+        subtitle="Chiffrez vos interventions depuis WhatsApp ou l'application Cirrion."
+        intro="Dépannage urgent, remplacement de serrure, porte blindée, portail ou garde-corps sur mesure : le serrurier-métallier alterne interventions rapides et ouvrages à chiffrer précisément. Cirrion met au même endroit devis, factures et suivi client depuis le terrain ou le bureau."
         features={[
           { title: "Devis depuis le terrain", desc: "Décrivez l'intervention par vocal ou texte depuis WhatsApp et préparez le devis sans ressaisie au retour à l'atelier." },
-          { title: "Modèles de devis réutilisables", desc: "Enregistrez vos prestations récurrentes dans l'application Cirrion ERP et adaptez quantités, fournitures et main-d'œuvre à chaque chantier." },
+          { title: "Modèles de devis réutilisables", desc: "Enregistrez vos prestations récurrentes dans l'application Cirrion et adaptez quantités, fournitures et main-d'œuvre à chaque chantier." },
           { title: "Dépannage et métallerie", desc: "Séparez clairement déplacement, urgence, fourniture, pose et fabrication sur mesure dans vos lignes de devis." },
           { title: "Acomptes et factures", desc: "Suivez l'acompte, la facture finale et les paiements depuis le même dossier client." },
           { title: "Relances structurées", desc: "Centralisez les devis en attente et les factures à relancer pour éviter les dossiers oubliés." },

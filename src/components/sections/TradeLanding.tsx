@@ -53,7 +53,7 @@ export default function TradeLanding({ trade, badge, title, subtitle, intro, fea
 
           {/* Use cases */}
           <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.3rem,2.5vw,1.7rem)", color: "var(--text)", marginBottom: "1rem" }}>
-            Cas d&apos;usage concrets
+            Comment ça se passe sur le terrain
           </h2>
           <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "3rem" }}>
             {useCases.map((u, i) => (
@@ -71,7 +71,7 @@ export default function TradeLanding({ trade, badge, title, subtitle, intro, fea
           {/* CTA */}
           <div style={{ padding: "2.5rem", borderRadius: "1.5rem", background: "rgba(36,85,214,0.05)", border: "1px solid rgba(36,85,214,0.18)", textAlign: "center", marginBottom: "4rem" }}>
             <h3 style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "1.4rem", color: "var(--text)", marginBottom: "0.6rem" }}>
-              Prêt à automatiser votre gestion de {trade} ?
+              Prêt à ne plus courir après la paperasse ?
             </h3>
             <p style={{ color: "rgba(var(--text-rgb),0.5)", fontSize: ".88rem", marginBottom: "1.5rem" }}>Démo gratuite · Mise en place en 24h</p>
             <a href="https://calendly.com/cirrion-pro/30min" target="_blank" rel="noopener noreferrer"

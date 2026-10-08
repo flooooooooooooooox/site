@@ -91,7 +91,7 @@ export default function AutoEntrepreneur() {
           },
           {
             type: "h2",
-            content: "E-facturation 2026 : les auto-entrepreneurs aussi sont concernés",
+            content: "Facture électronique 2026 : les auto-entrepreneurs aussi sont concernés",
           },
           {
             type: "p",

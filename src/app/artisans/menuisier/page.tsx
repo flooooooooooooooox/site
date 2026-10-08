@@ -5,11 +5,11 @@ import TradeLanding from "@/components/sections/TradeLanding";
 export const metadata: Metadata = pageMetadata({
   title: "Logiciel devis menuisier WhatsApp — Cirrion | Plus qu'un ERP",
   description:
-    "Logiciel de devis et facturation pour menuisiers. Créez vos devis menuiserie depuis WhatsApp ou sur l'application Cirrion ERP : fenêtres, portes, agencement, e-facturation 2026.",
+    "Logiciel de devis et facturation pour menuisiers. Créez vos devis menuiserie depuis WhatsApp ou sur l'application Cirrion : fenêtres, portes, agencement, facture électronique 2026.",
   keywords: ["logiciel devis menuisier", "devis menuisier WhatsApp", "logiciel menuiserie", "ERP menuisier", "devis agencement bois"],
   openGraph: {
     title: "Logiciel devis menuisier — Cirrion",
-    description: "Devis menuiserie depuis WhatsApp ou sur l'application Cirrion ERP. Fenêtres, portes, agencement — TVA 5,5/10/20% au choix.",
+    description: "Devis menuiserie depuis WhatsApp ou sur l'application Cirrion. Fenêtres, portes, agencement — TVA 5,5/10/20% au choix.",
     url: "https://www.cirrion.eu/artisans/menuisier",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans/menuisier" },
@@ -33,11 +33,11 @@ export default function Menuisier() {
         trade="menuisier"
         badge="Menuiserie & Agencement"
         title="Logiciel de devis et facturation pour menuisiers"
-        subtitle="Devis menuiserie depuis WhatsApp ou sur l'application Cirrion ERP."
+        subtitle="Devis menuiserie depuis WhatsApp ou sur l'application Cirrion."
         intro="Menuisier bois, alu ou PVC, agenceur ou poseur : vos devis mêlent fourniture et pose, avec des dimensions précises et des finitions variées. Cirrion génère vos devis depuis WhatsApp par message vocal, ou via vos modèles de devis sur l'application, avec la TVA de votre choix selon le type de travaux."
         features={[
           { title: "Devis menuiserie par vocal", desc: "Dictez les ouvrages — fenêtres, portes, placards, escaliers — et recevez le devis PDF en 3 min depuis WhatsApp." },
-          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis menuiserie, prêts à personnaliser, idéal pour l'agencement sur mesure." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion, vous réutilisez vos modèles de devis menuiserie, prêts à personnaliser, idéal pour l'agencement sur mesure." },
           { title: "Catalogue de prestations", desc: "Fenêtres, portes, placards, pose : enregistrez vos prestations et vos prix dans votre bibliothèque, réutilisable sur chaque devis." },
           { title: "TVA rénovation au choix", desc: "5,5% pour les menuiseries d'isolation thermique, 10% en rénovation, 20% pour le neuf. Vous choisissez le taux sur chaque ligne, Cirrion l'applique sur le devis." },
           { title: "Relances automatiques", desc: "Devis non signé relancé à J+3, J+7, J+14. Facture impayée relancée automatiquement." },

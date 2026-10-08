@@ -28,11 +28,11 @@ export default function ErpOsSection() {
               letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem",
             }}>
               Votre{" "}
-              <span style={{ color: "#2455D6" }}>cockpit opérationnel</span>
+              <span style={{ color: "#2455D6" }}>tableau de bord</span>
             </h2>
             <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: "1.1rem", lineHeight: 1.65, maxWidth: "30rem" }}>
-              Un seul écran. Tout votre business — devis, factures, chantiers, planning,
-              relances et notifications, centralisés et pilotés en temps réel.
+              Un seul écran. Toute votre entreprise — devis, factures, chantiers, planning,
+              relances et notifications, au même endroit et à jour en temps réel.
             </p>
           </motion.div>
 
@@ -51,7 +51,7 @@ export default function ErpOsSection() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/dashboard-cirrion.jpg"
-                alt="Tableau de bord CirrionOS — cockpit de gestion pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
+                alt="Tableau de bord CirrionOS — tableau de bord pour artisans du bâtiment : devis, factures, chantiers, planning, relances et notifications"
                 loading="lazy"
                 decoding="async"
                 style={{ width: "100%", height: "auto", display: "block" }}

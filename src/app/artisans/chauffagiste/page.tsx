@@ -5,11 +5,11 @@ import TradeLanding from "@/components/sections/TradeLanding";
 export const metadata: Metadata = pageMetadata({
   title: "Logiciel devis chauffagiste WhatsApp — Cirrion | Plus qu'un ERP",
   description:
-    "Logiciel de devis et facturation pour chauffagistes. Créez vos devis chauffage depuis WhatsApp ou sur l'application Cirrion ERP : pompe à chaleur, chaudière, RGE, e-facturation 2026.",
+    "Logiciel de devis et facturation pour chauffagistes. Créez vos devis chauffage depuis WhatsApp ou sur l'application Cirrion : pompe à chaleur, chaudière, RGE, facture électronique 2026.",
   keywords: ["logiciel devis chauffagiste", "devis chauffagiste WhatsApp", "logiciel chauffage", "ERP chauffagiste", "devis pompe à chaleur RGE"],
   openGraph: {
     title: "Logiciel devis chauffagiste — Cirrion",
-    description: "Devis chauffage depuis WhatsApp ou sur l'application Cirrion ERP. Pompe à chaleur, chaudière, RGE — TVA 5,5/10/20% au choix.",
+    description: "Devis chauffage depuis WhatsApp ou sur l'application Cirrion. Pompe à chaleur, chaudière, RGE — TVA 5,5/10/20% au choix.",
     url: "https://www.cirrion.eu/artisans/chauffagiste",
   },
   alternates: { canonical: "https://www.cirrion.eu/artisans/chauffagiste" },
@@ -33,11 +33,11 @@ export default function Chauffagiste() {
         trade="chauffagiste"
         badge="Chauffage & Énergie"
         title="Logiciel de devis et facturation pour chauffagistes"
-        subtitle="Devis chauffage depuis WhatsApp ou sur l'application Cirrion ERP."
+        subtitle="Devis chauffage depuis WhatsApp ou sur l'application Cirrion."
         intro="Chauffagiste ou installateur RGE : vos devis impliquent des équipements coûteux, des aides à l'énergie et un formalisme strict (RGE, MaPrimeRénov', CEE). Cirrion génère vos devis chauffage par message vocal depuis WhatsApp, ou via vos modèles de devis sur l'application."
         features={[
           { title: "Devis chauffage par vocal", desc: "Dictez l'installation — pompe à chaleur, chaudière, radiateurs — et recevez le devis PDF en 3 min depuis WhatsApp." },
-          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion ERP, vous réutilisez vos modèles de devis chauffage, prêts à personnaliser, avec les équipements courants." },
+          { title: "Vos modèles de devis sur l'app", desc: "Sur l'application Cirrion, vous réutilisez vos modèles de devis chauffage, prêts à personnaliser, avec les équipements courants." },
           { title: "TVA 5,5% économies d'énergie", desc: "TVA 5,5, 10 ou 20% au choix sur chaque ligne : vous sélectionnez le taux réduit pour les travaux d'amélioration énergétique éligibles." },
           { title: "Relances & contrats d'entretien", desc: "Relances automatiques et rappels d'entretien annuel des installations." },
           { title: "Signature & PV de réception", desc: "Signature électronique et PV de mise en service générés automatiquement." },

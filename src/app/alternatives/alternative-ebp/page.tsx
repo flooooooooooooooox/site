@@ -5,11 +5,11 @@ import AlternativePage from "@/components/sections/AlternativePage";
 export const metadata: Metadata = pageMetadata({
   title: "Alternative à EBP : logiciel devis bâtiment moderne et IA — Cirrion",
   description:
-    "Une alternative à EBP plus moderne pour artisans du bâtiment : devis WhatsApp, IA, e-facturation 2026, vos modèles de devis. Comparatif Cirrion vs EBP.",
+    "Une alternative à EBP plus moderne pour artisans du bâtiment : devis WhatsApp, IA, facture électronique 2026, vos modèles de devis. Comparatif Cirrion vs EBP.",
   keywords: ["alternative EBP", "EBP bâtiment avis", "logiciel comme EBP", "remplacer EBP", "concurrent EBP artisan"],
   openGraph: {
     title: "Alternative à EBP — Cirrion, le logiciel devis IA",
-    description: "Une alternative à EBP plus moderne : devis WhatsApp, IA, e-facturation 2026, vos modèles de devis.",
+    description: "Une alternative à EBP plus moderne : devis WhatsApp, IA, facture électronique 2026, vos modèles de devis.",
     url: "https://www.cirrion.eu/alternatives/alternative-ebp",
   },
   alternates: { canonical: "https://www.cirrion.eu/alternatives/alternative-ebp" },
@@ -46,7 +46,7 @@ export default function AlternativeEbp() {
           { feature: "Agent IA réceptionniste 24h/24", floxia: true, competitor: false },
           { feature: "Relances automatiques IA", floxia: true, competitor: false },
           { feature: "Devis & facturation complète", floxia: true, competitor: true },
-          { feature: "E-facturation 2026 conforme", floxia: true, competitor: true },
+          { feature: "Facture électronique 2026 conforme", floxia: true, competitor: true },
           { feature: "Hébergement 100% France / RGPD", floxia: true, competitor: true },
         ]}
         forWhom="Cirrion est l'alternative à EBP pour les artisans du bâtiment qui veulent un outil mobile, intelligent et sans saisie fastidieuse. Si vous passez plus de temps sur les chantiers qu'au bureau, Cirrion est fait pour vous."

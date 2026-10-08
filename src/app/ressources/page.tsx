@@ -21,7 +21,7 @@ const ARTICLES = [
     badge: "Le mot du fondateur",
     title: "Pourquoi j'ai créé Cirrion",
     description:
-      "Par Florian Gagnebien, fondateur. De l'automatisation en ETI à l'ERP des artisans : le fossé que j'ai constaté entre les outils des grandes entreprises et le quotidien administratif d'un artisan.",
+      "Par Florian Gagnebien, fondateur. De l'automatisation en ETI à le logiciel des artisans : le fossé que j'ai constaté entre les outils des grandes entreprises et le quotidien administratif d'un artisan.",
     date: "Juillet 2026",
     readTime: "6 min",
   },
@@ -39,7 +39,7 @@ const ARTICLES = [
     badge: "Devis",
     title: "Comment envoyer un devis depuis WhatsApp en 3 minutes",
     description:
-      "Vous êtes sur chantier, un prospect vous appelle. En 3 minutes, votre devis PDF est envoyé, signé et archivé — depuis WhatsApp ou l'application Cirrion ERP. Voici comment.",
+      "Vous êtes sur chantier, un prospect vous appelle. En 3 minutes, votre devis PDF est envoyé, signé et archivé — depuis WhatsApp ou l'application Cirrion. Voici comment.",
     date: "Juin 2026",
     readTime: "4 min",
   },
@@ -48,7 +48,7 @@ const ARTICLES = [
     badge: "Modèles",
     title: "Modèle de devis bâtiment : créez vos modèles une fois, réutilisez-les toujours",
     description:
-      "Repartir d'un modèle vierge à chaque chantier fait perdre du temps. Découvrez les modèles de devis que vous créez, sur l'application ERP ou depuis WhatsApp.",
+      "Repartir d'un modèle vierge à chaque chantier fait perdre du temps. Découvrez les modèles de devis que vous créez, sur l'application ou depuis WhatsApp.",
     date: "Juin 2026",
     readTime: "5 min",
   },
@@ -103,7 +103,7 @@ const ARTICLES = [
     badge: "Conformité",
     title: "Facturation électronique 2026-2027 : calendrier pour artisans et PME",
     description:
-      "Réception obligatoire depuis septembre 2026, émission et e-reporting en 2027 pour les PME et micro-entreprises : le calendrier à connaître.",
+      "Réception obligatoire depuis septembre 2026, émission et transmission des ventes en 2027 pour les PME et micro-entreprises : le calendrier à connaître.",
     date: "Octobre 2026",
     readTime: "5 min",
   },

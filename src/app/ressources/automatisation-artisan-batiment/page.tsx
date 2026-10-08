@@ -88,12 +88,12 @@ export default function AutomatisationArtisan() {
           },
           {
             type: "h2",
-            content: "Tâche 4 — Conformité e-facturation 2026",
+            content: "Tâche 4 — Prêt pour la facture électronique 2026",
           },
           {
             type: "p",
             content:
-              "Depuis le 1er septembre 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques. Les grandes entreprises et ETI doivent aussi les émettre et transmettre leur e-reporting depuis cette date ; pour les PME et micro-entreprises, l'obligation d'émission et d'e-reporting démarre le 1er septembre 2027. Un logiciel de gestion peut préparer les données et les formats, mais la transmission réglementaire passe par une plateforme agréée.",
+              "Depuis le 1er septembre 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques. Les grandes entreprises et ETI doivent aussi les émettre et transmettre leurs chiffres de ventes depuis cette date ; pour les PME et micro-entreprises, l'obligation d'émission et d'transmission des ventes démarre le 1er septembre 2027. Un logiciel de gestion peut préparer les données et les formats, mais la transmission réglementaire passe par une plateforme agréée.",
           },
           {
             type: "h2",
@@ -102,7 +102,7 @@ export default function AutomatisationArtisan() {
           {
             type: "p",
             content:
-              "Retrouver un devis signé de l'année dernière, le montant facturé sur un chantier en cours, ou l'état des paiements d'un client — ça prend du temps si tout est éparpillé dans des dossiers papier ou des boîtes email. Cirrion centralise tout : chaque chantier a sa fiche avec tous les documents, statuts et historiques. Et à la fin du chantier, le PV de réception est généré et envoyé automatiquement.",
+              "Retrouver un devis signé de l'année dernière, le montant facturé sur un chantier en cours, ou l'état des paiements d'un client — ça prend du temps si tout est éparpillé dans des dossiers papier ou des boîtes email. Cirrion met au même endroit tout : chaque chantier a sa fiche avec tous les documents, statuts et historiques. Et à la fin du chantier, le PV de réception est généré et envoyé automatiquement.",
           },
           {
             type: "h2",
@@ -114,7 +114,7 @@ export default function AutomatisationArtisan() {
               "Devis : 30 min → 3 min par devis. Pour 8 devis/semaine = 3h30 économisées.",
               "Relances : 0 à 2h/semaine → zéro, géré automatiquement.",
               "Facturation : 1h → 10 min par chantier facturé.",
-              "Archivage et recherche : 30 min/semaine → zéro, tout est centralisé.",
+              "Archivage et recherche : 30 min/semaine → zéro, tout est au même endroit.",
               "Total : 8 à 12 heures récupérées chaque semaine.",
             ],
           },

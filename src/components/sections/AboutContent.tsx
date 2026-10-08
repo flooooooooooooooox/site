@@ -13,13 +13,13 @@ const fadeUp = {
 const VALUES = [
   {
     icon: Cpu,
-    title: "L'automatisation pour tous",
-    text: "Les mêmes outils d'automatisation que les grandes entreprises, mis à portée de l'artisan du bâtiment.",
+    title: "Les outils des grands, pour l'artisan",
+    text: "Ce que les grandes entreprises ont pour gérer leur administratif, mis à la portée de l'artisan du bâtiment.",
   },
   {
     icon: ShieldCheck,
-    title: "Souveraineté & confiance",
-    text: "Hébergement 100% en France, conformité RGPD native. Vos données restent chez vous.",
+    title: "Vos données restent chez vous",
+    text: "Hébergées en France, protégées, jamais revendues.",
   },
   {
     icon: Sparkles,
@@ -36,7 +36,7 @@ const VALUES = [
 const STATS = [
   { value: "−90 %", label: "de temps administratif éliminé" },
   { value: "3 min", label: "du devis à la facture finale et au PV de réception" },
-  { value: "24h/24", label: "un agent IA qui répond à vos clients" },
+  { value: "24h/24", label: "quelqu'un répond à vos clients" },
   { value: "100 %", label: "hébergé et conçu en France" },
 ];
 
@@ -100,8 +100,8 @@ export default function AboutContent() {
           transition={{ ...fadeUp.transition, delay: 0.05 }}
           style={{ fontFamily: "var(--font-nunito)", fontWeight: 900, fontSize: "clamp(2.4rem,6vw,4.2rem)", lineHeight: 1.05, color: "var(--text)", marginBottom: "1.4rem" }}
         >
-          L&apos;automatisation au service{" "}
-          <span style={{ color: "#2455D6" }}>des artisans</span>
+          Moins de paperasse,{" "}
+          <span style={{ color: "#2455D6" }}>plus de chantier</span>
         </motion.h1>
         <motion.p
           {...fadeUp}

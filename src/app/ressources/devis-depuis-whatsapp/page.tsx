@@ -125,7 +125,7 @@ export default function DevisWhatsApp() {
           {
             type: "p",
             content:
-              "Cirrion ne s'arrête pas au devis. Dès que le client signe, la chaîne complète se déclenche automatiquement : facture d'acompte, relances à J+3 / J+7 / J+14 si pas de réponse, facture finale et PV de réception à la fin du chantier. Tout est archivé, conforme à la réglementation e-facturation 2026.",
+              "Cirrion ne s'arrête pas au devis. Dès que le client signe, la chaîne complète se déclenche automatiquement : facture d'acompte, relances à J+3 / J+7 / J+14 si pas de réponse, facture finale et PV de réception à la fin du chantier. Tout est archivé, conforme à la réglementation facture électronique 2026.",
           },
           {
             type: "h3",
@@ -148,7 +148,7 @@ export default function DevisWhatsApp() {
           {
             type: "p",
             content:
-              "Cirrion se connecte à votre numéro WhatsApp Business existant via l'API officielle Meta. Vous gardez votre numéro actuel, votre profil, vos conversations. Cirrion s'intègre comme un assistant supplémentaire — vous lui écrivez comme vous écririez à un collaborateur, et il traite les documents à votre place.",
+              "Cirrion se connecte à votre numéro WhatsApp Business existant par le canal officiel de WhatsApp. Vous gardez votre numéro actuel, votre profil, vos conversations. Cirrion s'intègre comme un assistant supplémentaire — vous lui écrivez comme vous écririez à un collaborateur, et il traite les documents à votre place.",
           },
           {
             type: "h2",
@@ -157,13 +157,13 @@ export default function DevisWhatsApp() {
           {
             type: "p",
             content:
-              "WhatsApp n'est pas le seul canal. Vous pouvez aussi créer vos devis directement sur l'application Cirrion ERP, depuis un ordinateur ou une tablette. Sur l'application, ce n'est pas du vocal : vous réutilisez vos modèles de devis, créés par vos soins, que vous personnalisez en quelques clics. Idéal au bureau pour les devis complexes à plusieurs postes.",
+              "WhatsApp n'est pas le seul canal. Vous pouvez aussi créer vos devis directement sur l'application Cirrion, depuis un ordinateur ou une tablette. Sur l'application, ce n'est pas du vocal : vous réutilisez vos modèles de devis, créés par vos soins, que vous personnalisez en quelques clics. Idéal au bureau pour les devis complexes à plusieurs postes.",
           },
           {
             type: "ul",
             items: [
               "Sur WhatsApp — rapide, sur le terrain, par vocal ou écrit. Parfait en sortie de visite de chantier.",
-              "Sur l'application Cirrion ERP — au bureau, avec vos modèles de devis, catalogue de prix et vue détaillée. Parfait pour les chantiers complexes.",
+              "Sur l'application Cirrion — au bureau, avec vos modèles de devis, catalogue de prix et vue détaillée. Parfait pour les chantiers complexes.",
               "Les deux canaux sont synchronisés : un devis commencé sur WhatsApp peut être finalisé sur l'application, et inversement.",
             ],
           },
