@@ -7,7 +7,7 @@ const buildDirectory = path.resolve(".next/server/app");
 const baseIndex = process.argv.indexOf("--base");
 const base = baseIndex < 0 ? null : new URL(process.argv[baseIndex + 1]);
 const targets = ["/", "/devis", "/gestion-comptabilite", "/artisans/peintre", "/logiciel-gestion-entreprise-batiment", "/ressources/logiciel-erp-batiment", "/logiciel-batiment/nice", "/ressources/pourquoi-jai-cree-cirrion", "/faq"];
-const faqRoutes = new Map([["/artisans/peintre", 3], ["/logiciel-gestion-entreprise-batiment", 3], ["/gestion-comptabilite", 4]]);
+const faqRoutes = new Map([["/", 4], ["/artisans/peintre", 3], ["/logiciel-gestion-entreprise-batiment", 3], ["/gestion-comptabilite", 4]]);
 const aliases = ["/ressources/pourquoi-jai-cree-cree", "/ressources/pourquoi-jai-cree-cree-cirrion"];
 const decode = value => value.replace(/&(?:amp|quot|apos|lt|gt|#39|#x27|#\d+);/g, entity => {
   const named = {"&amp;":"&", "&quot;":"\"", "&apos;":"'", "&lt;":"<", "&gt;":">", "&#39;":"'", "&#x27;":"'"};
