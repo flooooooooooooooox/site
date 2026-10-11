@@ -22,7 +22,6 @@ const MUTED = rgb(100 / 255, 116 / 255, 139 / 255);
 const PALE = rgb(248 / 255, 250 / 255, 252 / 255);
 const RULE = rgb(226 / 255, 232 / 255, 240 / 255);
 const WHITE = rgb(1, 1, 1);
-const ORANGE = rgb(194 / 255, 90 / 255, 12 / 255);
 const GREEN = rgb(5 / 255, 150 / 255, 105 / 255);
 const AMBER = rgb(217 / 255, 119 / 255, 6 / 255);
 
