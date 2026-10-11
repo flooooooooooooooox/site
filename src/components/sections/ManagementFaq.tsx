@@ -21,5 +21,10 @@ const answers = [
 
 export default function ManagementFaq({ showMore = false }: { showMore?: boolean }) {
   return <AnswerSection title="Vos questions sur Cirrion" answers={answers}
-    links={showMore ? [{ href: "/gestion-comptabilite", label: "Retrouver les réponses sur la gestion et la comptabilité" }] : []} />;
+    links={showMore ? [
+      { href: "/gestion-comptabilite", label: "Gestion et comptabilité" },
+      { href: "/application", label: "L’application Cirrion" },
+      { href: "/entreprise-nettoyage", label: "Entreprises de services" },
+      { href: "/logiciel-devis", label: "Les usages par métier" },
+    ] : []} />;
 }
