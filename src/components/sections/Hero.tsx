@@ -375,6 +375,28 @@ export default function Hero() {
             </MagneticBtn>
           </motion.div>
 
+          {/* Essai gratuit : une entree bien visible, sans concurrencer le bouton principal. */}
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.75 }}
+            style={{ marginTop: "1.1rem" }}>
+            <Link href="/essai-devis-vocal" className="hero-trial-link">
+              <span className="hero-trial-icon" aria-hidden>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="2" width="6" height="12" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v4" /></svg>
+              </span>
+              <span><strong>Faites votre devis à la voix</strong>, gratuitement et sans inscription</span>
+              <span aria-hidden className="hero-trial-arrow">→</span>
+            </Link>
+            <style>{`
+              .hero-trial-link { display: inline-flex; align-items: center; gap: .6rem; padding: .55rem 1rem .55rem .6rem; border-radius: 999px; background: rgba(255,255,255,0.72); border: 1px solid rgba(36,85,214,0.22); color: #2455D6; font-size: .8rem; text-decoration: none; line-height: 1.3; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+              .hero-trial-link strong { font-weight: 800; }
+              .hero-trial-link:hover { transform: translateY(-1px); background: #fff; border-color: rgba(36,85,214,0.5); }
+              .hero-trial-icon { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: #2455D6; color: #fff; }
+              .hero-trial-arrow { transition: transform .2s ease; }
+              .hero-trial-link:hover .hero-trial-arrow { transform: translateX(3px); }
+              @media (max-width: 520px) { .hero-trial-link { display: flex; border-radius: 1rem; } }
+              @media (prefers-reduced-motion: reduce) { .hero-trial-link, .hero-trial-arrow { transition: none; } }
+            `}</style>
+          </motion.div>
+
         </div>
 
         <motion.div className="hero-split-image" style={{ position: "relative" }}

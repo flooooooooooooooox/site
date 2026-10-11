@@ -30,6 +30,16 @@ export interface Devis {
   tva: Tva;
   /** Facultatif : l'entreprise qui emet le devis, saisie par le visiteur. */
   entreprise: string;
+  /* Mentions legales propres a l'entreprise : saisies par le visiteur, jamais devinees. */
+  adresse_entreprise: string;
+  siret: string;
+  tel_entreprise: string;
+  email_entreprise: string;
+  tva_intra: string;
+  assurance: string;
+  tribunal: string;
+  mediateur: string;
+  modes_paiement: string;
   lignes: Ligne[];
 }
 
@@ -39,6 +49,8 @@ export function emptyDevis(): Devis {
   return {
     client: "", email: "", telephone: "", adresse: "", adresse_chantier: "", objet: "",
     duree_jours: null, conditions: "", tva: "", entreprise: "", lignes: [],
+    adresse_entreprise: "", siret: "", tel_entreprise: "", email_entreprise: "", tva_intra: "",
+    assurance: "", tribunal: "", mediateur: "", modes_paiement: "",
   };
 }
 
@@ -66,6 +78,15 @@ export function sanitizeDevis(input: unknown): Devis {
     conditions: text(o.conditions, 300),
     tva,
     entreprise: text(o.entreprise, 120),
+    adresse_entreprise: text(o.adresse_entreprise, 200),
+    siret: text(o.siret, 30).replace(/[^0-9 ]/g, "").trim(),
+    tel_entreprise: text(o.tel_entreprise, 30),
+    email_entreprise: text(o.email_entreprise, 120),
+    tva_intra: text(o.tva_intra, 30).toUpperCase(),
+    assurance: text(o.assurance, 200),
+    tribunal: text(o.tribunal, 120),
+    mediateur: text(o.mediateur, 200),
+    modes_paiement: text(o.modes_paiement, 160),
     lignes: lignesRaw
       .map((l): Ligne => {
         const r = (l && typeof l === "object" ? l : {}) as Record<string, unknown>;

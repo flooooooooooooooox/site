@@ -101,3 +101,41 @@ describe("mentions légales du gabarit", () => {
     expect(texte(await buildDevisPdf(devis({ duree_jours: 5 })))).toContain("Délai d'exécution");
   });
 });
+
+describe("informations d'entreprise saisies par le visiteur", () => {
+  const complet = {
+    entreprise: "Durand Électricité", adresse_entreprise: "12 rue des Lilas, 14000 Caen", siret: "123 456 789 00012",
+    tva_intra: "fr12345678901", tel_entreprise: "02 31 00 00 00", email_entreprise: "contact@durand.fr",
+    assurance: "AXA, contrat n° 998877, France métropolitaine", tribunal: "tribunal judiciaire de Caen",
+    mediateur: "CM2C, www.cm2c.net", modes_paiement: "chèque, virement, carte bancaire",
+  };
+  it("les valeurs saisies remplacent les « à compléter »", async () => {
+    const t = texte(await buildDevisPdf(devis(complet), new Date("2026-10-07")));
+    for (const v of ["12 rue des Lilas, 14000 Caen", "SIRET : 123 456 789 00012", "FR12345678901", "02 31 00 00 00", "contact@durand.fr", "AXA, contrat n° 998877", "tribunal judiciaire de Caen", "CM2C, www.cm2c.net", "chèque, virement, carte bancaire"]) expect(t, v).toContain(v);
+    expect(t).not.toContain("SIRET : à compléter");
+    expect(t).not.toContain("tribunal compétent : à compléter");
+    expect(t).not.toContain("Modes de paiement acceptés : à compléter");
+    expect(t).not.toContain("à compléter (assureur");
+  });
+  it("seul ce qui manque reste « à compléter »", async () => {
+    const t = texte(await buildDevisPdf(devis({ siret: "123 456 789 00012" })));
+    expect(t).toContain("SIRET : 123 456 789 00012");
+    expect(t).toContain("tribunal compétent : à compléter");
+  });
+  it("à 0 % le numéro de TVA saisi n'est pas imprimé : c'est l'article 293 B qui s'applique", async () => {
+    const t = texte(await buildDevisPdf(devis({ ...complet, tva: "0" })));
+    expect(t).not.toContain("FR12345678901");
+    expect(t).toContain("art. 293 B du CGI");
+  });
+  it("un texte démesuré est coupé, sans faire planter ni déborder", async () => {
+    const long = "x".repeat(190);
+    const bytes = await buildDevisPdf(devis({ ...complet, adresse_entreprise: long, assurance: long, entreprise: "E".repeat(115), mediateur: long }));
+    expect((await PDFDocument.load(bytes)).getPageCount()).toBeLessThanOrEqual(2);
+    const t = texte(bytes);
+    expect(t).toContain("\u0085"); // « … » en WinAnsi
+    expect(t).not.toContain(long);
+  });
+  it("le SIRET ne garde que des chiffres : pas d'injection de texte", () => {
+    expect(sanitizeDevis({ siret: "12<b>3</b> 456; DROP" }).siret).toBe("123 456");
+  });
+});

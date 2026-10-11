@@ -322,9 +322,27 @@ export default function EssaiClient() {
             </div>
 
             <details className="es-more">
-              <summary>Ajouter d&apos;autres informations (facultatif)</summary>
+              <summary>Vos mentions légales d&apos;entreprise (facultatif)</summary>
+              <p className="es-note es-left">Ce que vous indiquez ici apparaît sur le devis. Sinon, le PDF affiche « à compléter » : nous ne devinons rien. Rien n&apos;est conservé.</p>
               <div className="es-grid">
                 <label>Votre entreprise<input value={devis.entreprise} onChange={(e) => set("entreprise", e.target.value)} autoComplete="organization" /></label>
+                <label>SIRET<input value={devis.siret} onChange={(e) => set("siret", e.target.value)} inputMode="numeric" placeholder="14 chiffres" /></label>
+                <label>Adresse de l&apos;entreprise<input value={devis.adresse_entreprise} onChange={(e) => set("adresse_entreprise", e.target.value)} autoComplete="street-address" /></label>
+                <label>N° de TVA intracommunautaire<input value={devis.tva_intra} onChange={(e) => set("tva_intra", e.target.value)} placeholder={devis.tva === "0" ? "inutile en franchise de TVA" : "FR…"} disabled={devis.tva === "0"} /></label>
+                <label>Téléphone<input value={devis.tel_entreprise} onChange={(e) => set("tel_entreprise", e.target.value)} inputMode="tel" autoComplete="tel" /></label>
+                <label>E-mail<input value={devis.email_entreprise} onChange={(e) => set("email_entreprise", e.target.value)} inputMode="email" autoComplete="email" /></label>
+              </div>
+              <label className="es-full">Assurance décennale et RC Pro<input value={devis.assurance} onChange={(e) => set("assurance", e.target.value)} placeholder="assureur, n° de contrat, zone de garantie" /></label>
+              <div className="es-grid">
+                <label>Tribunal compétent en cas de litige<input value={devis.tribunal} onChange={(e) => set("tribunal", e.target.value)} placeholder="ex. tribunal judiciaire de Caen" /></label>
+                <label>Médiateur de la consommation<input value={devis.mediateur} onChange={(e) => set("mediateur", e.target.value)} placeholder="nom et site du médiateur" /></label>
+              </div>
+              <label className="es-full">Modes de paiement acceptés<input value={devis.modes_paiement} onChange={(e) => set("modes_paiement", e.target.value)} placeholder="ex. chèque, virement, carte bancaire" /></label>
+            </details>
+
+            <details className="es-more">
+              <summary>Ajouter d&apos;autres informations (facultatif)</summary>
+              <div className="es-grid">
                 <label>Téléphone du client<input value={devis.telephone} onChange={(e) => set("telephone", e.target.value)} inputMode="tel" /></label>
                 <label>E-mail du client<input value={devis.email} onChange={(e) => set("email", e.target.value)} inputMode="email" /></label>
                 <label>Lieu des travaux<input value={devis.adresse_chantier} onChange={(e) => set("adresse_chantier", e.target.value)} /></label>
@@ -434,6 +452,9 @@ const CSS = `
 .es-sums .ttc { font-size: 1.15rem; color: var(--text); padding-top: .4rem; border-top: 2px solid #2455D6; }
 .es-more summary { cursor: pointer; font-weight: 700; color: #2455D6; font-size: .9rem; padding: .4rem 0; }
 .es-more .es-grid { margin: .8rem 0; }
+.es-more .es-full { margin-bottom: .8rem; }
+.es-left { text-align: left; margin-top: .4rem; }
+.es-root input:disabled { background: rgba(var(--text-rgb),0.05); color: rgba(var(--text-rgb),0.45); }
 .es-offer { background: linear-gradient(160deg, rgba(150,186,255,0.28), rgba(255,255,255,0.9)); }
 .es-offer-actions { display: flex; flex-direction: column; gap: .5rem; align-items: stretch; width: 100%; }
 @media (max-width: 640px) {

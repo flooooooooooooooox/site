@@ -68,6 +68,14 @@ function wrap(font: PDFFont, text: string, size: number, maxWidth: number): stri
   return out;
 }
 
+/** Coupe une ligne trop longue avec « … » plutot que de la laisser deborder de la page. */
+function fit(font: PDFFont, text: string, size: number, maxWidth: number): string {
+  let s = safe(font, text);
+  if (font.widthOfTextAtSize(s, size) <= maxWidth) return s;
+  while (s.length > 1 && font.widthOfTextAtSize(`${s}…`, size) > maxWidth) s = s.slice(0, -1);
+  return `${s.trimEnd()}…`;
+}
+
 const dateLongue = (d: Date) => d.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 
 export async function buildDevisPdf(d: Devis, now = new Date()): Promise<Uint8Array> {
@@ -124,15 +132,16 @@ export async function buildDevisPdf(d: Devis, now = new Date()): Promise<Uint8Ar
   const emitter = d.entreprise || "Votre entreprise (à compléter)";
   const initials = (d.entreprise.match(/[A-Za-zÀ-ÿ0-9]/g) ?? []).slice(0, 2).join("").toUpperCase();
   const textRight = W - M - (initials ? 40 : 0);
-  txtR(emitter, textRight, y - 8, 9, bold, d.entreprise ? BLUE : MUTED);
+  txtR(fit(bold, emitter, 9, 300), textRight, y - 8, 9, bold, d.entreprise ? BLUE : MUTED);
+  const contact = [d.tel_entreprise && `Tél. : ${d.tel_entreprise}`, d.email_entreprise].filter(Boolean).join(" · ");
   const idLines = [
-    "Adresse, code postal, ville : à compléter",
-    "SIRET : à compléter",
+    d.adresse_entreprise || "Adresse, code postal, ville : à compléter",
+    d.siret ? `SIRET : ${d.siret}` : "SIRET : à compléter",
     "RNE : à compléter",
-    d.tva === "0" ? "TVA non applicable, art. 293 B du CGI" : "N° TVA intracommunautaire : à compléter",
-    "Tél. et e-mail : à compléter",
+    d.tva === "0" ? "TVA non applicable, art. 293 B du CGI" : d.tva_intra ? `N° TVA intracommunautaire : ${d.tva_intra}` : "N° TVA intracommunautaire : à compléter",
+    contact || "Tél. et e-mail : à compléter",
   ];
-  idLines.forEach((l, k) => txtR(l, textRight, y - 19 - k * 9, 6.8, font, MUTED));
+  idLines.forEach((l, k) => txtR(fit(font, l, 6.8, 250), textRight, y - 19 - k * 9, 6.8, font, MUTED));
   if (initials) {
     rr(W - M - 30, y + 2, 30, 30, 5, { fill: BLUE });
     const iw = bold.widthOfTextAtSize(initials, 11);
@@ -251,7 +260,10 @@ export async function buildDevisPdf(d: Devis, now = new Date()): Promise<Uint8Ar
       l: wrap(font, "⚠ Tout retard de paiement entraîne des pénalités de retard au taux légal en vigueur. Une indemnité forfaitaire de 40 € pour frais de recouvrement est due uniquement pour les clients professionnels, conformément à l'article L441-10 du Code de commerce.".replace("⚠ ", ""), 7.8, inner),
       f: font, color: ORANGE, size: 7.8,
     });
-    rows.push({ l: wrap(font, "Modes de paiement acceptés : à compléter par l'entreprise.", 7.8, inner), f: font, color: MUTED, size: 7.8 });
+    rows.push({
+      l: wrap(font, d.modes_paiement ? `Modes de paiement acceptés : ${d.modes_paiement}.` : "Modes de paiement acceptés : à compléter par l'entreprise.", 7.8, inner),
+      f: font, color: d.modes_paiement ? INK : MUTED, size: 7.8,
+    });
     if (d.tva !== "0") rows.push({ l: wrap(font, "TVA sur les encaissements — La TVA sera exigible à l'encaissement des acomptes et du solde.", 7.8, inner), f: font, color: MUTED, size: 7.8 });
     const lines = rows.reduce((n, r) => n + r.l.length, 0);
     const h = 28 + lines * 10.5 + rows.length * 3;
@@ -272,15 +284,15 @@ export async function buildDevisPdf(d: Devis, now = new Date()): Promise<Uint8Ar
     const colW = third - 22;
     const blocks = [
       { t: "Assurance décennale & RC Pro", c: BLUE, rows: [
-        { s: "Assurance Responsabilité Civile Décennale :", f: font },
-        { s: "à compléter (assureur et n° de contrat).", f: bold },
-        { s: "Garantie valable pour : à compléter.", f: font },
-        { s: "RC Professionnelle : à compléter.", f: font },
+        { s: "Assurance Responsabilité Civile Décennale et RC Professionnelle :", f: font },
+        d.assurance
+          ? { s: d.assurance, f: bold }
+          : { s: "à compléter (assureur, n° de contrat, zone de garantie).", f: bold },
       ] },
       { t: "Conditions générales & litiges", c: AMBER, rows: [
         { s: `Devis valable ${VALID_DAYS} jours à compter de sa date d'émission.`, f: font },
-        { s: "En cas de litige, tribunal compétent : à compléter.", f: font },
-        { s: "Médiation de la consommation : à compléter (nom et coordonnées du médiateur).", f: font },
+        { s: d.tribunal ? `En cas de litige, compétence du tribunal : ${d.tribunal}.` : "En cas de litige, tribunal compétent : à compléter.", f: font },
+        { s: d.mediateur ? `Médiation de la consommation : ${d.mediateur}.` : "Médiation de la consommation : à compléter (nom et coordonnées du médiateur).", f: font },
         { s: "Tout travail supplémentaire fera l'objet d'un avenant signé.", f: font },
       ] },
       { t: "Droit de rétractation", c: GREEN, rows: [
@@ -318,13 +330,17 @@ export async function buildDevisPdf(d: Devis, now = new Date()): Promise<Uint8Ar
 
   /* ----- Pied de page : sur chaque page ----- */
   const centre = (p: PDFPage, text: string, yy: number, size: number, f: PDFFont, color: ReturnType<typeof rgb>) => {
-    const str = safe(f, text);
+    const str = fit(f, text, size, CW - 40);
     p.drawText(str, { x: (W - f.widthOfTextAtSize(str, size)) / 2, y: yy, size, font: f, color });
   };
   pdf.getPages().forEach((p, i, all) => {
     p.drawLine({ start: { x: M, y: 62 }, end: { x: W - M, y: 62 }, thickness: 0.5, color: RULE });
-    centre(p, `${d.entreprise || "Votre entreprise"} | Adresse, SIRET, RNE : à compléter | TVA : ${d.tva === "0" ? "non applicable, art. 293 B du CGI" : "à compléter"}`, 51, 6.6, bold, MUTED);
-    centre(p, "Tél., e-mail, assurance décennale (assureur, n° de contrat) : à compléter", 42, 6.6, font, MUTED);
+    const adr = d.adresse_entreprise || "adresse";
+    const sir = d.siret ? `SIRET : ${d.siret}` : "SIRET";
+    const tvaF = d.tva === "0" ? "TVA non applicable, art. 293 B du CGI" : d.tva_intra ? `TVA : ${d.tva_intra}` : "TVA";
+    const manque = [!d.adresse_entreprise, !d.siret, d.tva !== "0" && !d.tva_intra].some(Boolean);
+    centre(p, `${d.entreprise || "Votre entreprise"} | ${adr} | ${sir} | RNE | ${tvaF}${manque ? " (à compléter)" : ""}`, 51, 6.6, bold, MUTED);
+    centre(p, `${contact || "Tél., e-mail"} | ${d.assurance ? `Assurance : ${d.assurance}` : "assurance décennale (assureur, n° de contrat) : à compléter"}`, 42, 6.6, font, MUTED);
     centre(p, `Document généré automatiquement — valable ${VALID_DAYS} jours à compter du ${dateLongue(now)}`, 33, 6.6, font, MUTED);
     centre(p, "Devis d'essai généré par Cirrion, sans valeur contractuelle : les mentions « à compléter » relèvent de votre entreprise.", 24, 6.6, ital, MUTED);
     const n = `${i + 1} / ${all.length}`;
