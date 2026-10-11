@@ -23,7 +23,7 @@ Repris de l'ERP (`flooooooooooooooox/floxia-nextjs`, route `app/api/devis/voice`
 | Voix → texte | Mistral Voxtral (`voxtral-small-latest`), repli faster-whisper (`STT_URL`, LAN) | Voxtral. **Pas de repli** : le service du LAN n'est pas joignable depuis Vercel |
 | Texte → champs | Mistral small, JSON strict (`lib/devis/voice-parse-ai.ts`) | Même prompt, réduit aux champs d'un devis d'essai |
 | Secours | Parseur à règles (`lib/devis/voice-parse.ts`) | Copie telle quelle : `src/lib/essai/voice-parse-rules.ts` |
-| PDF | Service `pdf-service` (PDF Factur-X), appelé depuis n8n | **Non réutilisé** (voir plus bas). PDF d'essai avec `pdf-lib` |
+| PDF | Service `pdf-service` (PDF Factur-X), appelé depuis n8n | **Non réutilisé** : service inaccessible d'ici. PDF d'essai avec `pdf-lib`, **mis en page à l'image du devis de production** (bandeau, encadrés, TVA/TTC par ligne, totaux, signatures). Tout ce qui est propre à l'entreprise (SIRET, assurance, CG, rétractation) reste « à compléter » : aucun texte juridique n'est inventé |
 
 Le vocal **WhatsApp** de production n'est pas dans le dépôt : il passe par des workflows n8n
 (exports JSON posés sur la machine de Florian, credentials sur les instances). Le moteur de

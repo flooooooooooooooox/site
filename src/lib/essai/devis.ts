@@ -113,5 +113,29 @@ export function totaux(d: Devis): Totaux {
   return { lignes, ht, tva, ttc: ht + tva };
 }
 
+export interface LigneDetail { ht: number; tva: number; ttc: number }
+
+/**
+ * TVA et TTC ligne par ligne, en centimes, de facon que les lignes SOMMENT
+ * exactement aux totaux : la TVA totale est arrondie une fois, puis repartie
+ * entre les lignes (plus forts restes d'abord). Sans cela, trois lignes a
+ * 0,10 EUR peuvent afficher une TVA totale differente de la somme des lignes.
+ */
+export function detailParLigne(d: Devis): LigneDetail[] {
+  const t = totaux(d);
+  const rate = d.tva ? Number(d.tva) : 0;
+  const exact = t.lignes.map((ht) => (ht * rate) / 100);
+  const floors = exact.map(Math.floor);
+  let reste = t.tva - floors.reduce((a, b) => a + b, 0);
+  const order = exact.map((e, i) => ({ i, frac: e - Math.floor(e) })).sort((a, b) => b.frac - a.frac || a.i - b.i);
+  const tva = [...floors];
+  for (const { i } of order) {
+    if (reste <= 0) break;
+    tva[i] += 1;
+    reste -= 1;
+  }
+  return t.lignes.map((ht, i) => ({ ht, tva: tva[i], ttc: ht + tva[i] }));
+}
+
 export const euros = (cents: number): string =>
   (cents / 100).toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
