@@ -13,7 +13,7 @@ import { pageMetadata, softwareJsonLd } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | Plus qu'un ERP",
   description:
-    "Créez vos devis et factures avec Cirrion depuis WhatsApp ou l’application web. Un logiciel pour artisans du bâtiment : chantiers, paiements et relances.",
+    "Cirrion centralise votre gestion : devis, factures, paiements, relances, dépenses et préparation comptable. Pour artisans, indépendants et petites entreprises.",
   keywords: [
     "Cirrion",
     "logiciel devis artisan",
@@ -48,14 +48,14 @@ export const metadata: Metadata = pageMetadata({
   openGraph: {
     title: "Cirrion — Logiciel de devis et factures pour artisans du bâtiment",
     description:
-      "Devis et facturation depuis WhatsApp ou l’application web. Centralisez les chantiers, paiements et relances avec Cirrion.",
+      "Devis, factures, paiements, relances, dépenses et préparation comptable : Cirrion accompagne la gestion administrative de votre entreprise.",
     url: "https://www.cirrion.eu",
     images: [{ url: "https://www.cirrion.eu/dashboard-cirrion.jpg", width: 1600, height: 787, alt: "Tableau de bord Cirrion — logiciel ERP artisan bâtiment" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cirrion — Devis artisan en 3 min depuis WhatsApp",
-    description: "Logiciel de devis et facturation pour artisans du bâtiment. Vos modèles de devis, TVA auto, facture électronique 2026.",
+    description: "Devis, factures, paiements, relances et dépenses : une gestion plus claire pour les artisans, indépendants et petites entreprises.",
     images: ["https://www.cirrion.eu/dashboard-cirrion.jpg"],
   },
 });
@@ -95,6 +95,7 @@ export default function Home() {
             }}
           >
             {[
+              { href: "/gestion-comptabilite", label: "Gestion et comptabilité", sub: "Comprendre ce que Cirrion prend en charge" },
               { href: "/roi", label: "Calculer ce que vous récupérez", sub: "Estimation en 30 secondes" },
               { href: "/comparatif", label: "Cirrion vs Obat, Sage, EBP", sub: "28 critères comparés" },
               { href: "/pointage-preuve-de-passage", label: "Pointage & preuve de passage", sub: "QR code, photos horodatées" },

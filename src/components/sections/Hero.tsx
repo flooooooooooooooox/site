@@ -359,8 +359,8 @@ export default function Hero() {
               marginBottom: "2rem", color: "#42527A", fontSize: "clamp(0.92rem,1.15vw,1.02rem)",
               fontWeight: 400, lineHeight: 1.65, maxWidth: 440,
             }}>
-            Vous dictez. Cirrion rédige le devis, le fait signer, facture, relance les impayés
-            et prépare votre TVA. <span className="hero-underline" style={{ color: "#2455D6", fontWeight: 700 }}>Vous posez vos outils, l&apos;administratif suit.</span>
+            Devis, factures, paiements, relances, dépenses et préparation comptable : Cirrion
+            centralise votre gestion. <span className="hero-underline" style={{ color: "#2455D6", fontWeight: 700 }}>Vous travaillez, l&apos;administratif suit.</span>
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.62 }}

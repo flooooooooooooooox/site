@@ -52,7 +52,7 @@ export const identityGraph = {
       name: "Cirrion", alternateName: "CirrionOS", url: SITE_URL,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.png` },
       image: PRODUCT_IMAGE,
-      description: "Logiciel de devis, facturation et gestion pour artisans du bâtiment et TPE de services, accessible depuis WhatsApp et l’application web.",
+      description: "Gestion administrative et préparation comptable pour artisans, indépendants et petites entreprises : devis, factures, paiements, relances et dépenses.",
       founder: { "@id": `${SITE_URL}/#founder` },
       areaServed: { "@type": "Country", name: "France" },
       address: { "@type": "PostalAddress", addressLocality: "Caen", addressRegion: "Normandie", addressCountry: "FR" },
@@ -77,6 +77,6 @@ export const softwareJsonLd = {
   name: "Cirrion", url: `${SITE_URL}/`, image: PRODUCT_IMAGE,
   applicationCategory: "BusinessApplication", operatingSystem: "Web",
   inLanguage: "fr-FR", publisher: { "@id": ORGANIZATION_ID },
-  description: "Logiciel de devis et facturation pour artisans et entreprises du bâtiment. Création de devis depuis WhatsApp ou l’application web, suivi des chantiers et relances.",
-  featureList: ["Devis depuis WhatsApp", "Modèles de devis réutilisables", "Facturation", "Relances", "Suivi des chantiers et des équipes"],
+  description: "Gestion administrative et préparation comptable pour artisans et petites entreprises. Devis, factures, paiements, relances, dépenses et suivi de l'activité depuis l'application web ou WhatsApp.",
+  featureList: ["Devis et modèles réutilisables", "Facturation", "Suivi des paiements et relances", "Suivi des dépenses", "Préparation comptable", "Suivi des chantiers et des équipes"],
 };
