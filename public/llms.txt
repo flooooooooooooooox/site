@@ -1,6 +1,6 @@
 # Cirrion
 
-> Logiciel de devis, facturation et gestion pour artisans du bâtiment et TPE de services en France. Cirrion permet de préparer des devis depuis WhatsApp ou l’application web avec un catalogue de prestations et des modèles réutilisables.
+> Cirrion est une offre de gestion administrative et de préparation comptable pour artisans, indépendants et petites entreprises en France : devis, factures, paiements, relances et dépenses. L’application web et WhatsApp sont des moyens d’accès à cette gestion.
 
 Le site présente les fonctions de devis, facturation, suivi des chantiers, paiements, relances et équipes. Les fonctions comprises dans une offre, les connexions et le tarif sont à vérifier pendant une démonstration. La tarification est établie sur devis.
 
@@ -10,6 +10,7 @@ Le site présente les fonctions de devis, facturation, suivi des chantiers, paie
 - Zone d’activité : France
 
 ## Produit et métiers
+- [Gestion et préparation comptable](https://www.cirrion.eu/gestion-comptabilite): périmètre administratif, suivi des dépenses et rôle de l’accompagnement comptable. Les missions réglementées restent du ressort d’un professionnel habilité.
 - [Gestion d’entreprise du bâtiment](https://www.cirrion.eu/logiciel-gestion-entreprise-batiment): devis, factures, chantiers et équipes pour artisans, TPE et PME.
 - [Devis pour peintres](https://www.cirrion.eu/artisans/peintre): préparation des prestations, modèles de devis et questions sur le logiciel.
 - [Métiers du bâtiment](https://www.cirrion.eu/artisans): usages par métier.
