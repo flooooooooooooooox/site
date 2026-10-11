@@ -9,7 +9,7 @@ const TVA_CHOICES: { value: Exclude<Tva, "">; label: string; hint: string }[] = 
   { value: "20", label: "20 %", hint: "taux normal" },
   { value: "10", label: "10 %", hint: "rénovation" },
   { value: "5.5", label: "5,5 %", hint: "travaux d'énergie" },
-  { value: "0", label: "0 %", hint: "sans TVA" },
+  { value: "0", label: "0 %", hint: "franchise en base" },
 ];
 
 type Step = "verification" | "indisponible" | "deja" | "pret" | "enregistrement" | "ecoute" | "envoi" | "verif";

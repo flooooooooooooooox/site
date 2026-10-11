@@ -7,9 +7,11 @@
  * est produit par un service dedie (`pdf-service`, appele depuis n8n) qui n'est ni
  * dans ce depot ni joignable d'ici.
  *
- * Regle de fond : on n'ecrit que ce que le visiteur a dit ou saisi. Tout ce qui
- * releve de l'entreprise (SIRET, assurance, conditions generales, retractation)
- * reste « a completer » : aucun texte juridique n'est invente a sa place.
+ * Mentions legales : les lignes GENERIQUES du gabarit de production sont reprises
+ * mot pour mot (penalites de retard L441-10, retractation L221-18, avenant, validite
+ * 30 jours, TVA sur les encaissements, art. 293 B si TVA a 0 %). Les lignes qui
+ * decrivent l'ENTREPRISE (SIRET, assureur, tribunal, mediateur, moyens de paiement)
+ * restent « a completer » : le visiteur n'est pas Cirrion, on ne les devine pas.
  */
 import { PDFDocument, PDFFont, PDFPage, StandardFonts, rgb } from "pdf-lib";
 import { detailParLigne, euros, totaux, type Devis } from "./devis";
@@ -20,6 +22,7 @@ const BLUE_LINE = rgb(191 / 255, 210 / 255, 250 / 255);
 const INK = rgb(30 / 255, 41 / 255, 59 / 255);
 const MUTED = rgb(100 / 255, 116 / 255, 139 / 255);
 const PALE = rgb(248 / 255, 250 / 255, 252 / 255);
+const ORANGE = rgb(194 / 255, 90 / 255, 12 / 255);
 const RULE = rgb(226 / 255, 232 / 255, 240 / 255);
 const WHITE = rgb(1, 1, 1);
 const GREEN = rgb(5 / 255, 150 / 255, 105 / 255);
@@ -29,6 +32,9 @@ const W = 595.28;
 const H = 841.89;
 const M = 36;
 const CW = W - 2 * M;
+/** Hauteur reservee en bas de page pour le pied de page legal. */
+const FOOT = 74;
+const VALID_DAYS = 30;
 
 /** Les polices standard du PDF ne savent ecrire que le jeu WinAnsi : le reste devient « ? ». */
 function safe(font: PDFFont, s: string): string {
@@ -97,14 +103,15 @@ export async function buildDevisPdf(d: Devis, now = new Date()): Promise<Uint8Ar
     }
   };
   const newPage = () => { page = pdf.addPage([W, H]); y = H - M; };
-  const need = (h: number) => { if (y - h < M + 34) newPage(); };
+  const need = (h: number) => { if (y - h < FOOT + 12) newPage(); };
   const label = (s: string, x: number, yy: number, color = BLUE) => spaced(s.toUpperCase(), x, yy, 6.8, bold, color, 0.5);
 
   /* ----- En-tete : badge DEVIS, puces, emetteur ----- */
   rr(M, y, 62, 22, 3, { fill: BLUE });
   spaced("DEVIS", M + 9, y - 15, 11, bold, WHITE, 1.6);
-  const chips: string[] = [`Émis le : ${dateLongue(now)}`];
-  if (d.tva === "0") chips.push("TVA non applicable");
+  const until = new Date(now.getTime() + VALID_DAYS * 86_400_000);
+  const chips: string[] = [`Émis le : ${dateLongue(now)}`, `Valable jusqu'au : ${dateLongue(until)}`];
+  chips.push(d.tva === "0" ? "TVA non applicable — Franchise en base" : "TVA sur les encaissements");
   let cx = M;
   const cy = y - 38;
   for (const c of chips) {
@@ -118,13 +125,20 @@ export async function buildDevisPdf(d: Devis, now = new Date()): Promise<Uint8Ar
   const initials = (d.entreprise.match(/[A-Za-zÀ-ÿ0-9]/g) ?? []).slice(0, 2).join("").toUpperCase();
   const textRight = W - M - (initials ? 40 : 0);
   txtR(emitter, textRight, y - 8, 9, bold, d.entreprise ? BLUE : MUTED);
-  txtR("Adresse, SIRET, n° de TVA : à compléter", textRight, y - 20, 7, ital, MUTED);
+  const idLines = [
+    "Adresse, code postal, ville : à compléter",
+    "SIRET : à compléter",
+    "RNE : à compléter",
+    d.tva === "0" ? "TVA non applicable, art. 293 B du CGI" : "N° TVA intracommunautaire : à compléter",
+    "Tél. et e-mail : à compléter",
+  ];
+  idLines.forEach((l, k) => txtR(l, textRight, y - 19 - k * 9, 6.8, font, MUTED));
   if (initials) {
     rr(W - M - 30, y + 2, 30, 30, 5, { fill: BLUE });
     const iw = bold.widthOfTextAtSize(initials, 11);
     txt(initials, W - M - 15 - iw / 2, y - 18, 11, bold, WHITE);
   }
-  y -= 56;
+  y -= 66;
   page.drawLine({ start: { x: M, y }, end: { x: W - M, y }, thickness: 1.6, color: BLUE });
   y -= 14;
 
@@ -196,55 +210,98 @@ export async function buildDevisPdf(d: Devis, now = new Date()): Promise<Uint8Ar
   y -= 14;
 
   /* ----- Totaux ----- */
-  need(78);
+  need(96);
   const tw = 190;
   const tx = M + CW - tw;
   rr(tx, y, tw, 62, 4, { fill: WHITE, stroke: RULE });
   txt("Total HT", tx + 10, y - 15, 8.5, font, MUTED); txtR(euros(t.ht), tx + tw - 10, y - 15, 8.5, bold);
   page.drawLine({ start: { x: tx, y: y - 22 }, end: { x: tx + tw, y: y - 22 }, thickness: 0.5, color: RULE });
-  txt(d.tva === "0" ? "TVA (non applicable)" : `TVA (${d.tva.replace(".", ",")} %)`, tx + 10, y - 36, 8.5, font, MUTED);
+  txt(d.tva === "0" ? "TVA (0 %)" : `TVA (${d.tva.replace(".", ",")} %)`, tx + 10, y - 36, 8.5, font, MUTED);
   txtR(euros(t.tva), tx + tw - 10, y - 36, 8.5, bold);
   rr(tx, y - 40, tw, 22, 4, { fill: BLUE });
   spaced("TOTAL TTC", tx + 10, y - 55, 8.5, bold, WHITE, 0.6);
   txtR(euros(t.ttc), tx + tw - 10, y - 55, 10.5, bold, WHITE);
-  y -= 78;
+  y -= 70;
+  if (d.tva === "0") {
+    const m = wrap(ital, "Art. 293 B CGI — TVA non applicable, dispense de TVA (franchise en base de TVA).", 6.5, tw);
+    m.forEach((l) => { txtR(l, tx + tw, y, 6.5, ital, MUTED); y -= 8.5; });
+  }
+  y -= 8;
 
-  /* ----- Delai, paiement (seulement ce qui a ete dit) ----- */
+  /* ----- Delai d'execution (seulement s'il a ete dit) ----- */
   if (d.duree_jours) {
     need(30);
+    const lead = "Délai d'exécution : ";
+    const dur = `${d.duree_jours} jour${d.duree_jours > 1 ? "(s)" : ""}`;
+    const tail = " à compter de la réception de l'acompte et/ou de la signature du présent devis.";
     rr(M, y, CW, 22, 4, { fill: BLUE_SOFT });
     page.drawRectangle({ x: M, y: y - 22, width: 3, height: 22, color: BLUE });
-    txt("Durée estimée des travaux :", M + 12, y - 14, 8, bold, BLUE);
-    txt(`${d.duree_jours} jour${d.duree_jours > 1 ? "s" : ""}`, M + 12 + bold.widthOfTextAtSize("Durée estimée des travaux : ", 8), y - 14, 8, bold, INK);
+    txt(lead, M + 12, y - 14, 8, font, BLUE);
+    txt(dur, M + 12 + font.widthOfTextAtSize(lead, 8), y - 14, 8, bold, BLUE);
+    txt(tail, M + 12 + font.widthOfTextAtSize(lead, 8) + bold.widthOfTextAtSize(dur, 8), y - 14, 8, font, BLUE);
     y -= 32;
   }
-  if (d.conditions) {
-    const lines = wrap(font, d.conditions, 8.5, CW - 24);
-    const h = 30 + lines.length * 11.5;
+
+  /* ----- Modalites de paiement : toujours, car elles portent les penalites obligatoires ----- */
+  {
+    const inner = CW - 24;
+    const rows: { l: string[]; f: PDFFont; color: ReturnType<typeof rgb>; size: number }[] = [];
+    if (d.conditions) rows.push({ l: wrap(font, d.conditions, 8.5, inner), f: font, color: INK, size: 8.5 });
+    rows.push({
+      l: wrap(font, "⚠ Tout retard de paiement entraîne des pénalités de retard au taux légal en vigueur. Une indemnité forfaitaire de 40 € pour frais de recouvrement est due uniquement pour les clients professionnels, conformément à l'article L441-10 du Code de commerce.".replace("⚠ ", ""), 7.8, inner),
+      f: font, color: ORANGE, size: 7.8,
+    });
+    rows.push({ l: wrap(font, "Modes de paiement acceptés : à compléter par l'entreprise.", 7.8, inner), f: font, color: MUTED, size: 7.8 });
+    if (d.tva !== "0") rows.push({ l: wrap(font, "TVA sur les encaissements — La TVA sera exigible à l'encaissement des acomptes et du solde.", 7.8, inner), f: font, color: MUTED, size: 7.8 });
+    const lines = rows.reduce((n, r) => n + r.l.length, 0);
+    const h = 28 + lines * 10.5 + rows.length * 3;
     need(h + 10);
     rr(M, y, CW, h, 5, { fill: BLUE_SOFT, stroke: BLUE_LINE });
-    txt("Modalités de paiement", M + 12, y - 15, 8.5, bold, BLUE);
-    lines.forEach((l, k) => txt(l, M + 12, y - 30 - k * 11.5, 8.5));
+    txt("Modalités de paiement", M + 12, y - 16, 8.5, bold, BLUE);
+    let ly = y - 30;
+    for (const r of rows) {
+      for (const ln of r.l) { txt(ln, M + 12, ly, r.size, r.f, r.color); ly -= 10.5; }
+      ly -= 3;
+    }
     y -= h + 12;
   }
 
-  /* ----- Mentions legales : a completer par l'entreprise ----- */
-  need(78);
-  const third = (CW - 12) / 3;
-  const legal = [
-    { t: "Assurance décennale & RC Pro", c: BLUE },
-    { t: "Conditions générales & litiges", c: AMBER },
-    { t: "Droit de rétractation", c: GREEN },
-  ];
-  legal.forEach((b, i) => {
-    const x = M + i * (third + 6);
-    rr(x, y, third, 56, 4, { fill: PALE, stroke: RULE });
-    page.drawRectangle({ x, y: y - 56, width: 2.5, height: 56, color: b.c });
-    label(b.t, x + 9, y - 13, b.c);
-    txt("À compléter par l'entreprise.", x + 9, y - 28, 7.5, ital, MUTED);
-    txt("Mention propre à votre situation.", x + 9, y - 39, 7.5, ital, MUTED);
-  });
-  y -= 70;
+  /* ----- Trois blocs legaux ----- */
+  {
+    const third = (CW - 12) / 3;
+    const colW = third - 22;
+    const blocks = [
+      { t: "Assurance décennale & RC Pro", c: BLUE, rows: [
+        { s: "Assurance Responsabilité Civile Décennale :", f: font },
+        { s: "à compléter (assureur et n° de contrat).", f: bold },
+        { s: "Garantie valable pour : à compléter.", f: font },
+        { s: "RC Professionnelle : à compléter.", f: font },
+      ] },
+      { t: "Conditions générales & litiges", c: AMBER, rows: [
+        { s: `Devis valable ${VALID_DAYS} jours à compter de sa date d'émission.`, f: font },
+        { s: "En cas de litige, tribunal compétent : à compléter.", f: font },
+        { s: "Médiation de la consommation : à compléter (nom et coordonnées du médiateur).", f: font },
+        { s: "Tout travail supplémentaire fera l'objet d'un avenant signé.", f: font },
+      ] },
+      { t: "Droit de rétractation", c: GREEN, rows: [
+        { s: "Pour tout contrat conclu hors établissement, le client particulier dispose d'un délai de", f: font },
+        { s: "14 JOURS", f: bold },
+        { s: "pour exercer son droit de rétractation (Art. L221-18 Code de la consommation).", f: font },
+        { s: "Aucun paiement ni commencement de travaux avant expiration de ce délai, sauf demande expresse écrite du client.", f: font },
+      ] },
+    ].map((b) => ({ ...b, lines: b.rows.flatMap((r) => wrap(r.f, r.s, 7, colW).map((l) => ({ l, f: r.f, hi: r.f === bold && b.t.startsWith("Droit") }))) }));
+    const bh = 26 + Math.max(...blocks.map((b) => b.lines.length)) * 9.3;
+    need(bh + 10);
+    blocks.forEach((b, i) => {
+      const x = M + i * (third + 6);
+      rr(x, y, third, bh, 4, { fill: PALE, stroke: RULE });
+      page.drawRectangle({ x, y: y - bh, width: 2.5, height: bh, color: b.c });
+      label(b.t, x + 10, y - 14, b.c);
+      let ly = y - 27;
+      for (const ln of b.lines) { txt(ln.l, x + 10, ly, ln.hi ? 8 : 7, ln.f, ln.hi ? BLUE : INK); ly -= 9.3; }
+    });
+    y -= bh + 14;
+  }
 
   /* ----- Signatures ----- */
   need(96);
@@ -260,12 +317,18 @@ export async function buildDevisPdf(d: Devis, now = new Date()): Promise<Uint8Ar
   y -= 92;
 
   /* ----- Pied de page : sur chaque page ----- */
+  const centre = (p: PDFPage, text: string, yy: number, size: number, f: PDFFont, color: ReturnType<typeof rgb>) => {
+    const str = safe(f, text);
+    p.drawText(str, { x: (W - f.widthOfTextAtSize(str, size)) / 2, y: yy, size, font: f, color });
+  };
   pdf.getPages().forEach((p, i, all) => {
-    p.drawLine({ start: { x: M, y: 40 }, end: { x: W - M, y: 40 }, thickness: 0.5, color: RULE });
-    const note = safe(font, "Devis d'essai généré par Cirrion, sans valeur contractuelle. Mentions légales (SIREN, assurance, conditions de vente) à compléter.");
-    p.drawText(note, { x: M, y: 27, size: 7, font, color: MUTED });
+    p.drawLine({ start: { x: M, y: 62 }, end: { x: W - M, y: 62 }, thickness: 0.5, color: RULE });
+    centre(p, `${d.entreprise || "Votre entreprise"} | Adresse, SIRET, RNE : à compléter | TVA : ${d.tva === "0" ? "non applicable, art. 293 B du CGI" : "à compléter"}`, 51, 6.6, bold, MUTED);
+    centre(p, "Tél., e-mail, assurance décennale (assureur, n° de contrat) : à compléter", 42, 6.6, font, MUTED);
+    centre(p, `Document généré automatiquement — valable ${VALID_DAYS} jours à compter du ${dateLongue(now)}`, 33, 6.6, font, MUTED);
+    centre(p, "Devis d'essai généré par Cirrion, sans valeur contractuelle : les mentions « à compléter » relèvent de votre entreprise.", 24, 6.6, ital, MUTED);
     const n = `${i + 1} / ${all.length}`;
-    p.drawText(n, { x: W - M - font.widthOfTextAtSize(n, 7.5), y: 27, size: 7.5, font, color: MUTED });
+    p.drawText(n, { x: W - M - font.widthOfTextAtSize(n, 7), y: 24, size: 7, font, color: MUTED });
   });
 
   return pdf.save();
