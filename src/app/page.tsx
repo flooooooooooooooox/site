@@ -95,6 +95,7 @@ export default function Home() {
             }}
           >
             {[
+              { href: "/essai-devis-vocal", label: "Essayer le devis vocal gratuit", sub: "Dictez, corrigez, téléchargez" },
               { href: "/roi", label: "Calculer ce que vous récupérez", sub: "Estimation en 30 secondes" },
               { href: "/comparatif", label: "Cirrion vs Obat, Sage, EBP", sub: "28 critères comparés" },
               { href: "/pointage-preuve-de-passage", label: "Pointage & preuve de passage", sub: "QR code, photos horodatées" },
