@@ -223,21 +223,17 @@ MagneticButton.displayName = "MagneticButton";
 
 const MarqueeItem = () => (
   <div style={{ display: "flex", alignItems: "center", gap: "3rem", padding: "0 1.5rem" }}>
-    <span>Gestion administrative</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
-    <span>Devis et factures</span> <span style={{ color: "#4ADE80", opacity: 0.7 }}>✦</span>
-    <span>Suivi des paiements</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
-    <span>Dépenses et justificatifs</span> <span style={{ color: "#4ADE80", opacity: 0.7 }}>✦</span>
-    <span>Préparation comptable</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
-    <span>Relances automatiques</span> <span style={{ color: "#4ADE80", opacity: 0.7 }}>✦</span>
-    <span>Artisans, indépendants et TPE</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
+    <span>Devis en 3 minutes</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
+    <span>IA Vocale WhatsApp</span> <span style={{ color: "#4ADE80", opacity: 0.7 }}>✦</span>
+    <span>Standard 24h/24</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
+    <span>Hébergement France</span> <span style={{ color: "#4ADE80", opacity: 0.7 }}>✦</span>
+    <span>RGPD Natif</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
+    <span>Relances Auto</span> <span style={{ color: "#4ADE80", opacity: 0.7 }}>✦</span>
+    <span>ROI × 3</span> <span style={{ color: "#2455D6", opacity: 0.7 }}>✦</span>
   </div>
 );
 
 const NAV_LINKS = [
-  { label: "Gestion et comptabilité", href: "/gestion-comptabilite" },
-  { label: "Application Cirrion", href: "/application" },
-  { label: "Entreprises de services", href: "/entreprise-nettoyage" },
-  { label: "Devis par métier", href: "/logiciel-devis" },
   { label: "Entreprises", href: "/logiciel-gestion-entreprise-batiment" },
   { label: "Ressources", href: "/ressources" },
   { label: "Métiers", href: "/artisans" },

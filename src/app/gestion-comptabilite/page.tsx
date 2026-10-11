@@ -1,26 +1,17 @@
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
-import AnswerSection from "@/components/seo/AnswerSection";
+import ManagementFaq from "@/components/sections/ManagementFaq";
 
-export const metadata=pageMetadata({title:"Gestion administrative et préparation comptable pour TPE — Cirrion",description:"Devis, factures, encaissements, relances et dépenses : découvrez comment Cirrion centralise l'administratif et prépare les informations nécessaires à votre comptabilité.",alternates:{canonical:"https://www.cirrion.eu/gestion-comptabilite"}});
-const steps=[
-  {title:"Devis et factures",text:"Les informations de vos clients et vos prestations servent à préparer les documents commerciaux. Le devis est une étape du suivi de l'activité, pas un dossier séparé à ressaisir partout.",link:"/application",label:"Découvrir les devis dans l’application"},
-  {title:"Encaissements et relances",text:"Suivez ce qui a été facturé, ce qui a été encaissé et ce qui reste à payer. Les relances font partie du suivi administratif : vous gardez une vue sur les documents et les échéances.",link:"/ressources/relances-devis-artisan",label:"Comprendre le suivi des relances"},
-  {title:"Dépenses et justificatifs",text:"Rassemblez les dépenses et leurs justificatifs pour préparer votre suivi comptable. Les pièces manquantes et les dépenses à vérifier restent identifiables pour le professionnel qui validera votre dossier.",link:"/application",label:"Voir le périmètre de l'application"},
-  {title:"Préparation et accompagnement comptables",text:"L'offre présentée par Cirrion associe le logiciel et un accompagnement comptable. Lors de l'échange initial, faites préciser les travaux inclus, les déclarations prises en charge, les validations et le rôle du cabinet partenaire. Le logiciel automatise la préparation ; les missions réglementées sont réalisées par un professionnel habilité.",link:"/devis",label:"Définir mon accompagnement avec Cirrion"},
-];
-export default function ManagementPage(){return <main style={{position:"relative",zIndex:1,maxWidth:"56rem",margin:"0 auto",padding:"8rem 6vw 5rem",overflowWrap:"anywhere"}}>
-  <Link href="/" style={{color:"#2455D6"}}>← Accueil</Link>
-  <h1 style={{fontFamily:"var(--font-nunito)",fontWeight:900,fontSize:"clamp(1.8rem,4vw,2.7rem)",lineHeight:1.15,margin:"1.3rem 0",color:"var(--text)"}}>Moins d&apos;administratif. Une gestion plus claire.</h1>
-  <p style={{fontSize:"1.05rem",lineHeight:1.8,color:"rgba(var(--text-rgb),.75)"}}>Cirrion accompagne les artisans, les indépendants et les petites entreprises dans leur gestion : devis, factures, paiements, relances, dépenses et préparation comptable. WhatsApp est un moyen de saisir une information ; l&apos;offre porte sur l&apos;ensemble du travail administratif.</p>
-  <section style={{margin:"2.5rem 0"}}><h2 style={{fontSize:"1.4rem",fontWeight:800,marginBottom:"1rem"}}>Du premier devis au dossier comptable</h2>
-    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,240px),1fr))",gap:"1rem"}}>{steps.map((s,i)=><article key={s.title} style={{border:"1px solid rgba(36,85,214,.18)",borderRadius:"1rem",padding:"1.3rem",background:"rgba(36,85,214,.04)"}}><h3 style={{fontWeight:800,color:"#2455D6",fontSize:"1.1rem"}}>{i+1}. {s.title}</h3><p style={{lineHeight:1.8,fontSize:".92rem",margin:".9rem 0",color:"rgba(var(--text-rgb),.75)"}}>{s.text}</p><Link href={s.link} style={{color:"#2455D6",fontSize:".85rem"}}>{s.label} →</Link></article>)}</div>
-  </section>
-  <section><h2 style={{fontSize:"1.35rem",fontWeight:800,marginBottom:"1rem"}}>Ce que l&apos;on définit avant de commencer</h2><p style={{lineHeight:1.8,color:"rgba(var(--text-rgb),.75)"}}>Votre activité, les documents à traiter, les outils à connecter et le périmètre comptable déterminent l&apos;accompagnement. Le prix et les prestations incluses sont précisés dans une proposition adaptée à votre entreprise.</p><p style={{lineHeight:1.8,margin:"1rem 0"}}><Link href="/devis" style={{color:"#2455D6",fontWeight:700}}>Demander une proposition pour mon entreprise →</Link></p></section>
-  <AnswerSection title="Les questions utiles" answers={[
-    {question:"Cirrion est-il seulement un logiciel de devis WhatsApp ?",answer:"Non. L'offre porte sur la gestion administrative et comptable de l'entreprise : devis, facturation, suivi des paiements, relances et dépenses. WhatsApp est un canal d'entrée ; l'application web permet aussi de travailler sur les documents et le suivi."},
-    {question:"Cirrion remplace-t-il mon expert-comptable ?",answer:"Cirrion vise à réduire la saisie et le suivi administratif grâce à l'automatisation et à l'accompagnement comptable présenté dans son offre. Il ne faut pas confondre cette automatisation avec les missions réglementées de l'expert-comptable. La tenue, les déclarations, les bilans et les validations effectivement pris en charge doivent être définis dans votre proposition et votre lettre de mission."},
-    {question:"Comment commencer avec Cirrion ?",answer:"Demandez une proposition pour votre entreprise. L’échange permet de préciser les documents à traiter, les outils à connecter et les prestations comptables incluses dans votre accompagnement."},
-    {question:"À quelles entreprises s'adresse Cirrion ?",answer:"Cirrion s'adresse aux professionnels qui veulent réduire leur travail administratif, notamment les artisans du bâtiment et les TPE de services. Les pages métiers et les exemples du site expliquent des usages précis ; le périmètre adapté à votre activité est confirmé lors de l'échange initial."},
-  ]} links={[{href:"/artisans",label:"Les usages par métier"},{href:"/entreprise-nettoyage",label:"Gestion d'une entreprise de nettoyage"},{href:"/logiciel-gestion-entreprise-batiment",label:"Gestion d'une entreprise du bâtiment"},{href:"/qui-sommes-nous",label:"Qui porte Cirrion ?"}]} />
-</main>;}
+export const metadata = pageMetadata({
+  title: "Gestion administrative et préparation comptable pour TPE — Cirrion",
+  description: "Les réponses aux questions sur la gestion et la comptabilité avec Cirrion : devis, factures, dépenses et accompagnement comptable.",
+  alternates: { canonical: "https://www.cirrion.eu/gestion-comptabilite" },
+});
+
+export default function ManagementPage() {
+  return <main style={{ position: "relative", zIndex: 1, maxWidth: "56rem", margin: "0 auto", padding: "8rem 6vw 5rem", overflowWrap: "anywhere" }}>
+    <Link href="/" style={{ color: "#2455D6" }}>← Accueil</Link>
+    <h1 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "clamp(1.8rem,4vw,2.7rem)", lineHeight: 1.2, margin: "1.3rem 0", color: "var(--text)" }}>La gestion et la comptabilité avec Cirrion</h1>
+    <ManagementFaq />
+  </main>;
+}
