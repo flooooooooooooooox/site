@@ -18,14 +18,14 @@ export const ESSAI = {
   /** Marge pour les durees arrondies par les conteneurs. */
   durationToleranceSeconds: 3,
 
-  /** Un devis par navigateur (cookie)... */
-  perCookie: 1,
-  /** ...et au plus N par connexion : une entreprise ou une 4G partagee ne doit pas bloquer tout le monde. */
-  perIp: int("ESSAI_PER_IP", 3),
+  /** Devis gratuits par navigateur (cookie)... */
+  perCookie: int("ESSAI_PER_VISITOR", 5),
+  /** ...et au plus N par connexion (soit quelques visiteurs) : une entreprise ou une 4G partagee ne doit pas bloquer tout le monde. */
+  perIp: int("ESSAI_PER_IP", 15),
   perIpWindowSeconds: 30 * 24 * 3600,
   /** Appels payants autorises par navigateur, reussis ou non : borne les boucles d'erreurs. */
-  attemptsPerCookie: 3,
-  attemptsPerIpPerDay: 10,
+  attemptsPerCookie: 10,
+  attemptsPerIpPerDay: 30,
   /** Rafale : tous les appels de l'essai confondus. */
   burstPerMinute: 8,
   /** Coupe-circuit global : plafond de devis prepares par jour, pour borner la facture. */

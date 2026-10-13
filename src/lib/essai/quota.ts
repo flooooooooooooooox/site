@@ -1,5 +1,5 @@
 /**
- * Quota de l'essai : un devis par navigateur, quelques-uns par connexion.
+ * Quota de l'essai : `perCookie` devis par navigateur, `perIp` par connexion.
  *
  * Principe : RESERVER avant de payer. Chaque garde est une operation atomique
  * (SET NX ou INCR) dont on lit le resultat, jamais « lire puis ecrire ». Dix
@@ -8,7 +8,7 @@
  *
  * Ordre (le plus bon marche et le plus precis d'abord) :
  *  1. verrou du navigateur      — un seul envoi en cours par visiteur
- *  2. essai deja consomme       — message « deja utilise »
+ *  2. devis deja tous utilises   — message « deja utilise »
  *  3. tentatives du navigateur  — borne les boucles d'erreurs, jamais remboursees
  *  4. tentatives de la connexion
  *  5. place sur la connexion    — remboursee si l'essai echoue
@@ -27,7 +27,7 @@ export type DenyCode =
 export const DENY_MESSAGES: Record<DenyCode, { status: number; message: string }> = {
   "deja-utilise": {
     status: 403,
-    message: "Vous avez déjà utilisé votre essai gratuit. Pour aller plus loin, demandez votre devis Cirrion.",
+    message: `Vous avez utilisé vos ${ESSAI.perCookie} devis gratuits. Pour aller plus loin, demandez votre devis Cirrion.`,
   },
   "en-cours": {
     status: 409,
@@ -39,7 +39,7 @@ export const DENY_MESSAGES: Record<DenyCode, { status: number; message: string }
   },
   connexion: {
     status: 403,
-    message: "L'essai gratuit a déjà été utilisé plusieurs fois depuis cette connexion. Demandez votre devis Cirrion pour continuer.",
+    message: "Les devis gratuits de cette connexion sont épuisés (réseau d'entreprise ou téléphone partagé). Demandez votre devis Cirrion pour continuer.",
   },
   sature: {
     status: 503,
@@ -48,14 +48,17 @@ export const DENY_MESSAGES: Record<DenyCode, { status: number; message: string }
 };
 
 export type Reservation =
-  | { ok: true; complete(): Promise<void>; fail(): Promise<void> }
+  | { ok: true; complete(): Promise<number>; fail(): Promise<void> }
   | { ok: false; code: DenyCode; status: number; message: string };
 
 const day = (now: number) => new Date(now).toISOString().slice(0, 10);
 const deny = (code: DenyCode): Reservation => ({ ok: false, code, ...DENY_MESSAGES[code] });
 
 const k = {
-  visitor: (cid: string) => `essai:v:${cid}`,
+  /** Compteur de devis prepares avec succes par ce navigateur. */
+  visitor: (cid: string) => `essai:n:${cid}`,
+  /** Verrou : un seul envoi a la fois par navigateur. */
+  lock: (cid: string) => `essai:lock:${cid}`,
   attempts: (cid: string) => `essai:att:${cid}`,
   ip: (iph: string) => `essai:ip:${iph}`,
   ipAttempts: (iph: string, now: number) => `essai:ipatt:${iph}:${day(now)}`,
@@ -63,13 +66,19 @@ const k = {
   burst: (iph: string, now: number) => `essai:rl:${iph}:${Math.floor(now / 60_000)}`,
 };
 
+/** Devis gratuits qu'il reste a ce navigateur (lecture seule). */
+export async function remaining(store: Store, cid: string | null): Promise<number> {
+  const used = cid ? Number((await store.get(k.visitor(cid))) ?? 0) : 0;
+  return Math.max(0, ESSAI.perCookie - used);
+}
+
 /** Lecture seule, pour afficher ou masquer l'enregistreur. N'ecrit rien. */
 export async function peek(
   store: Store,
   cid: string | null,
   iph: string,
 ): Promise<"disponible" | "deja-utilise" | "connexion"> {
-  if (cid && (await store.get(k.visitor(cid))) === "done") return "deja-utilise";
+  if ((await remaining(store, cid)) <= 0) return "deja-utilise";
   const n = Number((await store.get(k.ip(iph))) ?? 0);
   return n >= ESSAI.perIp ? "connexion" : "disponible";
 }
@@ -81,12 +90,19 @@ export async function burstAllowed(store: Store, iph: string, now = Date.now()):
 
 export async function reserve(store: Store, cid: string, iph: string, now = Date.now()): Promise<Reservation> {
   const vKey = k.visitor(cid);
+  const lKey = k.lock(cid);
 
   // 1. Verrou : un seul envoi a la fois pour ce navigateur.
-  if (!(await store.setNx(vKey, "pending", ESSAI.lockSeconds))) {
-    return deny((await store.get(vKey)) === "done" ? "deja-utilise" : "en-cours");
+  if (!(await store.setNx(lKey, "pending", ESSAI.lockSeconds))) {
+    return deny((await remaining(store, cid)) <= 0 ? "deja-utilise" : "en-cours");
   }
-  const unlock = () => store.del(vKey);
+  const unlock = () => store.del(lKey);
+
+  // 2. Devis gratuits deja tous utilises par ce navigateur.
+  if ((await remaining(store, cid)) <= 0) {
+    await unlock();
+    return deny("deja-utilise");
+  }
 
   try {
     // 3. Tentatives du navigateur (non remboursables).
@@ -118,11 +134,13 @@ export async function reserve(store: Store, cid: string, iph: string, now = Date
     let settled = false;
     return {
       ok: true,
-      // Succes : l'essai est consomme pour ce navigateur, pour de bon.
+      // Succes : un devis de plus est compte pour ce navigateur (la place sur la connexion reste prise).
       async complete() {
-        if (settled) return;
+        if (settled) return 0;
         settled = true;
-        await store.set(vKey, "done", ESSAI.cookieMaxAgeSeconds);
+        const used = await store.incr(vKey, ESSAI.cookieMaxAgeSeconds);
+        await unlock();
+        return Math.max(0, ESSAI.perCookie - used);
       },
       // Echec (rien d'exploitable) : on rend la place, mais pas les tentatives.
       async fail() {

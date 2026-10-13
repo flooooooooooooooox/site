@@ -116,9 +116,9 @@ export async function POST(req: Request) {
     }
 
     // 7. Succes : l'essai est consomme, le jeton de telechargement est emis.
-    await r.complete();
+    const left = await r.complete();
     const { token } = issueToken(cid);
-    return json({ ok: true, transcript, devis, missing: missingFields(devis), token, engine: extracted.engine }, 200, cookie);
+    return json({ ok: true, transcript, devis, missing: missingFields(devis), token, engine: extracted.engine, remaining: left }, 200, cookie);
   } catch (err) {
     if (isUnavailable(err)) {
       console.error("[essai] indisponible :", err instanceof Error ? err.message : err);

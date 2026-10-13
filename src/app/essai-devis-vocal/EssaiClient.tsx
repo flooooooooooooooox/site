@@ -30,6 +30,7 @@ function speechCtor(): (new () => Speech) | null {
   return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
 }
 const MAX_CHARS = 3000;
+const FREE_QUOTES = 5; // doit rester egal a ESSAI.perCookie (config serveur) : le serveur reste seul juge.
 
 function pickMime(): string | undefined {
   if (typeof MediaRecorder === "undefined") return undefined;
@@ -54,6 +55,7 @@ export default function EssaiClient() {
   const [text, setText] = useState("");
   const [listening, setListening] = useState(false);
   const [viaBrowser, setViaBrowser] = useState(false);
+  const [left, setLeft] = useState(FREE_QUOTES);
 
   const recorder = useRef<MediaRecorder | null>(null);
   const chunks = useRef<Blob[]>([]);
@@ -69,9 +71,10 @@ export default function EssaiClient() {
     let alive = true;
     fetch("/api/essai/statut", { cache: "no-store" })
       .then((r) => r.json())
-      .then((j: { available: boolean; audio?: boolean; reason?: "deja-utilise" | "connexion" | "indisponible" }) => {
+      .then((j: { available: boolean; audio?: boolean; remaining?: number; reason?: "deja-utilise" | "connexion" | "indisponible" }) => {
         if (!alive) return;
         setAudioOk(j.audio !== false);
+        if (typeof j.remaining === "number") setLeft(j.remaining);
         setSpeechOk(speechCtor() !== null);
         if (j.available) setStep("pret");
         else { setReason(j.reason ?? "indisponible"); setStep(j.reason === "indisponible" || !j.reason ? "indisponible" : "deja"); }
@@ -153,6 +156,7 @@ export default function EssaiClient() {
       setDevis({ ...emptyDevis(), ...j.devis });
       setTranscript(j.transcript || "");
       setViaBrowser(browser);
+      if (typeof j.remaining === "number") setLeft(j.remaining);
       setToken(j.token);
       setStep("verif");
     } catch {
@@ -230,6 +234,23 @@ export default function EssaiClient() {
     }, 250);
   }
 
+  /* Nouveau devis : tout est remis a zero, le serveur compte les devis restants. */
+  function another() {
+    stopDictation();
+    updateText("");
+    setClip(null);
+    setDevis(emptyDevis());
+    setTranscript("");
+    setToken("");
+    setPdfUrl("");
+    setDownloaded(false);
+    setShowMissing(false);
+    setViaBrowser(false);
+    setError("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setStep(left > 0 ? "pret" : "deja");
+  }
+
   function again() {
     stopDictation();
     updateText("");
@@ -287,10 +308,10 @@ export default function EssaiClient() {
 
       {step === "deja" && (
         <div className="es-card es-center">
-          <h2>{reason === "connexion" ? "Essai déjà utilisé depuis cette connexion" : "Vous avez déjà fait votre essai"}</h2>
+          <h2>{reason === "connexion" ? "Devis gratuits épuisés sur cette connexion" : "Vos devis gratuits sont utilisés"}</h2>
           <p>{reason === "connexion"
-            ? "Plusieurs essais ont déjà eu lieu depuis cette connexion (réseau d'entreprise ou téléphone partagé). Pour continuer, demandez votre devis Cirrion."
-            : "L'essai gratuit est limité à un devis par visiteur. Pour aller plus loin, découvrez l'offre Cirrion."}</p>
+            ? "Plusieurs visiteurs ont déjà fait des devis depuis cette connexion (réseau d'entreprise ou téléphone partagé). Pour continuer, demandez votre devis Cirrion."
+            : `Vous avez fait vos ${FREE_QUOTES} devis gratuits. Pour aller plus loin, découvrez l'offre Cirrion.`}</p>
           <Offer />
         </div>
       )}
@@ -301,6 +322,9 @@ export default function EssaiClient() {
             <li className="on">1 · Dictez</li><li>2 · Vérifiez</li><li>3 · Téléchargez</li>
           </ol>
 
+          {left < FREE_QUOTES && step === "pret" && (
+            <p className="es-note es-left" role="status">Il vous reste {left} devis gratuit{left > 1 ? "s" : ""} sur {FREE_QUOTES}.</p>
+          )}
           <p className="es-tip">
             Dites <strong>pour qui</strong>, <strong>quels travaux</strong>, <strong>le prix de chaque prestation</strong> et <strong>le taux de TVA</strong>.
           </p>
@@ -515,6 +539,13 @@ export default function EssaiClient() {
               planning et pointage de vos équipes, TVA, paie et bilan de fin d&apos;année. L&apos;objectif : que vous n&apos;ayez plus à gérer un comptable à part.
             </p>
             <Offer />
+            {left > 0 ? (
+              <button type="button" className="es-link" onClick={another}>
+                Faire un autre devis gratuit ({left} restant{left > 1 ? "s" : ""})
+              </button>
+            ) : (
+              <p className="es-note">Vous avez fait vos {FREE_QUOTES} devis gratuits.</p>
+            )}
           </div>
         </>
       )}

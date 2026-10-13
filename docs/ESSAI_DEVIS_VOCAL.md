@@ -20,7 +20,7 @@ et annonce `audio: false` quand `MISTRAL_API_KEY` manque (seule la dictée du na
 Web Speech API (`SpeechRecognition`) : Google sur Chrome/Android, Apple sur Safari, absente de Firefox.
 Le visiteur dicte, voit son texte s'écrire, le corrige, puis `POST /api/essai/preparer` reçoit du **JSON** `{transcript}`.
 
-- Même quota que l'audio (un essai par visiteur, tous moteurs confondus), mêmes verrous anti-simultanéité.
+- Même quota que l'audio (5 devis par visiteur, tous moteurs confondus), mêmes verrous anti-simultanéité.
 - Pas de transcription payante. L'extraction utilise Mistral si la clé existe, sinon des **règles** :
   parseur de l'ERP (mots d'ancrage) puis `src/lib/essai/free-text.ts` (dictée spontanée). Rien n'est inventé : un prix dit en toutes lettres n'est pas lu, la TVA n'est retenue que si elle est prononcée.
 - Texte limité à 3 000 caractères côté serveur. Le texte vient du navigateur du visiteur : il est donc **modifiable**,
@@ -54,7 +54,8 @@ dictée de l'ERP est la seule implémentation lisible ; elle est supposée équi
 | `ESSAI_SECRET` | Signe le cookie et les jetons, et hache les IP. 32+ caractères aléatoires | oui |
 | `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` | Stockage partagé du quota (ou `KV_REST_API_URL` + `KV_REST_API_TOKEN`) | oui |
 | `ESSAI_DAILY_CAP` | Plafond de devis préparés par jour (défaut 200) | non |
-| `ESSAI_PER_IP` | Essais autorisés par connexion sur 30 jours (défaut 3) | non |
+| `ESSAI_PER_VISITOR` | Devis gratuits par navigateur (défaut 5) | non |
+| `ESSAI_PER_IP` | Devis autorisés par connexion sur 30 jours, tous visiteurs confondus (défaut 15) | non |
 | `MISTRAL_DEVIS_MODEL`, `MISTRAL_STT_MODEL` | Modèles (défauts : `mistral-small-latest`, `voxtral-small-latest`) | non |
 
 Fail-closed : sans secret ou sans Redis, l'essai répond « indisponible ». Sans clé Mistral, l'envoi d'audio est fermé, la dictée du navigateur reste ouverte.
@@ -66,9 +67,9 @@ Il ne retombe jamais sur un compteur en mémoire ni sur une génération factice
 Chaque garde est une opération atomique Redis (`SET NX`, `INCR`), jamais « lire puis écrire » :
 
 1. **Verrou par navigateur** : un seul envoi en cours (expire seul après 120 s).
-2. **Cookie signé** : un devis réussi par navigateur.
-3. **Empreinte d'IP** (HMAC, l'IP n'est pas stockée ; IPv6 réduite au /64) : 3 essais par connexion sur 30 jours.
-4. **Tentatives** : 3 par navigateur, 10 par connexion et par jour, réussies ou non (jamais remboursées).
+2. **Cookie signé** : 5 devis réussis par navigateur (compteur côté serveur, `ESSAI_PER_VISITOR`). Après un devis, le visiteur peut en refaire un autre, jamais deux en même temps.
+3. **Empreinte d'IP** (HMAC, l'IP n'est pas stockée ; IPv6 réduite au /64) : 15 devis par connexion sur 30 jours (3 visiteurs de 5 devis).
+4. **Tentatives** : 10 par navigateur, 30 par connexion et par jour, réussies ou non (jamais remboursées).
 5. **Anti-rafale** : 8 requêtes par minute et par connexion.
 6. **Plafond global** : 200 devis par jour. Borne la facture quoi qu'il arrive.
 
@@ -102,6 +103,6 @@ Les journaux ne contiennent aucun contenu de vocal. Les appels partent chez Mist
 npm test
 ```
 
-110 tests : audio, identité, quota (dont requêtes simultanées et mutations vérifiées), modèle de devis,
+112 tests : audio, identité, quota (dont requêtes simultanées et mutations vérifiées), modèle de devis,
 PDF, et parcours complet des routes avec un **faux serveur Mistral** local. Ce faux serveur permet de
 compter les appels payants ; il ne prouve rien sur la qualité de la vraie transcription.

@@ -1,6 +1,6 @@
 import { clientIp, ipHash, readCookie, verifyVisitor } from "@/lib/essai/identity";
 import { json, isUnavailable } from "@/lib/essai/http";
-import { peek } from "@/lib/essai/quota";
+import { peek, remaining } from "@/lib/essai/quota";
 import { getStore } from "@/lib/essai/store";
 
 export const runtime = "nodejs";
@@ -11,8 +11,9 @@ export async function GET(req: Request) {
   const audio = Boolean(process.env.MISTRAL_API_KEY);
   try {
     const cid = verifyVisitor(readCookie(req.headers));
-    const state = await peek(getStore(), cid, ipHash(clientIp(req.headers)));
-    return json(state === "disponible" ? { available: true, audio } : { available: false, reason: state });
+    const store = getStore();
+    const state = await peek(store, cid, ipHash(clientIp(req.headers)));
+    return json(state === "disponible" ? { available: true, audio, remaining: await remaining(store, cid) } : { available: false, reason: state });
   } catch (err) {
     if (isUnavailable(err)) return json({ available: false, reason: "indisponible" });
     console.error("[essai/statut]", err instanceof Error ? err.message : err);

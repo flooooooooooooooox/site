@@ -5,7 +5,7 @@ import EssaiClient from "./EssaiClient";
 export const metadata: Metadata = pageMetadata({
   title: "Devis vocal gratuit : essayez sans inscription",
   description:
-    "Dictez votre chantier, Cirrion prépare le devis, vous le corrigez et le téléchargez en PDF. Gratuit, sans compte, un essai par visiteur.",
+    "Dictez votre chantier, Cirrion prépare le devis, vous le corrigez et le téléchargez en PDF. Gratuit, sans compte, 5 devis gratuits par visiteur.",
   alternates: { canonical: "https://www.cirrion.eu/essai-devis-vocal" },
 });
 
