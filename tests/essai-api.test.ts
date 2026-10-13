@@ -322,3 +322,93 @@ describe("PDF : accès", () => {
     expect((await call(a.cookie, a.j.token, { objet: "x".repeat(70_000) })).status).toBe(413);
   });
 });
+
+describe("dictée du navigateur (texte déjà transcrit)", () => {
+  const dictee = (transcript: unknown, init: { cookie?: string; origin?: string; ip?: string } = {}) =>
+    new Request(URL_PREP, {
+      method: "POST",
+      headers: { host: "localhost:3000", "content-type": "application/json", "x-real-ip": init.ip ?? "203.0.113.7", ...(init.cookie ? { cookie: init.cookie } : {}), ...(init.origin ? { origin: init.origin } : {}) },
+      body: JSON.stringify({ transcript }),
+    });
+
+  it("texte -> devis : aucune transcription payante, seule l'extraction est appelée", async () => {
+    const POST = await route();
+    const res = await POST(dictee(GOOD_TRANSCRIPT));
+    expect(res.status).toBe(200);
+    const j = await res.json();
+    expect(j.devis.client).toBe("Madame Durand");
+    expect(j.devis.tva).toBe("");
+    expect(j.missing).toEqual(["tva"]);
+    expect(calls).toEqual({ stt: 0, chat: 1 });
+  });
+
+  it("sans clé Mistral : le parseur à règles prend le relais, aucun appel payant, rien d'inventé", async () => {
+    vi.stubEnv("MISTRAL_API_KEY", "");
+    try {
+      const POST = await route();
+      const res = await POST(dictee("devis pour Monsieur Martin, pose de 5 prises à 20 euros"));
+      expect(res.status).toBe(200);
+      const j = await res.json();
+      expect(j.engine).toBe("regles");
+      expect(j.devis.client).toBe("Monsieur Martin");
+      expect(j.devis.lignes).toEqual([{ designation: "Pose de prises", quantite: 5, prix: 20 }]);
+      expect(j.devis.tva).toBe("");
+      expect(calls).toEqual({ stt: 0, chat: 0 });
+    } finally { vi.stubEnv("MISTRAL_API_KEY", "cle-de-test"); }
+  });
+
+  it("même quota que l'audio : un 2e essai est refusé, sans appel payant", async () => {
+    const POST = await route();
+    const first = await POST(dictee(GOOD_TRANSCRIPT));
+    const cookie = cookieOf(first);
+    const before = { ...calls };
+    const second = await POST(dictee(GOOD_TRANSCRIPT, { cookie }));
+    expect(second.status).toBe(403);
+    expect(calls).toEqual(before);
+    // et l'audio est refusé aussi : un seul essai, quel que soit le moteur
+    const third = await POST(audioRequest(URL_PREP, wav(10), { cookie }));
+    expect(third.status).toBe(403);
+    expect(calls).toEqual(before);
+  });
+
+  it("8 dictées simultanées avec le même cookie : un seul appel payant", async () => {
+    const POST = await route();
+    const cookie = fresh();
+    const res = await Promise.all(Array.from({ length: 8 }, () => POST(dictee(GOOD_TRANSCRIPT, { cookie }))));
+    expect(res.filter((r) => r.status === 200)).toHaveLength(1);
+    expect(calls.chat).toBe(1);
+  });
+
+  it("texte trop long, trop court, absent ou venant d'un autre site : refusé avant tout appel, essai conservé", async () => {
+    const POST = await route();
+    const cookie = fresh();
+    expect((await POST(dictee("a ".repeat(2000), { cookie }))).status).toBe(413);
+    expect((await POST(dictee("euh", { cookie }))).status).toBe(422);
+    expect((await POST(dictee(42, { cookie }))).status).toBe(400);
+    expect((await POST(dictee(GOOD_TRANSCRIPT, { cookie, origin: "https://evil.example" }))).status).toBe(403);
+    expect(calls).toEqual({ stt: 0, chat: 0 });
+    expect((await POST(dictee(GOOD_TRANSCRIPT, { cookie }))).status).toBe(200);
+  });
+
+  it("rien de compréhensible dans la dictée : message clair, place rendue, on peut réessayer", async () => {
+    mode.extract = { client: null, lignes: [], objet: null, tva: null };
+    const POST = await route();
+    const cookie = fresh();
+    const res = await POST(dictee("bonjour euh voilà je voulais dire quelque chose mais finalement non", { cookie }));
+    expect(res.status).toBe(422);
+    expect((await res.json()).code).toBe("incomprehensible");
+    mode.extract = GOOD_EXTRACT;
+    expect((await POST(dictee(GOOD_TRANSCRIPT, { cookie }))).status).toBe(200);
+  });
+});
+
+describe("statut", () => {
+  it("sans clé Mistral : l'essai reste ouvert pour la dictée du navigateur, l'audio est annoncé indisponible", async () => {
+    const GET = (await import("@/app/api/essai/statut/route")).GET;
+    const req = () => new Request("http://localhost:3000/api/essai/statut", { headers: { "x-real-ip": "203.0.113.9" } });
+    expect(await (await GET(req())).json()).toEqual({ available: true, audio: true });
+    vi.stubEnv("MISTRAL_API_KEY", "");
+    try { expect(await (await GET(req())).json()).toEqual({ available: true, audio: false }); }
+    finally { vi.stubEnv("MISTRAL_API_KEY", "cle-de-test"); }
+  });
+});

@@ -12,7 +12,24 @@ const TVA_CHOICES: { value: Exclude<Tva, "">; label: string; hint: string }[] = 
   { value: "0", label: "0 %", hint: "franchise en base" },
 ];
 
-type Step = "verification" | "indisponible" | "deja" | "pret" | "enregistrement" | "ecoute" | "envoi" | "verif";
+type Step = "verification" | "indisponible" | "deja" | "pret" | "enregistrement" | "ecoute" | "dictee" | "envoi" | "verif";
+
+/* Dictee du navigateur (Web Speech API) : Google sur Chrome/Android, Apple sur Safari.
+   Types minimaux : ils ne sont pas dans lib.dom de facon portable. */
+type SpeechResultList = ArrayLike<ArrayLike<{ transcript: string }>>;
+type Speech = {
+  lang: string; continuous: boolean; interimResults: boolean;
+  onresult: ((e: { results: SpeechResultList }) => void) | null;
+  onerror: ((e: { error: string }) => void) | null;
+  onend: (() => void) | null;
+  start(): void; stop(): void;
+};
+function speechCtor(): (new () => Speech) | null {
+  if (typeof window === "undefined") return null;
+  const w = window as unknown as { SpeechRecognition?: new () => Speech; webkitSpeechRecognition?: new () => Speech };
+  return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
+}
+const MAX_CHARS = 3000;
 
 function pickMime(): string | undefined {
   if (typeof MediaRecorder === "undefined") return undefined;
@@ -32,19 +49,30 @@ export default function EssaiClient() {
   const [pdfUrl, setPdfUrl] = useState("");
   const [downloaded, setDownloaded] = useState(false);
   const [showMissing, setShowMissing] = useState(false);
+  const [audioOk, setAudioOk] = useState(true);
+  const [speechOk, setSpeechOk] = useState(false);
+  const [text, setText] = useState("");
+  const [listening, setListening] = useState(false);
+  const [viaBrowser, setViaBrowser] = useState(false);
 
   const recorder = useRef<MediaRecorder | null>(null);
   const chunks = useRef<Blob[]>([]);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const stream = useRef<MediaStream | null>(null);
+  const speech = useRef<Speech | null>(null);
+  const wantListen = useRef(false);
+  const base = useRef("");
+  const textRef = useRef("");
 
   /* Disponibilite : lecture seule, rien n'est consomme. */
   useEffect(() => {
     let alive = true;
     fetch("/api/essai/statut", { cache: "no-store" })
       .then((r) => r.json())
-      .then((j: { available: boolean; reason?: "deja-utilise" | "connexion" | "indisponible" }) => {
+      .then((j: { available: boolean; audio?: boolean; reason?: "deja-utilise" | "connexion" | "indisponible" }) => {
         if (!alive) return;
+        setAudioOk(j.audio !== false);
+        setSpeechOk(speechCtor() !== null);
         if (j.available) setStep("pret");
         else { setReason(j.reason ?? "indisponible"); setStep(j.reason === "indisponible" || !j.reason ? "indisponible" : "deja"); }
       })
@@ -54,7 +82,7 @@ export default function EssaiClient() {
 
   const stopTimer = () => { if (timer.current) clearInterval(timer.current); timer.current = null; };
   const releaseMic = () => { stream.current?.getTracks().forEach((t) => t.stop()); stream.current = null; };
-  useEffect(() => () => { stopTimer(); releaseMic(); }, []);
+  useEffect(() => () => { stopTimer(); releaseMic(); wantListen.current = false; speech.current?.stop(); }, []);
   useEffect(() => () => { if (clip) URL.revokeObjectURL(clip.url); }, [clip]);
   useEffect(() => () => { if (pdfUrl) URL.revokeObjectURL(pdfUrl); }, [pdfUrl]);
 
@@ -109,33 +137,102 @@ export default function EssaiClient() {
     setStep("ecoute");
   }
 
-  async function send() {
-    if (!clip) return;
+  async function submit(init: RequestInit, back: Step, browser: boolean) {
     setError("");
     setStep("envoi");
-    const form = new FormData();
-    form.set("audio", clip.blob, "essai");
     try {
-      const res = await fetch("/api/essai/preparer", { method: "POST", body: form });
+      const res = await fetch("/api/essai/preparer", { method: "POST", ...init });
       const j = await res.json().catch(() => ({}));
       if (!res.ok || !j.ok) {
         const code = j.code as string | undefined;
         if (code === "deja-utilise" || code === "connexion") { setReason(code === "connexion" ? "connexion" : "deja-utilise"); setStep("deja"); return; }
         setError(j.error || "Une erreur est survenue. Réessayez.");
-        setStep(code === "indisponible" ? "indisponible" : "ecoute");
+        setStep(code === "indisponible" ? "indisponible" : back);
         return;
       }
       setDevis({ ...emptyDevis(), ...j.devis });
       setTranscript(j.transcript || "");
+      setViaBrowser(browser);
       setToken(j.token);
       setStep("verif");
     } catch {
       setError("La connexion a été coupée. Vérifiez votre réseau et réessayez.");
-      setStep("ecoute");
+      setStep(back);
     }
   }
 
+  function send() {
+    if (!clip) return;
+    const form = new FormData();
+    form.set("audio", clip.blob, "essai");
+    void submit({ body: form }, "ecoute", false);
+  }
+
+  function sendText() {
+    wantListen.current = false;
+    speech.current?.stop();
+    stopTimer();
+    setListening(false);
+    void submit({ headers: { "Content-Type": "application/json" }, body: JSON.stringify({ transcript: text }) }, "dictee", true);
+  }
+
+  /* ----- Dictee du navigateur ----- */
+  const updateText = (v: string) => { textRef.current = v; setText(v); };
+  function stopDictation() {
+    wantListen.current = false;
+    stopTimer();
+    speech.current?.stop();
+    setListening(false);
+  }
+  function startDictation() {
+    setError("");
+    const Ctor = speechCtor();
+    if (!Ctor) { setError("Votre navigateur ne propose pas la dictée. Essayez avec Chrome ou Safari."); return; }
+    const rec = new Ctor();
+    rec.lang = "fr-FR";
+    rec.continuous = true;
+    rec.interimResults = true;
+    base.current = textRef.current;
+    rec.onresult = (e) => {
+      const live = Array.from(e.results).map((r) => r[0]?.transcript ?? "").join(" ").replace(/\s+/g, " ").trim();
+      updateText(`${base.current} ${live}`.trim().slice(0, MAX_CHARS));
+    };
+    rec.onerror = (e) => {
+      if (e.error === "no-speech" || e.error === "aborted") return;
+      wantListen.current = false;
+      stopTimer();
+      setListening(false);
+      setError(
+        e.error === "not-allowed" || e.error === "service-not-allowed"
+          ? "Le micro n'est pas autorisé. Autorisez-le dans votre navigateur, puis réessayez."
+          : e.error === "network"
+            ? "La dictée du navigateur n'a pas pu joindre son service. Vérifiez votre réseau."
+            : "La dictée n'a pas fonctionné. Réessayez, ou écrivez votre devis dans la zone de texte.",
+      );
+    };
+    // Le navigateur coupe la dictée apres un silence : on la relance tant que le visiteur n'a pas termine.
+    rec.onend = () => {
+      if (!wantListen.current) return;
+      base.current = textRef.current;
+      try { rec.start(); } catch { wantListen.current = false; stopTimer(); setListening(false); }
+    };
+    speech.current = rec;
+    wantListen.current = true;
+    try { rec.start(); } catch { setError("La dictée n'a pas pu démarrer. Réessayez."); wantListen.current = false; return; }
+    setListening(true);
+    setSeconds(0);
+    setStep("dictee");
+    const t0 = Date.now();
+    timer.current = setInterval(() => {
+      const sec = Math.floor((Date.now() - t0) / 1000);
+      setSeconds(sec);
+      if (sec >= MAX_SECONDS) stopDictation();
+    }, 250);
+  }
+
   function again() {
+    stopDictation();
+    updateText("");
     setClip(null);
     setError("");
     setStep("pret");
@@ -198,7 +295,7 @@ export default function EssaiClient() {
         </div>
       )}
 
-      {(step === "pret" || step === "enregistrement" || step === "ecoute" || step === "envoi") && (
+      {(step === "pret" || step === "enregistrement" || step === "ecoute" || step === "dictee" || step === "envoi") && (
         <div className="es-card">
           <ol className="es-steps" aria-label="Étapes">
             <li className="on">1 · Dictez</li><li>2 · Vérifiez</li><li>3 · Téléchargez</li>
@@ -209,7 +306,7 @@ export default function EssaiClient() {
           </p>
           <p className="es-example">« Devis pour Madame Durand, 12 rue de la Paix à Caen. Remplacement du tableau électrique : un tableau à 450 euros, six heures de main-d&apos;œuvre à 55 euros. TVA 10 %. »</p>
 
-          {step === "pret" && (
+          {step === "pret" && audioOk && (
             <div className="es-actions">
               <button type="button" className="es-big" onClick={start}>
                 <span className="es-dot" aria-hidden /> Enregistrer ma voix
@@ -218,7 +315,51 @@ export default function EssaiClient() {
                 ou importer un fichier audio
                 <input type="file" accept="audio/*,.m4a,.mp3,.wav,.ogg,.webm" onChange={importFile} />
               </label>
+              {speechOk && (
+                <button type="button" className="es-link" onClick={startDictation}>ou dicter en direct (dictée gratuite du navigateur)</button>
+              )}
               <p className="es-note">Jusqu&apos;à 1 min 30 · le fichier est analysé puis supprimé, nous ne le conservons pas.</p>
+            </div>
+          )}
+
+          {step === "pret" && !audioOk && (
+            <div className="es-actions">
+              {speechOk ? (
+                <button type="button" className="es-big" onClick={startDictation}>
+                  <span className="es-dot" aria-hidden /> Dicter mon devis
+                </button>
+              ) : (
+                <p className="es-warn" role="status">Votre navigateur ne propose pas la dictée. Ouvrez cette page avec Chrome ou Safari.</p>
+              )}
+              <p className="es-note">Jusqu&apos;à 1 min 30 · rien n&apos;est conservé.</p>
+            </div>
+          )}
+
+          {step === "dictee" && (
+            <div className="es-actions">
+              {listening ? (
+                <>
+                  <div className="es-rec" role="status"><span className="es-pulse" aria-hidden /> Je vous écoute… <b>{mm}:{ss}</b> / 1:30</div>
+                  <button type="button" className="es-big es-stop" onClick={stopDictation}>Terminer la dictée</button>
+                </>
+              ) : (
+                <button type="button" className="es-link" onClick={startDictation}>🎙 Reprendre la dictée</button>
+              )}
+              <label className="es-text">Votre texte (corrigez-le si besoin)
+                <textarea
+                  value={text}
+                  maxLength={MAX_CHARS}
+                  rows={5}
+                  onChange={(e) => updateText(e.target.value)}
+                  placeholder="Votre dictée apparaît ici…"
+                />
+              </label>
+              <button type="button" className="es-big" onClick={sendText} disabled={text.replace(/\s/g, "").length < 8}>Préparer mon devis</button>
+              <button type="button" className="es-link" onClick={again}>Recommencer</button>
+              <p className="es-note es-quality">
+                Dictée gratuite du navigateur (Google sur Chrome et Android, Apple sur Safari) : « moins précise que la vraie transcription Cirrion ».
+                Relisez bien les chiffres. Votre voix est traitée par le service de votre navigateur, pas conservée par Cirrion.
+              </p>
             </div>
           )}
 
@@ -240,7 +381,7 @@ export default function EssaiClient() {
           {step === "envoi" && (
             <div className="es-actions es-center" role="status" aria-live="polite">
               <span className="es-spin" aria-hidden />
-              <p><b>Cirrion écoute votre message et prépare le devis…</b><br />Cela prend 10 à 20 secondes.</p>
+              <p><b>{text && !clip ? "Cirrion prépare votre devis…" : "Cirrion écoute votre message et prépare le devis…"}</b><br />Cela prend 10 à 20 secondes.</p>
             </div>
           )}
 
@@ -261,6 +402,9 @@ export default function EssaiClient() {
                 <summary>Ce que nous avons entendu</summary>
                 <p>« {transcript} »</p>
               </details>
+            )}
+            {viaBrowser && (
+              <p className="es-note es-left">La dictée du navigateur est « moins précise que la vraie transcription Cirrion » : vérifiez chaque nom et chaque montant.</p>
             )}
 
             <div className="es-grid">
@@ -428,6 +572,9 @@ const CSS = `
 .es-transcript p { margin-top: .5rem; font-style: italic; }
 .es-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
 .es-root label { display: flex; flex-direction: column; gap: .3rem; font-size: .78rem; font-weight: 700; color: var(--text); }
+.es-text textarea { font: inherit; font-weight: 400; font-size: 16px; line-height: 1.5; padding: .7rem .85rem; border-radius: .75rem; border: 1px solid rgba(36,85,214,0.2); background: #fff; color: var(--text); width: 100%; resize: vertical; min-height: 120px; }
+.es-text textarea:focus-visible { outline: 2px solid #2455D6; outline-offset: 2px; }
+.es-quality { text-align: left; }
 .es-root input:not([type="radio"]):not([type="file"]) { font: inherit; font-weight: 400; font-size: 16px; min-height: 48px; padding: .6rem .85rem; border-radius: .75rem; border: 1px solid rgba(36,85,214,0.2); background: #fff; color: var(--text); width: 100%; }
 .es-root input:focus-visible, .es-root button:focus-visible, .es-root summary:focus-visible, .es-root a:focus-visible, .es-file:focus-within { outline: 2px solid #2455D6; outline-offset: 2px; }
 .es-lines { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .7rem; }

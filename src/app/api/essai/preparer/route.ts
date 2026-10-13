@@ -5,7 +5,7 @@ import { fail, isUnavailable, json, sameOrigin, UNAVAILABLE } from "@/lib/essai/
 import {
   clientIp, ipHash, issueToken, newVisitorId, readCookie, verifyVisitor, visitorCookieHeader,
 } from "@/lib/essai/identity";
-import { extractDevis, transcribe } from "@/lib/essai/mistral";
+import { extractDevis, extractWithRules, transcribe } from "@/lib/essai/mistral";
 import { burstAllowed, reserve } from "@/lib/essai/quota";
 import { getStore } from "@/lib/essai/store";
 
@@ -13,6 +13,11 @@ export const runtime = "nodejs";
 export const maxDuration = 60;
 
 /**
+ * Deux entrees, meme quota :
+ *  - audio (multipart) : transcription Mistral Voxtral puis extraction ;
+ *  - texte (JSON {transcript}) : dictee du navigateur, deja transcrite chez le visiteur.
+ *    Pas de transcription payante ; extraction Mistral si la cle existe, sinon parseur a regles.
+ *
  * Voix -> devis. Ordre voulu, du moins cher au plus cher :
  *   origine -> rafale -> taille -> lecture -> controle audio -> RESERVATION du quota
  *   -> transcription (payante) -> extraction (payante) -> consommation du quota.
@@ -20,8 +25,10 @@ export const maxDuration = 60;
  */
 export async function POST(req: Request) {
   if (!sameOrigin(req)) return fail(403, "origine", "Requête refusée.");
-  if (!process.env.MISTRAL_API_KEY) {
-    console.error("[essai] MISTRAL_API_KEY absente : essai ferme");
+  const texteMode = (req.headers.get("content-type") ?? "").includes("application/json");
+  const hasKey = Boolean(process.env.MISTRAL_API_KEY);
+  if (!texteMode && !hasKey) {
+    console.error("[essai] MISTRAL_API_KEY absente : essai audio ferme");
     return fail(503, "indisponible", UNAVAILABLE);
   }
 
@@ -39,40 +46,62 @@ export async function POST(req: Request) {
 
     // 2. Taille annoncee, avant de lire quoi que ce soit.
     const declared = Number(req.headers.get("content-length") ?? 0);
-    if (declared > ESSAI.maxAudioBytes + 200_000) {
+    if (texteMode) {
+      if (declared > ESSAI.maxTranscriptChars * 4 + 2000) {
+        return fail(413, "trop-long", "Le texte est trop long. Dictez moins d'1 minute 30.", cookie);
+      }
+    } else if (declared > ESSAI.maxAudioBytes + 200_000) {
       return fail(413, "trop-gros", "Le fichier est trop lourd. Enregistrez un message de moins d'1 minute 30.", cookie);
     }
 
-    // 3. Lecture et controle de l'audio (gratuit).
-    let form: FormData;
-    try { form = await req.formData(); } catch { return fail(400, "requete", "Envoi illisible. Réessayez.", cookie); }
-    const file = form.get("audio");
-    if (!(file instanceof Blob)) return fail(400, "vide", "Aucun audio reçu.", cookie);
-    const bytes = new Uint8Array(await file.arrayBuffer());
-    const audio = checkAudio(bytes);
-    if (!audio.ok) return fail(audio.code === "trop-gros" ? 413 : 422, audio.code, audio.message, cookie);
+    // 3. Lecture et controle de l'entree (gratuit).
+    let bytes = new Uint8Array(0);
+    let kind = "webm";
+    let transcript = "";
+    if (texteMode) {
+      let raw: unknown;
+      try { raw = (await req.json())?.transcript; } catch { return fail(400, "requete", "Envoi illisible. Réessayez.", cookie); }
+      if (typeof raw !== "string") return fail(400, "vide", "Aucun texte reçu.", cookie);
+      transcript = raw.replace(/\s+/g, " ").trim();
+      if (transcript.length > ESSAI.maxTranscriptChars) {
+        return fail(413, "trop-long", "Le texte est trop long. Dictez moins d'1 minute 30.", cookie);
+      }
+      if (transcript.replace(/\s/g, "").length < 8) {
+        return fail(422, "inaudible", "Nous n'avons presque rien reçu. Dictez les travaux et leur prix, puis réessayez.", cookie);
+      }
+    } else {
+      let form: FormData;
+      try { form = await req.formData(); } catch { return fail(400, "requete", "Envoi illisible. Réessayez.", cookie); }
+      const file = form.get("audio");
+      if (!(file instanceof Blob)) return fail(400, "vide", "Aucun audio reçu.", cookie);
+      bytes = new Uint8Array(await file.arrayBuffer());
+      const audio = checkAudio(bytes);
+      if (!audio.ok) return fail(audio.code === "trop-gros" ? 413 : 422, audio.code, audio.message, cookie);
+      kind = audio.info.kind;
+    }
 
     // 4. Reservation du quota : c'est ici, et pas avant, qu'un essai est engage.
     const r = await reserve(store, cid, iph);
     if (!r.ok) return fail(r.status, r.code, r.message, cookie);
 
-    // 5. Transcription puis extraction (payantes).
-    let transcript = "";
-    try {
-      transcript = await transcribe(bytes, audio.info.kind);
-    } catch (err) {
-      await r.fail();
-      console.error("[essai] transcription KO :", err instanceof Error ? err.message : err);
-      return fail(502, "transcription", "Nous n'avons pas pu écouter l'enregistrement. Réessayez dans un instant.", cookie);
-    }
-    if (transcript.replace(/\s/g, "").length < 8) {
-      await r.fail();
-      return fail(422, "inaudible", "Nous n'avons pas compris l'enregistrement. Parlez plus près du micro, dans un endroit calme, puis réessayez.", cookie);
+    // 5. Transcription (audio seulement) puis extraction.
+    if (!texteMode) {
+      try {
+        transcript = await transcribe(bytes, kind);
+      } catch (err) {
+        await r.fail();
+        console.error("[essai] transcription KO :", err instanceof Error ? err.message : err);
+        return fail(502, "transcription", "Nous n'avons pas pu écouter l'enregistrement. Réessayez dans un instant.", cookie);
+      }
+      if (transcript.replace(/\s/g, "").length < 8) {
+        await r.fail();
+        return fail(422, "inaudible", "Nous n'avons pas compris l'enregistrement. Parlez plus près du micro, dans un endroit calme, puis réessayez.", cookie);
+      }
     }
 
     let extracted;
     try {
-      extracted = await extractDevis(transcript);
+      extracted = hasKey ? await extractDevis(transcript) : { devis: extractWithRules(transcript), engine: "regles" as const };
     } catch (err) {
       await r.fail();
       console.error("[essai] extraction KO :", err instanceof Error ? err.message : err);

@@ -14,6 +14,7 @@
 import { Mistral } from "@mistralai/mistralai";
 import { ESSAI } from "./config";
 import { emptyDevis, MAX_LIGNES, type Devis, type Ligne, type Tva } from "./devis";
+import { parseFreeText } from "./free-text";
 import { parseDevisDictation } from "./voice-parse-rules";
 
 const DEVIS_MODEL = process.env.MISTRAL_DEVIS_MODEL || "mistral-small-latest";
@@ -138,19 +139,34 @@ export async function extractWithMistral(transcript: string): Promise<Devis> {
   return fromRaw(JSON.parse(out) as Record<string, unknown>);
 }
 
-/** Secours deterministe, comme dans l'ERP : ne renvoie jamais de TVA ni de prix inventes. */
+/**
+ * Secours deterministe, sans IA. Deux lecteurs :
+ *  - celui de l'ERP, qui attend des mots d'ancrage (« ligne pose de prises 800 euros ») ;
+ *  - un lecteur de dictee spontanee (free-text.ts), utilise quand le premier ne trouve aucune ligne.
+ * Ni l'un ni l'autre n'invente une TVA ou un prix : la TVA n'est retenue que si elle est prononcee.
+ */
 export function extractWithRules(transcript: string): Devis {
   const p = parseDevisDictation(transcript);
   const d = emptyDevis();
-  d.client = p.client ?? "";
-  d.email = p.email ?? "";
-  d.telephone = p.telephone ?? "";
-  d.adresse = p.adresse ?? "";
-  d.adresse_chantier = p.adresse_chantier ?? "";
-  d.objet = p.objet ?? "";
-  d.lignes = p.lignes
-    .slice(0, MAX_LIGNES)
-    .map((l) => ({ designation: l.designation, quantite: l.quantite && l.quantite > 0 ? l.quantite : 1, prix: l.prix }));
+  if (p.lignes.length > 0) {
+    d.client = p.client ?? "";
+    d.email = p.email ?? "";
+    d.telephone = p.telephone ?? "";
+    d.adresse = p.adresse ?? "";
+    d.adresse_chantier = p.adresse_chantier ?? "";
+    d.objet = p.objet ?? "";
+    d.lignes = p.lignes
+      .slice(0, MAX_LIGNES)
+      .map((l) => ({ designation: l.designation, quantite: l.quantite && l.quantite > 0 ? l.quantite : 1, prix: l.prix }));
+    d.tva = parseFreeText(transcript).tva;
+    return d;
+  }
+  const f = parseFreeText(transcript);
+  d.client = f.client;
+  d.adresse = f.adresse;
+  d.objet = f.objet;
+  d.tva = f.tva;
+  d.lignes = f.lignes.slice(0, MAX_LIGNES);
   return d;
 }
 

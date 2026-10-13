@@ -6,13 +6,28 @@ workflow WhatsApp n'est déclenché.
 
 ## Parcours
 
-1. Enregistrement dans le navigateur (90 s max) ou import d'un fichier audio.
-2. `POST /api/essai/preparer` : contrôle de l'audio, réservation du quota, transcription, extraction.
+1. Enregistrement dans le navigateur (90 s max) ou import d'un fichier audio, **ou** dictée en direct par la reconnaissance vocale du navigateur (voir « Dictée du navigateur »).
+2. `POST /api/essai/preparer` : contrôle de l'entrée, réservation du quota, transcription (audio seulement), extraction.
 3. Le visiteur corrige les champs. Le taux de TVA n'est **jamais** présélectionné.
 4. `POST /api/essai/pdf` : PDF généré côté serveur (aucun appel payant).
 5. Proposition de découvrir l'offre (`/devis`, rendez-vous Calendly).
 
-`GET /api/essai/statut` est en lecture seule : il sert à masquer l'enregistreur si l'essai est déjà utilisé.
+`GET /api/essai/statut` est en lecture seule : il sert à masquer l'enregistreur si l'essai est déjà utilisé,
+et annonce `audio: false` quand `MISTRAL_API_KEY` manque (seule la dictée du navigateur est alors proposée).
+
+## Dictée du navigateur (option gratuite, sans clé)
+
+Web Speech API (`SpeechRecognition`) : Google sur Chrome/Android, Apple sur Safari, absente de Firefox.
+Le visiteur dicte, voit son texte s'écrire, le corrige, puis `POST /api/essai/preparer` reçoit du **JSON** `{transcript}`.
+
+- Même quota que l'audio (un essai par visiteur, tous moteurs confondus), mêmes verrous anti-simultanéité.
+- Pas de transcription payante. L'extraction utilise Mistral si la clé existe, sinon des **règles** :
+  parseur de l'ERP (mots d'ancrage) puis `src/lib/essai/free-text.ts` (dictée spontanée). Rien n'est inventé : un prix dit en toutes lettres n'est pas lu, la TVA n'est retenue que si elle est prononcée.
+- Texte limité à 3 000 caractères côté serveur. Le texte vient du navigateur du visiteur : il est donc **modifiable**,
+  ce qui n'ouvre aucun risque nouveau (c'est le visiteur qui corrige déjà tous les champs) mais retire le contrôle de durée de l'audio ;
+  le quota, la rafale et le plafond journalier restent les seuls garde-fous.
+- L'interface affiche que cette dictée est « moins précise que la vraie transcription Cirrion ».
+- Confidentialité : l'audio est traité par le service de reconnaissance du navigateur (Google / Apple), pas par Cirrion. À mentionner dans la politique de confidentialité.
 
 ## Moteur réutilisé
 
@@ -35,14 +50,14 @@ dictée de l'ERP est la seule implémentation lisible ; elle est supposée équi
 
 | Variable | Rôle | Obligatoire |
 |---|---|---|
-| `MISTRAL_API_KEY` | Transcription et extraction | oui |
+| `MISTRAL_API_KEY` | Transcription audio et extraction IA | non : sans elle, dictée du navigateur + règles uniquement |
 | `ESSAI_SECRET` | Signe le cookie et les jetons, et hache les IP. 32+ caractères aléatoires | oui |
 | `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` | Stockage partagé du quota (ou `KV_REST_API_URL` + `KV_REST_API_TOKEN`) | oui |
 | `ESSAI_DAILY_CAP` | Plafond de devis préparés par jour (défaut 200) | non |
 | `ESSAI_PER_IP` | Essais autorisés par connexion sur 30 jours (défaut 3) | non |
 | `MISTRAL_DEVIS_MODEL`, `MISTRAL_STT_MODEL` | Modèles (défauts : `mistral-small-latest`, `voxtral-small-latest`) | non |
 
-Fail-closed : sans clé Mistral, sans secret ou sans Redis, l'essai répond « indisponible ».
+Fail-closed : sans secret ou sans Redis, l'essai répond « indisponible ». Sans clé Mistral, l'envoi d'audio est fermé, la dictée du navigateur reste ouverte.
 Il ne retombe jamais sur un compteur en mémoire ni sur une génération factice.
 `ESSAI_STORE=memory` et `MISTRAL_SERVER_URL` n'existent que hors production (développement, tests).
 
@@ -87,6 +102,6 @@ Les journaux ne contiennent aucun contenu de vocal. Les appels partent chez Mist
 npm test
 ```
 
-84 tests : audio, identité, quota (dont requêtes simultanées et mutations vérifiées), modèle de devis,
+110 tests : audio, identité, quota (dont requêtes simultanées et mutations vérifiées), modèle de devis,
 PDF, et parcours complet des routes avec un **faux serveur Mistral** local. Ce faux serveur permet de
 compter les appels payants ; il ne prouve rien sur la qualité de la vraie transcription.

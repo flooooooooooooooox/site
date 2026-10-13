@@ -37,6 +37,9 @@ export const ESSAI = {
   tokenSeconds: 3600,
   pdfPerToken: 8,
 
+  /** Dictee du navigateur : le texte arrive deja transcrit, on en borne la longueur (~90 s de parole). */
+  maxTranscriptChars: 3000,
+
   transcribeTimeoutMs: 40_000,
   extractTimeoutMs: 20_000,
 } as const;
