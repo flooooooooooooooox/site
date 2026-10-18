@@ -30,7 +30,7 @@ function speechCtor(): (new () => Speech) | null {
   return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
 }
 const MAX_CHARS = 3000;
-const FREE_QUOTES = 5; // doit rester egal a ESSAI.perCookie (config serveur) : le serveur reste seul juge.
+const FREE_QUOTES = 2; // doit rester egal a ESSAI.perCookie (config serveur) : le serveur reste seul juge.
 
 function pickMime(): string | undefined {
   if (typeof MediaRecorder === "undefined") return undefined;

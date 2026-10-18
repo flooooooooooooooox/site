@@ -14,16 +14,16 @@ afterEach(() => vi.unstubAllEnvs());
 
 const ids = (n: number) => Array.from({ length: n }, (_, i) => `c${i}`.padEnd(32, "0"));
 
-describe("cinq devis par navigateur", () => {
-  it("5 devis acceptés, le 6e refusé ; le compteur de devis restants descend", async () => {
+describe("deux devis par navigateur", () => {
+  it("2 devis acceptés, le 3e refusé ; le compteur de devis restants descend", async () => {
     const cid = "a".repeat(32);
     const left: number[] = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 2; i++) {
       const r = await q.reserve(store, cid, "ip1");
       expect(r.ok).toBe(true);
       if (r.ok) left.push(await r.complete());
     }
-    expect(left).toEqual([4, 3, 2, 1, 0]);
+    expect(left).toEqual([1, 0]);
     expect(await q.remaining(store, cid)).toBe(0);
     expect(await q.peek(store, cid, "ip1")).toBe("deja-utilise");
     expect(await q.reserve(store, cid, "ip1")).toMatchObject({ ok: false, code: "deja-utilise", status: 403 });
@@ -36,25 +36,25 @@ describe("cinq devis par navigateur", () => {
     expect((await q.reserve(store, cid, "ip1")).ok).toBe(true);
   });
 
-  it("un autre navigateur, même connexion : accepté (connexion partagée), jusqu'à la limite de 15", async () => {
+  it("un autre navigateur, même connexion : accepté (connexion partagée), jusqu'à la limite de 6", async () => {
     const ok: boolean[] = [];
-    for (const cid of ids(17)) {
+    for (const cid of ids(8)) {
       const r = await q.reserve(store, cid, "ip-partagee");
       ok.push(r.ok);
       if (r.ok) await r.complete();
     }
-    expect(ok.filter(Boolean)).toHaveLength(15);
-    expect(ok.slice(15)).toEqual([false, false]);
+    expect(ok.filter(Boolean)).toHaveLength(6);
+    expect(ok.slice(6)).toEqual([false, false]);
   });
 
   it("vider les cookies ne redonne pas de devis sur la même connexion une fois la limite atteinte", async () => {
-    for (const cid of ids(15)) { const r = await q.reserve(store, cid, "ipX"); if (r.ok) await r.complete(); }
+    for (const cid of ids(6)) { const r = await q.reserve(store, cid, "ipX"); if (r.ok) await r.complete(); }
     expect(await q.reserve(store, "f".repeat(32), "ipX")).toMatchObject({ ok: false, code: "connexion" });
     expect(await q.peek(store, null, "ipX")).toBe("connexion");
   });
 
   it("une autre connexion n'est pas pénalisée", async () => {
-    for (const cid of ids(15)) { const r = await q.reserve(store, cid, "ipA"); if (r.ok) await r.complete(); }
+    for (const cid of ids(6)) { const r = await q.reserve(store, cid, "ipA"); if (r.ok) await r.complete(); }
     expect((await q.reserve(store, "9".repeat(32), "ipB")).ok).toBe(true);
   });
 });
@@ -66,9 +66,9 @@ describe("requêtes simultanées", () => {
     expect(rs.filter((r) => !r.ok && r.code === "en-cours")).toHaveLength(9);
   });
 
-  it("à 4 devis faits, 10 envois en parallèle : un seul passe, le total ne dépasse jamais 5", async () => {
+  it("à 1 devis fait, 10 envois en parallèle : un seul passe, le total ne dépasse jamais 2", async () => {
     const cid = "b".repeat(32);
-    for (let i = 0; i < 4; i++) { const r = await q.reserve(store, cid, "ip1"); if (r.ok) await r.complete(); }
+    for (let i = 0; i < 1; i++) { const r = await q.reserve(store, cid, "ip1"); if (r.ok) await r.complete(); }
     const rs = await Promise.all(Array.from({ length: 10 }, () => q.reserve(store, cid, "ip1")));
     const won = rs.filter((r) => r.ok);
     expect(won).toHaveLength(1);
@@ -77,9 +77,9 @@ describe("requêtes simultanées", () => {
     expect(await q.reserve(store, cid, "ip1")).toMatchObject({ ok: false, code: "deja-utilise" });
   });
 
-  it("30 envois en parallèle avec 30 faux cookies depuis la même IP : pas plus que la limite de 15", async () => {
+  it("30 envois en parallèle avec 30 faux cookies depuis la même IP : pas plus que la limite de 6", async () => {
     const rs = await Promise.all(ids(30).map((cid) => q.reserve(store, cid, "ipFlood")));
-    expect(rs.filter((r) => r.ok)).toHaveLength(15);
+    expect(rs.filter((r) => r.ok)).toHaveLength(6);
   });
 
   it("le verrou ne bloque pas un envoi sans rapport", async () => {
@@ -95,8 +95,8 @@ describe("échecs et tentatives", () => {
     expect((await q.reserve(store, "e".repeat(32), "ip1")).ok).toBe(true);
   });
 
-  it("mais les tentatives ne sont jamais rendues : 10 échecs et c'est fini", async () => {
-    for (let i = 0; i < 10; i++) {
+  it("mais les tentatives ne sont jamais rendues : 6 échecs et c'est fini", async () => {
+    for (let i = 0; i < 6; i++) {
       const r = await q.reserve(store, "g".repeat(32), "ip1");
       expect(r.ok).toBe(true);
       if (r.ok) await r.fail();

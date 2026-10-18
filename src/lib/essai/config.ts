@@ -19,13 +19,13 @@ export const ESSAI = {
   durationToleranceSeconds: 3,
 
   /** Devis gratuits par navigateur (cookie)... */
-  perCookie: int("ESSAI_PER_VISITOR", 5),
+  perCookie: int("ESSAI_PER_VISITOR", 2),
   /** ...et au plus N par connexion (soit quelques visiteurs) : une entreprise ou une 4G partagee ne doit pas bloquer tout le monde. */
-  perIp: int("ESSAI_PER_IP", 15),
+  perIp: int("ESSAI_PER_IP", 6),
   perIpWindowSeconds: 30 * 24 * 3600,
   /** Appels payants autorises par navigateur, reussis ou non : borne les boucles d'erreurs. */
-  attemptsPerCookie: 10,
-  attemptsPerIpPerDay: 30,
+  attemptsPerCookie: 6,
+  attemptsPerIpPerDay: 15,
   /** Rafale : tous les appels de l'essai confondus. */
   burstPerMinute: 8,
   /** Coupe-circuit global : plafond de devis prepares par jour, pour borner la facture. */

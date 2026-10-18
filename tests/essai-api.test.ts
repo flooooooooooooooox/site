@@ -107,31 +107,33 @@ describe("parcours nominal", () => {
 });
 
 describe("limite d'utilisation", () => {
-  it("5 devis avec le même cookie, le 6e est refusé sans AUCUN appel payant", async () => {
+  it("2 devis avec le même cookie, le 3e est refusé sans AUCUN appel payant", async () => {
     const POST = await route();
     const first = await POST(audioRequest(URL_PREP, wav(10)));
     const cookie = cookieOf(first);
     expect(first.status).toBe(200);
-    expect((await first.json()).remaining).toBe(4);
-    for (let i = 3; i >= 0; i--) {
+    expect((await first.json()).remaining).toBe(1);
+    for (let i = 0; i >= 0; i--) {
       const res = await POST(audioRequest(URL_PREP, wav(10), { cookie }));
       expect(res.status).toBe(200);
       expect((await res.json()).remaining).toBe(i);
     }
-    expect(calls).toEqual({ stt: 5, chat: 5 });
+    expect(calls).toEqual({ stt: 2, chat: 2 });
     const sixth = await POST(audioRequest(URL_PREP, wav(10), { cookie }));
     expect(sixth.status).toBe(403);
     expect((await sixth.json()).code).toBe("deja-utilise");
-    expect(calls).toEqual({ stt: 5, chat: 5 });
+    expect(calls).toEqual({ stt: 2, chat: 2 });
   });
 
-  it("cookie effacé à chaque fois, même connexion : la rafale limite d'abord, jamais plus de 8 appels payants par minute", async () => {
+  it("cookie effacé à chaque fois, même connexion : bloqué à 6 devis, sans appel payant au-delà", async () => {
     const POST = await route();
-    const statuses: number[] = [];
-    for (let i = 0; i < 10; i++) statuses.push((await POST(audioRequest(URL_PREP, wav(10), { ip: "198.51.100.20" }))).status);
-    expect(statuses.filter((c) => c === 200)).toHaveLength(8);
-    expect(statuses.slice(8)).toEqual([429, 429]);
-    expect(calls.stt).toBe(8);
+    const codes: string[] = [];
+    for (let i = 0; i < 8; i++) {
+      const res = await POST(audioRequest(URL_PREP, wav(10), { ip: "198.51.100.20" }));
+      codes.push(res.status === 200 ? "ok" : (await res.json()).code);
+    }
+    expect(codes).toEqual(["ok", "ok", "ok", "ok", "ok", "ok", "connexion", "connexion"]);
+    expect(calls.stt).toBe(6);
   });
 
   it("8 envois simultanés avec le même cookie : un seul appel payant", async () => {
@@ -145,12 +147,12 @@ describe("limite d'utilisation", () => {
     expect(calls).toEqual({ stt: 1, chat: 1 });
   });
 
-  it("20 envois simultanés avec 20 faux cookies depuis une même IP : au plus 8 appels payants (rafale)", async () => {
+  it("20 envois simultanés avec 20 faux cookies depuis une même IP : au plus 6 appels payants (limite de la connexion)", async () => {
     mode.delayMs = 100;
     const POST = await route();
     const rs = await Promise.all(Array.from({ length: 20 }, () => POST(audioRequest(URL_PREP, wav(10), { cookie: fresh(), ip: "198.51.100.30" }))));
-    expect(rs.filter((r) => r.status === 200).length).toBeLessThanOrEqual(8);
-    expect(calls.stt).toBeLessThanOrEqual(8);
+    expect(rs.filter((r) => r.status === 200).length).toBeLessThanOrEqual(6);
+    expect(calls.stt).toBeLessThanOrEqual(6);
   });
 
   it("cookie falsifié : traité comme un nouveau visiteur, jamais comme un visiteur connu", async () => {
@@ -364,12 +366,12 @@ describe("dictée du navigateur (texte déjà transcrit)", () => {
     } finally { vi.stubEnv("MISTRAL_API_KEY", "cle-de-test"); }
   });
 
-  it("même quota que l'audio : 5 devis en tout, audio et dictée confondus, le 6e est refusé", async () => {
+  it("même quota que l'audio : 2 devis en tout, audio et dictée confondus, le 3e est refusé", async () => {
     const POST = await route();
     const first = await POST(dictee(GOOD_TRANSCRIPT));
     const cookie = cookieOf(first);
     expect(first.status).toBe(200);
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 1; i++) {
       const res = await POST(i % 2 ? dictee(GOOD_TRANSCRIPT, { cookie }) : audioRequest(URL_PREP, wav(10), { cookie }));
       expect(res.status).toBe(200);
     }
@@ -414,9 +416,9 @@ describe("statut", () => {
   it("sans clé Mistral : l'essai reste ouvert pour la dictée du navigateur, l'audio est annoncé indisponible", async () => {
     const GET = (await import("@/app/api/essai/statut/route")).GET;
     const req = () => new Request("http://localhost:3000/api/essai/statut", { headers: { "x-real-ip": "203.0.113.9" } });
-    expect(await (await GET(req())).json()).toEqual({ available: true, audio: true, remaining: 5 });
+    expect(await (await GET(req())).json()).toEqual({ available: true, audio: true, remaining: 2 });
     vi.stubEnv("MISTRAL_API_KEY", "");
-    try { expect(await (await GET(req())).json()).toEqual({ available: true, audio: false, remaining: 5 }); }
+    try { expect(await (await GET(req())).json()).toEqual({ available: true, audio: false, remaining: 2 }); }
     finally { vi.stubEnv("MISTRAL_API_KEY", "cle-de-test"); }
   });
 });
