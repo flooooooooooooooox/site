@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
+import ManagementFaq from "@/components/sections/ManagementFaq";
 import Services from "@/components/sections/Services";
 import StorySection from "@/components/sections/StorySection";
 import Link from "next/link";
@@ -138,6 +139,10 @@ export default function Home() {
               .go-further-card:hover { transform: none; }
             }
           `}</style>
+        </section>
+
+        <section style={{ maxWidth: "56rem", margin: "0 auto", padding: "0 6vw" }}>
+          <ManagementFaq showMore />
         </section>
 
         {/* 6 — Passage a l'acte */}

@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Cirrion — Application de gestion pour artisans du bâtiment",
+  title: "Cirrion — Application de gestion administrative et préparation comptable",
   description:
-    "Cirrion est une application de gestion pour les artisans du bâtiment : création de devis et factures, envoi par e-mail via votre compte Gmail, relances automatiques.",
+    "Application Cirrion pour artisans et petites entreprises : devis, factures, relances, dépenses et suivi de l'activité. Découvrez la gestion administrative et la préparation comptable.",
   alternates: { canonical: "https://www.cirrion.eu/application" },
 });
 
@@ -33,7 +33,7 @@ export default function ApplicationPage() {
       </h1>
 
       <p style={{ color: "rgba(var(--text-rgb),0.8)", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-        Cirrion est une application de gestion destinée aux artisans et aux entreprises du bâtiment.
+        Cirrion est une application de gestion destinée aux artisans, aux indépendants et aux petites entreprises.
         Son objectif : créer vos devis et vos factures, les envoyer à vos clients et automatiser
         le suivi de votre activité, afin de réduire le temps que vous passez sur l&apos;administratif.
       </p>
@@ -47,6 +47,7 @@ export default function ApplicationPage() {
         <li>Relances automatiques des devis non signés et des factures impayées.</li>
         <li>Signature électronique des devis.</li>
         <li>Suivi de vos chantiers, de vos dépenses et de votre chiffre d&apos;affaires.</li>
+        <li>Préparation des informations nécessaires au suivi comptable, selon le périmètre défini dans votre accompagnement.</li>
       </ul>
 
       <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.3rem", color: "var(--text)", marginBottom: "0.8rem" }}>
@@ -58,6 +59,8 @@ export default function ApplicationPage() {
         Cirrion ne lit pas vos e-mails personnels et n&apos;utilise vos données que pour le fonctionnement
         du service, conformément à notre politique de confidentialité.
       </p>
+
+      <p style={{ margin: "1.5rem 0", lineHeight: 1.8 }}><Link href="/gestion-comptabilite" style={{ color: "#2455D6" }}>Comprendre la gestion et la comptabilité avec Cirrion</Link></p>
 
       <p style={{ color: "rgba(var(--text-rgb),0.6)", fontSize: "0.95rem", lineHeight: 1.8 }}>
         <Link href="/politique-de-confidentialite" style={{ color: "#2455D6", textDecoration: "underline" }}>

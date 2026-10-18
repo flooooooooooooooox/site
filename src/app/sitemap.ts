@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: base, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/gestion-comptabilite`, lastModified: "2026-10-11", changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/qui-sommes-nous`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/comparatif`, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/devis`, changeFrequency: "monthly", priority: 0.8 },
@@ -80,7 +81,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   const updated = new Map([
-    [base, "2026-10-06"],
+    [`${base}/application`, "2026-10-11"],
+    [base, "2026-10-11"],
     [`${base}/artisans/peintre`, "2026-10-06"],
     [`${base}/logiciel-gestion-entreprise-batiment`, "2026-10-06"],
     [`${base}/ressources/logiciel-erp-batiment`, "2026-10-06"],

@@ -6,8 +6,8 @@ const publicOrigin = "https://www.cirrion.eu";
 const buildDirectory = path.resolve(".next/server/app");
 const baseIndex = process.argv.indexOf("--base");
 const base = baseIndex < 0 ? null : new URL(process.argv[baseIndex + 1]);
-const targets = ["/", "/devis", "/artisans/peintre", "/logiciel-gestion-entreprise-batiment", "/ressources/logiciel-erp-batiment", "/logiciel-batiment/nice", "/ressources/pourquoi-jai-cree-cirrion", "/faq"];
-const faqRoutes = new Set(["/artisans/peintre", "/logiciel-gestion-entreprise-batiment"]);
+const targets = ["/", "/devis", "/gestion-comptabilite", "/artisans/peintre", "/logiciel-gestion-entreprise-batiment", "/ressources/logiciel-erp-batiment", "/logiciel-batiment/nice", "/ressources/pourquoi-jai-cree-cirrion", "/faq"];
+const faqRoutes = new Map([["/", 4], ["/artisans/peintre", 3], ["/logiciel-gestion-entreprise-batiment", 3], ["/gestion-comptabilite", 4]]);
 const aliases = ["/ressources/pourquoi-jai-cree-cree", "/ressources/pourquoi-jai-cree-cree-cirrion"];
 const decode = value => value.replace(/&(?:amp|quot|apos|lt|gt|#39|#x27|#\d+);/g, entity => {
   const named = {"&amp;":"&", "&quot;":"\"", "&apos;":"'", "&lt;":"<", "&gt;":">", "&#39;":"'", "&#x27;":"'"};
@@ -43,7 +43,7 @@ function checkHtml(route, html) {
   assert.ok(software.length <= 1, `${route}: repeated software schema`);
   if (faqRoutes.has(route)) {
     const faq = schemas.find(s => s["@type"] === "FAQPage");
-    assert.equal(faq?.mainEntity?.length, 3, `${route}: FAQ count`);
+    assert.equal(faq?.mainEntity?.length, faqRoutes.get(route), `${route}: FAQ count`);
     const visible = plainText(html);
     for (const answer of faq.mainEntity) {
       assert.ok(visible.includes(answer.name), `${route}: question absent from HTML`);
@@ -60,6 +60,8 @@ function checkHtml(route, html) {
   }
   if (route === "/") {
     assert.equal(title, "Cirrion — Logiciel de devis et factures pour artisans du bâtiment | Plus qu'un ERP", "homepage SEO title changed");
+    assert.equal(meta.find(a => a.property === "og:title")?.content, "Cirrion — Logiciel de devis et factures pour artisans du bâtiment", "homepage Open Graph title changed");
+    assert.equal(meta.find(a => a.name === "twitter:title")?.content, "Cirrion — Devis artisan en 3 min depuis WhatsApp", "homepage Twitter title changed");
     assert.equal(plainText(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? ""), "Vos devis et vos factures se font sans vous. Du devis dicté à la TVA déclarée.", "homepage visible title changed");
   }
   if (route === "/logiciel-batiment/nice") assert.ok(title.includes("Alpes-Maritimes (06)"), "Nice title regression");

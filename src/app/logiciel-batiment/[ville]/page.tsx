@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { VILLES, getVille } from "@/lib/villes";
 import { getCitySeo } from "@/lib/local-seo";
+import { METIERS } from "@/lib/metiers";
 
 export function generateStaticParams() {
   return VILLES.map((v) => ({ ville: v.slug }));
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ville: st
   const seo = getCitySeo(ville);
   const url = `https://www.cirrion.eu/logiciel-batiment/${ville.slug}`;
   const title = seo?.title ?? `Logiciel de devis bâtiment ${ville.prepo} ${ville.nom} — Cirrion`;
-  const description = seo?.description ?? `Logiciel de devis et facturation pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Créez vos devis depuis WhatsApp ou sur l'application Cirrion. Facture électronique 2026.`;
+  const description = seo?.description ?? `Devis, factures, relances et suivi administratif pour artisans du bâtiment ${ville.prepo} ${ville.nom} (${ville.region}). Découvrez Cirrion et son application web.`;
   return pageMetadata({
     title: seo ? { absolute: title } : title,
     description,
@@ -61,7 +62,7 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
   // declare une fois dans le layout. En declarer un par page de ville
   // annoncerait des dizaines d'etablissements qui n'existent pas.
 
-  const autres = VILLES.filter((v) => v.slug !== ville.slug).slice(0, 6);
+  const autres = VILLES.filter((v) => v.slug !== ville.slug && v.region === ville.region).slice(0, 6);
 
   return (
     <main style={{ position: "relative", zIndex: 1, minHeight: "100vh" }}>
@@ -92,15 +93,15 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
         </p>
 
         <h2 style={{ fontFamily: "var(--font-nunito)", fontWeight: 800, fontSize: "1.4rem", color: "var(--text)", marginBottom: "1.25rem" }}>
-          Pourquoi les artisans {ville.prepo} {ville.nom} choisissent Cirrion
+          Ce que Cirrion propose aux artisans {ville.prepo} {ville.nom}
         </h2>
         <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "0.7rem", marginBottom: "2.5rem" }}>
           {[
             "Devis créé depuis WhatsApp par message vocal, directement sur le chantier.",
             "Vos modèles de devis réutilisables sur l'application Cirrion, idéal au bureau.",
             "Relances automatiques des devis et factures pour ne plus perdre de chantiers.",
-            "Conformité facture électronique 2026 native, sans paperasse supplémentaire.",
-            "Hébergement 100% France et conformité RGPD.",
+            "Suivi des dépenses et préparation des informations comptables.",
+            "Un accompagnement défini selon votre activité et vos besoins administratifs.",
           ].map((b) => (
             <li key={b} style={{ display: "flex", gap: "0.7rem", color: "rgba(var(--text-rgb),0.7)", fontSize: ".92rem", lineHeight: 1.7 }}>
               <span style={{ color: "#2455D6", fontWeight: 700, flexShrink: 0 }}>→</span>{b}
@@ -125,6 +126,14 @@ export default async function VillePage({ params }: { params: Promise<{ ville: s
             Réserver une démo gratuite
           </a>
         </div>
+
+        <section style={{ marginBottom: "2.5rem" }}>
+          <h2 style={{ fontSize: "1.2rem", fontWeight: 800, marginBottom: "1rem" }}>Votre métier {ville.prepo} {ville.nom}</h2>
+          <nav aria-label={`Logiciels par métier ${ville.prepo} ${ville.nom}`} style={{ display: "flex", flexWrap: "wrap", gap: ".7rem" }}>
+            {METIERS.map(m => <Link key={m.slug} href={`/logiciel-devis/${m.slug}/${ville.slug}`} style={{ color: "#2455D6", fontSize: ".88rem" }}>{m.label}</Link>)}
+          </nav>
+          <p style={{ marginTop: "1rem", fontSize: ".9rem", lineHeight: 1.8 }}><Link href="/gestion-comptabilite" style={{ color: "#2455D6" }}>Gestion et préparation comptable</Link></p>
+        </section>
 
         <p style={{ color: "rgba(var(--text-rgb),0.35)", fontSize: ".78rem", fontWeight: 600, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: "1rem" }}>
           Cirrion dans d&apos;autres villes
