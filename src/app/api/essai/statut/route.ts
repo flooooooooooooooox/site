@@ -1,13 +1,15 @@
 import { clientIp, ipHash, readCookie, verifyVisitor } from "@/lib/essai/identity";
 import { json, isUnavailable } from "@/lib/essai/http";
 import { peek, remaining } from "@/lib/essai/quota";
-import { getStore } from "@/lib/essai/store";
+import { getStore, quotaEnabled } from "@/lib/essai/store";
 
 export const runtime = "nodejs";
 
 /** Lecture seule : l'essai est-il disponible pour ce visiteur ? N'ecrit rien et ne consomme rien. */
 export async function GET(req: Request) {
   // `audio` : le moteur Cirrion (Mistral) est configure. Sans lui, seule la dictee du navigateur reste proposee.
+  // Mode libre (pas de stockage) : dictee du navigateur seule, sans limite par visiteur.
+  if (!quotaEnabled()) return json({ available: true, audio: false, remaining: null });
   const audio = Boolean(process.env.MISTRAL_API_KEY);
   try {
     const cid = verifyVisitor(readCookie(req.headers));

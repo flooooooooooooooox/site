@@ -2,8 +2,9 @@ import { missingFields, MISSING_MESSAGES, sanitizeDevis } from "@/lib/essai/devi
 import { fail, isUnavailable, NO_STORE, sameOrigin, UNAVAILABLE } from "@/lib/essai/http";
 import { readCookie, verifyToken, verifyVisitor } from "@/lib/essai/identity";
 import { buildDevisPdf, pdfFileName } from "@/lib/essai/pdf";
-import { pdfAllowed } from "@/lib/essai/quota";
-import { getStore } from "@/lib/essai/store";
+import { burstAllowed, pdfAllowed } from "@/lib/essai/quota";
+import { clientIp } from "@/lib/essai/identity";
+import { getBurstStore, getStore, quotaEnabled } from "@/lib/essai/store";
 
 export const runtime = "nodejs";
 
@@ -20,15 +21,21 @@ export async function POST(req: Request) {
     let body: { token?: unknown; devis?: unknown };
     try { body = JSON.parse(raw); } catch { return fail(400, "requete", "Requête illisible."); }
 
-    const cid = verifyVisitor(readCookie(req.headers));
-    const tok = cid ? verifyToken(body.token, cid) : null;
-    if (!tok) return fail(403, "jeton", "Cette session a expiré. Refaites un enregistrement depuis la page d'essai.");
+    // Mode libre : ni cookie ni jeton, seulement une limite de rafale en memoire.
+    const libre = !quotaEnabled();
+    const cid = libre ? null : verifyVisitor(readCookie(req.headers));
+    const tok = libre ? null : cid ? verifyToken(body.token, cid) : null;
+    if (libre) {
+      if (!(await burstAllowed(getBurstStore(), `pdf:${clientIp(req.headers)}`))) {
+        return fail(429, "rafale", "Trop de demandes en peu de temps. Patientez une minute.");
+      }
+    } else if (!tok) return fail(403, "jeton", "Cette session a expiré. Refaites un enregistrement depuis la page d'essai.");
 
     const devis = sanitizeDevis(body.devis);
     const missing = missingFields(devis);
     if (missing.length) return fail(422, "incomplet", MISSING_MESSAGES[missing[0]]);
 
-    if (!(await pdfAllowed(getStore(), tok.jti))) {
+    if (tok && !(await pdfAllowed(getStore(), tok.jti))) {
       return fail(429, "limite-pdf", "Vous avez atteint le nombre de téléchargements autorisés pour cet essai.");
     }
 

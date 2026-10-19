@@ -56,6 +56,7 @@ export default function EssaiClient() {
   const [listening, setListening] = useState(false);
   const [viaBrowser, setViaBrowser] = useState(false);
   const [left, setLeft] = useState(FREE_QUOTES);
+  const [unlimited, setUnlimited] = useState(false); // mode libre : pas de compteur
 
   const recorder = useRef<MediaRecorder | null>(null);
   const chunks = useRef<Blob[]>([]);
@@ -71,10 +72,11 @@ export default function EssaiClient() {
     let alive = true;
     fetch("/api/essai/statut", { cache: "no-store" })
       .then((r) => r.json())
-      .then((j: { available: boolean; audio?: boolean; remaining?: number; reason?: "deja-utilise" | "connexion" | "indisponible" }) => {
+      .then((j: { available: boolean; audio?: boolean; remaining?: number | null; reason?: "deja-utilise" | "connexion" | "indisponible" }) => {
         if (!alive) return;
         setAudioOk(j.audio !== false);
         if (typeof j.remaining === "number") setLeft(j.remaining);
+        if (j.remaining === null) setUnlimited(true);
         setSpeechOk(speechCtor() !== null);
         if (j.available) setStep("pret");
         else { setReason(j.reason ?? "indisponible"); setStep(j.reason === "indisponible" || !j.reason ? "indisponible" : "deja"); }
@@ -541,7 +543,7 @@ export default function EssaiClient() {
             <Offer />
             {left > 0 ? (
               <button type="button" className="es-link" onClick={another}>
-                Faire un autre devis gratuit ({left} restant{left > 1 ? "s" : ""})
+                {unlimited ? "Faire un autre devis gratuit" : `Faire un autre devis gratuit (${left} restant${left > 1 ? "s" : ""})`}
               </button>
             ) : (
               <p className="es-note">Vous avez fait vos {FREE_QUOTES} devis gratuits.</p>

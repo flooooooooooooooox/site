@@ -7,7 +7,7 @@ import {
 } from "@/lib/essai/identity";
 import { extractDevis, extractWithRules, transcribe } from "@/lib/essai/mistral";
 import { burstAllowed, reserve } from "@/lib/essai/quota";
-import { getStore } from "@/lib/essai/store";
+import { getBurstStore, getStore, quotaEnabled } from "@/lib/essai/store";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -26,6 +26,7 @@ export const maxDuration = 60;
 export async function POST(req: Request) {
   if (!sameOrigin(req)) return fail(403, "origine", "Requête refusée.");
   const texteMode = (req.headers.get("content-type") ?? "").includes("application/json");
+  if (!quotaEnabled()) return preparerLibre(req, texteMode);
   const hasKey = Boolean(process.env.MISTRAL_API_KEY);
   if (!texteMode && !hasKey) {
     console.error("[essai] MISTRAL_API_KEY absente : essai audio ferme");
@@ -127,4 +128,32 @@ export async function POST(req: Request) {
     console.error("[essai] erreur :", err instanceof Error ? err.message : err);
     return fail(500, "erreur", "Une erreur est survenue. Réessayez dans un instant.");
   }
+}
+
+/**
+ * Mode libre (aucun stockage configure) : seulement la dictee du navigateur, lue par des regles.
+ * Aucun appel Mistral meme si une cle existe (rien ne bornerait la facture), pas de cookie, pas de jeton.
+ */
+async function preparerLibre(req: Request, texteMode: boolean) {
+  if (!texteMode) return fail(503, "audio-indisponible", "L'envoi d'un fichier audio n'est pas disponible. Utilisez la dictée.");
+  const ip = clientIp(req.headers);
+  if (!(await burstAllowed(getBurstStore(), `prep:${ip}`))) {
+    return fail(429, "rafale", "Trop de demandes en peu de temps. Patientez une minute.");
+  }
+  if (Number(req.headers.get("content-length") ?? 0) > ESSAI.maxTranscriptChars * 4 + 2000) {
+    return fail(413, "trop-long", "Le texte est trop long. Dictez moins d'1 minute 30.");
+  }
+  let raw: unknown;
+  try { raw = (await req.json())?.transcript; } catch { return fail(400, "requete", "Envoi illisible. Réessayez."); }
+  if (typeof raw !== "string") return fail(400, "vide", "Aucun texte reçu.");
+  const transcript = raw.replace(/\s+/g, " ").trim();
+  if (transcript.length > ESSAI.maxTranscriptChars) return fail(413, "trop-long", "Le texte est trop long. Dictez moins d'1 minute 30.");
+  if (transcript.replace(/\s/g, "").length < 8) {
+    return fail(422, "inaudible", "Nous n'avons presque rien reçu. Dictez les travaux et leur prix, puis réessayez.");
+  }
+  const devis = sanitizeDevis(extractWithRules(transcript));
+  if (devis.lignes.length === 0 && !devis.objet && !devis.client) {
+    return fail(422, "incomprehensible", "Nous n'avons pas trouvé de prestation dans votre message. Citez les travaux et leur prix, par exemple « remplacement du chauffe-eau, 450 euros ».");
+  }
+  return json({ ok: true, transcript, devis, missing: missingFields(devis), token: "", engine: "regles" });
 }

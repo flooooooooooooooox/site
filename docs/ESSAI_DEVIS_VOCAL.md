@@ -15,6 +15,18 @@ workflow WhatsApp n'est déclenché.
 `GET /api/essai/statut` est en lecture seule : il sert à masquer l'enregistreur si l'essai est déjà utilisé,
 et annonce `audio: false` quand `MISTRAL_API_KEY` manque (seule la dictée du navigateur est alors proposée).
 
+## Mode libre (aucun stockage, aucun abonnement)
+
+Quand **aucun Redis n'est configuré en production**, l'essai passe en mode libre au lieu de se fermer :
+
+- dictée du navigateur uniquement, lue par des règles : **aucun appel Mistral**, même si `MISTRAL_API_KEY` existe (rien ne bornerait la facture) ; l'envoi d'audio répond 503 ;
+- pas de cookie, pas de jeton, **pas de limite par visiteur** : le visiteur peut refaire autant de devis qu'il veut ;
+- seul garde-fou : 8 requêtes par minute et par connexion, **en mémoire du processus** (meilleur effort, non partagé entre instances Vercel) ;
+- `ESSAI_SECRET` n'est pas nécessaire ;
+- le coût se limite au calcul serveur du PDF.
+
+Contournement possible à volonté, c'est assumé. Pour retrouver le quota (2 devis par visiteur, 6 par connexion), configurer Redis : le mode normal reprend tout seul.
+
 ## Dictée du navigateur (option gratuite, sans clé)
 
 Web Speech API (`SpeechRecognition`) : Google sur Chrome/Android, Apple sur Safari, absente de Firefox.
@@ -58,7 +70,7 @@ dictée de l'ERP est la seule implémentation lisible ; elle est supposée équi
 | `ESSAI_PER_IP` | Devis autorisés par connexion sur 30 jours, tous visiteurs confondus (défaut 6) | non |
 | `MISTRAL_DEVIS_MODEL`, `MISTRAL_STT_MODEL` | Modèles (défauts : `mistral-small-latest`, `voxtral-small-latest`) | non |
 
-Fail-closed : sans secret ou sans Redis, l'essai répond « indisponible ». Sans clé Mistral, l'envoi d'audio est fermé, la dictée du navigateur reste ouverte.
+Avec Redis configuré, fail-closed : sans secret ou si Redis tombe, l'essai répond « indisponible ». Sans Redis du tout : mode libre (voir plus haut). Sans clé Mistral, l'envoi d'audio est fermé, la dictée du navigateur reste ouverte.
 Il ne retombe jamais sur un compteur en mémoire ni sur une génération factice.
 `ESSAI_STORE=memory` et `MISTRAL_SERVER_URL` n'existent que hors production (développement, tests).
 
@@ -103,6 +115,6 @@ Les journaux ne contiennent aucun contenu de vocal. Les appels partent chez Mist
 npm test
 ```
 
-112 tests : audio, identité, quota (dont requêtes simultanées et mutations vérifiées), modèle de devis,
+117 tests : audio, identité, quota (dont requêtes simultanées et mutations vérifiées), modèle de devis,
 PDF, et parcours complet des routes avec un **faux serveur Mistral** local. Ce faux serveur permet de
 compter les appels payants ; il ne prouve rien sur la qualité de la vraie transcription.

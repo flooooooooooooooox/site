@@ -422,3 +422,60 @@ describe("statut", () => {
     finally { vi.stubEnv("MISTRAL_API_KEY", "cle-de-test"); }
   });
 });
+
+describe("mode libre : aucun stockage configuré (production sans Redis)", () => {
+  const dictee = (transcript: string, ip = "203.0.113.50") =>
+    new Request(URL_PREP, { method: "POST", headers: { host: "localhost:3000", "content-type": "application/json", "x-real-ip": ip }, body: JSON.stringify({ transcript }) });
+  beforeEach(() => {
+    setStoreForTests(null);
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("UPSTASH_REDIS_REST_URL", "");
+    vi.stubEnv("KV_REST_API_URL", "");
+    vi.stubEnv("ESSAI_SECRET", "");
+  });
+  afterAll(() => vi.unstubAllEnvs());
+
+  it("dictée -> devis -> PDF, sans cookie ni jeton, et AUCUN appel Mistral même avec une clé", async () => {
+    const POST = await route();
+    const res = await POST(dictee("devis pour Madame Durand, pose de 5 prises à 20 euros, TVA 10 %"));
+    expect(res.status).toBe(200);
+    const j = await res.json();
+    expect(j.engine).toBe("regles");
+    expect(j.devis.lignes).toEqual([{ designation: "Pose de prises", quantite: 5, prix: 20 }]);
+    expect(res.headers.get("set-cookie")).toBeNull();
+    expect(calls).toEqual({ stt: 0, chat: 0 });
+    const PDF = await pdfRoute();
+    const pdf = await PDF(new Request(URL_PDF, { method: "POST", headers: { host: "localhost:3000", "content-type": "application/json", "x-real-ip": "203.0.113.50" }, body: JSON.stringify({ token: "", devis: j.devis }) }));
+    expect(pdf.status).toBe(200);
+    expect(pdf.headers.get("content-type")).toBe("application/pdf");
+  });
+
+  it("le PDF exige toujours la TVA", async () => {
+    const PDF = await pdfRoute();
+    const res = await PDF(new Request(URL_PDF, { method: "POST", headers: { host: "localhost:3000", "content-type": "application/json", "x-real-ip": "203.0.113.51" }, body: JSON.stringify({ devis: { client: "X", lignes: [{ designation: "a", quantite: 1, prix: 10 }] } }) }));
+    expect(res.status).toBe(422);
+  });
+
+  it("l'audio est refusé (rien ne bornerait le coût), le statut annonce le mode libre", async () => {
+    const POST = await route();
+    const res = await POST(audioRequest(URL_PREP, wav(10)));
+    expect(res.status).toBe(503);
+    expect(calls).toEqual({ stt: 0, chat: 0 });
+    const GET = (await import("@/app/api/essai/statut/route")).GET;
+    expect(await (await GET(new Request("http://localhost:3000/api/essai/statut"))).json()).toEqual({ available: true, audio: false, remaining: null });
+  });
+
+  it("anti-rafale en mémoire : au plus 8 par minute et par connexion", async () => {
+    const POST = await route();
+    const codes: number[] = [];
+    for (let i = 0; i < 10; i++) codes.push((await POST(dictee("devis pour Madame Durand, pose de 5 prises à 20 euros", "203.0.113.60"))).status);
+    expect(codes.filter((c) => c === 200)).toHaveLength(8);
+    expect(codes.slice(8)).toEqual([429, 429]);
+  });
+
+  it("origine étrangère refusée", async () => {
+    const POST = await route();
+    const r = new Request(URL_PREP, { method: "POST", headers: { host: "localhost:3000", origin: "https://evil.example", "content-type": "application/json" }, body: JSON.stringify({ transcript: "devis pour Madame Durand pose 5 prises à 20 euros" }) });
+    expect((await POST(r)).status).toBe(403);
+  });
+});

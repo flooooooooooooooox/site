@@ -124,6 +124,22 @@ export function setStoreForTests(store: Store | null) {
   cached = store;
 }
 
+/**
+ * Quota actif ? Non quand aucun stockage n'est configure en production : c'est le « mode libre »,
+ * choisi pour ne rien payer. Pas de compteur, pas de limite par visiteur, aucun appel payant (voir docs).
+ */
+export function quotaEnabled(): boolean {
+  if (cached) return true;
+  if ((process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL) && (process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN)) return true;
+  return process.env.NODE_ENV !== "production" && (process.env.NODE_ENV === "test" || process.env.ESSAI_STORE === "memory");
+}
+
+/** Mode libre : simple anti-rafale en memoire du processus (meilleur effort, rien n'est partage ni conserve). */
+let burstOnly: Store | null = null;
+export function getBurstStore(): Store {
+  return (burstOnly ??= createMemoryStore());
+}
+
 export function getStore(): Store {
   if (cached) return cached;
   const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
