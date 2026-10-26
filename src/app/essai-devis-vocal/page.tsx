@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import EssaiClient from "./EssaiClient";
+import ScrollDevisStory from "@/components/sections/ScrollDevisStory";
 
 export const metadata: Metadata = pageMetadata({
   title: "Devis vocal gratuit : essayez sans inscription",
@@ -24,7 +25,10 @@ export default function EssaiDevisVocalPage() {
         <p style={{ textAlign: "center", color: "rgba(var(--text-rgb),0.62)", marginBottom: "2rem", lineHeight: 1.6, maxWidth: "34rem", marginInline: "auto" }}>
           Décrivez le chantier comme à un collègue. Cirrion prépare le devis, vous le vérifiez, vous le téléchargez en PDF.
         </p>
-        <EssaiClient />
+        <ScrollDevisStory />
+        <div id="essai-outil" style={{ scrollMarginTop: "6rem" }}>
+          <EssaiClient />
+        </div>
       </div>
     </main>
   );
