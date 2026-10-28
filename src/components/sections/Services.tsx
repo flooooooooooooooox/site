@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FileText, Landmark, MapPin, Monitor, Bell, Sparkles, PhoneIncoming,
-  Mic, Receipt, TrendingUp, Tags, GraduationCap, Star, Shield, LucideIcon,
+  Mic, Receipt, TrendingUp, Tags, GraduationCap, Star, Shield, Mail, FolderOpen, LucideIcon,
 } from "lucide-react";
 import { FrameVocal, FrameDeclarations, FramePlanning } from "@/components/ui/storyFrames";
 import { cloudBand, cloudRow } from "@/components/ui/cloudArt";
@@ -39,6 +39,8 @@ type Tile = {
   /** Les trois promesses : fond bleu profond, texte blanc, et un visuel. */
   hero?: boolean;
   art?: () => React.JSX.Element;
+  /** Pastille « Nouveau » a cote du titre. */
+  isNew?: boolean;
 };
 
 const TILES: Tile[] = [
@@ -136,6 +138,33 @@ const TILES: Tile[] = [
       "Un souci sur un chantier : un vocal de 30 secondes, et l'e-mail part",
       "Point de la semaine : chiffre d'affaires, chantiers, devis signés",
       "Factures envoyées à la bonne date, sans y penser",
+    ],
+  },
+  {
+    icon: Mail,
+    title: "Vos e-mails rangés, vos réponses prêtes",
+    isNew: true,
+    lead: "Vos e-mails se classent seuls, et la réponse est déjà écrite.",
+    items: [
+      "Vos e-mails regroupés par conversation : tout l'échange au même endroit, comme un fil de discussion",
+      "Chaque e-mail rangé dans sa catégorie : clients, équipe, fournisseurs, administratif",
+      "Vous créez vos propres catégories",
+      "Une réponse est déjà préparée pour chaque e-mail : vous relisez et vous envoyez",
+      "Réponses adaptées à la personne : un client, un salarié, un fournisseur",
+      "Vous choisissez le ton de l'IA : chaleureux, direct, formel",
+    ],
+  },
+  {
+    icon: FolderOpen,
+    title: "Une fiche pour chaque client",
+    isNew: true,
+    lead: "Tout sur un client au même endroit, même ce que vous seul savez.",
+    items: [
+      "Espace client : devis, factures et documents rangés par client",
+      "Vos factures archivées, retrouvables en une recherche",
+      "Vos propres notes sur chaque client : code d'immeuble, accès, habitudes, ce que vous voulez",
+      "Les notes sont rangées avec ses documents : vous les retrouvez avant d'arriver chez lui",
+      "Tout l'historique du client sur une seule fiche",
     ],
   },
   {
@@ -389,7 +418,7 @@ export default function Services() {
                   <span className="bento-icon">
                     <Icon size={18} strokeWidth={1.8} />
                   </span>
-                  <h3 className="bento-title">{t.title}</h3>
+                  <h3 className="bento-title">{t.title}{t.isNew && <span className="bento-new">Nouveau</span>}</h3>
                   <p className="bento-lead">{t.lead}</p>
                   <ul className="bento-points" hidden={!isOpen}>
                     {t.items.map((p) => (
@@ -525,6 +554,7 @@ export default function Services() {
             0 32px 60px -24px rgba(12,32,86,0.85);
         }
 
+        .bento-new { display: inline-block; margin-left: .5rem; padding: 2px 9px; border-radius: 999px; background: rgba(36,85,214,0.12); color: #2455D6; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; vertical-align: middle; }
         .bento-icon {
           display: inline-flex; align-items: center; justify-content: center;
           width: 38px; height: 38px; border-radius: 12px;

@@ -45,6 +45,8 @@ export default function ApplicationPage() {
         <li>Création de devis et de factures professionnels (y compris depuis un message vocal WhatsApp).</li>
         <li>Envoi automatique de vos devis, factures et e-mails professionnels à vos clients par e-mail, via votre compte Gmail, en votre nom.</li>
         <li>Relances automatiques des devis non signés et des factures impayées.</li>
+        <li>Regroupement de vos e-mails professionnels par conversation, classement par catégories et préparation de réponses que vous relisez avant de les envoyer, dans le ton que vous choisissez.</li>
+        <li>Fiche de chaque client : devis, factures archivées, documents et notes que vous y ajoutez (par exemple un code d&apos;immeuble).</li>
         <li>Signature électronique des devis.</li>
         <li>Suivi de vos chantiers, de vos dépenses et de votre chiffre d&apos;affaires.</li>
         <li>Préparation des informations nécessaires au suivi comptable, selon le périmètre défini dans votre accompagnement.</li>
@@ -54,9 +56,10 @@ export default function ApplicationPage() {
         Utilisation de votre compte Google
       </h2>
       <p style={{ color: "rgba(var(--text-rgb),0.75)", fontSize: "1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-        Cirrion se connecte à votre compte Gmail uniquement pour envoyer, en votre nom, les documents
-        que vous créez dans l&apos;application (devis, factures, e-mails professionnels et relances).
-        Cirrion ne lit pas vos e-mails personnels et n&apos;utilise vos données que pour le fonctionnement
+        Cirrion se connecte à votre compte Gmail pour envoyer, en votre nom, les documents que vous créez
+        dans l&apos;application (devis, factures, e-mails professionnels et relances), et pour afficher vos
+        e-mails professionnels sous forme de conversations, les classer par catégories et préparer des réponses.
+        Aucune réponse ne part sans que vous l&apos;ayez validée. Vos données ne servent qu&apos;au fonctionnement
         du service, conformément à notre politique de confidentialité.
       </p>
 

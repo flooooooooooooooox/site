@@ -32,6 +32,14 @@ const FAQS = [
     a: "Oui. Sur le terrain, tout se fait depuis WhatsApp sur votre téléphone : faire un devis, envoyer une facture, voir un chantier. Pas besoin d'ouvrir un ordinateur. Au bureau, l'application vous donne la vue d'ensemble, avec vos modèles de devis et votre tableau de bord.",
   },
   {
+    q: "Cirrion peut-il ranger mes e-mails et répondre à ma place ?",
+    a: "Il range et il prépare, vous décidez. Vos e-mails sont regroupés par conversation et rangés dans des catégories (clients, équipe, fournisseurs, administratif, ou celles que vous créez). Pour chaque e-mail, une réponse est déjà écrite, adaptée à la personne qui vous écrit. Vous choisissez le ton de l'IA, vous relisez, vous envoyez.",
+  },
+  {
+    q: "Puis-je noter des informations sur mes clients, comme un code d'immeuble ?",
+    a: "Oui. Chaque client a sa fiche, avec ses devis, ses factures archivées et ses documents. Vous y ajoutez ce que vous voulez : code d'immeuble, consignes d'accès, habitudes du client. C'est rangé avec le reste de son dossier, donc vous le retrouvez au moment d'y aller.",
+  },
+  {
     q: "Combien ça coûte ?",
     a: "Il n'y a qu'une seule offre : le logiciel et la comptabilité sont compris, sans option à cocher. Le prix dépend de votre activité et de la taille de votre équipe. Demandez votre devis : on vous répond sous 24 h avec un prix précis.",
   },

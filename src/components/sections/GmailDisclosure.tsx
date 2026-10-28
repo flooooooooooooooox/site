@@ -22,7 +22,7 @@ export default function GmailDisclosure() {
         </summary>
         <p style={{ marginTop: "0.6rem", color: "rgba(27,42,74,0.5)", fontSize: "0.8rem", lineHeight: 1.6 }}>
           Cirrion est une application de gestion pour les artisans du bâtiment : elle crée vos devis et factures,
-          les envoie à vos clients par e-mail via votre compte Gmail, et automatise vos relances.
+          les envoie à vos clients par e-mail via votre compte Gmail, automatise vos relances, et range vos e-mails professionnels en conversations avec des réponses préparées que vous validez.
         </p>
       </details>
     </section>

@@ -126,7 +126,7 @@ const BACKOFFICE = [
   { Logo: LogoClementine, name: "Clementine", sub: "Bilan de fin d'année" },
   { Logo: LogoOpenPaye, name: "OpenPaye", sub: "Fiches de paie" },
   { Logo: LogoBridge, name: "Bridge", sub: "Votre banque connectée" },
-  { Logo: LogoGmail, name: "Gmail", sub: "Envoi en votre nom" },
+  { Logo: LogoGmail, name: "Gmail", sub: "E-mails rangés, envoi en votre nom" },
 ];
 
 /* ----- Compteur ----- */
@@ -294,8 +294,9 @@ export default function ProofSection() {
           <p className="proof-note">
             <LogoGmail />
             <span>
-              Cirrion utilise votre compte Gmail pour envoyer automatiquement vos devis, factures et
-              e-mails professionnels à vos clients, en votre nom.
+              Cirrion utilise votre compte Gmail pour envoyer vos devis, factures et e-mails professionnels à
+              vos clients, en votre nom, et pour ranger vos e-mails en conversations avec des réponses
+              préparées que vous validez.
             </span>
           </p>
         </div>
